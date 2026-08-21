@@ -1,3 +1,3 @@
 # Math-Examples-and-Practice
 
-This porject is in progress. Many of the answers are not working properly.
+This project is in progress. Let me know if you find an error.
