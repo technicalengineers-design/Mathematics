@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sync": "powershell -ExecutionPolicy Bypass -File ./scripts/sync-to-github.ps1"
+    "sync": "powershell -ExecutionPolicy Bypass -File ./scripts/sync-to-github.ps1",
+    "sync:watch": "powershell -ExecutionPolicy Bypass -File ./scripts/auto-sync-to-github.ps1"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
