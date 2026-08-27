@@ -3920,7 +3920,7 @@
       "answer": "\\( {allshovel} \\) houses will require about \\({result}\\) hours"
     },
     {
-      "id": "CM 1.2 (under construction)",
+      "id": "CM 1.2",
       "type": "template",
       "objective": "Calculating Percentage",
       "difficulty": "basic",
@@ -3933,21 +3933,17 @@
       "answer": "\\({result}\\)%"
     },
     {
-      "id": "ALG1-1.1-I2",
+      "id": "CM 1.3 (under construction)",
       "type": "template",
-      "objective": "Evaluating Numerical Expressions",
+      "objective": "Percent of Change",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": -7, "max": 7, "exclude":[0] },
-        "b": { "min": 2, "max": 5, "exclude":["a"] },
-        "c": { "min": -3, "max": 3, "exclude":[0] },
-        "d": { "min": 2, "max": 5 },
-        "e": { "min": 2, "max": 6 },
-        "f": { "min": 2, "max": 5, "exclude":["e"]},
-        "result": { "formula": "(a/b) - (c + 1/d) + (e/f)", "format": "auto" }
+        "fee": { "min": 123, "max": 937 },
+        "percent": { "min": 0.6, "max": 0.9 },
+        "result": { "formula": "Math.round(fee/percent)*100" }
       },
-      "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - ({c} + \\frac{1}{{{d}}}) + \\frac{{{e}}}{{{f}}} \\).",
-      "answer": "\\({result}\\)"
+      "question": "You pay $\\({fee} \\) in a tax that is \\({percent}\\)% of the value of a property. What is the value of the property?",
+      "answer": "The value of the property is $\\({result}\\)."
     },
     {
       "id": "ALG1-1.1-A1",
