@@ -3879,7 +3879,7 @@
 "Consumer Math": {
   "Module 0": [
     {
-      "id": "Consumer Math - 01.01",
+      "id": "Consumer Maths - 01.01",
       "type": "template",
       "objective": "Adding Fractions",
       "difficulty": "basic",
@@ -4213,19 +4213,19 @@
   ],
   "Module 1": [
     {
-      "id": "CM 01.01BA",
+      "id": "CM 01.01A",
       "type": "template",
-      "objective": "Evaluating Numerical Expressions",
+      "objective": "Calculating per unit",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": -20, "max": 20, "exclude":[0] },
-        "b": { "min": 2, "max": 20, "exclude":["a"] },
-        "c": { "min": -20, "max": 20, "exclude":["a","b",0] },
-        "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "result": { "formula": "(a + b) * c - d" }
+        "miles": { "min": 10, "max": 209 },
+        "hours": { "values": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0, 5.1, 5.2], "format": "decimal" },
+        "hoursWhole": { "formula": "Math.floor(hours)" },
+        "minutes": { "formula": "Math.round((hours - hoursWhole) * 60)" },
+        "speed": { "formula": "Math.round((miles / hours) * 100) / 100", "format": "decimal" }
       },
-      "question": "Evaluate: \\( [{a} + ({b})] \\cdot ({c}) - ({d}) \\).",
-      "answer": "\\({result}\\)"
+      "question": "A car traveled \\( {miles} \\) miles in \\( {hoursWhole} \\) hours and \\( {minutes} \\) minutes. What was its average speed in miles per hour (mph)?",
+      "answer": "Average speed = \\( {speed} \\) mph"
     },
     {
       "id": "CM 01.01BB",
