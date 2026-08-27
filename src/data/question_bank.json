@@ -1,6 +1,6 @@
 ﻿{
 "Algebra 1": {
-  "Module 0": [
+  "Module Mathematics Review": [
     {
       "id": "ALG1-0.1-B1",
       "type": "template",
@@ -4245,21 +4245,43 @@
       "answer": "\\({result}\\)"
     },
     {
-      "id": "ALG1-1.1-I1",
-      "type": "template",
-      "objective": "Evaluating Numerical Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -12, "max": 12, "exclude":[0] },
-        "b": { "min": 1, "max": 5 },
-        "c": { "min": 2, "max": 5, "exclude":["a"] },
-        "d": { "min": 2, "max": 8, "exclude":[0] },
-        "e": { "min":2, "max": 5, "exclude":["b","c"] },
-        "f": { "min": 2, "max": 10, "exclude":["d"] },
-        "result": { "formula": "(a/c) + (b/e)**2 - d + f", "format": "auto" }
-      },
-      "question": "Evaluate: \\( \\frac{{{a}}}{{{c}}} + (\\frac{{{b}}}{{{e}}})^2 - {d} + {f} \\).",
-      "answer": "\\({result}\\)"
+      "id": "CM 01.01B",
+     import java.util.Random;
+
+public class ProportionSolver {
+    public static void main(String[] args) {
+        Random random = new Random();
+
+        // Generate non-zero random whole numbers between 1 and 20
+        int num1 = random.nextInt(20) + 1; 
+        int den1 = random.nextInt(20) + 1; 
+        int num2 = random.nextInt(20) + 1; 
+
+        // Ensure the proportion does not result in a perfectly clean whole number
+        while ((num2 * den1) % num1 == 0) {
+            num2 = random.nextInt(20) + 1;
+        }
+
+        // Calculate the missing denominator (x) using cross-multiplication: (num2 * den1) / num1
+        double x = (double) (num2 * den1) / num1;
+
+        // Round the answer to the nearest tenth
+        double roundedX = Math.round(x * 10.0) / 10.0;
+
+        // Display the math problem: num1 / den1 = num2 / x
+        System.out.println("Solve the proportion for x (round to the nearest tenth):");
+        System.out.printf("%d / %d = %d / x\n\n", num1, den1, num2);
+
+        // Display the step-by-step solution
+        System.out.println("Step-by-step solution:");
+        System.out.printf("1. Cross-multiply: %d * x = %d * %d\n", num1, num2, den1);
+        System.out.printf("2. Simplify: %d * x = %d\n", num1, num2 * den1);
+        System.out.printf("3. Isolate x: x = %d / %d\n", num2 * den1, num1);
+        System.out.printf("4. Exact decimal: x = %f\n", x);
+        System.out.printf("5. Rounded answer: x = %.1f\n", roundedX);
+    }
+}
+
     },
     {
       "id": "ALG1-1.1-I2",
