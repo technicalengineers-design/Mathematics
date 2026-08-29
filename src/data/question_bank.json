@@ -3877,7 +3877,7 @@
   ]
 },
 "Consumer Math": {
-  "Module 1": [
+  "1 Math Skills": [
     {
       "id": "CM 1.1a1",
       "type": "template",
@@ -3964,7 +3964,7 @@
       "answer": "\\({result}\\)"
     },
     {
-      "id": "CM 1.5 (under construction)",
+      "id": "CM 1.5a",
       "type": "template",
       "objective": "Calculating Algebraic Expressions",
       "difficulty": "basic",
@@ -3976,45 +3976,32 @@
         "e": { "min": 2, "max": 8, "exclude":["d"] },
         "f": { "min": 2, "max": 10 },
         "g": { "min": 2, "max": 10, "exclude":["f"] },
-        "result": { "formula": "(a/b) - (c)*(c/d + 1/e) + (f/g)**2", "format": "decimal" }
+        "result": { "formula": "Math.round(((a/b) - (c)*(c/d + 1/e) + (f/g)**2)*100000000)/100000000", "format": "decimal" }
       },
-      "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - ({c})*(\\frac{{{c}}}{{{d}}} + \\frac{1}{{{e}}}) + (\\frac{{{f}}}{{{g}}})^2 \\). Write your answer to 13 significant digits.",
+      "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - ({c})*(\\frac{{{c}}}{{{d}}} + \\frac{1}{{{e}}}) + (\\frac{{{f}}}{{{g}}})^2 \\). Write your answer to the nearest hundred millionth (8 decimal places).",
       "answer": "\\({result}\\)"
     },
     {
-      "id": "ALG1-1.2-B1",
+      "id": "CM 1.5b1",
       "type": "template",
       "objective": "Evaluate Algebraic Expressions",
       "difficulty": "basic",
       "variables": {
-        "x": { "min": 1, "max": 5 },
-        "a": { "min": 1, "max": 10 },
-        "b": { "min": 1, "max": 10 },
-        "result": { "formula": "a * x + b" }
+        "V": { "min": 2, "max": 9 },
+        "a": { "min": 2, "max": 9 },
+        "b": { "min": 2, "max": 9 },
+        "h": { "min": 2, "max": 9 },
+        "H": { "min": 2, "max": 9 },
+        "result": { "formula": "(a + b)/2*h*H", "format": "decimal" }
       },
-      "question": "Evaluate: \\( {a|coef}x {b|sign} \\) when \\( x = {x} \\).",
-      "answer": "\\({result}\\)"
+     "question": "Find the volume (V) of a trapezoidal pyramid where V = \\(\\frac{1}{3}\\frac{(a+b)}{2}hH\\) and a={a}, b={b}, h={h}, and H={H}.",
+  "answer": "\\({result}\\)"
     },
     {
-      "id": "ALG1-1.2-B2",
+      "id": "CM 1.5b2",
       "type": "template",
-      "objective": "Evaluate Algebraic Expressions",
+      "objective": "Integer Exponents",
       "difficulty": "basic",
-      "variables": {
-        "x": { "min": -7, "max": 7, "exclude": [0] },
-        "a": { "min": 2, "max": 10 },
-        "b": { "min": 2, "max": 10, "exclude":["a"] },
-        "c": { "min": 2, "max": 10, "exclude":["a","b"] },
-        "result": { "formula": "a * x**2 + b * x + c" }
-      },
-      "question": "Evaluate: \\( {a|coef}x^2 {b|signedCoef}x {c|sign} \\) when \\( x = {x} \\).",
-      "answer": "\\({result}\\)"
-    },
-    {
-      "id": "ALG1-1.2-I1",
-      "type": "template",
-      "objective": "Evaluate Algebraic Expressions",
-      "difficulty": "intermediate",
       "variables": {
         "x": { "min": 1, "max": 5 },
         "y": { "min": -3, "max": 3, "exclude": [0] },
@@ -4026,11 +4013,11 @@
       "question": "Evaluate: \\( {a|coef}(x - {b})^2 {c|signedCoef}y \\) when \\( x = {x}, y = {y} \\).",
       "answer": "\\({result}\\)"
     },
-    {
-      "id": "ALG1-1.2-I2",
+     {
+      "id": "CM 1.5b3",
       "type": "template",
       "objective": "Evaluate Algebraic Expressions",
-      "difficulty": "intermediate",
+      "difficulty": "basic",
       "variables": {
         "x": { "min": -10, "max": 10, "exclude": [0,1] },
         "y": { "min": -5, "max": 5, "exclude": [0,1] },
@@ -4044,11 +4031,11 @@
       "question": "Evaluate: \\( \\frac{x - {a}}{{b}{c|signedCoef}y} \\) when \\( x = {x}, y = {y} \\).",
       "answer": "\\({result}\\)"
     },
-    {
-      "id": "ALG1-1.2-A1",
+     {
+      "id": "CM 1.5b4",
       "type": "template",
       "objective": "Evaluate Algebraic Expressions",
-      "difficulty": "advanced",
+      "difficulty": "basic",
       "variables": {
         "x": { "min": 2, "max": 5 },
         "y": { "min": -5, "max": 5, "exclude": [0] },
@@ -4061,216 +4048,65 @@
       "answer": "\\({result}\\)"
     },
     {
-      "id": "ALG1-1.2-A2",
+      "id": "CM 1.6",
       "type": "template",
-      "objective": "Evaluate Algebraic Expressions",
-      "difficulty": "advanced",
+      "objective": "Solve Literal Equations",
+      "difficulty": "basic",
       "variables": {
-        "x": { "min": 2, "max": 5 },
-        "y": { "min": -5, "max": 5, "exclude": [0] },
-        "a": { "min": 2, "max": 5 },
+        "P": { "min": 47, "max": 147, "exclude":[50,60,70,80,90,100,110,120,130,140] },
+        "w": { "min": 2, "max": 19, "exclude":[10] },
+        "result": { "formula": "(P - 2*w)/2", "format": "decimal" }
+      },
+      "question": "Find the length of a rectangle that has a perimeter of {P} inches and a width of {w} inches. Write your answers to the nearest half inch.",
+      "answer": "The length of the side is \\({result}\\) inches."
+    },
+    {
+      "id": "CM 1.7a",
+      "type": "template",
+      "objective": "Multiplication Properties of Exponents",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
         "b": { "min": 2, "max": 5, "exclude":["a"] },
-        "c": { "min": 2, "max": 5, "exclude":["a","b"] },
-        "result": { "formula": "(a * y + b * x + c) / (x * y)", "format": "auto" }
+        "c": { "min": 2, "max": 5 },
+        "m": { "min": -5, "max": 5, "exclude":[0,1,-1] },
+        "n": { "min": 2, "max": 5, "exclude":["m"] },
+        "coef": { "formula": "m*n" },
+        "expo": { "formula": "a + b + c"}
       },
-      "question": "Evaluate: \\( \\frac{{a|coef}}{ x } + \\frac{{b|coef}}{ y } + \\frac{{{c}}}{xy} \\) when \\( x = {x}, y = {y} \\).",
-      "answer": "\\({result}\\)"
+      "question": "Simplify: \\( {m}x^{ {a} } \\cdot {n}x^{b} \\cdot x^{c} \\).",
+      "answer": "\\({coef}x^{expo}\\)"
     },
-    {
-      "id": "ALG1-1.3-B1",
+      {
+      "id": "CM 1.7b",
       "type": "template",
-      "objective": "Evaluate Numerical Expressions by Applying Properties",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 20 },
-        "b": { "min": 2, "max": 20, "exclude":["a"] },
-        "c": { "min": 2, "max": 20, "exclude":["a","b"] },
-        "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] },
-        "f": { "min": 2, "max": 20, "exclude":["d","e"] }
-      },
-      "question": "Fill in the property name used for each equation:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Equation</th><th>Property</th></tr><tr><td>\\(\\frac{{a}}{{b}} \\cdot \\frac{{b}}{{a}} = 1\\)</td><td>__________</td></tr><tr><td>\\( {a} + {b} = {b} + {a}\\)</td><td>__________</td></tr><tr><td>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot 1 = {a} \\)</td><td>__________</td></tr><tr><td>\\( {d} + 0 = {d} \\)</td><td>__________</td></tr><tr><td>\\( {e} + (-{e}) = 0 \\)</td><td>__________</td></tr></table>",
-      "answer": "<ul> <li><strong>\\(\\frac{{a}}{{b}} \\cdot \\frac{{b}}{{a}} = 1\\)</strong>: Multiplicative Inverse Property</li>\\ <li><strong>\\({a} + {b} = {b} + {a}\\)</strong>: Commutative Property of Addition</li>\\ <li><strong>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</strong>: Associative Property of Addition</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( {e} + (-{e}) = 0 \\)</strong>: Additive Inverse Property</li>\\ </ul>"
-    },
-    {
-      "id": "ALG1-1.3-B2",
-      "type": "template",
-      "objective": "Evaluate Numerical Expressions by Applying Properties",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 20 },
-        "b": { "min": 2, "max": 20, "exclude":["a"] },
-        "c": { "min": 2, "max": 20, "exclude":["a","b"] },
-        "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] },
-        "f": { "min": 2, "max": 20, "exclude":["d","e"] }
-      },
-      "question": "Fill in the property name used for each equation:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Equation</th><th>Property</th></tr><tr><td>\\({a} + {b} = {b} + {a}\\)</td><td>__________</td></tr><tr><td>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot 1 = {a} \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot \\frac{{{b}}}{{{c}}} = \\frac{{{a} \\cdot {b}}}{{{c}}} \\)</td><td>__________</td></tr><tr><td>\\( {d} + 0 = {d} \\)</td><td>__________</td></tr><tr><td>\\( {e} + (-{e}) = 0 \\)</td><td>__________</td></tr></table>",
-      "answer": "<ul> <li><strong>\\({a} + {b} = {b} + {a}\\)</strong>: Commutative Property of Addition</li>\\ <li><strong>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</strong>: Associative Property of Addition</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {a} \\cdot \\frac{{{b}}}{{{c}}} = \\frac{{{a} \\cdot {b}}}{{{c}}} \\)</strong>: Distributive Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( {e} + (-{e}) = 0 \\)</strong>: Additive Inverse Property</li>\\ </ul>"
-    },
-    {
-      "id": "ALG1-1.3-I1",
-      "type": "template",
-      "objective": "Evaluate Numerical Expressions by Applying Properties",
+      "objective": "Division Properties of Exponents",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 20 },
-        "b": { "min": 2, "max": 20, "exclude":["a"] },
-        "c": { "min": 2, "max": 20, "exclude":["a","b"] },
-        "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] },
-        "result": { "formula": "d - e + 1" }
+        "a": { "min": 2, "max": 9 },
+        "b": { "min": 2, "max": 5 },
+        "c": { "min": 2, "max": 3 },
+        "d": { "min": 2, "max": 5, "exclude": ["a"] },
+        "e": { "min": 2, "max": 5, "exclude": ["b"] },
+        "f": { "min": 2, "max": 5, "exclude": ["c"] },
+        "g": { "min": 2, "max": 5 },
+        "m": { "values": [-6, -4, -2, 2, 4, 6] },
+        "n": { "values": [-6, -3, 3, 6], "exclude": ["m"] },
+        "coef_num": { "formula": "m**g" },
+        "coef_den": { "formula": "n**g" },
+        "exp_x": { "formula": "(a - d)*g" },
+        "exp_y": { "formula": "(b - e)*g" },
+        "exp_z": { "formula": "(c - f)*g" }
       },
-      "question": "Evaluate and identify the property use at each step: \\( \\bigl({d} + {a} + \\frac{{b}}{{c}}\\cdot\\frac{{c}}{{b}}\\bigr) - ({a} + {e}) \\).",
-      "answer": "\\({result}\\) <br>Properties used: Commutative Property of Addition, Multiplicative Inverse Property, Additive Inverse Property"
-    },
-    {
-      "id": "ALG1-1.3-I2",
-      "type": "template",
-      "objective": "Evaluate Numerical Expressions by Applying Properties",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 20 },
-        "b": { "min": 2, "max": 20, "exclude":["a"] },
-        "c": { "min": 2, "max": 20, "exclude":["a","b"] },
-        "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] }
-      },
-      "question": "Evaluate and identify the property use at each step: \\( 0\\cdot({a} + {b}) + \\frac{{c}}{{d}} - \\frac{{c}}{{d}} + {e} \\).",
-      "answer": "\\({e}\\) <br>Properties used: Multiplicative Property of Zero, Additive Inverse Property, Additive Identity Property"
-    },
-    {
-      "id": "ALG1-1.4-B1",
-      "type": "template",
-      "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10 },
-        "coef_x": { "formula": "a*b" },
-        "constant": { "formula": "a*c" }
-      },
-      "question": "Use the distributive property to simplify: \\( {a}({b|signedCoef}x{c|sign}) \\).",
-      "answer": "\\({coef_x|coef}x {constant|sign}\\)"
-    },
-    {
-      "id": "ALG1-1.4-B2",
-      "type": "template",
-      "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10 },
-        "coef_xy": { "formula": "a*b" },
-        "coef_y": { "formula": "-a*c" }
-      },
-      "question": "Use the distributive property to simplify: \\( ({b|signedCoef}x-{c})\\cdot{a|coef}y \\).",
-      "answer": "\\({coef_xy|coef}xy {coef_y|signedCoef}y\\)"
-    },
-    {
-      "id": "ALG1-1.4-I1",
-      "type": "template",
-      "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": 2, "max": 10 },
-        "c": { "min": -10, "max": 10, "exclude": [0] },
-        "d": { "min": 3, "max": 15 },
-        "e": { "min": 2, "max": 15 },
-        "f": { "min": 2, "max": 15 },
-        "coef_x": { "formula": "a + b*c" },
-        "coef_y": { "formula": "b*d" },
-        "constant": { "formula": "-b*e - f" }
-      },
-      "question": "Simplify by distributing and combining like terms: \\( {a|signedCoef}x {b|sign}({c|signedCoef}x{d|sign}y-{e}) - {f} \\).",
-      "answer": "\\({coef_x|coef}x {coef_y|signedCoef}y {constant|sign}\\)"
-    },
-    {
-      "id": "ALG1-1.4-I2",
-      "type": "template",
-      "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10 },
-        "c": { "min": 2, "max": 7},
-        "d": { "min": -5, "max": 5, "exclude": [0] },
-        "e": { "min": 2, "max": 7 },
-        "f": { "min": 2, "max": 7 },
-        "coef_x": { "formula": "a + c*d" },
-        "constant": { "formula": "a*b - c*e + f" }
-      },
-      "question": "Simplify by distributing and combining like terms: \\( {a}(x{b|sign}) {c|sign}({d|signedCoef}x-{e}) {f|sign} \\).",
-      "answer": "\\({coef_x|coef}x {constant|sign}\\)"
-    },
-    {
-      "id": "ALG1-1.5-B1",
-      "type": "template",
-      "objective": "Evaluate Absolute Value Expressions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": -10, "max": 10, "exclude": [0] },
-        "d": { "min": -10, "max": 10, "exclude": [0] },
-        "result": { "formula": "abs(a) - abs(b + c) * d" }
-      },
-      "question": "Evaluate: \\( | {a} | - | {b} + ({c}) |\\cdot {d} \\).",
-      "answer": "\\({result}\\)"
-    },
-    {
-      "id": "ALG1-1.5-B2",
-      "type": "template",
-      "objective": "Evaluate Absolute Value Expressions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1] },
-        "c": { "min": 2, "max": 10 },
-        "d": { "min": 2, "max": 5, "exclude": ["c"] },
-        "result": { "formula": "abs(a - b) + (c / d)", "format": "auto" }
-      },
-      "question": "Evaluate: \\( | {a} - {b} | + \\frac{{{c}}}{{{d}}} \\).",
-      "answer": "\\({result}\\)"
-    },
-    {
-      "id": "ALG1-1.5-I1",
-      "type": "template",
-      "objective": "Evaluate Absolute Value Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -5, "max": 7, "exclude": [0,1,-1] },
-        "x": { "min": -7, "max": 7, "exclude": [0,1,-1] },
-        "c": { "min": -5, "max": 7, "exclude": [0,1,-1,"a"] },
-        "y": { "min": -5, "max": 7, "exclude": [0,1,-1] },
-        "z": { "min": -7, "max": 7, "exclude": [0,1,-1] },
-        "f": { "min": -5, "max": 7, "exclude": [0,1,-1,"z"] },
-        "result": { "formula": "abs(x - abs(a/c - y)) + (z/f)", "format": "auto" }
-      },
-      "question": "Evaluate: \\( \\left| x - | \\frac{{a}}{{c}} - y | \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
-      "answer": "\\({result}\\)"
-    },
-    {
-      "id": "ALG1-1.5-I2",
-      "type": "template",
-      "objective": "Evaluate Absolute Value Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "x": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "c": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "y": { "min": -5, "max": 5, "exclude": [0,1,-1,"c"] },
-        "z": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "f": { "min": -5, "max": 5, "exclude": [0,1,-1,"z"] },
-        "result": { "formula": "abs(a - x) + abs(c/y + z/f)", "format": "auto" }
-      },
-      "question": "Evaluate: \\( \\left|{a} - x\\right| + \\left|\\frac{{c}}{ y } + \\frac{{z}}{{f}}\\right| \\), when \\(x = {x}, y = {y}\\).",
-      "answer": "\\({result}\\)"
+      "question": "Simplify: \\( \\bigg( \\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}} \\bigg)^{g} \\).",
+      "answer": "\\( \\frac{coef_num}{coef_den} x^{exp_x} y^{exp_y} z^{exp_z} \\)"
     }
   ],
+
+
+
+
+
   "Module 2 (under construction)": [
     {
       "id": "ALG1-8.1-B1",
