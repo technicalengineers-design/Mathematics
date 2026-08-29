@@ -4108,7 +4108,7 @@
 
   "2 Measurement": [
      {
-      "id": "CM 2.1a (check)",
+      "id": "CM 2.1a distance",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4122,7 +4122,7 @@
       "answer": "\\({inch}\\) inches is equivalent to \\({inchft}\\) feet, \\({inchyd}\\) yards, and \\({inchmile}\\) miles."
     },
     {
-      "id": "CM 2.1b",
+      "id": "CM 2.1b distance",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4136,7 +4136,7 @@
       "answer": "\\({ft}\\) feet is equivalent to \\({ftinch}\\) inches, \\({ftyd}\\) yards, and \\({ftmile}\\) miles."
     },
      {
-      "id": "CM 2.1c (check)",
+      "id": "CM 2.1c distance",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4144,25 +4144,82 @@
         "yd": { "min": 2, "max": 150 },
         "ydinch": { "formula": "3*12*yd", "format": "decimal"},
         "ydft": { "formula": "3*yd", "format": "decimal"},
-        "ydmile": { "formula": "yd/5280/3", "format": "decimal"}
+        "ydmile": { "formula": "yd/1760", "format": "decimal"}
       },
       "question": "{yd} yards is equivalent to ______ inches, _______ feet, and _________ miles.",
       "answer": "\\({yd}\\) yards is equivalent to \\({ydinch}\\) inches, \\({ydft}\\) feet, and \\({ydmile}\\) miles."
     },
     {
-      "id": "CM 2.1d (check)",
+      "id": "CM 2.1d distance",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
       "variables": {
-        "mile": { "min": 0.5, "max": 2.5 },
-        "mileinch": { "formula": "12*ft", "format": "decimal"},
-        "mileyd": { "formula": "mile/1760", "format": "decimal"},
-        "mileft": { "formula": "mile/5280", "format": "decimal"}
+        "mile": { "values": [0.5, 0.75, 1.25, 1.5, 1.75], "format": "decimal"},
+        "mileinch": { "formula": "12*5280*mile", "format": "decimal"},
+        "mileyd": { "formula": "mile*1760", "format": "decimal"},
+        "mileft": { "formula": "mile*5280", "format": "decimal"}
       },
       "question": "{mile} miles is equivalent to ______ inches, _______ feet, and _________ yards.",
       "answer": "\\({mile}\\) miles is equivalent to \\({mileinch}\\) inches, \\({mileft}\\) feet, and \\({mileyd}\\) yards."
     },
+    {
+      "id": "CM 2.1a liquid volume (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "pint": { "values": { "min": 7, "max": 150 }},
+        "quart": { "formula": "pint/2", "format": "decimal"},
+        "gallon": { "formula": "pint/8", "format": "decimal"}
+      },
+      "question": "{pint} pints is equivalent to ______ quarts, and _________ gallons.",
+      "answer": "\\({pint}\\) pints is equivalent to \\({quart}\\) quarts, and \\({gallon}\\) gallons."
+    },
+    {
+      "id": "CM 2.1b liquid volume (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "quart": { "values": { "min": 7, "max": 150 }},
+        "pint": { "formula": "2*quart", "format": "decimal"},
+        "gallon": { "formula": "pint/4", "format": "decimal"}
+      },
+      "question": "{quart} quarts is equivalent to ______ pints, and _________ gallons.",
+      "answer": "\\({quart}\\) quarts is equivalent to \\({pint}\\) pints, and \\({gallon}\\) gallons."
+    },
+    {
+      "id": "CM 2.1c liquid volume (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "gallon": { "values": { "min": 7, "max": 150 }, "format": "decimal5"},
+        "pint": { "formula": "gallon*8", "format": "decimal5"},
+        "quart": { "formula": "gallon*4", "format": "decimal5"}
+      },
+      "question": "{gallon} gallons is equivalent to ______ pints, and _________ quarts.",
+      "answer": "\\({gallon}\\) gallons is equivalent to \\({pint}\\) pints, and \\({quart}\\) quarts."
+     },
+
+
+
+    {
+      "id": "CM 2.1e (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "mile": { "values": [0.5, 0.75, 1.25, 1.5, 1.75], "format": "decimal"},
+        "mileinch": { "formula": "12*5280*mile", "format": "decimal"},
+        "mileyd": { "formula": "mile*1760", "format": "decimal1"},
+        "mileft": { "formula": "mile*5280", "format": "decimal1"}
+      },
+      "question": "{mile} miles is equivalent to ______ inches, _______ feet, and _________ yards.",
+      "answer": "\\({mile}\\) miles is equivalent to \\({mileinch}\\) inches, \\({mileft}\\) feet, and \\({mileyd}\\) yards."
+    },
+
     {
       "id": "ALG1-8.1-I1",
       "type": "template",
