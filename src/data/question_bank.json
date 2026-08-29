@@ -4081,7 +4081,7 @@
       "id": "CM 1.7b",
       "type": "template",
       "objective": "Division Properties of Exponents",
-      "difficulty": "intermediate",
+      "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 9 },
         "b": { "min": 2, "max": 5 },
@@ -4090,40 +4090,78 @@
         "e": { "min": 2, "max": 5, "exclude": ["b"] },
         "f": { "min": 2, "max": 5, "exclude": ["c"] },
         "g": { "min": 2, "max": 5 },
-        "m": { "values": [-6, -4, -2, 2, 4, 6] },
-        "n": { "values": [-6, -3, 3, 6], "exclude": ["m"] },
+        "m": { "values": [-6, -4, -3, -2, 2, 3, 4, 6] },
+        "n": { "values": [-6, -4, -3, -2, 2, 3, 4, 6], "exclude": ["m"] },
         "coef_num": { "formula": "m**g" },
         "coef_den": { "formula": "n**g" },
+        "coef_all": { "formula": "coef_num/coef_den" },
         "exp_x": { "formula": "(a - d)*g" },
         "exp_y": { "formula": "(b - e)*g" },
         "exp_z": { "formula": "(c - f)*g" }
       },
-      "question": "Simplify: \\( \\bigg( \\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}} \\bigg)^{g} \\).",
-      "answer": "\\( \\frac{coef_num}{coef_den} x^{exp_x} y^{exp_y} z^{exp_z} \\)"
+      "question": "Simplify: \\(\\bigg(\\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}} \\bigg)^{g} \\).",
+      "answer": "\\({coef_all}x^{exp_x} y^{exp_y} z^{exp_z}\\)"
     }
   ],
 
 
 
-
-
-  "Module 2 (under construction)": [
-    {
-      "id": "ALG1-8.1-B1",
+  "2 Measurement": [
+     {
+      "id": "CM 2.1a (check)",
       "type": "template",
-      "objective": "Multiplication Properties of Exponents",
+      "objective": "Customary Systems",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 10 },
-        "b": { "min": 2, "max": 5, "exclude":["a"] },
-        "c": { "min": 2, "max": 5 },
-        "m": { "min": -5, "max": 5, "exclude":[0,1,-1] },
-        "n": { "min": 2, "max": 5, "exclude":["m"] },
-        "coef": { "formula": "m*n" },
-        "expo": { "formula": "a + b + c"}
+        "inch": { "min": 25, "max": 215 },
+        "inchft": { "formula": "inch/12", "format": "decimal"},
+        "inchyd": { "formula": "inch/36", "format": "decimal"},
+        "inchmile": { "formula": "inch/5280/12", "format": "decimal"}
       },
-      "question": "Simplify: \\( {m}x^{ {a} } \\cdot {n}x^{b} \\cdot x^{c} \\).",
-      "answer": "\\({coef}x^{expo}\\)"
+      "question": "{inch} inches is equivalent to ______ feet, _______ yards, and _________ miles.",
+      "answer": "\\({inch}\\) inches is equivalent to \\({inchft}\\) feet, \\({inchyd}\\) yards, and \\({inchmile}\\) miles."
+    },
+    {
+      "id": "CM 2.1b",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "ft": { "min": 2, "max": 8 },
+        "ftinch": { "formula": "12*ft", "format": "decimal"},
+        "ftyd": { "formula": "ft/3", "format": "decimal"},
+        "ftmile": { "formula": "ft/5280", "format": "decimal"}
+      },
+      "question": "{ft} feet is equivalent to ______ inches, _______ yards, and _________ miles.",
+      "answer": "\\({ft}\\) feet is equivalent to \\({ftinch}\\) inches, \\({ftyd}\\) yards, and \\({ftmile}\\) miles."
+    },
+     {
+      "id": "CM 2.1c (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "yd": { "min": 2, "max": 150 },
+        "ydinch": { "formula": "3*12*yd", "format": "decimal"},
+        "ydft": { "formula": "3*yd", "format": "decimal"},
+        "ydmile": { "formula": "yd/5280/3", "format": "decimal"}
+      },
+      "question": "{yd} yards is equivalent to ______ inches, _______ feet, and _________ miles.",
+      "answer": "\\({yd}\\) yards is equivalent to \\({ydinch}\\) inches, \\({ydft}\\) feet, and \\({ydmile}\\) miles."
+    },
+    {
+      "id": "CM 2.1d (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "mile": { "min": 0.5, "max": 2.5 },
+        "mileinch": { "formula": "12*ft", "format": "decimal"},
+        "mileyd": { "formula": "mile/1760", "format": "decimal"},
+        "mileft": { "formula": "mile/5280", "format": "decimal"}
+      },
+      "question": "{mile} miles is equivalent to ______ inches, _______ feet, and _________ yards.",
+      "answer": "\\({mile}\\) miles is equivalent to \\({mileinch}\\) inches, \\({mileft}\\) feet, and \\({mileyd}\\) yards."
     },
     {
       "id": "ALG1-8.1-I1",
