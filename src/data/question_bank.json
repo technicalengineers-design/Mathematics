@@ -4164,12 +4164,96 @@
       "answer": "\\({mile}\\) miles is equivalent to \\({mileinch}\\) inches, \\({mileft}\\) feet, and \\({mileyd}\\) yards."
     },
     {
-      "id": "CM 2.1a liquid volume (check)",
+      "id": "CM 2.1a liquid (check)",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
       "variables": {
-        "pint": { "values": { "min": 7, "max": 150 }},
+        "tsp": { "min": 2, "max": 15 },
+        "tspTBL": { "formula": "tsp/3", "format": "decimal"},
+        "tspoz": { "formula": "tsp/3/2", "format": "decimal"}
+      },
+      "question": "{tsp} teaspoons is equivalent to ______ tablespoons, and _________ ounces.",
+      "answer": "\\({tsp}\\) teaspoons is equivalent to \\({tspTBL}\\) tablespoons, and \\({tspoz}\\) ounces."
+    },
+    {
+      "id": "CM 2.1b liquid (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "TBL": { "min": 2, "max": 15 },
+        "TBLtsp": { "formula": "TBL*3", "format": "decimal"},
+        "TBLoz": { "formula": "TBL/2", "format": "decimal"}
+      },
+      "question": "{TBL} tablespoons is equivalent to ______ teaspoons, and _________ ounces.",
+      "answer": "\\({TBL}\\) tablespoons is equivalent to \\({TBLtsp}\\) teaspoons, and \\({TBLoz}\\) ounces."
+    },
+    {
+      "id": "CM 2.1c liquid (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "oz": { "min": 2, "max": 15 },
+        "oztsp": { "formula": "oz/3/2", "format": "decimal"},
+        "ozTBL": { "formula": "oz/2", "format": "decimal"}
+      },
+      "question": "{oz} ounces is equivalent to ______ teaspoons, and _________ tablespoons.",
+      "answer": "\\({oz}\\) ounces is equivalent to \\({oztsp}\\) teaspoons, and \\({ozTBL}\\) tablespoons."
+    },
+
+ {
+      "id": "CM 2.1d liquid volume (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "oz": { "min": 2, "max": 15 },
+        "ozcup": { "formula": "oz/8", "format": "decimal"},
+        "ozpint": { "formula": "oz/8/2", "format": "decimal"}
+      },
+      "question": "{oz} ounces is equivalent to ______ cups, and _________ pints.",
+      "answer": "\\({oz}\\) ounces is equivalent to \\({ozcup}\\) cups, and \\({ozpint}\\) pints."
+     },
+ {
+      "id": "CM 2.1e liquid volume (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "cup": { "min": 2, "max": 15 },
+        "cupoz": { "formula": "cup/8", "format": "decimal"},
+        "cuppint": { "formula": "cup*2", "format": "decimal"}
+      },
+      "question": "{cup} cups is equivalent to ______ ounces, and _________ pints.",
+      "answer": "\\({cup}\\) cups is equivalent to \\({cupoz}\\) ounces, and \\({cuppint}\\) pints."
+     },
+ {
+      "id": "CM 2.1f liquid volume (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "pint": { "min": 2, "max": 15 },
+        "pintoz": { "formula": "pint*8*2", "format": "decimal"},
+        "pintcup": { "formula": "pint*2", "format": "decimal"}
+      },
+      "question": "{pint} pints is equivalent to ______ ounces, and _________ cups.",
+      "answer": "\\({pint}\\) pints is equivalent to \\({pintoz}\\) ounces, and \\({pintcup}\\) cups."
+     },
+
+
+
+
+
+    {
+      "id": "CM 2.1g liquid volume (check)",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "pint": { "min": 7, "max": 150 },
         "quart": { "formula": "pint/2", "format": "decimal"},
         "gallon": { "formula": "pint/8", "format": "decimal"}
       },
@@ -4177,12 +4261,12 @@
       "answer": "\\({pint}\\) pints is equivalent to \\({quart}\\) quarts, and \\({gallon}\\) gallons."
     },
     {
-      "id": "CM 2.1b liquid volume (check)",
+      "id": "CM 2.1h liquid volume (check)",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
       "variables": {
-        "quart": { "values": { "min": 7, "max": 150 }},
+        "quart": { "min": 7, "max": 150 },
         "pint": { "formula": "2*quart", "format": "decimal"},
         "gallon": { "formula": "pint/4", "format": "decimal"}
       },
@@ -4190,316 +4274,39 @@
       "answer": "\\({quart}\\) quarts is equivalent to \\({pint}\\) pints, and \\({gallon}\\) gallons."
     },
     {
-      "id": "CM 2.1c liquid volume (check)",
+      "id": "CM 2.1i liquid volume (check)",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
       "variables": {
-        "gallon": { "values": { "min": 7, "max": 150 }, "format": "decimal5"},
-        "pint": { "formula": "gallon*8", "format": "decimal5"},
-        "quart": { "formula": "gallon*4", "format": "decimal5"}
+        "gallon": { "min": 7, "max": 150 },
+        "pint": { "formula": "gallon*8", "format": "decimal"},
+        "quart": { "formula": "gallon*4", "format": "decimal"}
       },
       "question": "{gallon} gallons is equivalent to ______ pints, and _________ quarts.",
       "answer": "\\({gallon}\\) gallons is equivalent to \\({pint}\\) pints, and \\({quart}\\) quarts."
      },
-
-
-
-    {
-      "id": "CM 2.1e (check)",
+   
+   
+   
+   
+   
+   
+     {
+      "id": "CM 2.1a liquid volume (check)",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
       "variables": {
-        "mile": { "values": [0.5, 0.75, 1.25, 1.5, 1.75], "format": "decimal"},
-        "mileinch": { "formula": "12*5280*mile", "format": "decimal"},
-        "mileyd": { "formula": "mile*1760", "format": "decimal1"},
-        "mileft": { "formula": "mile*5280", "format": "decimal1"}
+        "tsp": { "min": 2, "max": 15 },
+        "tspTBL": { "formula": "tsp/3", "format": "decimal"},
+        "tspoz": { "formula": "tsp/3/2", "format": "decimal"}
       },
-      "question": "{mile} miles is equivalent to ______ inches, _______ feet, and _________ yards.",
-      "answer": "\\({mile}\\) miles is equivalent to \\({mileinch}\\) inches, \\({mileft}\\) feet, and \\({mileyd}\\) yards."
-    },
-
-    {
-      "id": "ALG1-8.1-I1",
-      "type": "template",
-      "objective": "Multiplication Properties of Exponents",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 },
-        "b": { "min": 2, "max": 5, "exclude":["a"] },
-        "m": { "min": -5, "max": 5, "exclude":[0,1] },
-        "n": { "min": -5, "max": 5, "exclude":[0,1,"m"] },
-        "coef": { "formula": "m*n" },
-        "expo": { "formula": "a + b" }
-      },
-      "question": "Calculate. Leave your answer in scientific notation: \\( ({m}\\times10^{a}) \\cdot ({n}\\times10^{b}) \\).",
-      "answer": "\\({coef}\\times10^{expo}\\) (You may need to manually convert to proper S.N.)"
-    },
-    {
-      "id": "ALG1-8.1-A1",
-      "type": "template",
-      "objective": "Multiplication Properties of Exponents",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": 2, "max": 10 },
-        "b": { "min": 2, "max": 5 },
-        "c": { "min": 2, "max": 4 },
-        "d": { "min": 2, "max": 5 },
-        "e": { "min": 2, "max": 5 },
-        "f": { "min": 2, "max": 3 },
-        "g": { "min": 2, "max": 5 },
-        "m": { "min": -3, "max": 4, "exclude":[0,1] },
-        "n": { "min": -3, "max": 4, "exclude":[0,1,"m"] },
-        "coef": { "formula": "m**c * n**f" },
-        "exp_x": { "formula": "a*c + f" },
-        "exp_y": { "formula": "b*c + d*f" },
-        "exp_z": { "formula": "e*f" }
-      },
-      "question": "Simplify: \\( ({m}x^{ {a} }y^{b})^{c}({n}xy^{d}z^{e})^{f} \\).",
-      "answer": "\\({coef}x^{exp_x}y^{exp_y}z^{exp_z}\\)"
-    },
-    {
-      "id": "ALG1-8.2-B1",
-      "type": "template",
-      "objective": "Division Properties of Exponents",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 9 },
-        "b": { "min": 2, "max": 5 },
-        "c": { "min": 2, "max": 5 },
-        "m": { "values": [-6,-4,-2,2,4,6] },
-        "n": { "values": [-6,-4,-2,2,4,6], "exclude":["m"] },
-        "expo": { "formula": "a + b - c" }
-      },
-      "question": "Simplify: \\( \\frac{{m}x^{a} \\cdot x^{b}}{{n}x^{c}} \\).",
-      "answer": "\\( {m} x^{expo} / {n}\\)"
-    },
-    {
-      "id": "ALG1-8.2-I1",
-      "type": "template",
-      "objective": "Division Properties of Exponents",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 9 },
-        "b": { "min": 2, "max": 5 },
-        "c": { "min": 2, "max": 3 },
-        "d": { "min": 2, "max": 5, "exclude": ["a"] },
-        "e": { "min": 2, "max": 5, "exclude": ["b"] },
-        "f": { "min": 2, "max": 5, "exclude": ["c"] },
-        "g": { "min": 2, "max": 5 },
-        "m": { "values": [-6, -4, -2, 2, 4, 6] },
-        "n": { "values": [-6, -3, 3, 6], "exclude": ["m"] },
-        "coef_num": { "formula": "m**g" },
-        "coef_den": { "formula": "n**g" },
-        "exp_x": { "formula": "(a - d)*g" },
-        "exp_y": { "formula": "(b - e)*g" },
-        "exp_z": { "formula": "(c - f)*g" }
-      },
-      "question": "Simplify: \\( \\bigg( \\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}} \\bigg)^{g} \\).",
-      "answer": "\\( \\frac{coef_num}{coef_den} x^{exp_x} y^{exp_y} z^{exp_z} \\)"
-    },
-    {
-      "id": "ALG1-8.3-B1",
-      "type": "template",
-      "objective": "Negative Exponents",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 7 },
-        "b": { "min": -10, "max": 7 },
-        "c": { "min": -10, "max": 7, "exclude":["a"] },
-        "d": { "min": -10, "max": 7, "exclude":["b"] },
-        "exp_x": { "formula": "a - c" },
-        "exp_y": { "formula": "b - d" }
-      },
-      "question": "Simplify so that there are no negative exponents: \\( \\frac{x^{a}y^{b}}{x^{c}y^{d}} \\).",
-      "answer": "\\( x^{exp_x} y^{exp_y} \\)"
-    },
-    {
-      "id": "ALG1-8.3-I1",
-      "type": "template",
-      "objective": "Negative Exponents",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -4, "max": 4, "exclude":[0,1] },
-        "b": { "min": -5, "max": 5, "exclude":[0,1,"a"] },
-        "c": { "min": -7, "max": 7  },
-        "d": { "min": -7, "max": 7 },
-        "e": { "min": -7, "max": 7 },
-        "f": { "min": -7, "max": 7 },
-        "g": { "min": -7, "max": 7 },
-        "h": { "min": -7, "max": 7 },
-        "i": { "min": -3, "max": -1 },
-        "coef_base": { "formula": "a/b" },
-        "exp_x": { "formula": "(c - f)*i" },
-        "exp_y": { "formula": "(d - g)*i" },
-        "exp_z": { "formula": "(e - h)*i" }
-      },
-      "question": "Simplify so that there are no negative exponents: \\( \\big(\\frac{{a}x^{c}y^{d}z^{e} }{ {b}x^{f}y^{g}z^{h} }\\big)^{i} \\).",
-      "answer": "\\( {coef_base}^{i} x^{exp_x} y^{exp_y} z^{exp_z} \\)"
-    },
-    {
-      "id": "ALG1-8.4-B1",
-      "type": "template",
-      "objective": "Rational Exponents",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 1, "max": 6 },
-        "b": { "min": 2, "max": 4, "exclude": [0, 1, -1] },
-        "c": { "min": 1, "max": 6, "exclude": ["a"] },
-        "d": { "min": 2, "max": 4, "exclude": ["b"] },
-        "base1": { "formula": "a**b" },
-        "base2": { "formula": "c**b" },
-        "num_result": { "formula": "a**d" },
-        "den_result": { "formula": "c**d" }
-      },
-      "question": "Simplify: \\( \\Big(\\frac{{base1}}{{base2}}\\Big)^{\\tfrac{ {d} }{ {b} }} \\).",
-      "answer": "\\( \\frac{num_result}{den_result} \\) or \\( \\sqrt[{b}]{ \\frac{num_result}{den_result} } \\)"
-    },
-    {
-      "id": "ALG1-8.4-I1",
-      "type": "template",
-      "objective": "Rational Exponents",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 9 },
-        "b": { "min": 2, "max": 9, "exclude": ["a"] },
-        "c": { "min": 2, "max": 9, "exclude": ["a"] },
-        "d": { "min": 2, "max": 9, "exclude": ["c"] },
-        "e": { "min": 2, "max": 4 },
-        "f": { "min": 2, "max": 4 },
-        "coef": { "formula": "f**e" },
-        "exp_rational": { "formula": "(a/b + c/d)*e" },
-        "radical_index": { "formula": "b*d" },
-        "exp_integer": { "formula": "(a*d + b*c)*e" }
-      },
-      "question": "Simplify by writing your answer in radical form: \\( \\big({f}x^{\\tfrac{{a}}{{b}}} \\cdot x^{\\tfrac{{c}}{{d}}}\\big)^{ {e} } \\).",
-      "answer": "\\( {coef} x^{exp_rational} \\) or \\( \\sqrt[radical_index]{ x^{exp_integer} } \\)"
-    },
-    {
-      "id": "ALG1-8.5-B1",
-      "type": "template",
-      "objective": "Simplifying Radical Expressions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 6 },
-        "b": { "min": 2, "max": 6, "exclude":["a"] },
-        "c": { "values":[2, 3, 5, 7, 11, 13], "exclude": ["a","b"] },
-        "num1": { "formula": "a * c" },
-        "num2": { "formula": "a * b * b" },
-        "d": { "min": -6, "max": -2, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 6, "exclude":["d"] },
-        "num3": { "formula": "-1 * d * d" },
-        "num4": { "formula": "e * e" },
-        "g": { "min": 2, "max": 6, "exclude":["a","b","c"] },
-        "i": { "values":[2, 3, 5, 7, 11, 13], "exclude": ["g"] },
-        "num5": { "formula": "g * g * i" },
-        "coef_c": { "formula": "a * b" }
-      },
-      "question": "Simplify each expression: <br> a) \\( \\sqrt{{num5}} \\) <br> b) \\( \\sqrt{{num3}} \\cdot \\sqrt{{num4}} \\) <br> c) \\( \\sqrt{{num1}} \\cdot \\sqrt{{num2}} \\).",
-      "answer": "a) \\( {g} \\sqrt{{i}} \\) <br> b) No real numbers <br> c) \\( {coef_c} \\sqrt{{c}} \\)"
-    },
-    {
-      "id": "ALG1-8.5-I1",
-      "type": "template",
-      "objective": "Simplifying Radical Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 7 },
-        "b": { "values": [2, 3, 5, 7, 11], "exclude": ["a"] },
-        "c": { "min": 2, "max": 7, "exclude": ["a","b"] },
-        "d": { "min": 2, "max": 8 },
-        "e": { "min": 2, "max": 8 },
-        "f": { "min": 2, "max": 8 },
-        "num": { "formula": "a * a * c" },
-        "den": { "formula": "b * b" },
-        "exp_x": { "formula": "d/2" },
-        "exp_y": { "formula": "e/2" },
-        "exp_z": { "formula": "f/2" }
-      },
-      "question": "Simplify: \\( \\sqrt{ \\tfrac{ {num}x^{d}y^{e}z^{f} }{ {den} } } \\).",
-      "answer": "\\( \\tfrac{ {a} }{ {b} } x^{exp_x} y^{exp_y} z^{exp_z} \\)"
-    },
-    {
-      "id": "ALG1-8.5-A1",
-      "type": "template",
-      "objective": "Simplifying Radical Expressions",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "values": [2, 3, 5, 7, 11] },
-        "b": { "values": [2, 3, 5, 7], "exclude": ["a"] },
-        "c": { "min": 2, "max": 7 },
-        "d": { "min": 2, "max": 7, "exclude": ["c"] },
-        "e": { "min": 2, "max": 7, "exclude": ["c", "d"] },
-        "f": { "min": 2, "max": 7, "exclude": ["c", "d", "e"] },
-        "num1": { "formula": "a * b" },
-        "num2": { "formula": "a * b * b" },
-        "coef": { "formula": "a * b" },
-        "exp_x": { "formula": "(c + e)/3" },
-        "exp_y": { "formula": "(d + f)/3" }
-      },
-      "question": "Simplify: \\( \\sqrt[3]{ {num1}x^{c}y^{d} } \\cdot \\sqrt[3]{ {num2}x^{e}y^{f} } \\).",
-      "answer": "\\( {coef} x^{exp_x} y^{exp_y} \\)"
-    },
-    {
-      "id": "ALG1-8.6-B1",
-      "type": "template",
-      "objective": "Operations with Radical Expressions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 },
-        "b": { "values": [2,3,5,7,11,13] },
-        "c": { "min": 2, "max": 10 },
-        "d": { "values": [2,3,5,7,11,13], "exclude": ["b"] },
-        "e": { "min": 2, "max": 10, "exclude": ["a"] },
-        "f": { "min": 2, "max": 10, "exclude": ["c"] },
-        "coef_b": { "formula": "a + e" },
-        "coef_d": { "formula": "f - c" }
-      },
-      "question": "Simplify: \\( {a}\\sqrt{{b}}-{c}\\sqrt{{d}}+{e}\\sqrt{{b}}+{f}\\sqrt{{d}}\\)",
-      "answer": "\\( {coef_b}\\sqrt{{b}} + {coef_d}\\sqrt{{d}} \\)"
-    },
-    {
-      "id": "ALG1-8.6-I1",
-      "type": "template",
-      "objective": "Operations with Radical Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 5 },
-        "b": { "values": [2,3,5,7,11] },
-        "c": { "min": 2, "max": 5 },
-        "d": { "values": [2,3,5,7,11], "exclude": ["b"] },
-        "e": { "min": 2, "max": 5, "exclude": ["a"] },
-        "f": { "values": [2,3,5,7,11], "exclude": ["b","d"] },
-        "num1": { "formula": "b*d" },
-        "num2": { "formula": "b*f" },
-        "coef_d": { "formula": "a*c*b" },
-        "coef_f": { "formula": "a*e*b" }
-      },
-      "question": "Simplify: \\( {a}\\sqrt{{b}}\\big({c}\\sqrt{{num1}} - {e}\\sqrt{{num2}}\\big) \\)",
-      "answer": "\\( {coef_d}\\sqrt{{d}} - {coef_f}\\sqrt{{f}} \\)"
-    },
-    {
-      "id": "ALG1-8.6-A1",
-      "type": "template",
-      "objective": "Operations with Radical Expressions",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude":[0,1,-1] },
-        "b": { "min": 2, "max": 10 },
-        "c": { "min": 2, "max": 10 },
-        "d": { "values": [2,3,5,7] },
-        "x": { "min": 2, "max": 7 },
-        "y": { "min": 2, "max": 7, "exclude": ["x"] },
-        "z": { "min": 2, "max": 7, "exclude": ["x","y"] },
-        "num1": { "formula": "x*x*d" },
-        "num2": { "formula": "y*y*d" },
-        "num3": { "formula": "z*z*d" },
-        "coef": { "formula": "a*x - b*y + c*z" }
-      },
-      "question": "Simplify: \\( {a}\\sqrt{{num1}} - {b}\\sqrt{{num2}} + {c}\\sqrt{{num3}}\\)",
-      "answer": "\\({coef}\\sqrt{{d}}\\)"
+      "question": "{tsp} teaspoons is equivalent to ______ tablespoons, and _________ ounces.",
+      "answer": "\\({tsp}\\) teaspoons is equivalent to \\({tspTBL}\\) tablespoons, and \\({tspoz}\\) ounces."
     }
+
+    
   ],
   "Module 3 (under construction)": [
     {
