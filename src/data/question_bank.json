@@ -4409,6 +4409,83 @@
       },
       "question": "Determine the area for a lawn that is {l} yards across and {w} yards deep. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({A}\\) square yards is the area of the lawn."
+    },
+     {
+      "id": "CM 2.5b Triangle (check)",
+      "type": "template",
+      "objective": "Calculate the Area of a Triangle",
+      "difficulty": "basic",
+      "variables": {
+        "h": { "min": 2, "max": 15 },
+        "b": {  "min": 2, "max": 15 },
+        "A": { "formula": "0.5*b*h" }
+      },
+      "question": "Determine the area for a triangle-shaped corner of the lawn has a base of {b} meters across and perpendicular height of {h} meters. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({A}\\) square meters is the area of the triangular shape."
+    },
+      {
+      "id": "CM 2.5c Circle (check)",
+      "type": "template",
+      "objective": "Calculate the Area of a Circle",
+      "difficulty": "basic",
+      "variables": {
+        "r": { "min": 2, "max": 15 },
+        "A": { "formula": "3.14159*r*r" }
+      },
+      "question": "Determine the area for a circular pool that has a radius of {r} meters. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({A}\\) square meters is the area of the circular pool."
+    },
+     {
+      "id": "CM 2.6a Rectangular Prism (check)",
+      "type": "template",
+      "objective": "Calculate the Volume of a Rectangular Prism",
+      "difficulty": "basic",
+      "variables": {
+       "l": { "min": 2, "max": 15 },
+       "w": {  "min": 2, "max": 15 },
+       "h": {  "min": 2, "max": 15 },
+       "V": { "formula": "l*w*h" }
+      },
+      "question": "Determine the volume for a rectangular prism room that is {l} yards across, {w} yards deep, and {h} yards high. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({V}\\) cubic yards is the volume of the room."
+    },
+     {
+      "id": "CM 2.6b Triangular Prism (check)",
+      "type": "template",
+      "objective": "Calculate the Volume of a Triangular Prism",
+      "difficulty": "basic",
+      "variables": {
+       "l": { "min": 2, "max": 15 },
+       "w": {  "min": 2, "max": 15 },
+       "h": {  "min": 2, "max": 15 },
+       "V": { "formula": "0.5*l*w*h" }
+      },
+      "question": "Determine the volume for a triangular prism door stop that is {l} cm across, {w} cm deep, and {h} cm high. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({V}\\) cubic centemeters is the volume of the door stop."
+    },
+     {
+      "id": "CM 2.6d Area Conversion (check)",
+      "type": "template",
+      "objective": "Convert Area Units",
+      "difficulty": "basic",
+      "variables": {
+       "Ayd": { "min": 3, "max": 14, "exclude":[5,10]},
+       "Aft": { "formula": "A*27" }
+      },
+      "question": "Convert the yard area that is {Ayd} square yards into square feet to buy the right amount of bark.",
+      "answer": "\\({Aft}\\) square feet is the area to be covered by the bark."
+    },
+    {
+      "id": "CM 2.6e Volume Conversion (check)",
+      "type": "template",
+      "objective": "Convert Volume Units",
+      "difficulty": "basic",
+      "variables": {
+       "Vft": { "min": 131, "max": 197, "exclude":[150,160,170]},
+       "Vyd": { "formula": "Vft/27" }
+      },
+      "question": "Convert the volume of bark needed from {Vft} cubic feet to cubic yards, since large truck loads are measured in cubic yards.",
+      "answer": "\\({Vyd}\\) cubic yards is the volume of the bark."
     }
   ],
   "Module 3 (under construction)": [
