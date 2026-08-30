@@ -4398,7 +4398,7 @@
       "answer": "\\({C}\\) meters is the circumference of the pool."
     },
     {
-      "id": "CM 2.5a Rectangle (check)",
+      "id": "CM 2.5a Rectangle",
       "type": "template",
       "objective": "Calculate the Area of a Rectangle",
       "difficulty": "basic",
@@ -4411,20 +4411,20 @@
       "answer": "\\({A}\\) square yards is the area of the lawn."
     },
      {
-      "id": "CM 2.5b Triangle (check)",
+      "id": "CM 2.5b Triangle",
       "type": "template",
       "objective": "Calculate the Area of a Triangle",
       "difficulty": "basic",
       "variables": {
         "h": { "min": 2, "max": 15 },
         "b": {  "min": 2, "max": 15 },
-        "A": { "formula": "0.5*b*h" }
+        "A": { "formula": "0.5*b*h", "format": "decimal" }
       },
       "question": "Determine the area for a triangle-shaped corner of the lawn has a base of {b} meters across and perpendicular height of {h} meters. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({A}\\) square meters is the area of the triangular shape."
     },
       {
-      "id": "CM 2.5c Circle (check)",
+      "id": "CM 2.5c Circle",
       "type": "template",
       "objective": "Calculate the Area of a Circle",
       "difficulty": "basic",
@@ -4436,7 +4436,7 @@
       "answer": "\\({A}\\) square meters is the area of the circular pool."
     },
      {
-      "id": "CM 2.6a Rectangular Prism (check)",
+      "id": "CM 2.6a Rectangular Prism",
       "type": "template",
       "objective": "Calculate the Volume of a Rectangular Prism",
       "difficulty": "basic",
@@ -4450,7 +4450,7 @@
       "answer": "\\({V}\\) cubic yards is the volume of the room."
     },
      {
-      "id": "CM 2.6b Triangular Prism (check)",
+      "id": "CM 2.6b Triangular Prism",
       "type": "template",
       "objective": "Calculate the Volume of a Triangular Prism",
       "difficulty": "basic",
@@ -4464,25 +4464,25 @@
       "answer": "\\({V}\\) cubic centemeters is the volume of the door stop."
     },
      {
-      "id": "CM 2.6d Area Conversion (check)",
+      "id": "CM 2.6d Area Conversion",
       "type": "template",
       "objective": "Convert Area Units",
       "difficulty": "basic",
       "variables": {
        "Ayd": { "min": 3, "max": 14, "exclude":[5,10]},
-       "Aft": { "formula": "A*27" }
+       "Aft": { "formula": "Ayd*27" }
       },
       "question": "Convert the yard area that is {Ayd} square yards into square feet to buy the right amount of bark.",
       "answer": "\\({Aft}\\) square feet is the area to be covered by the bark."
     },
     {
-      "id": "CM 2.6e Volume Conversion (check)",
+      "id": "CM 2.6e Volume Conversion",
       "type": "template",
       "objective": "Convert Volume Units",
       "difficulty": "basic",
       "variables": {
        "Vft": { "min": 131, "max": 197, "exclude":[150,160,170]},
-       "Vyd": { "formula": "Vft/27" }
+       "Vyd": { "formula": "Vft/27", "format": "decimal" }
       },
       "question": "Convert the volume of bark needed from {Vft} cubic feet to cubic yards, since large truck loads are measured in cubic yards.",
       "answer": "\\({Vyd}\\) cubic yards is the volume of the bark."
