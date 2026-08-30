@@ -4164,7 +4164,7 @@
       "answer": "\\({mile}\\) miles is equivalent to \\({mileinch}\\) inches, \\({mileft}\\) feet, and \\({mileyd}\\) yards."
     },
     {
-      "id": "CM 2.1a liquid (check)",
+      "id": "CM 2.1a liquid",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4173,11 +4173,11 @@
         "tspTBL": { "formula": "tsp/3", "format": "decimal"},
         "tspoz": { "formula": "tsp/3/2", "format": "decimal"}
       },
-      "question": "{tsp} teaspoons is equivalent to ______ tablespoons, and _________ ounces.",
+      "question": "{tsp} teaspoons is equivalent to ______ tablespoons and _________ ounces.",
       "answer": "\\({tsp}\\) teaspoons is equivalent to \\({tspTBL}\\) tablespoons, and \\({tspoz}\\) ounces."
     },
     {
-      "id": "CM 2.1b liquid (check)",
+      "id": "CM 2.1b liquid",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4186,11 +4186,11 @@
         "TBLtsp": { "formula": "TBL*3", "format": "decimal"},
         "TBLoz": { "formula": "TBL/2", "format": "decimal"}
       },
-      "question": "{TBL} tablespoons is equivalent to ______ teaspoons, and _________ ounces.",
+      "question": "{TBL} tablespoons is equivalent to ______ teaspoons and _________ ounces.",
       "answer": "\\({TBL}\\) tablespoons is equivalent to \\({TBLtsp}\\) teaspoons, and \\({TBLoz}\\) ounces."
     },
     {
-      "id": "CM 2.1c liquid (check)",
+      "id": "CM 2.1c liquid",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4199,12 +4199,11 @@
         "oztsp": { "formula": "oz/3/2", "format": "decimal"},
         "ozTBL": { "formula": "oz/2", "format": "decimal"}
       },
-      "question": "{oz} ounces is equivalent to ______ teaspoons, and _________ tablespoons.",
+      "question": "{oz} ounces is equivalent to ______ teaspoons and _________ tablespoons.",
       "answer": "\\({oz}\\) ounces is equivalent to \\({oztsp}\\) teaspoons, and \\({ozTBL}\\) tablespoons."
     },
-
  {
-      "id": "CM 2.1d liquid volume (check)",
+      "id": "CM 2.1d liquid volume",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4213,11 +4212,11 @@
         "ozcup": { "formula": "oz/8", "format": "decimal"},
         "ozpint": { "formula": "oz/8/2", "format": "decimal"}
       },
-      "question": "{oz} ounces is equivalent to ______ cups, and _________ pints.",
+      "question": "{oz} ounces is equivalent to ______ cups and _________ pints.",
       "answer": "\\({oz}\\) ounces is equivalent to \\({ozcup}\\) cups, and \\({ozpint}\\) pints."
      },
- {
-      "id": "CM 2.1e liquid volume (check)",
+    {
+      "id": "CM 2.1e liquid volume",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4226,11 +4225,11 @@
         "cupoz": { "formula": "cup/8", "format": "decimal"},
         "cuppint": { "formula": "cup*2", "format": "decimal"}
       },
-      "question": "{cup} cups is equivalent to ______ ounces, and _________ pints.",
+      "question": "{cup} cups is equivalent to ______ ounces and _________ pints.",
       "answer": "\\({cup}\\) cups is equivalent to \\({cupoz}\\) ounces, and \\({cuppint}\\) pints."
      },
- {
-      "id": "CM 2.1f liquid volume (check)",
+     {
+      "id": "CM 2.1f liquid volume",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4239,16 +4238,11 @@
         "pintoz": { "formula": "pint*8*2", "format": "decimal"},
         "pintcup": { "formula": "pint*2", "format": "decimal"}
       },
-      "question": "{pint} pints is equivalent to ______ ounces, and _________ cups.",
+      "question": "{pint} pints is equivalent to ______ ounces and _________ cups.",
       "answer": "\\({pint}\\) pints is equivalent to \\({pintoz}\\) ounces, and \\({pintcup}\\) cups."
      },
-
-
-
-
-
     {
-      "id": "CM 2.1g liquid volume (check)",
+      "id": "CM 2.1g liquid volume",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4257,11 +4251,11 @@
         "quart": { "formula": "pint/2", "format": "decimal"},
         "gallon": { "formula": "pint/8", "format": "decimal"}
       },
-      "question": "{pint} pints is equivalent to ______ quarts, and _________ gallons.",
+      "question": "{pint} pints is equivalent to ______ quarts and _________ gallons.",
       "answer": "\\({pint}\\) pints is equivalent to \\({quart}\\) quarts, and \\({gallon}\\) gallons."
     },
     {
-      "id": "CM 2.1h liquid volume (check)",
+      "id": "CM 2.1h liquid volume",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4270,11 +4264,11 @@
         "pint": { "formula": "2*quart", "format": "decimal"},
         "gallon": { "formula": "pint/4", "format": "decimal"}
       },
-      "question": "{quart} quarts is equivalent to ______ pints, and _________ gallons.",
+      "question": "{quart} quarts is equivalent to ______ pints and _________ gallons.",
       "answer": "\\({quart}\\) quarts is equivalent to \\({pint}\\) pints, and \\({gallon}\\) gallons."
     },
     {
-      "id": "CM 2.1i liquid volume (check)",
+      "id": "CM 2.1i liquid volume",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
@@ -4283,30 +4277,126 @@
         "pint": { "formula": "gallon*8", "format": "decimal"},
         "quart": { "formula": "gallon*4", "format": "decimal"}
       },
-      "question": "{gallon} gallons is equivalent to ______ pints, and _________ quarts.",
+      "question": "{gallon} gallons is equivalent to ______ pints and _________ quarts.",
       "answer": "\\({gallon}\\) gallons is equivalent to \\({pint}\\) pints, and \\({quart}\\) quarts."
      },
-   
-   
-   
-   
-   
-   
      {
-      "id": "CM 2.1a liquid volume (check)",
+      "id": "CM 2.1a weight",
       "type": "template",
       "objective": "Customary Systems",
       "difficulty": "basic",
       "variables": {
-        "tsp": { "min": 2, "max": 15 },
-        "tspTBL": { "formula": "tsp/3", "format": "decimal"},
-        "tspoz": { "formula": "tsp/3/2", "format": "decimal"}
+        "oz": { "min": 2, "max": 15 },
+        "ozlbs": { "formula": "oz/16", "format": "decimal"},
+        "ozton": { "formula": "oz/16/2000", "format": "decimal"}
       },
-      "question": "{tsp} teaspoons is equivalent to ______ tablespoons, and _________ ounces.",
-      "answer": "\\({tsp}\\) teaspoons is equivalent to \\({tspTBL}\\) tablespoons, and \\({tspoz}\\) ounces."
+      "question": "{oz} ounces is equivalent to ______ pounds and _________ tons.",
+      "answer": "\\({oz}\\) ounces is equivalent to \\({ozlbs}\\) pounds, and \\({ozton}\\) tons."
+    },
+     {
+      "id": "CM 2.1b weight",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "lbs": { "min": 2, "max": 15 },
+        "lbsoz": { "formula": "lbs*16", "format": "decimal"},
+        "lbston": { "formula": "lbs/2000", "format": "decimal"}
+      },
+      "question": "{lbs} pounds is equivalent to ______ ounces and _________ tons.",
+      "answer": "\\({lbs}\\) pounds is equivalent to \\({lbsoz}\\) ounces, and \\({lbston}\\) tons."
+    },
+ {
+      "id": "CM 2.1c weight",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "ton": { "min": 2, "max": 15 },
+        "tonoz": { "formula": "ton*16*2000", "format": "decimal"},
+        "tonlbs": { "formula": "ton*2000", "format": "decimal"}
+      },
+      "question": "{ton} tons is equivalent to ______ ounces and _________ pounds.",
+      "answer": "\\({ton}\\) tons is equivalent to \\({tonoz}\\) ounces, and \\({tonlbs}\\) pounds."
+    },
+ {
+      "id": "CM 2.2 IS",
+      "type": "template",
+      "objective": "Internaional Systems",
+      "difficulty": "basic",
+      "variables": {
+        "gram": { "min": 2, "max": 1500 },
+        "mg": { "formula": "gram*1000", "format": "decimal"},
+        "cg": { "formula": "gram*100", "format": "decimal"},
+        "dg": { "formula": "gram*10", "format": "decimal"},
+        "dag": { "formula": "gram/10", "format": "decimal"},
+        "hg": { "formula": "gram/100", "format": "decimal"},
+        "kg": { "formula": "gram/1000", "format": "decimal"}
+      },
+      "question": "{gram} grams is equivalent to ______ milligrams and _________ centigrams ________ decigrams __________ dekagrams ____________ hectograms ____________ kilograms.",
+      "answer": "\\({gram}\\) gram is equivalent to \\({mg}\\) milligrams, \\({cg}\\) centigrams, \\({dg}\\) decigrams, \\({dag}\\) dekagrams, \\({hg}\\) hectograms, and \\({kg}\\) kilograms."
+    },
+{
+      "id": "CM 2.3a Conversion",
+      "type": "template",
+      "objective": "Convert Between IS and Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "cm": { "min": 2, "max": 1500 },
+        "cmin": { "formula": "cm/2.54", "format": "decimal"},
+        "km": {  "min": 2, "max": 1500 },
+        "kmmile": { "formula": "km/1.6", "format": "decimal"},
+        "kg": { "min": 2, "max": 1500 },
+        "kglbs": { "formula": "kg*2.2", "format": "decimal"},
+        "L": {"min": 2, "max": 1500 },
+        "Lqt": { "formula": "L*0.95", "format": "decimal"}
+      },
+      "question": "{cm} centimeters is equivalent to _________ inches.  {km} kilometers is equivalent to  _________ miles.  {kg} kilograms is equivalent to  _________ pounds.  {L} liters is equivalent to ______ quarts. ",
+      "answer": "\\({cm}\\) centimeters is equivalent to \\({cmin}\\) inches. \\({km}\\) miles is equivalent to \\({kmmile}\\) kilometers. \\({kg}\\) kilograms is equivalent to \\({kglbs}\\) pounds. \\({L}\\) liters is equivalent to \\({Lqt}\\) quarts."
+    },
+    {
+      "id": "CM 2.3b Conversion",
+      "type": "template",
+      "objective": "Convert Between IS and Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "inch": { "min": 2, "max": 1500 },
+        "incm": { "formula": "inch*2.54", "format": "decimal"},
+        "mile": {  "min": 2, "max": 1500 },
+        "milekm": { "formula": "mile*1.6", "format": "decimal"},
+        "lbs": { "min": 2, "max": 1500 },
+        "lbskg": { "formula": "lbs/2.2", "format": "decimal"},
+        "qt": {"min": 2, "max": 1500 },
+        "qtL": { "formula": "qt/0.95", "format": "decimal"}
+      },
+      "question": "{inch} inches is equivalent to _________ centimeters.  {mile} miles is equivalent to  _________ kilometers.  {lbs} pounds is equivalent to  _________ kilograms.  {qt} quarts is equivalent to ______ liters. ",
+      "answer": "\\({inch}\\) inches is equivalent to \\({incm}\\) centimeters. \\({mile}\\) miles is equivalent to \\({milekm}\\) kilometers. \\({lbs}\\) pounds is equivalent to \\({lbskg}\\) kilograms. \\({qt}\\) quarts is equivalent to \\({qtL}\\) liters."
+    },
+    {
+      "id": "CM 2.4a Perimeter",
+      "type": "template",
+      "objective": "Calculate the Perimeter",
+      "difficulty": "basic",
+      "variables": {
+        "l": { "min": 2, "max": 15 },
+        "w": {  "min": 2, "max": 15 },
+        "P": { "formula": "2*l+2*w" }
+      },
+      "question": "Determine the perimeter for a lawn that is {l} yards across and {w} yards deep. Include the units.",
+      "answer": "\\({P}\\) yards is the perimeter of the lawn."
+    },
+    {
+      "id": "CM 2.4b Circumference",
+      "type": "template",
+      "objective": "Calculate the Circumference",
+      "difficulty": "basic",
+      "variables": {
+        "r": { "min": 2, "max": 15 },
+        "C": { "formula": "2*3.14159*r" }
+      },
+      "question": "Determine the cirecumference of a pool that has a radius of {r} meters. Include the units.",
+      "answer": "\\({C}\\) meters is the circumference of the pool."
     }
-
-    
   ],
   "Module 3 (under construction)": [
     {
@@ -7157,7 +7247,7 @@
       "answer": "a) \\( (x {p1|sign})({a1|coef}x^2 {b1|sign}) \\) <br> b) \\( (x {p2|sign})({a2|coef}x^2 {b2|sign}) \\)"
     }
    ],
-   "Module Mathmatics Review": [
+   "Module Mathematics Review": [
     {
       "id": "CM 00.01",
       "type": "template",
@@ -7490,57 +7580,6 @@
       }
     }
 
-  ]
-},
-"Under Construction (Geometry)": {
-  "Module 1": [
-    {
-      "id": "Geo-1.2-B1",
-      "type": "template",
-      "objective": "Identify points, lines, line segments, rays, and planes",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "Construct a line that has points A and B which is in plane P. Construct a line PQ that intersects line AB but is not coplanar with line AB.",
-      "answer": "Answer currently unavailable."
-    },
-    {
-      "id": "Geo-1.2-I1",
-      "type": "template",
-      "objective": "Identify points, lines, line segments, rays, and planes",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "Construct a line segment using a straightedge and then construct a congruent line segment using a compass and straightedge.",
-      "answer": "Answer currently unavailable."
-    },
-    {
-      "id": "Geo-1.3a-B1",
-      "type": "template",
-      "objective": "Calculate measures of line segments",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "Currently unavailable.",
-      "answer": "Answer currently unavailable."
-    },
-    {
-      "id": "Geo-1.3b-B1",
-      "type": "template",
-      "objective": "Exponential Equations",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b_den": { "min": 2, "max": 9 },
-        "b": { "formula": "1/b_den", "format": "fraction" }
-      },
-      "draw": {
-        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
-        "eq1": { 
-          "relation": "y = (b)^x + a", 
-          "showInQuestion": false, 
-          "showInAnswer": true }
-      },
-      "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
-      "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
-    }
   ]
 }
 }
