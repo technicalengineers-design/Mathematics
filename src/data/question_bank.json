@@ -4382,7 +4382,7 @@
         "w": {  "min": 2, "max": 15 },
         "P": { "formula": "2*l+2*w" }
       },
-      "question": "Determine the perimeter for a lawn that is {l} yards across and {w} yards deep. Include the units.",
+      "question": "Determine the perimeter for a lawn that is {l} yards across and {w} yards deep. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({P}\\) yards is the perimeter of the lawn."
     },
     {
@@ -4394,8 +4394,21 @@
         "r": { "min": 2, "max": 15 },
         "C": { "formula": "2*3.14159*r" }
       },
-      "question": "Determine the cirecumference of a pool that has a radius of {r} meters. Include the units.",
+      "question": "Determine the cirecumference of a pool that has a radius of {r} meters. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({C}\\) meters is the circumference of the pool."
+    },
+    {
+      "id": "CM 2.5a Rectangle (check)",
+      "type": "template",
+      "objective": "Calculate the Area of a Rectangle",
+      "difficulty": "basic",
+      "variables": {
+        "l": { "min": 2, "max": 15 },
+        "w": {  "min": 2, "max": 15 },
+        "A": { "formula": "l*w" }
+      },
+      "question": "Determine the area for a lawn that is {l} yards across and {w} yards deep. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({A}\\) square yards is the area of the lawn."
     }
   ],
   "Module 3 (under construction)": [
