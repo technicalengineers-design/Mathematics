@@ -1,6 +1,6 @@
 ﻿{
 "Algebra 1": {
-  "Module 1": [
+  "1 Expressions": [
     {
       "id": "ALG1-1.1-B1",
       "type": "template",
@@ -393,7 +393,7 @@
       "answer": "\\({result}\\)"
     }
   ],
-  "Module 2": [
+  "2 Equations": [
     {
       "id": "ALG1-2.1-B1",
       "type": "template",
@@ -716,261 +716,7 @@
       "answer": "\\( x = \\frac{ {d} y {negA|sign} }{ 1 {negC|sign}y}\\)"
     }
   ],
-  "Module 6 old": [
-    {
-      "id": "ALG1-6.1-B1",
-      "type": "template",
-      "objective": "Solving One-Step Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0]  },
-        "x": { "formula": "b - a"  }
-      },
-      "question": "Solve and graph: <br> \\( x {a|sign} \\geq {b} \\).",
-      "answer": "\\( x \\leq {x} \\)"
-    },
-    {
-      "id": "ALG1-6.1-B2",
-      "type": "template",
-      "objective": "Solving One-Step Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1] },
-        "b": { "min": -10, "max": 10, "exclude": [0]  }
-      },
-      "question": "Solve and graph: <br> \\( {a}x < {b} \\).",
-      "answer": "\\( x \\geq \\frac{ {b} }{ {a} } \\) (Swap inequality if \\( {a} < 0) \\)"
-    },
-    {
-      "id": "ALG1-6.1-I1",
-      "type": "template",
-      "objective": "Solving One-Step Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -2, "max": 2, "exclude": [0] },
-        "b": { "min": 3, "max": 10 },
-        "randint": { "min": -6, "max": 6, "exclude": [0] },
-        "x": { "formula": "b*randint"  },
-        "c": { "formula": "a*x/b" }
-      },
-      "question": "Solve and graph: <br> \\( \\frac{ {a|coef} x }{{b}} > {c} \\).",
-      "answer": "\\( x > {x} \\) (Swap inequality if \\( {a} < 0) \\)"
-    },
-    {
-      "id": "ALG1-6.2-B1",
-      "type": "template",
-      "objective": "Solving Multi-Step Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": ["a",0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": ["a","b",-1,1] },
-        "x": { "formula": "(c - b) / a" }
-      },
-      "question": "Solve and graph: <br> \\( {a|coef}x {b|sign} \\leq {c} \\).",
-      "answer": "\\( x \\leq {x} \\) (Swap the inequality if \\( {a} < 0 \\)"
-    },
-    {
-      "id": "ALG1-6.2-I1",
-      "type": "template",
-      "objective": "Solving Multi-Step Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": ["a",0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": ["a","b",0,-1,1] },
-        "d": { "min": -10, "max": 10, "exclude": [-1,0,1] },
-        "e": { "min": -10, "max": 10, "exclude": [-1,0,1] },
-        "f": { "formula": "a - c*e" },
-        "x": { "formula": "(c*d - b) / (a - c*e)" }
-      },
-      "question": "Solve and graph: <br> \\( \\frac{ {a|coef} x {b|sign} }{ {c} } > {d} {e|signedCoef}x \\).",
-      "answer": "\\( x > {x} \\) (Swap the inequality if \\( {f} < 0 \\)"
-    },
-    {
-      "id": "ALG1-6.3-B1",
-      "type": "template",
-      "objective": "Solving Compound Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": ["a",0,1,-1] },
-        "c": { "min": 0, "max": 10 },
-        "d": { "min": -10, "max": 0 },
-        "x1": { "formula": "(d - b) / a" },
-        "x2": { "formula": "(c - b) / a" }
-      },
-      "question": "Solve and graph: <br> \\({d} < {a|coef}x {b|sign} < {c} \\)",
-      "answer": "\\( {x1} < x < {x2} \\) students should graph the solution."
-    },
-    {
-      "id": "ALG1-6.3-I1",
-      "type": "template",
-      "objective": "Solving Compound Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -5, "max": -1 },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": 6, "max": 8 },
-        "d": { "min": -10, "max": 10, "exclude": [0] },
-        "e": { "min": 1, "max": 5 },
-        "f": { "min": -10, "max": 10, "exclude": [0] },
-        "x1": { "formula": "(b - d) / (c - a)" },
-        "x2": { "formula": "(f - d) / (c - e)" }
-      },
-      "question": "Solve and graph: <br> \\({a|coef}x {b|sign} < {c|coef}x {d|sign} < {e|coef}x {f|sign} \\)",
-      "answer": "\\( {x1} < x < {x2} \\) students should graph the solution."
-    },
-    {
-      "id": "ALG1-6.3-I2",
-      "type": "template",
-      "objective": "Solving Compound Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": 2, "max": 10 },
-        "d": { "min": -10, "max": 10, "exclude": [0] },
-        "e": { "min": 2, "max": 10 },
-        "f": { "min": -10, "max": -1 },
-        "x1": { "formula": "a*c - b" },
-        "x2": { "formula": "e*f - d" }
-      },
-      "question": "Solve and graph: <br> \\({a} \\geq \\frac{ x {b|sign} }{ {c} } \\) or \\( \\frac{ x {d|sign} }{ {e} } < {f} \\).",
-      "answer": "\\(x \\leq {x1} or x < {x2} \\) students should graph the solution."
-    },
-    {
-      "id": "ALG1-6.4-B1",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "randint": { "min": 8, "max": 15, "exclude": [0] },
-        "c": { "formula": "randint + b" },
-        "x1": { "formula": "(c - b) / a"  },
-        "x2": { "formula": "(-c + b) / a" },
-        "condition": { "formula": "c - b" }
-
-      },
-      "question": "Solve and graph: <br> \\( |{a|coef} x | {b|sign} > {c} \\)",
-      "answer": "\\( x > {x1} \\text{ or } x < {x2} \\) <br> If \\( {condition} ≤ 0 \\), then the solution is all real numbers."
-    },
-    {
-      "id": "ALG1-6.4-B2",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "randint": { "min": 8, "max": 15, "exclude": [0] },
-        "c": { "formula": "randint + b" },
-        "x1": { "formula": "(c - b) / a"  },
-        "x2": { "formula": "-1*x1" },
-        "condition": { "formula": "c - b" }
-      },
-      "question": "Solve and graph: <br> \\( {a|coef} | x | {b|sign} < {c} \\)",
-      "answer": "\\( {x2} < x < {x1} \\) <br> If \\( {condition} ≤ 0 \\), then there is no solution."
-    },
-    {
-      "id": "ALG1-6.4-B3",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": -2, "max": 10, "exclude": [0] },
-        "x1": { "formula": "(c - b) / a"  },
-        "x2": { "formula": "(-c - b) / a" }
-      },
-      "question": "Solve and graph: <br> \\( |{a|coef} x {b|sign} | > {c} \\). ",
-      "answer": "\\( x < {x2} \\text{ or } x > {x1} \\) <br> If \\( {c} ≤ 0 \\), then the solution is all real numbers."
-    },
-    {
-      "id": "ALG1-6.4-B4",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": -2, "max": 10, "exclude": [0] },
-        "x1": { "formula": "(c - b) / a"  },
-        "x2": { "formula": "(-c - b) / a" }
-      },
-      "question": "Solve and graph: <br> \\( |{a|coef} x {b|sign} | < {c} \\)",
-      "answer": "\\( {x2} < x < {x1} \\) <br> If \\( {c} ≤ 0 \\), then there is no solution."
-    },
-    {
-      "id": "ALG1-6.4-I1",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 8, "exclude": [0] },
-        "b": { "min": -12, "max": 12, "exclude": [0] },
-        "m": { "min": -6, "max": 6, "exclude": [0] },
-        "c": { "min": 5, "max": 15, "exclude": [0] },
-        "x1": { "formula": "(c - m - b) / a" },
-        "x2": { "formula": "(m - c - b) / a" }
-      },
-      "question": "Solve and graph: <br> \\( | {a|coef} x {b|sign} | {m|sign} > {c} \\)",
-      "answer": "\\( x < {x2} \\text{ or } x > {x1} \\) <br> If \\( {c} - {m} ≤ 0 \\), then the solution is all real numbers."
-    },
-    {
-      "id": "ALG1-6.4-I2",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -8, "max": 8, "exclude": [0] },
-        "b": { "min": -12, "max": 12, "exclude": [0] },
-        "k": { "min": 2, "max": 6, "exclude": [0] },
-        "c": { "min": 8, "max": 20, "exclude": [0] },
-        "x1": { "formula": "(c/k - b) / a" },
-        "x2": { "formula": "(-c/k - b) / a" }
-      },
-      "question": "Solve and graph: <br> \\( {k} | {a|coef} x {b|sign} | < {c} \\)",
-      "answer": "\\( {x2} < x < {x1} \\)"
-    },
-    {
-      "id": "ALG1-6.4-I3",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 8, "exclude": [0] },
-        "b": { "min": -9, "max": 9, "exclude": [0] },
-        "d": { "min": 2, "max": 8 },
-        "c": { "min": 5, "max": 8 },
-        "x1": { "formula": "(c*d - b) / a" },
-        "x2": { "formula": "(-c*d - b) / a" }
-      },
-      "question": "Solve and graph: <br> \\( \\frac{ | {a|coef} x {b|sign} | }{ {d} } > {c} \\)",
-      "answer": "\\( x < {x2} \\text{ or } x > {x1} \\)"
-    },
-    {
-      "id": "ALG1-6.4-I4",
-      "type": "template",
-      "objective": "Solving Absolute Value Inequalities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 8, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "k": { "min": 2, "max": 6, "exclude": [0] },
-        "c": { "min": 10, "max": 20, "exclude": ["b",0] },
-        "x1": { "formula": "(c*k - b*k - b)/a" },
-        "x2": { "formula": "(-c*k + b*k - b)/a" }
-      },
-      "question": "Solve and graph: <br> \\( \\frac{ | {a|coef} x {b|sign} | }{ {k} } {b|sign} < {c} \\)",
-      "answer": "\\( {x2} < x < {x1} \\)"
-    }
-  ],
-  "Module 3": [
+  "3 Relations": [
     {
       "id": "ALG1-3.1-B1",
       "type": "template",
@@ -1267,7 +1013,7 @@
       "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
     }
   ],
-  "Module 4": [
+  "4 Functions": [
     {
       "id": "ALG1-4.1 & 4.2-B1",
       "type": "template",
@@ -1644,7 +1390,7 @@
       "answer": "Rewrite as \\( y < {m|coef}x {yint|sign} \\); boundary line is dashed; shade below the line."
     }
   ],
- "Module 6": [
+ "6 Inequalities": [
     {
       "id": "ALG1-6.1-B1",
       "type": "template",
@@ -1898,7 +1644,7 @@
       "answer": "\\( {x2} < x < {x1} \\)"
     }
   ],
-  "Module 7": [
+  "7 Systems": [
     {
       "id": "ALG1-7.1-B1",
       "type": "template",
@@ -2269,7 +2015,7 @@
       "answer": "Use a dashed boundary line for \\( {a1|coef}x {b1|signedCoef}y = {c1} \\) and a solid boundary line for \\( {a2|coef}x {b2|signedCoef}y = {c2} \\). Shade the half-plane that satisfies each inequality; the overlap is the solution region."
     }
   ],
-  "Module 8": [
+  "8 Exponents": [
     {
       "id": "ALG1-8.1-B1",
       "type": "template",
@@ -2590,7 +2336,7 @@
       "answer": "\\({coef}\\sqrt{{d}}\\)"
     }
   ],
-  "Module 9": [
+  "9 Exponentials": [
     {
       "id": "ALG1-9.1-B1",
       "type": "template",
@@ -3040,7 +2786,7 @@
       "answer": " \\( a) a_n = {a1} \\cdot ({r1})^{n-1} \\) and \\( a_{10} = {a10} \\) <br> \\( b) a_n = {b1} \\cdot ({r2})^{n-1} \\) and \\( a_{10} = {b10} \\) <br> \\( c) a_n = {c1} \\cdot ({r3})^{n-1} \\) and \\( a_{10} = {c10} \\)"
     }
  ],
-  "Module 10": [
+  "10 Polynomials": [
     {
       "id": "ALG1-10.1-B1",
       "type": "template",
@@ -3484,7 +3230,7 @@
       "answer": "a) \\( (x {p1|sign})({a1|coef}x^2 {b1|sign}) \\) <br> b) \\( (x {p2|sign})({a2|coef}x^2 {b2|sign}) \\)"
     }
  ],
-  "Module 11": [
+  "11 Quadratics": [
     {
       "id": "ALG1-11.1-B1",
       "type": "template",
