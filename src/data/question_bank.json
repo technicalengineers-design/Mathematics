@@ -3968,7 +3968,7 @@
       "answer": "The value of the property is $\\({result}\\)."
     },
     {
-      "id": "CM 1.4",
+      "id": "CM 1.4a",
       "type": "template",
       "objective": "Evaluate Expression",
       "difficulty": "basic",
@@ -3983,6 +3983,23 @@
         "result": { "formula": "Math.round(((a/b) + (c/d)**2 - (e/f) * g)*1000)/1000", "format": "decimal" }
       },
       "question": "Evaluate: \\( \\frac{{|{a}|}}{{{b}}} + (\\frac{{{c}}}{{{d}}})^2 - |\\frac{{{e}}}{{{f}}}| \\cdot {g} \\) to the nearest thousandths.",
+      "answer": "\\({result}\\)"
+    },
+    {
+      "id": "CM 1.4b",
+      "type": "template",
+      "objective": "Multiplication Table",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 3, "max": 8, "exclude":[5] },
+        "b": { "min": 3, "max": 8, "exclude":[5] },
+        "d": { "min": 2, "max": 10, "exclude":["c"] },
+        "e": { "min": -6, "max": 3, "exclude":["d",0,1] },
+        "f": { "min": -5, "max": 2, "exclude":["e",0,1] },
+        "g": { "min": 2, "max": 15 },
+        "result": { "formula": "a*b", "format": "decimal" }
+      },
+      "question": "Evaluate: \\({a}*{b}\\).",
       "answer": "\\({result}\\)"
     },
     {

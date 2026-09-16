@@ -10,19 +10,37 @@
  * - Exact fraction detection for integer arithmetic
  */
 
+function valuesAreEqual(a, b, epsilon = 1e-10) {
+  if (typeof a === "number" && typeof b === "number") {
+    return Math.abs(a - b) < epsilon;
+  }
+  return a === b;
+}
+
+function resolveExclusionValue(exclusion, allVars) {
+  if (typeof exclusion !== 'string') return exclusion;
+
+  if (allVars[exclusion] !== undefined) {
+    return allVars[exclusion];
+  }
+
+  const numEx = Number(exclusion);
+  if (!isNaN(numEx)) return numEx;
+
+  try {
+    return evaluateJSExpression(exclusion, allVars);
+  } catch (e) {
+    return undefined;
+  }
+}
+
 function validateVariableValue(value, constraints, allVars) {
   if (!constraints) return true;
 
   if (constraints.exclude) {
     for (const exclusion of constraints.exclude) {
-      if (typeof exclusion === 'string') {
-        if (allVars[exclusion] !== undefined) {
-          if (value === allVars[exclusion]) return false;
-        } else {
-          const numEx = Number(exclusion);
-          if (!isNaN(numEx) && value === numEx) return false;
-        }
-      } else if (value === exclusion) {
+      const resolvedExclusion = resolveExclusionValue(exclusion, allVars);
+      if (resolvedExclusion !== undefined && valuesAreEqual(value, resolvedExclusion)) {
         return false;
       }
     }
@@ -150,13 +168,25 @@ function evaluateJSExpression(expression, variables = {}) {
 function tryParseIntegerDivision(formula, vars) {
   if (!formula) return null;
 
-  // Match patterns like: (a*d + c)/b  or  a/b  or  (x + 1)/(y - 2)
-  const divRegex = /\(?\s*([^()\/]+)\s*\/\s*([^()\/]+)\s*\)?$/;
-  const match = formula.match(divRegex);
-  if (!match) return null;
+  // Match only a single top-level division such as a/b or (x + 1)/(y - 2).
+  // Nested divisions inside larger sums must not be mistaken for the whole value.
+  let depth = 0;
+  let slashIndex = -1;
+  for (let i = 0; i < formula.length; i++) {
+    const ch = formula[i];
+    if (ch === '(') depth++;
+    else if (ch === ')') depth--;
+    else if (ch === '/' && depth === 0) {
+      if (slashIndex !== -1) return null;
+      slashIndex = i;
+    }
+  }
 
-  const numExpr = match[1].trim();
-  const denExpr = match[2].trim();
+  if (slashIndex === -1) return null;
+
+  const numExpr = formula.slice(0, slashIndex).trim();
+  const denExpr = formula.slice(slashIndex + 1).trim();
+  if (!numExpr || !denExpr) return null;
 
   try {
     const num = evaluateJSExpression(numExpr, vars);
@@ -363,7 +393,7 @@ function formatNumberForDisplay(num, formula = null, vars = null, format = 'auto
    Main Variable Generation
    ----------------------------- */
 
-function generateQuestionVariables(questionTemplate) {
+function buildQuestionVariablesAttempt(questionTemplate) {
   const vars = {};
   const displayVars = {};
   const generationErrors = [];
@@ -422,6 +452,14 @@ function generateQuestionVariables(questionTemplate) {
           const value = evaluateJSExpression(constraints.formula, vars);
           if (value !== undefined && value !== null && !(typeof value === "number" && !isFinite(value))) {
             vars[key] = value;
+            if (!validateVariableValue(value, constraints, vars)) {
+              generationErrors.push({
+                type: "excluded_formula_value",
+                key,
+                value,
+                message: `Formula variable "${key}" generated an excluded value: ${value}`
+              });
+            }
             changed = true;
           }
         } catch (e) {
@@ -475,6 +513,29 @@ function generateQuestionVariables(questionTemplate) {
   console.log("Final displayVars:", displayVars);
 
   return vars;
+}
+
+function generateQuestionVariables(questionTemplate) {
+  const maxAttempts = 100;
+  let lastVars = null;
+
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    const vars = buildQuestionVariablesAttempt(questionTemplate);
+    lastVars = vars;
+
+    const retryableErrors = (vars.__errors || []).filter(error =>
+      error?.type === "excluded_formula_value"
+    );
+
+    if (retryableErrors.length === 0) {
+      return vars;
+    }
+  }
+
+  console.warn(
+    `Could not generate valid formula values after ${maxAttempts} attempts for question ${questionTemplate?.id || "(unknown)"}`
+  );
+  return lastVars || buildQuestionVariablesAttempt(questionTemplate);
 }
 
 /**
