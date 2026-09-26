@@ -228,7 +228,7 @@
         "f": { "min": 2, "max": 20, "exclude":["d","e"] }
       },
       "question": "Fill in the property name used for each equation:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Equation</th><th>Property</th></tr><tr><td>\\({a} + {b} = {b} + {a}\\)</td><td>__________</td></tr><tr><td>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot 1 = {a} \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot \\frac{{{b}}}{{{c}}} = \\frac{{{a} \\cdot {b}}}{{{c}}} \\)</td><td>__________</td></tr><tr><td>\\( {d} + 0 = {d} \\)</td><td>__________</td></tr><tr><td>\\( {e} + (-{e}) = 0 \\)</td><td>__________</td></tr></table>",
-      "answer": "<ul> <li><strong>\\({a} + {b} = {b} + {a}\\)</strong>: Commutative Property of Addition</li>\\ <li><strong>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</strong>: Associative Property of Addition</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {a} \\cdot \\frac{{{b}}}{{{c}}} = \\frac{{{a} \\cdot {b}}}{{{c}}} \\)</strong>: Distributive Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( {e} + (-{e}) = 0 \\)</strong>: Additive Inverse Property</li>\\ </ul>"
+      "answer": "<ul> <li><strong>\\({a} + {b} = {b} + {a}\\)</strong>: Commutative Property of Addition</li>\\ <li><strong>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</strong>: Associative Property of Addition</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {a} \\cdot \\frac{{{b}}}{{{c}}} = \\frac{{{a} \\cdot {b}}}{{{c}}} \\)</strong>: Associative Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( {e} + (-{e}) = 0 \\)</strong>: Additive Inverse Property</li>\\ </ul>"
     },
     {
       "id": "ALG1-1.3-I1",
@@ -4430,7 +4430,7 @@
         "r": { "min": 2, "max": 15 },
         "C": { "formula": "2*3.14159*r" }
       },
-      "question": "Determine the cirecumference of a pool that has a radius of {r} meters. Sketch a picture, label the dimensions, and include the units.",
+      "question": "Determine the circumference of a pool that has a radius of {r} meters. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({C}\\) meters is the circumference of the pool."
     },
     {
@@ -4443,7 +4443,7 @@
         "w": {  "min": 2, "max": 15 },
         "A": { "formula": "l*w" }
       },
-      "question": "Determine the area for a lawn that is {l} yards across and {w} yards deep. Sketch a picture, label the dimensions, and include the units.",
+      "question": "Determine the area for a lawn that is {l} yards across and {w} yards wide. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({A}\\) square yards is the area of the lawn."
     },
      {
@@ -4482,7 +4482,7 @@
        "h": {  "min": 2, "max": 15 },
        "V": { "formula": "l*w*h" }
       },
-      "question": "Determine the volume for a rectangular prism room that is {l} yards across, {w} yards deep, and {h} yards high. Sketch a picture, label the dimensions, and include the units.",
+      "question": "Determine the volume for a rectangular room that is {l} yards across, {w} yards deep, and {h} yards high. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({V}\\) cubic yards is the volume of the room."
     },
      {
@@ -4497,7 +4497,7 @@
        "V": { "formula": "0.5*l*w*h" }
       },
       "question": "Determine the volume for a triangular prism door stop that is {l} cm across, {w} cm deep, and {h} cm high. Sketch a picture, label the dimensions, and include the units.",
-      "answer": "\\({V}\\) cubic centemeters is the volume of the door stop."
+      "answer": "\\({V}\\) cubic centimeters is the volume of the door stop."
     },
      {
       "id": "CM 2.6d Area Conversion",
@@ -7706,6 +7706,481 @@
       }
     }
 
+  ]
+},
+"Geometry (under construction, not yet in use)": {
+  "Module 1 (under construction)": [
+     {
+      "id": "CM 1.5b3",
+      "type": "template",
+      "objective": "Evaluate Algebraic Expressions",
+      "difficulty": "basic",
+      "variables": {
+        "x": { "min": -10, "max": 10, "exclude": [0,1] },
+        "y": { "min": -5, "max": 5, "exclude": [0,1] },
+        "a": { "min": 2, "max": 10, "exclude":["x"] },
+        "b": { "min": 2, "max": 10 },
+        "c": { "min": 2, "max": 10, "exclude":["a","b"] },
+        "numerator": { "formula": "x - a" },
+        "denominator": { "formula": "b + c * y" },
+        "result": { "formula": "(x - a) / (b + c * y)", "format": "auto" }
+      },
+      "question": "Evaluate: \\( \\frac{x - {a}}{{b}{c|signedCoef}y} \\) when \\( x = {x}, y = {y} \\).",
+      "answer": "\\({result}\\)"
+    },
+     {
+      "id": "CM 1.5b4",
+      "type": "template",
+      "objective": "Evaluate Algebraic Expressions",
+      "difficulty": "basic",
+      "variables": {
+        "x": { "min": 2, "max": 5 },
+        "y": { "min": -5, "max": 5, "exclude": [0] },
+        "a": { "min": 2, "max": 5 },
+        "b": { "min": 2, "max": 5, "exclude":["a"] },
+        "c": { "min": 2, "max": 5, "exclude":["a","b"] },
+        "result": { "formula": "a * x**2 + b * x * y + c * y**2" }
+      },
+      "question": "Evaluate: \\( {a|coef}x^2 {b|signedCoef}xy {c|signedCoef}y^2 \\) when \\( x = {x}, y = {y} \\).",
+      "answer": "\\({result}\\)"
+    },
+    {
+      "id": "CM 1.6",
+      "type": "template",
+      "objective": "Solve Literal Equations",
+      "difficulty": "basic",
+      "variables": {
+        "P": { "min": 47, "max": 147, "exclude":[50,60,70,80,90,100,110,120,130,140] },
+        "w": { "min": 2, "max": 19, "exclude":[10] },
+        "result": { "formula": "(P - 2*w)/2", "format": "decimal" }
+      },
+      "question": "Find the length of a rectangle that has a perimeter of {P} inches and a width of {w} inches. Write your answers to the nearest half inch.",
+      "answer": "The length of the side is \\({result}\\) inches."
+    },
+    {
+      "id": "CM 1.7a",
+      "type": "template",
+      "objective": "Multiplication Properties of Exponents",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "b": { "min": 2, "max": 5, "exclude":["a"] },
+        "c": { "min": 2, "max": 5 },
+        "m": { "min": -5, "max": 5, "exclude":[0,1,-1] },
+        "n": { "min": 2, "max": 5, "exclude":["m"] },
+        "coef": { "formula": "m*n" },
+        "expo": { "formula": "a + b + c"}
+      },
+      "question": "Simplify: \\( {m}x^{ {a} } \\cdot {n}x^{b} \\cdot x^{c} \\).",
+      "answer": "\\({coef}x^{expo}\\)"
+    },
+      {
+      "id": "CM 1.7b",
+      "type": "template",
+      "objective": "Division Properties of Exponents",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 9 },
+        "b": { "min": 2, "max": 5 },
+        "c": { "min": 2, "max": 3 },
+        "d": { "min": 2, "max": 5, "exclude": ["a"] },
+        "e": { "min": 2, "max": 5, "exclude": ["b"] },
+        "f": { "min": 2, "max": 5, "exclude": ["c"] },
+        "g": { "min": 2, "max": 5 },
+        "m": { "values": [-6, -4, -3, -2, 2, 3, 4, 6] },
+        "n": { "values": [-6, -4, -3, -2, 2, 3, 4, 6], "exclude": ["m"] },
+        "coef_num": { "formula": "m**g" },
+        "coef_den": { "formula": "n**g" },
+        "coef_all": { "formula": "coef_num/coef_den" },
+        "exp_x": { "formula": "(a - d)*g" },
+        "exp_y": { "formula": "(b - e)*g" },
+        "exp_z": { "formula": "(c - f)*g" }
+      },
+      "question": "Simplify: \\(\\bigg(\\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}} \\bigg)^{g} \\).",
+      "answer": "\\({coef_all}x^{exp_x} y^{exp_y} z^{exp_z}\\)"
+    }
+  ],
+  "Module 2 (under construction)": [
+     {
+      "id": "CM 2.1a distance",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "inch": { "min": 25, "max": 215 },
+        "inchft": { "formula": "inch/12", "format": "decimal"},
+        "inchyd": { "formula": "inch/36", "format": "decimal"},
+        "inchmile": { "formula": "inch/5280/12", "format": "decimal"}
+      },
+      "question": "{inch} inches is equivalent to ______ feet, _______ yards, and _________ miles.",
+      "answer": "\\({inch}\\) inches is equivalent to \\({inchft}\\) feet, \\({inchyd}\\) yards, and \\({inchmile}\\) miles."
+    },
+    {
+      "id": "CM 2.1b distance",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "ft": { "min": 2, "max": 8 },
+        "ftinch": { "formula": "12*ft", "format": "decimal"},
+        "ftyd": { "formula": "ft/3", "format": "decimal"},
+        "ftmile": { "formula": "ft/5280", "format": "decimal"}
+      },
+      "question": "{ft} feet is equivalent to ______ inches, _______ yards, and _________ miles.",
+      "answer": "\\({ft}\\) feet is equivalent to \\({ftinch}\\) inches, \\({ftyd}\\) yards, and \\({ftmile}\\) miles."
+    },
+     {
+      "id": "CM 2.1c distance",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "yd": { "min": 2, "max": 150 },
+        "ydinch": { "formula": "3*12*yd", "format": "decimal"},
+        "ydft": { "formula": "3*yd", "format": "decimal"},
+        "ydmile": { "formula": "yd/1760", "format": "decimal"}
+      },
+      "question": "{yd} yards is equivalent to ______ inches, _______ feet, and _________ miles.",
+      "answer": "\\({yd}\\) yards is equivalent to \\({ydinch}\\) inches, \\({ydft}\\) feet, and \\({ydmile}\\) miles."
+    },
+    {
+      "id": "CM 2.1d distance",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "mile": { "values": [0.5, 0.75, 1.25, 1.5, 1.75], "format": "decimal"},
+        "mileinch": { "formula": "12*5280*mile", "format": "decimal"},
+        "mileyd": { "formula": "mile*1760", "format": "decimal"},
+        "mileft": { "formula": "mile*5280", "format": "decimal"}
+      },
+      "question": "{mile} miles is equivalent to ______ inches, _______ feet, and _________ yards.",
+      "answer": "\\({mile}\\) miles is equivalent to \\({mileinch}\\) inches, \\({mileft}\\) feet, and \\({mileyd}\\) yards."
+    },
+    {
+      "id": "CM 2.1a liquid",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "tsp": { "min": 2, "max": 15 },
+        "tspTBL": { "formula": "tsp/3", "format": "decimal"},
+        "tspoz": { "formula": "tsp/3/2", "format": "decimal"}
+      },
+      "question": "{tsp} teaspoons is equivalent to ______ tablespoons and _________ ounces.",
+      "answer": "\\({tsp}\\) teaspoons is equivalent to \\({tspTBL}\\) tablespoons, and \\({tspoz}\\) ounces."
+    },
+    {
+      "id": "CM 2.1b liquid",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "TBL": { "min": 2, "max": 15 },
+        "TBLtsp": { "formula": "TBL*3", "format": "decimal"},
+        "TBLoz": { "formula": "TBL/2", "format": "decimal"}
+      },
+      "question": "{TBL} tablespoons is equivalent to ______ teaspoons and _________ ounces.",
+      "answer": "\\({TBL}\\) tablespoons is equivalent to \\({TBLtsp}\\) teaspoons, and \\({TBLoz}\\) ounces."
+    },
+    {
+      "id": "CM 2.1c liquid",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "oz": { "min": 2, "max": 15 },
+        "oztsp": { "formula": "oz/3/2", "format": "decimal"},
+        "ozTBL": { "formula": "oz/2", "format": "decimal"}
+      },
+      "question": "{oz} ounces is equivalent to ______ teaspoons and _________ tablespoons.",
+      "answer": "\\({oz}\\) ounces is equivalent to \\({oztsp}\\) teaspoons, and \\({ozTBL}\\) tablespoons."
+    },
+ {
+      "id": "CM 2.1d liquid volume",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "oz": { "min": 2, "max": 15 },
+        "ozcup": { "formula": "oz/8", "format": "decimal"},
+        "ozpint": { "formula": "oz/8/2", "format": "decimal"}
+      },
+      "question": "{oz} ounces is equivalent to ______ cups and _________ pints.",
+      "answer": "\\({oz}\\) ounces is equivalent to \\({ozcup}\\) cups, and \\({ozpint}\\) pints."
+     },
+    {
+      "id": "CM 2.1e liquid volume",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "cup": { "min": 2, "max": 15 },
+        "cupoz": { "formula": "cup/8", "format": "decimal"},
+        "cuppint": { "formula": "cup*2", "format": "decimal"}
+      },
+      "question": "{cup} cups is equivalent to ______ ounces and _________ pints.",
+      "answer": "\\({cup}\\) cups is equivalent to \\({cupoz}\\) ounces, and \\({cuppint}\\) pints."
+     },
+     {
+      "id": "CM 2.1f liquid volume",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "pint": { "min": 2, "max": 15 },
+        "pintoz": { "formula": "pint*8*2", "format": "decimal"},
+        "pintcup": { "formula": "pint*2", "format": "decimal"}
+      },
+      "question": "{pint} pints is equivalent to ______ ounces and _________ cups.",
+      "answer": "\\({pint}\\) pints is equivalent to \\({pintoz}\\) ounces, and \\({pintcup}\\) cups."
+     },
+    {
+      "id": "CM 2.1g liquid volume",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "pint": { "min": 7, "max": 150 },
+        "quart": { "formula": "pint/2", "format": "decimal"},
+        "gallon": { "formula": "pint/8", "format": "decimal"}
+      },
+      "question": "{pint} pints is equivalent to ______ quarts and _________ gallons.",
+      "answer": "\\({pint}\\) pints is equivalent to \\({quart}\\) quarts, and \\({gallon}\\) gallons."
+    },
+    {
+      "id": "CM 2.1h liquid volume",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "quart": { "min": 7, "max": 150 },
+        "pint": { "formula": "2*quart", "format": "decimal"},
+        "gallon": { "formula": "pint/4", "format": "decimal"}
+      },
+      "question": "{quart} quarts is equivalent to ______ pints and _________ gallons.",
+      "answer": "\\({quart}\\) quarts is equivalent to \\({pint}\\) pints, and \\({gallon}\\) gallons."
+    },
+    {
+      "id": "CM 2.1i liquid volume",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "gallon": { "min": 7, "max": 150 },
+        "pint": { "formula": "gallon*8", "format": "decimal"},
+        "quart": { "formula": "gallon*4", "format": "decimal"}
+      },
+      "question": "{gallon} gallons is equivalent to ______ pints and _________ quarts.",
+      "answer": "\\({gallon}\\) gallons is equivalent to \\({pint}\\) pints, and \\({quart}\\) quarts."
+     },
+     {
+      "id": "CM 2.1a weight",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "oz": { "min": 2, "max": 15 },
+        "ozlbs": { "formula": "oz/16", "format": "decimal"},
+        "ozton": { "formula": "oz/16/2000", "format": "decimal"}
+      },
+      "question": "{oz} ounces is equivalent to ______ pounds and _________ tons.",
+      "answer": "\\({oz}\\) ounces is equivalent to \\({ozlbs}\\) pounds, and \\({ozton}\\) tons."
+    },
+     {
+      "id": "CM 2.1b weight",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "lbs": { "min": 2, "max": 15 },
+        "lbsoz": { "formula": "lbs*16", "format": "decimal"},
+        "lbston": { "formula": "lbs/2000", "format": "decimal"}
+      },
+      "question": "{lbs} pounds is equivalent to ______ ounces and _________ tons.",
+      "answer": "\\({lbs}\\) pounds is equivalent to \\({lbsoz}\\) ounces, and \\({lbston}\\) tons."
+    },
+ {
+      "id": "CM 2.1c weight",
+      "type": "template",
+      "objective": "Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "ton": { "min": 2, "max": 15 },
+        "tonoz": { "formula": "ton*16*2000", "format": "decimal"},
+        "tonlbs": { "formula": "ton*2000", "format": "decimal"}
+      },
+      "question": "{ton} tons is equivalent to ______ ounces and _________ pounds.",
+      "answer": "\\({ton}\\) tons is equivalent to \\({tonoz}\\) ounces, and \\({tonlbs}\\) pounds."
+    },
+ {
+      "id": "CM 2.2 IS",
+      "type": "template",
+      "objective": "Internaional Systems",
+      "difficulty": "basic",
+      "variables": {
+        "gram": { "min": 2, "max": 1500 },
+        "mg": { "formula": "gram*1000", "format": "decimal"},
+        "cg": { "formula": "gram*100", "format": "decimal"},
+        "dg": { "formula": "gram*10", "format": "decimal"},
+        "dag": { "formula": "gram/10", "format": "decimal"},
+        "hg": { "formula": "gram/100", "format": "decimal"},
+        "kg": { "formula": "gram/1000", "format": "decimal"}
+      },
+      "question": "{gram} grams is equivalent to ______ milligrams and _________ centigrams ________ decigrams __________ dekagrams ____________ hectograms ____________ kilograms.",
+      "answer": "\\({gram}\\) gram is equivalent to \\({mg}\\) milligrams, \\({cg}\\) centigrams, \\({dg}\\) decigrams, \\({dag}\\) dekagrams, \\({hg}\\) hectograms, and \\({kg}\\) kilograms."
+    },
+{
+      "id": "CM 2.3a Conversion",
+      "type": "template",
+      "objective": "Convert Between IS and Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "cm": { "min": 2, "max": 1500 },
+        "cmin": { "formula": "cm/2.54", "format": "decimal"},
+        "km": {  "min": 2, "max": 1500 },
+        "kmmile": { "formula": "km/1.6", "format": "decimal"},
+        "kg": { "min": 2, "max": 1500 },
+        "kglbs": { "formula": "kg*2.2", "format": "decimal"},
+        "L": {"min": 2, "max": 1500 },
+        "Lqt": { "formula": "L*0.95", "format": "decimal"}
+      },
+      "question": "{cm} centimeters is equivalent to _________ inches.  {km} kilometers is equivalent to  _________ miles.  {kg} kilograms is equivalent to  _________ pounds.  {L} liters is equivalent to ______ quarts. ",
+      "answer": "\\({cm}\\) centimeters is equivalent to \\({cmin}\\) inches. \\({km}\\) miles is equivalent to \\({kmmile}\\) kilometers. \\({kg}\\) kilograms is equivalent to \\({kglbs}\\) pounds. \\({L}\\) liters is equivalent to \\({Lqt}\\) quarts."
+    },
+    {
+      "id": "CM 2.3b Conversion",
+      "type": "template",
+      "objective": "Convert Between IS and Customary Systems",
+      "difficulty": "basic",
+      "variables": {
+        "inch": { "min": 2, "max": 1500 },
+        "incm": { "formula": "inch*2.54", "format": "decimal"},
+        "mile": {  "min": 2, "max": 1500 },
+        "milekm": { "formula": "mile*1.6", "format": "decimal"},
+        "lbs": { "min": 2, "max": 1500 },
+        "lbskg": { "formula": "lbs/2.2", "format": "decimal"},
+        "qt": {"min": 2, "max": 1500 },
+        "qtL": { "formula": "qt/0.95", "format": "decimal"}
+      },
+      "question": "{inch} inches is equivalent to _________ centimeters.  {mile} miles is equivalent to  _________ kilometers.  {lbs} pounds is equivalent to  _________ kilograms.  {qt} quarts is equivalent to ______ liters. ",
+      "answer": "\\({inch}\\) inches is equivalent to \\({incm}\\) centimeters. \\({mile}\\) miles is equivalent to \\({milekm}\\) kilometers. \\({lbs}\\) pounds is equivalent to \\({lbskg}\\) kilograms. \\({qt}\\) quarts is equivalent to \\({qtL}\\) liters."
+    },
+    {
+      "id": "CM 2.4a Perimeter",
+      "type": "template",
+      "objective": "Calculate the Perimeter",
+      "difficulty": "basic",
+      "variables": {
+        "l": { "min": 2, "max": 15 },
+        "w": {  "min": 2, "max": 15 },
+        "P": { "formula": "2*l+2*w" }
+      },
+      "question": "Determine the perimeter for a lawn that is {l} yards across and {w} yards deep. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({P}\\) yards is the perimeter of the lawn."
+    },
+    {
+      "id": "CM 2.4b Circumference",
+      "type": "template",
+      "objective": "Calculate the Circumference",
+      "difficulty": "basic",
+      "variables": {
+        "r": { "min": 2, "max": 15 },
+        "C": { "formula": "2*3.14159*r" }
+      },
+      "question": "Determine the circumference of a pool that has a radius of {r} meters. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({C}\\) meters is the circumference of the pool."
+    },
+    {
+      "id": "CM 2.5a Rectangle",
+      "type": "template",
+      "objective": "Calculate the Area of a Rectangle",
+      "difficulty": "basic",
+      "variables": {
+        "l": { "min": 2, "max": 15 },
+        "w": {  "min": 2, "max": 15 },
+        "A": { "formula": "l*w" }
+      },
+      "question": "Determine the area for a lawn that is {l} yards across and {w} yards wide. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({A}\\) square yards is the area of the lawn."
+    },
+     {
+      "id": "CM 2.5b Triangle",
+      "type": "template",
+      "objective": "Calculate the Area of a Triangle",
+      "difficulty": "basic",
+      "variables": {
+        "h": { "min": 2, "max": 15 },
+        "b": {  "min": 2, "max": 15 },
+        "A": { "formula": "0.5*b*h", "format": "decimal" }
+      },
+      "question": "Determine the area for a triangle-shaped corner of the lawn has a base of {b} meters across and perpendicular height of {h} meters. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({A}\\) square meters is the area of the triangular shape."
+    },
+      {
+      "id": "CM 2.5c Circle",
+      "type": "template",
+      "objective": "Calculate the Area of a Circle",
+      "difficulty": "basic",
+      "variables": {
+        "r": { "min": 2, "max": 15 },
+        "A": { "formula": "3.14159*r*r" }
+      },
+      "question": "Determine the area for a circular pool that has a radius of {r} meters. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({A}\\) square meters is the area of the circular pool."
+    },
+     {
+      "id": "CM 2.6a Rectangular Prism",
+      "type": "template",
+      "objective": "Calculate the Volume of a Rectangular Prism",
+      "difficulty": "basic",
+      "variables": {
+       "l": { "min": 2, "max": 15 },
+       "w": {  "min": 2, "max": 15 },
+       "h": {  "min": 2, "max": 15 },
+       "V": { "formula": "l*w*h" }
+      },
+      "question": "Determine the volume for a rectangular room that is {l} yards across, {w} yards deep, and {h} yards high. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({V}\\) cubic yards is the volume of the room."
+    },
+     {
+      "id": "CM 2.6b Triangular Prism",
+      "type": "template",
+      "objective": "Calculate the Volume of a Triangular Prism",
+      "difficulty": "basic",
+      "variables": {
+       "l": { "min": 2, "max": 15 },
+       "w": {  "min": 2, "max": 15 },
+       "h": {  "min": 2, "max": 15 },
+       "V": { "formula": "0.5*l*w*h" }
+      },
+      "question": "Determine the volume for a triangular prism door stop that is {l} cm across, {w} cm deep, and {h} cm high. Sketch a picture, label the dimensions, and include the units.",
+      "answer": "\\({V}\\) cubic centimeters is the volume of the door stop."
+    },
+     {
+      "id": "CM 2.6d Area Conversion",
+      "type": "template",
+      "objective": "Convert Area Units",
+      "difficulty": "basic",
+      "variables": {
+       "Ayd": { "min": 3, "max": 14, "exclude":[5,10]},
+       "Aft": { "formula": "Ayd*27" }
+      },
+      "question": "Convert the yard area that is {Ayd} square yards into square feet to buy the right amount of bark.",
+      "answer": "\\({Aft}\\) square feet is the area to be covered by the bark."
+    },
+    {
+      "id": "CM 2.6e Volume Conversion",
+      "type": "template",
+      "objective": "Convert Volume Units",
+      "difficulty": "basic",
+      "variables": {
+       "Vft": { "min": 131, "max": 197, "exclude":[150,160,170]},
+       "Vyd": { "formula": "Vft/27", "format": "decimal" }
+      },
+      "question": "Convert the volume of bark needed from {Vft} cubic feet to cubic yards, since large truck loads are measured in cubic yards.",
+      "answer": "\\({Vyd}\\) cubic yards is the volume of the bark."
+    }
   ]
 }
 }
