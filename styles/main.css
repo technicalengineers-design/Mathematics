@@ -244,12 +244,16 @@ button.small {
 }
 
 .print-assignment-header {
-  display: block;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  gap: 6pt;
   margin-bottom: 18pt;
   padding-bottom: 9pt;
   border-bottom: 1pt solid #333;
   font-size: 12pt;
   line-height: 1.4;
+  white-space: nowrap;
 }
 
 .assignment-title {
@@ -423,7 +427,7 @@ canvas {
   }
 
   .print-assignment-header {
-    display: block;
+    display: flex;
     page-break-after: avoid;
     font-size: 12pt;
   }

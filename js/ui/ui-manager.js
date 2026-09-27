@@ -668,19 +668,19 @@ class UIManager {
     const printHeader = document.createElement("div");
     printHeader.className = "print-assignment-header";
 
-    const courseHeading = document.createElement("div");
+    const courseHeading = document.createElement("span");
     courseHeading.className = "print-course-name";
     courseHeading.textContent = courseName;
     printHeader.appendChild(courseHeading);
 
-    const chapterHeading = document.createElement("div");
+    const chapterHeading = document.createElement("span");
     chapterHeading.className = "print-chapter-name";
-    chapterHeading.textContent = selectedChapters.join(", ");
+    chapterHeading.textContent = `| ${selectedChapters.join(", ")}`;
     printHeader.appendChild(chapterHeading);
 
-    const studentDetails = document.createElement("div");
+    const studentDetails = document.createElement("span");
     studentDetails.className = "print-student-details";
-    studentDetails.textContent = "Name: ____________    Date: ____________    Period: ____________";
+    studentDetails.textContent = "| Name: " + "_".repeat(36) + "  Date: " + "_".repeat(16) + "  Period: ____";
     printHeader.appendChild(studentDetails);
 
     output.appendChild(printHeader);
