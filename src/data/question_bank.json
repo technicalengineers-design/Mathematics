@@ -5325,10 +5325,11 @@
         "q_coordinate": { "formula": "p_coordinate + direction * (ratio_p + ratio_x) * unit_length" },
         "x_coordinate": { "formula": "p_coordinate + direction * ratio_p * unit_length" },
         "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
+        "total_parts": { "formula": "ratio_p + ratio_x" },
         "number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 92\" role=\"img\" aria-label=\"Blank number line with tick marks\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"30\" y1=\"52\" x2=\"630\" y2=\"52\" stroke=\"currentColor\" stroke-width=\"2\"/>' + Array.from({length: 21}, (_, index) => { const value = index * 2 - 20; const tickX = 30 + (value + 20) * 15; return '<line x1=\"' + tickX + '\" y1=\"46\" x2=\"' + tickX + '\" y2=\"58\" stroke=\"currentColor\"/><text x=\"' + tickX + '\" y=\"78\" text-anchor=\"middle\" font-size=\"11\">' + value + '</text>'; }).join('') + '</svg>'" }
       },
       "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_coordinate} and Q = {q_coordinate}, find the coordinate of X.<br>{number_line_svg}",
-      "answer": "The ratio has {ratio_p} + {ratio_x} = {ratio_p + ratio_x} total parts. Since \\( PQ = \\vert {q_coordinate} - ({p_coordinate}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_coordinate} \\)."
+      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_coordinate} - ({p_coordinate}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_coordinate} \\)."
     },
     {
       "id": "GEO 1-5b B",
@@ -5349,10 +5350,11 @@
         "p_display": { "formula": "p_coordinate.toFixed(2)" },
         "q_display": { "formula": "q_coordinate.toFixed(2)" },
         "x_display": { "formula": "x_coordinate.toFixed(2)" },
-        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" }
+        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
+        "total_parts": { "formula": "ratio_p + ratio_x" }
       },
       "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_display} and Q = {q_display}, find the coordinate of X. Draw a number line to show P, X, and Q.",
-      "answer": "The ratio has {ratio_p} + {ratio_x} = {ratio_p + ratio_x} total parts. Since \\( PQ = \\vert {q_display} - ({p_display}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_display} \\)."
+      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_display} - ({p_display}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_display} \\)."
     },
     {
       "id": "GEO 1-6a C",
@@ -5373,12 +5375,13 @@
         "a_display": { "formula": "a_coordinate.toFixed(2)" },
         "b_display": { "formula": "b_coordinate.toFixed(2)" },
         "c_display": { "formula": "c_coordinate.toFixed(2)" },
+        "answer_number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 105\" role=\"img\" aria-label=\"Answer number line showing A, C, and B with coordinates\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"35\" y1=\"48\" x2=\"625\" y2=\"48\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M35 48 L43 44 L43 52 Z M625 48 L617 44 L617 52 Z\" fill=\"currentColor\"/>' + [{name:'A',value:a_coordinate,label:a_display},{name:'C',value:c_coordinate,label:c_display},{name:'B',value:b_coordinate,label:b_display}].map(point => { const px = 55 + (point.value - graph_min) / graph_range * 550; return '<line x1=\"' + px + '\" y1=\"40\" x2=\"' + px + '\" y2=\"56\" stroke=\"currentColor\"/><circle cx=\"' + px + '\" cy=\"48\" r=\"4\" fill=\"currentColor\"/><text x=\"' + px + '\" y=\"24\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\">' + point.name + '</text><text x=\"' + px + '\" y=\"82\" text-anchor=\"middle\" font-size=\"11\">' + point.label + '</text>'; }).join('') + '</svg>'" },
         "graph_min": { "formula": "Math.min(a_coordinate, b_coordinate) - Math.abs(b_coordinate - a_coordinate) * 0.15" },
         "graph_range": { "formula": "Math.abs(b_coordinate - a_coordinate) * 1.3" },
         "number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 105\" role=\"img\" aria-label=\"Blank number line\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"35\" y1=\"48\" x2=\"625\" y2=\"48\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M35 48 L43 44 L43 52 Z M625 48 L617 44 L617 52 Z\" fill=\"currentColor\"/></svg>'" }
       },
       "question": "Find the coordinate of point C on segment \\( \\overline{AB} \\) when C is \\( \\frac{{fraction_numerator}}{{fraction_denominator}} \\) of the distance from A toward B. Use A = {a_display} and B = {b_display}.<br>{number_line_svg}",
-      "answer": "\\( C = A + \\frac{{fraction_numerator}}{{fraction_denominator}}(B-A) = {a_display} + \\frac{{fraction_numerator}}{{fraction_denominator}}({b_display} - ({a_display})) = {c_display} \\)."
+      "answer": "\\( C = A + \\frac{{fraction_numerator}}{{fraction_denominator}}(B-A) = {a_display} + \\frac{{fraction_numerator}}{{fraction_denominator}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
       "id": "GEO 1-6a B",
@@ -5399,12 +5402,15 @@
         "a_display": { "formula": "a_coordinate.toFixed(1)" },
         "b_display": { "formula": "b_coordinate.toFixed(1)" },
         "c_display": { "formula": "c_coordinate.toFixed(1)" },
+        "answer_graph_min": { "formula": "Math.min(a_coordinate, b_coordinate) - Math.abs(b_coordinate - a_coordinate) * 0.15" },
+        "answer_graph_range": { "formula": "Math.abs(b_coordinate - a_coordinate) * 1.3" },
+        "answer_number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 105\" role=\"img\" aria-label=\"Answer number line showing A, C, and B with coordinates\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"35\" y1=\"48\" x2=\"625\" y2=\"48\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M35 48 L43 44 L43 52 Z M625 48 L617 44 L617 52 Z\" fill=\"currentColor\"/>' + [{name:'A',value:a_coordinate,label:a_display},{name:'C',value:c_coordinate,label:c_display},{name:'B',value:b_coordinate,label:b_display}].map(point => { const px = 55 + (point.value - answer_graph_min) / answer_graph_range * 550; return '<line x1=\"' + px + '\" y1=\"40\" x2=\"' + px + '\" y2=\"56\" stroke=\"currentColor\"/><circle cx=\"' + px + '\" cy=\"48\" r=\"4\" fill=\"currentColor\"/><text x=\"' + px + '\" y=\"24\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\">' + point.name + '</text><text x=\"' + px + '\" y=\"82\" text-anchor=\"middle\" font-size=\"11\">' + point.label + '</text>'; }).join('') + '</svg>'" },
         "fraction_text": { "formula": "fraction_numerator + '/' + fraction_denominator" },
         "total_span": { "formula": "Math.abs(b_coordinate - a_coordinate)" },
         "blank_number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 100\" role=\"img\" aria-label=\"Blank number line for graphing points A, C, and B\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"30\" y1=\"45\" x2=\"630\" y2=\"45\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M30 45 L38 41 L38 49 Z M630 45 L622 41 L622 49 Z\" fill=\"currentColor\"/>' + Array.from({length: 9}, (_, index) => { const value = index * 5 - 20; const tickX = 30 + (value + 20) * 15; return '<line x1=\"' + tickX + '\" y1=\"39\" x2=\"' + tickX + '\" y2=\"51\" stroke=\"currentColor\"/><text x=\"' + tickX + '\" y=\"72\" text-anchor=\"middle\" font-size=\"11\">' + value + '</text>'; }).join('') + '</svg>'" }
       },
       "question": "Find the coordinate of point C on segment \\( \\overline{AB} \\) when C is \\( \\frac{{fraction_numerator}}{{fraction_denominator}} \\) of the distance from A toward B. Use A = {a_display} and B = {b_display}. Graph A, C, and B on the blank number line.<br>{blank_number_line_svg}",
-      "answer": "\\( C = A + \\frac{{fraction_numerator}}{{fraction_denominator}}(B-A) = {a_display} + \\frac{{fraction_numerator}}{{fraction_denominator}}({b_display} - ({a_display})) = {c_display} \\)."
+      "answer": "\\( C = A + \\frac{{fraction_numerator}}{{fraction_denominator}}(B-A) = {a_display} + \\frac{{fraction_numerator}}{{fraction_denominator}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
       "id": "GEO 1-6b C",
@@ -5427,10 +5433,13 @@
         "c_display": { "formula": "c_coordinate.toFixed(2)" },
         "ratio_text": { "formula": "ratio_ac + ':' + ratio_cb" },
         "total_parts": { "formula": "ratio_ac + ratio_cb" },
+        "answer_graph_min": { "formula": "Math.min(a_coordinate, b_coordinate) - Math.abs(b_coordinate - a_coordinate) * 0.15" },
+        "answer_graph_range": { "formula": "Math.abs(b_coordinate - a_coordinate) * 1.3" },
+        "answer_number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 105\" role=\"img\" aria-label=\"Answer number line showing A, C, and B with coordinates\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"35\" y1=\"48\" x2=\"625\" y2=\"48\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M35 48 L43 44 L43 52 Z M625 48 L617 44 L617 52 Z\" fill=\"currentColor\"/>' + [{name:'A',value:a_coordinate,label:a_display},{name:'C',value:c_coordinate,label:c_display},{name:'B',value:b_coordinate,label:b_display}].map(point => { const px = 55 + (point.value - answer_graph_min) / answer_graph_range * 550; return '<line x1=\"' + px + '\" y1=\"40\" x2=\"' + px + '\" y2=\"56\" stroke=\"currentColor\"/><circle cx=\"' + px + '\" cy=\"48\" r=\"4\" fill=\"currentColor\"/><text x=\"' + px + '\" y=\"24\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\">' + point.name + '</text><text x=\"' + px + '\" y=\"82\" text-anchor=\"middle\" font-size=\"11\">' + point.label + '</text>'; }).join('') + '</svg>'" },
         "number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 105\" role=\"img\" aria-label=\"Blank number line\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"35\" y1=\"48\" x2=\"625\" y2=\"48\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M35 48 L43 44 L43 52 Z M625 48 L617 44 L617 52 Z\" fill=\"currentColor\"/></svg>'" }
       },
       "question": "Find the coordinate of point C on segment \\( \\overline{AB} \\) when C is the fractional distance from A to B given by \\( \\overline{AC} : \\overline{CB} = {ratio_text} \\). Use A = {a_display} and B = {b_display}.<br>{number_line_svg}",
-      "answer": "The ratio contains {total_parts} total parts, and AC is {ratio_ac} of them. Therefore, \\( C = A + \\frac{{ratio_ac}}{{total_parts}}(B-A) = {a_display} + \\frac{{ratio_ac}}{{total_parts}}({b_display} - ({a_display})) = {c_display} \\)."
+      "answer": "The ratio contains {total_parts} total parts, and AC is {ratio_ac} of them. Therefore, \\( C = A + \\frac{{ratio_ac}}{{total_parts}}(B-A) = {a_display} + \\frac{{ratio_ac}}{{total_parts}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
       "id": "GEO 1-6b B",
@@ -5453,10 +5462,13 @@
         "c_display": { "formula": "c_coordinate.toFixed(1)" },
         "ratio_text": { "formula": "ratio_ac + ':' + ratio_cb" },
         "total_parts": { "formula": "ratio_ac + ratio_cb" },
+        "answer_graph_min": { "formula": "Math.min(a_coordinate, b_coordinate) - Math.abs(b_coordinate - a_coordinate) * 0.15" },
+        "answer_graph_range": { "formula": "Math.abs(b_coordinate - a_coordinate) * 1.3" },
+        "answer_number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 105\" role=\"img\" aria-label=\"Answer number line showing A, C, and B with coordinates\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"35\" y1=\"48\" x2=\"625\" y2=\"48\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M35 48 L43 44 L43 52 Z M625 48 L617 44 L617 52 Z\" fill=\"currentColor\"/>' + [{name:'A',value:a_coordinate,label:a_display},{name:'C',value:c_coordinate,label:c_display},{name:'B',value:b_coordinate,label:b_display}].map(point => { const px = 55 + (point.value - answer_graph_min) / answer_graph_range * 550; return '<line x1=\"' + px + '\" y1=\"40\" x2=\"' + px + '\" y2=\"56\" stroke=\"currentColor\"/><circle cx=\"' + px + '\" cy=\"48\" r=\"4\" fill=\"currentColor\"/><text x=\"' + px + '\" y=\"24\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\">' + point.name + '</text><text x=\"' + px + '\" y=\"82\" text-anchor=\"middle\" font-size=\"11\">' + point.label + '</text>'; }).join('') + '</svg>'" },
         "blank_number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 100\" role=\"img\" aria-label=\"Blank number line for graphing points A, B, and C\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"30\" y1=\"45\" x2=\"630\" y2=\"45\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M30 45 L38 41 L38 49 Z M630 45 L622 41 L622 49 Z\" fill=\"currentColor\"/>' + Array.from({length: 9}, (_, index) => { const value = index * 5 - 20; const tickX = 30 + (value + 20) * 15; return '<line x1=\"' + tickX + '\" y1=\"39\" x2=\"' + tickX + '\" y2=\"51\" stroke=\"currentColor\"/><text x=\"' + tickX + '\" y=\"72\" text-anchor=\"middle\" font-size=\"11\">' + value + '</text>'; }).join('') + '</svg>'" }
       },
       "question": "Find the coordinate of point C on segment \\( \\overline{AB} \\) when C divides AB so that \\( \\overline{AC} : \\overline{CB} = {ratio_text} \\). Use A = {a_display} and B = {b_display}. Graph points A, C, and B on the blank number line.<br>{blank_number_line_svg}",
-      "answer": "The ratio contains {total_parts} total parts, and AC is {ratio_ac} of them. Therefore, \\( C = A + \\frac{{ratio_ac}}{{total_parts}}(B-A) = {a_display} + \\frac{{ratio_ac}}{{total_parts}}({b_display} - ({a_display})) = {c_display} \\)."
+      "answer": "The ratio contains {total_parts} total parts, and AC is {ratio_ac} of them. Therefore, \\( C = A + \\frac{{ratio_ac}}{{total_parts}}(B-A) = {a_display} + \\frac{{ratio_ac}}{{total_parts}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
       "id": "GEO 1-6c C",
@@ -5478,7 +5490,7 @@
         "coordinate_plane_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Coordinate plane showing labeled points A and B\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 21}, (_, index) => { const p = 30 + index * 25; const color = index === 10 ? '#222' : '#d8d8d8'; const width = index === 10 ? 2 : 1; return '<line x1=\"' + p + '\" y1=\"20\" x2=\"' + p + '\" y2=\"530\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"30\" y1=\"' + p + '\" x2=\"540\" y2=\"' + p + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>'; }).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length: 11}, (_, index) => { const n = (index - 5) * 2; const x = 285 + n * 25; const y = 280 - n * 25; return '<text x=\"' + x + '\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">' + n + '</text><text x=\"273\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-size=\"10\">' + n + '</text>'; }).join('') + [{name: 'A', x: a_x, y: a_y}, {name: 'B', x: b_x, y: b_y}].map(point => { const px = 285 + point.x * 25; const py = 280 - point.y * 25; return '<line x1=\"' + (285 + a_x * 25) + '\" y1=\"' + (280 - a_y * 25) + '\" x2=\"' + (285 + b_x * 25) + '\" y2=\"' + (280 - b_y * 25) + '\" stroke=\"#3178a8\" stroke-width=\"2\"/><circle cx=\"' + px + '\" cy=\"' + py + '\" r=\"5\" fill=\"#c0392b\"/><text x=\"' + (px + 8) + '\" y=\"' + (py - 8) + '\" font-size=\"13\" font-weight=\"bold\">' + point.name + '</text>'; }).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'" }
       },
       "question": "Point C lies on segment \\( \\overline{AB} \\) and divides it so that \\( \\overline{AC} : \\overline{CB} = {fraction_numerator}:{fraction_remaining} \\). Find the coordinates of C. A = \\( ({a_x}, {a_y}) \\), B = \\( ({b_x}, {b_y}) \\).<br>{coordinate_plane_svg}",
-      "answer": "Apply the fraction to each coordinate: \\( C = (\\frac{{a_x} \\cdot {fraction_denominator} + {fraction_numerator}({b_x}-{a_x})}{{fraction_denominator}}, \\frac{{a_y} \\cdot {fraction_denominator} + {fraction_numerator}({b_y}-{a_y})}{{fraction_denominator}}) \\."
+      "answer": "Apply the fraction to each coordinate: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) \\)."
     },
     {
       "id": "GEO 1-6c B",
@@ -5500,7 +5512,7 @@
         "blank_coordinate_plane_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Blank coordinate plane for graphing points A and B\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 21}, (_, index) => { const p = 30 + index * 25; const color = index === 10 ? '#222' : '#d8d8d8'; const width = index === 10 ? 2 : 1; return '<line x1=\"' + p + '\" y1=\"20\" x2=\"' + p + '\" y2=\"530\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"30\" y1=\"' + p + '\" x2=\"540\" y2=\"' + p + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>'; }).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length: 11}, (_, index) => { const n = (index - 5) * 2; const x = 285 + n * 25; const y = 280 - n * 25; return '<text x=\"' + x + '\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">' + n + '</text><text x=\"273\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-size=\"10\">' + n + '</text>'; }).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'" }
       },
       "question": "Point C lies on segment \\( \\overline{AB} \\) and divides it so that \\( \\overline{AC} : \\overline{CB} = {fraction_numerator}:{fraction_remaining} \\). Find the coordinates of C. A = \\( ({a_x}, {a_y}) \\), B = \\( ({b_x}, {b_y}) \\). Plot and label points A and B on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
-      "answer": "Apply the fraction to each coordinate: \\( C = (\\frac{{a_x} \\cdot {fraction_denominator} + {fraction_numerator}({b_x}-{a_x})}{{fraction_denominator}}, \\frac{{a_y} \\cdot {fraction_denominator} + {fraction_numerator}({b_y}-{a_y})}{{fraction_denominator}}) \\."
+      "answer": "Apply the fraction to each coordinate: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) \\)."
     },
     {
       "id": "GEO 1-7a C1",
@@ -5533,7 +5545,7 @@
         "rs_length": { "formula": "right_coefficient * x - right_constant" }
       },
       "question": "What is the length of \\( \\overline{RS} \\), when R is the midpoint of \\( \\overline{PS} \\)? Use \\( \\overline{PR} = {left_coefficient}x + {left_constant} \\) and \\( \\overline{RS} = {right_coefficient}x - {right_constant} \\). Sketch the number line and label the points.",
-      "answer": "Since R is the midpoint of \\( \\overline{PS} \\), \\( \\overline{PR} \\cong \\overline{RS} \\). Set their lengths equal: \\( {left_coefficient}x + {left_constant} = {right_coefficient}x - {right_constant} \\), so \\( x = {x} \\). Then \\( \\overline{RS} = {right_coefficient}({x}) - {right_constant} = {rs_length} \\."
+      "answer": "Since R is the midpoint of \\( \\overline{PS} \\), \\( \\overline{PR} \\cong \\overline{RS} \\). Set their lengths equal: \\( {left_coefficient}x + {left_constant} = {right_coefficient}x - {right_constant} \\), so \\( x = {x} \\). Then \\( \\overline{RS} = {right_coefficient}({x}) - {right_constant} = {rs_length} \\)."
     },
     {
       "id": "GEO 1-7b C",
