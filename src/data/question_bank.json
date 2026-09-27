@@ -5142,7 +5142,7 @@
     }
   ]
 },
-"Geometry (under construction, not yet in use)": {
+"Geometry": {
   "1 Tools for Geometry": [
     {
       "id": "GEO 1-2 C",
@@ -5235,19 +5235,6 @@
       },
       "question": "Use the following information to find x. Write the value of the variable.<br><br>{middle_point} is between {left_point} and {right_point}.<br>\\( \\overline{{{left_point}{middle_point}}} = {left_coefficient}x + {left_constant} \\)<br>\\( \\overline{{{middle_point}{right_point}}} = {right_coefficient}x - {right_constant} \\)<br>\\( \\overline{{{left_point}{middle_point}}} \\cong \\overline{{{middle_point}{right_point}}} \\)<br><br>x = ______",
       "answer": "Congruent segments have equal lengths, so \\( {left_coefficient}x + {left_constant} = {right_coefficient}x - {right_constant} \\). Solving gives \\( x = {x} \\)."
-    },
-    
-    {
-      "id": "CM 2.6e Volume Conversion",
-      "type": "template",
-      "objective": "Convert Volume Units",
-      "difficulty": "basic",
-      "variables": {
-       "Vft": { "min": 131, "max": 197, "exclude":[150,160,170]},
-       "Vyd": { "formula": "Vft/27", "format": "decimal" }
-      },
-      "question": "Convert the volume of bark needed from {Vft} cubic feet to cubic yards, since large truck loads are measured in cubic yards.",
-      "answer": "\\({Vyd}\\) cubic yards is the volume of the bark."
     }
   ]
 }

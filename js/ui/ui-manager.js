@@ -662,6 +662,29 @@ class UIManager {
     answerTitle.textContent = "Answer Key";
     answerDiv.appendChild(answerTitle);
 
+    const selectedCourse = document.getElementById("courseSelect").value;
+    const courseName = selectedCourse.replace(/\s*\([^)]*\)\s*$/, "").trim();
+    const selectedChapters = this.getSelectedChapters();
+    const printHeader = document.createElement("div");
+    printHeader.className = "print-assignment-header";
+
+    const courseHeading = document.createElement("div");
+    courseHeading.className = "print-course-name";
+    courseHeading.textContent = courseName;
+    printHeader.appendChild(courseHeading);
+
+    const chapterHeading = document.createElement("div");
+    chapterHeading.className = "print-chapter-name";
+    chapterHeading.textContent = selectedChapters.join(", ");
+    printHeader.appendChild(chapterHeading);
+
+    const studentDetails = document.createElement("div");
+    studentDetails.className = "print-student-details";
+    studentDetails.textContent = "Name: ____________    Date: ____________    Period: ____________";
+    printHeader.appendChild(studentDetails);
+
+    output.appendChild(printHeader);
+
     // Add custom title
     const titleDiv = document.createElement("div");
     titleDiv.className = "assignment-title";

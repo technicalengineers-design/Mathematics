@@ -237,16 +237,23 @@ button.small {
 
 
 .columns-2 .assignment-title,
+.columns-2 .print-assignment-header,
 .columns-2 .assignment-controls,
 .columns-2 .answers {
   grid-column: 1 / -1;
 }
 
+.print-assignment-header {
+  display: block;
+  margin-bottom: 18pt;
+  padding-bottom: 9pt;
+  border-bottom: 1pt solid #333;
+  font-size: 12pt;
+  line-height: 1.4;
+}
+
 .assignment-title {
-  text-align: center;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #2c3e50;
+  display: none;
 }
 
 .assignment-title h2 {
@@ -412,9 +419,24 @@ canvas {
   }
   
   .assignment-title {
+    display: none;
+  }
+
+  .print-assignment-header {
+    display: block;
     page-break-after: avoid;
-    margin-bottom: 18pt;
-    padding-bottom: 9pt;
+    font-size: 12pt;
+  }
+
+  .print-course-name,
+  .print-chapter-name,
+  .print-student-details {
+    font-size: 12pt;
+  }
+
+  .print-course-name,
+  .print-chapter-name {
+    font-weight: 600;
   }
   
   .question {
