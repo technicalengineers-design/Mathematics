@@ -5164,7 +5164,7 @@
         "answer_two": { "formula": "shape_answers[item_two_index]" },
         "answer_three": { "formula": "shape_answers[item_three_index]" }
       },
-      "question": "Match each item to the appropriate geometric shape from the option list.<br><br><strong>Items</strong><ol><li>{item_one}</li><li>{item_two}</li><li>{item_three}</li></ol><strong>Options</strong><ol><li>point</li><li>line</li><li>plane</li><li>line segment</li><li>ray</li></ol>",
+      "question": "Match each item to the appropriate geometric shape from the option list.<br><br><strong>Items</strong><ol><li>{item_one}</li><li>{item_two}</li><li>{item_three}</li></ol><strong>Options</strong><ol type='A'><li>point</li><li>line</li><li>plane</li><li>line segment</li><li>ray</li></ol>",
       "answer": "1. {answer_one}<br>2. {answer_two}<br>3. {answer_three}"
     },
     {
@@ -5213,7 +5213,7 @@
         "requested_segment": { "formula": "requested_index === 0 ? left_point + right_point : requested_index === 1 ? middle_point + right_point : left_point + middle_point" },
         "requested_length": { "formula": "requested_index === 0 ? whole_segment_length : requested_index === 1 ? right_segment_length : left_segment_length" }
       },
-      "question": "What is the length of \\( \\overline{{{requested_segment}}} \\)? Use the following information: {middle_point} is between {left_point} and {right_point}, \\( \\overline{{{left_point}{middle_point}}} = 9 + x \\), \\( \\overline{{{middle_point}{right_point}}} = 13x \\), and \\( \\overline{{{left_point}{right_point}}} = 23 \\).",
+      "question": "What is the length of \\( \\overline{{{requested_segment}}} \\)? Use the following information: {middle_point} is between {left_point} and {right_point}, \\( \\overline{{{left_point}{middle_point}}} = 9 + x \\), \\( \\overline{{{middle_point}{right_point}}} = 13x \\), and \\( \\overline{{{left_point}{right_point}}} = 23 \\). Sketch this scenario.",
       "answer": "Since {middle_point} is between the endpoints, \\( (9 + x) + 13x = 23 \\), so \\( x = {x} \\). Therefore, \\( \\overline{{{left_point}{middle_point}}} = {left_segment_length} \\), \\( \\overline{{{middle_point}{right_point}}} = {right_segment_length} \\), and \\( \\overline{{{left_point}{right_point}}} = {whole_segment_length} \\). The requested length \\( \\overline{{{requested_segment}}} \\) is {requested_length}."
     },
     {
@@ -5233,7 +5233,7 @@
         "right_constant": { "min": 2, "max": 15 },
         "x": { "formula": "(left_constant + right_constant) / (right_coefficient - left_coefficient)", "format": "auto" }
       },
-      "question": "Use the following information to find x. Write the value of the variable.<br><br>{middle_point} is between {left_point} and {right_point}.<br>\\( \\overline{{{left_point}{middle_point}}} = {left_coefficient}x + {left_constant} \\)<br>\\( \\overline{{{middle_point}{right_point}}} = {right_coefficient}x - {right_constant} \\)<br>\\( \\overline{{{left_point}{middle_point}}} \\cong \\overline{{{middle_point}{right_point}}} \\)<br><br>x = ______",
+      "question": "Use the following information to find x. Write the value of the variable. Sketch this scenario.  .   . {middle_point} is between {left_point} and {right_point}.<br>\\( \\overline{{{left_point}{middle_point}}} = {left_coefficient}x + {left_constant} \\)  .  .   .  \\( \\overline{{{middle_point}{right_point}}} = {right_coefficient}x - {right_constant} \\)  .  .   .  \\( \\overline{{{left_point}{middle_point}}} \\cong \\overline{{{middle_point}{right_point}}} \\)  .  .   .  x = ______",
       "answer": "Congruent segments have equal lengths, so \\( {left_coefficient}x + {left_constant} = {right_coefficient}x - {right_constant} \\). Solving gives \\( x = {x} \\)."
     },
     {
@@ -5257,7 +5257,7 @@
         "distance_two": { "formula": "Math.abs(point_values[chosen_point] - point_values[other_point_two])" },
         "distance_three": { "formula": "Math.abs(point_values[chosen_point] - point_values[other_point_three])" }
       },
-      "question": "Draw a number line showing A, B, C, and D at their randomized locations:<br>{number_line_svg}<br>List the distance from point {chosen_point} to each of the other points. Use segment notation when defining the length of each segment.",
+      "question": "The number line shows A, B, C, and D:<br>{number_line_svg}<br>List the distance from point {chosen_point} to each of the other points. Use segment notation when defining the length of each segment.",
       "answer": "\\( \\overline{{{segment_one}}} \\) = {distance_one}<br>\\( \\overline{{{segment_two}}} \\) = {distance_two}<br>\\( \\overline{{{segment_three}}} \\) = {distance_three}"
     },
     {
@@ -5266,10 +5266,10 @@
       "objective": "Find Distance Between Two Points",
       "difficulty": "basic",
       "variables": {
-        "x_a": { "min": -8, "max": 8 },
-        "y_a": { "min": -8, "max": 8 },
-        "x_b": { "min": -8, "max": 8 },
-        "y_b": { "min": -8, "max": 8 },
+        "x_a": { "min": -8, "max": 8, "exclude": [0] },
+        "y_a": { "min": -8, "max": 8, "exclude": [0] },
+        "x_b": { "min": -8, "max": 8, "exclude": [0] },
+        "y_b": { "min": -8, "max": 8, "exclude": [0] },
         "distance": { "formula": "Math.sqrt((x_b - x_a) ** 2 + (y_b - y_a) ** 2)", "format": "auto" }
       },
       "question": "Find the distance between \\( A({x_a}, {y_a}) \\) and \\( B({x_b}, {y_b}) \\).",
