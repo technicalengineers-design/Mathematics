@@ -5587,6 +5587,23 @@
       "question": "Find the coordinates of endpoint A on segment \\( \\overline{AC} \\), given that B = \\( ({b_x}, {b_y}) \\) is the midpoint of \\( \\overline{AC} \\) and C = \\( ({c_x}, {c_y}) \\). Sketch points A, B, and C on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
       "answer": "Since B is the midpoint, \\( b_x = \\frac{a_x+c_x}{2} \\) and \\( b_y = \\frac{a_y+c_y}{2} \\). Solving each equation for the missing coordinate gives \\( a_x = 2b_x-c_x \\) and \\( a_y = 2b_y-c_y \\). Therefore, \\( A = (a_x,a_y) = (2b_x-c_x, 2b_y-c_y) = ({a_x}, {a_y}) \\)."
     }
-  ]
+  ],
+  "2 Angle Relationships": [
+    {
+  "id": "GEO 2-2 C",
+  "type": "template",
+  "objective": "Find the measure of supplementary angles",
+  "difficulty": "basic",
+  "variables": {
+    "multipliers": { "formula": "[1, 2, 3, 4, 5, 8, 9, 11, 14, 19, 29, 35, 44, 59, 89, 179]" },
+    "multiplier_index": { "formula": "Math.floor(Math.random() * multipliers.length)" },
+    "n": { "formula": "multipliers[multiplier_index]" },
+    "smaller_angle": { "formula": "180 / (n + 1)" },
+    "larger_angle": { "formula": "180 - smaller_angle" }
+  },
+  "question": "Two angles are supplementary. The measure of the larger angle is {n} times greater than the measure of the smaller angle. What is the measure of the smaller angle?",
+  "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are supplementary, their sum is \\( 180^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 180 \\) or \\( \\left({n} + 1\\right)x = 180 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
+}
+]
 }
 }
