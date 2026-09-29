@@ -5589,8 +5589,9 @@
     }
   ],
   "2 Angles and Geometric Figures": [
+
 {
-  "id": "GEO 2-1 C",
+  "id": "GEO 2-1 C1",
   "type": "template",
   "objective": "Identify Intersecting Line Relationships, Vertical Angles, Linear Pairs, and Opposite Rays",
   "difficulty": "basic",
@@ -5607,10 +5608,56 @@
     "lines_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 300\" role=\"img\" aria-label=\"Three intersecting lines at a single vertex\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}</style><line x1=\"50\" y1=\"150\" x2=\"350\" y2=\"150\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"80\" y1=\"250\" x2=\"320\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"80\" y1=\"50\" x2=\"320\" y2=\"250\" stroke=\"#222\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"150\" r=\"3.5\" class=\"dot\"/><circle cx=\"100\" cy=\"150\" r=\"3\" class=\"dot\"/><circle cx=\"300\" cy=\"150\" r=\"3\" class=\"dot\"/><circle cx=\"120\" cy=\"216.7\" r=\"3\" class=\"dot\"/><circle cx=\"280\" cy=\"83.3\" r=\"3\" class=\"dot\"/><circle cx=\"120\" cy=\"83.3\" r=\"3\" class=\"dot\"/><circle cx=\"280\" cy=\"216.7\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"135\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"100\" y=\"135\" text-anchor=\"middle\" class=\"lbl\">' + p1 + '</text><text x=\"120\" y=\"201.7\" text-anchor=\"middle\" class=\"lbl\">' + p2 + '</text><text x=\"120\" y=\"68.3\" text-anchor=\"middle\" class=\"lbl\">' + p3 + '</text><text x=\"300\" y=\"135\" text-anchor=\"middle\" class=\"lbl\">' + p4 + '</text><text x=\"280\" y=\"68.3\" text-anchor=\"middle\" class=\"lbl\">' + p5 + '</text><text x=\"280\" y=\"201.7\" text-anchor=\"middle\" class=\"lbl\">' + p6 + '</text></svg>'" }
   },
   "question": "Use the geometric diagram below to answer the following questions.<br>{lines_svg}<br><br><b>A.</b> Write the name of the angle formed by ray \\( \\overrightarrow{{v}{p1}} \\) and ray \\( \\overrightarrow{{v}{p6}} \\).<br><b>B.</b> Write two vertical angles shown in the diagram and state their relationship.<br><b>C.</b> Write two angles that form a linear pair.<br><b>D.</b> Write two opposite rays.",
-  "answer": "<b>A.</b> The angle formed by ray \\( \\overrightarrow{{v}{p1}} \\) and ray \\( \\overrightarrow{{v}{p6}} \\) is named <b>\\( \\angle {p1}{v}{p6} \\)</b> (or \\( \\angle {p6}{v}{p1} \\)).<br><br><b>B.</b> Vertical angles are opposite each other across an intersection and are equal in measure. Example pairs include <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p4}{v}{p6} \\)</b>, where \\( \\angle {p1}{v}{p3} = \\angle {p4}{v}{p6} \\). (Other valid pairs include \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p4}{v}{p5} \\), or \\( \\angle {p3}{v}{p5} \\) and \\( \\angle {p2}{v}{p6} \\)).<br><br><b>C.</b> A linear pair consists of adjacent angles whose non-common sides form a straight line. An example pair is <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p3}{v}{p4} \\)</b>. (Any two adjacent angles along a straight line, such as \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p2}{v}{p4} \\), are correct).<br><br><b>D.</b> Opposite rays share a common endpoint and extend in completely opposite directions along the same line. Valid pairs from this diagram are: <b>\\( \\overrightarrow{{v}{p1}} \\) and \\( \\overrightarrow{{v}{p4}} \\)</b>, \\( \\overrightarrow{{v}{p2}} \\) and \\( \\overrightarrow{{v}{p5}} \\) or \\( \\overrightarrow{{v}{p3}} \\) and \\( \\overrightarrow{{v}{p6}} \\)."
+  "answer": "Refer to the diagram for verification:<br>{lines_svg}<br><br><b>A.</b> The angle formed by ray \\( \\overrightarrow{{v}{p1}} \\) and ray \\( \\overrightarrow{{v}{p6}} \\) is named <b>\\( \\angle {p1}{v}{p6} \\)</b> (or \\( \\angle {p6}{v}{p1} \\)).<br><br><b>B.</b> Vertical angles are opposite each other across an intersection and are equal in measure. Example pairs include <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p4}{v}{p6} \\)</b>, where \\( \\angle {p1}{v}{p3} = \\angle {p4}{v}{p6} \\). (Other valid pairs include \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p4}{v}{p5} \\), or \\( \\angle {p3}{v}{p5} \\) and \\( \\angle {p2}{v}{p6} \\)).<br><br><b>C.</b> A linear pair consists of adjacent angles whose non-common sides form a straight line. An example pair is <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p3}{v}{p4} \\)</b>. (Any two adjacent angles along a straight line, such as \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p2}{v}{p4} \\), are correct).<br><br><b>D.</b> Opposite rays share a common endpoint and extend in completely opposite directions along the same line. Valid pairs from this diagram are: <b>\\( \\overrightarrow{{v}{p1}} \\) and \\( \\overrightarrow{{v}{p4}} \\)</b>, \\( \\overrightarrow{{v}{p2}} \\) and \\( \\overrightarrow{{v}{p5}} \\) or \\( \\overrightarrow{{v}{p3}} \\) and \\( \\overrightarrow{{v}{p6}} \\)."
+},
+{
+  "id": "GEO 2-1 C2",
+  "type": "template",
+  "objective": "Solve for a variable using angle bisectors and opposite rays",
+  "difficulty": "basic",
+  "variables": {
+    "pool": { "formula": "Array.from({length: 12}, (_, i) => i + 4).flatMap(x => [2, 3, 4, 5, 6, 7, 8].filter(k => 2 * k * x > 50 && 2 * k * x < 160).map(k => ({x, k})))" },
+    "index": { "formula": "Math.floor(Math.random() * pool.length)" },
+    "x_val": { "formula": "pool[index].x" },
+    "k": { "formula": "pool[index].k" },
+    "angle_aec": { "formula": "2 * k * x_val" },
+    "angle_aeb": { "formula": "k * x_val" },
+    "rad_c": { "formula": "Math.PI * angle_aec / 180" },
+    "rad_b": { "formula": "Math.PI * angle_aeb / 180" },
+    "cx": { "formula": "Math.round(200 + 130 * Math.cos(rad_c))" },
+    "cy": { "formula": "Math.round(200 - 130 * Math.sin(rad_c))" },
+    "bx": { "formula": "Math.round(200 + 130 * Math.cos(rad_b))" },
+    "by": { "formula": "Math.round(200 - 130 * Math.sin(rad_b))" },
+    "clx": { "formula": "Math.round(200 + 150 * Math.cos(rad_c))" },
+    "cly": { "formula": "Math.round(200 - 150 * Math.sin(rad_c)) + 5" },
+    "blx": { "formula": "Math.round(200 + 150 * Math.cos(rad_b))" },
+    "bly": { "formula": "Math.round(200 - 150 * Math.sin(rad_b)) + 5" },
+    "bisector_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 260\" role=\"img\" aria-label=\"Ray EB bisecting angle AEC over opposite rays ED and EA\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}</style><line x1=\"40\" y1=\"200\" x2=\"360\" y2=\"200\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"200\" x2=\"' + bx + '\" y2=\"' + by + '\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"200\" x2=\"' + cx + '\" y2=\"' + cy + '\" stroke=\"#222\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"200\" r=\"3.5\" class=\"dot\"/><circle cx=\"70\" cy=\"200\" r=\"3\" class=\"dot\"/><circle cx=\"330\" cy=\"200\" r=\"3\" class=\"dot\"/><circle cx=\"' + bx + '\" cy=\"' + by + '\" r=\"3\" class=\"dot\"/><circle cx=\"' + cx + '\" cy=\"' + cy + '\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"220\" text-anchor=\"middle\" class=\"lbl\">E</text><text x=\"70\" y=\"185\" text-anchor=\"middle\" class=\"lbl\">D</text><text x=\"330\" y=\"185\" text-anchor=\"middle\" class=\"lbl\">A</text><text x=\"' + blx + '\" y=\"' + bly + '\" text-anchor=\"middle\" class=\"lbl\">B</text><text x=\"' + clx + '\" y=\"' + cly + '\" text-anchor=\"middle\" class=\"lbl\">C</text></svg>'" }
+  },
+  "question": "Use the geometric diagram below to solve the problem.<br>{bisector_svg}<br><br>In the figure, \\( \\overrightarrow{ED} \\) and \\( \\overrightarrow{EA} \\) are opposite rays, and \\( \\overrightarrow{EB} \\) bisects \\( \\angle AEC \\).<br><br>If \\( m\\angle AEC = {angle_aec}^\\circ \\) and \\( m\\angle AEB = {k}x^\\circ \\), then what is the value of \\( x \\)?",
+  "answer": "Refer to the diagram for verification:<br>{bisector_svg}<br><br>Since \\( \\overrightarrow{EB} \\) bisects \\( \\angle AEC \\), it divides the angle into two equal halves. Therefore, the measure of \\( \\angle AEB \\) is exactly half the measure of \\( \\angle AEC \\):<br>\\( m\\angle AEB = \\frac{m\\angle AEC}{2} \\)<br>\\( m\\angle AEB = \\frac{{angle_aec}^\\circ}{2} = {angle_aeb}^\\circ \\)<br><br>We are given that \\( m\\angle AEB = {k}x^\\circ \\). Set up the equation to solve for \\( x \\):<br>\\( {k}x = {angle_aeb} \\)<br>\\( x = \\frac{{angle_aeb}}{{k}} \\)<br><b>\\( x = {x_val} \\)</b>"
+},
+{
+  "id": "GEO 2-2 C1",
+  "type": "template",
+  "objective": "Apply the definitions of complementary and congruent angles to find angle measures",
+  "difficulty": "basic",
+  "variables": {
+    "labels_pool": { "formula": "['A', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z']" },
+    "shuffled": { "formula": "labels_pool.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" },
+    "v": { "formula": "'E'" },
+    "pA": { "formula": "shuffled[0]" },
+    "pB": { "formula": "shuffled[1]" },
+    "pC": { "formula": "shuffled[2]" },
+    "pD": { "formula": "shuffled[3]" },
+    "question_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 240\" role=\"img\" aria-label=\"Four rays originating from a single vertex forming multiple angles\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}</style><line x1=\"200\" y1=\"190\" x2=\"340\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"299\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"200\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"101\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"190\" r=\"3.5\" class=\"dot\"/><circle cx=\"320\" cy=\"190\" r=\"3\" class=\"dot\"/><circle cx=\"285\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"200\" cy=\"70\" r=\"3\" class=\"dot\"/><circle cx=\"115\" cy=\"105\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"210\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"320\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pA + '</text><text x=\"300\" y=\"105\" text-anchor=\"start\" class=\"lbl\">' + pB + '</text><text x=\"200\" y=\"40\" text-anchor=\"middle\" class=\"lbl\">' + pC + '</text><text x=\"100\" y=\"105\" text-anchor=\"end\" class=\"lbl\">' + pD + '</text></svg>'" },
+    "answer_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 240\" role=\"img\" aria-label=\"Four rays originating from a single vertex with congruence markings on two angles\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}.mark{fill:none;stroke:#d9534f;stroke-width:2;}</style><line x1=\"200\" y1=\"190\" x2=\"340\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"299\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"200\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"101\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><path d=\"M 235 190 A 35 35 0 0 0 224.7 165.3\" class=\"mark\"/><line x1=\"225\" y1=\"182\" x2=\"235\" y2=\"174\" stroke=\"#d9534f\" stroke-width=\"2\"/><path d=\"M 200 155 A 35 35 0 0 0 175.3 165.3\" class=\"mark\"/><line x1=\"183\" y1=\"156\" x2=\"191\" y2=\"166\" stroke=\"#d9534f\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"190\" r=\"3.5\" class=\"dot\"/><circle cx=\"320\" cy=\"190\" r=\"3\" class=\"dot\"/><circle cx=\"285\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"200\" cy=\"70\" r=\"3\" class=\"dot\"/><circle cx=\"115\" cy=\"105\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"210\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"320\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pA + '</text><text x=\"300\" y=\"105\" text-anchor=\"start\" class=\"lbl\">' + pB + '</text><text x=\"200\" y=\"40\" text-anchor=\"middle\" class=\"lbl\">' + pC + '</text><text x=\"100\" y=\"105\" text-anchor=\"end\" class=\"lbl\">' + pD + '</text></svg>'" }
+  },
+  "question": "Use the geometric diagram below to solve the problem.<br>{question_svg}<br><br>In the figure, \\( \\angle {pD}{v}{pC} \\) and \\( \\angle {pA}{v}{pB} \\) are complementary and congruent. Mark the two angles as congruent on the diagram and list the value of each. (drawing not to scale)",
+  "answer": "Here is the diagram with the matching congruence tick marks indicating that the two angles are equal:<br>{answer_svg}<br><br><b>Step 1: Apply definitions</b><br>• <b>Complementary angles</b> add up to exactly \\( 90^\\circ \\).<br>• <b>Congruent angles</b> have completely equal measures, so \\( m\\angle {pD}{v}{pC} = m\\angle {pA}{v}{pB} \\).<br><br><b>Step 2: Calculate the values</b><br>Let the measure of each angle be represented by \\( x \\):<br>\\( x + x = 90^\\circ \\)<br>\\( 2x = 90^\\circ \\)<br>\\( x = 45^\\circ \\)<br><br>Therefore, the value of each angle is:<br>• <b>\\( m\\angle {pD}{v}{pC} = 45^\\circ \\)</b><br>• <b>\\( m\\angle {pA}{v}{pB} = 45^\\circ \\)</b>"
 },
  {
-  "id": "GEO 2-2 C",
+  "id": "GEO 2-2 C2a",
   "type": "template",
   "objective": "Find the measure of supplementary angles",
   "difficulty": "basic",
@@ -5623,7 +5670,23 @@
   },
   "question": "Two angles are supplementary. The measure of the larger angle is {n} times greater than the measure of the smaller angle. What is the measure of the smaller angle?",
   "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are supplementary, their sum is \\( 180^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 180 \\) or \\( \\left({n} + 1\\right)x = 180 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
+},
+{
+  "id": "GEO 2-2 C2b",
+  "type": "template",
+  "objective": "Find the measure of complimentary angles",
+  "difficulty": "basic",
+  "variables": {
+    "multipliers": { "formula": "[1, 2, 3, 4, 5, 8, 9, 11, 14, 19, 29, 35, 44, 59, 89, 179]" },
+    "multiplier_index": { "formula": "Math.floor(Math.random() * multipliers.length)" },
+    "n": { "formula": "multipliers[multiplier_index]" },
+    "smaller_angle": { "formula": "90 / (n + 1)" },
+    "larger_angle": { "formula": "90 - smaller_angle" }
+  },
+  "question": "Two angles are complimentary. The measure of the larger angle is {n} times greater than the measure of the smaller angle. What is the measure of the smaller angle?",
+  "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are complimenary, their sum is \\( 90^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 90 \\) or \\( \\left({n} + 1\\right)x = 90 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
 }
+
 
 ]
 }
