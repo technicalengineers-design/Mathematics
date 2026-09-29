@@ -5588,8 +5588,28 @@
       "answer": "Since B is the midpoint, \\( b_x = \\frac{a_x+c_x}{2} \\) and \\( b_y = \\frac{a_y+c_y}{2} \\). Solving each equation for the missing coordinate gives \\( a_x = 2b_x-c_x \\) and \\( a_y = 2b_y-c_y \\). Therefore, \\( A = (a_x,a_y) = (2b_x-c_x, 2b_y-c_y) = ({a_x}, {a_y}) \\)."
     }
   ],
-  "2 Angle Relationships": [
-    {
+  "2 Angles and Geometric Figures": [
+{
+  "id": "GEO 2-1 C",
+  "type": "template",
+  "objective": "Identify Intersecting Line Relationships, Vertical Angles, Linear Pairs, and Opposite Rays",
+  "difficulty": "basic",
+  "variables": {
+    "labels_pool": { "formula": "['A', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'R', 'S', 'T', 'W', 'Z']" },
+    "shuffled_labels": { "formula": "labels_pool.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" },
+    "v": { "formula": "'B'" },
+    "p1": { "formula": "shuffled_labels[0]" },
+    "p2": { "formula": "shuffled_labels[1]" },
+    "p3": { "formula": "shuffled_labels[2]" },
+    "p4": { "formula": "shuffled_labels[3]" },
+    "p5": { "formula": "shuffled_labels[4]" },
+    "p6": { "formula": "shuffled_labels[5]" },
+    "lines_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 300\" role=\"img\" aria-label=\"Three intersecting lines at a single vertex\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}</style><line x1=\"50\" y1=\"150\" x2=\"350\" y2=\"150\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"80\" y1=\"250\" x2=\"320\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"80\" y1=\"50\" x2=\"320\" y2=\"250\" stroke=\"#222\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"150\" r=\"3.5\" class=\"dot\"/><circle cx=\"100\" cy=\"150\" r=\"3\" class=\"dot\"/><circle cx=\"300\" cy=\"150\" r=\"3\" class=\"dot\"/><circle cx=\"120\" cy=\"216.7\" r=\"3\" class=\"dot\"/><circle cx=\"280\" cy=\"83.3\" r=\"3\" class=\"dot\"/><circle cx=\"120\" cy=\"83.3\" r=\"3\" class=\"dot\"/><circle cx=\"280\" cy=\"216.7\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"135\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"100\" y=\"135\" text-anchor=\"middle\" class=\"lbl\">' + p1 + '</text><text x=\"120\" y=\"201.7\" text-anchor=\"middle\" class=\"lbl\">' + p2 + '</text><text x=\"120\" y=\"68.3\" text-anchor=\"middle\" class=\"lbl\">' + p3 + '</text><text x=\"300\" y=\"135\" text-anchor=\"middle\" class=\"lbl\">' + p4 + '</text><text x=\"280\" y=\"68.3\" text-anchor=\"middle\" class=\"lbl\">' + p5 + '</text><text x=\"280\" y=\"201.7\" text-anchor=\"middle\" class=\"lbl\">' + p6 + '</text></svg>'" }
+  },
+  "question": "Use the geometric diagram below to answer the following questions.<br>{lines_svg}<br><br><b>A.</b> Write the name of the angle formed by ray \\( \\overrightarrow{{v}{p1}} \\) and ray \\( \\overrightarrow{{v}{p6}} \\).<br><b>B.</b> Write two vertical angles shown in the diagram and state their relationship.<br><b>C.</b> Write two angles that form a linear pair.<br><b>D.</b> Write two opposite rays.",
+  "answer": "<b>A.</b> The angle formed by ray \\( \\overrightarrow{{v}{p1}} \\) and ray \\( \\overrightarrow{{v}{p6}} \\) is named <b>\\( \\angle {p1}{v}{p6} \\)</b> (or \\( \\angle {p6}{v}{p1} \\)).<br><br><b>B.</b> Vertical angles are opposite each other across an intersection and are equal in measure. Example pairs include <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p4}{v}{p6} \\)</b>, where \\( \\angle {p1}{v}{p3} = \\angle {p4}{v}{p6} \\). (Other valid pairs include \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p4}{v}{p5} \\), or \\( \\angle {p3}{v}{p5} \\) and \\( \\angle {p2}{v}{p6} \\)).<br><br><b>C.</b> A linear pair consists of adjacent angles whose non-common sides form a straight line. An example pair is <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p3}{v}{p4} \\)</b>. (Any two adjacent angles along a straight line, such as \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p2}{v}{p4} \\), are correct).<br><br><b>D.</b> Opposite rays share a common endpoint and extend in completely opposite directions along the same line. Valid pairs from this diagram are: <b>\\( \\overrightarrow{{v}{p1}} \\) and \\( \\overrightarrow{{v}{p4}} \\)</b>, \\( \\overrightarrow{{v}{p2}} \\) and \\( \\overrightarrow{{v}{p5}} \\) or \\( \\overrightarrow{{v}{p3}} \\) and \\( \\overrightarrow{{v}{p6}} \\)."
+},
+ {
   "id": "GEO 2-2 C",
   "type": "template",
   "objective": "Find the measure of supplementary angles",
@@ -5604,6 +5624,7 @@
   "question": "Two angles are supplementary. The measure of the larger angle is {n} times greater than the measure of the smaller angle. What is the measure of the smaller angle?",
   "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are supplementary, their sum is \\( 180^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 180 \\) or \\( \\left({n} + 1\\right)x = 180 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
 }
+
 ]
 }
 }
