@@ -5178,7 +5178,7 @@
         "distance_dc": { "formula": "distance_ce + distance_ed" },
         "total_string": { "formula": "distance_ed + distance_dc" }
       },
-      "question": "Three pins are inserted into a cork mat at points C, E, and D, in that order along a straight line. The distance from C to E is {distance_ce} cm, and the distance from E to D is {distance_ed} cm. How much string is needed to reach from the pin at E to the pin at D, then all the way back to the pin at C?",
+      "question": "Three pins are inserted into a cork mat at points C, E, and D, in that order along a straight line. The distance from C to E is {distance_ce} cm, and the distance from E to D is {distance_ed} cm. How much string is needed to reach from the pin at E to the pin at D, then all the way back to the pin at C? Draw a diagram to illustrate this scenario.",
       "answer": "From E to D: {distance_ed} cm. From D to C: {distance_dc} cm. Total string needed: {total_string} cm."
     },
     {
@@ -5192,7 +5192,7 @@
         "distance_ac_sum": { "formula": "distance_ab + distance_bc" },
         "distance_ac_difference": { "formula": "Math.abs(distance_ab - distance_bc)" }
       },
-      "question": "A, B, and C are collinear. What is a possible distance between A and C if the distance between A and B is {distance_ab} units and the distance between B and C is {distance_bc} units? What is the other possible distance?",
+      "question": "A, B, and C are collinear. What is a possible distance between A and C if the distance between A and B is {distance_ab} units and the distance between B and C is {distance_bc} units? What is the other possible distance? Draw an illustration of these two scenarios.",
       "answer": "The possible distances between A and C are {distance_ac_sum} units (when B is between A and C) and {distance_ac_difference} units (when A or C is between the other two points)."
     },
     {
@@ -5276,7 +5276,7 @@
       "answer": "Using the distance formula, \\( d = \\sqrt{({x_b} - {x_a})^2 + ({y_b} - {y_a})^2} = {distance} \\)."
     },
     {
-      "id": "GEO 1-5a C",
+      "id": "GEO 1-5a C1",
       "type": "template",
       "objective": "Find a Fraction of the Distance on a Number Line",
       "difficulty": "basic",
@@ -5292,7 +5292,7 @@
       "answer": "\\( X = P + \\frac{4}{5}(Q - P) = {p_coordinate} + \\frac{4}{5}({q_coordinate} - ({p_coordinate})) = {x_coordinate} \\)."
     },
     {
-      "id": "GEO 1-5a B",
+      "id": "GEO 1-5a C2",
       "type": "template",
       "objective": "Find a Fraction of the Distance on a Number Line",
       "difficulty": "basic",
@@ -5312,7 +5312,7 @@
       "answer": "\\( X = P + \\frac{4}{5}(Q - P) = {p_display} + \\frac{4}{5}({q_display} - ({p_display})) = {x_display} \\)."
     },
     {
-      "id": "GEO 1-5b C",
+      "id": "GEO 1-5b C1",
       "type": "template",
       "objective": "Locate a Point Using a Segment Ratio",
       "difficulty": "basic",
@@ -5332,7 +5332,7 @@
       "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_coordinate} - ({p_coordinate}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_coordinate} \\)."
     },
     {
-      "id": "GEO 1-5b B",
+      "id": "GEO 1-5b C2",
       "type": "template",
       "objective": "Locate a Point Using a Segment Ratio",
       "difficulty": "basic",
@@ -5357,7 +5357,7 @@
       "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_display} - ({p_display}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_display} \\)."
     },
     {
-      "id": "GEO 1-6a C",
+      "id": "GEO 1-5a C3",
       "type": "template",
       "objective": "Find a Coordinate Using a Fraction of a Segment",
       "difficulty": "basic",
@@ -5384,7 +5384,7 @@
       "answer": "\\( C = A + \\frac{{fraction_numerator}}{{fraction_denominator}}(B-A) = {a_display} + \\frac{{fraction_numerator}}{{fraction_denominator}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
-      "id": "GEO 1-6a B",
+      "id": "GEO 1-5a C4",
       "type": "template",
       "objective": "Find a Coordinate Using a Fraction of a Segment",
       "difficulty": "basic",
@@ -5413,7 +5413,7 @@
       "answer": "\\( C = A + \\frac{{fraction_numerator}}{{fraction_denominator}}(B-A) = {a_display} + \\frac{{fraction_numerator}}{{fraction_denominator}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
-      "id": "GEO 1-6b C",
+      "id": "GEO 1-5b C3",
       "type": "template",
       "objective": "Find a Coordinate Using a Segment Ratio",
       "difficulty": "basic",
@@ -5442,7 +5442,7 @@
       "answer": "The ratio contains {total_parts} total parts, and AC is {ratio_ac} of them. Therefore, \\( C = A + \\frac{{ratio_ac}}{{total_parts}}(B-A) = {a_display} + \\frac{{ratio_ac}}{{total_parts}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
-      "id": "GEO 1-6b B",
+      "id": "GEO 1-5b C4",
       "type": "template",
       "objective": "Find a Coordinate Using a Segment Ratio",
       "difficulty": "basic",
@@ -5471,13 +5471,56 @@
       "answer": "The ratio contains {total_parts} total parts, and AC is {ratio_ac} of them. Therefore, \\( C = A + \\frac{{ratio_ac}}{{total_parts}}(B-A) = {a_display} + \\frac{{ratio_ac}}{{total_parts}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
-      "id": "GEO 1-6c C",
+  "id": "GEO 1-6a C1",
+  "type": "template",
+  "objective": "Find a Coordinate Using a Fractional Distance in the Coordinate Plane",
+  "difficulty": "basic",
+  "variables": {
+    "a_x": { "min": -8, "max": 8 },
+    "a_y": { "min": -8, "max": 8, "exclude": ["a_x"] },
+    "offsets": { "formula": "Array.from({length: 121}, (_, index) => ({x: index % 11 - 5, y: Math.floor(index / 11) - 5})).filter(offset => offset.x !== 0 || offset.y !== 0)" },
+    "offset_index": { "formula": "Math.floor(Math.random() * offsets.length)" },
+    "b_x": { "formula": "a_x + offsets[offset_index].x" },
+    "b_y": { "formula": "a_y + offsets[offset_index].y" },
+    "fraction_denominator": { "min": 2, "max": 5 },
+    "fraction_numerator": { "formula": "Math.floor(Math.random() * (fraction_denominator - 1)) + 1" },
+    "fraction_remaining": { "formula": "fraction_denominator - fraction_numerator" },
+    "c_x": { "formula": "(a_x * fraction_denominator + fraction_numerator * (b_x - a_x)) / fraction_denominator", "format": "fraction" },
+    "c_y": { "formula": "(a_y * fraction_denominator + fraction_numerator * (b_y - a_y)) / fraction_denominator", "format": "fraction" }
+  },
+  "question": "Point $A$ has coordinates $({{a_x}}, {{a_y}})$ and Point $B$ has coordinates $({{b_x}}, {{b_y}})$. Find the coordinates of Point $C$ that lies on segment $AB$ such that the distance from $A$ to $C$ is $\\frac{{{fraction_numerator}}}{{{fraction_denominator}}}$ of the total distance from $A$ to $B$.",
+  "answer": "({{c_x}}, {{c_y}})"
+},
+{
+  "id": "GEO 1-6a C2",
+  "type": "template",
+  "objective": "Find a Coordinate Using a Fractional Distance in the Coordinate Plane",
+  "difficulty": "basic",
+  "variables": {
+    "a_x": { "min": -8, "max": 8 },
+    "a_y": { "min": -8, "max": 8, "exclude":["a_x"] },
+    "offsets": { "formula": "Array.from({length: 121}, (_, index) => ({x: index % 11 - 5, y: Math.floor(index / 11) - 5})).filter(offset => offset.x !== 0 || offset.y !== 0)" },
+    "offset_index": { "formula": "Math.floor(Math.random() * offsets.length)" },
+    "b_x": { "formula": "a_x + offsets[offset_index].x" },
+    "b_y": { "formula": "a_y + offsets[offset_index].y" },
+    "fraction_denominator": { "min": 2, "max": 5 },
+    "fraction_numerator": { "formula": "Math.floor(Math.random() * (fraction_denominator - 1)) + 1" },
+    "fraction_remaining": { "formula": "fraction_denominator - fraction_numerator" },
+    "c_x": { "formula": "(a_x * fraction_denominator + fraction_numerator * (b_x - a_x)) / fraction_denominator", "format": "fraction" },
+    "c_y": { "formula": "(a_y * fraction_denominator + fraction_numerator * (b_y - a_y)) / fraction_denominator", "format": "fraction" },
+    "blank_coordinate_plane_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Blank coordinate plane for graphing points A and B\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 21}, (_, index) => { const p = 30 + index * 25; const color = index === 10 ? '#222' : '#d8d8d8'; const width = index === 10 ? 2 : 1; return '<line x1=\"' + p + '\" y1=\"20\" x2=\"' + p + '\" y2=\"530\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"30\" y1=\"' + p + '\" x2=\"540\" y2=\"' + p + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>'; }).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length: 11}, (_, index) => { const n = (index - 5) * 2; const x = 285 + n * 25; const y = 280 - n * 25; return '<text x=\"' + x + '\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">' + n + '</text><text x=\"273\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-size=\"10\">' + n + '</text>'; }).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'" }
+  },
+  "question": "Point $C$ lies on segment $\\overline{AB}$ such that the distance from $A$ to $C$ is $\\frac{{fraction_numerator}}}{{fraction_denominator}}}$ of the total distance from $A$ to $B$. Find the coordinates of $C$, given $A = ({a_x}, {a_y})$ and $B = ({b_x}, {b_y})$. Plot and label points $A$ and $B$ on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
+  "answer": "Apply the fraction to each coordinate component: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) \\)."
+},
+    {
+      "id": "GEO 1-6b C1",
       "type": "template",
       "objective": "Find a Coordinate Using a Segment Ratio in the Coordinate Plane",
       "difficulty": "basic",
       "variables": {
-        "a_x": { "min": -4, "max": 4 },
-        "a_y": { "min": -4, "max": 4 },
+        "a_x": { "min": -8, "max": 8 },
+        "a_y": { "min": -8, "max": 8, "exclude":["a_x"] },
         "offsets": { "formula": "Array.from({length: 121}, (_, index) => ({x: index % 11 - 5, y: Math.floor(index / 11) - 5})).filter(offset => offset.x !== 0 || offset.y !== 0)" },
         "offset_index": { "formula": "Math.floor(Math.random() * offsets.length)" },
         "b_x": { "formula": "a_x + offsets[offset_index].x" },
@@ -5493,13 +5536,13 @@
       "answer": "Apply the fraction to each coordinate: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) \\)."
     },
     {
-      "id": "GEO 1-6c B",
+      "id": "GEO 1-6b C2",
       "type": "template",
       "objective": "Find a Coordinate Using a Segment Ratio in the Coordinate Plane",
       "difficulty": "basic",
       "variables": {
-        "a_x": { "min": -4, "max": 4 },
-        "a_y": { "min": -4, "max": 4 },
+        "a_x": { "min": -8, "max": 8 },
+        "a_y": { "min": -8, "max": 8, "exclude":["a_x"] },
         "offsets": { "formula": "Array.from({length: 121}, (_, index) => ({x: index % 11 - 5, y: Math.floor(index / 11) - 5})).filter(offset => offset.x !== 0 || offset.y !== 0)" },
         "offset_index": { "formula": "Math.floor(Math.random() * offsets.length)" },
         "b_x": { "formula": "a_x + offsets[offset_index].x" },
