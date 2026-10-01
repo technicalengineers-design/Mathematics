@@ -424,23 +424,35 @@
       "question": "Evaluate: \\( \\left| x - | \\frac{{a}}{{c}} - y | \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
       "answer": "\\({result}\\)"
     },
-    {
-      "id": "ALG1-1.5-I2",
-      "type": "template",
-      "objective": "Evaluate Absolute Value Expressions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "x": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "c": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "y": { "min": -5, "max": 5, "exclude": [0,1,-1,"c"] },
-        "z": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "f": { "min": -5, "max": 5, "exclude": [0,1,-1,"z"] },
-        "result": { "formula": "abs(a - x) + abs(c/y + z/f)", "format": "auto" }
-      },
-      "question": "Evaluate: \\( \\left|{a} - x\\right| + \\left|\\frac{{c}}{ y } + \\frac{{z}}{{f}}\\right| \\), when \\(x = {x}, y = {y}\\).",
-      "answer": "\\({result}\\)"
-    }
+{
+  "id": "ALG1-1.5-I2",
+  "type": "template",
+  "objective": "Evaluate Absolute Value Expressions",
+  "difficulty": "intermediate",
+  "variables": {
+    "a_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+    "x_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+    "c_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+    "y_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+    "z_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+    "f_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+    "a": { "formula": "'' + a_num" },
+    "x": { "formula": "'' + x_num" },
+    "c": { "formula": "'' + c_num" },
+    "y": { "formula": "'' + y_num" },
+    "z": { "formula": "'' + z_num" },
+    "f": { "formula": "'' + f_num" },
+    "diff": { "formula": "'' + Number((a_num - x_num).toFixed(2))" },
+    "abs_diff": { "formula": "'' + Math.abs(a_num - x_num)" },
+    "frac1_val": { "formula": "'' + Number((c_num / y_num).toFixed(4))" },
+    "frac2_val": { "formula": "'' + Number((z_num / f_num).toFixed(4))" },
+    "frac_sum": { "formula": "'' + Number(((c_num / y_num) + (z_num / f_num)).toFixed(4))" },
+    "abs_frac_sum": { "formula": "'' + Number(Math.abs((c_num / y_num) + (z_num / f_num)).toFixed(2))" },
+    "result": { "formula": "'' + Number((Math.abs(a_num - x_num) + Math.abs((c_num / y_num) + (z_num / f_num))).toFixed(2))" }
+  },
+  "question": "Evaluate the expression: |a - x| + |c/y + z/f| <br><br>Given values: a = {{a}} x = {{x}} c = {{c}} y = {{y}} z = {{z}} f = {{f}} <br><br>*(Round your final answer to two decimal places if necessary)*",
+  "answer": "Step 1: Substitute the given values into the expression:<br>|{{a}} - ({{x}})| + |{{c}}/{{y}} + {{z}}/{{f}}|<br><br>Step 2: Simplify the values inside the absolute value bars:<br>First part: |{{a}} - ({{x}})| = |{{diff}}| = {{abs_diff}}<br>Second part: |{{c}}/{{y}} + {{z}}/{{f}}| = |{{frac1_val}} + ({{frac2_val}})| = |{{frac_sum}}| = {{abs_frac_sum}}<br><br>Step 3: Add the simplified absolute values together:<br>{{abs_diff}} + {{abs_frac_sum}} = {{result}}"
+}
   ],
   "2 Equations": [
     {
