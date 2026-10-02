@@ -50,6 +50,62 @@ h1 {
   margin-bottom: 8px; 
 }
 
+.course-picker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.course-picker-label {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.course-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course-option {
+  padding: 8px 14px;
+  border: 1px solid #9aa9b2;
+  border-radius: 0;
+  margin-left: -1px;
+  background: #fff;
+  color: #34434c;
+  font-weight: 600;
+}
+
+.course-option:first-child {
+  border-radius: 6px 0 0 6px;
+  margin-left: 0;
+}
+
+.course-option:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.course-option:hover {
+  background: #e8f2f7;
+  color: #1f5f7a;
+}
+
+.course-option.is-selected,
+.course-option.is-selected:hover {
+  position: relative;
+  z-index: 1;
+  background: #287a70;
+  color: #fff;
+  border-color: #287a70;
+}
+
+.course-option:focus-visible {
+  position: relative;
+  z-index: 2;
+  outline: 3px solid rgba(40, 122, 112, 0.35);
+  outline-offset: 2px;
+}
+
 select, input[type="number"], button { 
   padding: 8px 12px; 
   border: 1px solid #ddd;
@@ -375,6 +431,11 @@ canvas {
   .row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .course-picker {
+    align-items: flex-start;
+    flex-direction: column;
   }
   
   #chapterContainer {

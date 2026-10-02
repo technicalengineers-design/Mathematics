@@ -31,8 +31,11 @@
   <!-- Builder Controls -->
   <div id="builderSection" class="section">
     <div class="row">
-      <label for="courseSelect">Course</label>
-      <select id="courseSelect"></select>
+      <div class="course-picker">
+        <span class="course-picker-label" id="coursePickerLabel">Course</span>
+        <div id="courseList" class="course-list" role="group" aria-labelledby="coursePickerLabel"></div>
+        <select id="courseSelect" class="hidden" aria-hidden="true" tabindex="-1"></select>
+      </div>
       <label for="difficultySelect">Difficulty</label>
       <select id="difficultySelect"><option value="">(any)</option></select>
     </div>

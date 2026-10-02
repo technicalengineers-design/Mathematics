@@ -26,6 +26,16 @@ class UIManager {
   bindEvents() {
     // Course selection
     document.getElementById("courseSelect").addEventListener("change", () => {
+      this.updateCourseButtons();
+      this.onCourseChange();
+    });
+
+    document.getElementById("courseList").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-course-value]");
+      if (!button) return;
+
+      const courseSelect = document.getElementById("courseSelect");
+      courseSelect.value = button.dataset.courseValue;
       this.onCourseChange();
     });
 
@@ -90,6 +100,7 @@ class UIManager {
    * Handle course selection change
    */
   onCourseChange() {
+    this.updateCourseButtons();
     const course = document.getElementById("courseSelect").value;
     this.buildChapterCheckboxes(course);
     this.populateObjectives();
@@ -102,12 +113,21 @@ class UIManager {
    */
   populateCourses() {
     const courseSelect = document.getElementById("courseSelect");
+    const courseList = document.getElementById("courseList");
     courseSelect.innerHTML = "";
+    courseList.innerHTML = "";
 
     const courses = window.QuestionGenerator.getCourses();
+    const preferredCourseOrder = ["Algebra 1", "Geometry", "Consumer Math"];
+    const orderedCourses = [...courses].sort((left, right) => {
+      const leftIndex = preferredCourseOrder.indexOf(left);
+      const rightIndex = preferredCourseOrder.indexOf(right);
+      return (leftIndex < 0 ? preferredCourseOrder.length : leftIndex) -
+        (rightIndex < 0 ? preferredCourseOrder.length : rightIndex);
+    });
     
     if (courses.length === 0) {
-      courseSelect.innerHTML = "<option value=''>No courses available</option>";
+      courseList.innerHTML = "<span class='muted'>No courses available</span>";
       return;
     }
 
@@ -118,18 +138,35 @@ class UIManager {
     courseSelect.appendChild(defaultOption);
 
     // Add course options
-    courses.forEach(course => {
+    orderedCourses.forEach(course => {
       const option = document.createElement("option");
       option.value = course;
       option.textContent = course;
       courseSelect.appendChild(option);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "course-option";
+      button.dataset.courseValue = course;
+      button.textContent = course.startsWith("Algebra") ? "Algebra" : course;
+      button.setAttribute("aria-pressed", "false");
+      courseList.appendChild(button);
     });
 
     // Auto-select first course
-    if (courses.length > 0) {
-      courseSelect.value = courses[0];
+    if (orderedCourses.length > 0) {
+      courseSelect.value = orderedCourses[0];
       this.onCourseChange();
     }
+  }
+
+  updateCourseButtons() {
+    const selectedCourse = document.getElementById("courseSelect").value;
+    document.querySelectorAll("#courseList [data-course-value]").forEach(button => {
+      const isSelected = button.dataset.courseValue === selectedCourse;
+      button.classList.toggle("is-selected", isSelected);
+      button.setAttribute("aria-pressed", String(isSelected));
+    });
   }
 
   /**
