@@ -5508,8 +5508,8 @@
     "c_x": { "formula": "(a_x * fraction_denominator + fraction_numerator * (b_x - a_x)) / fraction_denominator", "format": "fraction" },
     "c_y": { "formula": "(a_y * fraction_denominator + fraction_numerator * (b_y - a_y)) / fraction_denominator", "format": "fraction" }
   },
-  "question": "Point $A$ has coordinates $({{a_x}}, {{a_y}})$ and Point $B$ has coordinates $({{b_x}}, {{b_y}})$. Find the coordinates of Point $C$ that lies on segment $AB$ such that the distance from $A$ to $C$ is $\\frac{{{fraction_numerator}}}{{{fraction_denominator}}}$ of the total distance from $A$ to $B$.",
-  "answer": "({{c_x}}, {{c_y}})"
+  "question": "Point A has coordinates \\( ({a_x}, {a_y}) \\), and point B has coordinates \\( ({b_x}, {b_y}) \\. Find the coordinates of point C on segment \\( \\overline{AB} \\) such that the distance from A to C is \\( \\frac{{{fraction_numerator}}}{{{fraction_denominator}}} \\) of the distance from A to B.",
+  "answer": "\\( C = ({a_x} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_x} - {a_x}), {a_y} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_y} - {a_y})) = ({c_x}, {c_y}) \\)"
 },
 {
   "id": "GEO 1-6a C v2",
@@ -5530,8 +5530,8 @@
     "c_y": { "formula": "(a_y * fraction_denominator + fraction_numerator * (b_y - a_y)) / fraction_denominator", "format": "fraction" },
     "blank_coordinate_plane_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Blank coordinate plane for graphing points A and B\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 21}, (_, index) => { const p = 30 + index * 25; const color = index === 10 ? '#222' : '#d8d8d8'; const width = index === 10 ? 2 : 1; return '<line x1=\"' + p + '\" y1=\"20\" x2=\"' + p + '\" y2=\"530\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"30\" y1=\"' + p + '\" x2=\"540\" y2=\"' + p + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>'; }).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length: 11}, (_, index) => { const n = (index - 5) * 2; const x = 285 + n * 25; const y = 280 - n * 25; return '<text x=\"' + x + '\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">' + n + '</text><text x=\"273\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-size=\"10\">' + n + '</text>'; }).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'" }
   },
-  "question": "Point $C$ lies on segment $\\overline{AB}$ such that the distance from $A$ to $C$ is $\\frac{{fraction_numerator}}}{{fraction_denominator}}}$ of the total distance from $A$ to $B$. Find the coordinates of $C$, given $A = ({a_x}, {a_y})$ and $B = ({b_x}, {b_y})$. Plot and label points $A$ and $B$ on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
-  "answer": "Apply the fraction to each coordinate component: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) \\)."
+  "question": "Point C lies on segment \\( \\overline{AB} \\) such that the distance from A to C is \\( \\frac{{{fraction_numerator}}}{{{fraction_denominator}}} \\) of the total distance from A to B. Find the coordinates of C, given \\( A = ({a_x}, {a_y}) \\) and \\( B = ({b_x}, {b_y}) \\). Plot and label points A and B on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
+  "answer": "Apply the fraction to each coordinate component: \\( C = ({a_x} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_x} - {a_x}), {a_y} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_y} - {a_y})) = ({c_x}, {c_y}) \\)."
 },
     {
       "id": "GEO 1-6b C v1",
