@@ -5508,7 +5508,7 @@
     "c_x": { "formula": "(a_x * fraction_denominator + fraction_numerator * (b_x - a_x)) / fraction_denominator", "format": "fraction" },
     "c_y": { "formula": "(a_y * fraction_denominator + fraction_numerator * (b_y - a_y)) / fraction_denominator", "format": "fraction" }
   },
-  "question": "Point A has coordinates \\( ({a_x}, {a_y}) \\), and point B has coordinates \\( ({b_x}, {b_y}) \\. Find the coordinates of point C on segment \\( \\overline{AB} \\) such that the distance from A to C is \\( \\frac{{{fraction_numerator}}}{{{fraction_denominator}}} \\) of the distance from A to B.",
+  "question": "Point A has coordinates \\( ({a_x}, {a_y}) \\), and point B has coordinates \\( ({b_x}, {b_y}) \\). Find the coordinates of point C on segment \\( \\overline{AB} \\) such that the distance from A to C is \\( \\frac{{{fraction_numerator}}}{{{fraction_denominator}}} \\) of the distance from A to B.",
   "answer": "\\( C = ({a_x} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_x} - {a_x}), {a_y} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_y} - {a_y})) = ({c_x}, {c_y}) \\)"
 },
 {
