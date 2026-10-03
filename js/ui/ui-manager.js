@@ -728,10 +728,10 @@ class UIManager {
     titleDiv.innerHTML = `<h2 id="displayTitle">${this.customTitle}</h2>`;
     output.appendChild(titleDiv);
 
-    const workDivider = document.createElement("div");
-    workDivider.className = "work-divider";
-    workDivider.innerHTML = "<span>Clearly show all work</span>";
-    output.appendChild(workDivider);
+    const footerNote = document.createElement("div");
+    footerNote.className = "assignment-footer-note";
+    footerNote.textContent = "Clearly show all work.";
+    output.appendChild(footerNote);
 
     // Re-bind the toggle event after creating the button
     setTimeout(() => {

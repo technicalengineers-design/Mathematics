@@ -218,7 +218,6 @@ button.small {
   margin: 0;
   background: white;
   border-radius: 8px;
-  border-left: 4px solid #3498db;
 }
 
 .question.question--graph-footprint-reserved {
@@ -299,6 +298,17 @@ button.small {
   grid-column: 1 / -1;
 }
 
+.assignment-footer-note {
+  position: fixed;
+  left: 15pt;
+  bottom: 12pt;
+  font-size: 10pt;
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: 0.02em;
+  z-index: 1;
+}
+
 .print-assignment-header {
   display: flex;
   align-items: baseline;
@@ -321,29 +331,6 @@ button.small {
   font-size: 24px;
   font-weight: 400;
   margin: 0;
-}
-
-.work-divider {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 18px 0 12px;
-  color: #2c3e50;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.work-divider::before,
-.work-divider::after {
-  content: "";
-  flex: 1 1 auto;
-  height: 1px;
-  background: #333;
-}
-
-.work-divider span {
-  white-space: nowrap;
 }
 
 .assignment-controls {
