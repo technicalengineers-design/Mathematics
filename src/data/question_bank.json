@@ -5810,6 +5810,31 @@
   "answer": "1. **Find Side Length $AB$:** Use the distance formula between $A({{a_x}}, {{a_y}})$ and $B({{b_x}}, {{b_y}})$. <br> $AB = \\sqrt{({{b_x}} - {{a_x}})^2 + ({{b_y}} - {{a_y}})^2} = \\sqrt{({{v1_x}})^2 + ({{v1_y}})^2} = \\sqrt{ {v1_x * v1_x + v1_y * v1_y} } = {{side1}}$. <br><br>2. **Find Side Length $AD$:** Use the distance formula between $A({{a_x}}, {{a_y}})$ and $D({{d_x}}, {{d_y}})$. <br> $AD = \\sqrt{({{d_x}} - {{a_x}})^2 + ({{d_y}} - {{a_y}})^2} = \\sqrt{({{v2_x}})^2 + ({{v2_y}})^2} = \\sqrt{ {v2_x * v2_x + v2_y * v2_y} } = {{side2}}$. <br><br>3. **Calculate Perimeter:** $P = 2(AB + AD) = 2({{side1}} + {{side2}}) = {{perimeter}}$. <br><br>4. **Calculate Area:** $A = AB \\cdot AD = {{side1}} \\cdot {{side2}} = {{area}}$."
 },
 {
+  "id": "GEO 2-4a C",
+  "type": "template",
+  "objective": "Rotate a Triangle About the Origin by 90, 180, or 270 Degrees and Sketch",
+  "difficulty": "hard",
+  "variables": {
+    "a_x": { "min": -5, "max": 5 },
+    "a_y": { "min": -5, "max": 5 },
+    "b_x": { "min": -5, "max": 5 },
+    "b_y": { "min": -5, "max": 5 },
+    "c_x": { "min": -5, "max": 5 },
+    "c_y": { "min": -5, "max": 5 },
+    "angle_index": { "min": 1, "max": 3 },
+    "angle": { "formula": "angle_index * 90" },
+    "direction": { "choice": ["counterclockwise"] },
+    "a_prime_x": { "formula": "angle_index == 1 ? -a_y : (angle_index == 2 ? -a_x : a_y)" },
+    "a_prime_y": { "formula": "angle_index == 1 ? a_x : (angle_index == 2 ? -a_y : -a_x)" },
+    "b_prime_x": { "formula": "angle_index == 1 ? -b_y : (angle_index == 2 ? -b_x : b_y)" },
+    "b_prime_y": { "formula": "angle_index == 1 ? b_x : (angle_index == 2 ? -b_y : -b_x)" },
+    "c_prime_x": { "formula": "angle_index == 1 ? -c_y : (angle_index == 2 ? -c_x : c_y)" },
+    "c_prime_y": { "formula": "angle_index == 1 ? c_x : (angle_index == 2 ? -c_y : -c_x)" }
+  },
+  "question": "Triangle ABC has vertices at the following coordinates on a coordinate plane: <br> A({{a_x}}, {{a_y}}), B({{b_x}}, {{b_y}}), and C({{c_x}}, {{c_y}}). <br><br>1. **Sketch** the pre-image triangle ABC on a coordinate grid. <br>2. Find the coordinates of the image triangle A'B'C' after a **{{angle}}° counterclockwise** rotation about the origin. <br>3. **Sketch** the resulting image triangle A'B'C' on the same coordinate grid.",
+  "answer": "1. **Sketch the Pre-Image:** Plot points A({{a_x}}, {{a_y}}), B({{b_x}}, {{b_y}}), and C({{c_x}}, {{c_y}}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. **Apply the Rotation Rule:** <br> For a counterclockwise rotation about the origin: <br> - A 90° rotation follows the rule (x, y) -> (-y, x). <br> - A 180° rotation follows the rule (x, y) -> (-x, -y). <br> - A 270° rotation follows the rule (x, y) -> (y, -x). <br><br>3. **Calculate Image Coordinates:** <br> - Vertex A: A({{a_x}}, {{a_y}}) -> A'({{a_prime_x}}, {{a_prime_y}}) <br> - Vertex B: B({{b_x}}, {{b_y}}) -> B'({{b_prime_x}}, {{b_prime_y}}) <br> - Vertex C: C({{c_x}}, {{c_y}}) -> C'({{c_prime_x}}, {{c_prime_y}}) <br><br>4. **Sketch the Image:** Plot points A'({{a_prime_x}}, {{a_prime_y}}), B'({{b_prime_x}}, {{b_prime_y}}), and C'({{c_prime_x}}, {{c_prime_y}}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({{a_prime_x}}, {{a_prime_y}}), B'({{b_prime_x}}, {{b_prime_y}}), and C'({{c_prime_x}}, {{c_prime_y}})."
+},
+{
   "id": "GEO 2-5 C v1",
   "type": "template",
   "objective": "Calculate the surface area and volume of a rectangular prism",
