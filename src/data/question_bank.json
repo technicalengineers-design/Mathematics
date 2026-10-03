@@ -5233,7 +5233,6 @@
         "requested_length": { "formula": "requested_index === 0 ? whole_segment_length : requested_index === 1 ? right_segment_length : left_segment_length" }
       },
       "question": "What is the length of \\( \\overline{{{requested_segment}}} \\)? Use the following information: {middle_point} is between {left_point} and {right_point}, \\( \\overline{{{left_point}{middle_point}}} = {left_coefficient}x + {left_constant} \\), \\( \\overline{{{middle_point}{right_point}}} = {right_coefficient}x + {right_constant} \\), and \\( \\overline{{{left_point}{right_point}}} = {whole_segment_length} \\). Sketch this scenario.",
-      "answer": "Since {middle_point} is between the endpoints, \\( ({left_coefficient}x + {left_constant}) + ({right_coefficient}x + {right_constant}) = {whole_segment_length} \\), so \\( x = {x} \\). Therefore, \\( \\overline{{{left_point}{middle_point}}} = {left_segment_length} \\), \\( \\overline{{{middle_point}{right_point}}} = {right_segment_length} \\), and \\( \\overline{{{left_point}{right_point}}} = {whole_segment_length} \\). The requested length \\( \\overline{{{requested_segment}}} \\) is {requested_length}.",
       "answer": "Since {middle_point} is between the endpoints, \\( ({left_coefficient}x + {left_constant}) + ({right_coefficient}x + {right_constant}) = {whole_segment_length} \\), so \\( x = {x} \\). Therefore, \\( \\overline{{{left_point}{middle_point}}} = {left_segment_length} \\), \\( \\overline{{{middle_point}{right_point}}} = {right_segment_length} \\), and \\( \\overline{{{left_point}{right_point}}} = {whole_segment_length} \\). The requested length \\( \\overline{{{requested_segment}}} \\) is {requested_length}."
     },
     {
@@ -5652,7 +5651,6 @@
     }
   ],
   "2 Angles and Geometric Figures": [
-
 {
   "id": "GEO 2-1 C v1",
   "type": "template",
@@ -5873,11 +5871,79 @@
   "answer": "To solve this problem, refer to the geometry of a sphere:\n\n<layout>\nlicensedImage(results=[\"1.2.2\"])\n</layout>\n\nGiven dimension:\n- Radius (\\( r \\)) = {r} cm\n- Approximate value of \\( \\pi \\approx 3.14159 \\)\n\n### Step 1: Calculate the Surface Area (SA)\nThe formula for the surface area of a sphere is:\n\\( SA = 4\\pi r^2 \\)\n\nSubstitute the radius into the formula:\n1. \\( r^2 = {r} \\times {r} = {r * r} \\)\n2. \\( SA = 4 \\times \\pi \\times {r * r} = {surface_area_exact}\\pi\\text{ cm}^2 \\)\n\nUsing the decimal approximation:\n\\( SA \\approx {surface_area_exact} \\times 3.14159 = {surface_area_approx}\\text{ cm}^2 \\)\n\n### Step 2: Calculate the Volume (V)\nThe formula for the volume of a sphere is:\n\\( V = \\frac{4}{3}\\pi r^3 \\)\n\nSubstitute the radius into the formula:\n1. \\( r^3 = {r} \\times {r} \\times {r} = {r * r * r} \\)\n2. \\( V = \\frac{4}{3} \\times \\pi \\times {r * r * r} = \\left(\\frac{4 \\times {r * r * r}}{3}\\right)\\pi = {volume_exact}\\pi\\text{ cm}^3 \\)\n\nUsing the decimal approximation:\n\\( V \\approx {volume_exact} \\times 3.14159 = {volume_approx}\\text{ cm}^3 \\)\n\n**Final Answer:**\n- **Total Surface Area:** {surface_area_exact}\\( \\pi \\) \\( \\text{cm}^2 \\) (approx. **{surface_area_approx} \\( \\text{cm}^2 \\)**)\n- **Volume:** {volume_exact}\\( \\pi \\) \\( \\text{cm}^3 \\) (approx. **{volume_approx} \\( \\text{cm}^3 \\)**)"
 }
 
+],
 
-
-
+  "3 Logical Arguments and Line Relationships": [
+{
+  "id": "GEO 3-1 C",
+  "type": "template",
+  "objective": "Identify the conjecture describing the next term in an arithmetic sequence",
+  "difficulty": "basic",
+  "variables": {
+    "start_terms": {
+      "formula": [2, 3, 4, 5, 6, 7]
+    },
+    "differences": {
+      "formula": [12, 14, 15, 16, 18, 20]
+    },
+    "s_idx": {
+      "formula": "Math.floor(Math.random() * start_terms.length)"
+    },
+    "d_idx": {
+      "formula": "Math.floor(Math.random() * differences.length)"
+    },
+    "a1": {
+      "formula": "start_terms[s_idx]"
+    },
+    "d": {
+      "formula": "differences[d_idx]"
+    },
+    "a2": {
+      "formula": "a1 + d"
+    },
+    "a3": {
+      "formula": "a2 + d"
+    },
+    "a4": {
+      "formula": "a3 + d"
+    },
+    "wrong_mult_1": {
+      "formula": "Math.floor(a4 / a1)"
+    },
+    "wrong_mult_2": {
+      "formula": "Math.floor(a4 / a2)"
+    }
+  },
+  "question": "Choose the conjecture that describes how to find the 5th term in the sequence \\{a1}\\, \\{a2}\\, \\{a3}\\, \\{a4}\\, ….",
+  "choices": [
+    { "text": "Add {d} to {a4}.", "correct": true },
+    { "text": "Add {d * 2} to {a4}.", "correct": false },
+    { "text": "Multiply {a4} by {wrong_mult_1}.", "correct": false },
+    { "text": "Multiply {a4} by {wrong_mult_2}.", "correct": false }
+  ],
+  "answer": "To find the pattern, look at the difference between consecutive terms:\n- \\( {a2} - {a1} = {d} \\)\n- \\( {a3} - {a2} = {d} \\)\n- \\( {a4} - {a3} = {d} \\)\n\nThe sequence increases by a common difference of **{d}** each time. Therefore, the conjecture to find the next (5th) term is to **add {d} to {a4}**.\n\n**Correct Choice:** Add {d} to {a4}."
+},
+{
+  "id": "GEO_SEQ_1",
+  "type": "template",
+  "objective": "Identify Patterns and Extend Total Elements in a Visual Sequence",
+  "difficulty": "basic",
+  "variables": {
+    "shape_type": { "formula": "Math.floor(Math.random() * 2)" },
+    "shape_name": { "formula": "shape_type === 0 ? 'triangles' : 'squares'" },
+    "s1": { "formula": "'' + (shape_type === 0 ? 3 : 4)" },
+    "s2": { "formula": "'' + (shape_type === 0 ? 6 : 8)" },
+    "s3": { "formula": "'' + (shape_type === 0 ? 9 : 12)" },
+    "inc": { "formula": "'' + (shape_type === 0 ? 3 : 4)" },
+    "result": { "formula": "'' + (shape_type === 0 ? 12 : 16)" },
+    "sequence_svg": { 
+      "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 560 150\" style=\"width:100%;max-width:560px;height:auto\"><rect width=\"560\" height=\"150\" fill=\"#fdfdfd\" stroke=\"#e0e0e0\" stroke-width=\"1\" rx=\"6\"/>' + [1, 2, 3].map((step, idx) => { const startX = 30 + idx * 175; let shapes = ''; if (shape_type === 0) { for(let i = 0; i < step; i++) { const x1 = startX + i * 32; const x2 = x1 + 24; const x3 = x1 + 12; shapes += '<polygon points=\"' + x1 + ',90 ' + x2 + ',90 ' + x3 + ',50\" fill=\"none\" stroke=\"#333\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'; } } else { for(let i = 0; i < step; i++) { const x1 = startX + i * 32; shapes += '<rect x=\"' + x1 + '\" y=\"54\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"#333\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'; } } return shapes + '<text x=\"' + (startX + (step * 32 - 8) / 2) + '\" y=\"125\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14px\" font-weight=\"bold\" fill=\"#555\">Step ' + step + '</text>'; }).join('') + '</svg>'" 
+    }
+  },
+  "question": "How many line segments will be needed to create Step 4 of the sequence shown below?<br><br>{sequence_svg}<br><br>____ segments",
+  "answer": "Step 1: Count the line segments in the given steps:<br>Step 1 has 1 shape made of {{s1}} segments.<br>Step 2 has 2 shapes made of {{s2}} segments.<br>Step 3 has 3 shapes made of {{s3}} segments.<br><br>Step 2: Identify the pattern:<br>The sequence increases by adding 1 separate shape each time. This means {{inc}} line segments are added at each step.<br><br>Step 3: Calculate Step 4:<br>Add {{inc}} segments to the total from Step 3:<br>{{s3}} + {{inc}} = {{result}} segments."
+}
 
 
 ]
-}
-}
+}}
