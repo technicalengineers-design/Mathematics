@@ -5764,7 +5764,7 @@
   "id": "GEO 2-3a C v1",
   "type": "template",
   "objective": "Calculate the Area and Circumference of a Circle on a Coordinate Plane",
-  "difficulty": "medium",
+  "difficulty": "basic",
   "variables": {
     "h": { "min": -5, "max": 5 },
     "k": { "min": -5, "max": 5 },
@@ -5776,16 +5776,18 @@
     "p_y": { "formula": "k + valid_offsets[offset_index].y" },
     "r_squared": { "formula": "Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2)" },
     "r": { "formula": "Math.sqrt(r_squared)" },
-    "circumference_coefficient": { "formula": "2 * r" }
+    "circumference_coefficient": { "formula": "2 * r" },
+    "circumference_approx": { "formula": "String((2 * Math.PI * Math.sqrt(Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))" },
+    "area_approx": { "formula": "String((Math.PI * (Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))" }
   },
-  "question": "A circle is drawn on a coordinate plane. The center of the circle is at point $C({{h}}, {{k}})$, and a point on the outer edge of the circle is located at $P({{p_x}}, {{p_y}})$. <br><br>Find the exact **circumference** and the exact **area** of the circle. Leave your answers in terms of $\\pi$.",
-  "answer": "1. **Find the radius ($r$):** Use the distance formula between the center $C({{h}}, {{k}})$ and the point $P({{p_x}}, {{p_y}})$. <br> $r = \\sqrt{({{p_x}} - {{h}})^2 + ({{p_y}} - {{k}})^2} = \\sqrt{({p_x - h})^2 + ({p_y - k})^2} = \\sqrt{{{r_squared}}} = {{r}}$. <br><br>2. **Calculate Circumference:** $C = 2\\pi r = 2 \\cdot \\pi \\cdot {{r}} = {{circumference_coefficient}}\\pi$. <br><br>3. **Calculate Area:** $A = \\pi r^2 = \\pi \\cdot ({{r}})^2 = {{r_squared}}\\pi$."
+  "question": "A circle is drawn on a coordinate plane. The center of the circle is at point C({h}, {k}), and a point on the outer edge of the circle is located at P({p_x}, {p_y}). <br><br>Find the **circumference** and the **area** of the circle. For each measurement, provide both the exact answer in terms of pi and a decimal approximation rounded to four significant figures.",
+  "answer": "1. **Find the radius (r):** Use the distance formula between center C({h}, {k}) and point P({p_x}, {p_y}). <br> r = &radic;<span style='border-top:1px solid;'>( {p_x} - {h} )&sup2; + ( {p_y} - {k} )&sup2;</span> <br> r = &radic;<span style='border-top:1px solid;'>{r_squared}</span> <br> r = {r} <br><br>2. **Calculate Circumference:** <br> - Exact: C = 2 * pi * r = 2 * pi * {r} = {circumference_coefficient}pi <br> - Decimal Approximation: {circumference_approx} (to four significant figures) <br><br>3. **Calculate Area:** <br> - Exact: A = pi * r&sup2; = pi * ({r})&sup2; = {r_squared}pi <br> - Decimal Approximation: {area_approx} (to four significant figures)."
 },
 {
   "id": "GEO 2-3a C v2",
   "type": "template",
   "objective": "Calculate the Perimeter and Area of a Tilted Rectangle on a Coordinate Plane",
-  "difficulty": "hard",
+  "difficulty": "basic",
   "variables": {
     "a_x": { "min": -4, "max": 4 },
     "a_y": { "min": -4, "max": 4 },
@@ -5804,16 +5806,26 @@
     "side1": { "formula": "5 * multiplier_width" },
     "side2": { "formula": "5 * multiplier_height" },
     "perimeter": { "formula": "2 * (side1 + side2)" },
-    "area": { "formula": "side1 * side2" }
+    "area": { "formula": "side1 * side2" },
+    "v1_x_sq": { "formula": "String((3 * multiplier_width) * (3 * multiplier_width))" },
+    "v1_y_sq": { "formula": "String((4 * multiplier_width) * (4 * multiplier_width))" },
+    "v2_x_sq": { "formula": "String((-4 * multiplier_height) * (-4 * multiplier_height))" },
+    "v2_y_sq": { "formula": "String((3 * multiplier_height) * (3 * multiplier_height))" },
+    "v1_sum": { "formula": "String(((3 * multiplier_width) * (3 * multiplier_width)) + ((4 * multiplier_width) * (4 * multiplier_width)))" },
+    "v2_sum": { "formula": "String(((-4 * multiplier_height) * (-4 * multiplier_height)) + ((3 * multiplier_height) * (3 * multiplier_height)))" },
+    "str_side1": { "formula": "String(5 * multiplier_width)" },
+    "str_side2": { "formula": "String(5 * multiplier_height)" },
+    "str_perimeter": { "formula": "String(2 * ((5 * multiplier_width) + (5 * multiplier_height)))" },
+    "str_area": { "formula": "String((5 * multiplier_width) * (5 * multiplier_height))" }
   },
-  "question": "A rectangle has vertices at the following coordinates on a coordinate plane: <br> $A({{a_x}}, {{a_y}})$, $B({{b_x}}, {{b_y}})$, $C({{c_x}}, {{c_y}})$, and $D({{d_x}}, {{d_y}})$. <br><br>Find the **perimeter** and the **area** of rectangle $ABCD$.",
-  "answer": "1. **Find Side Length $AB$:** Use the distance formula between $A({{a_x}}, {{a_y}})$ and $B({{b_x}}, {{b_y}})$. <br> $AB = \\sqrt{({{b_x}} - {{a_x}})^2 + ({{b_y}} - {{a_y}})^2} = \\sqrt{({{v1_x}})^2 + ({{v1_y}})^2} = \\sqrt{ {v1_x * v1_x + v1_y * v1_y} } = {{side1}}$. <br><br>2. **Find Side Length $AD$:** Use the distance formula between $A({{a_x}}, {{a_y}})$ and $D({{d_x}}, {{d_y}})$. <br> $AD = \\sqrt{({{d_x}} - {{a_x}})^2 + ({{d_y}} - {{a_y}})^2} = \\sqrt{({{v2_x}})^2 + ({{v2_y}})^2} = \\sqrt{ {v2_x * v2_x + v2_y * v2_y} } = {{side2}}$. <br><br>3. **Calculate Perimeter:** $P = 2(AB + AD) = 2({{side1}} + {{side2}}) = {{perimeter}}$. <br><br>4. **Calculate Area:** $A = AB \\cdot AD = {{side1}} \\cdot {{side2}} = {{area}}$."
+  "question": "A rectangle has vertices at the following coordinates on a coordinate plane: <br> A({a_x}, {a_y}), B({b_x}, {b_y}), C({c_x}, {c_y}), and D({d_x}, {d_y}). <br><br>Find the **perimeter** and the **area** of rectangle ABCD.",
+  "answer": "1. **Find Side Length AB:** Use the distance formula between A({a_x}, {a_y}) and B({b_x}, {b_y}). <br> AB = &radic;<span style='border-top:1px solid;'>( {b_x} - {a_x} )&sup2; + ( {b_y} - {a_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>( {v1_x} )&sup2; + ( {v1_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_x_sq} + {v1_y_sq}</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_sum}</span> <br> AB = {str_side1} <br><br>2. **Find Side Length AD:** Use the distance formula between A({a_x}, {a_y}) and D({d_x}, {d_y}). <br> AD = &radic;<span style='border-top:1px solid;'>( {d_x} - {a_x} )&sup2; + ( {d_y} - {a_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>( {v2_x} )&sup2; + ( {v2_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_x_sq} + {v2_y_sq}</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_sum}</span> <br> AD = {str_side2} <br><br>3. **Calculate Perimeter:** <br> P = 2 * (AB + AD) <br> P = 2 * ({str_side1} + {str_side2}) <br> P = {str_perimeter} <br><br>4. **Calculate Area:** <br> A = AB * AD <br> A = {str_side1} * {str_side2} <br> A = {str_area}"
 },
 {
   "id": "GEO 2-4a C",
   "type": "template",
   "objective": "Rotate a Triangle About the Origin by 90, 180, or 270 Degrees and Sketch",
-  "difficulty": "hard",
+  "difficulty": "basic",
   "variables": {
     "a_x": { "min": -5, "max": 5 },
     "a_y": { "min": -5, "max": 5 },
@@ -5831,8 +5843,8 @@
     "c_prime_x": { "formula": "angle_index == 1 ? -c_y : (angle_index == 2 ? -c_x : c_y)" },
     "c_prime_y": { "formula": "angle_index == 1 ? c_x : (angle_index == 2 ? -c_y : -c_x)" }
   },
-  "question": "Triangle ABC has vertices at the following coordinates on a coordinate plane: <br> A({{a_x}}, {{a_y}}), B({{b_x}}, {{b_y}}), and C({{c_x}}, {{c_y}}). <br><br>1. **Sketch** the pre-image triangle ABC on a coordinate grid. <br>2. Find the coordinates of the image triangle A'B'C' after a **{{angle}}° counterclockwise** rotation about the origin. <br>3. **Sketch** the resulting image triangle A'B'C' on the same coordinate grid.",
-  "answer": "1. **Sketch the Pre-Image:** Plot points A({{a_x}}, {{a_y}}), B({{b_x}}, {{b_y}}), and C({{c_x}}, {{c_y}}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. **Apply the Rotation Rule:** <br> For a counterclockwise rotation about the origin: <br> - A 90° rotation follows the rule (x, y) -> (-y, x). <br> - A 180° rotation follows the rule (x, y) -> (-x, -y). <br> - A 270° rotation follows the rule (x, y) -> (y, -x). <br><br>3. **Calculate Image Coordinates:** <br> - Vertex A: A({{a_x}}, {{a_y}}) -> A'({{a_prime_x}}, {{a_prime_y}}) <br> - Vertex B: B({{b_x}}, {{b_y}}) -> B'({{b_prime_x}}, {{b_prime_y}}) <br> - Vertex C: C({{c_x}}, {{c_y}}) -> C'({{c_prime_x}}, {{c_prime_y}}) <br><br>4. **Sketch the Image:** Plot points A'({{a_prime_x}}, {{a_prime_y}}), B'({{b_prime_x}}, {{b_prime_y}}), and C'({{c_prime_x}}, {{c_prime_y}}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({{a_prime_x}}, {{a_prime_y}}), B'({{b_prime_x}}, {{b_prime_y}}), and C'({{c_prime_x}}, {{c_prime_y}})."
+  "question": "Triangle ABC has vertices at the following coordinates on a coordinate plane: <br> A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}). <br><br>1. **Sketch** the pre-image triangle ABC on a coordinate grid. <br>2. Find the coordinates of the image triangle A'B'C' after a **{angle}° counterclockwise** rotation about the origin. <br>3. **Sketch** the resulting image triangle A'B'C' on the same coordinate grid.",
+  "answer": "1. **Sketch the Pre-Image:** Plot points A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. **Apply the Rotation Rule:** <br> For a counterclockwise rotation about the origin: <br> - A 90° rotation follows the rule (x, y) -> (-y, x). <br> - A 180° rotation follows the rule (x, y) -> (-x, -y). <br> - A 270° rotation follows the rule (x, y) -> (y, -x). <br><br>3. **Calculate Image Coordinates:** <br> - Vertex A: A({a_x}, {a_y}) -> A'({a_prime_x}, {a_prime_y}) <br> - Vertex B: B({b_x}, {b_y}) -> B'({b_prime_x}, {b_prime_y}) <br> - Vertex C: C({c_x}, {c_y}) -> C'({c_prime_x}, {c_prime_y}) <br><br>4. **Sketch the Image:** Plot points A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y})."
 },
 {
   "id": "GEO 2-5 C v1",
@@ -5892,21 +5904,15 @@
     "r": {
       "formula": "radii[r_idx]"
     },
-    "surface_area_exact": {
-      "formula": "4 * r * r"
-    },
-    "volume_exact": {
-      "formula": "(4 / 3) * r * r * r"
-    },
     "surface_area_approx": {
-      "formula": "Math.round(4 * Math.PI * r * r * 100) / 100"
+      "formula": "Number((4 * Math.PI * r * r).toPrecision(4)).toFixed(Math.max(0, 3 - Math.floor(Math.log10(4 * Math.PI * r * r))))"
     },
     "volume_approx": {
-      "formula": "Math.round((4 / 3) * Math.PI * r * r * r * 100) / 100"
+      "formula": "Number(((4 / 3) * Math.PI * r * r * r).toPrecision(4)).toFixed(Math.max(0, 3 - Math.floor(Math.log10((4 / 3) * Math.PI * r * r * r))))"
     }
   },
-  "question": "A sphere has a radius of {r} cm. What are the total surface area and the volume of the sphere? (Give your answers both in terms of \\( \\pi \\) and rounded to the nearest hundredth).",
-  "answer": "To solve this problem, refer to the geometry of a sphere:\n\n<layout>\nlicensedImage(results=[\"1.2.2\"])\n</layout>\n\nGiven dimension:\n- Radius (\\( r \\)) = {r} cm\n- Approximate value of \\( \\pi \\approx 3.14159 \\)\n\n### Step 1: Calculate the Surface Area (SA)\nThe formula for the surface area of a sphere is:\n\\( SA = 4\\pi r^2 \\)\n\nSubstitute the radius into the formula:\n1. \\( r^2 = {r} \\times {r} = {r * r} \\)\n2. \\( SA = 4 \\times \\pi \\times {r * r} = {surface_area_exact}\\pi\\text{ cm}^2 \\)\n\nUsing the decimal approximation:\n\\( SA \\approx {surface_area_exact} \\times 3.14159 = {surface_area_approx}\\text{ cm}^2 \\)\n\n### Step 2: Calculate the Volume (V)\nThe formula for the volume of a sphere is:\n\\( V = \\frac{4}{3}\\pi r^3 \\)\n\nSubstitute the radius into the formula:\n1. \\( r^3 = {r} \\times {r} \\times {r} = {r * r * r} \\)\n2. \\( V = \\frac{4}{3} \\times \\pi \\times {r * r * r} = \\left(\\frac{4 \\times {r * r * r}}{3}\\right)\\pi = {volume_exact}\\pi\\text{ cm}^3 \\)\n\nUsing the decimal approximation:\n\\( V \\approx {volume_exact} \\times 3.14159 = {volume_approx}\\text{ cm}^3 \\)\n\n**Final Answer:**\n- **Total Surface Area:** {surface_area_exact}\\( \\pi \\) \\( \\text{cm}^2 \\) (approx. **{surface_area_approx} \\( \\text{cm}^2 \\)**)\n- **Volume:** {volume_exact}\\( \\pi \\) \\( \\text{cm}^3 \\) (approx. **{volume_approx} \\( \\text{cm}^3 \\)**)"
+  "question": "A sphere has a radius of {r} cm. Find its surface area and volume. Round each decimal answer to four significant digits.",
+  "answer": "For a sphere with radius \\( r = {r} \\) cm:\n\nSurface area: \\( SA = 4\\pi r^2 = 4\\pi({r})^2 \\approx {surface_area_approx} \\text{ cm}^2 \\).\n\nVolume: \\( V = (4 \\div 3)\\pi r^3 = (4 \\div 3)\\pi({r})^3 \\approx {volume_approx} \\text{ cm}^3 \\).\n\nBoth answers are decimals rounded to four significant digits."
 }
 
 ],
@@ -5962,7 +5968,7 @@
   "answer": "To find the pattern, look at the difference between consecutive terms:\n- \\( {a2} - {a1} = {d} \\)\n- \\( {a3} - {a2} = {d} \\)\n- \\( {a4} - {a3} = {d} \\)\n\nThe sequence increases by a common difference of **{d}** each time. Therefore, the conjecture to find the next (5th) term is to **add {d} to {a4}**.\n\n**Correct Choice:** Add {d} to {a4}."
 },
 {
-  "id": "GEO_SEQ_1",
+  "id": "GEO 3-2 C",
   "type": "template",
   "objective": "Identify Patterns and Extend Total Elements in a Visual Sequence",
   "difficulty": "basic",
