@@ -4560,6 +4560,19 @@
       "question": "Determine the volume for a triangular prism door stop that is {l} cm across, {w} cm deep, and {h} cm high. Sketch a picture, label the dimensions, and include the units.",
       "answer": "\\({V}\\) cubic centimeters is the volume of the door stop."
     },
+    {
+  "id": "CM 2.6c Cylinder",
+  "type": "template",
+  "objective": "Calculate the Volume of a Cylinder",
+  "difficulty": "basic",
+  "variables": {
+    "r": { "min": 2, "max": 15 },
+    "h": { "min": 2, "max": 15 },
+    "V": { "formula": "3.14159 * r^2 * h" }
+  },
+  "question": "Determine the volume for a cylinder-shaped metal weight that has a radius of {r} cm and a height of {h} cm. Sketch a picture, label the dimensions, and include the units.",
+  "answer": "\\({V}\\) cubic centimeters is the volume of the metal weight."
+},
      {
       "id": "CM 2.6d Area Conversion",
       "type": "template",
