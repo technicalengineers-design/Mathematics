@@ -586,7 +586,7 @@
         "d": { "formula": "b*c.toFixed(2)" }
       },
       "question": "Solve for x: <br> \\( {b}(a + {c}x) = {d} \\).",
-      "answer": "\\( x = \\frac{{d} - a{b}}{{d}} \\)"
+      "answer": "\\( x = \\frac{{d} - a{b}}{{d}} \\) NOTE: This solution may be simplified."
     },
     {
       "id": "ALG1-2.4-B1",
