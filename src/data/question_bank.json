@@ -517,7 +517,7 @@
         "x": { "formula": "b * c / a.toFixed(2)" }
       },
       "question": "Solve for x: <br> \\( \\frac{{a}}{{b}}x = {c} \\).",
-      "answer": "\\( x = \\frac{{xnum}}{{a}} \\) or \\( x = {x} \\) manually simplify."
+      "answer": "\\( x = \\frac{{xnum}}{{a}} \\) or \\( x = {x} \\) NOTE: This solution may be simplified."
     },
     {
       "id": "ALG1-2.2-B3",
@@ -562,6 +562,25 @@
       "answer": "\\( x = {x} \\)"
     },
     {
+  "id": "ALG1-2.3-B3",
+  "type": "template",
+  "objective": "Solving Multi-Step Equations",
+  "difficulty": "basic",
+  "variables": {
+    "a": { "min": -10, "max": 10, "exclude": [0] },
+    "b": { "min": -10, "max": 10, "exclude": [0, 1, -1] },
+    "c": { "min": 2, "max": 10 },
+    "d": { "min": -50, "max": 50, "exclude": [0] },
+    "raw_num": { "formula": "d - a * b" },
+    "raw_den": { "formula": "b * c" },
+    "divisor": { "formula": "Math.abs((function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); })(raw_num, raw_den))" },
+    "final_num": { "formula": "(raw_num / divisor) * (raw_den < 0 ? -1 : 1)" },
+    "final_den": { "formula": "Math.abs(raw_den / divisor)" }
+  },
+  "question": "Solve for x: <br> \\( {b}({a} + {c}x) = {d} \\).",
+  "answer": "\\( x = \\frac{{final_num}}{{final_den}} \\)"
+},
+    {
       "id": "ALG1-2.3-I1",
       "type": "template",
       "objective": "Solving Multi-Step Equations",
@@ -575,19 +594,27 @@
       "question": "Solve for x: <br> \\( \\frac{ax+{b}}{{c}} - {d} = {b} \\).",
       "answer": "\\( x = \\frac{{x}}{a} \\)"
     },
-    {
-      "id": "ALG1-2.3-I2",
-      "type": "template",
-      "objective": "Solving Multi-Step Equations",
-      "difficulty": "intermediate",
-      "variables": {
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "d": { "formula": "b*c.toFixed(2)" }
-      },
-      "question": "Solve for x: <br> \\( {b}(a + {c}x) = {d} \\).",
-      "answer": "\\( x = \\frac{{d} - a{b}}{{d}} \\) NOTE: This solution may be simplified."
-    },
+{
+  "id": "ALG1-2.3-I2",
+  "type": "template",
+  "objective": "Solving Multi-Step Equations",
+  "difficulty": "intermediate",
+  "variables": {
+    "b": { "min": -10, "max": 10, "exclude": [0, 1, -1] },
+    "c": { "min": 2, "max": 10 },
+    "d": { "min": -50, "max": 50, "exclude": [0] },
+    "bc_prod": { "formula": "b * c" },
+    "gcd_1": { "formula": "(function gcd(x, y) { return y === 0 ? Math.abs(x) : gcd(y, x % y); })(d, bc_prod)" },
+    "num_1": { "formula": "(d / gcd_1) * (bc_prod < 0 ? -1 : 1)" },
+    "den_1": { "formula": "Math.abs(bc_prod / gcd_1)" },
+    "term_1": { "formula": "den_1 === 1 ? num_1 : '\\\\frac{' + num_1 + '}{' + den_1 + '}'" },
+    "sign_2": { "formula": "c < 0 ? ' + ' : ' - '" },
+    "term_2": { "formula": "Math.abs(c) === 1 ? 'a' : '\\\\frac{a}{' + Math.abs(c) + '}'" }
+  },
+  "question": "Solve for x: <br> \\( {b}(a + {c}x) = {d} \\).",
+  "answer": "\\( x = {term_1}{sign_2}{term_2} \\)"
+},
+
     {
       "id": "ALG1-2.4-B1",
       "type": "template",
@@ -5844,7 +5871,7 @@
     "c_prime_y": { "formula": "angle_index == 1 ? c_x : (angle_index == 2 ? -c_y : -c_x)" }
   },
   "question": "Triangle ABC has vertices at the following coordinates on a coordinate plane: <br> A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}). <br><br>1. **Sketch** the pre-image triangle ABC on a coordinate grid. <br>2. Find the coordinates of the image triangle A'B'C' after a **{angle}° counterclockwise** rotation about the origin. <br>3. **Sketch** the resulting image triangle A'B'C' on the same coordinate grid.",
-  "answer": "1. **Sketch the Pre-Image:** Plot points A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. **Apply the Rotation Rule:** <br> For a counterclockwise rotation about the origin: <br> - A 90° rotation follows the rule (x, y) -> (-y, x). <br> - A 180° rotation follows the rule (x, y) -> (-x, -y). <br> - A 270° rotation follows the rule (x, y) -> (y, -x). <br><br>3. **Calculate Image Coordinates:** <br> - Vertex A: A({a_x}, {a_y}) -> A'({a_prime_x}, {a_prime_y}) <br> - Vertex B: B({b_x}, {b_y}) -> B'({b_prime_x}, {b_prime_y}) <br> - Vertex C: C({c_x}, {c_y}) -> C'({c_prime_x}, {c_prime_y}) <br><br>4. **Sketch the Image:** Plot points A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y})."
+  "answer": "1. Sketch the Pre-Image: Plot points A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. Apply the Rotation Rule: <br> For a counterclockwise rotation about the origin: <br> - A 90° rotation follows the rule (x, y) -> (-y, x). <br> - A 180° rotation follows the rule (x, y) -> (-x, -y). <br> - A 270° rotation follows the rule (x, y) -> (y, -x). <br><br>3. Calculate Image Coordinates: <br> - Vertex A: A({a_x}, {a_y}) -> A'({a_prime_x}, {a_prime_y}) <br> - Vertex B: B({b_x}, {b_y}) -> B'({b_prime_x}, {b_prime_y}) <br> - Vertex C: C({c_x}, {c_y}) -> C'({c_prime_x}, {c_prime_y}) <br><br>4. Sketch the Image: Plot points A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y})."
 },
 {
   "id": "GEO 2-5 C v1",
@@ -5886,7 +5913,7 @@
       "formula": "l * w * h"
     }
   },
-  "question": "A rectangular prism has a length of {l} cm, a width of {w} cm, and a height of {h} cm. What are the total surface area and the volume of the rectangular prism?",
+  "question": "A rectangular prism has a length of {l} cm, a width of {w} cm, and a height of {h} cm. What are the total surface area and the volume of the rectangular prism? Sketch the rectangular prism.",
   "answer": "To solve this problem, refer to the rectangular prism dimensions:\n\n<layout>\nlicensedImage(results=[\"1.2.2\"])\n</layout>\n\nGiven dimensions:\n- Length (\\( l \\)) = {l} cm\n- Width (\\( w \\)) = {w} cm\n- Height (\\( h \\)) = {h} cm\n\n### Step 1: Calculate the Total Surface Area (SA)\nThe formula for the surface area of a rectangular prism is:\n\\( SA = 2(lw + lh + wh) \\)\n\nSubstitute the given values into the formula:\n1. \\( lw = {l} \\times {w} = {l * w} \\)\n2. \\( lh = {l} \\times {h} = {l * h} \\)\n3. \\( wh = {w} \\times {h} = {w * h} \\)\n\nSum these areas together:\n\\( {l * w} + {l * h} + {w * h} = {l * w + l * h + w * h} \\)\n\nMultiply by 2 to account for all six faces:\n\\( SA = 2 \\times {l * w + l * h + w * h} = {surface_area}\\text{ cm}^2 \\)\n\n### Step 2: Calculate the Volume (V)\nThe formula for the volume of a rectangular prism is:\n\\( V = l \\times w \\times h \\)\n\nSubstitute the given values into the formula:\n\\( V = {l} \\times {w} \\times {h} = {volume}\\text{ cm}^3 \\)\n\n**Final Answer:**\n- Total Surface Area = **{surface_area} \\(\\text{cm}^2\\)**\n- Volume = **{volume} \\(\\text{cm}^3\\)**"
 },
 {
@@ -5911,9 +5938,61 @@
       "formula": "Number(((4 / 3) * Math.PI * r * r * r).toPrecision(4)).toFixed(Math.max(0, 3 - Math.floor(Math.log10((4 / 3) * Math.PI * r * r * r))))"
     }
   },
-  "question": "A sphere has a radius of {r} cm. Find its surface area and volume. Round each decimal answer to four significant digits.",
+  "question": "A sphere has a radius of {r} cm. Find its surface area and volume. Round each decimal answer to four significant digits. Sketch the sphere.",
   "answer": "For a sphere with radius \\( r = {r} \\) cm:\n\nSurface area: \\( SA = 4\\pi r^2 = 4\\pi({r})^2 \\approx {surface_area_approx} \\text{ cm}^2 \\).\n\nVolume: \\( V = (4 \\div 3)\\pi r^3 = (4 \\div 3)\\pi({r})^3 \\approx {volume_approx} \\text{ cm}^3 \\).\n\nBoth answers are decimals rounded to four significant digits."
+},
+{
+  "id": "GEO 2.5 B Silo Cone",
+  "type": "template",
+  "objective": "Surface Area and Volume of Composite Solids with Sketching",
+  "difficulty": "intermediate",
+  "variables": {
+    "r": { "min": 3, "max": 12 },
+    "h_cyl": { "min": 15, "max": 40 },
+    "h_cone": { "min": 4, "max": 10 },
+    "slant_sq": { "formula": "r * r + h_cone * h_cone" },
+    "slant_height_raw": { "formula": "Math.sqrt(slant_sq)" },
+    "slant_str": { "formula": "Math.sqrt(r * r + h_cone * h_cone).toFixed(1)" },
+    "cyl_area_coeff": { "formula": "2 * r * h_cyl" },
+    "cone_area_coeff": { "formula": "(r * Math.sqrt(r * r + h_cone * h_cone)).toFixed(1)" },
+    "cyl_vol_coeff": { "formula": "r * r * h_cyl" },
+    "cone_vol_coeff": { "formula": "((1/3) * r * r * h_cone).toFixed(1)" },
+    "pi_area_coeff": { "formula": "(2 * r * h_cyl + Math.sqrt(r * r + h_cone * h_cone) * r).toFixed(1)" },
+    "pi_vol_coeff": { "formula": "(r * r * h_cyl + (1/3) * r * r * h_cone).toFixed(1)" },
+    "dec_area": { "formula": "(Math.PI * (2 * r * h_cyl + Math.sqrt(r * r + h_cone * h_cone) * r)).toFixed(1)" },
+    "dec_vol": { "formula": "(Math.PI * (r * r * h_cyl + (1/3) * r * r * h_cone)).toFixed(1)" }
+  },
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the silo described below. Label the radius, the cylinder height, and the cone height with their respective dimensions.<br><br><b>Task 2:</b> A farm silo is shaped like a composite solid consisting of a cylinder topped by a cone. The silo has a radius of <b>{r} m</b>. The cylindrical section has a height of <b>{h_cyl} m</b>, and the conical roof section has a height of <b>{h_cone} m</b>.<br><br>1. Calculate the total external surface area that needs to be painted (excluding the ground base and the shared internal boundary).<br>2. Calculate the total internal volume of the silo.<br><br><i>Provide your answers in both exact terms of \\(\\pi\\) and as a decimal approximation rounded to the nearest tenth.</i>",
+  "answer": "<b>Expected Student Sketch Reference:</b><br><br><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 410\" role=\"img\" aria-labelledby=\"silo-title silo-description\" style=\"display:block;width:100%;max-width:520px;height:auto;margin:12px auto;font-family:Arial,sans-serif;color:#222\"><title id=\"silo-title\">Farm silo dimensions</title><desc id=\"silo-description\">A cone roof on a cylinder, labeled with radius {r} meters, cylinder height {h_cyl} meters, cone height {h_cone} meters, and slant height {slant_str} meters.</desc><defs><marker id=\"silo-dimension-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><rect x=\"130\" y=\"190\" width=\"220\" height=\"140\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 330 A110 26 0 0 0 350 330\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 330 A110 26 0 0 1 350 330\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 L240 45 L350 190 Z\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 0 350 190\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 1 350 190\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><line x1=\"92\" y1=\"193\" x2=\"92\" y2=\"327\" stroke=\"#333\" stroke-width=\"1.5\" marker-start=\"url(#silo-dimension-arrow)\" marker-end=\"url(#silo-dimension-arrow)\"/><line x1=\"96\" y1=\"190\" x2=\"126\" y2=\"190\" stroke=\"#555\"/><line x1=\"96\" y1=\"330\" x2=\"126\" y2=\"330\" stroke=\"#555\"/><text x=\"15\" y=\"260\" font-size=\"14\">Cylinder height: {h_cyl} m</text><line x1=\"390\" y1=\"49\" x2=\"390\" y2=\"187\" stroke=\"#333\" stroke-width=\"1.5\" marker-start=\"url(#silo-dimension-arrow)\" marker-end=\"url(#silo-dimension-arrow)\"/><line x1=\"244\" y1=\"45\" x2=\"386\" y2=\"45\" stroke=\"#555\"/><line x1=\"354\" y1=\"190\" x2=\"386\" y2=\"190\" stroke=\"#555\"/><text x=\"400\" y=\"120\" font-size=\"14\">Cone height: {h_cone} m</text><line x1=\"240\" y1=\"190\" x2=\"345\" y2=\"190\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-start=\"url(#silo-dimension-arrow)\" marker-end=\"url(#silo-dimension-arrow)\"/><text x=\"293\" y=\"218\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} m</text><text x=\"119\" y=\"117\" transform=\"rotate(-53 119 117)\" text-anchor=\"middle\" font-size=\"13\">Slant: {slant_str} m</text></svg><br><br><b>Step-by-Step Solution Breakdown:</b><br><br><b>Step 1: Find the Cone Slant Height (\\(\\ell\\))</b><br>Using the Pythagorean theorem: \\(\\ell = \\sqrt{r^2 + h_{\\text{cone}}^2}\\)<br>\\(\\ell = \\sqrt{{r}^2 + {h_cone}^2} = \\sqrt{{slant_sq}} \\approx {slant_str}\\text{ m}\\)<br><br><b>Step 2: Calculate the Painted Surface Area (Lateral Areas Only)</b><br>• Cylinder Lateral Area: \\(2\\pi rh_{\\text{cyl}} = 2\\pi({r})({h_cyl}) = {cyl_area_coeff}\\pi\\)<br>• Cone Lateral Area: \\(\\pi r\\ell = \\pi({r})({slant_str}) = {cone_area_coeff}\\pi\\)<br>• Total Area (Exact): \\(({cyl_area_coeff} + {cone_area_coeff})\\pi = {pi_area_coeff}\\pi\\text{ m}^2\\)<br>• Total Area (Decimal): \\({pi_area_coeff} \\times 3.14159... = \\mathbf{{dec_area}\\text{ m}^2}\\)<br><br><b>Step 3: Calculate the Total Volume</b><br>• Cylinder Volume: \\(\\pi r^2 h_{\\text{cyl}} = \\pi({r}^2)({h_cyl}) = {cyl_vol_coeff}\\pi\\)<br>• Cone Volume: \\(\\frac{1}{3}\\pi r^2 h_{\\text{cone}} = \\frac{1}{3}\\pi({r}^2)({h_cone}) = {cone_vol_coeff}\\pi\\)<br>• Total Volume (Exact): \\(({cyl_vol_coeff} + {cone_vol_coeff})\\pi = {pi_vol_coeff}\\pi\\text{ m}^3\\)<br>• Total Volume (Decimal): \\({pi_vol_coeff} \\times 3.14159... = \\mathbf{{dec_vol}\\text{ m}^3}\\)"
+},
+{
+  "id": "GEO 2.5 B Silo Hemisphere",
+  "type": "template",
+  "objective": "Surface Area and Volume of Composite Solids with Sketching",
+  "difficulty": "intermediate",
+  "variables": {
+    "r": { "min": 3, "max": 12 },
+    "h_cyl": { "min": 15, "max": 40 },
+    "cyl_area_coeff": { "formula": "2 * r * h_cyl" },
+    "hemi_area_coeff": { "formula": "2 * r * r" },
+    "cyl_vol_coeff": { "formula": "r * r * h_cyl" },
+    "hemi_vol_coeff": { "formula": "((2/3) * r * r * r).toFixed(1)" },
+    "pi_area_coeff": { "formula": "(2 * r * h_cyl + 2 * r * r).toFixed(1)" },
+    "pi_vol_coeff": { "formula": "(r * r * h_cyl + (2/3) * r * r * r).toFixed(1)" },
+    "dec_area": { "formula": "(Math.PI * (2 * r * h_cyl + 2 * r * r)).toFixed(1)" },
+    "dec_vol": { "formula": "(Math.PI * (r * r * h_cyl + (2/3) * r * r * r)).toFixed(1)" }
+  },
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the silo described below. Label the radius and the cylinder height with their respective dimensions.<br><br><b>Task 2:</b> A farm silo is shaped like a composite solid consisting of a cylinder topped by a hemisphere dome. The silo has a radius of <b>{r} m</b>. The cylindrical section has a height of <b>{h_cyl} m</b>.<br><br>1. Calculate the total external surface area that needs to be painted (excluding the ground base and the shared internal boundary).<br>2. Calculate the total internal volume of the silo.<br><br><i>Provide your answers in both exact terms of \\(\\pi\\) and as a decimal approximation rounded to the nearest tenth.</i>",
+  "answer": "<b>Expected Student Sketch Reference:</b><br><br><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 410\" role=\"img\" aria-labelledby=\"silo-title silo-description\" style=\"display:block;width:100%;max-width:520px;height:auto;margin:12px auto;font-family:Arial,sans-serif;color:#222\"><title id=\"silo-title\">Farm silo dimensions (Hemisphere Dome)</title><desc id=\"silo-description\">A hemisphere roof on a cylinder, labeled with radius {r} meters and cylinder height {h_cyl} meters.</desc><defs><marker id=\"silo-dimension-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><rect x=\"130\" y=\"190\" width=\"220\" height=\"140\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 330 A110 26 0 0 0 350 330\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 330 A110 26 0 0 1 350 330\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 110 0 0 1 350 190\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 0 350 190\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 1 350 190\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><line x1=\"92\" y1=\"193\" x2=\"92\" y2=\"327\" stroke=\"#333\" stroke-width=\"1.5\" marker-start=\"url(#silo-dimension-arrow)\" marker-end=\"url(#silo-dimension-arrow)\"/><line x1=\"96\" y1=\"190\" x2=\"126\" y2=\"190\" stroke=\"#555\"/><line x1=\"96\" y1=\"330\" x2=\"126\" y2=\"330\" stroke=\"#555\"/><text x=\"15\" y=\"260\" font-size=\"14\">Cylinder height: {h_cyl} m</text><line x1=\"240\" y1=\"190\" x2=\"345\" y2=\"190\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-start=\"url(#silo-dimension-arrow)\" marker-end=\"url(#silo-dimension-arrow)\"/><text x=\"293\" y=\"218\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} m</text></svg><br><br><b>Step-by-Step Solution Breakdown:</b><br><br><b>Step 1: Calculate the Painted Surface Area (Lateral / Exposed Areas Only)</b><br>• Cylinder Lateral Area: \\(2\\pi rh_{\\text{cyl}} = 2\\pi({r})({h_cyl}) = {cyl_area_coeff}\\pi\\)<br>• Hemisphere Curved Area: \\(2\\pi r^2 = 2\\pi({r}^2) = {hemi_area_coeff}\\pi\\)<br>• Total Area (Exact): \\(({cyl_area_coeff} + {hemi_area_coeff})\\pi = {pi_area_coeff}\\pi\\text{ m}^2\\)<br>• Total Area (Decimal): \\({pi_area_coeff} \\times 3.14159... = \\mathbf{{dec_area}\\text{ m}^2}\\)<br><br><b>Step 2: Calculate the Total Volume</b><br>• Cylinder Volume: \\(\\pi r^2 h_{\\text{cyl}} = \\pi({r}^2)({h_cyl}) = {cyl_vol_coeff}\\pi\\)<br>• Hemisphere Volume: \\(\\frac{2}{3}\\pi r^3 = \\frac{2}{3}\\pi({r}^3) = {hemi_vol_coeff}\\pi\\)<br>• Total Volume (Exact): \\(({cyl_vol_coeff} + {hemi_vol_coeff})\\pi = {pi_vol_coeff}\\pi\\text{ m}^3\\)<br>• Total Volume (Decimal): \\({pi_vol_coeff} \\times 3.14159... = \\mathbf{{dec_vol}\\text{ m}^3}\\)"
 }
+
+
+
+
+
+
+
+
 
 ],
 
