@@ -5874,72 +5874,88 @@
   "answer": "1. Sketch the Pre-Image: Plot points A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. Apply the Rotation Rule: <br> For a counterclockwise rotation about the origin: <br> - A 90° rotation follows the rule (x, y) -> (-y, x). <br> - A 180° rotation follows the rule (x, y) -> (-x, -y). <br> - A 270° rotation follows the rule (x, y) -> (y, -x). <br><br>3. Calculate Image Coordinates: <br> - Vertex A: A({a_x}, {a_y}) -> A'({a_prime_x}, {a_prime_y}) <br> - Vertex B: B({b_x}, {b_y}) -> B'({b_prime_x}, {b_prime_y}) <br> - Vertex C: C({c_x}, {c_y}) -> C'({c_prime_x}, {c_prime_y}) <br><br>4. Sketch the Image: Plot points A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y})."
 },
 {
-  "id": "GEO 2-5 C v1",
+  "id": "GEO 2.5 C Toy Chest",
   "type": "template",
-  "objective": "Calculate the surface area and volume of a rectangular prism",
+  "objective": "Surface Area and Volume of Rectangular Prisms with Sketching",
   "difficulty": "basic",
   "variables": {
-    "lengths": {
-      "formula": "[3, 4, 5, 6, 8, 10, 12]"
-    },
-    "widths": {
-      "formula": "[2, 3, 4, 5, 6, 7, 8]"
-    },
-    "heights": {
-      "formula": "[4, 5, 6, 7, 9, 11, 15]"
-    },
-    "l_idx": {
-      "formula": "Math.floor(Math.random() * lengths.length)"
-    },
-    "w_idx": {
-      "formula": "Math.floor(Math.random() * widths.length)"
-    },
-    "h_idx": {
-      "formula": "Math.floor(Math.random() * heights.length)"
-    },
-    "l": {
-      "formula": "lengths[l_idx]"
-    },
-    "w": {
-      "formula": "widths[w_idx]"
-    },
-    "h": {
-      "formula": "heights[h_idx]"
-    },
-    "surface_area": {
-      "formula": "2 * (l * w + l * h + w * h)"
-    },
-    "volume": {
-      "formula": "l * w * h"
-    }
+    "l": { "min": 60, "max": 100 },
+    "w": { "min": 35, "max": 55 },
+    "h": { "min": 40, "max": 60 },
+    "base_area": { "formula": "l * w" },
+    "front_back_area": { "formula": "2 * l * h" },
+    "side_area": { "formula": "2 * w * h" },
+    "total_area": { "formula": "2 * (l * w + l * h + w * h)" },
+    "total_vol": { "formula": "l * w * h" }
   },
-  "question": "A rectangular prism has a length of {l} cm, a width of {w} cm, and a height of {h} cm. What are the total surface area and the volume of the rectangular prism? Sketch the rectangular prism.",
-  "answer": "To solve this problem, refer to the rectangular prism dimensions:\n\n<layout>\nlicensedImage(results=[\"1.2.2\"])\n</layout>\n\nGiven dimensions:\n- Length (\\( l \\)) = {l} cm\n- Width (\\( w \\)) = {w} cm\n- Height (\\( h \\)) = {h} cm\n\n### Step 1: Calculate the Total Surface Area (SA)\nThe formula for the surface area of a rectangular prism is:\n\\( SA = 2(lw + lh + wh) \\)\n\nSubstitute the given values into the formula:\n1. \\( lw = {l} \\times {w} = {l * w} \\)\n2. \\( lh = {l} \\times {h} = {l * h} \\)\n3. \\( wh = {w} \\times {h} = {w * h} \\)\n\nSum these areas together:\n\\( {l * w} + {l * h} + {w * h} = {l * w + l * h + w * h} \\)\n\nMultiply by 2 to account for all six faces:\n\\( SA = 2 \\times {l * w + l * h + w * h} = {surface_area}\\text{ cm}^2 \\)\n\n### Step 2: Calculate the Volume (V)\nThe formula for the volume of a rectangular prism is:\n\\( V = l \\times w \\times h \\)\n\nSubstitute the given values into the formula:\n\\( V = {l} \\times {w} \\times {h} = {volume}\\text{ cm}^3 \\)\n\n**Final Answer:**\n- Total Surface Area = **{surface_area} \\(\\text{cm}^2\\)**\n- Volume = **{volume} \\(\\text{cm}^3\\)**"
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a 3D diagram of the toy chest described below. Label its length, width, and height with their respective dimensions.<br><br><b>Task 2:</b> A wooden children's toy chest is constructed in the shape of a perfect rectangular prism. The chest measures <b>{l} cm</b> in length, <b>{w} cm</b> in width, and stands <b>{h} cm</b> tall.<br><br>1. Calculate the total external surface area of the entire closed wooden chest.<br>2. Calculate the total internal volumetric storage capacity of the chest.<br><br><i>Provide your final surface area in square centimeters (cm²) and volume in cubic centimeters (cm³).</i>",
+  "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D rectangular prism (box structure). The longest horizontal front edge must be labeled as {l} cm, the depth/receding horizontal edge labeled as {w} cm, and the vertical edge labeled as {h} cm.<br><br><div style='text-align: center;'><img src='https://prodia.xyz' alt='Rectangular Prism Toy Chest Diagram with Dimensions' style='max-width: 360px; width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;'><br><i>Figure 1: Sample dimension guide for grading reference</i></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>• Formula: \\(A = 2(lw + lh + wh)\\)<br>• Top & Bottom Faces: \\(2 \\cdot ({l} \\cdot {w}) = 2 \\cdot {base_area} = \\) <b>\\(2 \\cdot {base_area}\\) cm²</b><br>• Front & Back Faces: \\(2 \\cdot ({l} \\cdot {h}) = \\) <b>{front_back_area} cm²</b><br>• Left & Right Side Faces: \\(2 \\cdot ({w} \\cdot {h}) = \\) <b>{side_area} cm²</b><br>• Total Surface Area: <b>{total_area} cm²</b><br><br><b>2. Total Volumetric Capacity:</b><br>• Formula: \\(V = l \\cdot w \\cdot h\\)<br>• Volume Calculation: \\({l} \\cdot {w} \\cdot {h}\\)<br>• Total Volume: <b>{total_vol} cm³</b>"
 },
 {
-  "id": "GEO 2-5 C v2",
+  "id": "GEO 2.5 C Kids Ball with picture",
   "type": "template",
-  "objective": "Calculate the surface area and volume of a sphere",
+  "objective": "Surface Area and Volume of Spheres with Sketching",
   "difficulty": "basic",
   "variables": {
-    "radii": {
-      "formula": "[3, 6, 9, 12, 15, 18, 21, 24]"
-    },
-    "r_idx": {
-      "formula": "Math.floor(Math.random() * radii.length)"
-    },
-    "r": {
-      "formula": "radii[r_idx]"
-    },
-    "surface_area_approx": {
-      "formula": "Number((4 * Math.PI * r * r).toPrecision(4)).toFixed(Math.max(0, 3 - Math.floor(Math.log10(4 * Math.PI * r * r))))"
-    },
-    "volume_approx": {
-      "formula": "Number(((4 / 3) * Math.PI * r * r * r).toPrecision(4)).toFixed(Math.max(0, 3 - Math.floor(Math.log10((4 / 3) * Math.PI * r * r * r))))"
-    }
+    "r": { "min": 1.5, "max": 27.5 },
+    "area_coeff": { "formula": "(4 * r * r).toFixed(1)" },
+    "vol_coeff": { "formula": "((4 / 3) * r * r * r).toFixed(1)" },
+    "dec_area": { "formula": "(Math.PI * 4 * r * r).toFixed(1)" },
+    "dec_vol": { "formula": "(Math.PI * (4 / 3) * r * r * r).toFixed(1)" }
   },
-  "question": "A sphere has a radius of {r} cm. Find its surface area and volume. Round each decimal answer to four significant digits. Sketch the sphere.",
-  "answer": "For a sphere with radius \\( r = {r} \\) cm:\n\nSurface area: \\( SA = 4\\pi r^2 = 4\\pi({r})^2 \\approx {surface_area_approx} \\text{ cm}^2 \\).\n\nVolume: \\( V = (4 \\div 3)\\pi r^3 = (4 \\div 3)\\pi({r})^3 \\approx {volume_approx} \\text{ cm}^3 \\).\n\nBoth answers are decimals rounded to four significant digits."
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the children's play ball described below. Label its radius with the correct dimension.<br><br><b>Task 2:</b> A spherical children's play ball has a radius of <b>\\( {r} \\) cm</b>.<br><br>1. Calculate the total external surface area of the ball.<br>2. Calculate the total internal volume of the ball.<br><br><i>Provide your answers in both exact terms of &pi; and as a decimal approximation rounded to the nearest tenth.</i>",
+  "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D sphere (a circle with an elliptical contour line passing through the center to give a three-dimensional perspective). A radius line drawn from the center point to the outer edge must be clearly labeled as {r} cm.<br><br><div style='text-align: center;'><img src='https://cloudinary.com' alt='Sphere Diagram with Radius' style='max-width: 320px; width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;'><br><i>Figure 1: Sample dimension guide for grading reference</i></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: A = 4 &times; &pi; &times; r&sup2;<br>&bull; Surface Area Calculation: 4 &times; &pi; &times; {r}&sup2; = {area_coeff}&pi;<br>&bull; Total Surface Area (Exact): <b>{area_coeff}&pi; cm&sup2;</b><br>&bull; Total Surface Area (Decimal): <b>{dec_area} cm&sup2;</b><br><br><b>2. Total Internal Volume:</b><br>&bull; Formula: V = \\(\\frac{4}{3}\\) &times; &pi; &times; r&sup3;<br>&bull; Volume Calculation: \\(\\frac{4}{3}\\) &times; &pi; &times; {r}&sup3; = {vol_coeff}&pi;<br>&bull; Total Volume (Exact): <b>{vol_coeff}&pi; cm&sup3;</b><br>&bull; Total Volume (Decimal): <b>{dec_vol} cm&sup3;</b>"
+},
+{
+  "id": "GEO 2.5 C Kids Ball",
+  "type": "template",
+  "objective": "Surface Area and Volume of Spheres with Sketching",
+  "difficulty": "basic",
+  "variables": {
+    "r": { "min": 3, "max": 25 },
+    "area_coeff": { "formula": "4 * r * r" },
+    "vol_coeff": { "formula": "((4/3) * r * r * r).toFixed(1)" },
+    "dec_area": { "formula": "(Math.PI * 4 * r * r).toFixed(1)" },
+    "dec_vol": { "formula": "(Math.PI * (4/3) * r * r * r).toFixed(1)" }
+  },
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the children's play ball described below. Label its radius with the correct dimension.<br><br><b>Task 2:</b> A spherical children's play ball has a radius of <b>{r} cm</b>.<br><br>1. Calculate the total external surface area of the ball.<br>2. Calculate the total internal volume of the ball.<br><br><i>Provide your answers in both exact terms of \\(\\pi\\) and as a decimal approximation rounded to the nearest tenth.</i>",
+  "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D sphere (a circle with an elliptical contour line passing through the center to give a three-dimensional perspective). A radius line drawn from the center point to the outer edge must be clearly labeled as {r} cm.<br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>• Formula: \\(A = 4\\pi r^2\\)<br>• Surface Area Calculation: \\(4 \\cdot \\pi \\cdot {r}^2 = {area_coeff}\\pi\\)<br>• Total Surface Area (Exact): <b>{area_coeff}\\(\\pi\\) cm²</b><br>• Total Surface Area (Decimal): <b>{dec_area} cm²</b><br><br><b>2. Total Internal Volume:</b><br>• Formula: \\(V = \\frac{4}{3}\\pi r^3\\)<br>• Volume Calculation: \\(\\frac{4}{3} \\cdot \\pi \\cdot {r}^3 = {vol_coeff}\\pi\\)<br>• Total Volume (Exact): <b>{vol_coeff}\\(\\pi\\) cm³</b><br>• Total Volume (Decimal): <b>{dec_vol} cm³</b>"
+},
+{
+  "id": "GEO 2.5 C Tank v1",
+  "type": "template",
+  "objective": "Surface Area and Volume of Cylinders with Sketching",
+  "difficulty": "basic",
+  "variables": {
+    "r": { "min": 2, "max": 8 },
+    "h": { "min": 6, "max": 15 },
+    "base_area_coeff": { "formula": "r * r" },
+    "lateral_area_coeff": { "formula": "2 * r * h" },
+    "total_area_coeff": { "formula": "2 * r * r + 2 * r * h" },
+    "vol_coeff": { "formula": "r * r * h" },
+    "dec_area": { "formula": "(Math.PI * (2 * r * r + 2 * r * h)).toFixed(1)" },
+    "dec_vol": { "formula": "(Math.PI * (r * r * h)).toFixed(1)" }
+  },
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the water tank described below. Label the radius and the height with their respective dimensions.<br><br><b>Task 2:</b> An industrial water tank is shaped like a perfect cylinder. The tank has a base radius of <b>{r} m</b> and a vertical height of <b>{h} m</b>.<br><br>1. Calculate the total external surface area of the water tank (including both flat circular bases).<br>2. Calculate the total internal volumetric capacity of the water tank.<br><br><i>Provide your answers in both exact terms of \\(\\pi\\) and as a decimal approximation rounded to the nearest tenth.</i>",
+  "answer": "<b>Expected Student Sketch:</b> The sketch should depict a vertical cylinder with a flat circular top and bottom. A dashed or solid radius line on one of the circular faces should be labeled as {r} m, and the vertical height connecting the two bases should be labeled as {h} m.<br><br><div style='text-align: center;'><img src='https://prodia.xyz' alt='Water Tank Diagram with Dimensions' style='max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;'><br><i>Figure 1: Sample dimension guide for grading reference</i></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>• Formula: \\(A = 2\\pi r^2 + 2\\pi rh\\)<br>• Base Area Component: \\(2 \\cdot \\pi \\cdot {r}^2 = {base_area_coeff}\\pi\\) m² (for both bases)<br>• Lateral Area Component: \\(2 \\cdot \\pi \\cdot {r} \\cdot {h} = {lateral_area_coeff}\\pi\\) m²<br>• Total Surface Area (Exact): <b>{total_area_coeff}\\(\\pi\\) m²</b><br>• Total Surface Area (Decimal): <b>{dec_area} m²</b><br><br><b>2. Total Volumetric Capacity:</b><br>• Formula: \\(V = \\pi r^2 h\\)<br>• Volume Calculation: \\(\\pi \\cdot {r}^2 \\cdot {h} = {vol_coeff}\\pi\\)<br>• Total Volume (Exact): <b>{vol_coeff}\\(\\pi\\) m³</b><br>• Total Volume (Decimal): <b>{dec_vol} m³</b>"
+},
+{
+  "id": "GEO 2.5 C Tank v2",
+  "type": "template",
+  "objective": "Surface Area and Volume of Cylinders with Sketching",
+  "difficulty": "basic",
+  "variables": {
+    "r": { "min": 2, "max": 8 },
+    "h": { "min": 6, "max": 15 },
+    "base_area_coeff": { "formula": "r * r" },
+    "lateral_area_coeff": { "formula": "2 * r * h" },
+    "total_area_coeff": { "formula": "2 * r * r + 2 * r * h" },
+    "vol_coeff": { "formula": "r * r * h" },
+    "dec_area": { "formula": "(Math.PI * (2 * r * r + 2 * r * h)).toFixed(1)" },
+    "dec_vol": { "formula": "(Math.PI * (r * r * h)).toFixed(1)" }
+  },
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the water tank described below. Label the radius and the height with their respective dimensions.<br><br><b>Task 2:</b> An industrial water tank is shaped like a perfect cylinder. The tank has a base radius of <b>{r} m</b> and a vertical height of <b>{h} m</b>.<br><br>1. Calculate the total external surface area of the water tank (including both flat circular bases).<br>2. Calculate the total internal volumetric capacity of the water tank.<br><br><i>Provide your answers in both exact terms of \\(\\pi\\) and as a decimal approximation rounded to the nearest tenth.</i>",
+  "answer": "<b>Expected Student Sketch:</b> The sketch should depict a vertical cylinder with a flat circular top and bottom. A dashed or solid radius line on one of the circular faces should be labeled as {r} m, and the vertical height connecting the two bases should be labeled as {h} m.<br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>• Formula: \\(A = 2\\pi r^2 + 2\\pi rh\\)<br>• Base Area Component: \\(2 \\cdot \\pi \\cdot {r}^2 = {base_area_coeff}\\pi\\) m² (for both bases)<br>• Lateral Area Component: \\(2 \\cdot \\pi \\cdot {r} \\cdot {h} = {lateral_area_coeff}\\pi\\) m²<br>• Total Surface Area (Exact): <b>{total_area_coeff}\\(\\pi\\) m²</b><br>• Total Surface Area (Decimal): <b>{dec_area} m²</b><br><br><b>2. Total Volumetric Capacity:</b><br>• Formula: \\(V = \\pi r^2 h\\)<br>• Volume Calculation: \\(\\pi \\cdot {r}^2 \\cdot {h} = {vol_coeff}\\pi\\)<br>• Total Volume (Exact): <b>{vol_coeff}\\(\\pi\\) m³</b><br>• Total Volume (Decimal): <b>{dec_vol} m³</b>"
 },
 {
   "id": "GEO 2.5 B Silo Cone",
@@ -5984,14 +6000,51 @@
   },
   "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the silo described below. Label the radius and the cylinder height with their respective dimensions.<br><br><b>Task 2:</b> A farm silo is shaped like a composite solid consisting of a cylinder topped by a hemisphere dome. The silo has a radius of <b>{r} m</b>. The cylindrical section has a height of <b>{h_cyl} m</b>.<br><br>1. Calculate the total external surface area that needs to be painted (excluding the ground base and the shared internal boundary).<br>2. Calculate the total internal volume of the silo.<br><br><i>Provide your answers in both exact terms of \\(\\pi\\) and as a decimal approximation rounded to the nearest tenth.</i>",
   "answer": "<b>Expected Student Sketch Reference:</b><br><br><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 410\" role=\"img\" aria-labelledby=\"silo-title silo-description\" style=\"display:block;width:100%;max-width:520px;height:auto;margin:12px auto;font-family:Arial,sans-serif;color:#222\"><title id=\"silo-title\">Farm silo dimensions (Hemisphere Dome)</title><desc id=\"silo-description\">A hemisphere roof on a cylinder, labeled with radius {r} meters and cylinder height {h_cyl} meters.</desc><defs><marker id=\"silo-dimension-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><rect x=\"130\" y=\"190\" width=\"220\" height=\"140\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 330 A110 26 0 0 0 350 330\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 330 A110 26 0 0 1 350 330\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 110 0 0 1 350 190\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 0 350 190\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 1 350 190\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><line x1=\"92\" y1=\"193\" x2=\"92\" y2=\"327\" stroke=\"#333\" stroke-width=\"1.5\" marker-start=\"url(#silo-dimension-arrow)\" marker-end=\"url(#silo-dimension-arrow)\"/><line x1=\"96\" y1=\"190\" x2=\"126\" y2=\"190\" stroke=\"#555\"/><line x1=\"96\" y1=\"330\" x2=\"126\" y2=\"330\" stroke=\"#555\"/><text x=\"15\" y=\"260\" font-size=\"14\">Cylinder height: {h_cyl} m</text><line x1=\"240\" y1=\"190\" x2=\"345\" y2=\"190\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-start=\"url(#silo-dimension-arrow)\" marker-end=\"url(#silo-dimension-arrow)\"/><text x=\"293\" y=\"218\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} m</text></svg><br><br><b>Step-by-Step Solution Breakdown:</b><br><br><b>Step 1: Calculate the Painted Surface Area (Lateral / Exposed Areas Only)</b><br>• Cylinder Lateral Area: \\(2\\pi rh_{\\text{cyl}} = 2\\pi({r})({h_cyl}) = {cyl_area_coeff}\\pi\\)<br>• Hemisphere Curved Area: \\(2\\pi r^2 = 2\\pi({r}^2) = {hemi_area_coeff}\\pi\\)<br>• Total Area (Exact): \\(({cyl_area_coeff} + {hemi_area_coeff})\\pi = {pi_area_coeff}\\pi\\text{ m}^2\\)<br>• Total Area (Decimal): \\({pi_area_coeff} \\times 3.14159... = \\mathbf{{dec_area}\\text{ m}^2}\\)<br><br><b>Step 2: Calculate the Total Volume</b><br>• Cylinder Volume: \\(\\pi r^2 h_{\\text{cyl}} = \\pi({r}^2)({h_cyl}) = {cyl_vol_coeff}\\pi\\)<br>• Hemisphere Volume: \\(\\frac{2}{3}\\pi r^3 = \\frac{2}{3}\\pi({r}^3) = {hemi_vol_coeff}\\pi\\)<br>• Total Volume (Exact): \\(({cyl_vol_coeff} + {hemi_vol_coeff})\\pi = {pi_vol_coeff}\\pi\\text{ m}^3\\)<br>• Total Volume (Decimal): \\({pi_vol_coeff} \\times 3.14159... = \\mathbf{{dec_vol}\\text{ m}^3}\\)"
+},
+{
+  "id": "GEO 2.5 B Fence Post Pyramid",
+  "type": "template",
+  "objective": "Surface Area and Volume of Composite Solids with Sketching",
+  "difficulty": "intermediate",
+  "variables": {
+    "w": { "min": 10, "max": 20 },
+    "h_prism": { "min": 100, "max": 180 },
+    "h_pyramid": { "min": 4, "max": 12 },
+    "half_w": { "formula": "w / 2" },
+    "slant_sq": { "formula": "(w / 2) * (w / 2) + h_pyramid * h_pyramid" },
+    "slant_str": { "formula": "Math.sqrt((w / 2) * (w / 2) + h_pyramid * h_pyramid).toFixed(1)" },
+    "prism_area": { "formula": "4 * w * h_prism" },
+    "pyramid_area": { "formula": "(2 * w * Math.sqrt((w / 2) * (w / 2) + h_pyramid * h_pyramid)).toFixed(1)" },
+    "prism_vol": { "formula": "w * w * h_prism" },
+    "pyramid_vol": { "formula": "((1/3) * w * w * h_pyramid).toFixed(1)" },
+    "total_area": { "formula": "(4 * w * h_prism + 2 * w * Math.sqrt((w / 2) * (w / 2) + h_pyramid * h_pyramid)).toFixed(1)" },
+    "total_vol": { "formula": "(w * w * h_prism + (1/3) * w * w * h_pyramid).toFixed(1)" }
+  },
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the decorative wooden fence post described below. Label the base width, the main prism height, and the top pyramid height with their respective dimensions.<br><br><b>Task 2:</b> A wooden fence post is shaped like a composite solid consisting of a square prism topped by a square-based pyramid cap. The post has a square base side width of <b>{w} cm</b>. The main cylindrical-prism section has a height of <b>{h_prism} cm</b>, and the decorative pyramid roof cap has a height of <b>{h_pyramid} cm</b>.<br><br>1. Calculate the total external surface area that needs to be painted or stained (excluding the bottom base flat on the ground and the shared internal boundary interface).<br>2. Calculate the total volume of wood required to construct the fence post.<br><br><i>Provide your answers as decimal values rounded to the nearest tenth. Do not include \u03c0 in your calculations since this is a flat-faced polygon solid.</i>",
+  "answer": "<b>Expected Student Sketch Reference:</b><br><br><svg xmlns=\"http://w3.org\" viewBox=\"0 0 520 410\" role=\"img\" aria-labelledby=\"post-title post-description\" style=\"display:block;width:100%;max-width:520px;height:auto;margin:12px auto;font-family:Arial,sans-serif;color:#222\"><title id=\"post-title\">Fence post dimensions</title><desc id=\"post-description\">A square pyramid cap sitting on a tall square prism, labeled with base width {w} cm, prism height {h_prism} cm, pyramid height {h_pyramid} cm, and slant height {slant_str} cm.</desc><defs><marker id=\"post-dimension-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><rect x=\"180\" y=\"150\" width=\"140\" height=\"200\" fill=\"#f5ebd6\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M180 150 L250 60 L320 150 Z\" fill=\"#e5d3b3\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"250\" y1=\"60\" x2=\"250\" y2=\"150\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"4 4\"/><line x1=\"132\" y1=\"153\" x2=\"132\" y2=\"347\" stroke=\"#333\" stroke-width=\"1.5\" marker-start=\"url(#post-dimension-arrow)\" marker-end=\"url(#post-dimension-arrow)\"/><line x1=\"136\" y1=\"150\" x2=\"176\" y2=\"150\" stroke=\"#555\"/><line x1=\"136\" y1=\"350\" x2=\"176\" y2=\"350\" stroke=\"#555\"/><text x=\"15\" y=\"255\" font-size=\"14\">Prism height: {h_prism} cm</text><line x1=\"370\" y1=\"63\" x2=\"370\" y2=\"147\" stroke=\"#333\" stroke-width=\"1.5\" marker-start=\"url(#post-dimension-arrow)\" marker-end=\"url(#post-dimension-arrow)\"/><line x1=\"254\" y1=\"60\" x2=\"366\" y2=\"60\" stroke=\"#555\"/><line x1=\"324\" y1=\"150\" x2=\"366\" y2=\"150\" stroke=\"#555\"/><text x=\"380\" y=\"110\" font-size=\"14\">Cap height: {h_pyramid} cm</text><line x1=\"180\" y1=\"375\" x2=\"320\" y2=\"375\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-start=\"url(#post-dimension-arrow)\" marker-end=\"url(#post-dimension-arrow)\"/><text x=\"250\" y=\"395\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Base Width: {w} cm</text><text x=\"198\" y=\"102\" transform=\"rotate(-52 198 102)\" text-anchor=\"middle\" font-size=\"13\">Slant: {slant_str} cm</text></svg><br><br><b>Step-by-Step Solution Breakdown:</b><br><br><b>Step 1: Find the Face Slant Height (\\(\\ell\\)) of the Pyramid</b><br>The distance from the center of the base to the edge is half the width: \\({w} / 2 = {half_w}\\text{ cm}\\).<br>Using the Pythagorean theorem: \\(\\ell = \\sqrt{(\\frac{w}{2})^2 + h_{\\text{pyramid}}^2}\\)<br>\\(\\ell = \\sqrt{{half_w}^2 + {h_pyramid}^2} = \\sqrt{{slant_sq}} \\approx {slant_str}\\text{ cm}\\)<br><br><b>Step 2: Calculate the Painted Surface Area (Exposed Faces Only)</b><br>• Prism Lateral Area (4 vertical rectangular faces): \\(4 \\times w \\times h_{\\text{prism}} = 4 \\times {w} \\times {h_prism} = {prism_area}\\text{ cm}^2\\)<br>• Pyramid Lateral Area (4 triangular faces): \\(4 \\times (\\frac{1}{2} \\times w \\times \\ell) = 2 \\times {w} \\times {slant_str} \\approx {pyramid_area}\\text{ cm}^2\\)<br>• Total Painted Area: \\({prism_area} + {pyramid_area} = \\mathbf{{total_area}\\text{ cm}^2}\\br><br><b>Step 3: Calculate the Total Wood Volume</b><br>• Prism Volume: \\(w^2 \\times h_{\\text{prism}} = {w}^2 \\times {h_prism} = {prism_vol}\\text{ cm}^3\\)<br>• Pyramid Volume: \\(\\frac{1}{3} \\times w^2 \\times h_{\\text{pyramid}} = \\frac{1}{3} \\times {w}^2 \\times {h_pyramid} \\approx {pyramid_vol}\\text{ cm}^3\\)<br>• Total Volume: \\({prism_vol} + {pyramid_vol} = \\mathbf{{total_vol}\\text{ cm}^3}\\)"
+},
+{
+  "id": "GEO 2.5 B Weeble Wobble",
+  "type": "template",
+  "objective": "Surface Area and Volume of Composite Solids with Sketching",
+  "difficulty": "intermediate",
+  "variables": {
+    "r": { "min": 3, "max": 6 },
+    "h_cone": { "min": 5, "max": 12 },
+    "slant_sq": { "formula": "r * r + h_cone * h_cone" },
+    "slant_str": { "formula": "Math.sqrt(r * r + h_cone * h_cone).toFixed(1)" },
+    "hemi_area_coeff": { "formula": "2 * r * r" },
+    "cone_area_coeff": { "formula": "(r * Math.sqrt(r * r + h_cone * h_cone)).toFixed(1)" },
+    "hemi_vol_coeff": { "formula": "((2/3) * r * r * r).toFixed(1)" },
+    "cone_vol_coeff": { "formula": "((1/3) * r * r * h_cone).toFixed(1)" },
+    "pi_area_coeff": { "formula": "(2 * r * r + Math.sqrt(r * r + h_cone * h_cone) * r).toFixed(1)" },
+    "pi_vol_coeff": { "formula": "((2/3) * r * r * r + (1/3) * r * r * h_cone).toFixed(1)" },
+    "dec_area": { "formula": "(Math.PI * (2 * r * r + Math.sqrt(r * r + h_cone * h_cone) * r)).toFixed(1)" },
+    "dec_vol": { "formula": "(Math.PI * ((2/3) * r * r * r + (1/3) * r * r * h_cone)).toFixed(1)" }
+  },
+  "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the child's egg-shaped toy described below. Label the radius and the cone height with their respective dimensions.<br><br><b>Task 2:</b> A 'Weeble Wobble' child's toy is shaped like a composite solid consisting of a hemisphere bottom section topped by a cone section. The toy has a shared radius of <b>{r} cm</b>. The upper conical body section has a height of <b>{h_cone} cm</b>.<br><br>1. Calculate the total external surface area of the toy plastic shell (excluding the hidden shared internal boundary interface).<br>2. Calculate the total internal volume of the toy container.<br><br><i>Provide your answers in both exact terms of \\(\\pi\\) and as a decimal approximation rounded to the nearest tenth.</i>",
+  "answer": "<b>Expected Student Sketch Reference:</b><br><br><svg xmlns=\"http://w3.org\" viewBox=\"0 0 520 410\" role=\"img\" aria-labelledby=\"toy-title toy-description\" style=\"display:block;width:100%;max-width:520px;height:auto;margin:12px auto;font-family:Arial,sans-serif;color:#222\"><title id=\"toy-title\">Weeble Wobble Toy dimensions</title><desc id=\"toy-description\">A conical top sitting directly over a round hemisphere base, labeled with radius {r} cm, cone height {h_cone} cm, and slant height {slant_str} cm.</desc><defs><marker id=\"toy-dimension-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><path d=\"M130 190 A110 110 0 0 0 350 190\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 L240 45 L350 190 Z\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 0 350 190\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M130 190 A110 26 0 0 1 350 190\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><line x1=\"390\" y1=\"49\" x2=\"390\" y2=\"187\" stroke=\"#333\" stroke-width=\"1.5\" marker=\"url(#toy-dimension-arrow)\" marker-end=\"url(#toy-dimension-arrow)\"/><line x1=\"244\" y1=\"45\" x2=\"386\" y2=\"45\" stroke=\"#555\"/><line x1=\"354\" y1=\"190\" x2=\"386\" y2=\"190\" stroke=\"#555\"/><text x=\"400\" y=\"120\" font-size=\"14\">Cone height: {h_cone} cm</text><line x1=\"240\" y1=\"190\" x2=\"345\" y2=\"190\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-start=\"url(#toy-dimension-arrow)\" marker-end=\"url(#toy-dimension-arrow)\"/><text x=\"293\" y=\"218\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} cm</text><text x=\"119\" y=\"117\" transform=\"rotate(-53 119 117)\" text-anchor=\"middle\" font-size=\"13\">Slant: {slant_str} cm</text></svg><br><br><b>Step-by-Step Solution Breakdown:</b><br><br><b>Step 1: Find the Cone Slant Height (\\(\\ell\\))</b><br>Using the Pythagorean theorem: \\(\\ell = \\sqrt{r^2 + h_{\\text{cone}}^2}\\)<br>\\(\\ell = \\sqrt{{r}^2 + {h_cone}^2} = \\sqrt{{slant_sq}} \\approx {slant_str}\\text{ cm}\\)<br><br><b>Step 2: Calculate the Plastic Surface Area (Exposed Outer Shell)</b><br>• Hemisphere Curved Area: \\(2\\pi r^2 = 2\\pi({r}^2) = {hemi_area_coeff}\\pi\\)<br>• Cone Lateral Area: \\(\\pi r\\ell = \\pi({r})({slant_str}) = {cone_area_coeff}\\pi\\)<br>• Total Area (Exact): \\(({hemi_area_coeff} + {cone_area_coeff})\\pi = {pi_area_coeff}\\pi\\text{ cm}^2\\)<br>• Total Area (Decimal): \\({pi_area_coeff} \\times 3.14159... = \\mathbf{{dec_area}\\text{ cm}^2}\\)<br><br><b>Step 3: Calculate the Total Toy Volume</b><br>• Hemisphere Volume: \\(\\frac{2}{3}\\pi r^3 = \\frac{2}{3}\\pi({r}^3) = {hemi_vol_coeff}\\pi\\)<br>• Cone Volume: \\(\\frac{1}{3}\\pi r^2 h_{\\text{cone}} = \\frac{1}{3}\\pi({r}^2)({h_cone}) = {cone_vol_coeff}\\pi\\)<br>• Total Volume (Exact): \\(({hemi_vol_coeff} + {cone_vol_coeff})\\pi = {pi_vol_coeff}\\pi\\text{ m}^3\\)<br>• Total Volume (Decimal): \\({pi_vol_coeff} \\times 3.14159... = \\mathbf{{dec_vol}\\text{ cm}^3}\\)"
 }
-
-
-
-
-
-
-
 
 
 ],
