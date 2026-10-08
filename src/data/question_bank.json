@@ -707,8 +707,8 @@
       "difficulty": "basic",
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
+        "b": { "min": -10, "max": 10, "exclude": [0,1,-1,"a"] },
+        "c": { "min": -10, "max": 10, "exclude": [-1,0,1,"b","a"] },
         "x": { "formula": "(b * a / c).toFixed(2)"  }
       },
       "question": "Solve for \\( x \\): <br> \\(\\frac{ x }{{a}} = \\frac{{b}}{{c}} \\).",
@@ -5370,52 +5370,7 @@
       "question": "The coordinate of point X on segment \\( \\overline{PQ} \\), located \\( \\frac{4}{5} \\) of the distance from P toward Q, is ______. Draw a number line to show P, X, and Q.<br>Use P = {p_display} and Q = {q_display}.",
       "answer": "\\( X = P + \\frac{4}{5}(Q - P) = {p_display} + \\frac{4}{5}({q_display} - ({p_display})) = {x_display} \\)."
     },
-    {
-      "id": "GEO 1-5b C v1",
-      "type": "template",
-      "objective": "Locate a Point Using a Segment Ratio",
-      "difficulty": "basic",
-      "variables": {
-        "p_coordinate": { "min": -10, "max": 10 },
-        "ratio_p": { "min": 1, "max": 4 },
-        "ratio_x": { "min": 1, "max": 4 },
-        "unit_length": { "min": 1, "max": 2 },
-        "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
-        "q_coordinate": { "formula": "p_coordinate + direction * (ratio_p + ratio_x) * unit_length" },
-        "x_coordinate": { "formula": "p_coordinate + direction * ratio_p * unit_length" },
-        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
-        "total_parts": { "formula": "ratio_p + ratio_x" },
-        "number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 92\" role=\"img\" aria-label=\"Blank number line with tick marks\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"30\" y1=\"52\" x2=\"630\" y2=\"52\" stroke=\"currentColor\" stroke-width=\"2\"/>' + Array.from({length: 21}, (_, index) => { const value = index * 2 - 20; const tickX = 30 + (value + 20) * 15; return '<line x1=\"' + tickX + '\" y1=\"46\" x2=\"' + tickX + '\" y2=\"58\" stroke=\"currentColor\"/><text x=\"' + tickX + '\" y=\"78\" text-anchor=\"middle\" font-size=\"11\">' + value + '</text>'; }).join('') + '</svg>'" }
-      },
-      "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_coordinate} and Q = {q_coordinate}, find the coordinate of X.<br>{number_line_svg}",
-      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_coordinate} - ({p_coordinate}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_coordinate} \\)."
-    },
-    {
-      "id": "GEO 1-5b C v2",
-      "type": "template",
-      "objective": "Locate a Point Using a Segment Ratio",
-      "difficulty": "basic",
-      "variables": {
-        "p_cents": { "min": -1000, "max": 1000 },
-        "ratio_p": { "min": 1, "max": 4 },
-        "ratio_x": { "min": 1, "max": 4 },
-        "unit_cents": { "min": 5, "max": 50 },
-        "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
-        "q_cents": { "formula": "p_cents + direction * (ratio_p + ratio_x) * unit_cents" },
-        "x_cents": { "formula": "p_cents + direction * ratio_p * unit_cents" },
-        "p_coordinate": { "formula": "p_cents / 100" },
-        "q_coordinate": { "formula": "q_cents / 100" },
-        "x_coordinate": { "formula": "x_cents / 100" },
-        "p_display": { "formula": "p_coordinate.toFixed(2)" },
-        "q_display": { "formula": "q_coordinate.toFixed(2)" },
-        "x_display": { "formula": "x_coordinate.toFixed(2)" },
-        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
-        "total_parts": { "formula": "ratio_p + ratio_x" }
-      },
-      "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_display} and Q = {q_display}, find the coordinate of X. Draw a number line to show P, X, and Q.",
-      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_display} - ({p_display}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_display} \\)."
-    },
-    {
+        {
       "id": "GEO 1-5a C v3",
       "type": "template",
       "objective": "Find a Coordinate Using a Fraction of a Segment",
@@ -5472,6 +5427,52 @@
       "answer": "\\( C = A + \\frac{{fraction_numerator}}{{fraction_denominator}}(B-A) = {a_display} + \\frac{{fraction_numerator}}{{fraction_denominator}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
+      "id": "GEO 1-5b C v1",
+      "type": "template",
+      "objective": "Locate a Point Using a Segment Ratio",
+      "difficulty": "basic",
+      "variables": {
+        "p_coordinate": { "min": -10, "max": 10 },
+        "ratio_p": { "min": 1, "max": 4 },
+        "ratio_x": { "min": 1, "max": 4, "exclude": ["ratio_p"]},
+        "unit_length": { "min": 1, "max": 2 },
+        "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
+        "q_coordinate": { "formula": "p_coordinate + direction * (ratio_p + ratio_x) * unit_length" },
+        "x_coordinate": { "formula": "p_coordinate + direction * ratio_p * unit_length" },
+        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
+        "total_parts": { "formula": "ratio_p + ratio_x" },
+        "number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 92\" role=\"img\" aria-label=\"Blank number line with tick marks\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"30\" y1=\"52\" x2=\"630\" y2=\"52\" stroke=\"currentColor\" stroke-width=\"2\"/>' + Array.from({length: 21}, (_, index) => { const value = index * 2 - 20; const tickX = 30 + (value + 20) * 15; return '<line x1=\"' + tickX + '\" y1=\"46\" x2=\"' + tickX + '\" y2=\"58\" stroke=\"currentColor\"/><text x=\"' + tickX + '\" y=\"78\" text-anchor=\"middle\" font-size=\"11\">' + value + '</text>'; }).join('') + '</svg>'" }
+      },
+      "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_coordinate} and Q = {q_coordinate}, find the coordinate of X.<br>{number_line_svg}",
+      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_coordinate} - ({p_coordinate}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_coordinate} \\)."
+    },
+    {
+      "id": "GEO 1-5b C v2",
+      "type": "template",
+      "objective": "Locate a Point Using a Segment Ratio",
+      "difficulty": "basic",
+      "variables": {
+        "p_cents": { "min": -1000, "max": 1000 },
+        "ratio_p": { "min": 1, "max": 4 },
+        "ratio_x": { "min": 1, "max": 4, "exclude": ["ratio_p"]},
+        "unit_cents": { "min": 5, "max": 50 },
+        "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
+        "q_cents": { "formula": "p_cents + direction * (ratio_p + ratio_x) * unit_cents" },
+        "x_cents": { "formula": "p_cents + direction * ratio_p * unit_cents" },
+        "p_coordinate": { "formula": "p_cents / 100" },
+        "q_coordinate": { "formula": "q_cents / 100" },
+        "x_coordinate": { "formula": "x_cents / 100" },
+        "p_display": { "formula": "p_coordinate.toFixed(2)" },
+        "q_display": { "formula": "q_coordinate.toFixed(2)" },
+        "x_display": { "formula": "x_coordinate.toFixed(2)" },
+        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
+        "total_parts": { "formula": "ratio_p + ratio_x" }
+      },
+      "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_display} and Q = {q_display}, find the coordinate of X. Draw a number line to show P, X, and Q.",
+      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_display} - ({p_display}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_display} \\)."
+    },
+
+    {
       "id": "GEO 1-5b C v3",
       "type": "template",
       "objective": "Find a Coordinate Using a Segment Ratio",
@@ -5479,7 +5480,7 @@
       "variables": {
         "a_cents": { "min": -1000, "max": 1000 },
         "ratio_ac": { "min": 1, "max": 4 },
-        "ratio_cb": { "min": 1, "max": 4 },
+        "ratio_cb": { "min": 1, "max": 4, "exclude": ["ratio_ac"]},
         "unit_cents": { "min": 5, "max": 50 },
         "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
         "b_cents": { "formula": "a_cents + direction * (ratio_ac + ratio_cb) * unit_cents" },
@@ -5508,7 +5509,7 @@
       "variables": {
         "a_tenths": { "min": -100, "max": 100 },
         "ratio_ac": { "min": 1, "max": 4 },
-        "ratio_cb": { "min": 1, "max": 4 },
+        "ratio_cb": { "min": 1, "max": 4, "exclude": ["ratio_ac"]},
         "unit_tenths": { "min": 1, "max": 10 },
         "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
         "b_tenths": { "formula": "a_tenths + direction * (ratio_ac + ratio_cb) * unit_tenths" },
@@ -6118,7 +6119,137 @@
   },
   "question": "How many line segments will be needed to create Step 4 of the sequence shown below?<br><br>{sequence_svg}<br><br>____ segments",
   "answer": "Step 1: Count the line segments in the given steps:<br>Step 1 has 1 shape made of {{s1}} segments.<br>Step 2 has 2 shapes made of {{s2}} segments.<br>Step 3 has 3 shapes made of {{s3}} segments.<br><br>Step 2: Identify the pattern:<br>The sequence increases by adding 1 separate shape each time. This means {{inc}} line segments are added at each step.<br><br>Step 3: Calculate Step 4:<br>Add {{inc}} segments to the total from Step 3:<br>{{s3}} + {{inc}} = {{result}} segments."
+},
+{
+  "id": "GEO 3-2 C Conditional Statements",
+  "type": "template",
+  "objective": "Identifying Conditional Statements",
+  "difficulty": "intermediate",
+  "variables": {
+    "statement_idx": { "min": 0, "max": 2 },
+    "order_idx": { "min": 0, "max": 5 },
+    "statements": [
+      {
+        "original": "If two lines intersect, then the lines are coplanar.",
+        "p": "two lines intersect",
+        "not_p": "two lines do not intersect",
+        "q": "the lines are coplanar",
+        "not_q": "the lines are not coplanar"
+      },
+      {
+        "original": "If a polygon is a square, then it is a rectangle.",
+        "p": "a polygon is a square",
+        "not_p": "a polygon is not a square",
+        "q": "it is a rectangle",
+        "not_q": "it is not a rectangle"
+      },
+      {
+        "original": "If an angle is acute, then its measure is less than 90 degrees.",
+        "p": "an angle is acute",
+        "not_p": "an angle is not acute",
+        "q": "its measure is less than 90 degrees",
+        "not_q": "its measure is not less than 90 degrees"
+      }
+    ],
+    "variations_pool": [
+      [
+        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
+        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
+        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" }
+      ],
+      [
+        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
+        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
+        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" }
+      ],
+      [
+        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
+        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
+        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" }
+      ],
+      [
+        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
+        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
+        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" }
+      ],
+      [
+        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
+        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
+        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" }
+      ],
+      [
+        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
+        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
+        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" }
+      ]
+    ],
+    "selected": { "formula": "statements[statement_idx]" },
+    "shuffled_layout": { "formula": "variations_pool[order_idx]" }
+  },
+  "question": "Consider the statement: \"{selected.original}\"<br><br>Identify the following statements as the contrapositive, converse, or inverse of the statement above.<br><br>1. {shuffled_layout[0].text}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>2. {shuffled_layout[1].text}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>3. {shuffled_layout[2].text}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]",
+  "answer": "1. {shuffled_layout[0].type}, 2. {shuffled_layout[1].type}, 3. {shuffled_layout[2].type}"
+},
+{
+  "id": "GEO 3-2 C Compound Logic Statements",
+  "type": "template",
+  "objective": "Evaluating Compound Logic Statements",
+  "difficulty": "intermediate",
+  "variables": {
+    "false_idx": { "min": 0, "max": 2 },
+    "true_idx": { "min": 0, "max": 2 },
+    "false_pool": [
+      "A triangle is a square",
+      "An octagon has six sides",
+      "A right angle measures 180 degrees"
+    ],
+    "true_pool": [
+      "A rectangle is a quadrilateral",
+      "A pentagon has five sides",
+      "An equilateral triangle has equal sides"
+    ],
+    "p_text": { "formula": "false_pool[false_idx]" },
+    "q_text": { "formula": "true_pool[true_idx]" },
+    "ans_A": { "formula": "true" },
+    "ans_B": { "formula": "false" },
+    "ans_C": { "formula": "false" },
+    "ans_D": { "formula": "true" },
+    "ans_E": { "formula": "true" },
+    "ans_F": { "formula": "false" }
+  },
+  "question": "Consider these two statements:<br>p: {p_text}<br>q: {q_text}<br><br>Select all of the true statements.<br>Ⓐ ~p<br>Ⓑ ~q<br>Ⓒ p ∧ q<br>Ⓓ p ∨ q<br>Ⓔ ~p ∧ q<br>Ⓕ p ∨ ~q",
+  "answer": "Ⓐ, Ⓓ, Ⓔ"
+},
+{
+  "id": "GEO 3-2 C Law of Syllogism",
+  "type": "template",
+  "objective": "Applying the Law of Syllogism",
+  "difficulty": "intermediate",
+  "variables": {
+    "concept_idx": { "min": 0, "max": 2 },
+    "concepts": [
+      {
+        "a": "a square",
+        "b": "a rectangle",
+        "c": "a parallelogram"
+      },
+      {
+        "a": "an equilateral triangle",
+        "b": "an isosceles triangle",
+        "c": "a polygon"
+      },
+      {
+        "a": "a regular hexagon",
+        "b": "an equiangular polygon",
+        "c": "a convex polygon"
+      }
+    ],
+    "sel": { "formula": "concepts[concept_idx]" }
+  },
+  "question": "Statements 1 and 2 are true conditional statements.<br>Statement 1: If a figure is {sel.a}, then it is {sel.b}.<br>Statement 2: If a figure is {sel.b}, then it is {sel.c}.<br><br>Which conclusion is valid?<br>Ⓐ If Figure A is {sel.a}, then Figure A is {sel.c}.<br>Ⓑ If Figure A is not {sel.a}, then Figure A is not {sel.c}.<br>Ⓒ If Figure A is {sel.c}, then Figure A is {sel.a}.<br>Ⓓ If Figure A is {sel.b}, then Figure A is {sel.a}.",
+  "answer": "Ⓐ"
 }
+
+
 
 
 ]
