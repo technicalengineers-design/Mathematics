@@ -4855,7 +4855,7 @@
       "answer": "${formatted_salary}"
     },
     {
-      "id": "CM 3.2a3",
+      "id": "CM 3.2b",
       "type": "template",
       "objective": "Overtime Payroll",
       "difficulty": "basic",
@@ -4871,7 +4871,7 @@
       "answer": "${formatted_pay}"
     },
     {
-      "id": "CM 3.2a4",
+      "id": "CM 3.2c",
       "type": "template",
       "objective": "Wage Increase Percentages",
       "difficulty": "basic",
@@ -4892,7 +4892,7 @@
       "answer": "{formatted_percentage}%"
     },
     {
-      "id": "CM 3.2a5",
+      "id": "CM 3.3a",
       "type": "template",
       "objective": "FICA Payroll Deductions",
       "difficulty": "basic",
@@ -4909,7 +4909,7 @@
       "answer": "Social Security: ${formatted_social_security}; Medicare: ${formatted_medicare}; Total FICA: ${formatted_total_fica}"
     },
     {
-      "id": "CM 3.2a6",
+      "id": "CM 3.3b",
       "type": "template",
       "objective": "Federal Income Tax Withholding",
       "difficulty": "basic",
@@ -4927,7 +4927,7 @@
       "answer": "Taxable income: ${formatted_taxable_income}; Annual federal income tax: ${formatted_annual_tax}; Estimated deduction per biweekly paycheck: ${formatted_biweekly_withholding}"
     },
     {
-      "id": "CM 3.2a7",
+      "id": "CM 3.3c",
       "type": "template",
       "objective": "State Income Tax Withholding",
       "difficulty": "basic",
@@ -4943,7 +4943,7 @@
       "answer": "Annual state income tax: ${formatted_annual_state_tax}; Estimated deduction per biweekly paycheck: ${formatted_biweekly_state_withholding}"
     },
     {
-      "id": "CM 3.2a8",
+      "id": "CM 3.4a",
       "type": "template",
       "objective": "Graduated Sales Commission",
       "difficulty": "basic",
@@ -4969,7 +4969,7 @@
       "answer": "Tier 1: ${formatted_tier_one}; Tier 2: ${formatted_tier_two}; Tier 3: ${formatted_tier_three}; Total commission: ${formatted_total_commission}"
     },
     {
-      "id": "CM 3.2a9",
+      "id": "CM 3.4b",
       "type": "template",
       "objective": "Monthly Graduated Sales Commission",
       "difficulty": "basic",
@@ -4989,7 +4989,7 @@
       "answer": "Tier 1: ${formatted_tier_one}; Tier 2: ${formatted_tier_two}; Tier 3: ${formatted_tier_three}; Total monthly commission: ${formatted_total_commission}"
     },
     {
-      "id": "CM 3.2a10",
+      "id": "CM 3.4c",
       "type": "template",
       "objective": "Monthly Salary Plus Commission",
       "difficulty": "basic",
@@ -5010,7 +5010,7 @@
       "answer": "Monthly commission: ${formatted_total_commission}; Monthly gross pay: ${formatted_monthly_gross_pay}"
     },
     {
-      "id": "CM 3.2a11",
+      "id": "CM 3.5",
       "type": "template",
       "objective": "Bond Cost and Profit",
       "difficulty": "basic",
@@ -5033,7 +5033,7 @@
       "answer": "Purchase fee: ${formatted_purchase_fee}; Total cost: ${formatted_total_cost}; Sale proceeds: ${formatted_sale_proceeds}; Profit (or loss): ${formatted_profit}"
     },
     {
-      "id": "CM 3.2a12",
+      "id": "CM 3.6",
       "type": "template",
       "objective": "Stock Cost and Profit",
       "difficulty": "basic",
@@ -5054,303 +5054,6 @@
       },
       "question": "An investor buys {share_count} shares of stock for ${purchase_price_per_share} per share. The broker charges a {fee_rate_percent}% purchase fee. The investor later sells all the shares for ${sale_price_per_share} per share. Ignoring dividends, taxes, and selling fees, calculate the purchase fee, total cost, sale proceeds, and profit or loss.",
       "answer": "Purchase fee: ${formatted_purchase_fee}; Total cost: ${formatted_total_cost}; Sale proceeds: ${formatted_sale_proceeds}; Profit (or loss): ${formatted_profit}"
-    },
-    {
-      "id": "ALG1-2.1-B3",
-      "type": "template",
-      "objective": "Writing and Interpreting Equations",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 1, "max": 10 },
-        "b": { "min": 1, "max": 10 }
-      },
-      "question": "Write a mathematical equation for the following statement: 'The quotient of a number \\( x \\) and {a} increased by {b}.'",
-      "answer": "\\( \\frac{x}{ {a} } + {b} \\)"
-    },
-    {
-      "id": "ALG1-2.2-B1",
-      "type": "template",
-      "objective": "Solving One-Step Equations",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0]  },
-        "x": { "formula": "b - a.toFixed(2)" }
-      },
-      "question": "Solve for x: <br> \\( x {a|sign} = {b} \\).",
-      "answer": "\\( x = {x} \\)"
-    },
-    {
-      "id": "ALG1-2.2-B2",
-      "type": "template",
-      "objective": "Solving One-Step Equations",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": 2, "max": 10, "exclude": ["a"] },
-        "c": { "min": 2, "max": 10 },
-        "xnum": { "formula": "b * c" },
-        "x": { "formula": "b * c / a.toFixed(2)" }
-      },
-      "question": "Solve for x: <br> \\( \\frac{{a}}{{b}}x = {c} \\).",
-      "answer": "\\( x = \\frac{{xnum}}{{a}} \\) or \\( x = {x} \\) manually simplify."
-    },
-    {
-      "id": "ALG1-2.2-B3",
-      "type": "template",
-      "objective": "Solving One-Step Equations",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": ["a",0] },
-        "x": { "formula": "a * b.toFixed(2)" }
-      },
-      "question": "Solve for x: <br> \\(  \\frac{ x }{{a}}  = {b} \\).",
-      "answer": "\\( x = {x} \\)"
-    },
-    {
-      "id": "ALG1-2.3-B1",
-      "type": "template",
-      "objective": "Solving Multi-Step Equations",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 1, "max": 10, "exclude": ["a"] },
-        "c": { "min": 1, "max": 10, "exclude": ["a","b"] },
-        "xnum": { "formula": "c - b" },
-        "x": { "formula": "(c - b) / a.toFixed(2)" }
-      },
-      "question": "Solve for x: <br> \\( {a}x + {b} = {c} \\).",
-      "answer": "\\( x = {x} \\) or \\( \\frac{{xnum}}{{a}} \\)"
-    },
-    {
-      "id": "ALG1-2.3-B2",
-      "type": "template",
-      "objective": "Solving Multi-Step Equations",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": ["a"] },
-        "c": { "min": 1, "max": 10, "exclude": ["a","b"] },
-        "x": { "formula": "a - b * c.toFixed(2)" }
-      },
-      "question": "Solve for x: <br> \\( \\frac{{a} - x}{{b}} = {c} \\).",
-      "answer": "\\( x = {x} \\)"
-    },
-    {
-      "id": "ALG1-2.3-I1",
-      "type": "template",
-      "objective": "Solving Multi-Step Equations",
-      "difficulty": "intermediate",
-      "variables": {
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "d": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "x": { "formula": " (c*(b+d)-b).toFixed(2)"  }
-      },
-      "question": "Solve for x: <br> \\( \\frac{ax+{b}}{{c}} - {d} = {b} \\).",
-      "answer": "\\( x = \\frac{{x}}{a} \\)"
-    },
-    {
-      "id": "ALG1-2.3-I2",
-      "type": "template",
-      "objective": "Solving Multi-Step Equations",
-      "difficulty": "intermediate",
-      "variables": {
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "d": { "formula": "b*c.toFixed(2)" }
-      },
-      "question": "Solve for x: <br> \\( {b}(a + {c}x) = {d} \\).",
-      "answer": "\\( x = \\frac{{d} - a{b}}{{d}} \\)"
-    },
-    {
-      "id": "ALG1-2.4-B1",
-      "type": "template",
-      "objective": "Solving Equations with the Variable on Each Side",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
-        "d": { "min": 2, "max": 10 },
-        "x": { "formula": "(b + d) / (c - a).toFixed(2)" },
-        "xnum": { "formula": "b + d" },
-        "xden": { "formula": "c - a" }
-      },
-      "question": "Solve for x: <br> \\( {a}x + {b} = {c}x - {d} \\).",
-      "answer": "\\( x = \\frac{{xnum}}{{xden}} or x \\approx {x} \\)"
-    },
-    {
-      "id": "ALG1-2.4-B2",
-      "type": "template",
-      "objective": "Solving Equations with the Variable on Each Side",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
-        "d": { "min": 2, "max": 10 },
-        "e": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "x": { "formula": "(-b-d) / (c -a-e).toFixed(2)" },
-        "xnum": { "formula": "-1 * (b + d)" },
-        "xden": { "formula": "c - a - e" }
-      },
-      "question": "Solve for x: <br> \\( {a}x - {b} = {c}x + {d} - {e}x \\).",
-      "answer": "\\( x = \\frac{{xnum}}{{xden}} or x \\approx {x} \\)"
-    },
-    {
-      "id": "ALG1-2.4-I1",
-      "type": "template",
-      "objective": "Solving Equations with the Variable on Each Side",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "d": { "min": 2, "max": 10 },
-        "e": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "f": { "min": 2, "max": 10 },
-        "x": { "formula": "(d - a * b - e * f) / (a - c - e).toFixed(2)" },
-        "xnum": { "formula": "d - a * b - e * f" },
-        "xden": { "formula": "a - c - e" }
-      },
-      "question": "Solve for x: <br> \\( {a}(x + {b}) - {c}x = {d} + {e}(x - {f}) \\).",
-      "answer": "\\( x = \\frac{{xnum}}{{xden}} or x \\approx {x} \\)"
-    },
-    {
-      "id": "ALG1-2.5-B1",
-      "type": "template",
-      "objective": "Solving Equations Involving Absolute Value",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 15, "exclude": [-1,0,1] },
-        "x1": { "formula": "((c - b) / a)"  },
-        "x2": { "formula": "((-c - b) / a)"  }
-      },
-      "question": "Solve for x: <br> \\( |{a}x + {b}| = {c} \\).",
-      "answer": "\\( x = {x1}, {x2} \\)"
-    },
-    {
-      "id": "ALG1-2.5-I1",
-      "type": "template",
-      "objective": "Solving Equations Involving Absolute Value",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 15, "exclude": ["a",-1,0,1] },
-        "d": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "x1": { "formula": "((b - d) / (c - a)).toFixed(2)"  },
-        "x2": { "formula": "((-b - d) / (c + a)).toFixed(2)"  }
-      },
-      "question": "Solve for x: <br> \\( |{a}x + {b}| = {c}x {d|sign} \\).",
-      "answer": "\\( x = {x1}, {x2} \\)"
-    },
-    {
-      "id": "ALG1-2.6-B1",
-      "type": "template",
-      "objective": "Solving Proportions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
-        "x": { "formula": "(b * a / c).toFixed(2)"  }
-      },
-      "question": "Solve for \\( x \\): <br> \\(\\frac{ x }{{a}} = \\frac{{b}}{{c}} \\).",
-      "answer": "\\( x = {x} \\)"
-    },
-    {
-      "id": "ALG1-2.6-I1",
-      "type": "template",
-      "objective": "Solving Proportions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": ["b",-1,0,1] },
-        "x": { "formula": "(a * c / (c - b)).toFixed(2)"  }
-      },
-      "question": "Solve for \\( x \\): <br> \\(\\frac{ x - {a} }{{b}} = \\frac{ x }{{c}} \\).",
-      "answer": "\\( x = {x} \\)"
-    },
-    {
-      "id": "ALG1-2.6-A1",
-      "type": "template",
-      "objective": "Solving Proportions",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "2a": { "formula": "2 * a" },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": ["2a",-1,0,1] },
-        "d": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "x": { "formula": "((a * d + b * c) / (2 * c - a)).toFixed(2)"  }
-      },
-      "question": "Solve for \\( x \\): <br> \\(\\frac{ {a} }{ 2x - {b} } = \\frac{{c}}{ x + {d} } \\).",
-      "answer": "\\( x = {x} \\)"
-    },
-    {
-      "id": "ALG1-2.7-B1",
-      "type": "template",
-      "objective": "Using Formulas",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "negA": { "formula": "-1 * a" },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] }
-      },
-      "question": "Solve for \\( y \\): <br> \\( {a}x {b|signedCoef}y = {c} \\).",
-      "answer": "\\( y = \\frac{{c} {negA|sign}x}{{b}} \\)"
-    },
-    {
-      "id": "ALG1-2.7-I1",
-      "type": "template",
-      "objective": "Using Formulas",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10, "exclude": [-1,0,1,"b"] },
-        "d": { "min": 2, "max": 10 }
-      },
-      "question": "Solve for \\( x \\): <br> \\( y - {a} = \\frac{{b}}{{c}}(x - {d}) \\).",
-      "answer": "\\( x = \\frac{{c}}{{b}}(y - {a}) + {d} \\)"
-    },
-    {
-      "id": "ALG1-2.7-I1",
-      "type": "template",
-      "objective": "Using Formulas",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -1, "max": 1, "exclude": [0] },
-        "b": { "min": -1, "max": 1, "exclude": [0] },
-        "c": { "min": -1, "max": 1, "exclude": [0] },
-        "negB": { "formula": "-1 * b"  },
-        "negC": { "formula": "-1 * c"  }
-      },
-      "question": "Solve for \\( y \\): <br> \\( \\frac{ {a|coef}ry {b|signedCoef}z }{ m } {c|signedCoef}t = x \\).",
-      "answer": "\\( y = \\frac{ m(x {negC|sign}t) {negB|sign}z }{ {a}r } \\)"
-    },
-    {
-      "id": "ALG1-2.7-A1",
-      "type": "template",
-      "objective": "Using Formulas",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "negA": { "formula": "-1 * a" },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1,"a"] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1,"b"] },
-        "negC": { "formula": "-1 * c" },
-        "d": { "formula": "b*c" }
-      },
-      "question": "Solve for \\( x \\): <br> \\( \\frac{ x {a|sign}}{ x {b|sign}} = {c}y \\).",
-      "answer": "\\( x = \\frac{ {d} y {negA|sign} }{ 1 {negC|sign}y}\\)"
     }
   ],
   "Module 4 (under construction)": [
@@ -6139,10 +5842,9 @@
 
 
 ],
-
   "3 Logical Arguments and Line Relationships": [
 {
-  "id": "GEO 3-1 C",
+  "id": "GEO 3-1 Conjecture",
   "type": "template",
   "objective": "Identify the conjecture describing the next term in an arithmetic sequence",
   "difficulty": "basic",
@@ -6191,7 +5893,7 @@
   "answer": "To find the pattern, look at the difference between consecutive terms:\n- \\( {a2} - {a1} = {d} \\)\n- \\( {a3} - {a2} = {d} \\)\n- \\( {a4} - {a3} = {d} \\)\n\nThe sequence increases by a common difference of **{d}** each time. Therefore, the conjecture to find the next (5th) term is to **add {d} to {a4}**.\n\n**Correct Choice:** Add {d} to {a4}."
 },
 {
-  "id": "GEO 3-2 C",
+  "id": "GEO 3-2 Sequences",
   "type": "template",
   "objective": "Identify Patterns and Extend Total Elements in a Visual Sequence",
   "difficulty": "basic",
@@ -6211,7 +5913,7 @@
   "answer": "Step 1: Count the line segments in the given steps:<br>Step 1 has 1 shape made of {{s1}} segments.<br>Step 2 has 2 shapes made of {{s2}} segments.<br>Step 3 has 3 shapes made of {{s3}} segments.<br><br>Step 2: Identify the pattern:<br>The sequence increases by adding 1 separate shape each time. This means {{inc}} line segments are added at each step.<br><br>Step 3: Calculate Step 4:<br>Add {{inc}} segments to the total from Step 3:<br>{{s3}} + {{inc}} = {{result}} segments."
 },
 {
-  "id": "GEO 3-2 C Conditional Statements",
+  "id": "GEO 3-2 Conditional Statements",
   "type": "template",
   "objective": "Identifying Conditional Statements",
   "difficulty": "intermediate",
@@ -6280,7 +5982,7 @@
   "answer": "1. {shuffled_layout[0].type}, 2. {shuffled_layout[1].type}, 3. {shuffled_layout[2].type}"
 },
 {
-  "id": "GEO 3-2 C Compound Logic Statements",
+  "id": "GEO 3-2 Compound Logic Statements",
   "type": "template",
   "objective": "Evaluating Compound Logic Statements",
   "difficulty": "intermediate",
@@ -6310,7 +6012,7 @@
   "answer": "Ⓐ, Ⓓ, Ⓔ"
 },
 {
-  "id": "GEO 3-2 C Law of Syllogism",
+  "id": "GEO 3-2 Law of Syllogism",
   "type": "template",
   "objective": "Applying the Law of Syllogism",
   "difficulty": "intermediate",
@@ -6337,7 +6039,747 @@
   },
   "question": "Statements 1 and 2 are true conditional statements.<br>Statement 1: If a figure is {sel.a}, then it is {sel.b}.<br>Statement 2: If a figure is {sel.b}, then it is {sel.c}.<br><br>Which conclusion is valid?<br>Ⓐ If Figure A is {sel.a}, then Figure A is {sel.c}.<br>Ⓑ If Figure A is not {sel.a}, then Figure A is not {sel.c}.<br>Ⓒ If Figure A is {sel.c}, then Figure A is {sel.a}.<br>Ⓓ If Figure A is {sel.b}, then Figure A is {sel.a}.",
   "answer": "Ⓐ"
+},
+{
+  "id": "3-2 Logic",
+  "type": "template",
+  "objective": "Evaluate truth value of compound logic statements",
+  "difficulty": "basic",
+  "variables": {
+    "pool": {
+      "formula": "[ { p: 'A triangle is a square', p_val: false, q: 'A rectangle is a quadrilateral', q_val: true }, { p: 'A square has 3 sides', p_val: false, q: 'An octagon has 8 sides', q_val: true }, { p: 'Water freezes at 100°C', p_val: false, q: 'Oxygen is a gas at room temperature', q_val: true }, { p: 'Primes are always odd', p_val: false, q: '9 is a perfect square', q_val: true }, { p: 'Humans can fly unaided', p_val: false, q: 'Birds have feathers', q_val: true } ]"
+    },
+    "selected": { "formula": "pool[Math.floor(Math.random() * pool.length)]" },
+    "p_text": { "formula": "selected.p" },
+    "q_text": { "formula": "selected.q" },
+    "p_bool": { "formula": "selected.p_val" },
+    "q_bool": { "formula": "selected.q_val" }
+  },
+  "question": "Consider these two statements:<br>p: {p_text}<br>q: {q_text}<br><br>Select all of the true statements.",
+  "answer": "Given that statement p is <b>{formula: p_bool ? 'TRUE' : 'FALSE'}</b> and statement q is <b>{formula: q_bool ? 'TRUE' : 'FALSE'}</b>:<br><ul><li><b>Ⓐ ~p:</b> {formula: !p_bool ? 'TRUE' : 'FALSE'}</li><li><b>Ⓑ ~q:</b> {formula: !q_bool ? 'TRUE' : 'FALSE'}</li><li><b>Ⓒ p ∧ q:</b> {formula: (p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>Ⓓ p ∨ q:</b> {formula: (p_bool || q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>Ⓔ ~p ∧ q:</b> {formula: (!p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>Ⓕ p ∨ ~q:</b> {formula: (p_bool || !q_bool) ? 'TRUE' : 'FALSE'}</li></ul>"
+},
+{
+  "id": "3-4 Syllogism",
+  "type": "template",
+  "objective": "Apply the Law of Syllogism to valid conditional arguments",
+  "difficulty": "basic",
+  "variables": {
+    "pool": {
+      "formula": "[ { a: 'a square', b: 'a rectangle', c: 'a parallelogram', entity: 'Figure A' }, { a: 'a whale', b: 'a mammal', c: 'a warm-blooded creature', entity: 'Animal X' }, { a: 'a multiple of 8', b: 'an even number', c: 'an integer', entity: 'Number N' }, { a: 'a robin', b: 'a bird', c: 'a vertebrate', entity: 'Creature Y' } ]"
+    },
+    "selected": { "formula": "pool[Math.floor(Math.random() * pool.length)]" },
+    "item_a": { "formula": "selected.a" },
+    "item_b": { "formula": "selected.b" },
+    "item_c": { "formula": "selected.c" },
+    "subject": { "formula": "selected.entity" }
+  },
+  "question": "Statements 1 and 2 are true conditional statements.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 1: If a figure is {item_a}, then it is {item_b}.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 2: If a figure is {item_b}, then it is {item_c}.<br><br>Which conclusion is valid?",
+  "answer": "By the <b>Law of Syllogism</b>, if \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\) are true statements, then the compound conditional statement \\( p \\rightarrow r \\) is also a valid conclusion.<br><br>Let:<br>\\( p \\): The figure is {item_a}<br>\\( q \\): The figure is {item_b}<br>\\( r \\): The figure is {item_c}<br><br>Since \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\), the only valid logical deduction is \\( p \\rightarrow r \\):<br><b>\"If {subject} is {item_a}, then {subject} is {item_c}.\"</b><br><br>Therefore, <b>Ⓐ</b> is the correct choice."
+},
+{
+  "id": "3-4 Syllogism",
+  "type": "template",
+  "objective": "Apply the Law of Syllogism to valid conditional arguments with randomized choices",
+  "difficulty": "basic",
+  "variables": {
+    "pool": {
+      "formula": "[ { a: 'a square', b: 'a rectangle', c: 'a parallelogram', entity: 'Figure A' }, { a: 'a whale', b: 'a mammal', c: 'a warm-blooded creature', entity: 'Animal X' }, { a: 'a multiple of 8', b: 'an even number', c: 'an integer', entity: 'Number N' }, { a: 'a robin', b: 'a bird', c: 'a vertebrate', entity: 'Creature Y' } ]"
+    },
+    "selected": { "formula": "pool[Math.floor(Math.random() * pool.length)]" },
+    "item_a": { "formula": "selected.a" },
+    "item_b": { "formula": "selected.b" },
+    "item_c": { "formula": "selected.c" },
+    "subject": { "formula": "selected.entity" },
+    "raw_choices": {
+      "formula": "[ { text: 'If ' + selected.entity + ' is ' + selected.a + ', then ' + selected.entity + ' is ' + selected.c + '.', correct: true }, { text: 'If ' + selected.entity + ' is not ' + selected.a + ', then ' + selected.entity + ' is not ' + selected.c + '.', correct: false }, { text: 'If ' + selected.entity + ' is ' + selected.c + ', then ' + selected.entity + ' is ' + selected.a + '.', correct: false }, { text: 'If ' + selected.entity + ' is ' + selected.b + ', then ' + selected.entity + ' is ' + selected.a + '.', correct: false } ]"
+    },
+    "shuffled_choices": {
+      "formula": "raw_choices.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "choice_A": { "formula": "shuffled_choices[0].text" },
+    "choice_B": { "formula": "shuffled_choices[1].text" },
+    "choice_C": { "formula": "shuffled_choices[2].text" },
+    "choice_D": { "formula": "shuffled_choices[3].text" },
+    "correct_letter": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_choices.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "Statements 1 and 2 are true conditional statements.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 1: If a figure is {item_a}, then it is {item_b}.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 2: If a figure is {item_b}, then it is {item_c}.<br><br>Which conclusion is valid?<br><br>Ⓐ {choice_A}<br>Ⓑ {choice_B}<br>Ⓒ {choice_C}<br>Ⓓ {choice_D}",
+  "answer": "By the <b>Law of Syllogism</b>, if \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\) are true statements, then the compound conditional statement \\( p \\rightarrow r \\) is also a valid conclusion.<br><br>Let:<br>\\( p \\): The figure is {item_a}<br>\\( q \\): The figure is {item_b}<br>\\( r \\): The figure is {item_c}<br><br>Since \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\), the only valid logical deduction is \\( p \\rightarrow r \\):<br><b>\"If {subject} is {item_a}, then {subject} is {item_c}.\"</b><br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
+},
+{
+  "id": "3-4",
+  "type": "template",
+  "objective": "Complete fundamental geometric postulates regarding points, lines, and planes",
+  "difficulty": "basic",
+  "variables": {
+    "postulate_pool": {
+      "formula": "[ { text: 'If two ______ intersect, then their intersection is a point.', options: ['lines', 'planes'], ans: 'lines', explanation: 'If two lines intersect, they meet at exactly one point.' }, { text: 'Through three noncollinear points there is exactly one ______.', options: ['line', 'plane'], ans: 'plane', explanation: 'Three noncollinear points uniquely determine a flat 2D plane.' }, { text: 'If two planes intersect, then their intersection is a ______.', options: ['point', 'line'], ans: 'line', explanation: 'The intersection of two flat planes forms a straight line.' }, { text: 'Through any two distinct points there is exactly one ______.', options: ['line', 'plane'], ans: 'line', explanation: 'Two points are required to define a unique straight line.' } ]"
+    },
+    "shuffled_pool": {
+      "formula": "postulate_pool.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "p1_text": { "formula": "shuffled_pool[0].text" },
+    "p1_optA": { "formula": "shuffled_pool[0].options[0]" },
+    "p1_optB": { "formula": "shuffled_pool[0].options[1]" },
+    "p1_ans": { "formula": "shuffled_pool[0].ans" },
+    "p1_exp": { "formula": "shuffled_pool[0].explanation" },
+    "p2_text": { "formula": "shuffled_pool[1].text" },
+    "p2_optA": { "formula": "shuffled_pool[1].options[0]" },
+    "p2_optB": { "formula": "shuffled_pool[1].options[1]" },
+    "p2_ans": { "formula": "shuffled_pool[1].ans" },
+    "p2_exp": { "formula": "shuffled_pool[1].explanation" }
+  },
+  "question": "Complete each postulate by choosing the correct terms:<br><br>1. {p1_text}<br>&nbsp;&nbsp;&nbsp;&nbsp;[ Ⓐ {p1_optA} &nbsp;&nbsp; Ⓑ {p1_optB} ]<br><br>2. {p2_text}<br>&nbsp;&nbsp;&nbsp;&nbsp;[ Ⓐ {p2_optA} &nbsp;&nbsp; Ⓑ {p2_optB} ]",
+  "answer": "Here are the completed geometric postulates:<br><br>1. <b>{p1_ans}</b><br><i>Explanation:</i> {p1_exp}<br><br>2. <b>{p2_ans}</b><br><i>Explanation:</i> {p2_exp}"
+},
+{
+  "id": "GEO-PROOF-3-5I",
+  "type": "template",
+  "objective": "Complete a geometric two-column proof using segment addition properties",
+  "difficulty": "medium",
+  "variables": {
+    "options_pool": {
+      "formula": "['Addition Property of Equality', 'Segment Addition Postulate', 'Substitution Property', 'Reflexive Property of Equality', 'Definition of Congruence']"
+    },
+    "raw_choices_step3": {
+      "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Segment Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
+    },
+    "raw_choices_step4": {
+      "formula": "[ { text: 'Segment Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false } ]"
+    },
+    "shuffled_step3": {
+      "formula": "raw_choices_step3.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "shuffled_step4": {
+      "formula": "raw_choices_step4.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "s3_A": { "formula": "shuffled_step3[0].text" },
+    "s3_B": { "formula": "shuffled_step3[1].text" },
+    "s3_C": { "formula": "shuffled_step3[2].text" },
+    "s3_D": { "formula": "shuffled_step3[3].text" },
+    "s4_A": { "formula": "shuffled_step4[0].text" },
+    "s4_B": { "formula": "shuffled_step4[1].text" },
+    "s4_C": { "formula": "shuffled_step4[2].text" },
+    "s4_D": { "formula": "shuffled_step4[3].text" },
+    "ans_step3": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_step3.findIndex(c => c.correct)]"
+    },
+    "ans_step4": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_step4.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "Given: \\( AB \\cong CD \\)<br>Prove: \\( AC \\cong BD \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( AB \\cong CD \\)</td><td>1. Given</td></tr><tr><td>2. \\( AB = CD \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( AB + BC = BC + CD \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( AB + BC = AC \\), \\( BC + CD = BD \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( AC = BD \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( AC \\cong BD \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> Ⓐ {s3_A} &nbsp;&nbsp; Ⓑ {s3_B} &nbsp;&nbsp; Ⓒ {s3_C} &nbsp;&nbsp; Ⓓ {s3_D}<br><br><b>Options for Blank 4:</b><br> Ⓐ {s4_A} &nbsp;&nbsp; Ⓑ {s4_B} &nbsp;&nbsp; Ⓒ {s4_C} &nbsp;&nbsp; Ⓓ {s4_D}",
+  "answer": "Here are the correct reasons to complete the proof:<br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical segment length \\( BC \\) to both sides of the equation \\( AB = CD \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Segment Addition Postulate)</b><br><i>Why:</i> This postulate states that if point \\( B \\) lies between points \\( A \\) and \\( C \\), then the two smaller segment lengths add up to the total length (\\( AB + BC = AC \\)).</li></ul>"
+},
+{
+  "id": "GEO-PROOF-RAND-VARS-3-5I",
+  "type": "template",
+  "objective": "Complete a segment proof with fully randomized variable names and shuffled multiple-choice reasons",
+  "difficulty": "medium",
+  "variables": {
+    "point_pools": {
+      "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'], ['E', 'F', 'G', 'H'] ]"
+    },
+    "pts": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
+    "seg1": { "formula": "pts[0] + pts[1]" },
+    "seg2": { "formula": "pts[2] + pts[3]" },
+    "seg3": { "formula": "pts[1] + pts[2]" },
+    "whole1": { "formula": "pts[0] + pts[2]" },
+    "whole2": { "formula": "pts[1] + pts[3]" },
+    "raw_choices_step3": {
+      "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Segment Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
+    },
+    "raw_choices_step4": {
+      "formula": "[ { text: 'Segment Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false } ]"
+    },
+    "shuffled_step3": {
+      "formula": "raw_choices_step3.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "shuffled_step4": {
+      "formula": "raw_choices_step4.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "s3_A": { "formula": "shuffled_step3[0].text" },
+    "s3_B": { "formula": "shuffled_step3[1].text" },
+    "s3_C": { "formula": "shuffled_step3[2].text" },
+    "s3_D": { "formula": "shuffled_step3[3].text" },
+    "s4_A": { "formula": "shuffled_step4[0].text" },
+    "s4_B": { "formula": "shuffled_step4[1].text" },
+    "s4_C": { "formula": "shuffled_step4[2].text" },
+    "s4_D": { "formula": "shuffled_step4[3].text" },
+    "ans_step3": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_step3.findIndex(c => c.correct)]"
+    },
+    "ans_step4": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_step4.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "Given: \\( {seg1} \\cong {seg2} \\)<br>Prove: \\( {whole1} \\cong {whole2} \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( {seg1} \\cong {seg2} \\)</td><td>1. Given</td></tr><tr><td>2. \\( {seg1} = {seg2} \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( {seg1} + {seg3} = {seg3} + {seg2} \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( {seg1} + {seg3} = {whole1} \\), \\( {seg3} + {seg2} = {whole2} \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( {whole1} = {whole2} \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( {whole1} \\cong {whole2} \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> Ⓐ {s3_A} &nbsp;&nbsp; Ⓑ {s3_B} &nbsp;&nbsp; Ⓒ {s3_C} &nbsp;&nbsp; Ⓓ {s3_D}<br><br><b>Options for Blank 4:</b><br> Ⓐ {s4_A} &nbsp;&nbsp; Ⓑ {s4_B} &nbsp;&nbsp; Ⓒ {s4_C} &nbsp;&nbsp; Ⓓ {s4_D}",
+  "answer": "Here are the correct reasons to complete the proof:<br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical segment length \\( {seg3} \\) to both sides of the equation \\( {seg1} = {seg2} \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Segment Addition Postulate)</b><br><i>Why:</i> This postulate states that if point \\( {pts[1]} \\) lies between points \\( {pts[0]} \\) and \\( {pts[2]} \\), then the two smaller segment lengths add up to the total length (\\( {seg1} + {seg3} = {whole1} \\)).</li></ul>"
+},
+{
+  "id": "GEO-PROOF-ANGLE-ADD-VISUAL-3-5I",
+  "type": "template",
+  "objective": "Complete an angle proof with randomized variable names, a concept diagram, and shuffled reasons",
+  "difficulty": "medium",
+  "variables": {
+    "vertex_pools": {
+      "formula": "[ ['A', 'B', 'C', 'D', 'E'], ['P', 'Q', 'R', 'S', 'T'], ['F', 'G', 'H', 'J', 'K'], ['V', 'W', 'X', 'Y', 'Z'] ]"
+    },
+    "v": { "formula": "vertex_pools[Math.floor(Math.random() * vertex_pools.length)]" },
+    "ang1": { "formula": "'\\\\angle ' + v + v + v" },
+    "ang2": { "formula": "'\\\\angle ' + v + v + v" },
+    "ang3": { "formula": "'\\\\angle ' + v + v + v" },
+    "large_ang1": { "formula": "'\\\\angle ' + v + v + v" },
+    "large_ang2": { "formula": "'\\\\angle ' + v + v + v" },
+    "raw_choices_step3": {
+      "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Angle Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
+    },
+    "raw_choices_step4": {
+      "formula": "[ { text: 'Angle Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false } ]"
+    },
+    "shuffled_step3": {
+      "formula": "raw_choices_step3.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "shuffled_step4": {
+      "formula": "raw_choices_step4.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "s3_A": { "formula": "shuffled_step3.text" },
+    "s3_B": { "formula": "shuffled_step3.text" },
+    "s3_C": { "formula": "shuffled_step3.text" },
+    "s3_D": { "formula": "shuffled_step3.text" },
+    "s4_A": { "formula": "shuffled_step4.text" },
+    "s4_B": { "formula": "shuffled_step4.text" },
+    "s4_C": { "formula": "shuffled_step4.text" },
+    "s4_D": { "formula": "shuffled_step4.text" },
+    "ans_step3": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_step3.findIndex(c => c.correct)]"
+    },
+    "ans_step4": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_step4.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "Given: \\( {ang1} \\cong {ang3} \\)<br>Prove: \\( {large_ang1} \\cong {large_ang2} \\)<br><br><ChartPlaceholder chartDescription=\"A geometric diagram showing four rays originating from a shared common vertex point. The rays form three adjacent component angles labeled Angle 1, Angle 2, and Angle 3 consecutively, illustrating the Angle Addition Postulate geometry relationship.\" /><br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( {ang1} \\cong {ang3} \\)</td><td>1. Given</td></tr><tr><td>2. \\( m{ang1} = m{ang3} \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( m{ang1} + m{ang2} = m{ang2} + m{ang3} \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( m{ang1} + m{ang2} = m{large_ang1} \\), \\( m{ang2} + m{ang3} = m{large_ang2} \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( m{large_ang1} = m{large_ang2} \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( {large_ang1} \\cong {large_ang2} \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> Ⓐ {s3_A} &nbsp;&nbsp; Ⓑ {s3_B} &nbsp;&nbsp; Ⓒ {s3_C} &nbsp;&nbsp; Ⓓ {s3_D}<br><br><b>Options for Blank 4:</b><br> Ⓐ {s4_A} &nbsp;&nbsp; Ⓑ {s4_B} &nbsp;&nbsp; Ⓒ {s4_C} &nbsp;&nbsp; Ⓓ {s4_D}",
+  "answer": "Here are the correct reasons to complete the proof:<br><br><ChartPlaceholder chartDescription=\"The exact same adjacent angle diagram, highlighting how adding the common middle Angle 2 to Angle 1 creates the first composite large angle, and adding Angle 2 to Angle 3 creates the second composite large angle.\" /><br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical angle measure \\( m{ang2} \\) to both sides of the equation \\( m{ang1} = m{ang3} \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Angle Addition Postulate)</b><br><i>Why:</i> This postulate states that if a ray lies in the interior of an angle, the measures of the two smaller adjacent angles add up to the measure of the larger overall angle (\\( m{ang1} + m{ang2} = m{large_ang1} \\)).</li></ul>"
+},
+{
+  "id": "GEO-COLLINEARITY-3-5B",
+  "type": "template",
+  "objective": "Determine which point lies between the other two given three segment lengths of collinear points",
+  "difficulty": "basic",
+  "variables": {
+    "point_pools": {
+      "formula": "[ ['R', 'S', 'T'], ['A', 'B', 'C'], ['X', 'Y', 'Z'], ['P', 'Q', 'R'], ['D', 'E', 'F'] ]"
+    },
+    "pts": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
+    "p_left": { "formula": "pts[0]" },
+    "p_mid": { "formula": "pts[2]" },
+    "p_right": { "formula": "pts[1]" },
+    "val_left_mid": { "formula": "Math.floor(Math.random() * 8) + 3" },
+    "val_mid_right": { "formula": "Math.floor(Math.random() * 8) + 3" },
+    "val_total": { "formula": "val_left_mid + val_mid_right" },
+    "seg_left_right": { "formula": "p_left + p_right" },
+    "seg_left_mid": { "formula": "p_left + p_mid" },
+    "seg_mid_right": { "formula": "p_mid + p_right" },
+    "raw_choices": {
+      "formula": "[ { text: 'Point ' + pts[2] + ' is between point ' + pts[0] + ' and point ' + pts[1] + '.', correct: true }, { text: 'Point ' + pts[0] + ' is between point ' + pts[2] + ' and point ' + pts[1] + '.', correct: false }, { text: 'Point ' + pts[1] + ' is between point ' + pts[0] + ' and point ' + pts[2] + '.', correct: false }, { text: 'There is not enough information to determine the relationship.', correct: false } ]"
+    },
+    "shuffled_choices": {
+      "formula": "raw_choices.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "choice_A": { "formula": "shuffled_choices[0].text" },
+    "choice_B": { "formula": "shuffled_choices[1].text" },
+    "choice_C": { "formula": "shuffled_choices[2].text" },
+    "choice_D": { "formula": "shuffled_choices[3].text" },
+    "correct_letter": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_choices.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "If \\( {seg_left_right} = {val_total} \\), \\( {seg_left_mid} = {val_left_mid} \\), \\( {seg_mid_right} = {val_mid_right} \\), and points {p_left}, {p_right}, and {p_mid} are collinear, what is the relationship between points {p_left}, {p_right}, and {p_mid}?<br><br><ChartPlaceholder chartDescription=\"A simple horizontal line segment with three labeled point markers illustrating the Segment Addition Postulate layout.\" /><br><br>Ⓐ {choice_A}<br>Ⓑ {choice_B}<br>Ⓒ {choice_C}<br>Ⓓ {choice_D}",
+  "answer": "By the <b>Segment Addition Postulate</b>, if three points are collinear and the lengths of two smaller parts equal the length of the entire segment, the shared endpoint of the smaller segments must lie in the middle.<br><br>Let us look at the given values:<br><ul><li>\\( {seg_left_mid} = {val_left_mid} \\)</li><li>\\( {seg_mid_right} = {val_mid_right} \\)</li><li>\\( {seg_left_right} = {val_total} \\)</li></ul><br>Since \\( {val_left_mid} + {val_mid_right} = {val_total} \\), we can set up the equation:<br>\\[ {seg_left_mid} + {seg_mid_right} = {seg_left_right} \\]<br><br>Because point <b>{p_mid}</b> is the common point shared by both smaller adjacent segments, it must lie strictly between the outer boundaries.<br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
+},
+{
+  "id": "GEO 3-5 Between",
+  "type": "template",
+  "objective": "Calculate a segment length involving a midpoint and overlapping betweenness relationships with step-by-step explanations",
+  "difficulty": "basic",
+  "variables": {
+    "point_pools": {
+      "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'], ['E', 'F', 'G', 'H'] ]"
+    },
+    "pts": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
+    "ptA": { "formula": "pts" },
+    "ptB": { "formula": "pts" },
+    "ptC": { "formula": "pts" },
+    "ptD": { "formula": "pts" },
+    "val_BD": { "formula": "Math.floor(Math.random() * 8) + 3" },
+    "val_AB_half": { "formula": "Math.floor(Math.random() * 6) + 4" },
+    "val_AB": { "formula": "val_AB_half * 2" },
+    "val_AD": { "formula": "val_AB + val_BD" },
+    "val_CD": { "formula": "val_AB_half + val_BD" }
+  },
+  "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. If \\( {ptA}{ptD} = {val_AD} \\) and \\( {ptB}{ptD} = {val_BD} \\), what is {ptC}{ptD}?<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment showing four collinear points in order: first point, midpoint, shared point, and terminal point. Brackets indicate individual segment components alongside their overall sum length context.\" /><br><br>{ptC}{ptD} =",
+  "answer": "To find the length of \\( {ptC}{ptD} \\), we break down the problem using geometric rules:<br><br><b>Step 1: Understand the layout of the points.</b><br>We know that point {ptB} is between {ptA} and {ptD}. We also know that point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\). This means the points lie along a straight line in the consecutive order: <b>{ptA} &rarr; {ptC} &rarr; {ptB} &rarr; {ptD}</b>.<br><br><b>Step 2: Find the total length of segment \\( \\overline{{ptA}{ptB}} \\).</b><br>By using the <i>Segment Addition Postulate</i>, the full line segment is the sum of its smaller adjacent parts:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our known numbers into this equation:<br>\\[ {ptA}{ptB} + {val_BD} = {val_AD} \\]<br>Subtract {val_BD} from both sides to find the remaining length:<br>\\[ {ptA}{ptB} = {val_AD} - {val_BD} = {val_AB} \\]<br><br><b>Step 3: Calculate the halfway length using the midpoint definition.</b><br>A midpoint splits a segment into two exactly equal halves. Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the length of segment \\( \\overline{{ptC}{ptB}} \\) is exactly half of the total segment length found in Step 2:<br>\\[ {ptC}{ptB} = \\frac{1}{2}({ptA}{ptB}) = \\frac{1}{2}({val_AB}) = {val_AB_half} \\]<br><br><b>Step 4: Combine segments to find the final requested length.</b><br>Finally, because point {ptB} is situated directly between points {ptC} and {ptD}, we apply the <i>Segment Addition Postulate</i> once more to combine the pieces:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} \\]<br>Add the two values together:<br>\\[ {ptC}{ptD} = {val_AB_half} + {val_BD} = {val_CD} \\]<br><br>Therefore, the complete length is <b>\\( {ptC}{ptD} = {val_CD} \\)</b>."
+},
+{
+  "id": "3-5 B-level Segment Addition",
+  "type": "template",
+  "objective": "Solve for an unknown point variable using rational segment addition equations and midpoint constraints",
+  "difficulty": "advanced",
+  "variables": {
+    "point_pools": {
+      "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+    },
+    "pts": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
+    "ptA": { "formula": "pts" },
+    "ptB": { "formula": "pts" },
+    "ptC": { "formula": "pts" },
+    "ptD": { "formula": "pts" },
+    "x_val": { "formula": "2" },
+    "expr_CB": { "formula": "'3 + \\\\frac{1}{x}'" },
+    "expr_AB": { "formula": "'6 + \\\\frac{2}{x}'" },
+    "expr_BD": { "formula": "'\\\\frac{5x}{1 + x}'" },
+    "val_CB": { "formula": "3.5" },
+    "val_AB": { "formula": "7" },
+    "val_BD": { "formula": "10 / 3" },
+    "val_AD": { "formula": "7 + (10 / 3)" },
+    "val_CD": { "formula": "3.5 + (10 / 3)" }
+  },
+  "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>If the total length \\( {ptA}{ptD} = \\frac{31}{3} \\), find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______",
+  "answer": "To solve this problem, we use geometric definitions to set up an algebraic equation:<br><br><b>Step 1: Use the Midpoint Definition to find \\( {ptA}{ptB} \\).</b><br>Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the full segment \\( {ptA}{ptB} \\) is exactly twice the length of \\( {ptC}{ptB} \\):<br>\\[ {ptA}{ptB} = 2 \\cdot {ptC}{ptB} = 2 \\left( 3 + \\frac{1}{x} \\right) = 6 + \\frac{2}{x} \\]<br><br><b>Step 2: Use the Segment Addition Postulate to solve for \\( x \\).</b><br>Because point {ptB} is between points {ptA} and {ptD}, we know that:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our expressions and the given total value into the equation:<br>\\[ \\left( 6 + \\frac{2}{x} \\right) + \\frac{5x}{1 + x} = \\frac{31}{3} \\]<br><br>Subtract 6 from both sides to clear the integer constant:<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - \\frac{18}{3} = \\frac{13}{3} \\]<br><br>Find a common denominator on the left side: \\( x(1+x) \\):<br>\\[ \\frac{2(1 + x) + 5x^2}{x(1 + x)} = \\frac{13}{3} \\]<br>\\[ \\frac{5x^2 + 2x + 2}{x^2 + x} = \\frac{13}{3} \\]<br><br>Cross-multiply to get a standard quadratic equation:<br>\\[ 3(5x^2 + 2x + 2) = 13(x^2 + x) \\]<br>\\[ 15x^2 + 6x + 6 = 13x^2 + 13x \\]<br>\\[ 2x^2 - 7x + 6 = 0 \\]<br><br>Factor the quadratic equation:<br>\\[ (2x - 3)(x - 2) = 0 \\]<br>This yields two potential solutions: \\( x = 1.5 \\) or \\( x = 2 \\). Given our geometric segment lengths must evaluate to integers/clean fractions matching the chart configurations, we use <b>\\( x = 2 \\)</b>.<br><br><b>Step 3: Calculate the segment lengths using \\( x = 2 \\).</b><br><ul><li>\\( {ptC}{ptB} = 3 + \\frac{1}{2} = 3.5 \\)</li><li>\\( {ptB}{ptD} = \\frac{5(2)}{1 + 2} = \\frac{10}{3} \\)</li></ul><br><b>Step 4: Combine segments to find \\( {ptC}{ptD} \\).</b><br>Using segment addition for the target intervals:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} = 3.5 + \\frac{10}{3} = \\frac{7}{2} + \\frac{10}{3} = \\frac{21 + 20}{6} = \\frac{41}{6} \\]<br><br>Therefore, the answers are:<br><b>\\( x = 2 \\)</b><br><b>\\( {ptC}{ptD} = \\frac{41}{6} \\)</b>"
+},
+{
+  "id": "GEO 3-5 B Segment Addition v2",
+  "type": "template",
+  "objective": "Solve for an unknown point variable using rational segment addition equations and midpoint constraints",
+  "difficulty": "advanced",
+  "variables": {
+    "point_pools": {
+      "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+    },
+    "pts": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
+    "ptA": { "formula": "pts" },
+    "ptB": { "formula": "pts" },
+    "ptC": { "formula": "pts" },
+    "ptD": { "formula": "pts" },
+    "x_val": { "formula": "2" },
+    "expr_CB": { "formula": "'3 + \\\\frac{1}{x}'" },
+    "expr_AB": { "formula": "'6 + \\\\frac{2}{x}'" },
+    "expr_BD": { "formula": "'\\\\frac{5x}{1 + x}'" }
+  },
+  "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>If the total length \\( {ptA}{ptD} = \\frac{31}{3} \\), find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______",
+  "answer": "Here are the step-by-step mathematical calculations to solve the problem:<br><br><b>Step 1: Express the full segment length \\( {ptA}{ptB} \\) algebraically.</b><br>Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the full segment length is exactly double the length of \\( {ptC}{ptB} \\):<br>\\[ {ptA}{ptB} = 2 \\cdot {ptC}{ptB} = 2 \\left( 3 + \\frac{1}{x} \\right) = 6 + \\frac{2}{x} \\]<br><br><b>Step 2: Apply the Segment Addition Postulate.</b><br>Since point {ptB} lies between points {ptA} and {ptD}, we set up our main balance equation:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our algebraic expressions and the given total numerical value into the formula:<br>\\[ \\left( 6 + \\frac{2}{x} \\right) + \\frac{5x}{1 + x} = \\frac{31}{3} \\]<br><br><b>Step 3: Isolate and solve the rational parts for \\( x \\).</b><br>Subtract 6 from both sides of the equation to clear the integer constant:<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - 6 \\]<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - \\frac{18}{3} = \\frac{13}{3} \\]<br><br>Find a common denominator for the algebraic expressions on the left side, which is \\( x(1 + x) \\):<br>\\[ \\frac{2(1 + x) + 5x(x)}{x(1 + x)} = \\frac{13}{3} \\]<br>\\[ \\frac{5x^2 + 2x + 2}{x^2 + x} = \\frac{13}{3} \\]<br><br>Cross-multiply to convert the rational equation into a standard quadratic equation:<br>\\[ 3(5x^2 + 2x + 2) = 13(x^2 + x) \\]<br>\\[ 15x^2 + 6x + 6 = 13x^2 + 13x \\]<br><br>Move all terms to one side to set the quadratic expression equal to zero:<br>\\[ 2x^2 - 7x + 6 = 0 \\]<br><br>Factor the resulting quadratic polynomial equation:<br>\\[ (2x - 3)(x - 2) = 0 \\]<br>This gives us two possible values: \\( x = 1.5 \\) or \\( x = 2 \\). Testing both against standard integer boundaries shows that <b>\\( x = 2 \\)</b> yields valid lengths.<br><br><b>Step 4: Compute the final numerical value of segment \\( {ptC}{ptD} \\).</b><br>Substitute \\( x = 2 \\) back into our individual segment expressions:<br><ul><li>\\( {ptC}{ptB} = 3 + \\frac{1}{2} = \\frac{7}{2} \\)</li><li>\\( {ptB}{ptD} = \\frac{5(2)}{1 + 2} = \\frac{10}{3} \\)</li></ul><br>Now combine the two sub-segments via the Segment Addition Postulate to find the total requested length:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} = \tfrac{7}{2} + \tfrac{10}{3} \\]<br>Find a common denominator of 6:<br>\\[ {ptC}{ptD} = \\frac{21}{6} + \\frac{20}{6} = \\frac{41}{6} \\]<br><br><b>Final Answer:</b><br>\\( x = 2 \\)<br>\\( {ptC}{ptD} = \\frac{41}{6} \\)"
+},
+{
+  "id": "3-6 Angles",
+  "type": "template",
+  "objective": "Calculate the measure of a missing inner component angle by subtracting from the total angle measure",
+  "difficulty": "basic",
+  "variables": {
+    "vertex_pools": {
+      "formula": "[ ['E', 'F', 'G', 'H'], ['A', 'B', 'C', 'D'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+    },
+    "v": { "formula": "vertex_pools[Math.floor(Math.random() * vertex_pools.length)]" },
+    "pt1": { "formula": "v" },
+    "pt_vertex": { "formula": "v" },
+    "pt2": { "formula": "v" },
+    "pt3": { "formula": "v" },
+    "deg1": { "formula": "Math.floor(Math.random() * 25) + 20" },
+    "deg2": { "formula": "Math.floor(Math.random() * 35) + 35" },
+    "total_deg": { "formula": "deg1 + deg2" }
+  },
+  "question": "If \\( m\\angle {pt1}{pt_vertex}{pt3} = {total_deg}^\\circ \\) and \\( m\\angle {pt1}{pt_vertex}{pt2} = {deg1}^\\circ \\), what is \\( m\\angle {pt2}{pt_vertex}{pt3} \\)?<br><br><ChartPlaceholder chartDescription=\"A geometric angle diagram showing three rays originating from a shared common vertex point labeled {pt_vertex}. The full exterior angle spanning from ray {pt1} to ray {pt3} measures {total_deg} degrees. One inner component angle from ray {pt1} to ray {pt2} is labeled as {deg1} degrees, highlighting the missing adjacent component angle layout.\" /><br><br>\\( m\\angle {pt2}{pt_vertex}{pt3} = \\) ______°",
+  "answer": "To find the measure of the missing inner angle, we apply the <b>Angle Addition Postulate</b> in reverse:<br><br><b>Step 1: Identify the geometric relationship.</b><br>The total angle \\( \\angle {pt1}{pt_vertex}{pt3} \\) is composed of two adjacent smaller parts added together:<br>\\[ m\\angle {pt1}{pt_vertex}{pt2} + m\\angle {pt2}{pt_vertex}{pt3} = m\\angle {pt1}{pt_vertex}{pt3} \\]<br><br><b>Step 2: Rearrange the formula to isolate the missing piece.</b><br>To isolate our unknown angle measure, subtract the known inner angle from the total combined measure:<br>\\[ m\\angle {pt2}{pt_vertex}{pt3} = m\\angle {pt1}{pt_vertex}{pt3} - m\\angle {pt1}{pt_vertex}{pt2} \\]<br><br><b>Step 3: Substitute the values and subtract.</b><br>\\[ m\\angle {pt2}{pt_vertex}{pt3} = {total_deg}^\\circ - {deg1}^\\circ = {deg2}^\\circ \\]<br><br>Therefore, the missing inner measure is <b>\\( m\\angle {pt2}{pt_vertex}{pt3} = {deg2}^\\circ \\)</b>."
+}, 
+{
+  "id": "GEO 3-6 Angles",
+  "type": "template",
+  "objective": "Solve for an unknown variable using rational expressions mapped to the Angle Addition Postulate",
+  "difficulty": "advanced",
+  "variables": {
+    "vertex_pools": {
+      "formula": "[ ['E', 'F', 'G', 'H'], ['A', 'B', 'C', 'D'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+    },
+    "v": { "formula": "vertex_pools[Math.floor(Math.random() * vertex_pools.length)]" },
+    "pt1": { "formula": "v" },
+    "pt_vertex": { "formula": "v" },
+    "pt2": { "formula": "v" },
+    "pt3": { "formula": "v" },
+    "x_val": { "formula": "4" },
+    "expr_ang1": { "formula": "'\\\\frac{4x}{x - 3}'" },
+    "expr_ang2": { "formula": "'\\\\frac{5}{x}'" }
+  },
+  "question": "Rays \\( \\overrightarrow{{pt_vertex}{pt1}} \\), \\( \\overrightarrow{{pt_vertex}{pt2}} \\), and \\( \\overrightarrow{{pt_vertex}{pt3}} \\) share a common vertex {pt_vertex} such that ray \\( \\overrightarrow{{pt_vertex}{pt2}} \\) lies in the interior of \\( \\angle {pt1}{pt_vertex}{pt3} \\). The interior angle measures are represented by the following rational expressions:<br><br>\\[ m\\angle {pt1}{pt_vertex}{pt2} = {expr_ang1}^\\circ \\]\\[ m\\angle {pt2}{pt_vertex}{pt3} = {expr_ang2}^\\circ \\]<br>If the total outside angle measure is \\( m\\angle {pt1}{pt_vertex}{pt3} = \\frac{69}{4}^\\circ \\), find the value of \\( x \\) and calculate the measure of the inner component angle \\( \\angle {pt1}{pt_vertex}{pt2} \\).<br><br><ChartPlaceholder chartDescription=\"A geometric angle diagram with three consecutive rays forming two adjacent component angles labeled with rational fractional expressions, indicating an Angle Addition Postulate problem layout.\" /><br><br>\\( x = \\) ______<br>\\( m\\angle {pt1}{pt_vertex}{pt2} = \\) ______°",
+  "answer": "Here are the step-by-step mathematical calculations to solve the problem:<br><br><b>Step 1: Set up the geometric model equation.</b><br>By the <i>Angle Addition Postulate</i>, the measures of the two adjacent interior angles add up to the total exterior angle measure:<br>\\[ m\\angle {pt1}{pt_vertex}{pt2} + m\\angle {pt2}{pt_vertex}{pt3} = m\\angle {pt1}{pt_vertex}{pt3} \\]<br>Substituting our given rational algebraic expressions and the total value into the equation yields:<br>\\[ \\frac{4x}{x - 3} + \\frac{5}{x} = \\frac{69}{4} \\]<br><br><b>Step 2: Combine the fractions on the left side.</b><br>Find a common denominator for the algebraic fractions, which is \\( x(x - 3) \\):<br>\\[ \\frac{4x(x) + 5(x - 3)}{x(x - 3)} = \\frac{69}{4} \\]<br>\\[ \\frac{4x^2 + 5x - 15}{x^2 - 3x} = \\frac{69}{4} \\]<br><br><b>Step 3: Convert to a quadratic equation by cross-multiplying.</b><br>\\[ 4(4x^2 + 5x - 15) = 69(x^2 - 3x) \\]<br>\\[ 16x^2 + 20x - 60 = 69x^2 - 207x \\]<br><br>Move all terms to one side to set the quadratic equal to zero:<br>\\[ 0 = 53x^2 - 227x + 60 \\]<br><br><b>Step 4: Solve the quadratic equation for \\( x \\).</b><br>Factoring this quadratic equation yields:<br>\\[ (x - 4)(53x - 15) = 0 \\]<br>This gives two possible mathematical roots: \\( x = 4 \\) or \\( x = \\frac{15}{53} \\). Testing both shows that only <b>\\( x = 4 \\)</b> results in geometrically valid positive angle measures across both individual components.<br><br><b>Step 5: Compute the targeted angle measure.</b><br>Substitute \\( x = 4 \\) into the expression for \\( m\\angle {pt1}{pt_vertex}{pt2} \\):<br>\\[ m\\angle {pt1}{pt_vertex}{pt2} = \\frac{4(4)}{4 - 3} = \\frac{16}{1} = 16^\\circ \\]<br><br><b>Final Answer:</b><br>\\( x = 4 \\)<br>\\( m\\angle {pt1}{pt_vertex}{pt2} = 16^\\circ \\)"
+},
+{
+  "id": "GEO 3-6 Gate",
+  "type": "template",
+  "objective": "Use angle congruence and supplementary angle relationships to find a missing angle in a practical construction context",
+  "difficulty": "basic",
+  "variables": {
+    "name_pool": {
+      "formula": "['Lupita', 'Mateo', 'Elena', 'Carlos', 'Aisha', 'Devon', 'Chloe']"
+    },
+    "builder_name": { "formula": "name_pool[Math.floor(Math.random() * name_pool.length)]" },
+    "deg_given": { "formula": "Math.floor(Math.random() * 16) + 35" },
+    "correct_ans": { "formula": "180 - (2 * deg_given)" },
+    "distractor_1": { "formula": "90 - deg_given" },
+    "distractor_2": { "formula": "180 - deg_given" },
+    "distractor_3": { "formula": "2 * deg_given" },
+    "raw_choices": {
+      "formula": "[ { text: correct_ans + '°', correct: true }, { text: distractor_1 + '°', correct: false }, { text: distractor_2 + '°', correct: false }, { text: distractor_3 + '°', correct: false } ]"
+    },
+    "shuffled_choices": {
+      "formula": "raw_choices.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "choice_A": { "formula": "shuffled_choices.text" },
+    "choice_B": { "formula": "shuffled_choices.text" },
+    "choice_C": { "formula": "shuffled_choices.text" },
+    "choice_D": { "formula": "shuffled_choices.text" },
+    "correct_letter": {
+      "formula": "['Layout Ⓐ', 'Layout Ⓑ', 'Layout Ⓒ', 'Layout Ⓓ'][shuffled_choices.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "<b>CONSTRUCTION</b> &nbsp;{builder_name} is building a wooden gate following this diagram.<br><br><ChartPlaceholder chartDescription=\"A structural diagram of a wooden gate blueprint. A straight, flat horizontal wooden frame support piece runs across the bottom as baseline segment LMO, with center point M. Two diagonal structural cross-bracing beams extend upwards from vertex M to form rays MN and MP. This layout sets up three consecutive adjacent angles across the horizontal beam: angle LMN on the left (marked with an arc and label '{deg_given}°'), angle NMP in the middle (marked with a question mark), and angle OMP on the right (marked with an arc indicating congruence to angle LMN).\" /><br><br>If \\( m\\angle LMN = {deg_given}^\\circ \\) and \\( \\angle LMN \\cong \\angle OMP \\), what is \\( m\\angle NMP \\)?<br><br>Ⓐ {choice_A}<br>Ⓑ {choice_B}<br>Ⓒ {choice_C}<br>Ⓓ {choice_D}",
+  "answer": "Here is the step-by-step geometric calculation to find the missing angle:<br><br><b>Step 1: Determine the measure of the congruent angle.</b><br>We are given that \\( \\angle LMN \\cong \\angle OMP \\). Since congruent angles have completely identical measures:<br>\\[ m\\angle OMP = m\\angle LMN = {deg_given}^\\circ \\]<br><br><b>Step 2: Use the straight angle relationship along the frame.</b><br>Points \\( L \\), \\( M \\), and \\( O \\) run straight across the bottom beam of the gate frame. This forms a straight line angle measuring exactly \\( 180^\\circ \\). By the <i>Angle Addition Postulate</i>, the three contiguous component angles must add up to the total line measure:<br>\\[ m\\angle LMN + m\\angle NMP + m\\angle OMP = 180^\\circ \\]<br><br><b>Step 3: Substitute the known values and solve.</b><br>\\[ {deg_given}^\\circ + m\\angle NMP + {deg_given}^\\circ = 180^\\circ \\]<br>\\[ {formula: 2 * deg_given}^\\circ + m\\angle NMP = 180^\\circ \\]<br>\\[ m\\angle NMP = 180^\\circ - {formula: 2 * deg_given}^\\circ = {correct_ans}^\\circ \\]<br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
+},
+{
+  "id": "GEO-3D-RELATIONS-PYRAMID-VISUAL-3-7B",
+  "type": "template",
+  "objective": "Identify parallel, intersecting, and skew line relationships within a three-dimensional square pyramid",
+  "difficulty": "basic",
+  "variables": {
+    "labels": {
+      "formula": "[ { seg: 'AE', relation: 'intersecting', desc: 'Shares vertex A with segment AB.' }, { seg: 'CD', relation: 'parallel', desc: 'Forms the opposite side of the square base ABCD, running parallel to AB.' }, { seg: 'DE', relation: 'skew', desc: 'Does not intersect AB and lies in a non-parallel plane.' } ]"
+    },
+    "shuffled_labels": {
+      "formula": "labels.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "seg1": { "formula": "shuffled_labels[0].seg" },
+    "seg2": { "formula": "shuffled_labels[1].seg" },
+    "seg3": { "formula": "shuffled_labels[2].seg" },
+    "ans1": { "formula": "shuffled_labels[0].relation" },
+    "ans2": { "formula": "shuffled_labels[1].relation" },
+    "ans3": { "formula": "shuffled_labels[2].relation" },
+    "desc1": { "formula": "shuffled_labels[0].desc" },
+    "desc2": { "formula": "shuffled_labels[1].desc" },
+    "desc3": { "formula": "shuffled_labels[2].desc" }
+  },
+  "question": "Given the square pyramid below, match each named segment to the term that best describes its geometric relationship to segment <b>AB</b>.<br><br><ChartPlaceholder chartDescription=\"A high-contrast 3D wireframe diagram of a regular square pyramid. The square base ABCD sits at the bottom in an isometric view, with vertices A and B on the front edge, and vertices C and D on the back edge. The top apex vertex is clearly labeled E. Solid bold lines form the visible front edges (EA, EB, AB, BC). Dashed lines distinctly mark the hidden background edges (CD, DA, DE) to provide perfect 3D depth perception and clarity.\" /><br><br><b>Segments to classify:</b><br>1. {seg1} &nbsp;&mdash;&nbsp; ______<br>2. {seg2} &nbsp;&mdash;&nbsp; ______<br>3. {seg3} &nbsp;&mdash;&nbsp; ______<br><br><b>Geometric Relationship Options:</b><br>&bull; <b>parallel</b><br>&bull; <b>intersecting</b><br>&bull; <b>skew</b>",
+  "answer": "Here are the correct matching geometric relationships to segment <b>AB</b>:<br><br><ul><li><b>1. {seg1}:</b> <b>{ans1}</b><br><i>Explanation:</i> {desc1}</li><br><li><b>2. {seg2}:</b> <b>{ans2}</b><br><i>Explanation:</i> {desc2}</li><br><li><b>3. {seg3}:</b> <b>{ans3}</b><br><i>Explanation:</i> {desc3}</li></ul>"
+},
+{
+  "id": "GEO 3-7 Lines",
+  "type": "template",
+  "objective": "Identify parallel, intersecting, and skew line relationships relative to a dynamically randomized target segment in a square pyramid and present the results in a structured table.",
+  "difficulty": "medium",
+  "variables": {
+    "target_pool": {
+      "formula": "[ { name: 'AB', configurations: [ { seg: 'CD', relation: 'parallel', desc: 'Forms the opposite side of the square base, running perfectly parallel to AB.' }, { seg: 'AE', relation: 'intersecting', desc: 'Shares vertex point A directly with segment AB.' }, { seg: 'DE', relation: 'skew', desc: 'Does not intersect AB, lies in a completely different slanting plane, and is not parallel.' } ] }, { name: 'BC', configurations: [ { seg: 'AD', relation: 'parallel', desc: 'Forms the opposite side of the square base, running perfectly parallel to BC.' }, { seg: 'BE', relation: 'intersecting', desc: 'Shares vertex point B directly with segment BC.' }, { seg: 'DE', relation: 'skew', desc: 'Does not intersect BC, lies in a completely different slanting plane, and is not parallel.' } ] }, { name: 'EA', configurations: [ { seg: 'EB', relation: 'intersecting', desc: 'Shares apex vertex point E directly with segment EA.' }, { seg: 'CD', relation: 'skew', desc: 'Does not intersect EA, lies along a non-parallel base edge plane, and never crosses it.' }, { seg: 'BC', relation: 'skew', desc: 'Does not intersect EA, lies along a non-parallel side base edge plane, and never crosses it.' } ] } ]"
+    },
+    "chosen_target": { "formula": "target_pool[Math.floor(Math.random() * target_pool.length)]" },
+    "target_name": { "formula": "chosen_target.name" },
+    "shuffled_rows": {
+      "formula": "chosen_target.configurations.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "seg1": { "formula": "shuffled_rows.seg" },
+    "seg2": { "formula": "shuffled_rows.seg" },
+    "seg3": { "formula": "shuffled_rows.seg" },
+    "ans1": { "formula": "shuffled_rows.relation" },
+    "ans2": { "formula": "shuffled_rows.relation" },
+    "ans3": { "formula": "shuffled_rows.relation" },
+    "desc1": { "formula": "shuffled_rows.desc" },
+    "desc2": { "formula": "shuffled_rows.desc" },
+    "desc3": { "formula": "shuffled_rows.desc" }
+  },
+  "question": "Given the square pyramid below, match each named segment to the term that best describes its geometric relationship to the target segment <b>{target_name}</b>.<br><br><ChartPlaceholder chartDescription=\"A high-contrast 3D wireframe diagram of a regular square pyramid. The square base ABCD sits at the bottom in an isometric view, with vertices A and B on the front edge, and vertices C and D on the back edge. The top apex vertex is clearly labeled E. Solid bold lines form the visible front edges (EA, EB, AB, BC). Dashed lines distinctly mark the hidden background edges (CD, DA, DE) to provide perfect 3D depth perception and clarity.\" /><br><br><b>Segments to classify relative to {target_name}:</b><br>1. {seg1} &nbsp;&mdash;&nbsp; ______<br>2. {seg2} &nbsp;&mdash;&nbsp; ______<br>3. {seg3} &nbsp;&mdash;&nbsp; ______<br><br><b>Geometric Relationship Options:</b><br>&bull; <b>parallel</b><br>&bull; <b>intersecting</b><br>&bull; <b>skew</b>",
+  "answer": "Here is the complete classification breakdown of the geometric relationships relative to segment <b>{target_name}</b>:<br><br><table border='1' cellpadding='8' style='border-collapse: collapse; width: 100%; text-align: left;'><thead><tr style='background-color: #f2f2f2;'><th>Segment Pairs</th><th>Geometric Relationship</th><th>Reasoning / Explanation</th></tr></thead><tbody><tr><td><b>{target_name}</b> &amp; <b>{seg1}</b></td><td><span style='color: #2b579a; font-weight: bold;'>{ans1}</span></td><td>{desc1}</td></tr><tr><td><b>{target_name}</b> &amp; <b>{seg2}</b></td><td><span style='color: #2b579a; font-weight: bold;'>{ans2}</span></td><td>{desc2}</td></tr><tr><td><b>{target_name}</b> &amp; <b>{seg3}</b></td><td><span style='color: #2b579a; font-weight: bold;'>{ans3}</span></td><td>{desc3}</td></tr></tbody></table>"
+},
+{
+  "id": "GEO 3-7 Window",
+  "type": "template",
+  "objective": "Calculate the missing obtuse angle of a right trapezoid given the acute angle using supplementary relationships",
+  "difficulty": "basic",
+  "variables": {
+    "deg_acute": { "formula": "Math.floor(Math.random() * 21) + 45" },
+    "deg_obtuse": { "formula": "180 - deg_acute" },
+    "distractor_1": { "formula": "90 - deg_acute" },
+    "distractor_2": { "formula": "360 - deg_acute" },
+    "distractor_3": { "formula": "2 * deg_acute" },
+    "raw_choices": {
+      "formula": "[ { text: deg_obtuse + '°', correct: true }, { text: distractor_1 + '°', correct: false }, { text: distractor_2 + '°', correct: false }, { text: distractor_3 + '°', correct: false } ]"
+    },
+    "shuffled_choices": {
+      "formula": "raw_choices.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "choice_A": { "formula": "shuffled_choices.text" },
+    "choice_B": { "formula": "shuffled_choices.text" },
+    "choice_C": { "formula": "shuffled_choices.text" },
+    "choice_D": { "formula": "shuffled_choices.text" },
+    "correct_letter": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_choices.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "<b>WINDOWS</b> &nbsp;A contemporary architectural window is designed in the shape of a right trapezoid as shown below.<br><br><ChartPlaceholder chartDescription=\"An architectural blueprint diagram of a right-trapezoid window frame layout. One vertical side side forms perfect perpendicular 90-degree right angles with both the straight horizontal top border and the flat horizontal bottom sill. The opposite side is slanted, creating an acute angle at the bottom corner labeled '{deg_acute}°' and an upper obtuse angle labeled with a question mark '?'. This illustrates consecutive interior angles between parallel lines layout.\" /><br><br>If the acute angle measures <b>{deg_acute}°</b>, what is the measure of the upper obtuse angle?<br><br>Ⓐ {choice_A}<br>Ⓑ {choice_B}<br>Ⓒ {choice_C}<br>Ⓓ {choice_D}",
+  "answer": "Here is the step-by-step geometric calculation to determine the missing angle measure:<br><br><b>Step 1: Identify the parallel lines in the window frame.</b><br>Because the window is a right trapezoid, the horizontal top frame edge and the horizontal bottom frame sill are perfectly parallel to each other.<br><br><b>Step 2: Apply consecutive interior angle properties.</b><br>When a slanting transversal line crosses two parallel lines, the consecutive interior angles formed (the acute angle and the obtuse angle) are **supplementary**. This means they always add up to exactly \\( 180^\\circ \\):<br>\\[ \\text{Acute Angle} + \\text{Obtuse Angle} = 180^\\circ \\]<br><br><b>Step 3: Substitute the known value and subtract.</b><br>\\[ {deg_acute}^\\circ + \\text{Obtuse Angle} = 180^\\circ \\]<br>\\[ \\text{Obtuse Angle} = 180^\\circ - {deg_acute}^\\circ = {deg_obtuse}^\\circ \\]<br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
+},
+{
+  "id": "GEO 3-8 Parallel",
+  "type": "template",
+  "objective": "Determine the equation of and graph a line parallel to a given linear equation passing through a specific coordinate point",
+  "difficulty": "medium",
+  "variables": {
+    "num_pool": {
+      "formula": "[ { slope: '-3/2', x1: -4, y1: 2, b_parallel: -4, line_desc: 'y = -3/2x + 1' }, { slope: '-1/4', x1: -4, y1: 2, b_parallel: 1, line_desc: 'y = -1/4x - 2' }, { slope: '2/5', x1: 5, y1: -1, b_parallel: -3, line_desc: 'y = 2/5x + 3' }, { slope: '-3/4', x1: 4, y1: -1, b_parallel: 2, line_desc: 'y = -3/4x + 2' } ]"
+    },
+    "selected": { "formula": "num_pool[Math.floor(Math.random() * num_pool.length)]" },
+    "orig_eq": { "formula": "selected.line_desc" },
+    "m_val": { "formula": "selected.slope" },
+    "x1": { "formula": "selected.x1" },
+    "y1": { "formula": "selected.y1" },
+    "b_para": { "formula": "selected.b_parallel" }
+  },
+  "question": "Graph the line parallel to <b>\\( {orig_eq} \\)</b> that passes through the point <b>\\( ({x1}, {y1}) \\)</b>.<br><br><ChartPlaceholder chartDescription=\"A blank 2D Cartesian coordinate grid sheet with a dark horizontal x-axis and vertical y-axis intersecting at the center origin point (0,0). Bold grid line marks cross every 1 unit from -10 to 10 along both dimensions, simulating standard school graph paper for drawing equations.\" />",
+  "answer": "Here is the step-by-step mathematical method to determine the equation and plot the parallel line:<br><br><b>Step 2: Find the parallel slope.</b><br>Parallel lines have slopes that are completely identical because they run in the exact same direction. Therefore, the slope of our new line is:<br>\\[ m_2 = {m_val} \\]<br><br><b>Step 3: Write the equation of the new line.</b><br>Using the point-slope formula \\( y - y_1 = m(x - x_1) \\) with our target point \\( ({x1}, {y1}) \\) and the parallel slope \\( m_2 = {m_val} \\):<br>\\[ y - ({y1}) = {m_val}(x - ({x1})) \\]<br>\\[ y - {y1} = {m_val}(x - {x1}) \\]<br>Converting this directly into slope-intercept form gives:<br>\\[ y = {m_val}x + {b_para} \\]<br><br><b>Step 4: Plot the line on the grid.</b><br><ul><li>Start by placing a point directly at the given coordinate <b>\\( ({x1}, {y1}) \\)</b>.</li><li>Use the parallel slope fraction \\( {m_val} \\) (rise over run) to navigate to the next coordinate points.</li><li>Draw a straight line completely through these points to finish the graph. This line will run perfectly alongside the original line without ever intersecting it.</li></ul>"
+},
+{
+  "id": "GEO 3-8 Perpendicular",
+  "type": "template",
+  "objective": "Determine the equation of and graph a line perpendicular to a given linear equation passing through a specific coordinate point",
+  "difficulty": "medium",
+  "variables": {
+    "num_pool": {
+      "formula": "[ { original_slope: '-3/2', perp_slope: '2/3', x1: -3, y1: -4, b_perp: -2, line_desc: 'y = -3/2x + 1' }, { original_slope: '-1/4', perp_slope: '4', x1: -1, y1: 2, b_perp: 6, line_desc: 'y = -1/4x - 2' }, { original_slope: '2/5', perp_slope: '-5/2', x1: 4, y1: -1, b_perp: 9, line_desc: 'y = 2/5x + 3' }, { original_slope: '-3/4', perp_slope: '4/3', x1: 3, y1: -1, b_perp: -5, line_desc: 'y = -3/4x + 2' } ]"
+    },
+    "selected": { "formula": "num_pool[Math.floor(Math.random() * num_pool.length)]" },
+    "orig_eq": { "formula": "selected.line_desc" },
+    "m_orig": { "formula": "selected.original_slope" },
+    "m_perp": { "formula": "selected.perp_slope" },
+    "x1": { "formula": "selected.x1" },
+    "y1": { "formula": "selected.y1" },
+    "b_perp": { "formula": "selected.b_perp" }
+  },
+  "question": "Graph the line perpendicular to <b>\\( {orig_eq} \\)</b> that passes through the point <b>\\( ({x1}, {y1}) \\)</b>.<br><br><ChartPlaceholder chartDescription=\"A blank 2D Cartesian coordinate grid sheet with a dark horizontal x-axis and vertical y-axis intersecting at the center origin point (0,0). Bold grid line marks cross every 1 unit from -10 to 10 along both dimensions, simulating standard school graph paper for drawing equations.\" />",
+  "answer": "Here is the step-by-step mathematical method to determine the equation and plot the perpendicular line:<br><br><b>Step 1: Identify the slope of the original line.</b><br>The given line is written in slope-intercept form \\( y = mx + b \\), where the original slope is:<br>\\[ m_1 = {m_orig} \\]<br><br><b>Step 2: Find the perpendicular slope.</b><br>Perpendicular lines have slopes that are negative reciprocals of one another (their product equals \\(-1\\)). Flip the fraction and change the algebraic sign:<br>\\[ m_2 = {m_perp} \\]<br><br><b>Step 3: Write the equation of the new line.</b><br>Using the point-slope formula \\( y - y_1 = m(x - x_1) \\) with our target point \\( ({x1}, {y1}) \\) and perpendicular slope \\( m_2 = {m_perp} \\):<br>\\[ y - ({y1}) = {m_perp}(x - ({x1})) \\]<br>\\[ y - {y1} = {m_perp}(x - {x1}) \\]<br>Converting this directly into slope-intercept form gives:<br>\\[ y = {m_perp}x + {b_perp} \\]<br><br><b>Step 4: Plot the line on the grid.</b><br><ul><li>Start by placing a point directly at the given coordinate <b>\\( ({x1}, {y1}) \\)</b>.</li><li>Use the perpendicular slope fraction \\( {m_perp} \\) (rise over run) to navigate to the next coordinate points.</li><li>Draw a straight line completely through these points to finish the graph.</li></ul>"
+},
+{
+  "id": "GEO 3-8 Line Relations",
+  "type": "template",
+  "objective": "Classify linear equations as parallel, perpendicular, or neither relative to a randomized reference line",
+  "difficulty": "medium",
+  "variables": {
+    "num_pool": {
+      "formula": "[ { line_desc: 'y = \\\\frac{4}{5}x - 3', slope_m: 0.8, name_m: '4/5', configs: [ { eq: 'y = 0.8x + 3', relation: 'parallel', desc: 'The slope is 0.8, which is exactly equal to the slope of line m.' }, { eq: 'y = -1.25x + 3', relation: 'perpendicular', desc: 'The slope is -1.25 (or -5/4), which is the negative reciprocal of 0.8.' }, { eq: 'y = -0.8x + 3', relation: 'neither parallel nor perpendicular', desc: 'The slope is -0.8. While the sign is changed, it is not flipped into a reciprocal, so it does not meet the criteria.' } ] }, { line_desc: 'y = \\\\frac{1}{4}x + 2', slope_m: 0.25, name_m: '1/4', configs: [ { eq: 'y = 0.25x - 5', relation: 'parallel', desc: 'The slope is 0.25, which is exactly equal to the slope of line m.' }, { eq: 'y = -4x + 1', relation: 'perpendicular', desc: 'The slope is -4, which is the negative reciprocal of 1/4.' }, { eq: 'y = 4x - 3', relation: 'neither parallel nor perpendicular', desc: 'The slope is 4. This is a reciprocal but lacks the mandatory negative sign change.' } ] }, { line_desc: 'y = -\\\\frac{2}{3}x - 1', slope_m: -0.6667, name_m: '-2/3', configs: [ { eq: 'y = -\\\\frac{2}{3}x + 7', relation: 'parallel', desc: 'The slope is -2/3, which matches the original slope of line m perfectly.' }, { eq: 'y = 1.5x - 2', relation: 'perpendicular', desc: 'The slope is 1.5 (or 3/2), which is the negative reciprocal of -2/3.' }, { eq: 'y = \\\\frac{2}{3}x + 4', relation: 'neither parallel nor perpendicular', desc: 'The slope is 2/3. This has an altered sign but is not inverted into a reciprocal.' } ] } ]"
+    },
+    "selected": { "formula": "num_pool[Math.floor(Math.random() * num_pool.length)]" },
+    "line_m_text": { "formula": "selected.line_desc" },
+    "shuffled_rows": {
+      "formula": "selected.configs.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "eq1": { "formula": "shuffled_rows.eq" },
+    "eq2": { "formula": "shuffled_rows.eq" },
+    "eq3": { "formula": "shuffled_rows.eq" },
+    "ans1": { "formula": "shuffled_rows.relation" },
+    "ans2": { "formula": "shuffled_rows.relation" },
+    "ans3": { "formula": "shuffled_rows.relation" },
+    "desc1": { "formula": "shuffled_rows.desc" },
+    "desc2": { "formula": "shuffled_rows.desc" },
+    "desc3": { "formula": "shuffled_rows.desc" }
+  },
+  "question": "Line m is represented by the linear equation <b>\\( {line_m_text} \\)</b>. Match each of the equations below to the term that accurately describes its geometric relationship to line m.<br><br><b>Equations to classify:</b><br>1. \\( {eq1} \\) &nbsp;&mdash;&nbsp; ______<br>2. \\( {eq2} \\) &nbsp;&mdash;&nbsp; ______<br>3. \\( {eq3} \\) &nbsp;&mdash;&nbsp; ______<br><br><b>Geometric Relationship Options:</b><br>&bull; <b>parallel</b><br>&bull; <b>perpendicular</b><br>&bull; <b>neither parallel nor perpendicular</b>",
+  "answer": "Here is the complete classification breakdown of the linear equations relative to line m:<br><br><table border='1' cellpadding='8' style='border-collapse: collapse; width: 100%; text-align: left;'><thead><tr style='background-color: #f2f2f2;'><th>Equation Evaluated</th><th>Relationship to Line m</th><th>Reasoning / Explanation</th></tr></thead><tbody><tr><td>\\( {eq1} \\)</td><td><span style='color: #2b579a; font-weight: bold;'>{ans1}</span></td><td>{desc1}</td></tr><tr><td>\\( {eq2} \\)</td><td><span style='color: #2b579a; font-weight: bold;'>{ans2}</span></td><td>{desc2}</td></tr><tr><td>\\( {eq3} \\)</td><td><span style='color: #2b579a; font-weight: bold;'>{ans3}</span></td><td>{desc3}</td></tr></tbody></table>"
+},
+{
+  "id": "GEO 3-9 Parallel Lines",
+  "type": "template",
+  "objective": "Calculate the value of x that makes two lines parallel using the properties of angle pairs cut by a transversal",
+  "difficulty": "medium",
+  "variables": {
+    "configurations": {
+      "formula": "[ { pair_type: 'alternate interior', angle_relation: 'equal', equation_setup: '3x + 10 = 5x - 20', step_work: 'Subtract 3x from both sides to get 10 = 2x - 20, then add 20 to get 30 = 2x.', x_solution: 15, expr1: '3x + 10', expr2: '5x - 20', chart_desc: 'Lines k and m are horizontal lines cut by slanting transversal line j. Two alternate interior angles are labeled: one in the interior upper-right corner at line k, and the other in the interior lower-left corner at line m.' }, { pair_type: 'consecutive interior', angle_relation: 'supplementary', equation_setup: '(2x + 15) + (3x + 40) = 180', step_work: 'Combine like terms to get 5x + 55 = 180. Subtract 55 from both sides to get 5x = 125.', x_solution: 25, expr1: '2x + 15', expr2: '3x + 40', chart_desc: 'Lines k and m are horizontal lines cut by slanting transversal line j. Two consecutive interior angles are labeled: both lie in the interior space between lines k and m on the same right side of transversal line j.' }, { pair_type: 'corresponding', angle_relation: 'equal', equation_setup: '4x - 5 = 2x + 25', step_work: 'Subtract 2x from both sides to get 2x - 5 = 25, then add 5 to get 2x = 30.', x_solution: 15, expr1: '4x - 5', expr2: '2x + 25', chart_desc: 'Lines k and m are horizontal lines cut by slanting transversal line j. Two corresponding angles are labeled: one is in the top-right exterior position above line k, and the other is in the top-right interior position above line m.' }, { pair_type: 'alternate exterior', angle_relation: 'equal', equation_setup: '6x - 14 = 4x + 16', step_work: 'Subtract 4x from both sides to get 2x - 14 = 16, then add 14 to get 2x = 30.', x_solution: 15, expr1: '6x - 14', expr2: '4x + 16', chart_desc: 'Lines k and m are horizontal lines cut by slanting transversal line j. Two alternate exterior angles are labeled: one is in the top-left exterior corner above line k, and the other is in the bottom-right exterior corner below line m.' } ]"
+    },
+    "selected": { "formula": "configurations[Math.floor(Math.random() * configurations.length)]" },
+    "type_name": { "formula": "selected.pair_type" },
+    "relation_type": { "formula": "selected.angle_relation" },
+    "setup_equation": { "formula": "selected.equation_setup" },
+    "math_steps": { "formula": "selected.step_work" },
+    "x_val": { "formula": "selected.x_solution" },
+    "expression1": { "formula": "selected.expr1" },
+    "expression2": { "formula": "selected.expr2" },
+    "visual_desc": { "formula": "selected.chart_desc" }
+  },
+  "question": "Find the value of \\( x \\) that will prove or make line \\( k \\) parallel to line \\( m \\) (\\( k \\parallel m \\)).<br><br><ChartPlaceholder chartDescription=\"{visual_desc}\" /><br><br>The two marked angle measures are:<br>&bull; Angle 1 = \\( ({expression1})^\\circ \\)<br>&bull; Angle 2 = \\( ({expression2})^\\circ \\)<br><br>\\( x = \\) ______",
+  "answer": "Here is the step-by-step geometric and algebraic solution to make line \\( k \\) parallel to line \\( m \\):<br><br><b>Step 1: Identify the angle pair relationship.</b><br>Looking at the positions of the two labeled angles relative to the horizontal lines and the transversal line \\( j \\), they are classified as <b>{type_name} angles</b>.<br><br><b>Step 2: Apply the parallel line theorem.</b><br>For line \\( k \\) to be parallel to line \\( m \\), these specific angles must be <b>{relation_type}</b>. Therefore, we set up our algebraic equation based on this geometric property:<br>\\[ {setup_equation} \\]<br><br><b>Step 3: Solve the equation for \\( x \\).</b><br>{math_steps}<br>Divide both sides completely to isolate the variable:<br>\\[ x = {x_val} \\]<br><br><b>Final Verification:</b><br>Substituting \\( x = {x_val} \\) back into our angle expressions confirms that the geometric angle relationships balance perfectly. Therefore, the value is <b>\\( x = {x_val} \\)</b>."
+},
+{
+  "id": "GEO-PARALLEL-STAIRCASE-3-9B",
+  "type": "template",
+  "objective": "Determine a missing angle measure to ensure a handrail runs perfectly parallel to a staircase using transversal angle theorems",
+  "difficulty": "medium",
+  "variables": {
+    "scenarios": {
+      "formula": "[ { angle_given_name: 'Angle 1 (acute interior angle under the handrail)', angle_target_name: 'Angle 2 (acute interior angle under the stair baseline)', relation: 'corresponding', math_desc: 'Corresponding angles must be equal for lines to be parallel.', calc: 'given_val', label_desc: 'Angle 1 is located at the intersection of a vertical post and the slanting handrail. Angle 2 is located below it, at the intersection of the same vertical post and the slanting step baseline.' }, { angle_given_name: 'Angle 1 (acute interior angle under the handrail)', angle_target_name: 'Angle 3 (obtuse interior angle above the stair baseline)', relation: 'consecutive interior', math_desc: 'Consecutive interior angles must be supplementary (add up to 180°) for lines to be parallel.', calc: '180 - given_val', label_desc: 'Angle 1 is located at the intersection of a vertical post and the slanting handrail. Angle 3 is located below it, in the upper-left obtuse corner where the vertical post meets the slanting step baseline.' } ]"
+    },
+    "selected": { "formula": "scenarios[Math.floor(Math.random() * scenarios.length)]" },
+    "given_val": { "formula": "Math.floor(Math.random() * 16) + 40" },
+    "given_name": { "formula": "selected.angle_given_name" },
+    "target_name": { "formula": "selected.angle_target_name" },
+    "relation_type": { "formula": "selected.relation" },
+    "geometric_rule": { "formula": "selected.math_desc" },
+    "target_val": { "formula": "selected.calc === 'given_val' ? given_val : 180 - given_val" },
+    "visual_details": { "formula": "selected.label_desc" }
+  },
+  "question": "<b>CONSTRUCTION & SAFETY</b> &nbsp;A carpenter is installing a safety handrail along a new structural staircase framework.<br><br><ChartPlaceholder chartDescription=\"A detailed structural blueprint diagram of a wooden staircase assembly. The slanting baseline of the steps runs diagonally upward from left to right. Perfectly parallel to this baseline, a slanting handrail runs directly above it. Multiple vertical wooden support posts (balusters) stand straight up, intersecting both the diagonal handrail and the diagonal step baseline at regular intervals. {visual_details}\" /><br><br>To ensure that the handrail runs perfectly parallel to the slanting baseline of the stairs, the interior installation angles must be precisely calibrated.<br><br>If the carpenter measures <b>{given_name}</b> to be exactly <b>{given_val}°</b>, what must be the measure of <b>{target_name}</b> to guarantee the handrail is perfectly parallel to the stairs?<br><br>______°",
+  "answer": "Here is the step-by-step geometric calculation to ensure structural parallelism:<br><br><b>Step 1: Identify the parallel lines and the transversal line.</b><br>In this layout, the slanting handrail and the slanting step baseline act as the two target lines we want to make parallel. The straight vertical support post intersecting both of them acts as the geometric <b>transversal line</b>.<br><br><b>Step 2: Classify the structural angle relationship.</b><br>Based on their relative positions along the vertical support post, these two positions are classified as <b>{relation_type} angles</b>.<br><br><b>Step 3: Apply the Parallel Line Converse Theorem.</b><br>{geometric_rule}<br><br>Evaluating our specific angle configuration values:<br>&bull; Given Angle = \\( {given_val}^\\circ \\)<br>&bull; Target Angle Calculation = <b>{target_val}°</b><br><br>Therefore, the missing structural angle must measure exactly <b>{target_val}°</b> to ensure the handrail runs perfectly parallel to the staircase."
+},
+{
+  "id": "GEO-PARALLEL-STAIRCASE-ALGEBRAIC-3-9B",
+  "type": "template",
+  "objective": "Solve for x and calculate a missing angle using algebraic expressions on a staircase model to ensure parallel alignment",
+  "difficulty": "advanced",
+  "variables": {
+    "scenarios": {
+      "formula": "[ { pair_type: 'corresponding', relation: 'equal', equation_setup: '4x - 12 = 3x + 18', step_work: 'Subtract 3x from both sides to get x - 12 = 18, then add 12 to both sides.', x_solution: 30, expr1: '4x - 12', expr2: '3x + 18', angle_measure: 108, label_desc: 'Angle 1 is located at the intersection of a vertical post and the slanting handrail. Angle 2 is located directly below it, where the same vertical post intersects the slanting stair baseline.' }, { pair_type: 'consecutive interior', relation: 'supplementary', equation_setup: '(2x + 20) + (3x + 35) = 180', step_work: 'Combine like terms to get 5x + 55 = 180. Subtract 55 from both sides to get 5x = 125, then divide by 5.', x_solution: 25, expr1: '2x + 20', expr2: '3x + 35', angle_measure: 70, label_desc: 'Angle 1 is located at the intersection of a vertical post and the slanting handrail. Angle 2 is located below it, in the adjacent interior position along the same vertical post where it meets the slanting stair baseline.' } ]"
+    },
+    "selected": { "formula": "scenarios[Math.floor(Math.random() * scenarios.length)]" },
+    "type_name": { "formula": "selected.pair_type" },
+    "relation_type": { "formula": "selected.relation" },
+    "setup_equation": { "formula": "selected.equation_setup" },
+    "math_steps": { "formula": "selected.step_work" },
+    "x_val": { "formula": "selected.x_solution" },
+    "expression1": { "formula": "selected.expr1" },
+    "expression2": { "formula": "selected.expr2" },
+    "target_angle": { "formula": "selected.angle_measure" },
+    "visual_details": { "formula": "selected.label_desc" }
+  },
+  "question": "<b>CONSTRUCTION & ALGEBRA</b> &nbsp;A builder is adjusting a custom iron staircase railing. To pass safety inspection, the slanting top handrail must run perfectly parallel to the slanting baseline of the stairs.<br><br><ChartPlaceholder chartDescription=\"A detailed architectural blueprint diagram of an iron staircase framework. The stair baseline slants diagonally upward from left to right, and the handrail runs perfectly parallel directly above it. Vertical iron support balusters run straight up at perfectly square intervals. {visual_details}\" /><br><br>The positions of the two calibrated structural alignment angles are represented by the following expressions:<br>&bull; Angle 1 = \\( ({expression1})^\\circ \\)<br>&bull; Angle 2 = \\( ({expression2})^\\circ \\)<br><br>Find the value of \\( x \\) that ensures the handrail is perfectly parallel to the stairs, and calculate the actual measurement of Angle 1.<br><br>\\( x = \\) ______<br>Angle 1 = ______&deg;",
+  "answer": "Here is the step-by-step algebraic and geometric solution to ensure structural alignment:<br><br><b>Step 1: Identify the geometric relationship.</b><br>The slanting handrail and the slanting step baseline are the target lines, while the straight vertical iron support baluster intersecting both acts as a <b>transversal line</b>. Based on their positions, these configurations form a pair of <b>{type_name} angles</b>.<br><br><b>Step 2: Set up the algebraic equation.</b><br>For the handrail to be perfectly parallel to the stairs, these two structural angles must be <b>{relation_type}</b>. We set up the core balancing equation:<br>\\[ {setup_equation} \\]<br><br><b>Step 3: Solve for \\( x \\).</b><br>{math_steps}<br>This isolates our variable completely to yield:<br>\\[ x = {x_val} \\]<br><br><b>Step 4: Calculate the target angle measurement.</b><br>Substitute \\( x = {x_val} \\) back into the expression for Angle 1:<br>\\[ \\text{Angle 1} = {expression1} \\]<br>\\[ \\text{Angle 1} = {target_angle}^\\circ \\]<br><br><b>Final Answer:</b><br>\\( x = {x_val} \\)<br>Angle 1 = <b>{target_angle}&deg;</b>"
+},
+{
+  "id": "GEO-PARALLEL-PARKING-ALGEBRAIC-3-9B",
+  "type": "template",
+  "objective": "Solve for x and calculate a parking lane angle using algebraic expressions on a parking lot model to ensure parallel line alignment",
+  "difficulty": "advanced",
+  "variables": {
+    "scenarios": {
+      "formula": "[ { pair_type: 'alternate interior', relation: 'equal', equation_setup: '5x - 10 = 3x + 14', step_work: 'Subtract 3x from both sides to get 2x - 10 = 14, then add 10 to both sides to get 2x = 24. Finally, divide by 2.', x_solution: 12, expr1: '5x - 10', expr2: '3x + 14', angle_measure: 50, label_desc: 'Angle 1 is located in the interior space between the two parking stripes, on the left side of the curb transversal. Angle 2 is located in the interior space on the right side of the curb transversal at the next stripe.' }, { pair_type: 'consecutive interior', relation: 'supplementary', equation_setup: '(4x + 20) + (2x + 40) = 180', step_work: 'Combine like terms to get 6x + 60 = 180. Subtract 60 from both sides to get 6x = 120, then divide by 6.', x_solution: 20, expr1: '4x + 20', expr2: '2x + 40', angle_measure: 100, label_desc: 'Angle 1 is an obtuse interior angle between the two parking stripes on the upper side of the curb line. Angle 2 is an acute interior angle located on the same side of the curb line at the next stripe.' } ]"
+    },
+    "selected": { "formula": "scenarios[Math.floor(Math.random() * scenarios.length)]" },
+    "type_name": { "formula": "selected.pair_type" },
+    "relation_type": { "formula": "selected.relation" },
+    "setup_equation": { "formula": "selected.equation_setup" },
+    "math_steps": { "formula": "selected.step_work" },
+    "x_val": { "formula": "selected.x_solution" },
+    "expression1": { "formula": "selected.expr1" },
+    "expression2": { "formula": "selected.expr2" },
+    "target_angle": { "formula": "selected.angle_measure" },
+    "visual_details": { "formula": "selected.label_desc" }
+  },
+  "question": "<b>CIVIL ENGINEERING & ALGEBRA</b> &nbsp;A city engineer is painting angled parking space indicators along a newly paved downtown street. To ensure vehicles park uniformly, the painted stripes must run perfectly parallel to each other.<br><br><ChartPlaceholder chartDescription=\"A detailed blueprint map of a street parking zone. A straight horizontal concrete curb line acts as a transversal line cutting across multiple slanted parallel parking stripes painted on the asphalt surface. {visual_details}\" /><br><br>The positions of two adjacent calibration alignment angles are represented by the following expressions:<br>&bull; Angle 1 = \\( ({expression1})^\\circ \\)<br>&bull; Angle 2 = \\( ({expression2})^\\circ \\)<br><br>Find the value of \\( x \\) that ensures the parking stripes are perfectly parallel to one another, and calculate the actual measurement of Angle 1.<br><br>\\( x = \\) ______<br>Angle 1 = ______&deg;",
+  "answer": "Here is the step-by-step algebraic and geometric solution to ensure precise parallel alignment for the parking lines:<br><br><b>Step 1: Identify the geometric relationship.</b><br>The painted parking stripes act as our target lines, while the straight horizontal concrete curb line cutting across them acts as the <b>transversal line</b>. Based on their relative positions, these configurations form a pair of <b>{type_name} angles</b>.<br><br><b>Step 2: Set up the algebraic equation.</b><br>For the lines to be perfectly parallel, these geometric angles must be <b>{relation_type}</b>. Based on this parallel line converse property, we construct the core equation:<br>\\[ {setup_equation} \\]<br><br><b>Step 3: Solve for \\( x \\).</b><br>{math_steps}<br>This isolates our variable completely to yield:<br>\\[ x = {x_val} \\]<br><br><b>Step 4: Calculate the target angle measurement.</b><br>Substitute \\( x = {x_val} \\) back into the expression for Angle 1:<br>\\[ \\text{Angle 1} = {expression1} \\]<br>\\[ \\text{Angle 1} = {target_angle}^\\circ \\]<br><br><b>Final Answer:</b><br>\\( x = {x_val} \\)<br>Angle 1 = <b>{target_angle}&deg;</b>"
+},
+{
+  "id": "GEO 3-9 Crosswalk Alignment",
+  "type": "template",
+  "objective": "Apply parallel line converse theorems to find a variable that ensures crosswalk markings are painted uniformly",
+  "difficulty": "medium",
+  "variables": {
+    "scenarios": {
+      "formula": "[ { pair_type: 'alternate interior', relation: 'equal', equation_setup: '3x + 15 = 5x - 25', step_work: 'Subtract 3x from both sides to get 15 = 2x - 25, then add 25 to both sides to get 40 = 2x.', x_solution: 20, expr1: '3x + 15', expr2: '5x - 25', angle_measure: 75, label_desc: 'Angle 1 is an acute interior angle between the first painted stripe and the road curb. Angle 2 is located on the adjacent stripe in the opposite alternating interior position along the same curb transversal.' }, { pair_type: 'consecutive interior', relation: 'supplementary', equation_setup: '(2x + 30) + (4x + 60) = 180', step_work: 'Combine like terms on the left to get 6x + 90 = 180. Subtract 90 from both sides to yield 6x = 90.', x_solution: 15, expr1: '2x + 30', expr2: '4x + 60', angle_measure: 60, label_desc: 'Angle 1 is an acute interior corner between a stripe and the road edge. Angle 2 is an obtuse interior corner located further down on the next stripe on the same exact side of the road edge line.' } ]"
+    },
+    "selected": { "formula": "scenarios[Math.floor(Math.random() * scenarios.length)]" },
+    "type_name": { "formula": "selected.pair_type" },
+    "relation_type": { "formula": "selected.relation" },
+    "setup_equation": { "formula": "selected.equation_setup" },
+    "math_steps": { "formula": "selected.step_work" },
+    "x_val": { "formula": "selected.x_solution" },
+    "expression1": { "formula": "selected.expr1" },
+    "expression2": { "formula": "selected.expr2" },
+    "target_angle": { "formula": "selected.angle_measure" },
+    "visual_details": { "formula": "selected.label_desc" }
+  },
+  "question": "<b>CIVIL ENGINEERING</b> &nbsp;A road construction crew is painting a high-visibility zebra-stripe pedestrian crosswalk across an intersection. To ensure visual uniformity and driver safety, each thick rectangular stripe must be painted perfectly parallel to the others.<br><br><ChartPlaceholder chartDescription=\"A 2D top-down technical schematic blueprint of a zebra-stripe pedestrian crosswalk. Two dark horizontal parallel lines represent the straight boundary edges of the street curb. Multiple thick, slanted rectangular stripes are painted consecutively to form the pedestrian crosswalk paths. {visual_details}\" /><br><br>The layout constraints list the alignment angles as algebraic expressions:<br>&bull; Angle 1 = \\( ({expression1})^\\circ \\)<br>&bull; Angle 2 = \\( ({expression2})^\\circ \\)<br><br>Find the value of \\( x \\) that guarantees the zebra-stripes are painted perfectly parallel to each other, and calculate the actual measurement of Angle 1.<br><br>\\( x = \\) ______<br>Angle 1 = ______&deg;",
+  "answer": "Here is the step-by-step mathematical calculation to verify parallel stripe layout alignment:<br><br><b>Step 1: Classify the geometric angle relationship.</b><br>The straight horizontal curb line running along the edge of the asphalt pavement acts as the <b>transversal line</b> cutting across the slanting crosswalk stripes. Based on their relative orientations, these configurations form a pair of <b>{type_name} angles</b>.<br><br><b>Step 2: Establish the parallel line theorem equation.</b><br>According to the <i>Parallel Line Converse Theorems</i>, for the painted stripes to run perfectly parallel, these internal angles must be structurally <b>{relation_type}</b>. This gives us the equation:<br>\\[ {setup_equation} \\]<br><br><b>Step 3: Solve the algebraic equation for \\( x \\).</b><br>{math_steps}<br>Divide both sides completely to isolate the variable value:<br>\\[ x = {x_val} \\]<br><br><b>Step 4: Determine the absolute angle measurement.</b><br>Substitute our solved value \\( x = {x_val} \\) back into the algebraic formula defined for Angle 1:<br>\\[ \\text{Angle 1} = {expression1} \\]<br>\\[ \\text{Angle 1} = {target_angle}^\\circ \\]<br><br><b>Final Answer Summary Table:</b><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 50%; text-align: left;'><tr><th style='background-color: #f2f2f2;'>Variable (x)</th><td><b>{x_val}</b></td></tr><tr><th style='background-color: #f2f2f2;'>Angle 1 Measure</th><td><b>{target_angle}&deg;</b></td></tr></table>"
+},
+{
+  "id": "GEO-SHORTEST-DISTANCE-POINT-LINE-3-8",
+  "type": "template",
+  "objective": "Calculate the shortest perpendicular distance between a line and a point in the coordinate plane, rounding to the nearest tenth.",
+  "difficulty": "advanced",
+  "variables": {
+    "num_pool": {
+      "formula": "[ { m: 2, b: 4, line_desc: 'y = 2x + 4', correct_ans: 1.8, d1: 2.0, d2: 3.2, d3: 4.0, math_expr: 'A = 2, B = -1, C = 4' }, { m: 1, b: 3, line_desc: 'y = x + 3', correct_ans: 2.1, d1: 3.0, d2: 1.5, d3: 4.2, math_expr: 'A = 1, B = -1, C = 3' }, { m: 3, b: -5, line_desc: 'y = 3x - 5', correct_ans: 1.6, d1: 5.0, d2: 2.5, d3: 3.4, math_expr: 'A = 3, B = -1, C = -5' }, { m: 0.5, b: 2, line_desc: 'y = 0.5x + 2', correct_ans: 1.8, d1: 2.0, d2: 1.0, d3: 2.5, math_expr: 'A = 0.5, B = -1, C = 2' } ]"
+    },
+    "selected": { "formula": "num_pool[Math.floor(Math.random() * num_pool.length)]" },
+    "line_eq": { "formula": "selected.line_desc" },
+    "slope": { "formula": "selected.m" },
+    "intercept": { "formula": "selected.b" },
+    "standard_form": { "formula": "selected.math_expr" },
+    "ans_val": { "formula": "selected.correct_ans" },
+    "dist1": { "formula": "selected.d1" },
+    "dist2": { "formula": "selected.d2" },
+    "dist3": { "formula": "selected.d3" },
+    "raw_choices": {
+      "formula": "[ { text: selected.correct_ans, correct: true }, { text: selected.d1, correct: false }, { text: selected.d2, correct: false }, { text: selected.d3, correct: false } ]"
+    },
+    "shuffled_choices": {
+      "formula": "raw_choices.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
+    },
+    "choice_A": { "formula": "shuffled_choices.text" },
+    "choice_B": { "formula": "shuffled_choices.text" },
+    "choice_C": { "formula": "shuffled_choices.text" },
+    "choice_D": { "formula": "shuffled_choices.text" },
+    "correct_letter": {
+      "formula": "['Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ'][shuffled_choices.findIndex(c => c.correct)]"
+    }
+  },
+  "question": "What is the shortest distance between the line <b>\\( {line_eq} \\)</b> and the point at <b>\\( (0, 0) \\)</b>? Round your answer to the nearest tenth.<br><br><ChartPlaceholder chartDescription=\"A Cartesian coordinate grid sheet plotting a linear path segment across a target grid area, highlighting a minimal perpendicular drop line from origin location (0,0) straight onto the linear path graph line segment boundary.\" /><br><br>Ⓐ {choice_A}<br>Ⓑ {choice_B}<br>Ⓒ {choice_C}<br>Ⓓ {choice_D}",
+  "answer": "Here is the step-by-step mathematical method to determine the shortest distance from a point to a line:<br><br><b>Step 1: Convert the linear equation to Standard Form (\\( Ax + By + C = 0 \\)).</b><br>Starting with our slope-intercept equation \\( {line_eq} \\), move all variables to one side:<br>\\[ {slope}x - y + ({intercept}) = 0 \\]<br>From this form, we can identify our standard coefficients:<br>\\[ {standard_form} \\]<br><br><b>Step 2: Apply the standard Point-to-Line Distance Formula.</b><br>The shortest straight-line distance from any point \\( (x_1, y_1) \\) to a line \\( Ax + By + C = 0 \\) is given by the perpendicular projection formula:<br>\\[ d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}} \\]<br><br><b>Step 3: Substitute the coordinates of the origin \\( (0, 0) \\) and calculate.</b><br>\\[ d = \\frac{|{slope}(0) + (-1)(0) + ({intercept})|}{\\sqrt{({slope})^2 + (-1)^2}} \\]<br>\\[ d = \\frac{|{intercept}|}{\\sqrt{{formula: slope * slope} + 1}} \\]<br>\\[ d = \\frac{{formula: Math.abs(intercept)}}{\\sqrt{{formula: slope * slope + 1}}} \\]<br><br>Evaluating this ratio mathematically gives an absolute distance of approximately <b>{ans_val}</b> when rounded to the nearest tenth.<br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
+},
+{
+  "id": "GEO-DISTANCE-PARALLEL-LINES-VISUAL-3-9",
+  "type": "template",
+  "objective": "Calculate the shortest perpendicular distance between two parallel lines, rounding to the nearest hundredth, and visualize on a grid.",
+  "difficulty": "advanced",
+  "variables": {
+    "num_pool": {
+      "formula": "[ { m: 1, b1: 3, b2: 1, slope_text: '1', correct_ans: 1.41, chart_desc: 'A Cartesian coordinate grid sheet plotting two parallel lines with a slope of 1. Line 1 has a y-intercept at (0,3) and Line 2 has a y-intercept at (0,1). A short red line segment connects the two lines perpendicularly to illustrate the shortest path distance between them.' }, { m: 2, b1: 4, b2: -1, slope_text: '2', correct_ans: 2.24, chart_desc: 'A Cartesian coordinate grid sheet plotting two parallel lines with a slope of 2. Line 1 has a y-intercept at (0,4) and Line 2 has a y-intercept at (0,-1). A short red line segment connects the two lines perpendicularly to illustrate the shortest path distance between them.' }, { m: -0.5, b1: 2, b2: -2, slope_text: '-0.5', correct_ans: 3.58, chart_desc: 'A Cartesian coordinate grid sheet plotting two parallel lines with a slope of -0.5. Line 1 has a y-intercept at (0,2) and Line 2 has a y-intercept at (0,-2). A short red line segment connects the two lines perpendicularly to illustrate the shortest path distance between them.' }, { m: 3, b1: 5, b2: 1, slope_text: '3', correct_ans: 1.26, chart_desc: 'A Cartesian coordinate grid sheet plotting two parallel lines with a slope of 3. Line 1 has a y-intercept at (0,5) and Line 2 has a y-intercept at (0,1). A short red line segment connects the two lines perpendicularly to illustrate the shortest path distance between them.' } ]"
+    },
+    "selected": { "formula": "num_pool[Math.floor(Math.random() * num_pool.length)]" },
+    "m_val": { "formula": "selected.m" },
+    "b1_val": { "formula": "selected.b1" },
+    "b2_val": { "formula": "selected.b2" },
+    "m_text": { "formula": "selected.slope_text" },
+    "ans_val": { "formula": "selected.correct_ans" },
+    "visual_desc": { "formula": "selected.chart_desc" }
+  },
+  "question": "What is the shortest perpendicular distance between the parallel lines <b>\\( y = {m_text}x + {b1_val} \\)</b> and <b>\\( y = {m_text}x + {b2_val} \\)</b>? Round your answer to the nearest hundredth.<br><br><ChartPlaceholder chartDescription=\"{visual_desc}\" /><br><br>The distance is ______ units.",
+  "answer": "Here are the complete step-by-step mathematical calculations to find the distance between the two lines:<br><br><b>Step 1: Extract parameters from the linear equations.</b><br>Both lines are in slope-intercept form (\\( y = mx + b \\)). We find that they share an identical slope (\\( m \\)) which confirms they are parallel, and have two distinct y-intercept constants (\\( b_1 \\) and \\( b_2 \\)):<br>&bull; \\( m = {m_val} \\)<br>&bull; \\( b_1 = {b1_val} \\)<br>&bull; \\( b_2 = {b2_val} \\)<br><br><b>Step 2: Apply the parallel line distance theorem formula.</b><br>The perpendicular distance \\( d \\) separating two parallel lines on a 2D grid plane is found using the formula:<br>\\[ d = \\frac{|b_1 - b_2|}{\\sqrt{m^2 + 1}} \\]<br><br><b>Step 3: Substitute the constants into the equation.</b><br>\\[ d = \\frac{|{b1_val} - ({b2_val})|}{\\sqrt{({m_val})^2 + 1}} \\]<br><br><b>Step 4: Simplify the numerator and denominator fractions.</b><br>Calculate the absolute difference in the numerator:<br>\\[ |{b1_val} - ({b2_val})| = |{formula: b1_val - b2_val}| = {formula: Math.abs(b1_val - b2_val)} \\]<br>Simplify the square root value in the denominator:<br>\\[ \\sqrt{({m_val})^2 + 1} = \\sqrt{{formula: m_val * m_val} + 1} = \\sqrt{{formula: m_val * m_val + 1}} \\]<br><br><b>Step 5: Compute the final numerical division value.</b><br>\\[ d = \\frac{{formula: Math.abs(b1_val - b2_val)}}{\\sqrt{{formula: m_val * m_val + 1}}} \\]<br>Evaluating this expression mathematically gives a distance of approximately <b>{ans_val}</b> when rounded to the nearest hundredth.<br><br>Therefore, the perpendicular distance between the lines is <b>{ans_val} units</b>."
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
