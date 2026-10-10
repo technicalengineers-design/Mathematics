@@ -5423,6 +5423,32 @@
       "answer": "The possible distances between A and C are {distance_ac_sum} units (when B is between A and C) and {distance_ac_difference} units (when A or C is between the other two points)."
     },
     {
+  "id": "GEO 1-3b C v10",
+  "type": "template",
+  "objective": "Find Segment Lengths on a Line",
+  "difficulty": "basic",
+  "variables": {
+    "point_names": { "formula": "['A', 'B', 'C', 'D', 'E'].sort(() => Math.random() - 0.5).slice(0, 3)" },
+    "middle_point": { "formula": "point_names[0]" },
+    "left_point": { "formula": "point_names[1]" },
+    "right_point": { "formula": "point_names[2]" },
+    "x": { "formula": "Math.floor(Math.random() * 8) + 1" },
+    "left_coefficient": { "min": 2, "max": 8 },
+    "right_coefficient": { "min": 2, "max": 8 },
+    "left_constant": { "min": 2, "max": 15 },
+    "right_constant": { "min": 2, "max": 15 },
+    "left_segment_length": { "formula": "left_coefficient * x + left_constant" },
+    "right_segment_length": { "formula": "right_coefficient * x + right_constant" },
+    "whole_segment_length": { "formula": "left_segment_length + right_segment_length" },
+    "requested_index": { "formula": "Math.floor(Math.random() * 3)" },
+    "requested_segment": { "formula": "requested_index === 0 ? left_point + middle_point : requested_index === 1 ? middle_point + right_point : left_point + middle_point" },
+    "requested_length": { "formula": "requested_index === 0 ? left_segment_length : requested_index === 1 ? right_segment_length : left_segment_length" }
+  },
+  "question": "What is the length of \\( \\overline{{{requested_segment}}} \\)? Use the following information: {middle_point} is between {left_point} and {right_point}, \\( \\overline{{{left_point}{middle_point}}} = {left_coefficient}x + {left_constant} \\), \\( \\overline{{{middle_point}{right_point}}} = {right_coefficient}x + {right_constant} \\), and \\( \\overline{{{left_point}{right_point}}} = {whole_segment_length} \\). Sketch this scenario.",
+  "answer": "Since {middle_point} is between the endpoints, \\( ({left_coefficient}x + {left_constant}) + ({right_coefficient}x + {right_constant}) = {whole_segment_length} \\), so \\( x = {x} \\). Therefore, \\( \\overline{{{left_point}{middle_point}}} = {left_segment_length} \\), \\( \\overline{{{middle_point}{right_point}}} = {right_segment_length} \\), and \\( \\overline{{{left_point}{right_point}}} = {whole_segment_length} \\). The requested length \\( \\overline{{{requested_segment}}} \\) is {requested_length}."
+},
+
+    {
       "id": "GEO 1-3b C v1",
       "type": "template",
       "objective": "Find Segment Lengths on a Line",
@@ -5441,7 +5467,7 @@
         "right_segment_length": { "formula": "right_coefficient * x + right_constant" },
         "whole_segment_length": { "formula": "left_segment_length + right_segment_length" },
         "requested_index": { "formula": "Math.floor(Math.random() * 3)" },
-        "requested_segment": { "formula": "requested_index === 0 ? left_point + right_point : requested_index === 1 ? middle_point + right_point : left_point + middle_point" },
+        "requested_segment": { "formula": "requested_index === 0 ? middle_point + right_point : requested_index === 1 ? middle_point + right_point : left_point + middle_point" },
         "requested_length": { "formula": "requested_index === 0 ? whole_segment_length : requested_index === 1 ? right_segment_length : left_segment_length" }
       },
       "question": "What is the length of \\( \\overline{{{requested_segment}}} \\)? Use the following information: {middle_point} is between {left_point} and {right_point}, \\( \\overline{{{left_point}{middle_point}}} = {left_coefficient}x + {left_constant} \\), \\( \\overline{{{middle_point}{right_point}}} = {right_coefficient}x + {right_constant} \\), and \\( \\overline{{{left_point}{right_point}}} = {whole_segment_length} \\). Sketch this scenario.",
@@ -5565,52 +5591,6 @@
     {
       "id": "GEO 1-5b C v1",
       "type": "template",
-      "objective": "Locate a Point Using a Segment Ratio",
-      "difficulty": "basic",
-      "variables": {
-        "p_coordinate": { "min": -10, "max": 10 },
-        "ratio_p": { "min": 1, "max": 4 },
-        "ratio_x": { "min": 1, "max": 4, "exclude": ["ratio_p"]},
-        "unit_length": { "min": 1, "max": 2 },
-        "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
-        "q_coordinate": { "formula": "p_coordinate + direction * (ratio_p + ratio_x) * unit_length" },
-        "x_coordinate": { "formula": "p_coordinate + direction * ratio_p * unit_length" },
-        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
-        "total_parts": { "formula": "ratio_p + ratio_x" },
-        "number_line_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 92\" role=\"img\" aria-label=\"Blank number line with tick marks\" style=\"width:100%;max-width:660px;height:auto\"><line x1=\"30\" y1=\"52\" x2=\"630\" y2=\"52\" stroke=\"currentColor\" stroke-width=\"2\"/>' + Array.from({length: 21}, (_, index) => { const value = index * 2 - 20; const tickX = 30 + (value + 20) * 15; return '<line x1=\"' + tickX + '\" y1=\"46\" x2=\"' + tickX + '\" y2=\"58\" stroke=\"currentColor\"/><text x=\"' + tickX + '\" y=\"78\" text-anchor=\"middle\" font-size=\"11\">' + value + '</text>'; }).join('') + '</svg>'" }
-      },
-      "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_coordinate} and Q = {q_coordinate}, find the coordinate of X.<br>{number_line_svg}",
-      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_coordinate} - ({p_coordinate}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_coordinate} \\)."
-    },
-    {
-      "id": "GEO 1-5b C v2",
-      "type": "template",
-      "objective": "Locate a Point Using a Segment Ratio",
-      "difficulty": "basic",
-      "variables": {
-        "p_cents": { "min": -1000, "max": 1000 },
-        "ratio_p": { "min": 1, "max": 4 },
-        "ratio_x": { "min": 1, "max": 4, "exclude": ["ratio_p"]},
-        "unit_cents": { "min": 5, "max": 50 },
-        "direction": { "formula": "Math.random() < 0.5 ? -1 : 1" },
-        "q_cents": { "formula": "p_cents + direction * (ratio_p + ratio_x) * unit_cents" },
-        "x_cents": { "formula": "p_cents + direction * ratio_p * unit_cents" },
-        "p_coordinate": { "formula": "p_cents / 100" },
-        "q_coordinate": { "formula": "q_cents / 100" },
-        "x_coordinate": { "formula": "x_cents / 100" },
-        "p_display": { "formula": "p_coordinate.toFixed(2)" },
-        "q_display": { "formula": "q_coordinate.toFixed(2)" },
-        "x_display": { "formula": "x_coordinate.toFixed(2)" },
-        "ratio_text": { "formula": "ratio_p + ':' + ratio_x" },
-        "total_parts": { "formula": "ratio_p + ratio_x" }
-      },
-      "question": "Point X lies between P and Q, and \\( PX:XQ = {ratio_text} \\). If P = {p_display} and Q = {q_display}, find the coordinate of X. Draw a number line to show P, X, and Q.",
-      "answer": "The ratio has {ratio_p} + {ratio_x} = {total_parts} total parts. Since \\( PQ = \\vert {q_display} - ({p_display}) \\vert \\), X is {ratio_p} of those parts from P toward Q. Therefore, \\( X = {x_display} \\)."
-    },
-
-    {
-      "id": "GEO 1-5b C v3",
-      "type": "template",
       "objective": "Find a Coordinate Using a Segment Ratio",
       "difficulty": "basic",
       "variables": {
@@ -5638,7 +5618,7 @@
       "answer": "The ratio contains {total_parts} total parts, and AC is {ratio_ac} of them. Therefore, \\( C = A + \\frac{{ratio_ac}}{{total_parts}}(B-A) = {a_display} + \\frac{{ratio_ac}}{{total_parts}}({b_display} - ({a_display})) = {c_display} \\).<br>{answer_number_line_svg}"
     },
     {
-      "id": "GEO 1-5b C v4",
+      "id": "GEO 1-5b C v2",
       "type": "template",
       "objective": "Find a Coordinate Using a Segment Ratio",
       "difficulty": "basic",
