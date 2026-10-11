@@ -5844,49 +5844,98 @@
 ],
   "3 Logical Arguments and Line Relationships": [
 {
-  "id": "GEO 3-1 Conjecture",
+  "id": "GEO 3-1 Conjecture v1",
   "type": "template",
-  "objective": "Identify the conjecture describing the next term in an arithmetic sequence",
+  "objective": "Identify the conjecture describing the next term in the sequence",
   "difficulty": "basic",
   "variables": {
-    "start_terms": {
-      "formula": [2, 3, 4, 5, 6, 7]
+    "start_terms_pool": {
+      "formula": "[24, 32, 48, 64, 80, 100]"
     },
-    "differences": {
-      "formula": [12, 14, 15, 16, 18, 20]
+    "factors_pool": {
+      "formula": "[2, 3, 4, 5]"
     },
-    "s_idx": {
-      "formula": "Math.floor(Math.random() * start_terms.length)"
+    "factors_text_pool": {
+      "formula": "['2', '3', '4', '5']"
     },
-    "d_idx": {
-      "formula": "Math.floor(Math.random() * differences.length)"
+    "factors_latex_pool": {
+      "formula": "['2', '3', '4', '5']"
+    },
+    "f_idx": {
+      "formula": "Math.floor(Math.random() * [2, 3, 4, 5].length)"
     },
     "a1": {
-      "formula": "start_terms[s_idx]"
+      "formula": "[24, 32, 48, 64, 80, 100][Math.floor(Math.random() * [24, 32, 48, 64, 80, 100].length)]"
+    },
+    "r": {
+      "formula": "[2, 3, 4, 5][f_idx]"
+    },
+    "r_text": {
+      "formula": "['2', '3', '4', '5'][f_idx]"
+    },
+    "r_latex": {
+      "formula": "['2', '3', '4', '5'][f_idx]"
+    },
+    "a2": {
+      "formula": "Math.round(a1 * r * 100) / 100"
+    },
+    "a3": {
+      "formula": "Math.round(a2 * r * 100) / 100"
+    },
+    "a4": {
+      "formula": "Math.round(a3 * r * 100) / 100"
+    },
+    "wrong_add_1": {
+      "formula": "Math.round((a2 - a1) * 100) / 100"
+    },
+    "wrong_add_2": {
+      "formula": "Math.round((a3 - a2) * 100) / 100"
+    }
+  },
+  "question": "Choose the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ….",
+  "choices": [
+    { "text": "Multiply {a4} by {r_text}.", "correct": true },
+    { "text": "Add {wrong_add_1} to {a4}.", "correct": false },
+    { "text": "Add {wrong_add_2} to {a4}.", "correct": false },
+    { "text": "Multiply {a4} by 10.", "correct": false }
+  ],
+  "answer": "To find the pattern, look at the relationship between consecutive terms:\n, \\( {a2} \\div {a1} = {r_latex} \\)\n, \\( {a3} \\div {a2} = {r_latex} \\)\n, \\( {a4} \\div {a3} = {r_latex} \\)\n\nEach term is found by multiplying the previous term by a common factor of **{r_text}**. Therefore, the conjecture to find the next (5th) term is to **multiply {a4} by {r_text}**.\n\n**Correct Choice:** Multiply {a4} by {r_text}."
+},
+{
+  "id": "GEO 3-1 Conjecture v2",
+  "type": "template",
+  "objective": "Identify the conjecture describing the next term in the sequence",
+  "difficulty": "basic",
+  "variables": {
+    "a1": {
+      "formula": "[2, 3, 4, 5, 6, 7][Math.floor(Math.random() * [2, 3, 4, 5, 6, 7].length)]"
     },
     "d": {
-      "formula": "differences[d_idx]"
+      "formula": "[12, 14, 15, 16, 18, 20][Math.floor(Math.random() * [12, 14, 15, 16, 18, 20].length)]"
     },
     "a2": {
       "formula": "a1 + d"
     },
     "a3": {
-      "formula": "a2 + d"
+      "formula": "a1 + d + d"
     },
     "a4": {
-      "formula": "a3 + d"
+      "formula": "a1 + d + d + d"
+    },
+    "double_d": {
+      "formula": "d * 2"
     },
     "wrong_mult_1": {
-      "formula": "Math.floor(a4 / a1)"
+      "formula": "Math.floor((a1 + d + d + d) / a1)"
     },
     "wrong_mult_2": {
-      "formula": "Math.floor(a4 / a2)"
+      "formula": "Math.floor((a1 + d + d + d) / (a1 + d))"
     }
   },
-  "question": "Choose the conjecture that describes how to find the 5th term in the sequence \\{a1}\\, \\{a2}\\, \\{a3}\\, \\{a4}\\, ….",
+  "question": "Choose the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ….",
   "choices": [
     { "text": "Add {d} to {a4}.", "correct": true },
-    { "text": "Add {d * 2} to {a4}.", "correct": false },
+    { "text": "Add {double_d} to {a4}.", "correct": false },
     { "text": "Multiply {a4} by {wrong_mult_1}.", "correct": false },
     { "text": "Multiply {a4} by {wrong_mult_2}.", "correct": false }
   ],
@@ -6738,7 +6787,7 @@
   "answer": "Here is the step-by-step mathematical method to determine the shortest distance from a point to a line:<br><br><b>Step 1: Convert the linear equation to Standard Form (\\( Ax + By + C = 0 \\)).</b><br>Starting with our slope-intercept equation \\( {line_eq} \\), move all variables to one side:<br>\\[ {slope}x - y + ({intercept}) = 0 \\]<br>From this form, we can identify our standard coefficients:<br>\\[ {standard_form} \\]<br><br><b>Step 2: Apply the standard Point-to-Line Distance Formula.</b><br>The shortest straight-line distance from any point \\( (x_1, y_1) \\) to a line \\( Ax + By + C = 0 \\) is given by the perpendicular projection formula:<br>\\[ d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}} \\]<br><br><b>Step 3: Substitute the coordinates of the origin \\( (0, 0) \\) and calculate.</b><br>\\[ d = \\frac{|{slope}(0) + (-1)(0) + ({intercept})|}{\\sqrt{({slope})^2 + (-1)^2}} \\]<br>\\[ d = \\frac{|{intercept}|}{\\sqrt{{formula: slope * slope} + 1}} \\]<br>\\[ d = \\frac{{formula: Math.abs(intercept)}}{\\sqrt{{formula: slope * slope + 1}}} \\]<br><br>Evaluating this ratio mathematically gives an absolute distance of approximately <b>{ans_val}</b> when rounded to the nearest tenth.<br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
 },
 {
-  "id": "GEO-DISTANCE-PARALLEL-LINES-VISUAL-3-9",
+  "id": "GEO 3-10 Perpendicular Distance (optional)",
   "type": "template",
   "objective": "Calculate the shortest perpendicular distance between two parallel lines, rounding to the nearest hundredth, and visualize on a grid.",
   "difficulty": "advanced",
