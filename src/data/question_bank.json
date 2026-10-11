@@ -6024,43 +6024,7 @@
   "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the conjunction <b>\\( \\sim p \\wedge \\sim q \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
   "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound logic statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"), and the symbol <b>\\( \\wedge \\)</b> represents a conjunction (\"and\"). Translating \\( \\sim p \\wedge \\sim q \\) gives:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT complementary, AND \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT vertical angles.\"</i><br><br><b>Step 2: Evaluate the truth value of individual statement \\( p \\) and its negation \\( \\sim p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) form a straight angle line, they are a linear pair and must sum to exactly \\( 180^\\circ \\) (supplementary) by the <i>Linear Pair Postulate</i>. Therefore, statement \\( p \\) is false, making its negation <b>\\( \\sim p \\) TRUE</b>.<br><br><b>Step 3: Evaluate the truth value of individual statement \\( q \\) and its negation \\( \\sim q \\).</b><br>Vertical angles are nonadjacent angles formed by two intersecting lines. Since \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) share a common side ray \\( \\overrightarrow{{ptB}{ptC}} \\), they are adjacent angles and cannot be vertical. Therefore, statement \\( q \\) is false, making its negation <b>\\( \\sim q \\) TRUE</b>.<br><br><b>Step 4: Evaluate the complete conjunction \\( \\sim p \\wedge \\sim q \\).</b><br>A conjunction (\"and\" statement) is true if and only if both of its components evaluate to true:<br>\\[ \\text{True} \\wedge \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Conclusion Summary:</b><br>&bull; <b>Compound Statement:</b> \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are not complementary, and \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are not vertical angles.<br>&bull; <b>Truth Value:</b> <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
 },
-{
-  "id": "GEO 3-2 Conditional P Implies Not R",
-  "type": "template",
-  "objective": "Deduce the truth value of a conditional if-then statement.",
-  "difficulty": "basic",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the conditional <b>\\( p \\rightarrow \\sim r \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound conditional statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement, and the symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"). Translating \\( p \\rightarrow \\sim r \\) yields:<br><i>\"IF \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, THEN segment \\( \\overline{{ptA}{ptB}} \\) is NOT congruent to segment \\( \\overline{{ptB}{ptD}} \\).\"</i><br><br><b>Step 2: Evaluate the truth value of the hypothesis statement \\( p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) lie along a straight horizontal baseline frame, they form a straight angle. By the <i>Linear Pair Postulate</i>, \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary and must add up to exactly \\( 180^\\circ \\). Therefore, statement \\( p \\) is <b>FALSE</b>.<br><br><b>Step 3: Evaluate the truth value of the conclusion statement \\( \\sim r \\).</b><br>Looking at the diagram blueprint, there are no geometry indicators or tick marks stating that vertex point \\( {ptB} \\) is the exact numerical midpoint of the horizontal line segment. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is false. Negating a false statement makes it true, so the conclusion <b>\\( \\sim r \\) is TRUE</b>.<br><br><b>Step 4: Evaluate the complete conditional statement \\( p \\rightarrow \\sim r \\).</b><br>In formal logic, a conditional statement (\"if-then\") is false only when a true hypothesis leads to a false conclusion. Any conditional statement starting with a false hypothesis is automatically vacuously true:<br>\\[ \\text{False} \\rightarrow \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( p \\rightarrow \\sim r \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
-},
-{
-  "id": "GEO 3-2 Conditional R Implies Not P",
-  "type": "template",
-  "objective": "Deduce the truth value of the contrapositive conditional statement.",
-  "difficulty": "medium",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the conditional <b>\\( r \\rightarrow \\sim p \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for this conditional transformation (the contrapositive of the original statement):<br><br><b>Step 1: Write the compound statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement, and the symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"). Translating \\( r \\rightarrow \\sim p \\) yields:<br><i>\"IF segment \\( \\overline{{ptA}{ptB}} \\) is congruent to segment \\( \\overline{{ptB}{ptD}} \\), THEN \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT complementary.\"</i><br><br><b>Step 2: Evaluate the truth value of the hypothesis statement \\( r \\.</b><br>Looking closely at the diagram blueprint, there are no geometry indicators, specific dimension numbers, or physical tick marks showing that vertex point \\( {ptB} \\) acts as a midpoint to bisect the baseline. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is fundamentally <b>FALSE</b>.<br><br><b>Step 3: Evaluate the truth value of the conclusion statement \\( \\sim p \\).</b><br>Complementary angles must sum to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) lie along a straight horizontal baseline frame, they form a straight angle. By the <i>Linear Pair Postulate</i>, \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary and must sum to exactly \\( 180^\\circ \\). Since they are supplementary, statement \\( p \\) is false, which means its negation <b>\\( \\sim p \\) is TRUE</b>.<br><br><b>Step 4: Evaluate the complete conditional statement \\( r \\rightarrow \\sim p \\).</b><br>In formal logic rules, a conditional statement (\"if-then\") is evaluated as true in all scenarios except when a true hypothesis leads to a false conclusion. Any conditional structure that begins with a false hypothesis is automatically vacuously true:<br>\\[ \\text{False} \\rightarrow \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><i>Note: Because this expression \\( r \\rightarrow \\sim p \\) is the formal contrapositive of \\( p \\rightarrow \\sim r \\), they are logically equivalent statements and will always share the exact same truth value.</i><br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( r \\rightarrow \\sim p \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
-}
-,
+
 
 {
   "id": "GEO 3-2 Disjunction",
@@ -6080,63 +6044,8 @@
   "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the disjunction <b>\\( p \\vee \\sim r \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
   "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound logic statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"), and the symbol <b>\\( \\vee \\)</b> represents a disjunction (\"or\"). Translating \\( p \\vee \\sim r \\) gives:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, OR segment \\( \\overline{{ptA}{ptB}} \\) is not congruent to segment \\( \\overline{{ptB}{ptD}} \\).\"</i><br><br><b>Step 2: Evaluate the truth value of individual statement \\( p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) lie along a straight horizontal baseline frame, they form a straight angle. By the <i>Linear Pair Postulate</i>, \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary and must add up to exactly \\( 180^\\circ \\). Therefore, statement \\( p \\) is <b>FALSE</b>.<br><br><b>Step 3: Evaluate the truth value of individual statement \\( r \\) and its negation \\( \\sim r \\).</b><br>Looking at the diagram blueprint, there are no geometry indicators or tick marks stating that vertex point \\( {ptB} \\) is the exact numerical midpoint of the horizontal line segment. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is fundamentally false. Negating a false statement makes it true, so <b>\\( \\sim r \\) is TRUE</b> (it is true that they are not confirmed congruent).<br><br><b>Step 4: Evaluate the complete disjunction \\( p \\vee \\sim r \\).</b><br>A disjunction (\"or\" statement) is true if at least one of its components evaluates to true:<br>\\[ \\text{False} \\vee \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <b>TRUE</b>.<br><br><b>Conclusion Summary:</b><br>&bull; <b>Compound Statement:</b> \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, or segment \\( \\overline{{ptA}{ptB}} \\) is not congruent to segment \\( \\overline{{ptB}{ptD}} \\).<br>&bull; <b>Truth Value:</b> <b>TRUE</b>"
 },
-{
-  "id": "GEO 3-2 Disjunction P Or Not R",
-  "type": "template",
-  "objective": "Deduce the truth value of a compound disjunction statement based on a geometric diagram.",
-  "difficulty": "medium",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the disjunction <b>\\( p \\vee \\sim r \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound disjunction statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The wedge symbol <b>\\( \\vee \\)</b> represents a disjunction (\"or\") statement, and the symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"). Translating \\( p \\vee \\sim r \\) yields:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, OR segment \\( \\overline{{ptA}{ptB}} \\) is NOT congruent to segment \\( \\overline{{ptB}{ptD}} \\).\"</i><br><br><b>Step 2: Evaluate the truth value of the first component statement \\( p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) lie along a straight horizontal baseline frame, they form a straight angle. By the <i>Linear Pair Postulate</i>, \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary and must add up to exactly \\( 180^\\circ \\). Therefore, statement \\( p \\) is <b>FALSE</b>.<br><br><b>Step 3: Evaluate the truth value of the second component statement \\( \\sim r \\).</b><br>Looking at the diagram blueprint, there are no geometry indicators or tick marks stating that vertex point \\( {ptB} \\) is the exact numerical midpoint of the horizontal line segment. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is false. Negating a false statement makes it true, so the negation <b>\\( \\sim r \\) is TRUE</b>.<br><br><b>Step 4: Evaluate the complete disjunction statement \\( p \\vee \\sim r \\).</b><br>In formal logic, a disjunction (\"or\" statement) is true if at least one of its sub-component statements evaluates to true:<br>\\[ \\text{False} \\vee \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( p \\vee \\sim r \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
-}
-,
-{
-  "id": "GEO 3-2 Conjunction Not Q And R",
-  "type": "template",
-  "objective": "Deduce the truth value of a compound conjunction statement based on a geometric diagram.",
-  "difficulty": "medium",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the conjunction <b>\\( \\sim q \\wedge r \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound conjunction statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The wedge symbol <b>\\( \\wedge \\)</b> represents a conjunction (\"and\") statement, and the symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"). Translating \\( \\sim q \\wedge r \\) yields:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT vertical angles, AND segment \\( \\overline{{ptA}{ptB}} \\) is congruent to segment \\( \\overline{{ptB}{ptD}} \\).\"</i><br><br><b>Step 2: Evaluate the truth value of the first component statement \\( \\sim q \\).</b><br>Vertical angles are nonadjacent angles formed by two intersecting lines. Since \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) share a common side ray \\( \\overrightarrow{{ptB}{ptC}} \\), they are adjacent linear pair angles and cannot be vertical. Therefore, statement \\( q \\) is false, making its negation <b>\\( \\sim q \\) is TRUE</b>.<br><br><b>Step 3: Evaluate the truth value of the second component statement \\( r \\).</b><br>Looking at the diagram blueprint, there are no geometry indicators or tick marks stating that vertex point \\( {ptB} \\) is the exact numerical midpoint of the horizontal line segment. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is <b>FALSE</b>.<br><br><b>Step 4: Evaluate the complete conjunction statement \\( \\sim q \\wedge r \\).</b><br>In formal logic, a conjunction (\"and\" statement) is true if and only if both of its sub-component statements evaluate to true simultaneously:<br>\\[ \\text{True} \\wedge \\text{False} = \\text{FALSE} \\]<br>Because the second component is false, the entire conjunction balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>FALSE</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( \\sim q \\wedge r \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>FALSE</span>"
-}
-,
-{
-  "id": "GEO 3-2 Disjunction Not Q Or R",
-  "type": "template",
-  "objective": "Deduce the truth value of a compound disjunction statement based on a geometric diagram.",
-  "difficulty": "medium",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the disjunction <b>\\( \\sim q \\vee r \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound disjunction statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The wedge symbol <b>\\( \\vee \\)</b> represents a disjunction (\"or\") statement, and the symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"). Translating \\( \\sim q \\vee r \\) yields:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT vertical angles, OR segment \\( \\overline{{ptA}{ptB}} \\) is congruent to segment \\( \\overline{{ptB}{ptD}} \\).\"</i><br><br><b>Step 2: Evaluate the truth value of the first component statement \\( \\sim q \\).</b><br>Vertical angles are nonadjacent angles formed by two intersecting lines. Since \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) share a common side ray \\( \\overrightarrow{{ptB}{ptC}} \\), they are adjacent linear pair angles and cannot be vertical. Therefore, statement \\( q \\) is false, making its negation <b>\\( \\sim q \\) is TRUE</b>.<br><br><b>Step 3: Evaluate the truth value of the second component statement \\( r \\).</b><br>Looking at the diagram blueprint, there are no geometry indicators or tick marks stating that vertex point \\( {ptB} \\) is the exact numerical midpoint of the horizontal line segment. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is <b>FALSE</b>.<br><br><b>Step 4: Evaluate the complete disjunction statement \\( \\sim q \\vee r \\).</b><br>In formal logic, a disjunction (\"or\" statement) is true if at least one of its sub-component statements evaluates to true:<br>\\[ \\text{True} \\vee \\text{False} = \\text{TRUE} \\]<br>Because the first component is true, the entire disjunction balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( \\sim q \\vee r \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
-}
-,
+
+
 
 {
   "id": "GEO-3-2 Conditional",
@@ -6191,97 +6100,6 @@
   },
   "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound conditional statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
   "answer": "Here is the complete logical breakdown and step-by-step evaluation for the conditional statement:<br><br><b>Step 1: Write the compound conditional statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement. Translating \\( {target_sym} \\) yields:<br><br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the component components.</b><br><ul><li>The hypothesis condition is evaluated as <b>{formula: h_val ? 'TRUE' : 'FALSE'}</b> based on the geometric properties shown in the structural blueprint.</li><li>The conclusion condition is evaluated as <b>{formula: c_val ? 'TRUE' : 'FALSE'}</b>.</li></ul><br><b>Step 3: Apply conditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{False} \\rightarrow \\text{{formula: c_val ? 'True' : 'False'}} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
-}
-,
-{
-  "id": "GEO-3-2 Conditional Randomized",
-  "type": "template",
-  "objective": "Deduce the truth value of a conditional if-then statement based on a geometric diagram with randomized statements.",
-  "difficulty": "hard",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v[0]" },
-    "ptB": { "formula": "v[1]" },
-    "ptD": { "formula": "v[2]" },
-    "ptC": { "formula": "v[3]" },
-    "statements_shuffle": {
-      "formula": "[ { label: 'p', text: '\\\\angle ' + v[0] + v[1] + v[3] + ' and \\\\angle ' + v[3] + v[1] + v[2] + ' are complementary.', val: false, geom_desc: 'Complementary angles must sum to 90°. Since these angles form a straight linear pair, they sum to 180° (supplementary).' }, { label: 'q', text: '\\\\angle ' + v[0] + v[1] + v[3] + ' and \\\\angle ' + v[3] + v[1] + v[2] + ' are vertical angles.', val: false, geom_desc: 'Adjacent angles in a linear pair share a ray and cannot be vertical angles.' }, { label: 'r', text: '\\\\overline{' + v[0] + v[1] + '} \\\\cong \\\\overline{' + v[1] + v[2] + '}.', val: false, geom_desc: 'There are no midpoint tick marks or indicators on the diagram to confirm segment congruence.' } ].map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
-    },
-    "p_lbl": { "formula": "statements_shuffle[0].label" },
-    "p_txt": { "formula": "statements_shuffle[0].text" },
-    "p_val": { "formula": "statements_shuffle[0].val" },
-    "p_desc": { "formula": "statements_shuffle[0].geom_desc" },
-    "q_lbl": { "formula": "statements_shuffle[1].label" },
-    "q_txt": { "formula": "statements_shuffle[1].text" },
-    "q_val": { "formula": "statements_shuffle[1].val" },
-    "q_desc": { "formula": "statements_shuffle[1].geom_desc" },
-    "r_lbl": { "formula": "statements_shuffle[2].label" },
-    "r_txt": { "formula": "statements_shuffle[2].text" },
-    "r_val": { "formula": "statements_shuffle[2].val" },
-    "r_desc": { "formula": "statements_shuffle[2].geom_desc" },
-    "conditional_pool": {
-      "formula": "[ { symbol: statements_shuffle[0].label + ' \\\\rightarrow ' + statements_shuffle[1].label, text_words: 'IF ' + statements_shuffle[0].text + ' THEN ' + statements_shuffle[1].text, h_val: statements_shuffle[0].val, c_val: statements_shuffle[1].val, h_desc: statements_shuffle[0].geom_desc, c_desc: statements_shuffle[1].geom_desc, final_val: 'TRUE', explanation: 'In formal logic, any conditional statement (if-then) with a FALSE hypothesis is automatically vacuously TRUE, regardless of the truth value of the conclusion.' }, { symbol: '\\\\sim ' + statements_shuffle[1].label + ' \\\\rightarrow \\\\sim ' + statements_shuffle[2].label, text_words: 'IF IT IS NOT THE CASE THAT ' + statements_shuffle[1].text + ' THEN IT IS NOT THE CASE THAT ' + statements_shuffle[2].text, h_val: !statements_shuffle[1].val, c_val: !statements_shuffle[2].val, h_desc: 'Since the base statement is false, its negation is true: ' + statements_shuffle[1].geom_desc, c_desc: 'Since the base statement is false, its negation is true: ' + statements_shuffle[2].geom_desc, final_val: 'TRUE', explanation: 'A conditional statement with a TRUE hypothesis and a TRUE conclusion evaluates directly as logically TRUE.' } ]"
-    },
-    "selected": { "formula": "conditional_pool[Math.floor(Math.random() * conditional_pool.length)]" },
-    "target_sym": { "formula": "selected.symbol" },
-    "words_desc": { "formula": "selected.text_words" },
-    "h_bool": { "formula": "selected.h_val" },
-    "c_bool": { "formula": "selected.c_val" },
-    "h_reason": { "formula": "selected.h_desc" },
-    "c_reason": { "formula": "selected.c_desc" },
-    "final_truth": { "formula": "selected.final_val" },
-    "step_reasoning": { "formula": "selected.explanation" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( {p_lbl} \\): {p_txt}<br>\\( {q_lbl} \\): {q_txt}<br>\\( {r_lbl} \\): {r_txt}<br><br>Write out the compound conditional statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the conditional statement:<br><br><b>Step 1: Write the compound conditional statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement. Translating \\( {target_sym} \\) yields:<br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the component arguments from the geometric diagram.</b><br><ul><li>The hypothesis condition is evaluated as <b>{formula: h_bool ? 'TRUE' : 'FALSE'}</b>.<br><i>Reasoning:</i> {h_reason}</li><br><li>The conclusion condition is evaluated as <b>{formula: c_bool ? 'TRUE' : 'FALSE'}</b>.<br><i>Reasoning:</i> {c_reason}</li></ul><br><b>Step 3: Apply conditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal evaluation configuration:<br>\\[ \\text{{formula: h_bool ? 'True' : 'False'}} \\rightarrow \\text{{formula: c_bool ? 'True' : 'False'}} = \\text{{final_truth}} \\]<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>{final_truth}</span>"
-},
-{
-  "id": "GEO-3-2-CONDITIONAL-RANDOM-MARKINGS",
-  "type": "template",
-  "objective": "Deduce the truth value of a conditional if-then statement based on a geometric diagram with proper math markings.",
-  "difficulty": "hard",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" },
-    "statements_shuffle": {
-      "formula": "[ { label: 'p', text: '\\\\( \\\\angle ' + v + v + v + ' \\\\) and \\\\( \\\\angle ' + v + v + v + ' \\\\) are complementary.', val: false, geom_desc: 'Complementary angles must sum to 90°. Since these angles form a straight linear pair, they sum to 180° (supplementary).' }, { label: 'q', text: '\\\\( \\\\angle ' + v + v + v + ' \\\\) and \\\\( \\\\angle ' + v + v + v + ' \\\\) are vertical angles.', val: false, geom_desc: 'Adjacent angles in a linear pair share a ray and cannot be vertical angles.' }, { label: 'r', text: '\\\\( \\\\overline{' + v + v + '} \\\\cong \\\\overline{' + v + v + '} \\\\).', val: false, geom_desc: 'There are no midpoint tick marks or indicators on the diagram to confirm segment congruence.' } ].map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
-    },
-    "p_lbl": { "formula": "statements_shuffle.label" },
-    "p_txt": { "formula": "statements_shuffle.text" },
-    "p_val": { "formula": "statements_shuffle.val" },
-    "p_desc": { "formula": "statements_shuffle.geom_desc" },
-    "q_lbl": { "formula": "statements_shuffle.label" },
-    "q_txt": { "formula": "statements_shuffle.text" },
-    "q_val": { "formula": "statements_shuffle.val" },
-    "q_desc": { "formula": "statements_shuffle.geom_desc" },
-    "r_lbl": { "formula": "statements_shuffle.label" },
-    "r_txt": { "formula": "statements_shuffle.text" },
-    "r_val": { "formula": "statements_shuffle.val" },
-    "r_desc": { "formula": "statements_shuffle.geom_desc" },
-    "conditional_pool": {
-      "formula": "[ { symbol: statements_shuffle.label + ' \\\\rightarrow ' + statements_shuffle.label, text_words: 'IF ' + statements_shuffle.text + ' THEN ' + statements_shuffle.text, h_val: statements_shuffle.val, c_val: statements_shuffle.val, h_desc: statements_shuffle.geom_desc, c_desc: statements_shuffle.geom_desc, final_val: 'TRUE', explanation: 'In formal logic, any conditional statement (if-then) with a FALSE hypothesis is automatically vacuously TRUE, regardless of the truth value of the conclusion.' }, { symbol: '\\\\sim ' + statements_shuffle.label + ' \\\\rightarrow \\\\sim ' + statements_shuffle.label, text_words: 'IF IT IS NOT THE CASE THAT ' + statements_shuffle.text + ' THEN IT IS NOT THE CASE THAT ' + statements_shuffle.text, h_val: !statements_shuffle.val, c_val: !statements_shuffle.val, h_desc: 'Since the base statement is false, its negation is true: ' + statements_shuffle.geom_desc, c_desc: 'Since the base statement is false, its negation is true: ' + statements_shuffle.geom_desc, final_val: 'TRUE', explanation: 'A conditional statement with a TRUE hypothesis and a TRUE conclusion evaluates directly as logically TRUE.' } ]"
-    },
-    "selected": { "formula": "conditional_pool[Math.floor(Math.random() * conditional_pool.length)]" },
-    "target_sym": { "formula": "selected.symbol" },
-    "words_desc": { "formula": "selected.text_words" },
-    "h_bool": { "formula": "selected.h_val" },
-    "c_bool": { "formula": "selected.c_val" },
-    "h_reason": { "formula": "selected.h_desc" },
-    "c_reason": { "formula": "selected.c_desc" },
-    "final_truth": { "formula": "selected.final_val" },
-    "step_reasoning": { "formula": "selected.explanation" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( {p_lbl} \\): {p_txt}<br>\\( {q_lbl} \\): {q_txt}<br>\\( {r_lbl} \\): {r_txt}<br><br>Write out the compound conditional statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the conditional statement:<br><br><b>Step 1: Write the compound conditional statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement. Translating \\( {target_sym} \\) yields:<br><br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the component arguments from the geometric diagram.</b><br><ul><li>The hypothesis condition is evaluated as <b>{formula: h_bool ? 'TRUE' : 'FALSE'}</b>.<br><i>Reasoning:</i> {h_reason}</li><br><li>The conclusion condition is evaluated as <b>{formula: c_bool ? 'TRUE' : 'FALSE'}</b>.<br><i>Reasoning:</i> {c_reason}</li></ul><br><b>Step 3: Apply conditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal evaluation configuration:<br>\\[ \\text{{formula: h_bool ? 'True' : 'False'}} \\rightarrow \\text{{formula: c_bool ? 'True' : 'False'}} = \\text{{final_truth}} \\]<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>{final_truth}</span>"
 }
 ,
 {
