@@ -5846,7 +5846,7 @@
 {
   "id": "GEO 3-1 Conjecture v1",
   "type": "template",
-  "objective": "Identify the conjecture describing the next term in the sequence",
+  "objective": "Write the conjecture describing the next term in the sequence",
   "difficulty": "basic",
   "variables": {
     "start_terms_pool": {
@@ -5892,7 +5892,7 @@
       "formula": "Math.round((a3 - a2) * 100) / 100"
     }
   },
-  "question": "Choose the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ….",
+  "question": "Write the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ….",
   "choices": [
     { "text": "Multiply {a4} by {r_text}.", "correct": true },
     { "text": "Add {wrong_add_1} to {a4}.", "correct": false },
@@ -5904,7 +5904,7 @@
 {
   "id": "GEO 3-1 Conjecture v2",
   "type": "template",
-  "objective": "Identify the conjecture describing the next term in the sequence",
+  "objective": "Write the conjecture describing the next term in the sequence",
   "difficulty": "basic",
   "variables": {
     "a1": {
@@ -5932,7 +5932,7 @@
       "formula": "Math.floor((a1 + d + d + d) / (a1 + d))"
     }
   },
-  "question": "Choose the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ….",
+  "question": "Write the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ….",
   "choices": [
     { "text": "Add {d} to {a4}.", "correct": true },
     { "text": "Add {double_d} to {a4}.", "correct": false },
@@ -5944,7 +5944,7 @@
 {
   "id": "GEO 3-1 Conjecture Sequences",
   "type": "template",
-  "objective": "Identify Patterns and Extend Total Elements in a Visual Sequence to the 5th Figure",
+  "objective": "Write the conjecture describing the sequence. Identify Patterns and Extend Total Elements in a Visual Sequence to the 5th Figure",
   "difficulty": "basic",
   "variables": {
     "option_idx": { "formula": "Math.floor(Math.random() * 4)" },
@@ -5969,13 +5969,13 @@
       "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 560 150\" style=\"width:100%;max-width:560px;height:auto\"><rect width=\"560\" height=\"150\" fill=\"#fdfdfd\" stroke=\"#e0e0e0\" stroke-width=\"1\" rx=\"6\"/>' + [1, 2, 3].map((step, idx) => { const startX = 25 + idx * 175; let shapes = ''; if ([0, 0, 0, 1][option_idx] === 0) { if ([0, 1, 2, 1][option_idx] === 0) { for(let i = 0; i < step; i++) { const x1 = startX + i * 34; const x2 = x1 + 24; const x3 = x1 + 12; shapes += '<polygon points=\"' + x1 + ',90 ' + x2 + ',90 ' + x3 + ',50\" fill=\"none\" stroke=\"#333\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'; } } else if ([0, 1, 2, 1][option_idx] === 1) { for(let i = 0; i < step; i++) { const x1 = startX + i * 34; shapes += '<rect x=\"' + x1 + '\" y=\"56\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"#333\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'; } } else { for(let i = 0; i < step; i++) { const xMin = startX + i * 34; const cx = xMin + 14; const cy = 68; const r = 14; let pStr = ''; for(let k = 0; k < 5; k++) { const angle = (k * 2 * Math.PI) / 5 - Math.PI / 2; const px = Math.round((cx + r * Math.cos(angle)) * 10) / 10; const py = Math.round((cy + r * Math.sin(angle)) * 10) / 10; pStr += px + ',' + py + ' '; } shapes += '<polygon points=\"' + pStr + '\" fill=\"none\" stroke=\"#333\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'; } } } else { const width = 24; const height = 24; const y = 56; shapes += '<rect x=\"' + startX + '\" y=\"' + y + '\" width=\"' + (step * width) + '\" height=\"' + height + '\" fill=\"none\" stroke=\"#333\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'; for(let i = 1; i < step; i++) { const x = startX + i * width; shapes += '<line x1=\"' + x + '\" y1=\"' + y + '\" x2=\"' + x + '\" y2=\"' + (y + height) + '\" stroke=\"#333\" stroke-width=\"2.5\"/>'; } } const textX = startX + (([0, 0, 0, 1][option_idx] === 1 && [0, 1, 2, 1][option_idx] === 1) ? (step * 24) / 2 : (step * 34 - 10) / 2); return shapes + '<text x=\"' + textX + '\" y=\"132\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13px\" font-weight=\"bold\" fill=\"#555\">Step ' + step + '</text>'; }).join('') + '</svg>'"
     }
   },
-  "question": "How many total individual line segments will be needed to create <b>Step 5</b> (the 5th figure) of the sequence shown below?<br><br>{sequence_svg}<br><br>____ segments",
+  "question": "Write the conjecture describing the sequence. How many total individual line segments will be needed to create <b>Step 5</b> (the 5th figure) of the sequence shown below?<br><br>{sequence_svg}<br><br>Congecture:_______________________________________________________________________________________ .    _______ segments",
   "answer": "To determine the total line segments needed for Step 5, let's analyze the visual growth pattern step-by-step:<br><br><b>Step 1: Count the individual boundary line segments in the given figures.</b><br>Examining the structural layout reveals a progression of {network_desc}:<br>&bull; <b>Step 1:</b> Consists of 1 shape constructed using exactly <b>{s1}</b> line segments.<br>&bull; <b>Step 2:</b> Connects elements using a total of <b>{s2}</b> line segments.<br>&bull; <b>Step 3:</b> Expands components using a total of <b>{s3}</b> line segments.<br><br><b>Step 2: Isolate the core rate of change.</b><br>Subtract consecutive step totals to identify the constant arithmetic pattern difference:<br>\\[ {s2} - {s1} = {inc} \\]<br>\\[ {s3} - {s2} = {inc} \\]<br>Each subsequent figure adds a net addition of <b>{inc}</b> segments to the total count.<br><br><b>Step 3: Extrapolate to Step 5.</b><br>We can calculate the totals for the remaining steps sequentially:<br>&bull; <b>Step 4:</b> \\( {s3} + {inc} = {s4} \\) segments.<br>&bull; <b>Step 5:</b> \\( {s4} + {inc} = {result} \\) segments.<br><br>Alternatively, using the arithmetic progression formula:<br>\\[ \\text{Total} = \\text{Base} + (n - 1) \\times \\text{Increase} \\]<br>\\[ \\text{Total} = {s1} + (5 - 1) \\times {inc} = {s1} + 4 \\times {inc} = {result} \\]<br><br>Therefore, Step 5 will require exactly <b>{result} segments</b> to complete."
 },
 {
   "id": "GEO 3-1 Counterexample v1",
   "type": "template",
-  "objective": "Provide a counterexample to disprove this well-known mathematical or geometric conjecture",
+  "objective": "Provide a specific counterexample to disprove the mathematical or geometric conjecture",
   "difficulty": "basic",
   "variables": {
     "conjecture_pool": {
@@ -5986,7 +5986,7 @@
     "acceptable_inputs": { "formula": "selected.sample_acceptable" },
     "exp_text": { "formula": "selected.explanation" }
   },
-  "question": "Consider the following famous mathematical conjecture:<br><b>\"{conjecture_text}\"</b><br><br>This statement is actually false. In the blank below, provide a specific, well-known value, case, or object that acts as a valid <b>counterexample</b> to disprove this conjecture.<br><br>Counterexample: ________________________",
+  "question": "Consider the following famous mathematical conjecture:<br><b>\"{conjecture_text}\"</b><br><br>This statement is actually false. In the blank below, provide a specific, well-known value, case, or sketch that acts as a valid <b>counterexample</b> to disprove this conjecture.<br><br>Counterexample: ________________________",
   "answer": "A counterexample must show a case where the hypothesis (the \"if\" part) is true, but the conclusion (the \"then\" part) fails.<br><br><b>Acceptable Answers include:</b> {acceptable_inputs}<br><br><i>Detailed Mathematical Reasoning:</i><br>{exp_text}"
 },
 {
@@ -6003,11 +6003,11 @@
     "acceptable_inputs": { "formula": "selected.sample_acceptable" },
     "exp_text": { "formula": "selected.explanation" }
   },
-  "question": "Consider the following commonly heard statement:<br><b>\"{conjecture_text}\"</b><br><br>This statement is factually false. In the blank below, type a specific real-world example, animal, or object that acts as a valid <b>counterexample</b> to completely disprove this claim.<br><br>Counterexample: ________________________",
+  "question": "Consider the following commonly heard statement:<br><b>\"{conjecture_text}\"</b><br><br>This statement is factually false. In the blank below, provide a specific real-world example, animal, or sketch that acts as a valid <b>counterexample</b> to completely disprove this claim.<br><br>Counterexample: ________________________",
   "answer": "A counterexample must show a real-world case where the condition (the \"if\" part) is true, but the conclusion (the \"then\" part) is proven false.<br><br><b>Acceptable Answers include:</b> {acceptable_inputs}<br><br><i>Explanation:</i><br>{exp_text}"
 },
 {
-  "id": "GEO 3-2 Conjunction",
+  "id": "GEO 3-2a Conjunction",
   "type": "template",
   "objective": "Deduce the truth value of a conjunction.",
   "difficulty": "basic",
@@ -6024,10 +6024,8 @@
   "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the conjunction <b>\\( \\sim p \\wedge \\sim q \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
   "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound logic statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"), and the symbol <b>\\( \\wedge \\)</b> represents a conjunction (\"and\"). Translating \\( \\sim p \\wedge \\sim q \\) gives:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT complementary, AND \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT vertical angles.\"</i><br><br><b>Step 2: Evaluate the truth value of individual statement \\( p \\) and its negation \\( \\sim p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) form a straight angle line, they are a linear pair and must sum to exactly \\( 180^\\circ \\) (supplementary) by the <i>Linear Pair Postulate</i>. Therefore, statement \\( p \\) is false, making its negation <b>\\( \\sim p \\) TRUE</b>.<br><br><b>Step 3: Evaluate the truth value of individual statement \\( q \\) and its negation \\( \\sim q \\).</b><br>Vertical angles are nonadjacent angles formed by two intersecting lines. Since \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) share a common side ray \\( \\overrightarrow{{ptB}{ptC}} \\), they are adjacent angles and cannot be vertical. Therefore, statement \\( q \\) is false, making its negation <b>\\( \\sim q \\) TRUE</b>.<br><br><b>Step 4: Evaluate the complete conjunction \\( \\sim p \\wedge \\sim q \\).</b><br>A conjunction (\"and\" statement) is true if and only if both of its components evaluate to true:<br>\\[ \\text{True} \\wedge \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Conclusion Summary:</b><br>&bull; <b>Compound Statement:</b> \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are not complementary, and \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are not vertical angles.<br>&bull; <b>Truth Value:</b> <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
 },
-
-
 {
-  "id": "GEO 3-2 Disjunction",
+  "id": "GEO 3-2a Disjunction",
   "type": "template",
   "objective": "Deduce the truth value of a disjunction.",
   "difficulty": "basic",
@@ -6044,11 +6042,8 @@
   "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement for the disjunction <b>\\( p \\vee \\sim r \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
   "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound logic statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"), and the symbol <b>\\( \\vee \\)</b> represents a disjunction (\"or\"). Translating \\( p \\vee \\sim r \\) gives:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, OR segment \\( \\overline{{ptA}{ptB}} \\) is not congruent to segment \\( \\overline{{ptB}{ptD}} \\).\"</i><br><br><b>Step 2: Evaluate the truth value of individual statement \\( p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) lie along a straight horizontal baseline frame, they form a straight angle. By the <i>Linear Pair Postulate</i>, \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary and must add up to exactly \\( 180^\\circ \\). Therefore, statement \\( p \\) is <b>FALSE</b>.<br><br><b>Step 3: Evaluate the truth value of individual statement \\( r \\) and its negation \\( \\sim r \\).</b><br>Looking at the diagram blueprint, there are no geometry indicators or tick marks stating that vertex point \\( {ptB} \\) is the exact numerical midpoint of the horizontal line segment. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is fundamentally false. Negating a false statement makes it true, so <b>\\( \\sim r \\) is TRUE</b> (it is true that they are not confirmed congruent).<br><br><b>Step 4: Evaluate the complete disjunction \\( p \\vee \\sim r \\).</b><br>A disjunction (\"or\" statement) is true if at least one of its components evaluates to true:<br>\\[ \\text{False} \\vee \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <b>TRUE</b>.<br><br><b>Conclusion Summary:</b><br>&bull; <b>Compound Statement:</b> \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, or segment \\( \\overline{{ptA}{ptB}} \\) is not congruent to segment \\( \\overline{{ptB}{ptD}} \\).<br>&bull; <b>Truth Value:</b> <b>TRUE</b>"
 },
-
-
-
 {
-  "id": "GEO-3-2 Conditional",
+  "id": "GEO-3-2b Conditional - Law of Detachment",
   "type": "template",
   "objective": "Deduce the truth value of a conditional if-then statement based on a geometric diagram.",
   "difficulty": "basic",
@@ -6056,204 +6051,197 @@
     "point_pools": {
       "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
     },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
+    "v": {
+      "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
+    },
     "ptA": { "formula": "v[0]" },
     "ptB": { "formula": "v[1]" },
     "ptD": { "formula": "v[2]" },
     "ptC": { "formula": "v[3]" },
     "conditional_pool": {
-      "formula": "[ { symbol: 'q \\\\rightarrow \\\\sim p', hypothesis: 'q', conclusion: '\\\\sim p', hyp_val: false, conc_val: true, text_words: 'IF \\\\angle ' + v[0] + v[1] + v[3] + ' and \\\\angle ' + v[3] + v[1] + v[2] + ' are vertical angles, THEN \\\\angle ' + v[0] + v[1] + v[3] + ' and \\\\angle ' + v[3] + v[1] + v[2] + ' are NOT complementary.', explanation: 'The hypothesis q is FALSE because adjacent linear pair angles cannot be vertical. In formal logic, any conditional statement with a false hypothesis is automatically vacuously TRUE regardless of the conclusion.' }, { symbol: 'r \\\\rightarrow p', hypothesis: 'r', conclusion: 'p', hyp_val: false, conc_val: false, text_words: 'IF segment \\\\overline{' + v[0] + v[1] + '} \\\\cong \\\\overline{' + v[1] + v[2] + '}, THEN \\\\angle ' + v[0] + v[1] + v[3] + ' and \\\\angle ' + v[3] + v[1] + v[2] + ' are complementary.', explanation: 'The hypothesis r is FALSE because no matching geometric constraints or midpoint tick marks are given. A conditional statement with a false hypothesis evaluates as logically TRUE.' } ]"
+      "formula": "[ { symbol: 'p \\\\rightarrow q', hypothesis: 'p', conclusion: 'q', hyp_val: true, conc_val: false, text_words: 'IF \\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are supplementary, THEN \\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are vertical angles.', explanation: 'The hypothesis p is TRUE because points ' + v[0] + ', ' + v[1] + ', and ' + v[2] + ' form a straight line, making the adjacent linear pair angles supplementary. The conclusion q is FALSE because adjacent linear pair angles share a common ray and cannot be vertical.' }, { symbol: '\\\\sim q \\\\rightarrow \\\\sim r', hypothesis: '\\\\sim q', conclusion: '\\\\sim r', hyp_val: true, conc_val: true, text_words: 'IF \\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are NOT vertical angles, THEN segment \\\\( \\\\overline{' + v[0] + v[1] + '} \\\\) is NOT congruent to \\\\( \\\\overline{' + v[1] + v[2] + '} \\\\).', explanation: 'The hypothesis ~q is TRUE because adjacent linear pair angles are not vertical. The conclusion ~r is TRUE because no matching geometric measurements, midpoints, or congruence tick marks are provided to assume segment equality.' }, { symbol: '\\\\sim r \\\\rightarrow p', hypothesis: '\\\\sim r', conclusion: 'p', hyp_val: true, conc_val: true, text_words: 'IF segment \\\\( \\\\overline{' + v[0] + v[1] + '} \\\\) is NOT congruent to \\\\( \\\\overline{' + v[1] + v[2] + '} \\\\), THEN \\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are supplementary.', explanation: 'The hypothesis ~r is TRUE because there are no segment markings indicating congruence. The conclusion p is TRUE because the baseline forms a straight horizontal line line, meaning the linear pair must sum to 180 degrees.' } ]"
     },
-    "selected": { "formula": "conditional_pool[Math.floor(Math.random() * conditional_pool.length)]" },
-    "target_sym": { "formula": "selected.symbol" },
-    "words_desc": { "formula": "selected.text_words" },
-    "h_val": { "formula": "selected.hyp_val" },
-    "c_val": { "formula": "selected.conc_val" },
-    "step_reasoning": { "formula": "selected.explanation" }
+    "selected": {
+      "formula": "conditional_pool[Math.floor(Math.random() * conditional_pool.length)]"
+    },
+    "target_sym": {
+      "formula": "selected.symbol"
+    },
+    "words_desc": {
+      "formula": "selected.text_words"
+    },
+    "h_val": {
+      "formula": "selected.hyp_val"
+    },
+    "c_val": {
+      "formula": "selected.conc_val"
+    },
+    "step_reasoning": {
+      "formula": "selected.explanation"
+    },
+    "hypothesis_text": {
+      "formula": "h_val ? 'TRUE' : 'FALSE'"
+    },
+    "conclusion_text": {
+      "formula": "c_val ? 'TRUE' : 'FALSE'"
+    },
+    "hypothesis_math_text": {
+      "formula": "h_val ? 'True' : 'False'"
+    },
+    "conclusion_math_text": {
+      "formula": "c_val ? 'True' : 'False'"
+    },
+    "final_truth_value": {
+      "formula": "(!h_val || c_val) ? 'TRUE' : 'FALSE'"
+    }
   },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound conditional statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the conditional statement:<br><br><b>Step 1: Write the compound conditional statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement. Translating \\( {target_sym} \\) yields:<br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the component components.</b><br><ul><li>The hypothesis condition is evaluated as <b>{formula: h_val ? 'TRUE' : 'FALSE'}</b> based on the geometric properties shown in the structural blueprint.</li><li>The conclusion condition is evaluated as <b>{formula: c_val ? 'TRUE' : 'FALSE'}</b>.</li></ul><br><b>Step 3: Apply conditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{False} \\rightarrow \\text{{formula: c_val ? 'True' : 'False'}} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
+  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound conditional statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
+  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the conditional statement:<br><br><b>Step 1: Write the compound conditional statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement. Translating \\( {target_sym} \\) yields:<br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the component components.</b><br><ul><li>The hypothesis condition is evaluated as <b>{hypothesis_text}</b> based on the geometric properties shown in the structural blueprint.</li><li>The conclusion condition is evaluated as <b>{conclusion_text}</b>.</li></ul><br><b>Step 3: Apply conditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{{hypothesis_math_text}} \\rightarrow \\text{{conclusion_math_text}} = \\text{{final_truth_value}} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>"
 },
 {
-  "id": "GEO-3-2 Conditional new",
+  "id": "GEO-3-2b Biconditional",
   "type": "template",
-  "objective": "Deduce the truth value of a conditional if-then statement based on a geometric diagram.",
+  "objective": "Deduce the truth value of a biconditional if-and-only-if statement based on a geometric diagram.",
   "difficulty": "basic",
   "variables": {
     "point_pools": {
       "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
     },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
+    "v": {
+      "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
+    },
     "ptA": { "formula": "v[0]" },
     "ptB": { "formula": "v[1]" },
     "ptD": { "formula": "v[2]" },
     "ptC": { "formula": "v[3]" },
-    "conditional_pool": {
-      "formula": "[ { symbol: 'q \\\\rightarrow \\\\sim p', hypothesis: 'q', conclusion: '\\\\sim p', hyp_val: false, conc_val: true, text_words: 'IF \\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are vertical angles, THEN \\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are NOT complementary.', explanation: 'The hypothesis q is FALSE because adjacent linear pair angles share a ray and cannot be vertical angles. In formal logic, any conditional statement with a false hypothesis is automatically vacuously TRUE regardless of the conclusion.' }, { symbol: 'r \\\\rightarrow p', hypothesis: 'r', conclusion: 'p', hyp_val: false, conc_val: false, text_words: 'IF \\\\( \\\\overline{' + v[0] + v[1] + '} \\\\cong \\\\overline{' + v[1] + v[2] + '} \\\\), THEN \\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are complementary.', explanation: 'The hypothesis r is FALSE because no matching geometric constraints or midpoint tick marks are given. A conditional statement with a false hypothesis evaluates as logically TRUE.' } ]"
+    "base_options": {
+      "formula": "[ { label: 'p', latex: 'p', val: true, text: '\\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are supplementary', exp: 'Statement p is TRUE because the points form a straight line, making the adjacent linear pair supplementary.' }, { label: '~p', latex: '\\\\sim p', val: false, text: '\\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are NOT supplementary', exp: 'Statement ~p is FALSE because the adjacent angles form a linear pair on a straight line and must be supplementary.' }, { label: 'q', latex: 'q', val: false, text: '\\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are vertical angles', exp: 'Statement q is FALSE because adjacent linear pair angles share a common ray and cannot be vertical.' }, { label: '~q', latex: '\\\\sim q', val: true, text: '\\\\( \\\\angle ' + v[0] + v[1] + v[3] + ' \\\\) and \\\\( \\\\angle ' + v[3] + v[1] + v[2] + ' \\\\) are NOT vertical angles', exp: 'Statement ~q is TRUE because adjacent linear pair angles are not vertical.' }, { label: 'r', latex: 'r', val: false, text: 'segment \\\\( \\\\overline{' + v[0] + v[1] + '} \\\\cong \\\\overline{' + v[1] + v[2] + '} \\\\)', exp: 'Statement r is FALSE because no matching geometric measurements, midpoints, or congruence tick marks are provided on the baseline segments.' }, { label: '~r', latex: '\\\\sim r', val: true, text: 'segment \\\\( \\\\overline{' + v[0] + v[1] + '} \\\\) is NOT congruent to \\\\( \\\\overline{' + v[1] + v[2] + '} \\\\)', exp: 'Statement ~r is TRUE because there are no segment markings or constraints indicating congruence.' } ]"
     },
-    "selected": { "formula": "conditional_pool[Math.floor(Math.random() * conditional_pool.length)]" },
-    "target_sym": { "formula": "selected.symbol" },
-    "words_desc": { "formula": "selected.text_words" },
-    "h_val": { "formula": "selected.hyp_val" },
-    "c_val": { "formula": "selected.conc_val" },
-    "step_reasoning": { "formula": "selected.explanation" }
+    "left_idx": {
+      "formula": "Math.floor(Math.random() * base_options.length)"
+    },
+    "right_idx": {
+      "formula": "Math.floor(Math.random() * (base_options.length - 1))"
+    },
+    "adjusted_right_idx": {
+      "formula": "right_idx >= left_idx ? right_idx + 1 : right_idx"
+    },
+    "left_comp": {
+      "formula": "base_options[left_idx]"
+    },
+    "right_comp": {
+      "formula": "base_options[adjusted_right_idx]"
+    },
+    "target_sym": {
+      "formula": "left_comp.latex + ' \\\\leftrightarrow ' + right_comp.latex"
+    },
+    "words_desc": {
+      "formula": "left_comp.text + ' IF AND ONLY IF ' + right_comp.text"
+    },
+    "h_val": {
+      "formula": "left_comp.val"
+    },
+    "c_val": {
+      "formula": "right_comp.val"
+    },
+    "step_reasoning": {
+      "formula": "'&bull; ' + left_comp.exp + '<br>&bull; ' + right_comp.exp + '<br><br>Under biconditional logic, a statement evaluates to TRUE if and only if both sides have the exact same truth value.'"
+    },
+    "hypothesis_text": {
+      "formula": "h_val ? 'TRUE' : 'FALSE'"
+    },
+    "conclusion_text": {
+      "formula": "c_val ? 'TRUE' : 'FALSE'"
+    },
+    "hypothesis_math_text": {
+      "formula": "h_val ? 'True' : 'False'"
+    },
+    "conclusion_math_text": {
+      "formula": "c_val ? 'True' : 'False'"
+    },
+    "final_truth_value": {
+      "formula": "(h_val === c_val) ? 'TRUE' : 'FALSE'"
+    }
   },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound conditional statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the conditional statement:<br><br><b>Step 1: Write the compound conditional statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement. Translating \\( {target_sym} \\) yields:<br><br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the component components.</b><br><ul><li>The hypothesis condition is evaluated as <b>{formula: h_val ? 'TRUE' : 'FALSE'}</b> based on the geometric properties shown in the structural blueprint.</li><li>The conclusion condition is evaluated as <b>{formula: c_val ? 'TRUE' : 'FALSE'}</b>.</li></ul><br><b>Step 3: Apply conditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{False} \\rightarrow \\text{{formula: c_val ? 'True' : 'False'}} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
+  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
+  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the biconditional statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The double arrow symbol <b>\\( \\leftrightarrow \\)</b> represents a biconditional \"if and only if\" statement. Translating \\( {target_sym} \\) yields:<br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the individual components.</b><br><ul><li>The left-hand component condition is evaluated as <b>{hypothesis_text}</b> based on the geometric properties shown in the structural blueprint.</li><li>The right-hand component condition is evaluated as <b>{conclusion_text}</b>.</li></ul><br><b>Step 3: Apply biconditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{{hypothesis_math_text}} \\leftrightarrow \\text{{conclusion_math_text}} = \\text{{final_truth_value}} \\]\n<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>"
+},
+{
+  "id": "GEO 3-2 Converse, Inverse, Contrapositive",
+  "type": "template",
+  "objective": "Identify the converse, inverse, and contrapositive variations of a conditional statement.",
+  "difficulty": "basic",
+  "variables": {
+    "statement_idx": { "min": 0, "max": 5 },
+    "order_idx": { "min": 0, "max": 5 },
+    "statements": {
+      "formula": "[ { original: 'If two lines intersect, then the lines are coplanar.', p: 'two lines intersect', not_p: 'two lines do not intersect', q: 'the lines are coplanar', not_q: 'the lines are not coplanar' }, { original: 'If a polygon is a square, then it is a rectangle.', p: 'a polygon is a square', not_p: 'a polygon is not a square', q: 'it is a rectangle', not_q: 'it is not a rectangle' }, { original: 'If an angle is acute, then its measure is less than 90 degrees.', p: 'an angle is acute', not_p: 'an angle is not acute', q: 'its measure is less than 90 degrees', not_q: 'its measure is not less than 90 degrees' }, { original: 'If two lines are perpendicular, then they intersect to form right angles.', p: 'two lines are perpendicular', not_p: 'two lines are not perpendicular', q: 'they intersect to form right angles', not_q: 'they do not intersect to form right angles' }, { original: 'If a triangle is equilateral, then it is equiangular.', p: 'a triangle is equilateral', not_p: 'a triangle is not equilateral', q: 'it is equiangular', not_q: 'it is not equiangular' }, { original: 'If an angle measures 90 degrees, then it is a right angle.', p: 'an angle measures 90 degrees', not_p: 'an angle does not measure 90 degrees', q: 'it is a right angle', not_q: 'it is not a right angle' } ]"
+    },
+    "selected": {
+      "formula": "statements[statement_idx]"
+    },
+    "orig_text": { "formula": "selected.original" },
+    "conv_txt": { "formula": "'If ' + selected.q + ', then ' + selected.p + '.'" },
+    "inv_txt": { "formula": "'If ' + selected.not_p + ', then ' + selected.not_q + '.'" },
+    "cont_txt": { "formula": "'If ' + selected.not_q + ', then ' + selected.not_p + '.'" },
+    "text_pool": {
+      "formula": "[ [inv_txt, conv_txt, cont_txt], [inv_txt, cont_txt, conv_txt], [conv_txt, inv_txt, cont_txt], [conv_txt, cont_txt, inv_txt], [cont_txt, conv_txt, inv_txt], [cont_txt, inv_txt, conv_txt] ]"
+    },
+    "type_pool": {
+      "formula": "[ ['Ⓒ inverse', 'Ⓑ converse', 'A contrapositive'], ['Ⓒ inverse', 'A contrapositive', 'Ⓑ converse'], ['Ⓑ converse', 'Ⓒ inverse', 'A contrapositive'], ['Ⓑ converse', 'A contrapositive', 'Ⓒ inverse'], ['A contrapositive', 'Ⓑ converse', 'Ⓒ inverse'], ['A contrapositive', 'Ⓒ inverse', 'Ⓑ converse'] ]"
+    },
+    "text1": { "formula": "text_pool[order_idx][0]" },
+    "text2": { "formula": "text_pool[order_idx][1]" },
+    "text3": { "formula": "text_pool[order_idx][2]" },
+    "ans1": { "formula": "type_pool[order_idx][0]" },
+    "ans2": { "formula": "type_pool[order_idx][1]" },
+    "ans3": { "formula": "type_pool[order_idx][2]" }
+  },
+  "question": "Consider the statement: \"{orig_text}\"<br><br>Identify the following statements as the contrapositive, converse, or inverse of the statement above.<br><br>1. {text1}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>2. {text2}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>3. {text3}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]",
+  "answer": "1. {ans1}, 2. {ans2}, 3. {ans3}"
+},
+{
+  "id": "GEO 3-2 Converse, Inverse, Contrapositive (for practice)",
+  "type": "template",
+  "objective": "Identify the converse, inverse, and contrapositive variations of a conditional statement.",
+  "difficulty": "basic",
+  "variables": {
+    "statement_idx": { "min": 0, "max": 5 },
+    "order_idx": { "min": 0, "max": 5 },
+    "statements": {
+      "formula": "[ { original: 'If two lines intersect, then the lines are coplanar.', p: 'two lines intersect', not_p: 'two lines do not intersect', q: 'the lines are coplanar', not_q: 'the lines are not coplanar' }, { original: 'If a polygon is a square, then it is a rectangle.', p: 'a polygon is a square', not_p: 'a polygon is not a square', q: 'it is a rectangle', not_q: 'it is not a rectangle' }, { original: 'If an angle is acute, then its measure is less than 90 degrees.', p: 'an angle is acute', not_p: 'an angle is not acute', q: 'its measure is less than 90 degrees', not_q: 'its measure is not less than 90 degrees' }, { original: 'If two lines are perpendicular, then they intersect to form right angles.', p: 'two lines are perpendicular', not_p: 'two lines are not perpendicular', q: 'they intersect to form right angles', not_q: 'they do not intersect to form right angles' }, { original: 'If a triangle is equilateral, then it is equiangular.', p: 'a triangle is equilateral', not_p: 'a triangle is not equilateral', q: 'it is equiangular', not_q: 'it is not equiangular' }, { original: 'If an angle measures 90 degrees, then it is a right angle.', p: 'an angle measures 90 degrees', not_p: 'an angle does not measure 90 degrees', q: 'it is a right angle', not_q: 'it is not a right angle' } ]"
+    },
+    "selected": {
+      "formula": "statements[statement_idx]"
+    },
+    "orig_text": { "formula": "selected.original" },
+    "conv_txt": { "formula": "'If ' + selected.q + ', then ' + selected.p + '.'" },
+    "inv_txt": { "formula": "'If ' + selected.not_p + ', then ' + selected.not_q + '.'" },
+    "cont_txt": { "formula": "'If ' + selected.not_q + ', then ' + selected.not_p + '.'" },
+    "text_pool": {
+      "formula": "[ [inv_txt, conv_txt, cont_txt], [inv_txt, cont_txt, conv_txt], [conv_txt, inv_txt, cont_txt], [conv_txt, cont_txt, inv_txt], [cont_txt, conv_txt, inv_txt], [cont_txt, inv_txt, conv_txt] ]"
+    },
+    "type_pool": {
+      "formula": "[ ['&#9475; inverse', '&#9474; converse', '&#9452; contrapositive'], ['&#9475; inverse', '&#9452; contrapositive', '&#9474; converse'], ['&#9474; converse', '&#9475; inverse', '&#9452; contrapositive'], ['&#9474; converse', '&#9452; contrapositive', '&#9475; inverse'], ['&#9452; contrapositive', '&#9474; converse', '&#9475; inverse'], ['&#9452; contrapositive', '&#9475; inverse', '&#9474; converse'] ]"
+    },
+    "text1": { "formula": "text_pool[order_idx][0]" },
+    "text2": { "formula": "text_pool[order_idx][1]" },
+    "text3": { "formula": "text_pool[order_idx][2]" },
+    "ans1": { "formula": "type_pool[order_idx][0]" },
+    "ans2": { "formula": "type_pool[order_idx][1]" },
+    "ans3": { "formula": "type_pool[order_idx][2]" }
+  },
+  "question": "Consider the statement: \"{orig_text}\"<br><br>Identify the following statements as the contrapositive, converse, or inverse of the statement above.<br><br>1. {text1}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>2. {text2}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>3. {text3}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]",
+  "answer": "1. {ans1}, 2. {ans2}, 3. {ans3}"
 }
 ,
-{
-  "id": "GEO 3-2 Biconditional",
-  "type": "template",
-  "objective": "Deduce the truth value of a biconditional statement based on a geometric diagram.",
-  "difficulty": "basic",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" },
-    "biconditional_pool": {
-      "formula": "[ { symbol: 'p \\\\leftrightarrow q', text_words: '\\\\angle ' + v + v + v + ' and \\\\angle ' + v + v + v + ' are complementary IF AND ONLY IF \\\\angle ' + v + v + v + ' and \\\\angle ' + v + v + v + ' are vertical angles.', val_left: false, val_right: false, ans_str: 'TRUE', explanation: 'Both component statement p (angles are complementary) and statement q (angles are vertical) are FALSE based on the linear pair layout. In formal logic, a biconditional statement is TRUE when both component statements share the exact same truth value (False &harr; False = True).' }, { symbol: 'p \\\\leftrightarrow \\\\sim r', text_words: '\\\\angle ' + v + v + v + ' and \\\\angle ' + v + v + v + ' are complementary IF AND ONLY IF segment \\\\overline{' + v + v + '} is NOT congruent to segment \\\\overline{' + v + v + '}.', val_left: false, val_right: true, ans_str: 'FALSE', explanation: 'Statement p is FALSE (the angles form a linear pair adding up to 180°), while the negation ~r is TRUE (there are no midpoint tick marks confirming segment congruence). Since the two component parts have different truth values, the biconditional statement evaluates as logically FALSE.' } ]"
-    },
-    "selected": { "formula": "biconditional_pool[Math.floor(Math.random() * biconditional_pool.length)]" },
-    "target_sym": { "formula": "selected.symbol" },
-    "words_desc": { "formula": "selected.text_words" },
-    "l_val": { "formula": "selected.val_left" },
-    "r_val": { "formula": "selected.val_right" },
-    "final_truth": { "formula": "selected.ans_str" },
-    "step_reasoning": { "formula": "selected.explanation" }
-  },
-  "question": "Sketch a geometric diagram according to the following: Points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br><b>Statements:</b><br>\\( p \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary.<br>\\( q \\): \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles.<br>\\( r \\): \\( \\overline{{ptA}{ptB}} \\cong \\overline{{ptB}{ptD}} \\)<br><br>Write out the compound biconditional statement <b>\\( {target_sym} \\)</b> in words, determine its final truth value, and explain your reasoning fully.",
-  "answer": "Here is the complete logical breakdown and step-by-step evaluation for the biconditional statement:<br><br><b>Step 1: Write the compound biconditional statement in words.</b><br>The double-arrow symbol <b>\\( \\leftrightarrow \\)</b> represents a biconditional \"if and only if\" statement. Translating \\( {target_sym} \\) yields:<br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the individual components.</b><br><ul><li>The left component statement evaluates to <b>{formula: l_val ? 'TRUE' : 'FALSE'}</b> based on the geometric properties shown in the structural blueprint.</li><li>The right component statement evaluates to <b>{formula: r_val ? 'TRUE' : 'FALSE'}</b>.</li></ul><br><b>Step 3: Apply biconditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{{formula: l_val ? 'True' : 'False'}} \\leftrightarrow \\text{{formula: r_val ? 'True' : 'False'}} = \\text{{final_truth}} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>{final_truth}</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>{final_truth}</span>"
-},
-{
-  "id": "GEO 3-2 Converse, Inverse, and Contrapositive",
-  "type": "template",
-  "objective": "Formulate and evaluate the truth value of a conditional statement's converse, inverse, and contrapositive based on a geometric diagram, providing a full truth table in the solution.",
-  "difficulty": "basic",
-  "variables": {
-    "point_pools": {
-      "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
-    },
-    "v": { "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]" },
-    "ptA": { "formula": "v" },
-    "ptB": { "formula": "v" },
-    "ptD": { "formula": "v" },
-    "ptC": { "formula": "v" }
-  },
-  "question": "Consider the structural geometric diagram below, where points <b>{ptA}</b>, <b>{ptB}</b>, and <b>{ptD}</b> form a straight angle line with ray <b>\\( \\overrightarrow{{ptB}{ptC}} \\)</b> extending upward:<br><br><ChartPlaceholder chartDescription=\"A high-contrast geometric blueprint diagram showing a straight horizontal line baseline labeled with points {ptA}, {ptB}, and {ptD} consecutively from left to right. From the center vertex point {ptB}, a single ray labeled {ptC} slants upward and outward to the right, creating a linear pair consisting of an obtuse angle {ptA}{ptB}{ptC} and an adjacent acute angle {ptC}{ptB}{ptD}. There are no congruence tick marks on segments {ptA}{ptB} or {ptB}{ptD}.\" /><br><br>Let our base conditional statement be defined as:<br><b>Original Conditional (\\( \\sim p \\rightarrow q \\)):</b> \"If \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT complementary, then they are vertical angles.\"<br><br>Write out the text statements for the <b>Converse</b>, <b>Inverse</b>, and <b>Contrapositive</b> of this conditional statement, determine the final truth value for each statement configuration, and build a full truth table to summarize your results.",
-  "answer": "Here is the complete logical breakdown, truth table mapping, and step-by-step evaluation for the conditional transformations:<br><br><b>Step 1: Determine the geometric truth value of basic terms.</b><br>Evaluating our base atomic premises directly against the geometric layout diagram definitions:<br><ul><li>\\( p \\) (angles are complementary) is <b>FALSE</b> because they form a linear pair adding up to \\( 180^\\circ \\). Therefore, the negation <b>\\( \\sim p \\) is TRUE</b>.</li><li>\\( q \\) (angles are vertical) is <b>FALSE</b> because adjacent angles in a linear pair can never be opposite vertical angles.</li><li>\\( r \\) (segments are congruent) is <b>FALSE</b> because no midpoint markers are present.</li></ul><br><b>Step 2: Formulate the conditional variations in text.</b><br><ul><li><b>Converse (\\( q \\rightarrow \\sim p \\)):</b> \"If \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are vertical angles, then they are NOT complementary.\"</li><li><b>Inverse (\\( p \\rightarrow \\sim q \\)):</b> \"If \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, then they are NOT vertical angles.\"</li><li><b>Contrapositive (\\( \\sim q \\rightarrow p \\)):</b> \"If \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT vertical angles, then they are complementary.\"</li></ul><br><b>Step 3: Construct and analyze the full truth table.</b><br>Given the real-world conditions where \\( p = \\text{False} \\) and \\( q = \\text{False} \\), we map out the row states for every logic branch component:<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%; text-align: center;'><thead><tr style='background-color: #f2f2f2;'><th>\\( p \\)</th><th>\\( q \\)</th><th>\\( \\sim p \\)</th><th>\\( \\sim q \\)</th><th>Original<br>\\( \\sim p \\rightarrow q \\)</th><th>Converse<br>\\( q \\rightarrow \\sim p \\)</th><th>Inverse<br>\\( p \\rightarrow \\sim q \\)</th><th>Contrapositive<br>\\( \\sim q \\rightarrow p \\)</th></tr></thead><tbody><tr><td>T</td><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td><td>F</td></tr><tr style='background-color: #e6f2ff; font-weight: bold;'><td>F (Actual)</td><td>F (Actual)</td><td>T</td><td>T</td><td><span style='color: #d9534f;'>F</span></td><td><span style='color: #2b579a;'>T</span></td><td><span style='color: #2b579a;'>T</span></td><td><span style='color: #d9534f;'>F</span></td></tr></tbody></table><br><b>Step 4: Step-by-Step row deduction.</b><br><ul><li><b>Converse Evaluation:</b> \\( q \\rightarrow \\sim p \\) evaluates as \\( \\text{False} \\rightarrow \\text{True} \\), which is logically <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.</li><li><b>Inverse Evaluation:</b> \\( p \\rightarrow \\sim q \\) evaluates as \\( \\text{False} \\rightarrow \\text{True} \\), which is logically <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.</li><li><b>Contrapositive Evaluation:</b> \\( \\sim q \\rightarrow p \\) evaluates as \\( \\text{True} \\rightarrow \\text{False} \\), which is logically <span style='color: #d9534f; font-weight: bold;'>FALSE</span>.</li></ul><br><b>Final Answer Summary:</b><br>&bull; Converse Statement Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span><br>&bull; Inverse Statement Value: <span style='color: #2b579a; font-weight: bold;'>TRUE</span><br>&bull; Contrapositive Statement Value: <span style='color: #d9534f; font-weight: bold;'>FALSE</span>"
-},
 
 
 
 
 
 {
-  "id": "GEO 3-2 Conditional",
-  "type": "template",
-  "objective": "Deduce the truth value of a disjunction.",
-  "difficulty": "basic",
-  "variables": {
-    "statement_idx": { "min": 0, "max": 2 },
-    "order_idx": { "min": 0, "max": 5 },
-    "statements": [
-      {
-        "original": "If two lines intersect, then the lines are coplanar.",
-        "p": "two lines intersect",
-        "not_p": "two lines do not intersect",
-        "q": "the lines are coplanar",
-        "not_q": "the lines are not coplanar"
-      },
-      {
-        "original": "If a polygon is a square, then it is a rectangle.",
-        "p": "a polygon is a square",
-        "not_p": "a polygon is not a square",
-        "q": "it is a rectangle",
-        "not_q": "it is not a rectangle"
-      },
-      {
-        "original": "If an angle is acute, then its measure is less than 90 degrees.",
-        "p": "an angle is acute",
-        "not_p": "an angle is not acute",
-        "q": "its measure is less than 90 degrees",
-        "not_q": "its measure is not less than 90 degrees"
-      }
-    ],
-    "variations_pool": [
-      [
-        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
-        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
-        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" }
-      ],
-      [
-        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
-        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
-        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" }
-      ],
-      [
-        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
-        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
-        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" }
-      ],
-      [
-        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
-        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
-        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" }
-      ],
-      [
-        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
-        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" },
-        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" }
-      ],
-      [
-        { "text": "If {selected.not_q}, then {selected.not_p}.", "type": "Ⓐ contrapositive" },
-        { "text": "If {selected.not_p}, then {selected.not_q}.", "type": "Ⓒ inverse" },
-        { "text": "If {selected.q}, then {selected.p}.", "type": "Ⓑ converse" }
-      ]
-    ],
-    "selected": { "formula": "statements[statement_idx]" },
-    "shuffled_layout": { "formula": "variations_pool[order_idx]" }
-  },
-  "question": "Consider the statement: \"{selected.original}\"<br><br>Identify the following statements as the contrapositive, converse, or inverse of the statement above.<br><br>1. {shuffled_layout[0].text}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>2. {shuffled_layout[1].text}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]<br><br>3. {shuffled_layout[2].text}<br>[ Ⓐ contrapositive Ⓑ converse Ⓒ inverse ]",
-  "answer": "1. {shuffled_layout[0].type}, 2. {shuffled_layout[1].type}, 3. {shuffled_layout[2].type}"
-},
-{
-  "id": "GEO 3-2 Compound Logic Statements",
-  "type": "template",
-  "objective": "Evaluating Compound Logic Statements",
-  "difficulty": "basic",
-  "variables": {
-    "false_idx": { "min": 0, "max": 2 },
-    "true_idx": { "min": 0, "max": 2 },
-    "false_pool": [
-      "A triangle is a square",
-      "An octagon has six sides",
-      "A right angle measures 180 degrees"
-    ],
-    "true_pool": [
-      "A rectangle is a quadrilateral",
-      "A pentagon has five sides",
-      "An equilateral triangle has equal sides"
-    ],
-    "p_text": { "formula": "false_pool[false_idx]" },
-    "q_text": { "formula": "true_pool[true_idx]" },
-    "ans_A": { "formula": "true" },
-    "ans_B": { "formula": "false" },
-    "ans_C": { "formula": "false" },
-    "ans_D": { "formula": "true" },
-    "ans_E": { "formula": "true" },
-    "ans_F": { "formula": "false" }
-  },
-  "question": "Consider these two statements:<br>p: {p_text}<br>q: {q_text}<br><br>Select all of the true statements.<br>Ⓐ ~p<br>Ⓑ ~q<br>Ⓒ p ∧ q<br>Ⓓ p ∨ q<br>Ⓔ ~p ∧ q<br>Ⓕ p ∨ ~q",
-  "answer": "Ⓐ, Ⓓ, Ⓔ"
-},
-{
-  "id": "GEO 3-2 Law of Syllogism",
+  "id": "GEO 3-2 Law of Syllogism (for practice only)",
   "type": "template",
   "objective": "Applying the Law of Syllogism",
   "difficulty": "basic",
@@ -6300,7 +6288,7 @@
   "answer": "Given that statement p is <b>{formula: p_bool ? 'TRUE' : 'FALSE'}</b> and statement q is <b>{formula: q_bool ? 'TRUE' : 'FALSE'}</b>:<br><ul><li><b>Ⓐ ~p:</b> {formula: !p_bool ? 'TRUE' : 'FALSE'}</li><li><b>Ⓑ ~q:</b> {formula: !q_bool ? 'TRUE' : 'FALSE'}</li><li><b>Ⓒ p ∧ q:</b> {formula: (p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>Ⓓ p ∨ q:</b> {formula: (p_bool || q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>Ⓔ ~p ∧ q:</b> {formula: (!p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>Ⓕ p ∨ ~q:</b> {formula: (p_bool || !q_bool) ? 'TRUE' : 'FALSE'}</li></ul>"
 },
 {
-  "id": "3-4 Syllogism",
+  "id": "3-3 Syllogism",
   "type": "template",
   "objective": "Apply the Law of Syllogism to valid conditional arguments",
   "difficulty": "basic",
@@ -6318,7 +6306,7 @@
   "answer": "By the <b>Law of Syllogism</b>, if \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\) are true statements, then the compound conditional statement \\( p \\rightarrow r \\) is also a valid conclusion.<br><br>Let:<br>\\( p \\): The figure is {item_a}<br>\\( q \\): The figure is {item_b}<br>\\( r \\): The figure is {item_c}<br><br>Since \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\), the only valid logical deduction is \\( p \\rightarrow r \\):<br><b>\"If {subject} is {item_a}, then {subject} is {item_c}.\"</b><br><br>Therefore, <b>Ⓐ</b> is the correct choice."
 },
 {
-  "id": "3-4 Syllogism",
+  "id": "3-3 Syllogism",
   "type": "template",
   "objective": "Apply the Law of Syllogism to valid conditional arguments with randomized choices",
   "difficulty": "basic",
