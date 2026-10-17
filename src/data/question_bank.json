@@ -1098,14 +1098,14 @@
         "b": { "formula": "-1*(p + q)" },
         "c": { "formula": "p*q" }
       },
-      "question": "Use a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
+      "question": "Use a table of values or a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
       "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
     },
     {
-      "id": "ALG1-3.4-I1",
+      "id": "ALG1-3.4-B2",
       "type": "template",
       "objective": "Intercepts",
-      "difficulty": "intermediate",
+      "difficulty": "basic",
       "variables": {
         "A": { "min": -5, "max": 5, "exclude": [0] },
         "B": { "min": -10, "max": 10, "exclude": [0] },
@@ -5550,7 +5550,7 @@
   "variables": {
     "labels_pool": { "formula": "['A', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'R', 'S', 'T', 'W', 'Z']" },
     "shuffled_labels": { "formula": "labels_pool.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" },
-    "v": { "formula": "'B'" },
+    "v": { "formula": "labels_pool.filter(label => !shuffled_labels.slice(0, 6).includes(label))[Math.floor(Math.random() * (labels_pool.length - 6))]" },
     "p1": { "formula": "shuffled_labels[0]" },
     "p2": { "formula": "shuffled_labels[1]" },
     "p3": { "formula": "shuffled_labels[2]" },
