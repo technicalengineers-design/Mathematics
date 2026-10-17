@@ -1088,10 +1088,10 @@
       "answer": "a) Linear <br> b) Not Linear <br> c) Linear <br> d) Not Linear"
     },
     {
-      "id": "ALG1-3.4-B1",
+      "id": "ALG1-3.4-I1",
       "type": "template",
       "objective": "Intercepts",
-      "difficulty": "basic",
+      "difficulty": "intermediate",
       "variables": {
         "p": { "min": -8, "max": 8, "exclude": [0] },
         "q": { "min": -8, "max": 8, "exclude": [0] },
@@ -1102,10 +1102,10 @@
       "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
     },
     {
-      "id": "ALG1-3.4-B2",
+      "id": "ALG1-3.4-I1",
       "type": "template",
       "objective": "Intercepts",
-      "difficulty": "basic",
+      "difficulty": "intermediate",
       "variables": {
         "A": { "min": -5, "max": 5, "exclude": [0] },
         "B": { "min": -10, "max": 10, "exclude": [0] },
@@ -1116,6 +1116,103 @@
       "question": "Find the x-intercept and y-intercepts algebraically, then make a sketch of the line by connecting the intercepts: <br> \\( {A|coef}x {B|signedCoef}y = {C} \\)",
       "answer": "x-intercept: \\( ({x_int}, 0) \\) or \\( (\\frac{ {C} }{ {A} }, 0) \\) <br> y-intercept: \\( (0, {y_int}) \\) or \\( (0, \\frac{ {C} }{ {B} }) \\)"
     },
+
+{
+  "id": "ALG1-3.4-B1",
+  "type": "template",
+  "objective": "Intercepts",
+  "difficulty": "basic",
+  "variables": {
+    "q_x1": { "min": -4, "max": -1 },
+    "q_x2": { "min": 1, "max": 4 },
+    "q_a": { "min": -2, "max": 2, "exclude": [0] },
+    "q_yint": { "formula": "q_a * q_x1 * q_x2" },
+    "l_xint": { "min": -5, "max": 5, "exclude": [0] },
+    "l_yint": { "min": -5, "max": 5, "exclude": [0] },
+    "a_h": { "min": -3, "max": 3 },
+    "a_k": { "min": 2, "max": 5 },
+    "a_x1": { "formula": "a_h - a_k" },
+    "a_x2": { "formula": "a_h + a_k" },
+    "a_yint": { "formula": "a_k - Math.abs(a_h)" },
+    "s_xint": { "min": -4, "max": 4, "exclude": [0] },
+    "s_yint": { "min": -4, "max": 4, "exclude": [0] },
+    "shuffled_indices": { "formula": "[1, 2, 3, 4].sort(() => Math.random() - 0.5)" },
+    "graph_1_type": { "formula": "shuffled_indices[0]" },
+    "graph_2_type": { "formula": "shuffled_indices[1]" },
+    "graph_3_type": { "formula": "shuffled_indices[2]" },
+    "graph_4_type": { "formula": "shuffled_indices[3]" },
+    "graph_base": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\" style=\"width:100%;max-width:260px;height:auto;margin:10px;border:1px solid #777;background:white;\">' + Array.from({length: 21}, (_, i) => { const v = -10 + i; const coord = 200 + v * 18; const c = v === 0 ? '#222' : '#eee'; const w = v === 0 ? 2 : 1; return '<line x1=\"' + coord + '\" y1=\"20\" x2=\"' + coord + '\" y2=\"380\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>' + '<line x1=\"20\" y1=\"' + coord + '\" x2=\"380\" y2=\"' + coord + '\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>'; }).join('') + '<text x=\"385\" y=\"205\" font-size=\"12\" font-weight=\"bold\">x</text><text x=\"205\" y=\"15\" font-size=\"12\" font-weight=\"bold\">y</text>'" },
+    "q_path": { "formula": "'<path d=\"' + Array.from({length: 41}, (_, i) => { const x = -10 + i * 0.5; const y = q_a * (x - q_x1) * (x - q_x2); return (i === 0 ? 'M ' : 'L ') + (200 + x * 18) + ' ' + (200 - y * 18); }).join(' ') + '\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"2.5\"/>'" },
+    "l_path": { "formula": "'<line x1=\"' + (200 - 10 * 18) + '\" y1=\"' + (200 - ((-l_yint / l_xint) * -10 + l_yint) * 18) + '\" x2=\"' + (200 + 10 * 18) + '\" y2=\"' + (200 - ((-l_yint / l_xint) * 10 + l_yint) * 18) + '\" stroke=\"#27ae60\" stroke-width=\"2.5\"/>'" },
+    "a_path": { "formula": "'<path d=\"M ' + (200 + (-10) * 18) + ' ' + (200 - (-Math.abs(-10 - a_h) + a_k) * 18) + ' L ' + (200 + a_h * 18) + ' ' + (200 - a_k * 18) + ' L ' + (200 + 10 * 18) + ' ' + (200 - (-Math.abs(10 - a_h) + a_k) * 18) + '\" fill=\"none\" stroke=\"#8e44ad\" stroke-width=\"2.5\"/>'" },
+    "s_path": { "formula": "'<path d=\"' + Array.from({length: 41}, (_, i) => { const x = -10 + i * 0.5; const y = (x - s_xint) >= 0 ? s_yint : -s_yint; return (i === 0 ? 'M ' : 'L ') + (200 + x * 18) + ' ' + (200 - y * 18); }).join(' ') + '\" fill=\"none\" stroke=\"#e67e22\" stroke-width=\"2.5\" stroke-dasharray=\"1\"/>' + '<circle cx=\"' + (200 + s_xint * 18) + '\" cy=\"' + (200 - s_yint * 18) + '\" r=\"4\" fill=\"#e67e22\"/>' + '<circle cx=\"' + (200 + s_xint * 18) + '\" cy=\"' + (200 + s_yint * 18) + '\" r=\"4\" fill=\"white\" stroke=\"#e67e22\" stroke-width=\"2\"/>'" },
+    "q_sol_pts": { "formula": "'<circle cx=\"' + (200 + q_x1 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + q_x1 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + q_x1 + ',0)</text><circle cx=\"' + (200 + q_x2 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + q_x2 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + q_x2 + ',0)</text><circle cx=\"200\" cy=\"' + (200 - q_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - q_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + q_yint + ')</text>'" },
+    "l_sol_pts": { "formula": "'<circle cx=\"' + (200 + l_xint * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + l_xint * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + l_xint + ',0)</text><circle cx=\"200\" cy=\"' + (200 - l_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - l_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + l_yint + ')</text>'" },
+    "a_sol_pts": { "formula": "'<circle cx=\"' + (200 + a_x1 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + a_x1 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + a_x1 + ',0)</text><circle cx=\"' + (200 + a_x2 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + a_x2 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + a_x2 + ',0)</text><circle cx=\"200\" cy=\"' + (200 - a_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - a_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + a_yint + ')</text>'" },
+    "s_sol_pts": { "formula": "'<circle cx=\"' + (200 + s_xint * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + s_xint * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + s_xint + ',0)</text><circle cx=\"200\" cy=\"' + (200 - s_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - s_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + s_yint + ')</text>'" },
+    "g1_blank": { "formula": "graph_base + (graph_1_type === 1 ? q_path : graph_1_type === 2 ? l_path : graph_1_type === 3 ? a_path : s_path) + '</svg>'" },
+    "g2_blank": { "formula": "graph_base + (graph_2_type === 1 ? q_path : graph_2_type === 2 ? l_path : graph_2_type === 3 ? a_path : s_path) + '</svg>'" },
+    "g3_blank": { "formula": "graph_base + (graph_3_type === 1 ? q_path : graph_3_type === 2 ? l_path : graph_3_type === 3 ? a_path : s_path) + '</svg>'" },
+    "g4_blank": { "formula": "graph_base + (graph_4_type === 1 ? q_path : graph_4_type === 2 ? l_path : graph_4_type === 3 ? a_path : s_path) + '</svg>'" },
+    "g1_sol": { "formula": "graph_base + (graph_1_type === 1 ? q_path + q_sol_pts : graph_1_type === 2 ? l_path + l_sol_pts : graph_1_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" },
+    "g2_sol": { "formula": "graph_base + (graph_2_type === 1 ? q_path + q_sol_pts : graph_2_type === 2 ? l_path + l_sol_pts : graph_2_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" },
+    "g3_sol": { "formula": "graph_base + (graph_3_type === 1 ? q_path + q_sol_pts : graph_2_type === 2 ? l_path + l_sol_pts : graph_3_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" },
+    "g4_sol": { "formula": "graph_base + (graph_4_type === 1 ? q_path + q_sol_pts : graph_4_type === 2 ? l_path + l_sol_pts : graph_4_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" }
+  },
+  "question": "<h2>ALG 3-4 B Intercepts</h2>For each of the four graphs below, identify all <b>x-intercepts</b> and <b>y-intercepts</b>. Mark the location of each intercept on the graph and label it as an ordered pair in the form \\((x, 0)\\) or \\((0, y)\\).<br><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_blank}</div><div><b>Graph B</b><br>{g2_blank}</div><div><b>Graph C</b><br>{g3_blank}</div><div><b>Graph D</b><br>{g4_blank}</div></div>",
+  "answer": "<b>Labeled Intercept Solutions:</b><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_sol}</div><div><b>Graph B</b><br>{g2_sol}</div><div><b>Graph C</b><br>{g3_sol}</div><div><b>Graph D</b><br>{g4_sol}</div></div>"
+},
+{
+  "id": "ALG1-3.4-B1-v2",
+  "type": "template",
+  "objective": "Intercepts",
+  "difficulty": "basic",
+  "variables": {
+    "q_x1": { "min": -4, "max": -1 },
+    "q_x2": { "min": 1, "max": 4 },
+    "q_a": { "min": -2, "max": 2, "exclude": [0] },
+    "q_yint": { "formula": "q_a * q_x1 * q_x2" },
+    "l_xint": { "min": -5, "max": 5, "exclude": [0] },
+    "l_yint": { "min": -5, "max": 5, "exclude": [0] },
+    "a_h": { "min": -3, "max": 3 },
+    "a_k": { "min": 2, "max": 5 },
+    "a_x1": { "formula": "a_h - a_k" },
+    "a_x2": { "formula": "a_h + a_k" },
+    "a_yint": { "formula": "a_k - Math.abs(a_h)" },
+    "c_xint": { "min": -3, "max": 3, "exclude": [0] },
+    "c_yint": { "min": -4, "max": 4, "exclude": [0] },
+    "c_a": { "formula": "-c_yint / (c_xint * c_xint * c_xint)" },
+    "shuffled_indices": { "formula": "[1, 2, 3, 4].sort(() => Math.random() - 0.5)" },
+    "graph_1_type": { "formula": "shuffled_indices[0]" },
+    "graph_2_type": { "formula": "shuffled_indices[1]" },
+    "graph_3_type": { "formula": "shuffled_indices[2]" },
+    "graph_4_type": { "formula": "shuffled_indices[3]" },
+    "graph_base": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 400\" style=\"width:100%;max-width:260px;height:auto;margin:10px;border:1px solid #777;background:white;\">' + Array.from({length: 21}, (_, i) => { const v = -10 + i; const coord = 200 + v * 18; const c = v === 0 ? '#222' : '#eee'; const w = v === 0 ? 2 : 1; return '<line x1=\"' + coord + '\" y1=\"20\" x2=\"' + coord + '\" y2=\"380\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>' + '<line x1=\"20\" y1=\"' + coord + '\" x2=\"380\" y2=\"' + coord + '\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>'; }).join('') + '<text x=\"385\" y=\"205\" font-size=\"12\" font-weight=\"bold\">x</text><text x=\"205\" y=\"15\" font-size=\"12\" font-weight=\"bold\">y</text>'" },
+    "q_path": { "formula": "'<path d=\"' + Array.from({length: 41}, (_, i) => { const x = -10 + i * 0.5; const y = q_a * (x - q_x1) * (x - q_x2); return (i === 0 ? 'M ' : 'L ') + (200 + x * 18) + ' ' + (200 - y * 18); }).join(' ') + '\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"2.5\"/>'" },
+    "l_path": { "formula": "'<line x1=\"' + (200 - 10 * 18) + '\" y1=\"' + (200 - ((-l_yint / l_xint) * -10 + l_yint) * 18) + '\" x2=\"' + (200 + 10 * 18) + '\" y2=\"' + (200 - ((-l_yint / l_xint) * 10 + l_yint) * 18) + '\" stroke=\"#27ae60\" stroke-width=\"2.5\"/>'" },
+    "a_path": { "formula": "'<path d=\"M ' + (200 + (-10) * 18) + ' ' + (200 - (-Math.abs(-10 - a_h) + a_k) * 18) + ' L ' + (200 + a_h * 18) + ' ' + (200 - a_k * 18) + ' L ' + (200 + 10 * 18) + ' ' + (200 - (-Math.abs(10 - a_h) + a_k) * 18) + '\" fill=\"none\" stroke=\"#8e44ad\" stroke-width=\"2.5\"/>'" },
+    "c_path": { "formula": "'<path d=\"' + Array.from({length: 41}, (_, i) => { const x = -5 + i * 0.25; const y = c_a * x * x * x + c_yint; return (i === 0 ? 'M ' : 'L ') + (200 + x * 18) + ' ' + (200 - y * 18); }).join(' ') + '\" fill=\"none\" stroke=\"#e67e22\" stroke-width=\"2.5\"/>'" },
+    "q_sol_pts": { "formula": "'<circle cx=\"' + (200 + q_x1 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + q_x1 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + q_x1 + ',0)</text><circle cx=\"' + (200 + q_x2 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + q_x2 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + q_x2 + ',0)</text><circle cx=\"200\" cy=\"' + (200 - q_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - q_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + q_yint + ')</text>'" },
+    "l_sol_pts": { "formula": "'<circle cx=\"' + (200 + l_xint * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + l_xint * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + l_xint + ',0)</text><circle cx=\"200\" cy=\"' + (200 - l_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - l_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + l_yint + ')</text>'" },
+    "a_sol_pts": { "formula": "'<circle cx=\"' + (200 + a_x1 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + a_x1 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + a_x1 + ',0)</text><circle cx=\"' + (200 + a_x2 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + a_x2 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + a_x2 + ',0)</text><circle cx=\"200\" cy=\"' + (200 - a_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - a_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + a_yint + ')</text>'" },
+    "c_sol_pts": { "formula": "'<circle cx=\"' + (200 + c_xint * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + c_xint * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + c_xint + ',0)</text><circle cx=\"200\" cy=\"' + (200 - c_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - c_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + c_yint + ')</text>'" },
+    "g1_blank": { "formula": "graph_base + (graph_1_type === 1 ? q_path : graph_1_type === 2 ? l_path : graph_1_type === 3 ? a_path : c_path) + '</svg>'" },
+    "g2_blank": { "formula": "graph_base + (graph_2_type === 1 ? q_path : graph_2_type === 2 ? l_path : graph_2_type === 3 ? a_path : c_path) + '</svg>'" },
+    "g3_blank": { "formula": "graph_base + (graph_3_type === 1 ? q_path : graph_3_type === 2 ? l_path : graph_3_type === 3 ? a_path : c_path) + '</svg>'" },
+    "g4_blank": { "formula": "graph_base + (graph_4_type === 1 ? q_path : graph_4_type === 2 ? l_path : graph_4_type === 3 ? a_path : c_path) + '</svg>'" },
+    "g1_sol": { "formula": "graph_base + (graph_1_type === 1 ? q_path + q_sol_pts : graph_1_type === 2 ? l_path + l_sol_pts : graph_1_type === 3 ? a_path + a_sol_pts : c_path + c_sol_pts) + '</svg>'" },
+    "g2_sol": { "formula": "graph_base + (graph_2_type === 1 ? q_path + q_sol_pts : graph_2_type === 2 ? l_path + l_sol_pts : graph_2_type === 3 ? a_path + a_sol_pts : c_path + c_sol_pts) + '</svg>'" },
+    "g3_sol": { "formula": "graph_base + (graph_3_type === 1 ? q_path + q_sol_pts : graph_3_type === 2 ? l_path + l_sol_pts : graph_3_type === 3 ? a_path + a_sol_pts : c_path + c_sol_pts) + '</svg>'" },
+    "g4_sol": { "formula": "graph_base + (graph_4_type === 1 ? q_path + q_sol_pts : graph_4_type === 2 ? l_path + l_sol_pts : graph_4_type === 3 ? a_path + a_sol_pts : c_path + c_sol_pts) + '</svg>'" }
+  },
+  "question": "<h2>ALG 3-4 B Intercepts</h2>For each of the four graphs below, identify all <b>x-intercepts</b> and <b>y-intercepts</b>. Mark the location of each intercept on the graph and label it as an ordered pair in the form \\((x, 0)\\) or \\((0, y)\\).<br><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_blank}</div><div><b>Graph B</b><br>{g2_blank}</div><div><b>Graph C</b><br>{g3_blank}</div><div><b>Graph D</b><br>{g4_blank}</div></div>",
+  "answer": "<b>Labeled Intercept Solutions:</b><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_sol}</div><div><b>Graph B</b><br>{g2_sol}</div><div><b>Graph C</b><br>{g3_sol}</div><div><b>Graph D</b><br>{g4_sol}</div></div>"
+},
+
+
+
+
+
     {
       "id": "ALG1-3.5-B1",
       "type": "template",
@@ -5602,11 +5699,19 @@
     "pB": { "formula": "shuffled[1]" },
     "pC": { "formula": "shuffled[2]" },
     "pD": { "formula": "shuffled[3]" },
-    "question_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 240\" role=\"img\" aria-label=\"Four rays originating from a single vertex forming multiple angles\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}</style><line x1=\"200\" y1=\"190\" x2=\"340\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"299\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"200\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"101\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"190\" r=\"3.5\" class=\"dot\"/><circle cx=\"320\" cy=\"190\" r=\"3\" class=\"dot\"/><circle cx=\"285\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"200\" cy=\"70\" r=\"3\" class=\"dot\"/><circle cx=\"115\" cy=\"105\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"210\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"320\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pA + '</text><text x=\"300\" y=\"105\" text-anchor=\"start\" class=\"lbl\">' + pB + '</text><text x=\"200\" y=\"40\" text-anchor=\"middle\" class=\"lbl\">' + pC + '</text><text x=\"100\" y=\"105\" text-anchor=\"end\" class=\"lbl\">' + pD + '</text></svg>'" },
-    "answer_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 240\" role=\"img\" aria-label=\"Four rays originating from a single vertex with congruence markings on two angles\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}.mark{fill:none;stroke:#d9534f;stroke-width:2;}</style><line x1=\"200\" y1=\"190\" x2=\"340\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"299\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"200\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"101\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><path d=\"M 235 190 A 35 35 0 0 0 224.7 165.3\" class=\"mark\"/><line x1=\"225\" y1=\"182\" x2=\"235\" y2=\"174\" stroke=\"#d9534f\" stroke-width=\"2\"/><path d=\"M 200 155 A 35 35 0 0 0 175.3 165.3\" class=\"mark\"/><line x1=\"183\" y1=\"156\" x2=\"191\" y2=\"166\" stroke=\"#d9534f\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"190\" r=\"3.5\" class=\"dot\"/><circle cx=\"320\" cy=\"190\" r=\"3\" class=\"dot\"/><circle cx=\"285\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"200\" cy=\"70\" r=\"3\" class=\"dot\"/><circle cx=\"115\" cy=\"105\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"210\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"320\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pA + '</text><text x=\"300\" y=\"105\" text-anchor=\"start\" class=\"lbl\">' + pB + '</text><text x=\"200\" y=\"40\" text-anchor=\"middle\" class=\"lbl\">' + pC + '</text><text x=\"100\" y=\"105\" text-anchor=\"end\" class=\"lbl\">' + pD + '</text></svg>'" }
+    "pE": {"formula":"shuffled[4]"},
+    "selected_pair_index": {"formula":"Math.floor(Math.random() * 6)"},
+    "selected_sectors": {"formula":"[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]][selected_pair_index]"},
+    "angle1_start": {"formula":"[pA, pB, pC, pD][selected_sectors[0]]"},
+    "angle1_end": {"formula":"[pB, pC, pD, pE][selected_sectors[0]]"},
+    "angle2_start": {"formula":"[pA, pB, pC, pD][selected_sectors[1]]"},
+    "angle2_end": {"formula":"[pB, pC, pD, pE][selected_sectors[1]]"},
+    "angle_markings": {"formula":"(() => { const marks = ['<path d=\"M 235 190 A 35 35 0 0 0 224.7 165.3\" class=\"mark\"/><line x1=\"225\" y1=\"182\" x2=\"235\" y2=\"174\" stroke=\"#d9534f\" stroke-width=\"2\"/>', '<path d=\"M 224.7 165.3 A 35 35 0 0 0 200 155\" class=\"mark\"/><line x1=\"209.5\" y1=\"158\" x2=\"213.5\" y2=\"167\" stroke=\"#d9534f\" stroke-width=\"2\"/>', '<path d=\"M 200 155 A 35 35 0 0 0 175.3 165.3\" class=\"mark\"/><line x1=\"186.5\" y1=\"167\" x2=\"190.5\" y2=\"158\" stroke=\"#d9534f\" stroke-width=\"2\"/>', '<path d=\"M 175.3 165.3 A 35 35 0 0 0 165 190\" class=\"mark\"/><line x1=\"170.5\" y1=\"157\" x2=\"174.1\" y2=\"166\" stroke=\"#d9534f\" stroke-width=\"2\"/>']; return selected_sectors.map(index => marks[index]).join(''); })()"},
+    "question_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 240\" role=\"img\" aria-label=\"Five rays forming four small angles on a straight line\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}</style><line x1=\"200\" y1=\"190\" x2=\"340\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"299\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"200\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"101\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"60\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"190\" r=\"3.5\" class=\"dot\"/><circle cx=\"320\" cy=\"190\" r=\"3\" class=\"dot\"/><circle cx=\"285\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"200\" cy=\"70\" r=\"3\" class=\"dot\"/><circle cx=\"115\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"80\" cy=\"190\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"210\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"320\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pA + '</text><text x=\"300\" y=\"105\" text-anchor=\"start\" class=\"lbl\">' + pB + '</text><text x=\"200\" y=\"40\" text-anchor=\"middle\" class=\"lbl\">' + pC + '</text><text x=\"100\" y=\"105\" text-anchor=\"end\" class=\"lbl\">' + pD + '</text><text x=\"80\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pE + '</text></svg>'" },
+    "answer_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 240\" role=\"img\" aria-label=\"Five rays forming four small angles on a straight line, with two angles marked congruent\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}.mark{fill:none;stroke:#d9534f;stroke-width:2;}</style><line x1=\"200\" y1=\"190\" x2=\"340\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"299\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"200\" y2=\"50\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"101\" y2=\"91\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"190\" x2=\"60\" y2=\"190\" stroke=\"#222\" stroke-width=\"2\"/>'+ angle_markings +'<circle cx=\"200\" cy=\"190\" r=\"3.5\" class=\"dot\"/><circle cx=\"320\" cy=\"190\" r=\"3\" class=\"dot\"/><circle cx=\"285\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"200\" cy=\"70\" r=\"3\" class=\"dot\"/><circle cx=\"115\" cy=\"105\" r=\"3\" class=\"dot\"/><circle cx=\"80\" cy=\"190\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"210\" text-anchor=\"middle\" class=\"lbl\">' + v + '</text><text x=\"320\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pA + '</text><text x=\"300\" y=\"105\" text-anchor=\"start\" class=\"lbl\">' + pB + '</text><text x=\"200\" y=\"40\" text-anchor=\"middle\" class=\"lbl\">' + pC + '</text><text x=\"100\" y=\"105\" text-anchor=\"end\" class=\"lbl\">' + pD + '</text><text x=\"80\" y=\"180\" text-anchor=\"middle\" class=\"lbl\">' + pE + '</text></svg>'" }
   },
-  "question": "Use the geometric diagram below to solve the problem.<br>{question_svg}<br><br>In the figure, \\( \\angle {pD}{v}{pC} \\) and \\( \\angle {pA}{v}{pB} \\) are complementary and congruent. Mark the two angles as congruent on the diagram and list the value of each. (drawing not to scale)",
-  "answer": "Here is the diagram with the matching congruence tick marks indicating that the two angles are equal:<br>{answer_svg}<br><br><b>Step 1: Apply definitions</b><br>• <b>Complementary angles</b> add up to exactly \\( 90^\\circ \\).<br>• <b>Congruent angles</b> have completely equal measures, so \\( m\\angle {pD}{v}{pC} = m\\angle {pA}{v}{pB} \\).<br><br><b>Step 2: Calculate the values</b><br>Let the measure of each angle be represented by \\( x \\):<br>\\( x + x = 90^\\circ \\)<br>\\( 2x = 90^\\circ \\)<br>\\( x = 45^\\circ \\)<br><br>Therefore, the value of each angle is:<br>• <b>\\( m\\angle {pD}{v}{pC} = 45^\\circ \\)</b><br>• <b>\\( m\\angle {pA}{v}{pB} = 45^\\circ \\)</b>"
+  "question": "Use the geometric diagram below to solve the problem.<br>{question_svg}<br><br>In the figure, \\( \\angle {angle1_start}{v}{angle1_end} \\) and \\( \\angle {angle2_start}{v}{angle2_end} \\) are complementary and congruent. Mark the two angles as congruent on the diagram and list the value of each. (drawing not to scale)",
+  "answer": "Here is the diagram with the matching congruence tick marks indicating that the two angles are equal:<br>{answer_svg}<br><br><b>Step 1: Apply definitions</b><br>• <b>Complementary angles</b> add up to exactly \\( 90^\\circ \\).<br>• <b>Congruent angles</b> have completely equal measures, so \\( m\\angle {angle1_start}{v}{angle1_end} = m\\angle {angle2_start}{v}{angle2_end} \\).<br><br><b>Step 2: Calculate the values</b><br>Let the measure of each angle be represented by \\( x \\):<br>\\( x + x = 90^\\circ \\)<br>\\( 2x = 90^\\circ \\)<br>\\( x = 45^\\circ \\)<br><br>Therefore, the value of each angle is:<br>• <b>\\( m\\angle {angle1_start}{v}{angle1_end} = 45^\\circ \\)</b><br>• <b>\\( m\\angle {angle2_start}{v}{angle2_end} = 45^\\circ \\)</b>"
 },
  {
   "id": "GEO 2-2 C v2a",
@@ -6292,7 +6397,7 @@
   "answer": "?"
 },
 {
-  "id": "3-2 Logic",
+  "id": "GEO 3-2 Logic",
   "type": "template",
   "objective": "Evaluate truth value of compound logic statements",
   "difficulty": "basic",
@@ -6310,7 +6415,7 @@
   "answer": "Given that statement p is <b>{formula: p_bool ? 'TRUE' : 'FALSE'}</b> and statement q is <b>{formula: q_bool ? 'TRUE' : 'FALSE'}</b>:<br><ul><li><b>? ~p:</b> {formula: !p_bool ? 'TRUE' : 'FALSE'}</li><li><b>? ~q:</b> {formula: !q_bool ? 'TRUE' : 'FALSE'}</li><li><b>? p ? q:</b> {formula: (p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>? p ? q:</b> {formula: (p_bool || q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>? ~p ? q:</b> {formula: (!p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>? p ? ~q:</b> {formula: (p_bool || !q_bool) ? 'TRUE' : 'FALSE'}</li></ul>"
 },
 {
-  "id": "3-3 Syllogism",
+  "id": "GEO 3-3 Syllogism",
   "type": "template",
   "objective": "Apply the Law of Syllogism to valid conditional arguments",
   "difficulty": "basic",
@@ -6328,7 +6433,7 @@
   "answer": "By the <b>Law of Syllogism</b>, if \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\) are true statements, then the compound conditional statement \\( p \\rightarrow r \\) is also a valid conclusion.<br><br>Let:<br>\\( p \\): The figure is {item_a}<br>\\( q \\): The figure is {item_b}<br>\\( r \\): The figure is {item_c}<br><br>Since \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\), the only valid logical deduction is \\( p \\rightarrow r \\):<br><b>\"If {subject} is {item_a}, then {subject} is {item_c}.\"</b><br><br>Therefore, <b>?</b> is the correct choice."
 },
 {
-  "id": "3-3 Syllogism",
+  "id": "GEO 3-3 Syllogism",
   "type": "template",
   "objective": "Apply the Law of Syllogism to valid conditional arguments with randomized choices",
   "difficulty": "basic",
@@ -6358,8 +6463,12 @@
   "question": "Statements 1 and 2 are true conditional statements.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 1: If a figure is {item_a}, then it is {item_b}.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 2: If a figure is {item_b}, then it is {item_c}.<br><br>Which conclusion is valid?<br><br>? {choice_A}<br>? {choice_B}<br>? {choice_C}<br>? {choice_D}",
   "answer": "By the <b>Law of Syllogism</b>, if \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\) are true statements, then the compound conditional statement \\( p \\rightarrow r \\) is also a valid conclusion.<br><br>Let:<br>\\( p \\): The figure is {item_a}<br>\\( q \\): The figure is {item_b}<br>\\( r \\): The figure is {item_c}<br><br>Since \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\), the only valid logical deduction is \\( p \\rightarrow r \\):<br><b>\"If {subject} is {item_a}, then {subject} is {item_c}.\"</b><br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
 },
+
+
+
+
 {
-  "id": "3-4",
+  "id": "GEO 3-4",
   "type": "template",
   "objective": "Complete fundamental geometric postulates regarding points, lines, and planes",
   "difficulty": "basic",
