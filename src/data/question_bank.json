@@ -1032,6 +1032,9 @@
       "question": "Determine if the following tables represent a linear function. <br> a) \\( \\begin{array}{|c|c|} \\hline x & f(x) \\\\ \\hline {x1} & {f(x1)} \\\\ \\hline {x2} & {f(x2)} \\\\ \\hline {x3} & {f(x3)} \\\\ \\hline {x4} & {f(x4)} \\\\ \\hline \\end{array} \\) b) \\( \\begin{array}{|c|c|} \\hline x & g(x) \\\\ \\hline {x1} & {g(x1)} \\\\ \\hline {x2} & {g(x2)} \\\\ \\hline {x3} & {g(x3)} \\\\ \\hline {x4} & {g(x4)} \\\\ \\hline \\end{array} \\)",
       "answer": "a) Not Linear <br> b) Not Linear"
     },
+
+
+    
     {
       "id": "ALG1-3.3-I1",
       "type": "template",
@@ -1116,54 +1119,8 @@
       "question": "Find the x-intercept and y-intercepts algebraically, then make a sketch of the line by connecting the intercepts: <br> \\( {A|coef}x {B|signedCoef}y = {C} \\)",
       "answer": "x-intercept: \\( ({x_int}, 0) \\) or \\( (\\frac{ {C} }{ {A} }, 0) \\) <br> y-intercept: \\( (0, {y_int}) \\) or \\( (0, \\frac{ {C} }{ {B} }) \\)"
     },
-
 {
-  "id": "ALG1-3.4-B1",
-  "type": "template",
-  "objective": "Intercepts",
-  "difficulty": "basic",
-  "variables": {
-    "q_x1": { "min": -4, "max": -1 },
-    "q_x2": { "min": 1, "max": 4 },
-    "q_a": { "min": -2, "max": 2, "exclude": [0] },
-    "q_yint": { "formula": "q_a * q_x1 * q_x2" },
-    "l_xint": { "min": -5, "max": 5, "exclude": [0] },
-    "l_yint": { "min": -5, "max": 5, "exclude": [0] },
-    "a_h": { "min": -3, "max": 3 },
-    "a_k": { "min": 2, "max": 5 },
-    "a_x1": { "formula": "a_h - a_k" },
-    "a_x2": { "formula": "a_h + a_k" },
-    "a_yint": { "formula": "a_k - Math.abs(a_h)" },
-    "s_xint": { "min": -4, "max": 4, "exclude": [0] },
-    "s_yint": { "min": -4, "max": 4, "exclude": [0] },
-    "shuffled_indices": { "formula": "[1, 2, 3, 4].sort(() => Math.random() - 0.5)" },
-    "graph_1_type": { "formula": "shuffled_indices[0]" },
-    "graph_2_type": { "formula": "shuffled_indices[1]" },
-    "graph_3_type": { "formula": "shuffled_indices[2]" },
-    "graph_4_type": { "formula": "shuffled_indices[3]" },
-    "graph_base": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\" style=\"width:100%;max-width:260px;height:auto;margin:10px;border:1px solid #777;background:white;\">' + Array.from({length: 21}, (_, i) => { const v = -10 + i; const coord = 200 + v * 18; const c = v === 0 ? '#222' : '#eee'; const w = v === 0 ? 2 : 1; return '<line x1=\"' + coord + '\" y1=\"20\" x2=\"' + coord + '\" y2=\"380\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>' + '<line x1=\"20\" y1=\"' + coord + '\" x2=\"380\" y2=\"' + coord + '\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>'; }).join('') + '<text x=\"385\" y=\"205\" font-size=\"12\" font-weight=\"bold\">x</text><text x=\"205\" y=\"15\" font-size=\"12\" font-weight=\"bold\">y</text>'" },
-    "q_path": { "formula": "'<path d=\"' + Array.from({length: 41}, (_, i) => { const x = -10 + i * 0.5; const y = q_a * (x - q_x1) * (x - q_x2); return (i === 0 ? 'M ' : 'L ') + (200 + x * 18) + ' ' + (200 - y * 18); }).join(' ') + '\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"2.5\"/>'" },
-    "l_path": { "formula": "'<line x1=\"' + (200 - 10 * 18) + '\" y1=\"' + (200 - ((-l_yint / l_xint) * -10 + l_yint) * 18) + '\" x2=\"' + (200 + 10 * 18) + '\" y2=\"' + (200 - ((-l_yint / l_xint) * 10 + l_yint) * 18) + '\" stroke=\"#27ae60\" stroke-width=\"2.5\"/>'" },
-    "a_path": { "formula": "'<path d=\"M ' + (200 + (-10) * 18) + ' ' + (200 - (-Math.abs(-10 - a_h) + a_k) * 18) + ' L ' + (200 + a_h * 18) + ' ' + (200 - a_k * 18) + ' L ' + (200 + 10 * 18) + ' ' + (200 - (-Math.abs(10 - a_h) + a_k) * 18) + '\" fill=\"none\" stroke=\"#8e44ad\" stroke-width=\"2.5\"/>'" },
-    "s_path": { "formula": "'<path d=\"' + Array.from({length: 41}, (_, i) => { const x = -10 + i * 0.5; const y = (x - s_xint) >= 0 ? s_yint : -s_yint; return (i === 0 ? 'M ' : 'L ') + (200 + x * 18) + ' ' + (200 - y * 18); }).join(' ') + '\" fill=\"none\" stroke=\"#e67e22\" stroke-width=\"2.5\" stroke-dasharray=\"1\"/>' + '<circle cx=\"' + (200 + s_xint * 18) + '\" cy=\"' + (200 - s_yint * 18) + '\" r=\"4\" fill=\"#e67e22\"/>' + '<circle cx=\"' + (200 + s_xint * 18) + '\" cy=\"' + (200 + s_yint * 18) + '\" r=\"4\" fill=\"white\" stroke=\"#e67e22\" stroke-width=\"2\"/>'" },
-    "q_sol_pts": { "formula": "'<circle cx=\"' + (200 + q_x1 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + q_x1 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + q_x1 + ',0)</text><circle cx=\"' + (200 + q_x2 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + q_x2 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + q_x2 + ',0)</text><circle cx=\"200\" cy=\"' + (200 - q_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - q_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + q_yint + ')</text>'" },
-    "l_sol_pts": { "formula": "'<circle cx=\"' + (200 + l_xint * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + l_xint * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + l_xint + ',0)</text><circle cx=\"200\" cy=\"' + (200 - l_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - l_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + l_yint + ')</text>'" },
-    "a_sol_pts": { "formula": "'<circle cx=\"' + (200 + a_x1 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + a_x1 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + a_x1 + ',0)</text><circle cx=\"' + (200 + a_x2 * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + a_x2 * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + a_x2 + ',0)</text><circle cx=\"200\" cy=\"' + (200 - a_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - a_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + a_yint + ')</text>'" },
-    "s_sol_pts": { "formula": "'<circle cx=\"' + (200 + s_xint * 18) + '\" cy=\"200\" r=\"5\" fill=\"#e74c3c\"/><text x=\"' + (200 + s_xint * 18) + '\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\">(' + s_xint + ',0)</text><circle cx=\"200\" cy=\"' + (200 - s_yint * 18) + '\" r=\"5\" fill=\"#e74c3c\"/><text x=\"215\" y=\"' + (200 - s_yint * 18 + 4) + '\" text-anchor=\"start\" font-size=\"12\" font-weight=\"bold\">(0,' + s_yint + ')</text>'" },
-    "g1_blank": { "formula": "graph_base + (graph_1_type === 1 ? q_path : graph_1_type === 2 ? l_path : graph_1_type === 3 ? a_path : s_path) + '</svg>'" },
-    "g2_blank": { "formula": "graph_base + (graph_2_type === 1 ? q_path : graph_2_type === 2 ? l_path : graph_2_type === 3 ? a_path : s_path) + '</svg>'" },
-    "g3_blank": { "formula": "graph_base + (graph_3_type === 1 ? q_path : graph_3_type === 2 ? l_path : graph_3_type === 3 ? a_path : s_path) + '</svg>'" },
-    "g4_blank": { "formula": "graph_base + (graph_4_type === 1 ? q_path : graph_4_type === 2 ? l_path : graph_4_type === 3 ? a_path : s_path) + '</svg>'" },
-    "g1_sol": { "formula": "graph_base + (graph_1_type === 1 ? q_path + q_sol_pts : graph_1_type === 2 ? l_path + l_sol_pts : graph_1_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" },
-    "g2_sol": { "formula": "graph_base + (graph_2_type === 1 ? q_path + q_sol_pts : graph_2_type === 2 ? l_path + l_sol_pts : graph_2_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" },
-    "g3_sol": { "formula": "graph_base + (graph_3_type === 1 ? q_path + q_sol_pts : graph_2_type === 2 ? l_path + l_sol_pts : graph_3_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" },
-    "g4_sol": { "formula": "graph_base + (graph_4_type === 1 ? q_path + q_sol_pts : graph_4_type === 2 ? l_path + l_sol_pts : graph_4_type === 3 ? a_path + a_sol_pts : s_path + s_sol_pts) + '</svg>'" }
-  },
-  "question": "<h2>ALG 3-4 B Intercepts</h2>For each of the four graphs below, identify all <b>x-intercepts</b> and <b>y-intercepts</b>. Mark the location of each intercept on the graph and label it as an ordered pair in the form \\((x, 0)\\) or \\((0, y)\\).<br><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_blank}</div><div><b>Graph B</b><br>{g2_blank}</div><div><b>Graph C</b><br>{g3_blank}</div><div><b>Graph D</b><br>{g4_blank}</div></div>",
-  "answer": "<b>Labeled Intercept Solutions:</b><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_sol}</div><div><b>Graph B</b><br>{g2_sol}</div><div><b>Graph C</b><br>{g3_sol}</div><div><b>Graph D</b><br>{g4_sol}</div></div>"
-},
-{
-  "id": "ALG1-3.4-B1-v2",
+  "id": "ALG1-3.4-B Intercepts",
   "type": "template",
   "objective": "Intercepts",
   "difficulty": "basic",
