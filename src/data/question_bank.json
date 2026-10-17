@@ -1032,9 +1032,28 @@
       "question": "Determine if the following tables represent a linear function. <br> a) \\( \\begin{array}{|c|c|} \\hline x & f(x) \\\\ \\hline {x1} & {f(x1)} \\\\ \\hline {x2} & {f(x2)} \\\\ \\hline {x3} & {f(x3)} \\\\ \\hline {x4} & {f(x4)} \\\\ \\hline \\end{array} \\) b) \\( \\begin{array}{|c|c|} \\hline x & g(x) \\\\ \\hline {x1} & {g(x1)} \\\\ \\hline {x2} & {g(x2)} \\\\ \\hline {x3} & {g(x3)} \\\\ \\hline {x4} & {g(x4)} \\\\ \\hline \\end{array} \\)",
       "answer": "a) Not Linear <br> b) Not Linear"
     },
-
-
-    
+    {
+      "id": "ALG1-3.3-B4",
+      "type": "template",
+      "objective": "Linearity of Graphs",
+      "difficulty": "basic",
+      "variables": {
+        "x1": { "values": [0] }, "x2": { "values": [1] }, "x3": { "values": [2] }, "x4": { "values": [3] },
+        "m1": { "min": -5, "max": 5, "exclude": [0] }, "b1": { "min": -10, "max": 10 },
+        "a": { "min": -4, "max": 4, "exclude": [0] }, "b": { "min": -6, "max": 6 }, "c": { "min": -8, "max": 8 },
+        "A": { "min": -3, "max": 3, "exclude": [0] }, "base": { "values": [2, 3] },
+        "m2": { "min": -5, "max": 5, "exclude": [0] }, "b2": { "min": -10, "max": 10 },
+        "type_order": { "formula": "[1, 2, 3, 4].sort(() => Math.random() - 0.5)" },
+        "f_type": { "formula": "type_order[0]" }, "g_type": { "formula": "type_order[1]" }, "h_type": { "formula": "type_order[2]" }, "j_type": { "formula": "type_order[3]" },
+        "f0": { "formula": "f_type === 1 ? m1*x1+b1 : f_type === 2 ? a*x1*x1+b*x1+c : f_type === 3 ? A*base**x1 : m2*x1+b2" }, "f1": { "formula": "f_type === 1 ? m1*x2+b1 : f_type === 2 ? a*x2*x2+b*x2+c : f_type === 3 ? A*base**x2 : m2*x2+b2" }, "f2": { "formula": "f_type === 1 ? m1*x3+b1 : f_type === 2 ? a*x3*x3+b*x3+c : f_type === 3 ? A*base**x3 : m2*x3+b2" }, "f3": { "formula": "f_type === 1 ? m1*x4+b1 : f_type === 2 ? a*x4*x4+b*x4+c : f_type === 3 ? A*base**x4 : m2*x4+b2" },
+        "g0": { "formula": "g_type === 1 ? m1*x1+b1 : g_type === 2 ? a*x1*x1+b*x1+c : g_type === 3 ? A*base**x1 : m2*x1+b2" }, "g1": { "formula": "g_type === 1 ? m1*x2+b1 : g_type === 2 ? a*x2*x2+b*x2+c : g_type === 3 ? A*base**x2 : m2*x2+b2" }, "g2": { "formula": "g_type === 1 ? m1*x3+b1 : g_type === 2 ? a*x3*x3+b*x3+c : g_type === 3 ? A*base**x3 : m2*x3+b2" }, "g3": { "formula": "g_type === 1 ? m1*x4+b1 : g_type === 2 ? a*x4*x4+b*x4+c : g_type === 3 ? A*base**x4 : m2*x4+b2" },
+        "h0": { "formula": "h_type === 1 ? m1*x1+b1 : h_type === 2 ? a*x1*x1+b*x1+c : h_type === 3 ? A*base**x1 : m2*x1+b2" }, "h1": { "formula": "h_type === 1 ? m1*x2+b1 : h_type === 2 ? a*x2*x2+b*x2+c : h_type === 3 ? A*base**x2 : m2*x2+b2" }, "h2": { "formula": "h_type === 1 ? m1*x3+b1 : h_type === 2 ? a*x3*x3+b*x3+c : h_type === 3 ? A*base**x3 : m2*x3+b2" }, "h3": { "formula": "h_type === 1 ? m1*x4+b1 : h_type === 2 ? a*x4*x4+b*x4+c : h_type === 3 ? A*base**x4 : m2*x4+b2" },
+        "j0": { "formula": "j_type === 1 ? m1*x1+b1 : j_type === 2 ? a*x1*x1+b*x1+c : j_type === 3 ? A*base**x1 : m2*x1+b2" }, "j1": { "formula": "j_type === 1 ? m1*x2+b1 : j_type === 2 ? a*x2*x2+b*x2+c : j_type === 3 ? A*base**x2 : m2*x2+b2" }, "j2": { "formula": "j_type === 1 ? m1*x3+b1 : j_type === 2 ? a*x3*x3+b*x3+c : j_type === 3 ? A*base**x3 : m2*x3+b2" }, "j3": { "formula": "j_type === 1 ? m1*x4+b1 : j_type === 2 ? a*x4*x4+b*x4+c : j_type === 3 ? A*base**x4 : m2*x4+b2" },
+        "f_answer": { "formula": "f_type === 1 || f_type === 4 ? 'Linear' : 'Not linear'" }, "g_answer": { "formula": "g_type === 1 || g_type === 4 ? 'Linear' : 'Not linear'" }, "h_answer": { "formula": "h_type === 1 || h_type === 4 ? 'Linear' : 'Not linear'" }, "j_answer": { "formula": "j_type === 1 || j_type === 4 ? 'Linear' : 'Not linear'" }
+      },
+      "question": "Determine whether each function is linear.<br><br>a) \\(f(x)\\): \\(\\begin{array}{|c|c|}\\hline x&f(x)\\\\\\hline {x1}&{f0}\\\\\\hline {x2}&{f1}\\\\\\hline {x3}&{f2}\\\\\\hline {x4}&{f3}\\\\\\hline\\end{array}\\) <br><br>b) \\(g(x)\\): \\(\\begin{array}{|c|c|}\\hline x&g(x)\\\\\\hline {x1}&{g0}\\\\\\hline {x2}&{g1}\\\\\\hline {x3}&{g2}\\\\\\hline {x4}&{g3}\\\\\\hline\\end{array}\\) <br><br>c) \\(h(x)\\): \\(\\begin{array}{|c|c|}\\hline x&h(x)\\\\\\hline {x1}&{h0}\\\\\\hline {x2}&{h1}\\\\\\hline {x3}&{h2}\\\\\\hline {x4}&{h3}\\\\\\hline\\end{array}\\) <br><br>d) \\(j(x)\\): \\(\\begin{array}{|c|c|}\\hline x&j(x)\\\\\\hline {x1}&{j0}\\\\\\hline {x2}&{j1}\\\\\\hline {x3}&{j2}\\\\\\hline {x4}&{j3}\\\\\\hline\\end{array}\\)",
+      "answer": "a) \\(f(x)\\): {f_answer}<br>b) \\(g(x)\\): {g_answer}<br>c) \\(h(x)\\): {h_answer}<br>d) \\(j(x)\\): {j_answer}"
+    },
     {
       "id": "ALG1-3.3-I1",
       "type": "template",
