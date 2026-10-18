@@ -990,10 +990,9 @@
     "reason3": { "formula": "g3_type <= 2 ? 'Each element in domain X maps to exactly one element in range Y.' : 'An element in domain X maps to more than one element in range Y.'" },
     "reason4": { "formula": "g4_type <= 2 ? 'Each element in domain X maps to exactly one element in range Y.' : 'An element in domain X maps to more than one element in range Y.'" }
   },
-  "question": "<h2>ALG1 3.2 Mapping Diagrams</h2>Determine whether each of the following mapping diagrams represents a <b>function</b> or <b>not a function</b>.<br><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around; text-align:center;'><div><b>Diagram A</b><br>{g1_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div><div><b>Diagram B</b><br>{g2_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div><div><b>Diagram C</b><br>{g3_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div><div><b>Diagram D</b><br>{g4_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div></div>",
+  "question": "Determine whether each of the following mapping diagrams represents a <b>function</b> or <b>not a function</b>.<br><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around; text-align:center;'><div><b>Diagram A</b><br>{g1_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div><div><b>Diagram B</b><br>{g2_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div><div><b>Diagram C</b><br>{g3_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div><div><b>Diagram D</b><br>{g4_blank}<br><br>Choose one:<br>◯ Function<br>◯ Not a Function</div></div>",
   "answer": "<b>Correct Interpretations:</b><br><ul><li><b>Diagram A:</b> <b>{ans1}</b> — {reason1}</li><li><b>Diagram B:</b> <b>{ans2}</b> — {reason2}</li><li><b>Diagram C:</b> <b>{ans3}</b> — {reason3}</li><li><b>Diagram D:</b> <b>{ans4}</b> — {reason4}</li></ul>"
 },
-
     {
       "id": "ALG1 3.2 Working with Functions",
       "type": "template",
@@ -1098,18 +1097,18 @@
       "formula": "[0,1,2,3,4,5,6,7,8,9,10,11].sort(() => Math.random() - 0.5).slice(0,4)"
     },
 
-    "eq0": { "formula": "'\\\\( y = ' + m1 + 'x ' + (b1 >= 0 ? '+ ' + b1 : '- ' + Math.abs(b1)) + ' \\\\)'" },
-    "eq1": { "formula": "'\\\\( y = ' + a + 'x^2 ' + (b >= 0 ? '+ ' + b + 'x' : '- ' + Math.abs(b) + 'x') + ' ' + (c >= 0 ? '+ ' + c : '- ' + Math.abs(c)) + ' \\\\)'" },
-    "eq2": { "formula": "'\\\\( ' + A + 'x ' + (B >= 0 ? '+ ' + B : '- ' + Math.abs(B)) + 'y = ' + C + ' \\\\)'" },
+    "eq0": { "formula": "'\\\\( y = ' + (m1 === 1 ? 'x' : m1 === -1 ? '-x' : m1 + 'x') + ' ' + (b1 >= 0 ? '+ ' + b1 : '- ' + Math.abs(b1)) + ' \\\\)'" },
+    "eq1": { "formula": "'\\\\( y = ' + (a === 1 ? 'x^2' : a === -1 ? '-x^2' : a + 'x^2') + ' ' + (b >= 0 ? '+ ' : '- ') + (Math.abs(b) === 1 ? '' : Math.abs(b)) + 'x ' + (c >= 0 ? '+ ' + c : '- ' + Math.abs(c)) + ' \\\\)'" },
+    "eq2": { "formula": "'\\\\( ' + (A === 1 ? 'x' : A === -1 ? '-x' : A + 'x') + ' ' + (B >= 0 ? '+ ' : '- ') + (Math.abs(B) === 1 ? '' : Math.abs(B)) + 'y = ' + C + ' \\\\)'" },
     "eq3": { "formula": "'\\\\( y = ' + y + ' \\\\)'" },
     "eq4": { "formula": "'\\\\( y = (x ' + (p >= 0 ? '+ ' + p : '- ' + Math.abs(p)) + ')(x ' + (q >= 0 ? '+ ' + q : '- ' + Math.abs(q)) + ') \\\\)'" },
     "eq5": { "formula": "'\\\\( x^2 + y^2 = ' + r + ' \\\\)'" },
-    "eq6": { "formula": "'\\\\( ' + A2 + 'x ' + (B2 >= 0 ? '+ ' + B2 : '- ' + Math.abs(B2)) + 'y = ' + C2 + ' \\\\)'" },
+    "eq6": { "formula": "'\\\\( ' + (A2 === 1 ? 'x' : A2 === -1 ? '-x' : A2 + 'x') + ' ' + (B2 >= 0 ? '+ ' : '- ') + (Math.abs(B2) === 1 ? '' : Math.abs(B2)) + 'y = ' + C2 + ' \\\\)'" },
     "eq7": { "formula": "'\\\\( y = \\\\frac{' + m + '}{x ' + (n >= 0 ? '+ ' + n : '- ' + Math.abs(n)) + '} \\\\)'" },
-    "eq8": { "formula": "'\\\\( y ' + (y1 >= 0 ? '- ' + y1 : '+ ' + Math.abs(y1)) + ' = ' + m + '(x ' + (x1 >= 0 ? '- ' + x1 : '+ ' + Math.abs(x1)) + ') \\\\)'" },
+    "eq8": { "formula": "'\\\\( y ' + (y1 >= 0 ? '- ' + y1 : '+ ' + Math.abs(y1)) + ' = ' + (m === 1 ? '' : m === -1 ? '-' : m) + '(x ' + (x1 >= 0 ? '- ' + x1 : '+ ' + Math.abs(x1)) + ') \\\\)'" },
     "eq9": { "formula": "'\\\\( xy = ' + k + ' \\\\)'" },
-    "eq10": { "formula": "'\\\\( y = ' + m3 + 'x ' + (b3 >= 0 ? '+ ' + b3 : '- ' + Math.abs(b3)) + ' \\\\)'" },
-    "eq11": { "formula": "'\\\\( y^2 = ' + m2 + 'x ' + (b2 >= 0 ? '+ ' + b2 : '- ' + Math.abs(b2)) + ' \\\\)'" },
+    "eq10": { "formula": "'\\\\( y = ' + (m3 === 1 ? 'x' : m3 === -1 ? '-x' : m3 + 'x') + ' ' + (b3 >= 0 ? '+ ' + b3 : '- ' + Math.abs(b3)) + ' \\\\)'" },
+    "eq11": { "formula": "'\\\\( y^2 = ' + (m2 === 1 ? 'x' : m2 === -1 ? '-x' : m2 + 'x') + ' ' + (b2 >= 0 ? '+ ' + b2 : '- ' + Math.abs(b2)) + ' \\\\)'" },
 
     "prompt_a": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[0]]" },
     "prompt_b": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[1]]" },
@@ -1144,36 +1143,7 @@
       "answer": "a) Linear <br> b) Not Linear <br> c) Linear <br> d) Linear"
     },
     {
-      "id": "ALG1-3.4-I1",
-      "type": "template",
-      "objective": "Intercepts",
-      "difficulty": "intermediate",
-      "variables": {
-        "p": { "min": -8, "max": 8, "exclude": [0] },
-        "q": { "min": -8, "max": 8, "exclude": [0] },
-        "b": { "formula": "-1*(p + q)" },
-        "c": { "formula": "p*q" }
-      },
-      "question": "Use a table of values or a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
-      "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
-    },
-    {
-      "id": "ALG1-3.4-I1",
-      "type": "template",
-      "objective": "Intercepts",
-      "difficulty": "intermediate",
-      "variables": {
-        "A": { "min": -5, "max": 5, "exclude": [0] },
-        "B": { "min": -10, "max": 10, "exclude": [0] },
-        "C": { "min": -10, "max": 10 },
-        "x_int": { "formula": "C/A" },
-        "y_int": { "formula": "C/B"  }
-      },
-      "question": "Find the x-intercept and y-intercepts algebraically, then make a sketch of the line by connecting the intercepts: <br> \\( {A|coef}x {B|signedCoef}y = {C} \\)",
-      "answer": "x-intercept: \\( ({x_int}, 0) \\) or \\( (\\frac{ {C} }{ {A} }, 0) \\) <br> y-intercept: \\( (0, {y_int}) \\) or \\( (0, \\frac{ {C} }{ {B} }) \\)"
-    },
-{
-  "id": "ALG1-3.4-B Intercepts",
+  "id": "ALG1-3.4 Intercepts",
   "type": "template",
   "objective": "Intercepts",
   "difficulty": "basic",
@@ -1215,12 +1185,38 @@
     "g3_sol": { "formula": "graph_base + (graph_3_type === 1 ? q_path + q_sol_pts : graph_3_type === 2 ? l_path + l_sol_pts : graph_3_type === 3 ? a_path + a_sol_pts : c_path + c_sol_pts) + '</svg>'" },
     "g4_sol": { "formula": "graph_base + (graph_4_type === 1 ? q_path + q_sol_pts : graph_4_type === 2 ? l_path + l_sol_pts : graph_4_type === 3 ? a_path + a_sol_pts : c_path + c_sol_pts) + '</svg>'" }
   },
-  "question": "<h2>ALG 3-4 B Intercepts</h2>For each of the four graphs below, identify all <b>x-intercepts</b> and <b>y-intercepts</b>. Mark the location of each intercept on the graph and label it as an ordered pair in the form \\((x, 0)\\) or \\((0, y)\\).<br><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_blank}</div><div><b>Graph B</b><br>{g2_blank}</div><div><b>Graph C</b><br>{g3_blank}</div><div><b>Graph D</b><br>{g4_blank}</div></div>",
+  "question": "For each of the four graphs below, identify all <b>x-intercepts</b> and <b>y-intercepts</b>. Mark the location of each intercept on the graph and label it as an ordered pair in the form \\((x, 0)\\) or \\((0, y)\\).<br><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_blank}</div><div><b>Graph B</b><br>{g2_blank}</div><div><b>Graph C</b><br>{g3_blank}</div><div><b>Graph D</b><br>{g4_blank}</div></div>",
   "answer": "<b>Labeled Intercept Solutions:</b><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_sol}</div><div><b>Graph B</b><br>{g2_sol}</div><div><b>Graph C</b><br>{g3_sol}</div><div><b>Graph D</b><br>{g4_sol}</div></div>"
 },
-
-
-
+    {
+      "id": "ALG1-3.4-I1",
+      "type": "template",
+      "objective": "Intercepts",
+      "difficulty": "intermediate",
+      "variables": {
+        "p": { "min": -8, "max": 8, "exclude": [0] },
+        "q": { "min": -8, "max": 8, "exclude": [0] },
+        "b": { "formula": "-1*(p + q)" },
+        "c": { "formula": "p*q" }
+      },
+      "question": "Use a table of values or a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
+      "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
+    },
+    {
+      "id": "ALG1-3.4-I1",
+      "type": "template",
+      "objective": "Intercepts",
+      "difficulty": "intermediate",
+      "variables": {
+        "A": { "min": -5, "max": 5, "exclude": [0] },
+        "B": { "min": -10, "max": 10, "exclude": [0] },
+        "C": { "min": -10, "max": 10 },
+        "x_int": { "formula": "C/A" },
+        "y_int": { "formula": "C/B"  }
+      },
+      "question": "Find the x-intercept and y-intercepts algebraically, then make a sketch of the line by connecting the intercepts: <br> \\( {A|coef}x {B|signedCoef}y = {C} \\)",
+      "answer": "x-intercept: \\( ({x_int}, 0) \\) or \\( (\\frac{ {C} }{ {A} }, 0) \\) <br> y-intercept: \\( (0, {y_int}) \\) or \\( (0, \\frac{ {C} }{ {B} }) \\)"
+    },
 
 
     {
