@@ -1097,18 +1097,18 @@
       "formula": "[0,1,2,3,4,5,6,7,8,9,10,11].sort(() => Math.random() - 0.5).slice(0,4)"
     },
 
-    "eq0": { "formula": "'\\\\( y = ' + (m1 === 1 ? 'x' : m1 === -1 ? '-x' : m1 + 'x') + ' ' + (b1 >= 0 ? '+ ' + b1 : '- ' + Math.abs(b1)) + ' \\\\)'" },
-    "eq1": { "formula": "'\\\\( y = ' + (a === 1 ? 'x^2' : a === -1 ? '-x^2' : a + 'x^2') + ' ' + (b >= 0 ? '+ ' : '- ') + (Math.abs(b) === 1 ? '' : Math.abs(b)) + 'x ' + (c >= 0 ? '+ ' + c : '- ' + Math.abs(c)) + ' \\\\)'" },
-    "eq2": { "formula": "'\\\\( ' + (A === 1 ? 'x' : A === -1 ? '-x' : A + 'x') + ' ' + (B >= 0 ? '+ ' : '- ') + (Math.abs(B) === 1 ? '' : Math.abs(B)) + 'y = ' + C + ' \\\\)'" },
+    "eq0": { "formula": "'\\\\( y = ' + m1 + 'x ' + (b1 >= 0 ? '+ ' + b1 : '- ' + Math.abs(b1)) + ' \\\\)'" },
+    "eq1": { "formula": "'\\\\( y = ' + a + 'x^2 ' + (b >= 0 ? '+ ' + b + 'x' : '- ' + Math.abs(b) + 'x') + ' ' + (c >= 0 ? '+ ' + c : '- ' + Math.abs(c)) + ' \\\\)'" },
+    "eq2": { "formula": "'\\\\( ' + A + 'x ' + (B >= 0 ? '+ ' + B : '- ' + Math.abs(B)) + 'y = ' + C + ' \\\\)'" },
     "eq3": { "formula": "'\\\\( y = ' + y + ' \\\\)'" },
     "eq4": { "formula": "'\\\\( y = (x ' + (p >= 0 ? '+ ' + p : '- ' + Math.abs(p)) + ')(x ' + (q >= 0 ? '+ ' + q : '- ' + Math.abs(q)) + ') \\\\)'" },
     "eq5": { "formula": "'\\\\( x^2 + y^2 = ' + r + ' \\\\)'" },
-    "eq6": { "formula": "'\\\\( ' + (A2 === 1 ? 'x' : A2 === -1 ? '-x' : A2 + 'x') + ' ' + (B2 >= 0 ? '+ ' : '- ') + (Math.abs(B2) === 1 ? '' : Math.abs(B2)) + 'y = ' + C2 + ' \\\\)'" },
+    "eq6": { "formula": "'\\\\( ' + A2 + 'x ' + (B2 >= 0 ? '+ ' + B2 : '- ' + Math.abs(B2)) + 'y = ' + C2 + ' \\\\)'" },
     "eq7": { "formula": "'\\\\( y = \\\\frac{' + m + '}{x ' + (n >= 0 ? '+ ' + n : '- ' + Math.abs(n)) + '} \\\\)'" },
-    "eq8": { "formula": "'\\\\( y ' + (y1 >= 0 ? '- ' + y1 : '+ ' + Math.abs(y1)) + ' = ' + (m === 1 ? '' : m === -1 ? '-' : m) + '(x ' + (x1 >= 0 ? '- ' + x1 : '+ ' + Math.abs(x1)) + ') \\\\)'" },
+    "eq8": { "formula": "'\\\\( y ' + (y1 >= 0 ? '- ' + y1 : '+ ' + Math.abs(y1)) + ' = ' + m + '(x ' + (x1 >= 0 ? '- ' + x1 : '+ ' + Math.abs(x1)) + ') \\\\)'" },
     "eq9": { "formula": "'\\\\( xy = ' + k + ' \\\\)'" },
-    "eq10": { "formula": "'\\\\( y = ' + (m3 === 1 ? 'x' : m3 === -1 ? '-x' : m3 + 'x') + ' ' + (b3 >= 0 ? '+ ' + b3 : '- ' + Math.abs(b3)) + ' \\\\)'" },
-    "eq11": { "formula": "'\\\\( y^2 = ' + (m2 === 1 ? 'x' : m2 === -1 ? '-x' : m2 + 'x') + ' ' + (b2 >= 0 ? '+ ' + b2 : '- ' + Math.abs(b2)) + ' \\\\)'" },
+    "eq10": { "formula": "'\\\\( y = ' + m3 + 'x ' + (b3 >= 0 ? '+ ' + b3 : '- ' + Math.abs(b3)) + ' \\\\)'" },
+    "eq11": { "formula": "'\\\\( y^2 = ' + m2 + 'x ' + (b2 >= 0 ? '+ ' + b2 : '- ' + Math.abs(b2)) + ' \\\\)'" },
 
     "prompt_a": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[0]]" },
     "prompt_b": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[1]]" },
@@ -1123,25 +1123,6 @@
   "question": "For each equation, decide whether it defines a linear function of x:<br>a) {prompt_a}<br>b) {prompt_b}<br>c) {prompt_c}<br>d) {prompt_d}",
   "answer": "a) {answer_a}<br>b) {answer_b}<br>c) {answer_c}<br>d) {answer_d}"
 },
-    {
-      "id": "ALG1 3.3 I Linearity of Graphs",
-      "type": "template",
-      "objective": "Linearity of Graphs",
-      "difficulty": "intermediate",
-      "variables": {
-        "m1": { "min": -5, "max": 5, "exclude": [0] },
-        "b1": { "min": -10, "max": 10, "exclude": [0] },
-        "A": { "min": -5, "max": 5, "exclude": [0] },
-        "B": { "min": -10, "max": 10, "exclude": [0] },
-        "C": { "min": -5, "max": 5 },
-        "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": -5, "max": 5 },
-        "y": { "min": -10, "max": 10 }
-      },
-      "question": "Identify whether the equation represents a linear function: <br> a) \\( y = {m1|coef}x {b1|sign} \\) <br> b) \\( y = {a|coef}x^2 {b|signedCoef}x {c|sign} \\) <br> c) \\( {A|coef}x {B|signedCoef}y = {C} \\) <br> d) \\( y = {y} \\)",
-      "answer": "a) Linear <br> b) Not Linear <br> c) Linear <br> d) Linear"
-    },
     {
   "id": "ALG1-3.4 Intercepts",
   "type": "template",
@@ -6141,24 +6122,24 @@
   "answer": "To determine the total line segments needed for Step 5, let's analyze the visual growth pattern step-by-step:<br><br><b>Step 1: Count the individual boundary line segments in the given figures.</b><br>Examining the structural layout reveals a progression of {network_desc}:<br>&bull; <b>Step 1:</b> Consists of 1 shape constructed using exactly <b>{s1}</b> line segments.<br>&bull; <b>Step 2:</b> Connects elements using a total of <b>{s2}</b> line segments.<br>&bull; <b>Step 3:</b> Expands components using a total of <b>{s3}</b> line segments.<br><br><b>Step 2: Isolate the core rate of change.</b><br>Subtract consecutive step totals to identify the constant arithmetic pattern difference:<br>\\[ {s2} - {s1} = {inc} \\]<br>\\[ {s3} - {s2} = {inc} \\]<br>Each subsequent figure adds a net addition of <b>{inc}</b> segments to the total count.<br><br><b>Step 3: Extrapolate to Step 5.</b><br>We can calculate the totals for the remaining steps sequentially:<br>&bull; <b>Step 4:</b> \\( {s3} + {inc} = {s4} \\) segments.<br>&bull; <b>Step 5:</b> \\( {s4} + {inc} = {result} \\) segments.<br><br>Alternatively, using the arithmetic progression formula:<br>\\[ \\text{Total} = \\text{Base} + (n - 1) \\times \\text{Increase} \\]<br>\\[ \\text{Total} = {s1} + (5 - 1) \\times {inc} = {s1} + 4 \\times {inc} = {result} \\]<br><br>Therefore, Step 5 will require exactly <b>{result} segments</b> to complete."
 },
 {
-  "id": "GEO 3-1 Counterexample v1",
+  "id": "GEO 3-1 Counterexample Math",
   "type": "template",
   "objective": "Provide a specific counterexample to disprove the mathematical or geometric conjecture",
   "difficulty": "basic",
   "variables": {
     "conjecture_pool": {
-      "formula": "[ { statement: 'If n is a positive integer, then nÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â² + n + 41 is always a prime number. (Euler\\'s Prime Polynomial)', sample_acceptable: ['40', '41'], explanation: 'Euler\\'s prime polynomial yields primes for all integers from 0 to 39. However, if you plug in n = 40, then 40ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â² + 40 + 41 = 40(40 + 1) + 41 = 40(41) + 41 = 41 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 41 = 1681, which is a composite number. Similarly, n = 41 yields 41ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â² + 41 + 41 = 41(41 + 1 + 1) = 41 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 43 = 1763, which is also composite.' }, { statement: 'Every even integer greater than 2 can be written as the sum of two distinct prime numbers.', sample_acceptable: ['6'], explanation: 'While this mimics Goldbach\\'s Conjecture, the word \"distinct\" alters it. The number 6 is an even number greater than 2, and its only prime sum breakdown is 3 + 3. Because 3 and 3 are identical rather than distinct prime values, 6 serves as a rare, immediate counterexample to this specific phrasing.' }, { statement: 'If a polygon has five sides and all five of its interior angles are completely congruent, then the polygon must be a regular pentagon.', sample_acceptable: ['equilateral pentagon', 'non-regular equilateral pentagon', 'an equilateral pentagon'], explanation: 'An equilateral pentagon can be structurally warped into non-regular shapes while keeping all five interior angles or all side segments identical. Having congruent angles alone guarantees an equiangular pentagon, but not a regular one unless the side lengths are also forced to be fixed.' }, { statement: 'If n points are placed on a circle and connected with straight line segments in every possible way, the maximum number of separate regions the circle is divided into is always 2^(n-1). (Moser\\'s Circle Problem)', sample_acceptable: ['6', '6 points'], explanation: 'This pattern holds flawlessly for 1, 2, 3, 4, and 5 points, yielding 1, 2, 4, 8, and 16 regions respectively. However, for n = 6 points, the maximum number of regions possible is actually 31, completely breaking the 2^(n-1) exponential rule which predicted 32.' } ]"
+          "formula": "[ { statement: 'Every prime number is odd.', sample_acceptable: ['2'], explanation: '2 is prime, but it is even. Therefore, it is a counterexample.' }, { statement: 'Every rectangle is a square.', sample_acceptable: ['A rectangle with side lengths 2 and 3'], explanation: 'A 2-by-3 rectangle has four right angles but its sides are not all equal, so it is not a square.' }, { statement: 'If an integer is divisible by 4, then it is odd.', sample_acceptable: ['4'], explanation: '4 is divisible by 4, but 4 is even.' }, { statement: 'All three angles in every triangle are equal.', sample_acceptable: ['A right triangle with angles 90, 60, and 30 degrees'], explanation: 'This triangle has angles that are not all equal.' } ]"
     },
     "selected": { "formula": "conjecture_pool[Math.floor(Math.random() * conjecture_pool.length)]" },
     "conjecture_text": { "formula": "selected.statement" },
     "acceptable_inputs": { "formula": "selected.sample_acceptable" },
     "exp_text": { "formula": "selected.explanation" }
   },
-  "question": "Consider the following famous mathematical conjecture:<br><b>\"{conjecture_text}\"</b><br><br>This statement is actually false. In the blank below, provide a specific, well-known value, case, or sketch that acts as a valid <b>counterexample</b> to disprove this conjecture.<br><br>Counterexample: ________________________",
-  "answer": "A counterexample must show a case where the hypothesis (the \"if\" part) is true, but the conclusion (the \"then\" part) fails.<br><br><b>Acceptable Answers include:</b> {acceptable_inputs}<br><br><i>Detailed Mathematical Reasoning:</i><br>{exp_text}"
+      "question": "Consider the following mathematical statement:<br><b>\"{conjecture_text}\"</b><br><br>Give a specific example that shows the statement is false. This example is called a <b>counterexample</b>.<br><br>Counterexample: ________________________",
+      "answer": "A counterexample is a specific case that makes the statement false.<br><br><b>Example:</b> {acceptable_inputs}<br><br><i>Why it works:</i><br>{exp_text}"
 },
 {
-  "id": "GEO 3-1 Counterexample v2",
+  "id": "GEO 3-1 Counterexample Science",
   "type": "template",
   "objective": "Provide a specific counterexample to disprove the statement",
   "difficulty": "basic",
@@ -6335,7 +6316,7 @@
   "answer": "Here is the complete logical breakdown and step-by-step evaluation for the biconditional statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The double arrow symbol <b>\\( \\leftrightarrow \\)</b> represents a biconditional \"if and only if\" statement. Translating \\( {target_sym} \\) yields:<br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the individual components.</b><br><ul><li>The left-hand component condition is evaluated as <b>{hypothesis_text}</b> based on the geometric properties shown in the structural blueprint.</li><li>The right-hand component condition is evaluated as <b>{conclusion_text}</b>.</li></ul><br><b>Step 3: Apply biconditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{{hypothesis_math_text}} \\leftrightarrow \\text{{conclusion_math_text}} = \\text{{final_truth_value}} \\]\n<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>"
 },
 {
-  "id": "GEO 3-2 Converse, Inverse, Contrapositive",
+  "id": "GEO 3-2c Converse, Inverse, Contrapositive",
   "type": "template",
   "objective": "Identify the converse, inverse, and contrapositive variations of a conditional statement.",
   "difficulty": "basic",
@@ -6355,8 +6336,8 @@
     "text_pool": {
       "formula": "[ [inv_txt, conv_txt, cont_txt], [inv_txt, cont_txt, conv_txt], [conv_txt, inv_txt, cont_txt], [conv_txt, cont_txt, inv_txt], [cont_txt, conv_txt, inv_txt], [cont_txt, inv_txt, conv_txt] ]"
     },
-    "type_pool": {
-      "formula": "[ ['? inverse', '? converse', 'A contrapositive'], ['? inverse', 'A contrapositive', '? converse'], ['? converse', '? inverse', 'A contrapositive'], ['? converse', 'A contrapositive', '? inverse'], ['A contrapositive', '? converse', '? inverse'], ['A contrapositive', '? inverse', '? converse'] ]"
+      "type_pool": {
+      "formula": "[ ['B. Inverse', 'A. Converse', 'C. Contrapositive'], ['B. Inverse', 'C. Contrapositive', 'A. Converse'], ['A. Converse', 'B. Inverse', 'C. Contrapositive'], ['A. Converse', 'C. Contrapositive', 'B. Inverse'], ['C. Contrapositive', 'A. Converse', 'B. Inverse'], ['C. Contrapositive', 'B. Inverse', 'A. Converse'] ]"
     },
     "text1": { "formula": "text_pool[order_idx][0]" },
     "text2": { "formula": "text_pool[order_idx][1]" },
@@ -6365,16 +6346,68 @@
     "ans2": { "formula": "type_pool[order_idx][1]" },
     "ans3": { "formula": "type_pool[order_idx][2]" }
   },
-  "question": "Consider the statement: \"{orig_text}\"<br><br>Identify the following statements as the contrapositive, converse, or inverse of the statement above.<br><br>1. {text1}<br>[ ? contrapositive ? converse ? inverse ]<br><br>2. {text2}<br>[ ? contrapositive ? converse ? inverse ]<br><br>3. {text3}<br>[ ? contrapositive ? converse ? inverse ]",
+  "question": "Consider the statement: \"{orig_text}\"<br><br>Identify each statement by its letter:<br>A. Converse<br>B. Inverse<br>C. Contrapositive<br><br>1. {text1}<br>2. {text2}<br>3. {text3}",
   "answer": "1. {ans1}, 2. {ans2}, 3. {ans3}"
+},
+{
+  "id": "GEO-3.3 Inductive vs Deductive Reasoning",
+  "type": "template",
+  "objective": "Inductive vs Deductive Reasoning",
+  "difficulty": "basic",
+  "variables": {
+    "scen_1_text": { "formula": "'Every cat that Maya has ever met purrs when scratched behind the ears. Maya concludes that all cats purr when scratched behind the ears.'" },
+    "scen_1_type": { "formula": "'Inductive Reasoning'" },
+    "scen_1_expl": { "formula": "'The conclusion is a general generalization based on a pattern of specific personal observations.'" },
+    "scen_2_text": { "formula": "'To graduate, a student must complete 120 credit hours. David has completed 124 credit hours, so his counselor concludes he has met the graduation credit requirement.'" },
+    "scen_2_type": { "formula": "'Deductive Reasoning'" },
+    "scen_2_expl": { "formula": "'The conclusion applies a pre-established rule or requirement logically to a specific fact.'" },
+    "scen_3_text": { "formula": "'The city bus has arrived exactly at 7:15 AM every morning for the past two weeks. Leo concludes that the bus will arrive at 7:15 AM tomorrow morning.'" },
+    "scen_3_type": { "formula": "'Inductive Reasoning'" },
+    "scen_3_expl": { "formula": "'The conclusion predicts a future event by observing a repeating historic trend or pattern.'" },
+    "scen_4_text": { "formula": "'All regular hexagons have six lines of symmetry. An instructor draws a regular hexagon on the board and states that it has six lines of symmetry.'" },
+    "scen_4_type": { "formula": "'Deductive Reasoning'" },
+    "scen_4_expl": { "formula": "'The conclusion is derived by applying a broad definition or geometric property to a specific figure.'" },
+    "scen_5_text": { "formula": "'Marcus notices that the last four numbers in a sequence are 3, 6, 12, and 24. He concludes that the next number in the sequence must be 48.'" },
+    "scen_5_type": { "formula": "'Inductive Reasoning'" },
+    "scen_5_expl": { "formula": "'The conclusion looks at a narrow set of numbers to form a rule for finding subsequent terms.'" },
+    "scen_6_text": { "formula": "'An electronics store policy states that all items returned past 30 days are subject to a restocking fee. Chloe returns a camera after 45 days, so she is charged the fee.'" },
+    "scen_6_type": { "formula": "'Deductive Reasoning'" },
+    "scen_6_expl": { "formula": "'The conclusion is a guaranteed fact dictated by an absolute organizational rule.'" },
+    "scen_7_text": { "formula": "'A scientist examines 50 different water samples from a local river and finds that all of them contain trace amounts of copper. She concludes that the entire river contains trace amounts of copper.'" },
+    "scen_7_type": { "formula": "'Inductive Reasoning'" },
+    "scen_7_expl": { "formula": "'The conclusion takes evidence from a small sample group and scales it up to a broad population.'" },
+    "scen_8_text": { "formula": "'The state law requires drivers to pull over safely to the side when an emergency vehicle approaches with sirens on. An ambulance approaches with sirens on, so Principal Vance pulls his car over.'" },
+    "scen_8_type": { "formula": "'Deductive Reasoning'" },
+    "scen_8_expl": { "formula": "'The decision is directly driven by a general legal statute applied to an individual driver context.'" },
+    "scen_9_text": { "formula": "'Every time Coach Evans wears his lucky red cap, the baseball team wins their game. He concludes that wearing the cap causes the team to win.'" },
+    "scen_9_type": { "formula": "'Inductive Reasoning'" },
+    "scen_9_expl": { "formula": "'The conclusion infers a causal link based solely on an observed historical correlation.'" },
+    "scen_10_text": { "formula": "'All vertical angles are congruent to each other. Given that Angle 1 and Angle 2 are vertical angles, a student concludes that the measure of Angle 1 equals the measure of Angle 2.'" },
+    "scen_10_type": { "formula": "'Deductive Reasoning'" },
+    "scen_10_expl": { "formula": "'The conclusion logically follows established mathematical axioms and theorems.'" },
+    "shuffled_indices": { "formula": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sort(() => Math.random() - 0.5)" },
+    "idx1": { "formula": "shuffled_indices[0]" },
+    "idx2": { "formula": "shuffled_indices[1]" },
+    "idx3": { "formula": "shuffled_indices[2]" },
+    "s1_t": { "formula": "idx1 === 1 ? scen_1_text : idx1 === 2 ? scen_2_text : idx1 === 3 ? scen_3_text : idx1 === 4 ? scen_4_text : idx1 === 5 ? scen_5_text : idx1 === 6 ? scen_6_text : idx1 === 7 ? scen_7_text : idx1 === 8 ? scen_8_text : idx1 === 9 ? scen_9_text : scen_10_text" },
+    "s1_y": { "formula": "idx1 === 1 ? scen_1_type : idx1 === 2 ? scen_2_type : idx1 === 3 ? scen_3_type : idx1 === 4 ? scen_4_type : idx1 === 5 ? scen_5_type : idx1 === 6 ? scen_6_type : idx1 === 7 ? scen_7_type : idx1 === 8 ? scen_8_type : idx1 === 9 ? scen_9_type : scen_10_type" },
+    "s1_e": { "formula": "idx1 === 1 ? scen_1_expl : idx1 === 2 ? scen_2_expl : idx1 === 3 ? scen_3_expl : idx1 === 4 ? scen_4_expl : idx1 === 5 ? scen_5_expl : idx1 === 6 ? scen_6_expl : idx1 === 7 ? scen_7_expl : idx1 === 8 ? scen_8_expl : idx1 === 9 ? scen_9_expl : scen_10_expl" },
+    "s2_t": { "formula": "idx2 === 1 ? scen_1_text : idx2 === 2 ? scen_2_text : idx2 === 3 ? scen_3_text : idx2 === 4 ? scen_4_text : idx2 === 5 ? scen_5_text : idx2 === 6 ? scen_6_text : idx2 === 7 ? scen_7_text : idx2 === 8 ? scen_8_text : idx2 === 9 ? scen_9_text : scen_10_text" },
+    "s2_y": { "formula": "idx2 === 1 ? scen_1_type : idx2 === 2 ? scen_2_type : idx2 === 3 ? scen_3_type : idx2 === 4 ? scen_4_type : idx2 === 5 ? scen_5_type : idx2 === 6 ? scen_6_type : idx2 === 7 ? scen_7_type : idx2 === 8 ? scen_8_type : idx2 === 9 ? scen_9_type : scen_10_type" },
+    "s2_e": { "formula": "idx2 === 1 ? scen_1_expl : idx2 === 2 ? scen_2_expl : idx2 === 3 ? scen_3_expl : idx2 === 4 ? scen_4_expl : idx2 === 5 ? scen_5_expl : idx2 === 6 ? scen_6_expl : idx2 === 7 ? scen_7_expl : idx2 === 8 ? scen_8_expl : idx2 === 9 ? scen_9_expl : scen_10_expl" },
+    "s3_t": { "formula": "idx3 === 1 ? scen_1_text : idx3 === 2 ? scen_2_text : idx3 === 3 ? scen_3_text : idx3 === 4 ? scen_4_text : idx3 === 5 ? scen_5_text : idx3 === 6 ? scen_6_text : idx3 === 7 ? scen_7_text : idx3 === 8 ? scen_8_text : idx3 === 9 ? scen_9_text : scen_10_text" },
+    "s3_y": { "formula": "idx3 === 1 ? scen_1_type : idx3 === 2 ? scen_2_type : idx3 === 3 ? scen_3_type : idx3 === 4 ? scen_4_type : idx3 === 5 ? scen_5_type : idx3 === 6 ? scen_6_type : idx3 === 7 ? scen_7_type : idx3 === 8 ? scen_8_type : idx3 === 9 ? scen_9_type : scen_10_type" },
+    "s3_e": { "formula": "idx3 === 1 ? scen_1_expl : idx3 === 2 ? scen_2_expl : idx3 === 3 ? scen_3_expl : idx3 === 4 ? scen_4_expl : idx3 === 5 ? scen_5_expl : idx3 === 6 ? scen_6_expl : idx3 === 7 ? scen_7_expl : idx3 === 8 ? scen_8_expl : idx3 === 9 ? scen_9_expl : scen_10_expl" }
+  },
+  "question": "Read each statement below carefully. Determine whether the conclusion is an example of <b>Inductive Reasoning</b> or <b>Deductive Reasoning</b>.<br><br><ol type='1'><li><b>Scenario A:</b> {s1_t}<br>Reasoning Type: ______________________________</li><br><li><b>Scenario B:</b> {s2_t}<br>Reasoning Type: ______________________________</li><br><li><b>Scenario C:</b> {s3_t}<br>Reasoning Type: ______________________________</li></ol>",
+  "answer": "<b>Correct Logical Reasoning Implementations:</b> <b>Inductive Reasoning</b> (drawing a general conclusion from specific observations or patterns) or <b>Deductive Reasoning</b> (logical tracking from a general rule, law, or known fact to a specific conclusion).<br><ol type='1'><li><b>Scenario A:</b> {s1_t}<ul><li><b>Type:</b> {s1_y}</li><li><b>Explanation:</b> {s1_e}</li></ul></li><br><li><b>Scenario B:</b> {s2_t}<ul><li><b>Type:</b> {s2_y}</li><li><b>Explanation:</b> {s2_e}</li></ul></li><br><li><b>Scenario C:</b> {s3_t}<ul><li><b>Type:</b> {s3_y}</li><li><b>Explanation:</b> {s3_e}</li></ul></li></ol>"
 },
 
 
 
 
-
 {
-  "id": "GEO 3-2 Law of Syllogism",
+  "id": "GEO 3-3 Law of Syllogism",
   "type": "template",
   "objective": "Applying the Law of Syllogism",
   "difficulty": "basic",
@@ -6403,13 +6436,13 @@
   "answer": "?"
 },
 {
-  "id": "GEO 3-2 Logic",
+  "id": "GEO 3-3 Logic",
   "type": "template",
   "objective": "Evaluate truth value of compound logic statements",
   "difficulty": "basic",
   "variables": {
     "pool": {
-      "formula": "[ { p: 'A triangle is a square', p_val: false, q: 'A rectangle is a quadrilateral', q_val: true }, { p: 'A square has 3 sides', p_val: false, q: 'An octagon has 8 sides', q_val: true }, { p: 'Water freezes at 100ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°C', p_val: false, q: 'Oxygen is a gas at room temperature', q_val: true }, { p: 'Primes are always odd', p_val: false, q: '9 is a perfect square', q_val: true }, { p: 'Humans can fly unaided', p_val: false, q: 'Birds have feathers', q_val: true } ]"
+          "formula": "[ { p: 'A triangle has three sides', p_val: true, q: 'A square has four sides', q_val: true }, { p: 'A triangle has four sides', p_val: false, q: 'A rectangle has four right angles', q_val: true }, { p: 'A square has three sides', p_val: false, q: 'A cube has six faces', q_val: true }, { p: 'A circle has straight sides', p_val: false, q: 'A pentagon has five sides', q_val: true }, { p: 'Every prime number is odd', p_val: false, q: '2 is a prime number', q_val: true }, { p: 'Every rectangle is a square', p_val: false, q: 'Every square is a rectangle', q_val: true }, { p: 'Water freezes at 0 degrees Celsius at standard atmospheric pressure', p_val: true, q: 'Water boils at 100 degrees Celsius at standard atmospheric pressure', q_val: true }, { p: 'The sum of two even integers is odd', p_val: false, q: 'The sum of two odd integers is even', q_val: true }, { p: 'A square has three sides', p_val: false, q: 'A triangle has four sides', q_val: false }, { p: 'A cube has eight faces', p_val: false, q: 'A circle has four sides', q_val: false } ]"
     },
     "selected": { "formula": "pool[Math.floor(Math.random() * pool.length)]" },
     "p_text": { "formula": "selected.p" },
@@ -6417,8 +6450,8 @@
     "p_bool": { "formula": "selected.p_val" },
     "q_bool": { "formula": "selected.q_val" }
   },
-  "question": "Consider these two statements:<br>p: {p_text}<br>q: {q_text}<br><br>Select all of the true statements.",
-  "answer": "Given that statement p is <b>{formula: p_bool ? 'TRUE' : 'FALSE'}</b> and statement q is <b>{formula: q_bool ? 'TRUE' : 'FALSE'}</b>:<br><ul><li><b>? ~p:</b> {formula: !p_bool ? 'TRUE' : 'FALSE'}</li><li><b>? ~q:</b> {formula: !q_bool ? 'TRUE' : 'FALSE'}</li><li><b>? p ? q:</b> {formula: (p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>? p ? q:</b> {formula: (p_bool || q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>? ~p ? q:</b> {formula: (!p_bool && q_bool) ? 'TRUE' : 'FALSE'}</li><li><b>? p ? ~q:</b> {formula: (p_bool || !q_bool) ? 'TRUE' : 'FALSE'}</li></ul>"
+  "question": "Let p and q be the statements below. Assume that \"or\" means inclusive or.<br><br>p: {p_text}<br>q: {q_text}<br><br>Select every true statement:<br><br>A. not p<br>B. not q<br>C. p and q<br>D. p or q<br>E. not p and q<br>F. p or not q",
+  "answer": "The truth values are p = <b>{formula: p_bool ? 'TRUE' : 'FALSE'}</b> and q = <b>{formula: q_bool ? 'TRUE' : 'FALSE'}</b>.<br><br><b>Choices:</b><br>A. not p: {formula: !p_bool ? 'TRUE' : 'FALSE'}<br>B. not q: {formula: !q_bool ? 'TRUE' : 'FALSE'}<br>C. p and q: {formula: (p_bool && q_bool) ? 'TRUE' : 'FALSE'}<br>D. p or q: {formula: (p_bool || q_bool) ? 'TRUE' : 'FALSE'}<br>E. not p and q: {formula: (!p_bool && q_bool) ? 'TRUE' : 'FALSE'}<br>F. p or not q: {formula: (p_bool || !q_bool) ? 'TRUE' : 'FALSE'}"
 },
 {
   "id": "GEO 3-3 Syllogism",
@@ -6471,6 +6504,44 @@
 },
 
 
+
+
+{
+  "id": "GEO 3-3 I Syllogism v2",
+  "type": "template",
+  "objective": "Apply the Law of Syllogism to two pairs of true conditional statements",
+  "difficulty": "intermediate",
+  "variables": {
+    "chain_pool": {
+      "formula": "[ { first: 'a figure is a square', middle: 'a figure is a rectangle', last: 'a figure is a quadrilateral' }, { first: 'a figure is a square', middle: 'a figure is a rhombus', last: 'a figure is a parallelogram' }, { first: 'a triangle is equilateral', middle: 'a triangle is isosceles', last: 'a triangle has at least two congruent sides' }, { first: 'a triangle is right', middle: 'a triangle has one right angle', last: 'a triangle is not equilateral' }, { first: 'a solid is a cube', middle: 'a solid is a rectangular prism', last: 'a solid is a prism' }, { first: 'an animal is a whale', middle: 'an animal is a mammal', last: 'an animal is a vertebrate' }, { first: 'a bird is a robin', middle: 'a bird is a vertebrate', last: 'a bird has a backbone' }, { first: 'an animal is a salmon', middle: 'an animal is a fish', last: 'an animal is a vertebrate' }, { first: 'an integer is a multiple of 8', middle: 'an integer is a multiple of 4', last: 'an integer is even' }, { first: 'an integer is a multiple of 10', middle: 'an integer is even', last: 'an integer is divisible by 2' }, { first: 'a positive integer is a multiple of 9', middle: 'a positive integer has a digit sum divisible by 9', last: 'a positive integer is divisible by 3' }, { first: 'an integer is a multiple of 5', middle: 'an integer ends in 0 or 5', last: 'an integer is divisible by 5' }, { first: 'a positive integer is a multiple of 12', middle: 'a positive integer is divisible by 3', last: 'a positive integer has a digit sum divisible by 3' }, { first: 'a quadrilateral is a parallelogram', middle: 'a quadrilateral has two pairs of parallel sides', last: 'a quadrilateral is a polygon' }, { first: 'a quadrilateral is a rectangle', middle: 'a quadrilateral is a parallelogram', last: 'a quadrilateral has two pairs of parallel sides' }, { first: 'a quadrilateral is a rhombus', middle: 'a quadrilateral is a parallelogram', last: 'a quadrilateral has two pairs of parallel sides' }, { first: 'a figure is a square', middle: 'a figure has four congruent sides', last: 'a figure has at least two congruent sides' }, { first: 'an angle is a right angle', middle: 'an angle measures 90 degrees', last: 'an angle is not acute' }, { first: 'an angle is a straight angle', middle: 'an angle measures 180 degrees', last: 'an angle is not a right angle' }, { first: 'a solid is a sphere', middle: 'a solid has one curved surface', last: 'a solid has no edges or vertices' } ]"
+    },
+    "selected_chains": { "formula": "chain_pool.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).slice(0, 4).map(y => y.x)" },
+    "raw_statements": { "formula": "selected_chains.flatMap(c => ['If ' + c.first + ', then ' + c.middle + '.', 'If ' + c.middle + ', then ' + c.last + '.'])" },
+    "shuffled_statements": { "formula": "raw_statements.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)" },
+    "statement_1": { "formula": "shuffled_statements[0]" },
+    "statement_2": { "formula": "shuffled_statements[1]" },
+    "statement_3": { "formula": "shuffled_statements[2]" },
+    "statement_4": { "formula": "shuffled_statements[3]" },
+    "statement_5": { "formula": "shuffled_statements[4]" },
+    "statement_6": { "formula": "shuffled_statements[5]" },
+    "statement_7": { "formula": "shuffled_statements[6]" },
+    "statement_8": { "formula": "shuffled_statements[7]" },
+    "chain_1a": { "formula": "selected_chains[0].first" },
+    "chain_1b": { "formula": "selected_chains[0].middle" },
+    "chain_1c": { "formula": "selected_chains[0].last" },
+    "chain_2a": { "formula": "selected_chains[1].first" },
+    "chain_2b": { "formula": "selected_chains[1].middle" },
+    "chain_2c": { "formula": "selected_chains[1].last" },
+    "chain_3a": { "formula": "selected_chains[2].first" },
+    "chain_3b": { "formula": "selected_chains[2].middle" },
+    "chain_3c": { "formula": "selected_chains[2].last" },
+    "chain_4a": { "formula": "selected_chains[3].first" },
+    "chain_4b": { "formula": "selected_chains[3].middle" },
+    "chain_4c": { "formula": "selected_chains[3].last" }
+  },
+  "question": "The following eight conditional statements are all true, but they have been shuffled:<br><br>1. {statement_1}<br>2. {statement_2}<br>3. {statement_3}<br>4. {statement_4}<br>5. {statement_5}<br>6. {statement_6}<br>7. {statement_7}<br>8. {statement_8}<br><br>Match them into four pairs so that the conclusion of the first statement in each pair is the hypothesis of the second. Write the four valid conclusions using the Law of Syllogism.",
+  "answer": "Combine each statement with the one whose hypothesis matches its conclusion:<br><br><b>Pair 1:</b> If {chain_1a}, then {chain_1b}. And if {chain_1b}, then {chain_1c}.<br><b>Conclusion 1:</b> If {chain_1a}, then {chain_1c}.<br><br><b>Pair 2:</b> If {chain_2a}, then {chain_2b}. And if {chain_2b}, then {chain_2c}.<br><b>Conclusion 2:</b> If {chain_2a}, then {chain_2c}.<br><br><b>Pair 3:</b> If {chain_3a}, then {chain_3b}. And if {chain_3b}, then {chain_3c}.<br><b>Conclusion 3:</b> If {chain_3a}, then {chain_3c}.<br><br><b>Pair 4:</b> If {chain_4a}, then {chain_4b}. And if {chain_4b}, then {chain_4c}.<br><b>Conclusion 4:</b> If {chain_4a}, then {chain_4c}."
+},
 
 
 {
