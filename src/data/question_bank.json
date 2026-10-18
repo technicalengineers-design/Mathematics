@@ -983,7 +983,7 @@
       "answer": "a) \\( f({x1}) = {value1} \\) <br> b) \\( g({x2}) = {value2} \\) <br> c) \\( f({x1}) + g({x2}) = {value3} \\) <br> d) \\( g({x3}w) = {value4}w^2 {value5|signedCeof}w {d|sign} \\)"
     },
     {
-      "id": "ALG1-3.3 B",
+      "id": "ALG1 3.3 Linearity of Graphs",
       "type": "template",
       "objective": "Linearity of Graphs",
       "difficulty": "basic",
@@ -1010,7 +1010,68 @@
       "answer": "<div style='display:flex;flex-flow:row nowrap;justify-content:space-between;gap:24px;'><span>a) \\(f(x)\\): {f_answer}</span><span>b) \\(g(x)\\): {g_answer}</span><span>c) \\(h(x)\\): {h_answer}</span><span>d) \\(j(x)\\): {j_answer}</span></div>"
     },
     {
-      "id": "ALG1-3.3-I1",
+  "id": "ALG1 3.3 I Linearity of Equations",
+  "type": "template",
+  "objective": "Linearity of Equations",
+  "difficulty": "intermediate",
+  "variables": {
+    "m1": { "min": -5, "max": 5, "exclude": [0] },
+    "b1": { "min": -10, "max": 10, "exclude": [0] },
+    "a": { "min": -5, "max": 5, "exclude": [0] },
+    "b": { "min": -10, "max": 10, "exclude": [0] },
+    "c": { "min": -5, "max": 5 },
+    "A": { "min": -5, "max": 5, "exclude": [0] },
+    "B": { "min": -10, "max": 10, "exclude": [0] },
+    "C": { "min": -5, "max": 5 },
+    "y": { "min": -10, "max": 10 },
+    "p": { "min": -5, "max": 5, "exclude": [0] },
+    "q": { "min": -5, "max": 5, "exclude": [0] },
+    "r": { "values": [1, 4, 9, 16, 25, 36, 49] },
+    "A2": { "min": -5, "max": 5, "exclude": [0] },
+    "B2": { "min": -10, "max": 10, "exclude": [0] },
+    "C2": { "min": -5, "max": 5 },
+    "m": { "min": -10, "max": 10, "exclude": [0] },
+    "n": { "min": -5, "max": 5, "exclude": [0] },
+    "y1": { "min": -10, "max": 10, "exclude": [0] },
+    "x1": { "min": -10, "max": 10, "exclude": [0] },
+    "k": { "min": -10, "max": 10, "exclude": [0] },
+    "m2": { "min": -10, "max": 10, "exclude": [0] },
+    "b2": { "min": -10, "max": 10, "exclude": [0] },
+    "m3": { "min": -10, "max": 10, "exclude": [0] },
+    "b3": { "min": -10, "max": 10, "exclude": [0] },
+
+    "pick_order": {
+      "formula": "[0,1,2,3,4,5,6,7,8,9,10,11].sort(() => Math.random() - 0.5).slice(0,4)"
+    },
+
+    "eq0": { "formula": "'\\\\( y = ' + m1 + 'x ' + (b1 >= 0 ? '+ ' + b1 : '- ' + Math.abs(b1)) + ' \\\\)'" },
+    "eq1": { "formula": "'\\\\( y = ' + a + 'x^2 ' + (b >= 0 ? '+ ' + b + 'x' : '- ' + Math.abs(b) + 'x') + ' ' + (c >= 0 ? '+ ' + c : '- ' + Math.abs(c)) + ' \\\\)'" },
+    "eq2": { "formula": "'\\\\( ' + A + 'x ' + (B >= 0 ? '+ ' + B : '- ' + Math.abs(B)) + 'y = ' + C + ' \\\\)'" },
+    "eq3": { "formula": "'\\\\( y = ' + y + ' \\\\)'" },
+    "eq4": { "formula": "'\\\\( y = (x ' + (p >= 0 ? '+ ' + p : '- ' + Math.abs(p)) + ')(x ' + (q >= 0 ? '+ ' + q : '- ' + Math.abs(q)) + ') \\\\)'" },
+    "eq5": { "formula": "'\\\\( x^2 + y^2 = ' + r + ' \\\\)'" },
+    "eq6": { "formula": "'\\\\( ' + A2 + 'x ' + (B2 >= 0 ? '+ ' + B2 : '- ' + Math.abs(B2)) + 'y = ' + C2 + ' \\\\)'" },
+    "eq7": { "formula": "'\\\\( y = \\\\frac{' + m + '}{x ' + (n >= 0 ? '+ ' + n : '- ' + Math.abs(n)) + '} \\\\)'" },
+    "eq8": { "formula": "'\\\\( y ' + (y1 >= 0 ? '- ' + y1 : '+ ' + Math.abs(y1)) + ' = ' + m + '(x ' + (x1 >= 0 ? '- ' + x1 : '+ ' + Math.abs(x1)) + ') \\\\)'" },
+    "eq9": { "formula": "'\\\\( xy = ' + k + ' \\\\)'" },
+    "eq10": { "formula": "'\\\\( y = ' + m3 + 'x ' + (b3 >= 0 ? '+ ' + b3 : '- ' + Math.abs(b3)) + ' \\\\)'" },
+    "eq11": { "formula": "'\\\\( y^2 = ' + m2 + 'x ' + (b2 >= 0 ? '+ ' + b2 : '- ' + Math.abs(b2)) + ' \\\\)'" },
+
+    "prompt_a": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[0]]" },
+    "prompt_b": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[1]]" },
+    "prompt_c": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[2]]" },
+    "prompt_d": { "formula": "[eq0,eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11][pick_order[3]]" },
+
+    "answer_a": { "formula": "['Linear','Not linear','Linear','Linear','Not linear','Not linear','Linear','Not linear','Linear','Not linear','Linear','Not linear'][pick_order[0]]" },
+    "answer_b": { "formula": "['Linear','Not linear','Linear','Linear','Not linear','Not linear','Linear','Not linear','Linear','Not linear','Linear','Not linear'][pick_order[1]]" },
+    "answer_c": { "formula": "['Linear','Not linear','Linear','Linear','Not linear','Not linear','Linear','Not linear','Linear','Not linear','Linear','Not linear'][pick_order[2]]" },
+    "answer_d": { "formula": "['Linear','Not linear','Linear','Linear','Not linear','Not linear','Linear','Not linear','Linear','Not linear','Linear','Not linear'][pick_order[3]]" }
+  },
+  "question": "For each equation, decide whether it defines a linear function of x:<br>a) {prompt_a}<br>b) {prompt_b}<br>c) {prompt_c}<br>d) {prompt_d}",
+  "answer": "a) {answer_a}<br>b) {answer_b}<br>c) {answer_c}<br>d) {answer_d}"
+},
+    {
+      "id": "ALG1 3.3 I Linearity of Graphs",
       "type": "template",
       "objective": "Linearity of Graphs",
       "difficulty": "intermediate",
