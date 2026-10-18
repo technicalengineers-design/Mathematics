@@ -6402,41 +6402,8 @@
   "question": "Read each statement below carefully. Determine whether the conclusion is an example of <b>Inductive Reasoning</b> or <b>Deductive Reasoning</b>.<br><br><ol type='1'><li><b>Scenario A:</b> {s1_t}<br>Reasoning Type: ______________________________</li><br><li><b>Scenario B:</b> {s2_t}<br>Reasoning Type: ______________________________</li><br><li><b>Scenario C:</b> {s3_t}<br>Reasoning Type: ______________________________</li></ol>",
   "answer": "<b>Correct Logical Reasoning Implementations:</b> <b>Inductive Reasoning</b> (drawing a general conclusion from specific observations or patterns) or <b>Deductive Reasoning</b> (logical tracking from a general rule, law, or known fact to a specific conclusion).<br><ol type='1'><li><b>Scenario A:</b> {s1_t}<ul><li><b>Type:</b> {s1_y}</li><li><b>Explanation:</b> {s1_e}</li></ul></li><br><li><b>Scenario B:</b> {s2_t}<ul><li><b>Type:</b> {s2_y}</li><li><b>Explanation:</b> {s2_e}</li></ul></li><br><li><b>Scenario C:</b> {s3_t}<ul><li><b>Type:</b> {s3_y}</li><li><b>Explanation:</b> {s3_e}</li></ul></li></ol>"
 },
-
-
-
-
 {
-  "id": "GEO 3-3 Law of Syllogism",
-  "type": "template",
-  "objective": "Applying the Law of Syllogism",
-  "difficulty": "basic",
-  "variables": {
-    "concept_idx": { "min": 0, "max": 2 },
-    "concepts": [
-      {
-        "a": "a square",
-        "b": "a rectangle",
-        "c": "a parallelogram"
-      },
-      {
-        "a": "an equilateral triangle",
-        "b": "an isosceles triangle",
-        "c": "a polygon"
-      },
-      {
-        "a": "a regular hexagon",
-        "b": "an equiangular polygon",
-        "c": "a convex polygon"
-      }
-    ],
-    "sel": { "formula": "concepts[concept_idx]" }
-  },
-  "question": "Statements 1 and 2 are true conditional statements.<br>Statement 1: If a figure is {sel.a}, then it is {sel.b}.<br>Statement 2: If a figure is {sel.b}, then it is {sel.c}.<br><br>Which conclusion is valid?<br>? If Figure A is {sel.a}, then Figure A is {sel.c}.<br>? If Figure A is not {sel.a}, then Figure A is not {sel.c}.<br>? If Figure A is {sel.c}, then Figure A is {sel.a}.<br>? If Figure A is {sel.b}, then Figure A is {sel.a}.",
-  "answer": "?"
-},
-{
-  "id": "GEO 3-3 Logic",
+  "id": "GEO 3-3 Logic (practice only)",
   "type": "template",
   "objective": "Evaluate truth value of compound logic statements",
   "difficulty": "basic",
@@ -6456,61 +6423,8 @@
 {
   "id": "GEO 3-3 Syllogism",
   "type": "template",
-  "objective": "Apply the Law of Syllogism to valid conditional arguments",
-  "difficulty": "basic",
-  "variables": {
-    "pool": {
-      "formula": "[ { a: 'a square', b: 'a rectangle', c: 'a parallelogram', entity: 'Figure A' }, { a: 'a whale', b: 'a mammal', c: 'a warm-blooded creature', entity: 'Animal X' }, { a: 'a multiple of 8', b: 'an even number', c: 'an integer', entity: 'Number N' }, { a: 'a robin', b: 'a bird', c: 'a vertebrate', entity: 'Creature Y' } ]"
-    },
-    "selected": { "formula": "pool[Math.floor(Math.random() * pool.length)]" },
-    "item_a": { "formula": "selected.a" },
-    "item_b": { "formula": "selected.b" },
-    "item_c": { "formula": "selected.c" },
-    "subject": { "formula": "selected.entity" }
-  },
-  "question": "Statements 1 and 2 are true conditional statements.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 1: If a figure is {item_a}, then it is {item_b}.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 2: If a figure is {item_b}, then it is {item_c}.<br><br>Which conclusion is valid?",
-  "answer": "By the <b>Law of Syllogism</b>, if \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\) are true statements, then the compound conditional statement \\( p \\rightarrow r \\) is also a valid conclusion.<br><br>Let:<br>\\( p \\): The figure is {item_a}<br>\\( q \\): The figure is {item_b}<br>\\( r \\): The figure is {item_c}<br><br>Since \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\), the only valid logical deduction is \\( p \\rightarrow r \\):<br><b>\"If {subject} is {item_a}, then {subject} is {item_c}.\"</b><br><br>Therefore, <b>?</b> is the correct choice."
-},
-{
-  "id": "GEO 3-3 Syllogism",
-  "type": "template",
-  "objective": "Apply the Law of Syllogism to valid conditional arguments with randomized choices",
-  "difficulty": "basic",
-  "variables": {
-    "pool": {
-      "formula": "[ { a: 'a square', b: 'a rectangle', c: 'a parallelogram', entity: 'Figure A' }, { a: 'a whale', b: 'a mammal', c: 'a warm-blooded creature', entity: 'Animal X' }, { a: 'a multiple of 8', b: 'an even number', c: 'an integer', entity: 'Number N' }, { a: 'a robin', b: 'a bird', c: 'a vertebrate', entity: 'Creature Y' } ]"
-    },
-    "selected": { "formula": "pool[Math.floor(Math.random() * pool.length)]" },
-    "item_a": { "formula": "selected.a" },
-    "item_b": { "formula": "selected.b" },
-    "item_c": { "formula": "selected.c" },
-    "subject": { "formula": "selected.entity" },
-    "raw_choices": {
-      "formula": "[ { text: 'If ' + selected.entity + ' is ' + selected.a + ', then ' + selected.entity + ' is ' + selected.c + '.', correct: true }, { text: 'If ' + selected.entity + ' is not ' + selected.a + ', then ' + selected.entity + ' is not ' + selected.c + '.', correct: false }, { text: 'If ' + selected.entity + ' is ' + selected.c + ', then ' + selected.entity + ' is ' + selected.a + '.', correct: false }, { text: 'If ' + selected.entity + ' is ' + selected.b + ', then ' + selected.entity + ' is ' + selected.a + '.', correct: false } ]"
-    },
-    "shuffled_choices": {
-      "formula": "raw_choices.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
-    },
-    "choice_A": { "formula": "shuffled_choices[0].text" },
-    "choice_B": { "formula": "shuffled_choices[1].text" },
-    "choice_C": { "formula": "shuffled_choices[2].text" },
-    "choice_D": { "formula": "shuffled_choices[3].text" },
-    "correct_letter": {
-      "formula": "['?', '?', '?', '?'][shuffled_choices.findIndex(c => c.correct)]"
-    }
-  },
-  "question": "Statements 1 and 2 are true conditional statements.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 1: If a figure is {item_a}, then it is {item_b}.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement 2: If a figure is {item_b}, then it is {item_c}.<br><br>Which conclusion is valid?<br><br>? {choice_A}<br>? {choice_B}<br>? {choice_C}<br>? {choice_D}",
-  "answer": "By the <b>Law of Syllogism</b>, if \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\) are true statements, then the compound conditional statement \\( p \\rightarrow r \\) is also a valid conclusion.<br><br>Let:<br>\\( p \\): The figure is {item_a}<br>\\( q \\): The figure is {item_b}<br>\\( r \\): The figure is {item_c}<br><br>Since \\( p \\rightarrow q \\) and \\( q \\rightarrow r \\), the only valid logical deduction is \\( p \\rightarrow r \\):<br><b>\"If {subject} is {item_a}, then {subject} is {item_c}.\"</b><br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
-},
-
-
-
-
-{
-  "id": "GEO 3-3 I Syllogism v2",
-  "type": "template",
   "objective": "Apply the Law of Syllogism to two pairs of true conditional statements",
-  "difficulty": "intermediate",
+  "difficulty": "basic",
   "variables": {
     "chain_pool": {
       "formula": "[ { first: 'a figure is a square', middle: 'a figure is a rectangle', last: 'a figure is a quadrilateral' }, { first: 'a figure is a square', middle: 'a figure is a rhombus', last: 'a figure is a parallelogram' }, { first: 'a triangle is equilateral', middle: 'a triangle is isosceles', last: 'a triangle has at least two congruent sides' }, { first: 'a triangle is right', middle: 'a triangle has one right angle', last: 'a triangle is not equilateral' }, { first: 'a solid is a cube', middle: 'a solid is a rectangular prism', last: 'a solid is a prism' }, { first: 'an animal is a whale', middle: 'an animal is a mammal', last: 'an animal is a vertebrate' }, { first: 'a bird is a robin', middle: 'a bird is a vertebrate', last: 'a bird has a backbone' }, { first: 'an animal is a salmon', middle: 'an animal is a fish', last: 'an animal is a vertebrate' }, { first: 'an integer is a multiple of 8', middle: 'an integer is a multiple of 4', last: 'an integer is even' }, { first: 'an integer is a multiple of 10', middle: 'an integer is even', last: 'an integer is divisible by 2' }, { first: 'a positive integer is a multiple of 9', middle: 'a positive integer has a digit sum divisible by 9', last: 'a positive integer is divisible by 3' }, { first: 'an integer is a multiple of 5', middle: 'an integer ends in 0 or 5', last: 'an integer is divisible by 5' }, { first: 'a positive integer is a multiple of 12', middle: 'a positive integer is divisible by 3', last: 'a positive integer has a digit sum divisible by 3' }, { first: 'a quadrilateral is a parallelogram', middle: 'a quadrilateral has two pairs of parallel sides', last: 'a quadrilateral is a polygon' }, { first: 'a quadrilateral is a rectangle', middle: 'a quadrilateral is a parallelogram', last: 'a quadrilateral has two pairs of parallel sides' }, { first: 'a quadrilateral is a rhombus', middle: 'a quadrilateral is a parallelogram', last: 'a quadrilateral has two pairs of parallel sides' }, { first: 'a figure is a square', middle: 'a figure has four congruent sides', last: 'a figure has at least two congruent sides' }, { first: 'an angle is a right angle', middle: 'an angle measures 90 degrees', last: 'an angle is not acute' }, { first: 'an angle is a straight angle', middle: 'an angle measures 180 degrees', last: 'an angle is not a right angle' }, { first: 'a solid is a sphere', middle: 'a solid has one curved surface', last: 'a solid has no edges or vertices' } ]"
@@ -6542,6 +6456,8 @@
   "question": "The following eight conditional statements are all true, but they have been shuffled:<br><br>1. {statement_1}<br>2. {statement_2}<br>3. {statement_3}<br>4. {statement_4}<br>5. {statement_5}<br>6. {statement_6}<br>7. {statement_7}<br>8. {statement_8}<br><br>Match them into four pairs so that the conclusion of the first statement in each pair is the hypothesis of the second. Write the four valid conclusions using the Law of Syllogism.",
   "answer": "Combine each statement with the one whose hypothesis matches its conclusion:<br><br><b>Pair 1:</b> If {chain_1a}, then {chain_1b}. And if {chain_1b}, then {chain_1c}.<br><b>Conclusion 1:</b> If {chain_1a}, then {chain_1c}.<br><br><b>Pair 2:</b> If {chain_2a}, then {chain_2b}. And if {chain_2b}, then {chain_2c}.<br><b>Conclusion 2:</b> If {chain_2a}, then {chain_2c}.<br><br><b>Pair 3:</b> If {chain_3a}, then {chain_3b}. And if {chain_3b}, then {chain_3c}.<br><b>Conclusion 3:</b> If {chain_3a}, then {chain_3c}.<br><br><b>Pair 4:</b> If {chain_4a}, then {chain_4b}. And if {chain_4b}, then {chain_4c}.<br><b>Conclusion 4:</b> If {chain_4a}, then {chain_4c}."
 },
+
+
 
 
 {
