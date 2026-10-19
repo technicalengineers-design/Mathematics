@@ -404,6 +404,7 @@ class UIManager {
   renderPreview() {
     const preview = document.getElementById("assignmentPreview");
     preview.innerHTML = "";
+    document.getElementById("generateAssignment").classList.toggle("hidden", this.selectedQuestions.length === 0);
 
     if (this.selectedQuestions.length === 0) {
       preview.innerHTML = "<div class='muted'>No questions selected yet. Use 'Add' button on questions to build your assignment.</div>";

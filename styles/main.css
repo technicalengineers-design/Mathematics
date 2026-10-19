@@ -153,6 +153,15 @@ button.small {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
 }
 
+#generateAssignment {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  margin: 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
 .section { 
   margin-bottom: 24px; 
   background: white;
@@ -448,6 +457,11 @@ canvas {
     top: 8px;
     left: 8px;
     padding: 8px;
+  }
+
+  #generateAssignment {
+    top: 8px;
+    left: 8px;
   }
 
   .title-input-section {

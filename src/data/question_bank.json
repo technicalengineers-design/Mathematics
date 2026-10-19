@@ -1030,10 +1030,19 @@
         "value2": { "formula": "x2**2 + c * x2 + d" },
         "value3": { "formula": "value1 + value2" },
         "value4": { "formula": "x3**2" },
-        "value5": { "formula": "c * x3" }
+        "value5": { "formula": "c * x3" },
+        "problem_order": { "formula": "[0, 1, 2, 3].map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)" },
+        "prompt_a": { "formula": "['f(' + x1 + ')', 'g(' + x2 + ')', 'f(' + x1 + ') + g(' + x2 + ')', 'g(' + x3 + 'w)'][problem_order[0]]" },
+        "prompt_b": { "formula": "['f(' + x1 + ')', 'g(' + x2 + ')', 'f(' + x1 + ') + g(' + x2 + ')', 'g(' + x3 + 'w)'][problem_order[1]]" },
+        "prompt_c": { "formula": "['f(' + x1 + ')', 'g(' + x2 + ')', 'f(' + x1 + ') + g(' + x2 + ')', 'g(' + x3 + 'w)'][problem_order[2]]" },
+        "prompt_d": { "formula": "['f(' + x1 + ')', 'g(' + x2 + ')', 'f(' + x1 + ') + g(' + x2 + ')', 'g(' + x3 + 'w)'][problem_order[3]]" },
+        "solution_a": { "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[0]]" },
+        "solution_b": { "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[1]]" },
+        "solution_c": { "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[2]]" },
+        "solution_d": { "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[3]]" }
       },
-      "question": "Let \\( f(x) = {a|coef}x {b|sign} \\) and \\( g(x) = x^2 {c|signedCoef}x {d|sign} \\). Find and simplify each expression: <br> a) \\( f({x1}) \\) <br> b) \\( g({x2}) \\) <br> c) \\( f({x1}) + g({x2}) \\) <br> d) \\( g({x3}w) \\)",
-      "answer": "a) \\( f({x1}) = {value1} \\) <br> b) \\( g({x2}) = {value2} \\) <br> c) \\( f({x1}) + g({x2}) = {value3} \\) <br> d) \\( g({x3}w) = {value4}w^2 {value5|signedCeof}w {d|sign} \\)"
+      "question": "Let \\( f(x) = {a|coef}x {b|sign} \\) and \\( g(x) = x^2 {c|signedCoef}x {d|sign} \\). Find and simplify each expression:<br>a) {prompt_a}<br>b) {prompt_b}<br>c) {prompt_c}<br>d) {prompt_d}",
+      "answer": "a) {solution_a}<br>b) {solution_b}<br>c) {solution_c}<br>d) {solution_d}"
     },
     {
       "id": "ALG1 3.3 Linearity of Graphs",
@@ -6453,7 +6462,7 @@
     "chain_4b": { "formula": "selected_chains[3].middle" },
     "chain_4c": { "formula": "selected_chains[3].last" }
   },
-  "question": "The following eight conditional statements are all true, but they have been shuffled:<br><br>1. {statement_1}<br>2. {statement_2}<br>3. {statement_3}<br>4. {statement_4}<br>5. {statement_5}<br>6. {statement_6}<br>7. {statement_7}<br>8. {statement_8}<br><br>Match them into four pairs so that the conclusion of the first statement in each pair is the hypothesis of the second. Write the four valid conclusions using the Law of Syllogism.",
+  "question": "The following eight conditional statements are all true, but they have been shuffled:<br><br>1. {statement_1}<br>2. {statement_2}<br>3. {statement_3}<br>4. {statement_4}<br>5. {statement_5}<br>6. {statement_6}<br>7. {statement_7}<br>8. {statement_8}<br><br>Match them into four valid conclusions using the Law of Syllogism.",
   "answer": "Combine each statement with the one whose hypothesis matches its conclusion:<br><br><b>Pair 1:</b> If {chain_1a}, then {chain_1b}. And if {chain_1b}, then {chain_1c}.<br><b>Conclusion 1:</b> If {chain_1a}, then {chain_1c}.<br><br><b>Pair 2:</b> If {chain_2a}, then {chain_2b}. And if {chain_2b}, then {chain_2c}.<br><b>Conclusion 2:</b> If {chain_2a}, then {chain_2c}.<br><br><b>Pair 3:</b> If {chain_3a}, then {chain_3b}. And if {chain_3b}, then {chain_3c}.<br><b>Conclusion 3:</b> If {chain_3a}, then {chain_3c}.<br><br><b>Pair 4:</b> If {chain_4a}, then {chain_4b}. And if {chain_4b}, then {chain_4c}.<br><b>Conclusion 4:</b> If {chain_4a}, then {chain_4c}."
 },
 
