@@ -1,4 +1,4 @@
-/**
+﻿/**
  * UI management and event handling
  */
 
@@ -85,7 +85,7 @@ class UIManager {
     });
 
     document.getElementById("questionSpacing").addEventListener("input", (e) => {
-      // Convert px input to pt for print consistency (1px ≈ 0.75pt)
+      // Convert px input to pt for print consistency (1px â‰ˆ 0.75pt)
       this.questionSpacing = Math.round(parseInt(e.target.value, 10) * this.pxToPtRatio);
     });
   }
@@ -348,7 +348,7 @@ class UIManager {
     info.innerHTML = `
       <div class="objective-header">${question.id || 'Unknown ID'}</div>
       <div class="muted">
-        ${question.objective || 'No objective'} • 
+        ${question.objective || 'No objective'} â€¢ 
         <span class="difficulty-badge ${difficultyClass}">${question.difficulty || 'basic'}</span>
       </div>
       <div style="margin-top: 8px;">${question.question || 'No question text'}</div>
@@ -438,7 +438,7 @@ class UIManager {
     // Add drag handle
     const dragHandle = document.createElement("div");
     dragHandle.className = "drag-handle";
-    dragHandle.innerHTML = "⋮⋮";
+    dragHandle.innerHTML = "â‹®â‹®";
     dragHandle.style.cssText = `
       cursor: grab;
       color: #95a5a6;
@@ -452,7 +452,7 @@ class UIManager {
     info.innerHTML = `
       <div><strong>${index + 1}. ${question.id || 'Unknown ID'}</strong></div>
       <div class="muted">
-        ${question.objective || 'No objective'} • 
+        ${question.objective || 'No objective'} â€¢ 
         <span class="difficulty-badge ${difficultyClass}">${question.difficulty || 'basic'}</span>
       </div>
     `;
@@ -731,7 +731,7 @@ class UIManager {
 
     const footerNote = document.createElement("div");
     footerNote.className = "assignment-footer-note";
-    footerNote.textContent = "Clearly show all work.";
+    footerNote.textContent = "Clearly show all work and units.";
     output.appendChild(footerNote);
 
     // Re-bind the toggle event after creating the button
