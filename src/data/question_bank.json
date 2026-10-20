@@ -771,12 +771,13 @@
       "objective": "Using Formulas",
       "difficulty": "basic",
       "variables": {
-        "letters": { "formula": "['z', 'A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd'].map(value => ({value, key: Math.random()})).sort((left, right) => left.key - right.key).map(item => item.value)" },
-        "coeffs": { "formula": "Array.from({length: 6}, () => Math.floor(Math.random() * 8) + 2)" },
-        "target_index": { "formula": "Math.floor(Math.random() * 6)" },
+        "signs": { "formula": "Array.from({length: 4}, () => Math.random() < 0.5 ? -1 : 1)" },
+        "letters": { "formula": "['z', 'A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd'].map(value => ({value, key: Math.random()})).sort((left, right) => left.key - right.key).slice(0, 4).map(item => item.value)" },
+        "coeffs": { "formula": "Array.from({length: 4}, () => Math.floor(Math.random() * 8) + 2)" },
+        "target_index": { "formula": "Math.floor(Math.random() * 4)" },
         "solve_var": { "formula": "letters[target_index]" },
-        "equation": { "formula": "'\\\\(' + coeffs[0] + letters[0] + ' + ' + coeffs[1] + letters[1] + ' + ' + coeffs[2] + letters[2] + ' = ' + coeffs[3] + letters[3] + ' + ' + coeffs[4] + letters[4] + ' + ' + coeffs[5] + letters[5] + '\\\\)'" },
-        "answer_text": { "formula": "(function() { var terms = []; for (var i = 0; i < 6; i++) { if (i !== target_index) { var sign = ((i >= 3) === (target_index >= 3)) ? -1 : 1; terms.push((terms.length === 0 ? (sign < 0 ? '-' : '') : (sign < 0 ? ' - ' : ' + ')) + coeffs[i] + letters[i]); } } return '\\\\(' + solve_var + ' = \\\\frac{' + terms.join('') + '}{' + coeffs[target_index] + '}\\\\)'; })()" }
+        "equation": { "formula": "(function() { var term = function(i) { return (signs[i] < 0 ? '- ' : '') + coeffs[i] + letters[i]; }; return term(0) + (signs[1] < 0 ? ' - ' : ' + ') + coeffs[1] + letters[1] + ' = ' + term(2) + (signs[3] < 0 ? ' - ' : ' + ') + coeffs[3] + letters[3]; })()" },
+        "answer_text": { "formula": "(function() { var terms = []; for (var i = 0; i < 4; i++) { if (i !== target_index) { var factor = signs[i] * (((i >= 2) === (target_index >= 2)) ? -1 : 1) * signs[target_index]; terms.push({sign: factor, text: coeffs[i] + letters[i]}); } } var numerator = terms.map(function(term, index) { return (index === 0 ? (term.sign < 0 ? '-' : '') : (term.sign < 0 ? ' - ' : ' + ')) + term.text; }).join(''); return solve_var + ' = (' + numerator + ') / ' + coeffs[target_index]; })()" }
       },
       "question": "Solve for {solve_var}: <br> {equation}.",
       "answer": "{answer_text}"
