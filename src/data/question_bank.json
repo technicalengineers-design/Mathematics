@@ -5716,7 +5716,7 @@
   "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are complimenary, their sum is \\( 90^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 90 \\) or \\( \\left({n} + 1\\right)x = 90 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
 },
 {
-  "id": "GEO 2-3a C v1",
+  "id": "GEO 2-3a C Circle",
   "type": "template",
   "objective": "Calculate the Area and Circumference of a Circle on a Coordinate Plane",
   "difficulty": "basic",
@@ -5739,7 +5739,7 @@
   "answer": "1. **Find the radius (r):** Use the distance formula between center C({h}, {k}) and point P({p_x}, {p_y}). <br> r = &radic;<span style='border-top:1px solid;'>( {p_x} - {h} )&sup2; + ( {p_y} - {k} )&sup2;</span> <br> r = &radic;<span style='border-top:1px solid;'>{r_squared}</span> <br> r = {r} <br><br>2. **Calculate Circumference:** <br> - Exact: C = 2 * pi * r = 2 * pi * {r} = {circumference_coefficient}pi <br> - Decimal Approximation: {circumference_approx} (to four significant figures) <br><br>3. **Calculate Area:** <br> - Exact: A = pi * r&sup2; = pi * ({r})&sup2; = {r_squared}pi <br> - Decimal Approximation: {area_approx} (to four significant figures)."
 },
 {
-  "id": "GEO 2-3a C v2",
+  "id": "GEO 2-3a C rectangle",
   "type": "template",
   "objective": "Calculate the Perimeter and Area of a Tilted Rectangle on a Coordinate Plane",
   "difficulty": "basic",
