@@ -5735,7 +5735,7 @@
     "circumference_approx": { "formula": "String((2 * Math.PI * Math.sqrt(Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))" },
     "area_approx": { "formula": "String((Math.PI * (Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))" }
   },
-  "question": "A circle is drawn on a coordinate plane. The center of the circle is at point C({h}, {k}), and a point on the outer edge of the circle is located at P({p_x}, {p_y}). <br><br>Find the **circumference** and the **area** of the circle. For each measurement, provide both the exact answer in terms of pi and a decimal approximation rounded to four significant figures.",
+  "question": "A circle is drawn on a coordinate plane. The center of the circle is at point C({h}, {k}), and a point on the outer edge of the circle is located at P({p_x}, {p_y}). <br><br>Find the **circumference** and the **area** of the circle.",
   "answer": "1. **Find the radius (r):** Use the distance formula between center C({h}, {k}) and point P({p_x}, {p_y}). <br> r = &radic;<span style='border-top:1px solid;'>( {p_x} - {h} )&sup2; + ( {p_y} - {k} )&sup2;</span> <br> r = &radic;<span style='border-top:1px solid;'>{r_squared}</span> <br> r = {r} <br><br>2. **Calculate Circumference:** <br> - Exact: C = 2 * pi * r = 2 * pi * {r} = {circumference_coefficient}pi <br> - Decimal Approximation: {circumference_approx} (to four significant figures) <br><br>3. **Calculate Area:** <br> - Exact: A = pi * r&sup2; = pi * ({r})&sup2; = {r_squared}pi <br> - Decimal Approximation: {area_approx} (to four significant figures)."
 },
 {
