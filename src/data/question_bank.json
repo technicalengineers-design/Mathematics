@@ -4144,6 +4144,40 @@
         "answer": "<b>Answer key</b><br>Graph A: {eq1_name}; positive interval(s): {eq1_answer}<br>Graph B: {eq2_name}; positive interval(s): {eq2_answer}<br>Graph C: {eq3_name}; positive interval(s): {eq3_answer}"
       },
       {
+        "id": "ALG1-3.4-I Intercepts",
+        "type": "template",
+        "objective": "Intercepts",
+        "difficulty": "intermediate",
+        "variables": {
+          "A": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0
+            ]
+          },
+          "B": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0
+            ]
+          },
+          "C": {
+            "min": -10,
+            "max": 10
+          },
+          "x_int": {
+            "formula": "C/A"
+          },
+          "y_int": {
+            "formula": "C/B"
+          }
+        },
+        "question": "Find the x-intercept and y-intercepts algebraically, then make a sketch of the line by connecting the intercepts: <br> \\( {A|coef}x {B|signedCoef}y = {C} \\)",
+        "answer": "x-intercept: \\( ({x_int}, 0) \\) or \\( (\\frac{ {C} }{ {A} }, 0) \\) <br> y-intercept: \\( (0, {y_int}) \\) or \\( (0, \\frac{ {C} }{ {B} }) \\)"
+      },
+      {
         "id": "ALG1-3.5 Relative Maximum and Minimum",
         "type": "template",
         "objective": "Relative Maximum and Minimum",
@@ -4769,40 +4803,6 @@
         },
         "question": "<div style='width:100%;'><b>For each graph, write the interval(s) of x-values where the function is increasing.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<br>Increasing interval(s): ____________________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<br>Increasing interval(s): ____________________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<br>Increasing interval(s): ____________________</div></div></div>",
         "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Increasing interval(s): {eq1_correct_interval}<br>Graph B: {eq2_name}<br>Increasing interval(s): {eq2_correct_interval}<br>Graph C: {eq3_name}<br>Increasing interval(s): {eq3_correct_interval}"
-      },
-      {
-        "id": "ALG1-3.4-I1 (optional)",
-        "type": "template",
-        "objective": "Intercepts",
-        "difficulty": "intermediate",
-        "variables": {
-          "A": {
-            "min": -5,
-            "max": 5,
-            "exclude": [
-              0
-            ]
-          },
-          "B": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "C": {
-            "min": -10,
-            "max": 10
-          },
-          "x_int": {
-            "formula": "C/A"
-          },
-          "y_int": {
-            "formula": "C/B"
-          }
-        },
-        "question": "Find the x-intercept and y-intercepts algebraically, then make a sketch of the line by connecting the intercepts: <br> \\( {A|coef}x {B|signedCoef}y = {C} \\)",
-        "answer": "x-intercept: \\( ({x_int}, 0) \\) or \\( (\\frac{ {C} }{ {A} }, 0) \\) <br> y-intercept: \\( (0, {y_int}) \\) or \\( (0, \\frac{ {C} }{ {B} }) \\)"
       }
     ],
     "4 Functions": [
