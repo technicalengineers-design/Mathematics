@@ -1224,7 +1224,7 @@
             "format": "auto"
           }
         },
-        "question": "Evaluate: \\( \\left| x - | \\frac{{a}}{{c}} - y | \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
+        "question": "Evaluate: \\( \\left| x - | \\dfrac{{a}}{{c}} - y | \\right| + \\dfrac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
         "answer": "\\({result}\\)"
       },
       {
@@ -1327,8 +1327,8 @@
             "formula": "'' + Number((Math.abs(a_num - x_num) + Math.abs((c_num / y_num) + (z_num / f_num))).toFixed(2))"
           }
         },
-        "question": "Evaluate the expression: |a - x| + |c/y + z/f| <br><br>Given values: a = {{a}} x = {{x}} c = {{c}} y = {{y}} z = {{z}} f = {{f}} <br><br>*(Round your final answer to two decimal places if necessary)*",
-        "answer": "Step 1: Substitute the given values into the expression:<br>|{{a}} - ({{x}})| + |{{c}}/{{y}} + {{z}}/{{f}}|<br><br>Step 2: Simplify the values inside the absolute value bars:<br>First part: |{{a}} - ({{x}})| = |{{diff}}| = {{abs_diff}}<br>Second part: |{{c}}/{{y}} + {{z}}/{{f}}| = |{{frac1_val}} + ({{frac2_val}})| = |{{frac_sum}}| = {{abs_frac_sum}}<br><br>Step 3: Add the simplified absolute values together:<br>{{abs_diff}} + {{abs_frac_sum}} = {{result}}"
+        "question": "Evaluate the expression: \\( |a - x| + \\left|\\dfrac{c\\,}{y\\,} + \\dfrac{z\\,}{f\\,}\\right| \\)<br><br>Given values: a = {a} x = {x} c = {c} y = {y} z = {z} f = {f}<br><br>*(Round your final answer to two decimal places if necessary)*",
+        "answer": "Step 1: Substitute the given values:<br>\\( |{a} - ({x})| + \\left|\\dfrac{{{c}}}{{{y}}} + \\dfrac{{{z}}}{{{f}}}\\right| \\)<br><br>Step 2: Evaluate each part:<br>First part: \\( |{a} - ({x})| = |{diff}| = {abs_diff} \\)<br>Second part: \\( \\left|\\dfrac{{{c}}}{{{y}}} + \\dfrac{{{z}}}{{{f}}}\\right| = |{frac1_val} + ({frac2_val})| = |{frac_sum}| = {abs_frac_sum} \\)<br><br>Step 3: Add the two parts:<br>\\( {abs_diff} + {abs_frac_sum} = {result} \\)"
       }
     ],
     "2 Equations": [
