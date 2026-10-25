@@ -3979,6 +3979,234 @@
         "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Relative maximum: {eq1_max}; relative minimum: {eq1_min}<br>Graph B: {eq2_name}<br>Relative maximum: {eq2_max}; relative minimum: {eq2_min}<br>Graph C: {eq3_name}<br>Relative maximum: {eq3_max}; relative minimum: {eq3_min}"
       },
       {
+        "id": "ALG1-3.5 Increasing Intervals",
+        "type": "template",
+        "objective": "Intervals where a Function is Increasing",
+        "difficulty": "basic",
+        "variables": {
+          "q_h": {
+            "min": -3,
+            "max": 3
+          },
+          "q_k": {
+            "min": -3,
+            "max": 3
+          },
+          "q_a": {
+            "values": [
+              -1,
+              1
+            ]
+          },
+          "c_h": {
+            "min": -3,
+            "max": 2
+          },
+          "c_k": {
+            "min": -2,
+            "max": 2
+          },
+          "c_a": {
+            "values": [
+              -1,
+              1
+            ]
+          },
+          "f_h": {
+            "min": -2,
+            "max": 2
+          },
+          "f_k": {
+            "min": -3,
+            "max": 3
+          },
+          "f_a": {
+            "values": [
+              -1,
+              1
+            ]
+          },
+          "graph_base": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\" style=\"display:block;width:100%;height:auto;border:1px solid #777;background:white;\">' + Array.from({length:21},function(_,i){var n=-10+i,c=150+n*12,col=n===0?'#222':'#e5e5e5',w=n===0?2:1;return '<line x1=\"'+c+'\" y1=\"15\" x2=\"'+c+'\" y2=\"285\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"15\" y1=\"'+c+'\" x2=\"285\" y2=\"'+c+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>';}).join('') + '<text x=\"287\" y=\"155\" font-size=\"10\">x</text><text x=\"153\" y=\"12\" font-size=\"10\">y</text>'"
+          },
+          "q_svg": {
+            "formula": "graph_base + '<path d=\"' + Array.from({length:81},function(_,i){var x=-10+i*.25,y=q_a*(x-q_h)*(x-q_h)+q_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#286090\" stroke-width=\"2.5\"/>' + '</svg>'"
+          },
+          "c_svg": {
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-c_h,y=c_a*(2*t*t*t/(c_d*c_d*c_d)-3*t*t/(c_d*c_d))+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
+          },
+          "f_svg": {
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-f_h,s=t/f_d,y=f_a*(s*s-1)*(s*s-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
+          },
+          "order": {
+            "formula": "[1,2,3].map(function(n){return {n:n,key:Math.random()}}).sort(function(a,b){return a.key-b.key}).map(function(x){return x.n})"
+          },
+          "eq1_type": {
+            "formula": "order[0]"
+          },
+          "eq2_type": {
+            "formula": "order[1]"
+          },
+          "eq3_type": {
+            "formula": "order[2]"
+          },
+          "eq1_graph": {
+            "formula": "eq1_type===1?q_svg:eq1_type===2?c_svg:f_svg"
+          },
+          "eq2_graph": {
+            "formula": "eq2_type===1?q_svg:eq2_type===2?c_svg:f_svg"
+          },
+          "eq3_graph": {
+            "formula": "eq3_type===1?q_svg:eq3_type===2?c_svg:f_svg"
+          },
+          "q_eq": {
+            "formula": "(function(){var t=q_h<0?'x + '+Math.abs(q_h):q_h>0?'x - '+q_h:'x';return '\\\\( y = '+(q_a<0?'-':'')+'('+t+')^{2}'+(q_k===0?'':(q_k<0?' - ':' + ')+Math.abs(q_k))+' \\\\)'})()"
+          },
+          "c_eq": {
+            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x',u='\\\\frac{('+t+')} {'+c_d+'}';return '\\\\( y = '+(c_a<0?'-':'')+'(2('+u+')^{3} - 3('+u+')^{2})'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
+          },
+          "f_eq": {
+            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x',u='\\\\frac{('+t+')} {'+f_d+'}';return '\\\\( y = '+(f_a<0?'-':'')+'(('+u+')^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
+          },
+          "q_max": {
+            "formula": "q_a<0?'('+q_h+', '+q_k+')':'None'"
+          },
+          "q_min": {
+            "formula": "q_a>0?'('+q_h+', '+q_k+')':'None'"
+          },
+          "c_max": {
+            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_d)+', '+(c_k+1)+')'"
+          },
+          "c_min": {
+            "formula": "c_a>0?'('+(c_h+c_d)+', '+(c_k-1)+')':'('+c_h+', '+c_k+')'"
+          },
+          "f_max": {
+            "formula": "f_a>0?'('+f_h+', '+(f_k+1)+')':'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')'"
+          },
+          "f_min": {
+            "formula": "f_a>0?'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')':'('+f_h+', '+(f_k-1)+')'"
+          },
+          "eq1_name": {
+            "formula": "eq1_type===1?q_eq:eq1_type===2?c_eq:f_eq"
+          },
+          "eq2_name": {
+            "formula": "eq2_type===1?q_eq:eq2_type===2?c_eq:f_eq"
+          },
+          "eq3_name": {
+            "formula": "eq3_type===1?q_eq:eq3_type===2?c_eq:f_eq"
+          },
+          "eq1_max": {
+            "formula": "eq1_type===1?q_max:eq1_type===2?c_max:f_max"
+          },
+          "eq1_min": {
+            "formula": "eq1_type===1?q_min:eq1_type===2?c_min:f_min"
+          },
+          "eq2_max": {
+            "formula": "eq2_type===1?q_max:eq2_type===2?c_max:f_max"
+          },
+          "eq2_min": {
+            "formula": "eq2_type===1?q_min:eq2_type===2?c_min:f_min"
+          },
+          "eq3_max": {
+            "formula": "eq3_type===1?q_max:eq3_type===2?c_max:f_max"
+          },
+          "eq3_min": {
+            "formula": "eq3_type===1?q_min:eq3_type===2?c_min:f_min"
+          },
+          "c_d": {
+            "min": 1,
+            "max": 7
+          },
+          "f_d": {
+            "min": 1,
+            "max": 7
+          },
+          "q_choices": {
+            "formula": "(function(){var h=q_h,correct=q_a>0?'x &gt; '+h:'x &lt; '+h,wrong=q_a>0?'x &lt; '+h:'x &gt; '+h;return [{text:correct,correct:true},{text:wrong},{text:(h-2)+' &lt; x &lt; '+h},{text:h+' &lt; x &lt; '+(h+2)},{text:'x &lt; '+h+' or x &gt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+          },
+          "c_choices": {
+            "formula": "(function(){var h=c_h,r=h+c_d,correct=c_a>0?'x &lt; '+h+' or x &gt; '+r:h+' &lt; x &lt; '+r,wrong=c_a>0?h+' &lt; x &lt; '+r:'x &lt; '+h+' or x &gt; '+r;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+h},{text:'x &gt; '+r},{text:(h-2)+' &lt; x &lt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+          },
+          "f_choices": {
+            "formula": "(function(){var a=f_h-f_d,b=f_h,c=f_h+f_d,correct=f_a>0?a+' &lt; x &lt; '+b+' or x &gt; '+c:'x &lt; '+a+' or '+b+' &lt; x &lt; '+c,wrong=f_a>0?'x &lt; '+a+' or '+b+' &lt; x &lt; '+c:a+' &lt; x &lt; '+b+' or x &gt; '+c;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+a},{text:a+' &lt; x &lt; '+c},{text:'x &gt; '+c}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+          },
+          "eq1_choices": {
+            "formula": "eq1_type===1?q_choices:eq1_type===2?c_choices:f_choices"
+          },
+          "eq1_A": {
+            "formula": "eq1_choices[0].text"
+          },
+          "eq1_B": {
+            "formula": "eq1_choices[1].text"
+          },
+          "eq1_C": {
+            "formula": "eq1_choices[2].text"
+          },
+          "eq1_D": {
+            "formula": "eq1_choices[3].text"
+          },
+          "eq1_E": {
+            "formula": "eq1_choices[4].text"
+          },
+          "eq1_correct_letter": {
+            "formula": "['A','B','C','D','E'][eq1_choices.findIndex(function(o){return o.correct})]"
+          },
+          "eq1_correct_interval": {
+            "formula": "eq1_choices.find(function(o){return o.correct}).text"
+          },
+          "eq2_choices": {
+            "formula": "eq2_type===1?q_choices:eq2_type===2?c_choices:f_choices"
+          },
+          "eq2_A": {
+            "formula": "eq2_choices[0].text"
+          },
+          "eq2_B": {
+            "formula": "eq2_choices[1].text"
+          },
+          "eq2_C": {
+            "formula": "eq2_choices[2].text"
+          },
+          "eq2_D": {
+            "formula": "eq2_choices[3].text"
+          },
+          "eq2_E": {
+            "formula": "eq2_choices[4].text"
+          },
+          "eq2_correct_letter": {
+            "formula": "['A','B','C','D','E'][eq2_choices.findIndex(function(o){return o.correct})]"
+          },
+          "eq2_correct_interval": {
+            "formula": "eq2_choices.find(function(o){return o.correct}).text"
+          },
+          "eq3_choices": {
+            "formula": "eq3_type===1?q_choices:eq3_type===2?c_choices:f_choices"
+          },
+          "eq3_A": {
+            "formula": "eq3_choices[0].text"
+          },
+          "eq3_B": {
+            "formula": "eq3_choices[1].text"
+          },
+          "eq3_C": {
+            "formula": "eq3_choices[2].text"
+          },
+          "eq3_D": {
+            "formula": "eq3_choices[3].text"
+          },
+          "eq3_E": {
+            "formula": "eq3_choices[4].text"
+          },
+          "eq3_correct_letter": {
+            "formula": "['A','B','C','D','E'][eq3_choices.findIndex(function(o){return o.correct})]"
+          },
+          "eq3_correct_interval": {
+            "formula": "eq3_choices.find(function(o){return o.correct}).text"
+          }
+        },
+        "question": "<div style='width:100%;'><b>For each graph, choose the interval(s) of x-values where the function is increasing.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq1_A}</li><li>{eq1_B}</li><li>{eq1_C}</li><li>{eq1_D}</li><li>{eq1_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq2_A}</li><li>{eq2_B}</li><li>{eq2_C}</li><li>{eq2_D}</li><li>{eq2_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq3_A}</li><li>{eq3_B}</li><li>{eq3_C}</li><li>{eq3_D}</li><li>{eq3_E}</li></ol></div></div></div>",
+        "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Correct choice: {eq1_correct_letter} — {eq1_correct_interval}<br>Graph B: {eq2_name}<br>Correct choice: {eq2_correct_letter} — {eq2_correct_interval}<br>Graph C: {eq3_name}<br>Correct choice: {eq3_correct_letter} — {eq3_correct_interval}"
+      },
+      {
         "id": "ALG1-3.4-I1 (optional)",
         "type": "template",
         "objective": "Intercepts",
