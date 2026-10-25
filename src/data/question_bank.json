@@ -1,4 +1,4 @@
-{
+﻿{
   "Algebra 1": {
     "1 Expressions": [
       {
@@ -15275,9 +15275,24 @@
           },
           "formatted_total_commission": {
             "formula": "total_commission.toFixed(2)"
+          },
+          "sales_period_label": {
+            "formula": "sales_period === 'day' ? 'daily' : sales_period === 'week' ? 'weekly' : 'monthly'"
+          },
+          "tier_two_amount": {
+            "formula": "tier_two_limit-tier_one_limit"
+          },
+          "formatted_tier_one_limit": {
+            "formula": "tier_one_limit.toLocaleString('en-US')"
+          },
+          "formatted_tier_two_amount": {
+            "formula": "tier_two_amount.toLocaleString('en-US')"
+          },
+          "formatted_tier_two_limit": {
+            "formula": "tier_two_limit.toLocaleString('en-US')"
           }
         },
-        "question": "A salesperson makes ${formatted_sales} in sales for the {sales_period}. For daily sales, commission is 3% on the first $1,000, 5% on the next $4,000, and 8% above $5,000. For weekly sales, the tiers are the first $5,000, the next $20,000, and sales above $25,000. For monthly sales, the tiers are the first $20,000, the next $80,000, and sales above $100,000. Calculate the commission earned in each tier and the total graduated commission. Apply each rate only to the sales in its tier.",
+        "question": "A salesperson makes ${formatted_sales} in {sales_period_label} sales. The commission schedule is 3% on the first ${formatted_tier_one_limit}, 5% on the next ${formatted_tier_two_amount}, and 8% on sales above ${formatted_tier_two_limit}. Calculate the commission earned in each tier and the total graduated commission. Apply each rate only to sales within its tier.",
         "answer": "Tier 1: ${formatted_tier_one}; Tier 2: ${formatted_tier_two}; Tier 3: ${formatted_tier_three}; Total commission: ${formatted_total_commission}"
       },
       {
