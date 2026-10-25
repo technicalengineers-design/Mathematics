@@ -3852,7 +3852,7 @@
             ]
           },
           "c_h": {
-            "min": -2,
+            "min": -3,
             "max": 2
           },
           "c_k": {
@@ -3886,10 +3886,10 @@
             "formula": "graph_base + '<path d=\"' + Array.from({length:81},function(_,i){var x=-10+i*.25,y=q_a*(x-q_h)*(x-q_h)+q_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#286090\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "c_svg": {
-            "formula": "graph_base + '<path d=\"' + Array.from({length:81},function(_,i){var x=-5+i*.125,t=x-c_h,y=c_a*(t*t*t-3*t)+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-c_h,y=c_a*(2*t*t*t/(c_d*c_d*c_d)-3*t*t/(c_d*c_d))+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "f_svg": {
-            "formula": "graph_base + '<path d=\"' + Array.from({length:81},function(_,i){var x=-5+i*.125,t=x-f_h,y=f_a*(t*t-1)*(t*t-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-f_h,s=t/f_d,y=f_a*(s*s-1)*(s*s-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "order": {
             "formula": "[1,2,3].map(function(n){return {n:n,key:Math.random()}}).sort(function(a,b){return a.key-b.key}).map(function(x){return x.n})"
@@ -3916,10 +3916,10 @@
             "formula": "(function(){var t=q_h<0?'x + '+Math.abs(q_h):q_h>0?'x - '+q_h:'x';return '\\\\( y = '+(q_a<0?'-':'')+'('+t+')^{2}'+(q_k===0?'':(q_k<0?' - ':' + ')+Math.abs(q_k))+' \\\\)'})()"
           },
           "c_eq": {
-            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x';return '\\\\( y = '+(c_a<0?'-':'')+'('+t+')^{3} '+(c_a<0?'+ ':'- ')+'3('+t+')'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
+            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x',u='\\\\frac{('+t+')} {'+c_d+'}';return '\\\\( y = '+(c_a<0?'-':'')+'(2('+u+')^{3} - 3('+u+')^{2})'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
           },
           "f_eq": {
-            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x';return '\\\\( y = '+(f_a<0?'-':'')+'(('+t+')^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
+            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x',u='\\\\frac{('+t+')} {'+f_d+'}';return '\\\\( y = '+(f_a<0?'-':'')+'(('+u+')^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
           },
           "q_max": {
             "formula": "q_a<0?'('+q_h+', '+q_k+')':'None'"
@@ -3928,16 +3928,16 @@
             "formula": "q_a>0?'('+q_h+', '+q_k+')':'None'"
           },
           "c_max": {
-            "formula": "c_a>0?'('+(c_h-1)+', '+(c_k+2)+')':'('+(c_h+1)+', '+(c_k+2)+')'"
+            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_d)+', '+(c_k+1)+')'"
           },
           "c_min": {
-            "formula": "c_a>0?'('+(c_h+1)+', '+(c_k-2)+')':'('+(c_h-1)+', '+(c_k-2)+')'"
+            "formula": "c_a>0?'('+(c_h+c_d)+', '+(c_k-1)+')':'('+c_h+', '+c_k+')'"
           },
           "f_max": {
-            "formula": "f_a>0?'('+f_h+', '+(f_k+1)+')':'('+(f_h-1)+', '+f_k+'), ('+(f_h+1)+', '+f_k+')'"
+            "formula": "f_a>0?'('+f_h+', '+(f_k+1)+')':'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')'"
           },
           "f_min": {
-            "formula": "f_a>0?'('+(f_h-1)+', '+f_k+'), ('+(f_h+1)+', '+f_k+')':'('+f_h+', '+(f_k-1)+')'"
+            "formula": "f_a>0?'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')':'('+f_h+', '+(f_k-1)+')'"
           },
           "eq1_name": {
             "formula": "eq1_type===1?q_eq:eq1_type===2?c_eq:f_eq"
@@ -3965,6 +3965,14 @@
           },
           "eq3_min": {
             "formula": "eq3_type===1?q_min:eq3_type===2?c_min:f_min"
+          },
+          "c_d": {
+            "min": 1,
+            "max": 7
+          },
+          "f_d": {
+            "min": 1,
+            "max": 7
           }
         },
         "question": "<div style='width:100%;'><b>Identify the relative maximum and minimum point(s) for each graph. Write “None” if a graph has no relative maximum or minimum.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div></div></div>",
