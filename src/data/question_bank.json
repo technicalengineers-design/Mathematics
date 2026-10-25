@@ -1,4 +1,4 @@
-﻿{
+{
   "Algebra 1": {
     "1 Expressions": [
       {
@@ -1442,10 +1442,34 @@
           },
           "x": {
             "formula": "b * c / a.toFixed(2)"
+          },
+          "ans_raw_num": {
+            "formula": "b*c"
+          },
+          "ans_raw_den": {
+            "formula": "a"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(ans_final_num, ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_repeating_decimal+' \\\\)'"
           }
         },
         "question": "Solve for x: <br> \\( \\frac{{a}}{{b}}x = {c} \\).",
-        "answer": "\\( x = \\frac{{xnum}}{{a}} \\) or \\( x = {x} \\) NOTE: This solution may be simplified."
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.2-B3",
@@ -1510,10 +1534,34 @@
           },
           "x": {
             "formula": "(c - b) / a.toFixed(2)"
+          },
+          "ans_raw_num": {
+            "formula": "c-b"
+          },
+          "ans_raw_den": {
+            "formula": "a"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(ans_final_num, ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_repeating_decimal+' \\\\)'"
           }
         },
         "question": "Solve for x: <br> \\( {a}x + {b} = {c} \\).",
-        "answer": "\\( x = {x} \\) or \\( \\frac{{xnum}}{{a}} \\)"
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.3-B2",
@@ -1599,10 +1647,34 @@
           },
           "final_den": {
             "formula": "Math.abs(raw_den / divisor)"
+          },
+          "ans_raw_num": {
+            "formula": "raw_num"
+          },
+          "ans_raw_den": {
+            "formula": "raw_den"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(ans_final_num, ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_repeating_decimal+' \\\\)'"
           }
         },
         "question": "Solve for x: <br> \\( {b}({a} + {c}x) = {d} \\).",
-        "answer": "\\( x = \\frac{{final_num}}{{final_den}} \\)"
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.3-I1",
@@ -1638,11 +1710,43 @@
             ]
           },
           "x": {
-            "formula": " (c*(b+d)-b).toFixed(2)"
+            "formula": "(c*(b+d)-b)/a",
+            "format": "fraction"
+          },
+          "a": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0
+            ]
+          },
+          "ans_raw_num": {
+            "formula": "c*(b+d)-b"
+          },
+          "ans_raw_den": {
+            "formula": "a"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_decimal": {
+            "formula": "(function(num,den){var sign=num<0?'-':'';num=Math.abs(num);var integerPart=Math.floor(num/den);var remainder=num%den;var seen={};var digits='';while(remainder!==0&&seen[remainder]===undefined){seen[remainder]=digits.length;remainder*=10;digits+=Math.floor(remainder/den);remainder%=den;}if(remainder===0)return sign+integerPart+(digits.length?'.'+digits:'');var repeatStart=seen[remainder];return sign+integerPart+'.'+digits.slice(0,repeatStart)+'\\\\overline{'+digits.slice(repeatStart)+'}';})(ans_final_num,ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_decimal+' \\\\)'"
           }
         },
-        "question": "Solve for x: <br> \\( \\frac{ax+{b}}{{c}} - {d} = {b} \\).",
-        "answer": "\\( x = \\frac{{x}}{a} \\)"
+        "question": "Solve for x: <br> \\( \\frac{{a}x+{b}}{{c}} - {d} = {b} \\).",
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.3-I2",
@@ -1690,10 +1794,42 @@
           },
           "term_2": {
             "formula": "Math.abs(c) === 1 ? 'a' : '\\\\frac{a}{' + Math.abs(c) + '}'"
+          },
+          "a": {
+            "min": -10,
+            "max": 10
+          },
+          "x": {
+            "formula": "(d-a*b)/(b*c)",
+            "format": "fraction"
+          },
+          "ans_raw_num": {
+            "formula": "d-a*b"
+          },
+          "ans_raw_den": {
+            "formula": "b*c"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_decimal": {
+            "formula": "(function(num,den){var sign=num<0?'-':'';num=Math.abs(num);var integerPart=Math.floor(num/den);var remainder=num%den;var seen={};var digits='';while(remainder!==0&&seen[remainder]===undefined){seen[remainder]=digits.length;remainder*=10;digits+=Math.floor(remainder/den);remainder%=den;}if(remainder===0)return sign+integerPart+(digits.length?'.'+digits:'');var repeatStart=seen[remainder];return sign+integerPart+'.'+digits.slice(0,repeatStart)+'\\\\overline{'+digits.slice(repeatStart)+'}';})(ans_final_num,ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_decimal+' \\\\)'"
           }
         },
-        "question": "Solve for x: <br> \\( {b}(a + {c}x) = {d} \\).",
-        "answer": "\\( x = {term_1}{sign_2}{term_2} \\)"
+        "question": "Solve for x: <br> \\( {b}({a} + {c}x) = {d} \\).",
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.4-B1",
@@ -1904,10 +2040,61 @@
           },
           "x2": {
             "formula": "((-c - b) / a)"
+          },
+          "root1_raw_num": {
+            "formula": "c-b"
+          },
+          "root1_raw_den": {
+            "formula": "a"
+          },
+          "root1_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root1_raw_num),Math.abs(root1_raw_den))"
+          },
+          "root1_final_num": {
+            "formula": "(root1_raw_num/root1_gcd)*(root1_raw_den<0?-1:1)"
+          },
+          "root1_final_den": {
+            "formula": "Math.abs(root1_raw_den/root1_gcd)"
+          },
+          "root1_fraction": {
+            "formula": "root1_final_den===1?''+root1_final_num:'\\\\frac{'+root1_final_num+'}{'+root1_final_den+'}'"
+          },
+          "root1_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root1_final_num, root1_final_den)"
+          },
+          "root1_answer": {
+            "formula": "root1_final_den===1?'\\\\( x = '+root1_fraction+' \\\\)':'\\\\( x = '+root1_fraction+' \\\\) or \\\\( x = '+root1_repeating_decimal+' \\\\)'"
+          },
+          "root2_raw_num": {
+            "formula": "-c-b"
+          },
+          "root2_raw_den": {
+            "formula": "a"
+          },
+          "root2_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root2_raw_num),Math.abs(root2_raw_den))"
+          },
+          "root2_final_num": {
+            "formula": "(root2_raw_num/root2_gcd)*(root2_raw_den<0?-1:1)"
+          },
+          "root2_final_den": {
+            "formula": "Math.abs(root2_raw_den/root2_gcd)"
+          },
+          "root2_fraction": {
+            "formula": "root2_final_den===1?''+root2_final_num:'\\\\frac{'+root2_final_num+'}{'+root2_final_den+'}'"
+          },
+          "root2_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root2_final_num, root2_final_den)"
+          },
+          "root2_answer": {
+            "formula": "root2_final_den===1?'\\\\( x = '+root2_fraction+' \\\\)':'\\\\( x = '+root2_fraction+' \\\\) or \\\\( x = '+root2_repeating_decimal+' \\\\)'"
+          },
+          "answer_text": {
+            "formula": "'Solutions: '+root1_answer+'; '+root2_answer"
           }
         },
         "question": "Solve for x: <br> \\( |{a}x + {b}| = {c} \\).",
-        "answer": "\\( x = {x1}, {x2} \\)"
+        "answer": "{answer_text}"
       },
       {
         "id": "ALG1-2.5-I1",
@@ -1940,7 +2127,8 @@
               "a",
               -1,
               0,
-              1
+              1,
+              "-a"
             ]
           },
           "d": {
@@ -1957,10 +2145,61 @@
           },
           "x2": {
             "formula": "((-b - d) / (c + a)).toFixed(2)"
+          },
+          "root1_raw_num": {
+            "formula": "b-d"
+          },
+          "root1_raw_den": {
+            "formula": "c-a"
+          },
+          "root1_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root1_raw_num),Math.abs(root1_raw_den))"
+          },
+          "root1_final_num": {
+            "formula": "(root1_raw_num/root1_gcd)*(root1_raw_den<0?-1:1)"
+          },
+          "root1_final_den": {
+            "formula": "Math.abs(root1_raw_den/root1_gcd)"
+          },
+          "root1_fraction": {
+            "formula": "root1_final_den===1?''+root1_final_num:'\\\\frac{'+root1_final_num+'}{'+root1_final_den+'}'"
+          },
+          "root1_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root1_final_num, root1_final_den)"
+          },
+          "root1_answer": {
+            "formula": "root1_final_den===1?'\\\\( x = '+root1_fraction+' \\\\)':'\\\\( x = '+root1_fraction+' \\\\) or \\\\( x = '+root1_repeating_decimal+' \\\\)'"
+          },
+          "root2_raw_num": {
+            "formula": "-b-d"
+          },
+          "root2_raw_den": {
+            "formula": "c+a"
+          },
+          "root2_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root2_raw_num),Math.abs(root2_raw_den))"
+          },
+          "root2_final_num": {
+            "formula": "(root2_raw_num/root2_gcd)*(root2_raw_den<0?-1:1)"
+          },
+          "root2_final_den": {
+            "formula": "Math.abs(root2_raw_den/root2_gcd)"
+          },
+          "root2_fraction": {
+            "formula": "root2_final_den===1?''+root2_final_num:'\\\\frac{'+root2_final_num+'}{'+root2_final_den+'}'"
+          },
+          "root2_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root2_final_num, root2_final_den)"
+          },
+          "root2_answer": {
+            "formula": "root2_final_den===1?'\\\\( x = '+root2_fraction+' \\\\)':'\\\\( x = '+root2_fraction+' \\\\) or \\\\( x = '+root2_repeating_decimal+' \\\\)'"
+          },
+          "answer_text": {
+            "formula": "'Solutions: '+root1_answer+'; '+root2_answer"
           }
         },
         "question": "Solve for x: <br> \\( |{a}x + {b}| = {c}x {d|sign} \\).",
-        "answer": "\\( x = {x1}, {x2} \\)"
+        "answer": "{answer_text}"
       },
       {
         "id": "ALG1-2.6-B1",
@@ -2000,10 +2239,34 @@
           },
           "x": {
             "formula": "(b * a / c).toFixed(2)"
+          },
+          "ans_raw_num": {
+            "formula": "a*b"
+          },
+          "ans_raw_den": {
+            "formula": "c"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(ans_final_num, ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_repeating_decimal+' \\\\)'"
           }
         },
         "question": "Solve for \\( x \\): <br> \\(\\frac{ x }{{a}} = \\frac{{b}}{{c}} \\).",
-        "answer": "\\( x = {x} \\)"
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.6-I1",
@@ -2041,10 +2304,34 @@
           },
           "x": {
             "formula": "(a * c / (c - b)).toFixed(2)"
+          },
+          "ans_raw_num": {
+            "formula": "a*c"
+          },
+          "ans_raw_den": {
+            "formula": "c-b"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(ans_final_num, ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_repeating_decimal+' \\\\)'"
           }
         },
         "question": "Solve for \\( x \\): <br> \\(\\frac{ x - {a} }{{b}} = \\frac{ x }{{c}} \\).",
-        "answer": "\\( x = {x} \\)"
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.6-A1",
@@ -2080,7 +2367,8 @@
               "2a",
               -1,
               0,
-              1
+              1,
+              "a/2"
             ]
           },
           "d": {
@@ -2094,10 +2382,34 @@
           },
           "x": {
             "formula": "((a * d + b * c) / (2 * c - a)).toFixed(2)"
+          },
+          "ans_raw_num": {
+            "formula": "a*d+b*c"
+          },
+          "ans_raw_den": {
+            "formula": "2*c-a"
+          },
+          "ans_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(ans_raw_num),Math.abs(ans_raw_den))"
+          },
+          "ans_final_num": {
+            "formula": "(ans_raw_num/ans_gcd)*(ans_raw_den<0?-1:1)"
+          },
+          "ans_final_den": {
+            "formula": "Math.abs(ans_raw_den/ans_gcd)"
+          },
+          "ans_fraction": {
+            "formula": "ans_final_den===1?''+ans_final_num:'\\\\frac{'+ans_final_num+'}{'+ans_final_den+'}'"
+          },
+          "ans_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(ans_final_num, ans_final_den)"
+          },
+          "ans_answer": {
+            "formula": "ans_final_den===1?'\\\\( x = '+ans_fraction+' \\\\)':'\\\\( x = '+ans_fraction+' \\\\) or \\\\( x = '+ans_repeating_decimal+' \\\\)'"
           }
         },
         "question": "Solve for \\( x \\): <br> \\(\\frac{ {a} }{ 2x - {b} } = \\frac{{c}}{ x + {d} } \\).",
-        "answer": "\\( x = {x} \\)"
+        "answer": "{ans_answer}"
       },
       {
         "id": "ALG1-2.7-B1",
@@ -3886,10 +4198,10 @@
             "formula": "graph_base + '<path d=\"' + Array.from({length:81},function(_,i){var x=-10+i*.25,y=q_a*(x-q_h)*(x-q_h)+q_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#286090\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "c_svg": {
-            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-c_h,y=c_a*(2*t*t*t/(c_d*c_d*c_d)-3*t*t/(c_d*c_d))+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=(x-c_h)/c_dx,y=c_a*c_d*(2*t*t*t-3*t*t)+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "f_svg": {
-            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-f_h,s=t/f_d,y=f_a*(s*s-1)*(s*s-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=(x-f_h)/f_dx,y=f_a*f_d*(t*t-1)*(t*t-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "order": {
             "formula": "[1,2,3].map(function(n){return {n:n,key:Math.random()}}).sort(function(a,b){return a.key-b.key}).map(function(x){return x.n})"
@@ -3916,10 +4228,10 @@
             "formula": "(function(){var t=q_h<0?'x + '+Math.abs(q_h):q_h>0?'x - '+q_h:'x';return '\\\\( y = '+(q_a<0?'-':'')+'('+t+')^{2}'+(q_k===0?'':(q_k<0?' - ':' + ')+Math.abs(q_k))+' \\\\)'})()"
           },
           "c_eq": {
-            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x',u='\\\\frac{('+t+')} {'+c_d+'}';return '\\\\( y = '+(c_a<0?'-':'')+'(2('+u+')^{3} - 3('+u+')^{2})'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
+            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x';return '\\\\( y = '+(c_a<0?'-':'')+c_d+'(2(\\\\frac{('+t+')} {'+c_dx+'})^{3} - 3(\\\\frac{('+t+')} {'+c_dx+'})^{2})'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
           },
           "f_eq": {
-            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x',u='\\\\frac{('+t+')} {'+f_d+'}';return '\\\\( y = '+(f_a<0?'-':'')+'(('+u+')^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
+            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x';return '\\\\( y = '+(f_a<0?'-':'')+f_d+'((\\\\frac{('+t+')} {'+f_dx+'})^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
           },
           "q_max": {
             "formula": "q_a<0?'('+q_h+', '+q_k+')':'None'"
@@ -3928,16 +4240,16 @@
             "formula": "q_a>0?'('+q_h+', '+q_k+')':'None'"
           },
           "c_max": {
-            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_d)+', '+(c_k+1)+')'"
+            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_dx)+', '+(c_k+c_d)+')'"
           },
           "c_min": {
-            "formula": "c_a>0?'('+(c_h+c_d)+', '+(c_k-1)+')':'('+c_h+', '+c_k+')'"
+            "formula": "c_a>0?'('+(c_h+c_dx)+', '+(c_k-c_d)+')':'('+c_h+', '+c_k+')'"
           },
           "f_max": {
-            "formula": "f_a>0?'('+f_h+', '+(f_k+1)+')':'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')'"
+            "formula": "f_a>0?'('+f_h+', '+(f_k+f_d)+')':'('+(f_h-f_dx)+', '+f_k+'), ('+(f_h+f_dx)+', '+f_k+')'"
           },
           "f_min": {
-            "formula": "f_a>0?'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')':'('+f_h+', '+(f_k-1)+')'"
+            "formula": "f_a>0?'('+(f_h-f_dx)+', '+f_k+'), ('+(f_h+f_dx)+', '+f_k+')':'('+f_h+', '+(f_k-f_d)+')'"
           },
           "eq1_name": {
             "formula": "eq1_type===1?q_eq:eq1_type===2?c_eq:f_eq"
@@ -3971,6 +4283,14 @@
             "max": 7
           },
           "f_d": {
+            "min": 1,
+            "max": 7
+          },
+          "c_dx": {
+            "min": 1,
+            "max": 7
+          },
+          "f_dx": {
             "min": 1,
             "max": 7
           }
@@ -4033,10 +4353,10 @@
             "formula": "graph_base + '<path d=\"' + Array.from({length:81},function(_,i){var x=-10+i*.25,y=q_a*(x-q_h)*(x-q_h)+q_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#286090\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "c_svg": {
-            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-c_h,y=c_a*(2*t*t*t/(c_d*c_d*c_d)-3*t*t/(c_d*c_d))+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=(x-c_h)/c_dx,y=c_a*c_d*(2*t*t*t-3*t*t)+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "f_svg": {
-            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=x-f_h,s=t/f_d,y=f_a*(s*s-1)*(s*s-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=(x-f_h)/f_dx,y=f_a*f_d*(t*t-1)*(t*t-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
           },
           "order": {
             "formula": "[1,2,3].map(function(n){return {n:n,key:Math.random()}}).sort(function(a,b){return a.key-b.key}).map(function(x){return x.n})"
@@ -4063,10 +4383,10 @@
             "formula": "(function(){var t=q_h<0?'x + '+Math.abs(q_h):q_h>0?'x - '+q_h:'x';return '\\\\( y = '+(q_a<0?'-':'')+'('+t+')^{2}'+(q_k===0?'':(q_k<0?' - ':' + ')+Math.abs(q_k))+' \\\\)'})()"
           },
           "c_eq": {
-            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x',u='\\\\frac{('+t+')} {'+c_d+'}';return '\\\\( y = '+(c_a<0?'-':'')+'(2('+u+')^{3} - 3('+u+')^{2})'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
+            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x';return '\\\\( y = '+(c_a<0?'-':'')+c_d+'(2(\\\\frac{('+t+')} {'+c_dx+'})^{3} - 3(\\\\frac{('+t+')} {'+c_dx+'})^{2})'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
           },
           "f_eq": {
-            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x',u='\\\\frac{('+t+')} {'+f_d+'}';return '\\\\( y = '+(f_a<0?'-':'')+'(('+u+')^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
+            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x';return '\\\\( y = '+(f_a<0?'-':'')+f_d+'((\\\\frac{('+t+')} {'+f_dx+'})^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
           },
           "q_max": {
             "formula": "q_a<0?'('+q_h+', '+q_k+')':'None'"
@@ -4125,10 +4445,10 @@
             "formula": "(function(){var h=q_h,correct=q_a>0?'x &gt; '+h:'x &lt; '+h,wrong=q_a>0?'x &lt; '+h:'x &gt; '+h;return [{text:correct,correct:true},{text:wrong},{text:(h-2)+' &lt; x &lt; '+h},{text:h+' &lt; x &lt; '+(h+2)},{text:'x &lt; '+h+' or x &gt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
           },
           "c_choices": {
-            "formula": "(function(){var h=c_h,r=h+c_d,correct=c_a>0?'x &lt; '+h+' or x &gt; '+r:h+' &lt; x &lt; '+r,wrong=c_a>0?h+' &lt; x &lt; '+r:'x &lt; '+h+' or x &gt; '+r;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+h},{text:'x &gt; '+r},{text:(h-2)+' &lt; x &lt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+            "formula": "(function(){var h=c_h,r=h+c_dx,correct=c_a>0?'x &lt; '+h+' or x &gt; '+r:h+' &lt; x &lt; '+r,wrong=c_a>0?h+' &lt; x &lt; '+r:'x &lt; '+h+' or x &gt; '+r;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+h},{text:'x &gt; '+r},{text:(h-2)+' &lt; x &lt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
           },
           "f_choices": {
-            "formula": "(function(){var a=f_h-f_d,b=f_h,c=f_h+f_d,correct=f_a>0?a+' &lt; x &lt; '+b+' or x &gt; '+c:'x &lt; '+a+' or '+b+' &lt; x &lt; '+c,wrong=f_a>0?'x &lt; '+a+' or '+b+' &lt; x &lt; '+c:a+' &lt; x &lt; '+b+' or x &gt; '+c;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+a},{text:a+' &lt; x &lt; '+c},{text:'x &gt; '+c}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+            "formula": "(function(){var a=f_h-f_dx,b=f_h,c=f_h+f_dx,correct=f_a>0?a+' &lt; x &lt; '+b+' or x &gt; '+c:'x &lt; '+a+' or '+b+' &lt; x &lt; '+c,wrong=f_a>0?'x &lt; '+a+' or '+b+' &lt; x &lt; '+c:a+' &lt; x &lt; '+b+' or x &gt; '+c;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+a},{text:a+' &lt; x &lt; '+c},{text:'x &gt; '+c}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
           },
           "eq1_choices": {
             "formula": "eq1_type===1?q_choices:eq1_type===2?c_choices:f_choices"
@@ -4201,40 +4521,254 @@
           },
           "eq3_correct_interval": {
             "formula": "eq3_choices.find(function(o){return o.correct}).text"
+          },
+          "c_dx": {
+            "min": 1,
+            "max": 7
+          },
+          "f_dx": {
+            "min": 1,
+            "max": 7
           }
         },
         "question": "<div style='width:100%;'><b>For each graph, choose the interval(s) of x-values where the function is increasing.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq1_A}</li><li>{eq1_B}</li><li>{eq1_C}</li><li>{eq1_D}</li><li>{eq1_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq2_A}</li><li>{eq2_B}</li><li>{eq2_C}</li><li>{eq2_D}</li><li>{eq2_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq3_A}</li><li>{eq3_B}</li><li>{eq3_C}</li><li>{eq3_D}</li><li>{eq3_E}</li></ol></div></div></div>",
         "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Correct choice: {eq1_correct_letter} — {eq1_correct_interval}<br>Graph B: {eq2_name}<br>Correct choice: {eq2_correct_letter} — {eq2_correct_interval}<br>Graph C: {eq3_name}<br>Correct choice: {eq3_correct_letter} — {eq3_correct_interval}"
       },
       {
-        "id": "ALG1-3.4-I1 (optional)",
+        "id": "ALG1-3.5 I Increasing Intervals",
         "type": "template",
-        "objective": "Intercepts",
+        "objective": "Intervals where a Function is Increasing",
         "difficulty": "intermediate",
         "variables": {
-          "p": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0
+          "q_h": {
+            "min": -3,
+            "max": 3
+          },
+          "q_k": {
+            "min": -3,
+            "max": 3
+          },
+          "q_a": {
+            "values": [
+              -1,
+              1
             ]
           },
-          "q": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0
+          "c_h": {
+            "min": -3,
+            "max": 2
+          },
+          "c_k": {
+            "min": -2,
+            "max": 2
+          },
+          "c_a": {
+            "values": [
+              -1,
+              1
             ]
           },
-          "b": {
-            "formula": "-1*(p + q)"
+          "f_h": {
+            "min": -2,
+            "max": 2
           },
-          "c": {
-            "formula": "p*q"
+          "f_k": {
+            "min": -3,
+            "max": 3
+          },
+          "f_a": {
+            "values": [
+              -1,
+              1
+            ]
+          },
+          "graph_base": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\" style=\"display:block;width:100%;height:auto;border:1px solid #777;background:white;\">' + Array.from({length:21},function(_,i){var n=-10+i,c=150+n*12,col=n===0?'#222':'#e5e5e5',w=n===0?2:1;return '<line x1=\"'+c+'\" y1=\"15\" x2=\"'+c+'\" y2=\"285\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"15\" y1=\"'+c+'\" x2=\"285\" y2=\"'+c+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>';}).join('') + '<text x=\"287\" y=\"155\" font-size=\"10\">x</text><text x=\"153\" y=\"12\" font-size=\"10\">y</text>'"
+          },
+          "q_svg": {
+            "formula": "graph_base + '<path d=\"' + Array.from({length:81},function(_,i){var x=-10+i*.25,y=q_a*(x-q_h)*(x-q_h)+q_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#286090\" stroke-width=\"2.5\"/>' + '</svg>'"
+          },
+          "c_svg": {
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=(x-c_h)/c_dx,y=c_a*c_d*(2*t*t*t-3*t*t)+c_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#b04a2f\" stroke-width=\"2.5\"/>' + '</svg>'"
+          },
+          "f_svg": {
+            "formula": "graph_base + '<path d=\"' + Array.from({length:161},function(_,i){var x=-10+i*.125,t=(x-f_h)/f_dx,y=f_a*f_d*(t*t-1)*(t*t-1)+f_k;return (i?'L ':'M ')+(150+x*12)+' '+(150-y*12);}).join(' ') + '\" fill=\"none\" stroke=\"#7040a0\" stroke-width=\"2.5\"/>' + '</svg>'"
+          },
+          "order": {
+            "formula": "[1,2,3].map(function(n){return {n:n,key:Math.random()}}).sort(function(a,b){return a.key-b.key}).map(function(x){return x.n})"
+          },
+          "eq1_type": {
+            "formula": "order[0]"
+          },
+          "eq2_type": {
+            "formula": "order[1]"
+          },
+          "eq3_type": {
+            "formula": "order[2]"
+          },
+          "eq1_graph": {
+            "formula": "eq1_type===1?q_svg:eq1_type===2?c_svg:f_svg"
+          },
+          "eq2_graph": {
+            "formula": "eq2_type===1?q_svg:eq2_type===2?c_svg:f_svg"
+          },
+          "eq3_graph": {
+            "formula": "eq3_type===1?q_svg:eq3_type===2?c_svg:f_svg"
+          },
+          "q_eq": {
+            "formula": "(function(){var t=q_h<0?'x + '+Math.abs(q_h):q_h>0?'x - '+q_h:'x';return '\\\\( y = '+(q_a<0?'-':'')+'('+t+')^{2}'+(q_k===0?'':(q_k<0?' - ':' + ')+Math.abs(q_k))+' \\\\)'})()"
+          },
+          "c_eq": {
+            "formula": "(function(){var t=c_h<0?'x + '+Math.abs(c_h):c_h>0?'x - '+c_h:'x';return '\\\\( y = '+(c_a<0?'-':'')+c_d+'(2(\\\\frac{('+t+')} {'+c_dx+'})^{3} - 3(\\\\frac{('+t+')} {'+c_dx+'})^{2})'+(c_k===0?'':(c_k<0?' - ':' + ')+Math.abs(c_k))+' \\\\)'})()"
+          },
+          "f_eq": {
+            "formula": "(function(){var t=f_h<0?'x + '+Math.abs(f_h):f_h>0?'x - '+f_h:'x';return '\\\\( y = '+(f_a<0?'-':'')+f_d+'((\\\\frac{('+t+')} {'+f_dx+'})^{2} - 1)^{2}'+(f_k===0?'':(f_k<0?' - ':' + ')+Math.abs(f_k))+' \\\\)'})()"
+          },
+          "q_max": {
+            "formula": "q_a<0?'('+q_h+', '+q_k+')':'None'"
+          },
+          "q_min": {
+            "formula": "q_a>0?'('+q_h+', '+q_k+')':'None'"
+          },
+          "c_max": {
+            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_d)+', '+(c_k+1)+')'"
+          },
+          "c_min": {
+            "formula": "c_a>0?'('+(c_h+c_d)+', '+(c_k-1)+')':'('+c_h+', '+c_k+')'"
+          },
+          "f_max": {
+            "formula": "f_a>0?'('+f_h+', '+(f_k+1)+')':'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')'"
+          },
+          "f_min": {
+            "formula": "f_a>0?'('+(f_h-f_d)+', '+f_k+'), ('+(f_h+f_d)+', '+f_k+')':'('+f_h+', '+(f_k-1)+')'"
+          },
+          "eq1_name": {
+            "formula": "eq1_type===1?q_eq:eq1_type===2?c_eq:f_eq"
+          },
+          "eq2_name": {
+            "formula": "eq2_type===1?q_eq:eq2_type===2?c_eq:f_eq"
+          },
+          "eq3_name": {
+            "formula": "eq3_type===1?q_eq:eq3_type===2?c_eq:f_eq"
+          },
+          "eq1_max": {
+            "formula": "eq1_type===1?q_max:eq1_type===2?c_max:f_max"
+          },
+          "eq1_min": {
+            "formula": "eq1_type===1?q_min:eq1_type===2?c_min:f_min"
+          },
+          "eq2_max": {
+            "formula": "eq2_type===1?q_max:eq2_type===2?c_max:f_max"
+          },
+          "eq2_min": {
+            "formula": "eq2_type===1?q_min:eq2_type===2?c_min:f_min"
+          },
+          "eq3_max": {
+            "formula": "eq3_type===1?q_max:eq3_type===2?c_max:f_max"
+          },
+          "eq3_min": {
+            "formula": "eq3_type===1?q_min:eq3_type===2?c_min:f_min"
+          },
+          "c_d": {
+            "min": 1,
+            "max": 7
+          },
+          "f_d": {
+            "min": 1,
+            "max": 7
+          },
+          "q_choices": {
+            "formula": "(function(){var h=q_h,correct=q_a>0?'x &gt; '+h:'x &lt; '+h,wrong=q_a>0?'x &lt; '+h:'x &gt; '+h;return [{text:correct,correct:true},{text:wrong},{text:(h-2)+' &lt; x &lt; '+h},{text:h+' &lt; x &lt; '+(h+2)},{text:'x &lt; '+h+' or x &gt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+          },
+          "c_choices": {
+            "formula": "(function(){var h=c_h,r=h+c_dx,correct=c_a>0?'x &lt; '+h+' or x &gt; '+r:h+' &lt; x &lt; '+r,wrong=c_a>0?h+' &lt; x &lt; '+r:'x &lt; '+h+' or x &gt; '+r;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+h},{text:'x &gt; '+r},{text:(h-2)+' &lt; x &lt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+          },
+          "f_choices": {
+            "formula": "(function(){var a=f_h-f_dx,b=f_h,c=f_h+f_dx,correct=f_a>0?a+' &lt; x &lt; '+b+' or x &gt; '+c:'x &lt; '+a+' or '+b+' &lt; x &lt; '+c,wrong=f_a>0?'x &lt; '+a+' or '+b+' &lt; x &lt; '+c:a+' &lt; x &lt; '+b+' or x &gt; '+c;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+a},{text:a+' &lt; x &lt; '+c},{text:'x &gt; '+c}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+          },
+          "eq1_choices": {
+            "formula": "eq1_type===1?q_choices:eq1_type===2?c_choices:f_choices"
+          },
+          "eq1_A": {
+            "formula": "eq1_choices[0].text"
+          },
+          "eq1_B": {
+            "formula": "eq1_choices[1].text"
+          },
+          "eq1_C": {
+            "formula": "eq1_choices[2].text"
+          },
+          "eq1_D": {
+            "formula": "eq1_choices[3].text"
+          },
+          "eq1_E": {
+            "formula": "eq1_choices[4].text"
+          },
+          "eq1_correct_letter": {
+            "formula": "['A','B','C','D','E'][eq1_choices.findIndex(function(o){return o.correct})]"
+          },
+          "eq1_correct_interval": {
+            "formula": "eq1_choices.find(function(o){return o.correct}).text"
+          },
+          "eq2_choices": {
+            "formula": "eq2_type===1?q_choices:eq2_type===2?c_choices:f_choices"
+          },
+          "eq2_A": {
+            "formula": "eq2_choices[0].text"
+          },
+          "eq2_B": {
+            "formula": "eq2_choices[1].text"
+          },
+          "eq2_C": {
+            "formula": "eq2_choices[2].text"
+          },
+          "eq2_D": {
+            "formula": "eq2_choices[3].text"
+          },
+          "eq2_E": {
+            "formula": "eq2_choices[4].text"
+          },
+          "eq2_correct_letter": {
+            "formula": "['A','B','C','D','E'][eq2_choices.findIndex(function(o){return o.correct})]"
+          },
+          "eq2_correct_interval": {
+            "formula": "eq2_choices.find(function(o){return o.correct}).text"
+          },
+          "eq3_choices": {
+            "formula": "eq3_type===1?q_choices:eq3_type===2?c_choices:f_choices"
+          },
+          "eq3_A": {
+            "formula": "eq3_choices[0].text"
+          },
+          "eq3_B": {
+            "formula": "eq3_choices[1].text"
+          },
+          "eq3_C": {
+            "formula": "eq3_choices[2].text"
+          },
+          "eq3_D": {
+            "formula": "eq3_choices[3].text"
+          },
+          "eq3_E": {
+            "formula": "eq3_choices[4].text"
+          },
+          "eq3_correct_letter": {
+            "formula": "['A','B','C','D','E'][eq3_choices.findIndex(function(o){return o.correct})]"
+          },
+          "eq3_correct_interval": {
+            "formula": "eq3_choices.find(function(o){return o.correct}).text"
+          },
+          "c_dx": {
+            "min": 1,
+            "max": 7
+          },
+          "f_dx": {
+            "min": 1,
+            "max": 7
           }
         },
-        "question": "Use a table of values or a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
-        "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
+        "question": "<div style='width:100%;'><b>For each graph, write the interval(s) of x-values where the function is increasing.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<br>Increasing interval(s): ____________________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<br>Increasing interval(s): ____________________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<br>Increasing interval(s): ____________________</div></div></div>",
+        "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Increasing interval(s): {eq1_correct_interval}<br>Graph B: {eq2_name}<br>Increasing interval(s): {eq2_correct_interval}<br>Graph C: {eq3_name}<br>Increasing interval(s): {eq3_correct_interval}"
       },
       {
         "id": "ALG1-3.4-I1 (optional)",
@@ -4269,127 +4803,6 @@
         },
         "question": "Find the x-intercept and y-intercepts algebraically, then make a sketch of the line by connecting the intercepts: <br> \\( {A|coef}x {B|signedCoef}y = {C} \\)",
         "answer": "x-intercept: \\( ({x_int}, 0) \\) or \\( (\\frac{ {C} }{ {A} }, 0) \\) <br> y-intercept: \\( (0, {y_int}) \\) or \\( (0, \\frac{ {C} }{ {B} }) \\)"
-      },
-      {
-        "id": "ALG1-3.5-B1 (optional)",
-        "type": "template",
-        "objective": "Shapes of Graphs",
-        "difficulty": "basic",
-        "variables": {
-          "a": {
-            "values": [
-              2
-            ]
-          },
-          "r1": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "r2": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "formula": "-3*(r1 + r2)"
-          },
-          "c": {
-            "formula": "6*r1*r2"
-          },
-          "d": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "x1": {
-            "min": -3,
-            "max": 3
-          },
-          "x2": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1"
-            ]
-          },
-          "x3": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1",
-              "x2"
-            ]
-          },
-          "x4": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1",
-              "x2",
-              "x3"
-            ]
-          },
-          "y1": {
-            "formula": "a * x1**3 + b * x1**2 + c * x1 + d"
-          },
-          "y2": {
-            "formula": "a * x2**3 + b * x2**2 + c * x2 + d"
-          },
-          "y3": {
-            "formula": "a * x3**3 + b * x3**2 + c * x3 + d"
-          },
-          "y4": {
-            "formula": "a * x4**3 + b * x4**2 + c * x4 + d"
-          }
-        },
-        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign}\\), then find the missing values: <br> a) \\( f({x1}) = ? \\) <br> b) \\( f({x2}) = ? \\) <br> c) \\( f(?) = {y3} \\) <br> d) \\( f(?) = {y4} \\)",
-        "answer": "a) \\( f({x1}) = {y1} \\) <br> b) \\( f({x2}) = {y2} \\) <br> c) \\( f({x3}) = {y3} \\) <br> d) \\( f({x4}) = {y4} \\)"
-      },
-      {
-        "id": "ALG1-3.5-I1 (optional)",
-        "type": "template",
-        "objective": "Shapes of Graphs",
-        "difficulty": "intermediate",
-        "variables": {
-          "a": {
-            "min": -1,
-            "max": 1,
-            "exclude": [
-              0
-            ]
-          },
-          "h": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
-            ]
-          },
-          "k": {
-            "formula": "-a*4"
-          },
-          "b": {
-            "formula": "-2*a*h"
-          },
-          "c": {
-            "formula": "a * h**2 + k"
-          },
-          "z1": {
-            "formula": "h - 2"
-          },
-          "z2": {
-            "formula": "h + 2"
-          }
-        },
-        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.",
-        "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
       }
     ],
     "4 Functions": [
@@ -11218,10 +11631,37 @@
           "x1": {
             "formula": "r1/a",
             "format": "fraction"
+          },
+          "x1fmt_raw_num": {
+            "formula": "r1"
+          },
+          "x1fmt_raw_den": {
+            "formula": "a"
+          },
+          "x1fmt_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(x1fmt_raw_num),Math.abs(x1fmt_raw_den))"
+          },
+          "x1fmt_final_num": {
+            "formula": "(x1fmt_raw_num/x1fmt_gcd)*(x1fmt_raw_den<0?-1:1)"
+          },
+          "x1fmt_final_den": {
+            "formula": "Math.abs(x1fmt_raw_den/x1fmt_gcd)"
+          },
+          "x1fmt_fraction": {
+            "formula": "x1fmt_final_den===1?''+x1fmt_final_num:'\\\\frac{'+x1fmt_final_num+'}{'+x1fmt_final_den+'}'"
+          },
+          "x1fmt_decimal": {
+            "formula": "(function(num,den){var sign=num<0?'-':'';num=Math.abs(num);var integerPart=Math.floor(num/den);var remainder=num%den;var seen={};var digits='';while(remainder!==0&&seen[remainder]===undefined){seen[remainder]=digits.length;remainder*=10;digits+=Math.floor(remainder/den);remainder%=den;}if(remainder===0)return sign+integerPart+(digits.length?'.'+digits:'');var repeatStart=seen[remainder];return sign+integerPart+'.'+digits.slice(0,repeatStart)+'\\\\overline{'+digits.slice(repeatStart)+'}';})(x1fmt_final_num,x1fmt_final_den)"
+          },
+          "x1fmt_answer": {
+            "formula": "x1fmt_final_den===1?'\\\\( x = '+x1fmt_fraction+' \\\\)':'\\\\( x = '+x1fmt_fraction+' \\\\) or \\\\( x = '+x1fmt_decimal+' \\\\)'"
+          },
+          "x1_answer": {
+            "formula": "x1fmt_final_den===1?'\\\\( x = '+x1fmt_fraction+' \\\\)':'\\\\( x = '+x1fmt_fraction+' \\\\) or \\\\( x = '+x1fmt_decimal+' \\\\)'"
           }
         },
         "question": "Solve for \\(x\\) by factoring: <br> \\( {LC|coef}x^2 {b|signedCoef}x {c|sign} = (x {p|sign})^2 \\).",
-        "answer": "\\( x = {x1} \\) or \\( x = {r2} \\)"
+        "answer": "Solutions: {x1_answer}; and \\( x = {r2} \\)"
       },
       {
         "id": "ALG1-11.6-B1",
@@ -11414,10 +11854,61 @@
           "y2": {
             "formula": "m*x2 + n",
             "format": "fraction"
+          },
+          "x2fmt_raw_num": {
+            "formula": "r2"
+          },
+          "x2fmt_raw_den": {
+            "formula": "a"
+          },
+          "x2fmt_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(x2fmt_raw_num),Math.abs(x2fmt_raw_den))"
+          },
+          "x2fmt_final_num": {
+            "formula": "(x2fmt_raw_num/x2fmt_gcd)*(x2fmt_raw_den<0?-1:1)"
+          },
+          "x2fmt_final_den": {
+            "formula": "Math.abs(x2fmt_raw_den/x2fmt_gcd)"
+          },
+          "x2fmt_fraction": {
+            "formula": "x2fmt_final_den===1?''+x2fmt_final_num:'\\\\frac{'+x2fmt_final_num+'}{'+x2fmt_final_den+'}'"
+          },
+          "x2fmt_decimal": {
+            "formula": "(function(num,den){var sign=num<0?'-':'';num=Math.abs(num);var integerPart=Math.floor(num/den);var remainder=num%den;var seen={};var digits='';while(remainder!==0&&seen[remainder]===undefined){seen[remainder]=digits.length;remainder*=10;digits+=Math.floor(remainder/den);remainder%=den;}if(remainder===0)return sign+integerPart+(digits.length?'.'+digits:'');var repeatStart=seen[remainder];return sign+integerPart+'.'+digits.slice(0,repeatStart)+'\\\\overline{'+digits.slice(repeatStart)+'}';})(x2fmt_final_num,x2fmt_final_den)"
+          },
+          "x2fmt_answer": {
+            "formula": "x2fmt_final_den===1?'\\\\( x = '+x2fmt_fraction+' \\\\)':'\\\\( x = '+x2fmt_fraction+' \\\\) or \\\\( x = '+x2fmt_decimal+' \\\\)'"
+          },
+          "y2fmt_raw_num": {
+            "formula": "m*r2+n*a"
+          },
+          "y2fmt_raw_den": {
+            "formula": "a"
+          },
+          "y2fmt_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(y2fmt_raw_num),Math.abs(y2fmt_raw_den))"
+          },
+          "y2fmt_final_num": {
+            "formula": "(y2fmt_raw_num/y2fmt_gcd)*(y2fmt_raw_den<0?-1:1)"
+          },
+          "y2fmt_final_den": {
+            "formula": "Math.abs(y2fmt_raw_den/y2fmt_gcd)"
+          },
+          "y2fmt_fraction": {
+            "formula": "y2fmt_final_den===1?''+y2fmt_final_num:'\\\\frac{'+y2fmt_final_num+'}{'+y2fmt_final_den+'}'"
+          },
+          "y2fmt_decimal": {
+            "formula": "(function(num,den){var sign=num<0?'-':'';num=Math.abs(num);var integerPart=Math.floor(num/den);var remainder=num%den;var seen={};var digits='';while(remainder!==0&&seen[remainder]===undefined){seen[remainder]=digits.length;remainder*=10;digits+=Math.floor(remainder/den);remainder%=den;}if(remainder===0)return sign+integerPart+(digits.length?'.'+digits:'');var repeatStart=seen[remainder];return sign+integerPart+'.'+digits.slice(0,repeatStart)+'\\\\overline{'+digits.slice(repeatStart)+'}';})(y2fmt_final_num,y2fmt_final_den)"
+          },
+          "y2fmt_answer": {
+            "formula": "y2fmt_final_den===1?'\\\\( y = '+y2fmt_fraction+' \\\\)':'\\\\( y = '+y2fmt_fraction+' \\\\) or \\\\( y = '+y2fmt_decimal+' \\\\)'"
+          },
+          "point2_answer": {
+            "formula": "(x2fmt_final_den===1&&y2fmt_final_den===1)?'\\\\( ('+x2fmt_fraction+', '+y2fmt_fraction+') \\\\)':'\\\\( ('+x2fmt_fraction+', '+y2fmt_fraction+') \\\\) or \\\\( ('+x2fmt_decimal+', '+y2fmt_decimal+') \\\\)'"
           }
         },
         "question": "Solve the system of equations: <br> \\( y = {a|coef}x^2 {lin|signedCoef}x {const|sign} \\) <br> \\( y = {m|coef}x {n|sign} \\)",
-        "answer": "Solutions: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\)"
+        "answer": "Solutions: \\( ({x1}, {y1}) \\) and {point2_answer}"
       },
       {
         "id": "ALG1-11.7-B2",
@@ -11499,10 +11990,61 @@
           "y2": {
             "formula": "a2*x2*x2 + b2*x2 + c2",
             "format": "fraction"
+          },
+          "x2fmt_raw_num": {
+            "formula": "r2"
+          },
+          "x2fmt_raw_den": {
+            "formula": "a"
+          },
+          "x2fmt_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(x2fmt_raw_num),Math.abs(x2fmt_raw_den))"
+          },
+          "x2fmt_final_num": {
+            "formula": "(x2fmt_raw_num/x2fmt_gcd)*(x2fmt_raw_den<0?-1:1)"
+          },
+          "x2fmt_final_den": {
+            "formula": "Math.abs(x2fmt_raw_den/x2fmt_gcd)"
+          },
+          "x2fmt_fraction": {
+            "formula": "x2fmt_final_den===1?''+x2fmt_final_num:'\\\\frac{'+x2fmt_final_num+'}{'+x2fmt_final_den+'}'"
+          },
+          "x2fmt_decimal": {
+            "formula": "(function(num,den){var sign=num<0?'-':'';num=Math.abs(num);var integerPart=Math.floor(num/den);var remainder=num%den;var seen={};var digits='';while(remainder!==0&&seen[remainder]===undefined){seen[remainder]=digits.length;remainder*=10;digits+=Math.floor(remainder/den);remainder%=den;}if(remainder===0)return sign+integerPart+(digits.length?'.'+digits:'');var repeatStart=seen[remainder];return sign+integerPart+'.'+digits.slice(0,repeatStart)+'\\\\overline{'+digits.slice(repeatStart)+'}';})(x2fmt_final_num,x2fmt_final_den)"
+          },
+          "x2fmt_answer": {
+            "formula": "x2fmt_final_den===1?'\\\\( x = '+x2fmt_fraction+' \\\\)':'\\\\( x = '+x2fmt_fraction+' \\\\) or \\\\( x = '+x2fmt_decimal+' \\\\)'"
+          },
+          "y2fmt_raw_num": {
+            "formula": "a2*r2*r2+b2*r2*a+c2*a*a"
+          },
+          "y2fmt_raw_den": {
+            "formula": "a*a"
+          },
+          "y2fmt_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(y2fmt_raw_num),Math.abs(y2fmt_raw_den))"
+          },
+          "y2fmt_final_num": {
+            "formula": "(y2fmt_raw_num/y2fmt_gcd)*(y2fmt_raw_den<0?-1:1)"
+          },
+          "y2fmt_final_den": {
+            "formula": "Math.abs(y2fmt_raw_den/y2fmt_gcd)"
+          },
+          "y2fmt_fraction": {
+            "formula": "y2fmt_final_den===1?''+y2fmt_final_num:'\\\\frac{'+y2fmt_final_num+'}{'+y2fmt_final_den+'}'"
+          },
+          "y2fmt_decimal": {
+            "formula": "(function(num,den){var sign=num<0?'-':'';num=Math.abs(num);var integerPart=Math.floor(num/den);var remainder=num%den;var seen={};var digits='';while(remainder!==0&&seen[remainder]===undefined){seen[remainder]=digits.length;remainder*=10;digits+=Math.floor(remainder/den);remainder%=den;}if(remainder===0)return sign+integerPart+(digits.length?'.'+digits:'');var repeatStart=seen[remainder];return sign+integerPart+'.'+digits.slice(0,repeatStart)+'\\\\overline{'+digits.slice(repeatStart)+'}';})(y2fmt_final_num,y2fmt_final_den)"
+          },
+          "y2fmt_answer": {
+            "formula": "y2fmt_final_den===1?'\\\\( y = '+y2fmt_fraction+' \\\\)':'\\\\( y = '+y2fmt_fraction+' \\\\) or \\\\( y = '+y2fmt_decimal+' \\\\)'"
+          },
+          "point2_answer": {
+            "formula": "(x2fmt_final_den===1&&y2fmt_final_den===1)?'\\\\( ('+x2fmt_fraction+', '+y2fmt_fraction+') \\\\)':'\\\\( ('+x2fmt_fraction+', '+y2fmt_fraction+') \\\\) or \\\\( ('+x2fmt_decimal+', '+y2fmt_decimal+') \\\\)'"
           }
         },
         "question": "Solve the system of equations: <br> \\( y = {a1|coef}x^2 {b1|signedCoef}x {c1|sign} \\) <br> \\( y = {a2|coef}x^2 {b2|signedCoef}x {c2|sign} \\)",
-        "answer": "Solutions: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\)"
+        "answer": "Solutions: \\( ({x1}, {y1}) \\) and {point2_answer}"
       },
       {
         "id": "ALG1-11.7-I1",
@@ -11609,6 +12151,159 @@
         },
         "question": "A rectangular garden has dimentions \\( ( x {r1|sign}) ft \\) by \\( ( x {r2|sign}) ft \\). Find the value of \\( x \\)  and the dimentions of the garden such that the area is equal to the perimeter. Round your answer to the nearest tenth. (Hint: area of a rectangle is given by \\( A = length \\cdot width \\) and the perimeter is given by \\( P = 2(length + width) \\).",
         "answer": "\\( x = {x1} \\) with dimentions \\( {width_1}\\) by \\( {length_1}\\)  or <br> \\( x = {x2} \\) with dimentions \\( {width_2}\\) by \\( {length_2}\\)"
+      }
+    ],
+    "Graphing Calculator": [
+      {
+        "id": "ALG1-3.4-I1 (optional)",
+        "type": "template",
+        "objective": "Intercepts",
+        "difficulty": "intermediate",
+        "variables": {
+          "p": {
+            "min": -8,
+            "max": 8,
+            "exclude": [
+              0
+            ]
+          },
+          "q": {
+            "min": -8,
+            "max": 8,
+            "exclude": [
+              0
+            ]
+          },
+          "b": {
+            "formula": "-1*(p + q)"
+          },
+          "c": {
+            "formula": "p*q"
+          }
+        },
+        "question": "Use a table of values or a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
+        "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
+      },
+      {
+        "id": "ALG1-3.5-B1 (optional)",
+        "type": "template",
+        "objective": "Shapes of Graphs",
+        "difficulty": "basic",
+        "variables": {
+          "a": {
+            "values": [
+              2
+            ]
+          },
+          "r1": {
+            "min": -2,
+            "max": 2,
+            "exclude": [
+              0
+            ]
+          },
+          "r2": {
+            "min": -2,
+            "max": 2,
+            "exclude": [
+              0
+            ]
+          },
+          "b": {
+            "formula": "-3*(r1 + r2)"
+          },
+          "c": {
+            "formula": "6*r1*r2"
+          },
+          "d": {
+            "min": -2,
+            "max": 2,
+            "exclude": [
+              0
+            ]
+          },
+          "x1": {
+            "min": -3,
+            "max": 3
+          },
+          "x2": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              "x1"
+            ]
+          },
+          "x3": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              "x1",
+              "x2"
+            ]
+          },
+          "x4": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              "x1",
+              "x2",
+              "x3"
+            ]
+          },
+          "y1": {
+            "formula": "a * x1**3 + b * x1**2 + c * x1 + d"
+          },
+          "y2": {
+            "formula": "a * x2**3 + b * x2**2 + c * x2 + d"
+          },
+          "y3": {
+            "formula": "a * x3**3 + b * x3**2 + c * x3 + d"
+          },
+          "y4": {
+            "formula": "a * x4**3 + b * x4**2 + c * x4 + d"
+          }
+        },
+        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign}\\), then find the missing values: <br> a) \\( f({x1}) = ? \\) <br> b) \\( f({x2}) = ? \\) <br> c) \\( f(?) = {y3} \\) <br> d) \\( f(?) = {y4} \\)",
+        "answer": "a) \\( f({x1}) = {y1} \\) <br> b) \\( f({x2}) = {y2} \\) <br> c) \\( f({x3}) = {y3} \\) <br> d) \\( f({x4}) = {y4} \\)"
+      },
+      {
+        "id": "ALG1-3.5-I1 (optional)",
+        "type": "template",
+        "objective": "Shapes of Graphs",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": {
+            "min": -1,
+            "max": 1,
+            "exclude": [
+              0
+            ]
+          },
+          "h": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              0
+            ]
+          },
+          "k": {
+            "formula": "-a*4"
+          },
+          "b": {
+            "formula": "-2*a*h"
+          },
+          "c": {
+            "formula": "a * h**2 + k"
+          },
+          "z1": {
+            "formula": "h - 2"
+          },
+          "z2": {
+            "formula": "h + 2"
+          }
+        },
+        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.",
+        "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
       }
     ],
     "Module Mathematics Review": [
@@ -15436,10 +16131,19 @@
           "c_y": {
             "formula": "(a_y * fraction_denominator + fraction_numerator * (b_y - a_y)) / fraction_denominator",
             "format": "fraction"
+          },
+          "c_x_decimal": {
+            "formula": "Number(c_x.toFixed(2))"
+          },
+          "c_y_decimal": {
+            "formula": "Number(c_y.toFixed(2))"
+          },
+          "coordinates_approx": {
+            "formula": "(Math.abs(c_x-Math.round(c_x))<1e-10&&Math.abs(c_y-Math.round(c_y))<1e-10)?'':'\\\\approx ('+c_x_decimal+', '+c_y_decimal+')'"
           }
         },
         "question": "Point A has coordinates \\( ({a_x}, {a_y}) \\), and point B has coordinates \\( ({b_x}, {b_y}) \\). Find the coordinates of point C on segment \\( \\overline{AB} \\) such that the distance from A to C is \\( \\frac{{{fraction_numerator}}}{{{fraction_denominator}}} \\) of the distance from A to B.",
-        "answer": "\\( C = ({a_x} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_x} - {a_x}), {a_y} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_y} - {a_y})) = ({c_x}, {c_y}) \\)"
+        "answer": "\\( C = ({a_x} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_x} - {a_x}), {a_y} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_y} - {a_y})) = ({c_x}, {c_y}) {coordinates_approx} \\)"
       },
       {
         "id": "GEO 1-6a C v2",
@@ -15490,10 +16194,19 @@
           },
           "blank_coordinate_plane_svg": {
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Blank coordinate plane for graphing points A and B\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 21}, (_, index) => { const p = 30 + index * 25; const color = index === 10 ? '#222' : '#d8d8d8'; const width = index === 10 ? 2 : 1; return '<line x1=\"' + p + '\" y1=\"20\" x2=\"' + p + '\" y2=\"530\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"30\" y1=\"' + p + '\" x2=\"540\" y2=\"' + p + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>'; }).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length: 11}, (_, index) => { const n = (index - 5) * 2; const x = 285 + n * 25; const y = 280 - n * 25; return '<text x=\"' + x + '\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">' + n + '</text><text x=\"273\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-size=\"10\">' + n + '</text>'; }).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'"
+          },
+          "c_x_decimal": {
+            "formula": "Number(c_x.toFixed(2))"
+          },
+          "c_y_decimal": {
+            "formula": "Number(c_y.toFixed(2))"
+          },
+          "coordinates_approx": {
+            "formula": "(Math.abs(c_x-Math.round(c_x))<1e-10&&Math.abs(c_y-Math.round(c_y))<1e-10)?'':'\\\\approx ('+c_x_decimal+', '+c_y_decimal+')'"
           }
         },
         "question": "Point C lies on segment \\( \\overline{AB} \\) such that the distance from A to C is \\( \\frac{{{fraction_numerator}}}{{{fraction_denominator}}} \\) of the total distance from A to B. Find the coordinates of C, given \\( A = ({a_x}, {a_y}) \\) and \\( B = ({b_x}, {b_y}) \\). Plot and label points A and B on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
-        "answer": "Apply the fraction to each coordinate component: \\( C = ({a_x} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_x} - {a_x}), {a_y} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_y} - {a_y})) = ({c_x}, {c_y}) \\)."
+        "answer": "Apply the fraction to each coordinate component: \\( C = ({a_x} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_x} - {a_x}), {a_y} + \\frac{{{fraction_numerator}}}{{{fraction_denominator}}}({b_y} - {a_y})) = ({c_x}, {c_y}) {coordinates_approx} \\)."
       },
       {
         "id": "GEO 1-6b C v1",
@@ -15544,10 +16257,19 @@
           },
           "coordinate_plane_svg": {
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Coordinate plane showing labeled points A and B\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 21}, (_, index) => { const p = 30 + index * 25; const color = index === 10 ? '#222' : '#d8d8d8'; const width = index === 10 ? 2 : 1; return '<line x1=\"' + p + '\" y1=\"20\" x2=\"' + p + '\" y2=\"530\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"30\" y1=\"' + p + '\" x2=\"540\" y2=\"' + p + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>'; }).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length: 11}, (_, index) => { const n = (index - 5) * 2; const x = 285 + n * 25; const y = 280 - n * 25; return '<text x=\"' + x + '\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">' + n + '</text><text x=\"273\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-size=\"10\">' + n + '</text>'; }).join('') + [{name: 'A', x: a_x, y: a_y}, {name: 'B', x: b_x, y: b_y}].map(point => { const px = 285 + point.x * 25; const py = 280 - point.y * 25; return '<line x1=\"' + (285 + a_x * 25) + '\" y1=\"' + (280 - a_y * 25) + '\" x2=\"' + (285 + b_x * 25) + '\" y2=\"' + (280 - b_y * 25) + '\" stroke=\"#3178a8\" stroke-width=\"2\"/><circle cx=\"' + px + '\" cy=\"' + py + '\" r=\"5\" fill=\"#c0392b\"/><text x=\"' + (px + 8) + '\" y=\"' + (py - 8) + '\" font-size=\"13\" font-weight=\"bold\">' + point.name + '</text>'; }).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'"
+          },
+          "c_x_decimal": {
+            "formula": "Number(c_x.toFixed(2))"
+          },
+          "c_y_decimal": {
+            "formula": "Number(c_y.toFixed(2))"
+          },
+          "coordinates_approx": {
+            "formula": "(Math.abs(c_x-Math.round(c_x))<1e-10&&Math.abs(c_y-Math.round(c_y))<1e-10)?'':'\\\\approx ('+c_x_decimal+', '+c_y_decimal+')'"
           }
         },
         "question": "Point C lies on segment \\( \\overline{AB} \\) and divides it so that \\( \\overline{AC} : \\overline{CB} = {fraction_numerator}:{fraction_remaining} \\). Find the coordinates of C. A = \\( ({a_x}, {a_y}) \\), B = \\( ({b_x}, {b_y}) \\).<br>{coordinate_plane_svg}",
-        "answer": "Apply the fraction to each coordinate: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) \\)."
+        "answer": "Apply the fraction to each coordinate: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) {coordinates_approx} \\)."
       },
       {
         "id": "GEO 1-6b C v2",
@@ -15598,10 +16320,19 @@
           },
           "blank_coordinate_plane_svg": {
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Blank coordinate plane for graphing points A and B\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 21}, (_, index) => { const p = 30 + index * 25; const color = index === 10 ? '#222' : '#d8d8d8'; const width = index === 10 ? 2 : 1; return '<line x1=\"' + p + '\" y1=\"20\" x2=\"' + p + '\" y2=\"530\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"30\" y1=\"' + p + '\" x2=\"540\" y2=\"' + p + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>'; }).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length: 11}, (_, index) => { const n = (index - 5) * 2; const x = 285 + n * 25; const y = 280 - n * 25; return '<text x=\"' + x + '\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">' + n + '</text><text x=\"273\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-size=\"10\">' + n + '</text>'; }).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'"
+          },
+          "c_x_decimal": {
+            "formula": "Number(c_x.toFixed(2))"
+          },
+          "c_y_decimal": {
+            "formula": "Number(c_y.toFixed(2))"
+          },
+          "coordinates_approx": {
+            "formula": "(Math.abs(c_x-Math.round(c_x))<1e-10&&Math.abs(c_y-Math.round(c_y))<1e-10)?'':'\\\\approx ('+c_x_decimal+', '+c_y_decimal+')'"
           }
         },
         "question": "Point C lies on segment \\( \\overline{AB} \\) and divides it so that \\( \\overline{AC} : \\overline{CB} = {fraction_numerator}:{fraction_remaining} \\). Find the coordinates of C. A = \\( ({a_x}, {a_y}) \\), B = \\( ({b_x}, {b_y}) \\). Plot and label points A and B on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
-        "answer": "Apply the fraction to each coordinate: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) \\)."
+        "answer": "Apply the fraction to each coordinate: \\( C = (a_x + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_x-a_x), a_y + \\frac{{fraction_numerator}}{{fraction_denominator}}(b_y-a_y)) \\). Therefore, \\( C = ({c_x}, {c_y}) {coordinates_approx} \\)."
       },
       {
         "id": "GEO 1-7a C v1",
