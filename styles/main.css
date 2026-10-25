@@ -235,6 +235,25 @@ button.small {
   display: none !important; 
 }
 
+.mapping-diagrams {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  text-align: center;
+}
+
+.mapping-diagrams > div {
+  min-width: 0;
+}
+
+.mapping-diagrams svg {
+  display: block !important;
+  width: 100% !important;
+  max-width: 180px !important;
+  height: auto !important;
+  margin: 6px auto !important;
+}
+
 .question {
   padding: 20px;
   padding-top: 4px;
@@ -575,6 +594,28 @@ canvas {
     column-gap: 18pt;
   }
   
+  .mapping-diagrams {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5pt;
+  }
+
+  .mapping-diagrams > div {
+    font-size: 8pt;
+  }
+
+  .mapping-diagrams svg {
+    max-width: 100% !important;
+  }
+
+  .question--mapping-diagrams {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .columns-2 .question--mapping-diagrams {
+    grid-column: 1 / -1;
+  }
+
   /* Print-specific typography */
   h1, h2, h3 {
     page-break-after: avoid;
