@@ -18070,6 +18070,49 @@
         "answer": "Here are the completed geometric postulates:<br><br>1. <b>{p1_ans}</b><br><i>Explanation:</i> {p1_exp}<br><br>2. <b>{p2_ans}</b><br><i>Explanation:</i> {p2_exp}"
       },
       {
+        "id": "GEO 3-4 Proofs",
+        "type": "template",
+        "objective": "Complete a two-column proof using linear pairs and congruent supplements",
+        "difficulty": "intermediate",
+        "variables": {
+          "point_pools": {
+            "formula": "[['A','B','D','C','E'],['P','Q','S','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
+          },
+          "pts": {
+            "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
+          },
+          "ptA": { "formula": "pts[0]" },
+          "ptB": { "formula": "pts[1]" },
+          "ptD": { "formula": "pts[2]" },
+          "ptC": { "formula": "pts[3]" },
+          "ptE": { "formula": "pts[4]" },
+          "supplement_choices": {
+            "formula": "[{text:'Supplement Theorem',correct:true},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Supplements Theorem',correct:false}]"
+          },
+          "shuffled_supplement_choices": {
+            "formula": "supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
+          },
+          "s1_A": { "formula": "shuffled_supplement_choices[0].text" },
+          "s1_B": { "formula": "shuffled_supplement_choices[1].text" },
+          "s1_C": { "formula": "shuffled_supplement_choices[2].text" },
+          "s1_D": { "formula": "shuffled_supplement_choices[3].text" },
+          "ans_s1": { "formula": "['A','B','C','D'][shuffled_supplement_choices.findIndex(c => c.correct)]" },
+          "congruent_supplement_choices": {
+            "formula": "[{text:'Congruent Supplements Theorem',correct:true},{text:'Supplement Theorem',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Reflexive Property of Congruence',correct:false}]"
+          },
+          "shuffled_congruent_supplement_choices": {
+            "formula": "congruent_supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
+          },
+          "s3_A": { "formula": "shuffled_congruent_supplement_choices[0].text" },
+          "s3_B": { "formula": "shuffled_congruent_supplement_choices[1].text" },
+          "s3_C": { "formula": "shuffled_congruent_supplement_choices[2].text" },
+          "s3_D": { "formula": "shuffled_congruent_supplement_choices[3].text" },
+          "ans_s3": { "formula": "['A','B','C','D'][shuffled_congruent_supplement_choices.findIndex(c => c.correct)]" }
+        },
+        "question": "<b>Given:</b> Points {ptA}, {ptB}, and {ptD} are collinear with {ptB} between {ptA} and {ptD}; points {ptC}, {ptB}, and {ptE} are collinear with {ptB} between {ptC} and {ptE}.<br><b>Prove:</b> \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border='1' cellpadding='6' style='border-collapse:collapse;width:100%;'><thead><tr><th>Statements</th><th>Reasons</th></tr></thead><tbody><tr><td>1. {ptA}, {ptB}, {ptD} are collinear, and {ptC}, {ptB}, {ptE} are collinear; {ptB} is between each pair of outer points.</td><td>1. Given</td></tr><tr><td>2. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) form a linear pair.</td><td>2. Definition of linear pair</td></tr><tr><td>3. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) form a linear pair.</td><td>3. Definition of linear pair</td></tr><tr><td>4. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary.</td><td>4. [Blank 1]</td></tr><tr><td>5. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) are supplementary.</td><td>5. [Blank 2]</td></tr><tr><td>6. \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)</td><td>6. [Blank 3]</td></tr></tbody></table><br><b>Options for Blanks 1 and 2:</b><br>? {s1_A} &nbsp; ? {s1_B} &nbsp; ? {s1_C} &nbsp; ? {s1_D}<br><b>Options for Blank 3:</b><br>? {s3_A} &nbsp; ? {s3_B} &nbsp; ? {s3_C} &nbsp; ? {s3_D}",
+        "answer": "<b>Completed proof:</b><br>Blank 1: {ans_s1} — Supplement Theorem, because angles that form a linear pair are supplementary.<br>Blank 2: {ans_s1} — Supplement Theorem, because angles that form a linear pair are supplementary.<br>Blank 3: {ans_s3} — Congruent Supplements Theorem, because angles supplementary to the same angle are congruent."
+      },
+      {
         "id": "GEO-PROOF-3-5I",
         "type": "template",
         "objective": "Complete a geometric two-column proof using segment addition properties",
@@ -18196,79 +18239,6 @@
         },
         "question": "Given: \\( {seg1} \\cong {seg2} \\)<br>Prove: \\( {whole1} \\cong {whole2} \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( {seg1} \\cong {seg2} \\)</td><td>1. Given</td></tr><tr><td>2. \\( {seg1} = {seg2} \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( {seg1} + {seg3} = {seg3} + {seg2} \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( {seg1} + {seg3} = {whole1} \\), \\( {seg3} + {seg2} = {whole2} \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( {whole1} = {whole2} \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( {whole1} \\cong {whole2} \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> ? {s3_A} &nbsp;&nbsp; ? {s3_B} &nbsp;&nbsp; ? {s3_C} &nbsp;&nbsp; ? {s3_D}<br><br><b>Options for Blank 4:</b><br> ? {s4_A} &nbsp;&nbsp; ? {s4_B} &nbsp;&nbsp; ? {s4_C} &nbsp;&nbsp; ? {s4_D}",
         "answer": "Here are the correct reasons to complete the proof:<br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical segment length \\( {seg3} \\) to both sides of the equation \\( {seg1} = {seg2} \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Segment Addition Postulate)</b><br><i>Why:</i> This postulate states that if point \\( {pts[1]} \\) lies between points \\( {pts[0]} \\) and \\( {pts[2]} \\), then the two smaller segment lengths add up to the total length (\\( {seg1} + {seg3} = {whole1} \\)).</li></ul>"
-      },
-      {
-        "id": "GEO-PROOF-ANGLE-ADD-VISUAL-3-5I",
-        "type": "template",
-        "objective": "Complete an angle proof with randomized variable names, a concept diagram, and shuffled reasons",
-        "difficulty": "basic",
-        "variables": {
-          "vertex_pools": {
-            "formula": "[ ['A', 'B', 'C', 'D', 'E'], ['P', 'Q', 'R', 'S', 'T'], ['F', 'G', 'H', 'J', 'K'], ['V', 'W', 'X', 'Y', 'Z'] ]"
-          },
-          "v": {
-            "formula": "vertex_pools[Math.floor(Math.random() * vertex_pools.length)]"
-          },
-          "ang1": {
-            "formula": "'\\\\angle ' + v + v + v"
-          },
-          "ang2": {
-            "formula": "'\\\\angle ' + v + v + v"
-          },
-          "ang3": {
-            "formula": "'\\\\angle ' + v + v + v"
-          },
-          "large_ang1": {
-            "formula": "'\\\\angle ' + v + v + v"
-          },
-          "large_ang2": {
-            "formula": "'\\\\angle ' + v + v + v"
-          },
-          "raw_choices_step3": {
-            "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Angle Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
-          },
-          "raw_choices_step4": {
-            "formula": "[ { text: 'Angle Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false } ]"
-          },
-          "shuffled_step3": {
-            "formula": "raw_choices_step3.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
-          },
-          "shuffled_step4": {
-            "formula": "raw_choices_step4.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
-          },
-          "s3_A": {
-            "formula": "shuffled_step3.text"
-          },
-          "s3_B": {
-            "formula": "shuffled_step3.text"
-          },
-          "s3_C": {
-            "formula": "shuffled_step3.text"
-          },
-          "s3_D": {
-            "formula": "shuffled_step3.text"
-          },
-          "s4_A": {
-            "formula": "shuffled_step4.text"
-          },
-          "s4_B": {
-            "formula": "shuffled_step4.text"
-          },
-          "s4_C": {
-            "formula": "shuffled_step4.text"
-          },
-          "s4_D": {
-            "formula": "shuffled_step4.text"
-          },
-          "ans_step3": {
-            "formula": "['?', '?', '?', '?'][shuffled_step3.findIndex(c => c.correct)]"
-          },
-          "ans_step4": {
-            "formula": "['?', '?', '?', '?'][shuffled_step4.findIndex(c => c.correct)]"
-          }
-        },
-        "question": "Given: \\( {ang1} \\cong {ang3} \\)<br>Prove: \\( {large_ang1} \\cong {large_ang2} \\)<br><br><ChartPlaceholder chartDescription=\"A geometric diagram showing four rays originating from a shared common vertex point. The rays form three adjacent component angles labeled Angle 1, Angle 2, and Angle 3 consecutively, illustrating the Angle Addition Postulate geometry relationship.\" /><br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( {ang1} \\cong {ang3} \\)</td><td>1. Given</td></tr><tr><td>2. \\( m{ang1} = m{ang3} \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( m{ang1} + m{ang2} = m{ang2} + m{ang3} \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( m{ang1} + m{ang2} = m{large_ang1} \\), \\( m{ang2} + m{ang3} = m{large_ang2} \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( m{large_ang1} = m{large_ang2} \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( {large_ang1} \\cong {large_ang2} \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> ? {s3_A} &nbsp;&nbsp; ? {s3_B} &nbsp;&nbsp; ? {s3_C} &nbsp;&nbsp; ? {s3_D}<br><br><b>Options for Blank 4:</b><br> ? {s4_A} &nbsp;&nbsp; ? {s4_B} &nbsp;&nbsp; ? {s4_C} &nbsp;&nbsp; ? {s4_D}",
-        "answer": "Here are the correct reasons to complete the proof:<br><br><ChartPlaceholder chartDescription=\"The exact same adjacent angle diagram, highlighting how adding the common middle Angle 2 to Angle 1 creates the first composite large angle, and adding Angle 2 to Angle 3 creates the second composite large angle.\" /><br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical angle measure \\( m{ang2} \\) to both sides of the equation \\( m{ang1} = m{ang3} \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Angle Addition Postulate)</b><br><i>Why:</i> This postulate states that if a ray lies in the interior of an angle, the measures of the two smaller adjacent angles add up to the measure of the larger overall angle (\\( m{ang1} + m{ang2} = m{large_ang1} \\)).</li></ul>"
       },
       {
         "id": "GEO-COLLINEARITY-3-5B",
