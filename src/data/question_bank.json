@@ -18070,7 +18070,7 @@
         "answer": "Here are the completed geometric postulates:<br><br>1. <b>{p1_ans}</b><br><i>Explanation:</i> {p1_exp}<br><br>2. <b>{p2_ans}</b><br><i>Explanation:</i> {p2_exp}"
       },
       {
-        "id": "GEO 3-4 Proofs",
+        "id": "GEO 3-5 Segment Proofs",
         "type": "template",
         "objective": "Complete a geometric two-column proof using segment addition properties",
         "difficulty": "basic",
@@ -18131,7 +18131,7 @@
         "answer": "Here are the correct reasons to complete the proof:<br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical segment length \\( BC \\) to both sides of the equation \\( AB = CD \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Segment Addition Postulate)</b><br><i>Why:</i> This postulate states that if point \\( B \\) lies between points \\( A \\) and \\( C \\), then the two smaller segment lengths add up to the total length (\\( AB + BC = AC \\)).</li></ul>"
       },
       {
-        "id": "GEO 3-6 Proofs",
+        "id": "GEO 3-6 Angle Proofs",
         "type": "template",
         "objective": "Complete a two-column proof using linear pairs and congruent supplements",
         "difficulty": "intermediate",
