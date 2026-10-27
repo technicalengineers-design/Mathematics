@@ -18075,6 +18075,9 @@
         "objective": "Complete a geometric two-column proof using segment addition properties",
         "difficulty": "basic",
         "variables": {
+          "proof_type": { "formula": "Math.floor(Math.random() * 2)" },
+          "proof_question": { "formula": "proof_type === 0 ? `Given: AB ≅ CD.<br>Prove: AC ≅ BD.<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. AB ≅ CD</td><td>Given</td></tr><tr><td>2. AB = CD</td><td>Definition of congruence</td></tr><tr><td>3. AB + BC = BC + CD</td><td>[Blank 3]</td></tr><tr><td>4. AB + BC = AC; BC + CD = BD</td><td>[Blank 4]</td></tr><tr><td>5. AC = BD</td><td>Substitution</td></tr><tr><td>6. AC ≅ BD</td><td>Definition of congruence</td></tr></table><br>Options for Blank 3: A. Addition Property of Equality &nbsp; B. Segment Addition Postulate &nbsp; C. Definition of Congruence &nbsp; D. Substitution Property &nbsp; E. Reflexive Property of Equality<br>Options for Blank 4: A. Addition Property of Equality &nbsp; B. Segment Addition Postulate &nbsp; C. Definition of Congruence &nbsp; D. Transitive Property of Equality &nbsp; E. Substitution Property` : `Given: AB is congruent to CD and CD is congruent to EF.<br>Prove: AB ≅ EF.<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. AB ≅ CD</td><td>Given</td></tr><tr><td>2. CD ≅ EF</td><td>Given</td></tr><tr><td>3. AB = CD</td><td>[Blank 3]</td></tr><tr><td>4. CD = EF</td><td>[Blank 4]</td></tr><tr><td>5. AB = EF</td><td>Transitive Property of Equality</td></tr><tr><td>6. AB ≅ EF</td><td>Definition of congruence</td></tr></table><br>Options for Blank 3: A. Addition Property of Equality &nbsp; B. Definition of Congruence &nbsp; C. Segment Addition Postulate &nbsp; D. Substitution Property &nbsp; E. Reflexive Property of Equality<br>Options for Blank 4: A. Addition Property of Equality &nbsp; B. Segment Addition Postulate &nbsp; C. Definition of Congruence &nbsp; D. Transitive Property of Equality &nbsp; E. Substitution Property`" },
+          "proof_answer": { "formula": "proof_type === 0 ? `Blank 3: A - Addition Property of Equality, adding BC to each side of AB = CD.<br>Blank 4: B - Segment Addition Postulate, which gives AB + BC = AC and BC + CD = BD.` : `Blank 3: B - Definition of Congruence, converting AB ≅ CD to AB = CD.<br>Blank 4: C - Definition of Congruence, converting CD ≅ EF to CD = EF.`" },
           "options_pool": {
             "formula": "['Addition Property of Equality', 'Segment Addition Postulate', 'Substitution Property', 'Reflexive Property of Equality', 'Definition of Congruence']"
           },
@@ -18127,15 +18130,18 @@
             "formula": "['A', 'B', 'C', 'D', 'E'][shuffled_step4.findIndex(c => c.correct)]"
           }
         },
-        "question": "Given: \\( AB \\cong CD \\)<br>Prove: \\( AC \\cong BD \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( AB \\cong CD \\)</td><td>1. Given</td></tr><tr><td>2. \\( AB = CD \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( AB + BC = BC + CD \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( AB + BC = AC \\), \\( BC + CD = BD \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( AC = BD \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( AC \\cong BD \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> A. {s3_A} &nbsp;&nbsp; B. {s3_B} &nbsp;&nbsp; C. {s3_C} &nbsp;&nbsp; D. {s3_D} &nbsp;&nbsp; E. {s3_E}<br><br><b>Options for Blank 4:</b><br> A. {s4_A} &nbsp;&nbsp; B. {s4_B} &nbsp;&nbsp; C. {s4_C} &nbsp;&nbsp; D. {s4_D} &nbsp;&nbsp; E. {s4_E}",
-        "answer": "Here are the correct reasons to complete the proof:<br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical segment length \\( BC \\) to both sides of the equation \\( AB = CD \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Segment Addition Postulate)</b><br><i>Why:</i> This postulate states that if point \\( B \\) lies between points \\( A \\) and \\( C \\), then the two smaller segment lengths add up to the total length (\\( AB + BC = AC \\)).</li></ul>"
+        "question": "{proof_question}",
+        "answer": "{proof_answer}"
       },
       {
         "id": "GEO 3-6 Angle Proofs",
         "type": "template",
-        "objective": "Complete a two-column proof using linear pairs and congruent supplements",
-        "difficulty": "intermediate",
+        "objective": "Complete a basic two-column angle proof using linear pairs and congruent supplements",
+        "difficulty": "basic",
         "variables": {
+          "proof_type": { "formula": "Math.floor(Math.random() * 2)" },
+          "proof_question": { "formula": "proof_type === 0 ? `Given: Points ${ptA}, ${ptB}, and ${ptD} are collinear with ${ptB} between ${ptA} and ${ptD}; points ${ptC}, ${ptB}, and ${ptE} are collinear with ${ptB} between ${ptC} and ${ptE}.<br>Prove: ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}.<br><br>Complete the proof by choosing the two missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. The points form the two intersecting lines.</td><td>Given</td></tr><tr><td>2. ∠${ptA}${ptB}${ptC} and ∠${ptC}${ptB}${ptD} form a linear pair.</td><td>Definition of linear pair</td></tr><tr><td>3. ∠${ptC}${ptB}${ptD} and ∠${ptD}${ptB}${ptE} form a linear pair.</td><td>Definition of linear pair</td></tr><tr><td>4. The first and middle angles are supplementary.</td><td>[Blank 1]</td></tr><tr><td>5. The middle and last angles are supplementary.</td><td>[Blank 2]</td></tr><tr><td>6. ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}</td><td>Congruent Supplements Theorem</td></tr></table><br>Options for Blanks 1 and 2: A. Supplement Theorem &nbsp; B. Angle Addition Postulate &nbsp; C. Vertical Angles Theorem &nbsp; D. Congruent Supplements Theorem &nbsp; E. Congruent Complements Theorem` : `Given: angle ABC is congruent to angle DEF and angle DEF is congruent to angle GHI.<br>Prove: ∠ABC ≅ ∠GHI.<br><br>Complete the proof by choosing the two missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. ∠ABC ≅ ∠DEF</td><td>Given</td></tr><tr><td>2. ∠DEF ≅ ∠GHI</td><td>Given</td></tr><tr><td>3. m∠ABC = m∠DEF</td><td>[Blank 1]</td></tr><tr><td>4. m∠DEF = m∠GHI</td><td>[Blank 2]</td></tr><tr><td>5. m∠ABC = m∠GHI</td><td>Transitive Property of Equality</td></tr><tr><td>6. ∠ABC ≅ ∠GHI</td><td>Definition of congruence</td></tr></table><br>Options for Blanks 1 and 2: A. Supplement Theorem &nbsp; B. Angle Addition Postulate &nbsp; C. Definition of Congruence &nbsp; D. Vertical Angles Theorem &nbsp; E. Congruent Supplements Theorem`" },
+          "proof_answer": { "formula": "proof_type === 0 ? `Blank 1: A - Supplement Theorem. Blank 2: A - Supplement Theorem. Angles supplementary to the same angle are congruent.` : `Blank 1: C - Definition of Congruence, converting congruent angles to equal measures.<br>Blank 2: C - Definition of Congruence, converting congruent angles to equal measures.`" },
           "point_pools": {
             "formula": "[['A','B','D','C','E'],['P','Q','S','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
           },
@@ -18147,6 +18153,54 @@
           "ptD": { "formula": "pts[2]" },
           "ptC": { "formula": "pts[3]" },
           "ptE": { "formula": "pts[4]" },
+          "supplement_choices": {
+            "formula": "[{text:'Supplement Theorem',correct:true},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Supplements Theorem',correct:false},{text:'Congruent Complements Theorem',correct:false}]"
+          },
+          "shuffled_supplement_choices": {
+            "formula": "supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
+          },
+          "s_A": { "formula": "shuffled_supplement_choices[0].text" },
+          "s_B": { "formula": "shuffled_supplement_choices[1].text" },
+          "s_C": { "formula": "shuffled_supplement_choices[2].text" },
+          "s_D": { "formula": "shuffled_supplement_choices[3].text" },
+          "s_E": { "formula": "shuffled_supplement_choices[4].text" },
+          "ans_s": { "formula": "['A','B','C','D','E'][shuffled_supplement_choices.findIndex(c => c.correct)]" }
+        },
+        "question": "{proof_question}",
+        "answer": "{proof_answer}"
+      },
+      {
+        "id": "GEO 3-6 I Angle Proofs",
+        "type": "template",
+        "objective": "Complete a two-column proof using linear pairs and congruent supplements",
+        "difficulty": "intermediate",
+        "variables": {
+          "proof_type": { "formula": "Math.floor(Math.random() * 2)" },
+          "proof_question": { "formula": "proof_type === 0 ? `Given: Points ${ptA}, ${ptB}, and ${ptD} are collinear with ${ptB} between ${ptA} and ${ptD}; points ${ptC}, ${ptB}, and ${ptE} are collinear with ${ptB} between ${ptC} and ${ptE}.<br>Prove: ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}.<br><br>Complete the proof by choosing the five missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. The points form the two intersecting lines.</td><td>Given</td></tr><tr><td>2. ∠${ptA}${ptB}${ptC} and ∠${ptC}${ptB}${ptD} form a linear pair.</td><td>[Blank 2]</td></tr><tr><td>3. ∠${ptC}${ptB}${ptD} and ∠${ptD}${ptB}${ptE} form a linear pair.</td><td>[Blank 3]</td></tr><tr><td>4. The first and middle angles are supplementary.</td><td>[Blank 4]</td></tr><tr><td>5. The middle and last angles are supplementary.</td><td>[Blank 5]</td></tr><tr><td>6. ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}</td><td>[Blank 6]</td></tr></table><br>Options for Blanks 2 and 3: A. Definition of linear pair &nbsp; B. Supplement Theorem &nbsp; C. Angle Addition Postulate &nbsp; D. Vertical Angles Theorem &nbsp; E. Definition of Congruence<br>Options for Blanks 4 and 5: A. Supplement Theorem &nbsp; B. Angle Addition Postulate &nbsp; C. Vertical Angles Theorem &nbsp; D. Congruent Supplements Theorem &nbsp; E. Congruent Complements Theorem<br>Options for Blank 6: A. Congruent Supplements Theorem &nbsp; B. Supplement Theorem &nbsp; C. Vertical Angles Theorem &nbsp; D. Definition of Congruence &nbsp; E. Transitive Property of Congruence` : `Given: angle ABC is congruent to angle DEF and angle DEF is congruent to angle GHI.<br>Prove: ∠ABC ≅ ∠GHI.<br><br>Complete the proof by choosing the five missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. ∠ABC ≅ ∠DEF</td><td>Given</td></tr><tr><td>2. ∠DEF ≅ ∠GHI</td><td>[Blank 2]</td></tr><tr><td>3. m∠ABC = m∠DEF</td><td>[Blank 3]</td></tr><tr><td>4. m∠DEF = m∠GHI</td><td>[Blank 4]</td></tr><tr><td>5. m∠ABC = m∠GHI</td><td>[Blank 5]</td></tr><tr><td>6. ∠ABC ≅ ∠GHI</td><td>[Blank 6]</td></tr></table><br>Options for Blank 2: A. Given &nbsp; B. Definition of Congruence &nbsp; C. Transitive Property of Equality &nbsp; D. Reflexive Property &nbsp; E. Vertical Angles Theorem<br>Options for Blanks 3, 4, and 6: A. Definition of Congruence &nbsp; B. Given &nbsp; C. Transitive Property of Equality &nbsp; D. Supplement Theorem &nbsp; E. Vertical Angles Theorem<br>Options for Blank 5: A. Transitive Property of Equality &nbsp; B. Definition of Congruence &nbsp; C. Given &nbsp; D. Vertical Angles Theorem &nbsp; E. Supplement Theorem`" },
+          "proof_answer": { "formula": "proof_type === 0 ? `Blank 2: A - Definition of linear pair.<br>Blank 3: A - Definition of linear pair.<br>Blank 4: A - Supplement Theorem.<br>Blank 5: A - Supplement Theorem.<br>Blank 6: A - Congruent Supplements Theorem.` : `Blank 2: A - Given.<br>Blank 3: A - Definition of Congruence.<br>Blank 4: A - Definition of Congruence.<br>Blank 5: A - Transitive Property of Equality.<br>Blank 6: A - Definition of Congruence.`" },
+          "point_pools": {
+            "formula": "[['A','B','D','C','E'],['P','Q','S','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
+          },
+          "pts": {
+            "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
+          },
+          "ptA": { "formula": "pts[0]" },
+          "ptB": { "formula": "pts[1]" },
+          "ptD": { "formula": "pts[2]" },
+          "ptC": { "formula": "pts[3]" },
+          "ptE": { "formula": "pts[4]" },
+          "linear_pair_choices": {
+            "formula": "[{text:'Definition of linear pair',correct:true},{text:'Supplement Theorem',correct:false},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Definition of Congruence',correct:false}]"
+          },
+          "shuffled_linear_pair_choices": {
+            "formula": "linear_pair_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
+          },
+          "s2_A": { "formula": "shuffled_linear_pair_choices[0].text" },
+          "s2_B": { "formula": "shuffled_linear_pair_choices[1].text" },
+          "s2_C": { "formula": "shuffled_linear_pair_choices[2].text" },
+          "s2_D": { "formula": "shuffled_linear_pair_choices[3].text" },
+          "s2_E": { "formula": "shuffled_linear_pair_choices[4].text" },
+          "ans_s2": { "formula": "['A','B','C','D','E'][shuffled_linear_pair_choices.findIndex(c => c.correct)]" },
           "supplement_choices": {
             "formula": "[{text:'Supplement Theorem',correct:true},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Supplements Theorem',correct:false},{text:'Congruent Complements Theorem',correct:false}]"
           },
@@ -18172,8 +18226,8 @@
           "s3_E": { "formula": "shuffled_congruent_supplement_choices[4].text" },
           "ans_s3": { "formula": "['A','B','C','D','E'][shuffled_congruent_supplement_choices.findIndex(c => c.correct)]" }
         },
-        "question": "<b>Given:</b> Points {ptA}, {ptB}, and {ptD} are collinear with {ptB} between {ptA} and {ptD}; points {ptC}, {ptB}, and {ptE} are collinear with {ptB} between {ptC} and {ptE}.<br><b>Prove:</b> \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border='1' cellpadding='6' style='border-collapse:collapse;width:100%;'><thead><tr><th>Statements</th><th>Reasons</th></tr></thead><tbody><tr><td>1. {ptA}, {ptB}, {ptD} are collinear, and {ptC}, {ptB}, {ptE} are collinear; {ptB} is between each pair of outer points.</td><td>1. Given</td></tr><tr><td>2. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) form a linear pair.</td><td>2. Definition of linear pair</td></tr><tr><td>3. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) form a linear pair.</td><td>3. Definition of linear pair</td></tr><tr><td>4. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary.</td><td>4. [Blank 1]</td></tr><tr><td>5. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) are supplementary.</td><td>5. [Blank 2]</td></tr><tr><td>6. \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)</td><td>6. [Blank 3]</td></tr></tbody></table><br><b>Options for Blanks 1 and 2:</b><br>A. {s1_A} &nbsp; B. {s1_B} &nbsp; C. {s1_C} &nbsp; D. {s1_D} &nbsp; E. {s1_E}<br><b>Options for Blank 3:</b><br>A. {s3_A} &nbsp; B. {s3_B} &nbsp; C. {s3_C} &nbsp; D. {s3_D} &nbsp; E. {s3_E}",
-        "answer": "<b>Completed proof:</b><br>Blank 1: {ans_s1} — Supplement Theorem, because angles that form a linear pair are supplementary.<br>Blank 2: {ans_s1} — Supplement Theorem, because angles that form a linear pair are supplementary.<br>Blank 3: {ans_s3} — Congruent Supplements Theorem, because angles supplementary to the same angle are congruent."
+        "question": "{proof_question}",
+        "answer": "{proof_answer}"
       },
       {
         "id": "GEO 3-6I Proofs",
