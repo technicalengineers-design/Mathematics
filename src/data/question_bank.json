@@ -3134,16 +3134,16 @@
             "formula": "['f(' + x1 + ')', 'g(' + x2 + ')', 'f(' + x1 + ') + g(' + x2 + ')', 'g(' + x3 + 'w)'][problem_order[3]]"
           },
           "solution_a": {
-            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[0]]"
+            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w<sup>2</sup>' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[0]]"
           },
           "solution_b": {
-            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[1]]"
+            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w<sup>2</sup>' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[1]]"
           },
           "solution_c": {
-            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[2]]"
+            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w<sup>2</sup>' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[2]]"
           },
           "solution_d": {
-            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w^2' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[3]]"
+            "formula": "['f(' + x1 + ') = ' + value1, 'g(' + x2 + ') = ' + value2, 'f(' + x1 + ') + g(' + x2 + ') = ' + value3, 'g(' + x3 + 'w) = ' + value4 + 'w<sup>2</sup>' + (value5 >= 0 ? ' + ' : ' - ') + (Math.abs(value5) === 1 ? '' : Math.abs(value5)) + 'w' + (d >= 0 ? ' + ' : ' - ') + Math.abs(d)][problem_order[3]]"
           }
         },
         "question": "Let \\( f(x) = {a|coef}x {b|sign} \\) and \\( g(x) = x^2 {c|signedCoef}x {d|sign} \\). Find and simplify each expression:<br>a) {prompt_a}<br>b) {prompt_b}<br>c) {prompt_c}<br>d) {prompt_d}",
@@ -18076,8 +18076,33 @@
         "difficulty": "basic",
         "variables": {
           "proof_type": { "formula": "Math.floor(Math.random() * 2)" },
-          "proof_question": { "formula": "proof_type === 0 ? `Given: AB ≅ CD.<br>Prove: AC ≅ BD.<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. AB ≅ CD</td><td>Given</td></tr><tr><td>2. AB = CD</td><td>Definition of congruence</td></tr><tr><td>3. AB + BC = BC + CD</td><td>[Blank 3]</td></tr><tr><td>4. AB + BC = AC; BC + CD = BD</td><td>[Blank 4]</td></tr><tr><td>5. AC = BD</td><td>Substitution</td></tr><tr><td>6. AC ≅ BD</td><td>Definition of congruence</td></tr></table><br>Options for Blank 3: A. Addition Property of Equality &nbsp; B. Segment Addition Postulate &nbsp; C. Definition of Congruence &nbsp; D. Substitution Property &nbsp; E. Reflexive Property of Equality<br>Options for Blank 4: A. Addition Property of Equality &nbsp; B. Segment Addition Postulate &nbsp; C. Definition of Congruence &nbsp; D. Transitive Property of Equality &nbsp; E. Substitution Property` : `Given: AB is congruent to CD and CD is congruent to EF.<br>Prove: AB ≅ EF.<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. AB ≅ CD</td><td>Given</td></tr><tr><td>2. CD ≅ EF</td><td>Given</td></tr><tr><td>3. AB = CD</td><td>[Blank 3]</td></tr><tr><td>4. CD = EF</td><td>[Blank 4]</td></tr><tr><td>5. AB = EF</td><td>Transitive Property of Equality</td></tr><tr><td>6. AB ≅ EF</td><td>Definition of congruence</td></tr></table><br>Options for Blank 3: A. Addition Property of Equality &nbsp; B. Definition of Congruence &nbsp; C. Segment Addition Postulate &nbsp; D. Substitution Property &nbsp; E. Reflexive Property of Equality<br>Options for Blank 4: A. Addition Property of Equality &nbsp; B. Segment Addition Postulate &nbsp; C. Definition of Congruence &nbsp; D. Transitive Property of Equality &nbsp; E. Substitution Property`" },
-          "proof_answer": { "formula": "proof_type === 0 ? `Blank 3: A - Addition Property of Equality, adding BC to each side of AB = CD.<br>Blank 4: B - Segment Addition Postulate, which gives AB + BC = AC and BC + CD = BD.` : `Blank 3: B - Definition of Congruence, converting AB ≅ CD to AB = CD.<br>Blank 4: C - Definition of Congruence, converting CD ≅ EF to CD = EF.`" },
+          "blank_layout": { "formula": "Math.floor(Math.random() * 5)" },
+          "proof_givens": { "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>, and <span style=text-decoration:overline>CD</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
+          "proof_goal": { "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AC</span> is congruent to <span style=text-decoration:overline>BD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
+          "statement1": { "formula": "'<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>'" },
+          "statement2": { "formula": "proof_type === 0 ? 'AB = CD' : '<span style=text-decoration:overline>CD</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
+          "statement3": { "formula": "proof_type === 0 ? 'AB + BC = BC + CD' : 'AB = CD'" },
+          "statement4": { "formula": "proof_type === 0 ? 'AB + BC = AC; BC + CD = BD' : 'CD = EF'" },
+          "statement5": { "formula": "proof_type === 0 ? 'AC = BD' : 'AB = EF'" },
+          "statement6": { "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AC</span> is congruent to <span style=text-decoration:overline>BD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
+          "reason1": { "formula": "blank_layout === 3 ? '[Blank 1]' : 'Given'" },
+          "reason2": { "formula": "(blank_layout === 1 || blank_layout === 3) ? '[Blank 2]' : (proof_type === 0 ? 'Definition of Congruence' : 'Given')" },
+          "reason3": { "formula": "(blank_layout === 0 || blank_layout === 1) ? '[Blank 3]' : (proof_type === 0 ? 'Addition Property of Equality' : 'Definition of Congruence')" },
+          "reason4": { "formula": "(blank_layout === 0 || blank_layout === 2) ? '[Blank 4]' : (proof_type === 0 ? 'Segment Addition Postulate' : 'Definition of Congruence')" },
+          "reason5": { "formula": "(blank_layout === 2 || blank_layout === 4) ? '[Blank 5]' : (proof_type === 0 ? 'Substitution' : 'Transitive Property of Equality')" },
+          "reason6": { "formula": "blank_layout === 4 ? '[Blank 6]' : 'Definition of Congruence'" },
+          "blank1_step": { "formula": "[3,2,4,1,5][blank_layout]" },
+          "blank2_step": { "formula": "[4,3,5,2,6][blank_layout]" },
+          "blank1_reason": { "formula": "(proof_type === 0 ? ['Addition Property of Equality','Definition of Congruence','Segment Addition Postulate','Given','Substitution'] : ['Definition of Congruence','Given','Definition of Congruence','Given','Transitive Property of Equality'])[blank_layout]" },
+          "blank2_reason": { "formula": "(proof_type === 0 ? ['Segment Addition Postulate','Addition Property of Equality','Substitution','Definition of Congruence','Definition of Congruence'] : ['Definition of Congruence','Definition of Congruence','Transitive Property of Equality','Given','Definition of Congruence'])[blank_layout]" },
+          "reason_options": { "formula": "(proof_type === 0 ? ['Addition Property of Equality','Segment Addition Postulate','Definition of Congruence','Substitution','Transitive Property of Equality'] : ['Given','Definition of Congruence','Transitive Property of Equality','Addition Property of Equality','Segment Addition Postulate']).map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)" },
+          "optA": { "formula": "reason_options[0]" },
+          "optB": { "formula": "reason_options[1]" },
+          "optC": { "formula": "reason_options[2]" },
+          "optD": { "formula": "reason_options[3]" },
+          "optE": { "formula": "reason_options[4]" },
+          "blank1_letter": { "formula": "['A','B','C','D','E'][reason_options.indexOf(blank1_reason)]" },
+          "blank2_letter": { "formula": "['A','B','C','D','E'][reason_options.indexOf(blank2_reason)]" },
           "options_pool": {
             "formula": "['Addition Property of Equality', 'Segment Addition Postulate', 'Substitution Property', 'Reflexive Property of Equality', 'Definition of Congruence']"
           },
@@ -18130,8 +18155,8 @@
             "formula": "['A', 'B', 'C', 'D', 'E'][shuffled_step4.findIndex(c => c.correct)]"
           }
         },
-        "question": "{proof_question}",
-        "answer": "{proof_answer}"
+        "question": "Given: {proof_givens}.<br>Prove: {proof_goal}.<br><br>Complete the two-column proof by choosing the two missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. {statement1}</td><td>{reason1}</td></tr><tr><td>2. {statement2}</td><td>{reason2}</td></tr><tr><td>3. {statement3}</td><td>{reason3}</td></tr><tr><td>4. {statement4}</td><td>{reason4}</td></tr><tr><td>5. {statement5}</td><td>{reason5}</td></tr><tr><td>6. {statement6}</td><td>{reason6}</td></tr></table><br><b>Options for each blank:</b><br>A. {optA} &nbsp; B. {optB} &nbsp; C. {optC} &nbsp; D. {optD} &nbsp; E. {optE}",
+        "answer": "<b>Proof solution:</b><br>Given: {proof_givens}. Goal: {proof_goal}.<br>Blank {blank1_step}: {blank1_letter} - {blank1_reason}.<br>Blank {blank2_step}: {blank2_letter} - {blank2_reason}. Segment congruence notation uses a bar over the letters."
       },
       {
         "id": "GEO 3-6 Angle Proofs",
