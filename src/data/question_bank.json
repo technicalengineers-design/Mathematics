@@ -16724,52 +16724,7 @@
         "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are complimenary, their sum is \\( 90^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 90 \\) or \\( \\left({n} + 1\\right)x = 90 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
       },
       {
-        "id": "GEO 2-3a C Circle",
-        "type": "template",
-        "objective": "Calculate the Area and Circumference of a Circle on a Coordinate Plane",
-        "difficulty": "basic",
-        "variables": {
-          "h": {
-            "min": -5,
-            "max": 5
-          },
-          "k": {
-            "min": -5,
-            "max": 5
-          },
-          "valid_offsets": {
-            "formula": "[{dx:3, dy:4}, {dx:4, dy:3}, {dx:5, dy:12}, {dx:12, dy:5}, {dx:6, dy:8}, {dx:8, dy:6}].flatMap(o => [{x:o.dx, y:o.dy}, {x:-o.dx, y:o.dy}, {x:o.dx, y:-o.dy}, {x:-o.dx, y:-o.dy}])"
-          },
-          "offset_index": {
-            "formula": "Math.floor(Math.random() * valid_offsets.length)"
-          },
-          "p_x": {
-            "formula": "h + valid_offsets[offset_index].x"
-          },
-          "p_y": {
-            "formula": "k + valid_offsets[offset_index].y"
-          },
-          "r_squared": {
-            "formula": "Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2)"
-          },
-          "r": {
-            "formula": "Math.sqrt(r_squared)"
-          },
-          "circumference_coefficient": {
-            "formula": "2 * r"
-          },
-          "circumference_approx": {
-            "formula": "String((2 * Math.PI * Math.sqrt(Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))"
-          },
-          "area_approx": {
-            "formula": "String((Math.PI * (Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))"
-          }
-        },
-        "question": "A circle is drawn on a coordinate plane. The center of the circle is at point C({h}, {k}), and a point on the outer edge of the circle is located at P({p_x}, {p_y}). <br><br>Find the **circumference** and the **area** of the circle.",
-        "answer": "1. **Find the radius (r):** Use the distance formula between center C({h}, {k}) and point P({p_x}, {p_y}). <br> r = &radic;<span style='border-top:1px solid;'>( {p_x} - {h} )&sup2; + ( {p_y} - {k} )&sup2;</span> <br> r = &radic;<span style='border-top:1px solid;'>{r_squared}</span> <br> r = {r} <br><br>2. **Calculate Circumference:** <br> - Exact: C = 2 * pi * r = 2 * pi * {r} = {circumference_coefficient}pi <br> - Decimal Approximation: {circumference_approx} (to four significant figures) <br><br>3. **Calculate Area:** <br> - Exact: A = pi * r&sup2; = pi * ({r})&sup2; = {r_squared}pi <br> - Decimal Approximation: {area_approx} (to four significant figures)."
-      },
-      {
-        "id": "GEO 2-3a C rectangle",
+        "id": "GEO 2-3 rectangle",
         "type": "template",
         "objective": "Calculate the Perimeter and Area of a Tilted Rectangle on a Coordinate Plane",
         "difficulty": "basic",
@@ -16863,8 +16818,53 @@
             "formula": "String((5 * multiplier_width) * (5 * multiplier_height))"
           }
         },
-        "question": "A rectangle has vertices at the following coordinates on a coordinate plane: <br> A({a_x}, {a_y}), B({b_x}, {b_y}), C({c_x}, {c_y}), and D({d_x}, {d_y}). <br><br>Find the **perimeter** and the **area** of rectangle ABCD.",
-        "answer": "1. **Find Side Length AB:** Use the distance formula between A({a_x}, {a_y}) and B({b_x}, {b_y}). <br> AB = &radic;<span style='border-top:1px solid;'>( {b_x} - {a_x} )&sup2; + ( {b_y} - {a_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>( {v1_x} )&sup2; + ( {v1_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_x_sq} + {v1_y_sq}</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_sum}</span> <br> AB = {str_side1} <br><br>2. **Find Side Length AD:** Use the distance formula between A({a_x}, {a_y}) and D({d_x}, {d_y}). <br> AD = &radic;<span style='border-top:1px solid;'>( {d_x} - {a_x} )&sup2; + ( {d_y} - {a_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>( {v2_x} )&sup2; + ( {v2_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_x_sq} + {v2_y_sq}</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_sum}</span> <br> AD = {str_side2} <br><br>3. **Calculate Perimeter:** <br> P = 2 * (AB + AD) <br> P = 2 * ({str_side1} + {str_side2}) <br> P = {str_perimeter} <br><br>4. **Calculate Area:** <br> A = AB * AD <br> A = {str_side1} * {str_side2} <br> A = {str_area}"
+        "question": "A rectangle has vertices at the following coordinates, measured in meters, on a coordinate plane: <br> A({a_x}, {a_y}), B({b_x}, {b_y}), C({c_x}, {c_y}), and D({d_x}, {d_y}). <br><br>Find the <b>perimeter</b> and the <b>area</b> of rectangle ABCD.",
+        "answer": "1. **Find Side Length AB:** Use the distance formula between A({a_x}, {a_y}) and B({b_x}, {b_y}). <br> AB = &radic;<span style='border-top:1px solid;'>( {b_x} - {a_x} )&sup2; + ( {b_y} - {a_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>( {v1_x} )&sup2; + ( {v1_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_x_sq} + {v1_y_sq}</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_sum}</span> <br> AB = {str_side1} m <br><br>2. **Find Side Length AD:** Use the distance formula between A({a_x}, {a_y}) and D({d_x}, {d_y}). <br> AD = &radic;<span style='border-top:1px solid;'>( {d_x} - {a_x} )&sup2; + ( {d_y} - {a_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>( {v2_x} )&sup2; + ( {v2_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_x_sq} + {v2_y_sq}</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_sum}</span> <br> AD = {str_side2} m <br><br>3. **Calculate Perimeter:** <br> P = 2 * (AB + AD) <br> P = 2 * ({str_side1} + {str_side2}) <br> P = {str_perimeter} m <br><br>4. **Calculate Area:** <br> A = AB * AD <br> A = {str_side1} * {str_side2} <br> A = {str_area} m&sup2;"
+      },
+      {
+        "id": "GEO 2-3 Circle",
+        "type": "template",
+        "objective": "Calculate the Area and Circumference of a Circle on a Coordinate Plane",
+        "difficulty": "basic",
+        "variables": {
+          "h": {
+            "min": -5,
+            "max": 5
+          },
+          "k": {
+            "min": -5,
+            "max": 5
+          },
+          "valid_offsets": {
+            "formula": "[{dx:3, dy:4}, {dx:4, dy:3}, {dx:5, dy:12}, {dx:12, dy:5}, {dx:6, dy:8}, {dx:8, dy:6}].flatMap(o => [{x:o.dx, y:o.dy}, {x:-o.dx, y:o.dy}, {x:o.dx, y:-o.dy}, {x:-o.dx, y:-o.dy}])"
+          },
+          "offset_index": {
+            "formula": "Math.floor(Math.random() * valid_offsets.length)"
+          },
+          "p_x": {
+            "formula": "h + valid_offsets[offset_index].x"
+          },
+          "p_y": {
+            "formula": "k + valid_offsets[offset_index].y"
+          },
+          "r_squared": {
+            "formula": "Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2)"
+          },
+          "r": {
+            "formula": "Math.sqrt(r_squared)"
+          },
+          "circumference_coefficient": {
+            "formula": "2 * r"
+          },
+          "circumference_approx": {
+            "formula": "String((2 * Math.PI * Math.sqrt(Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))"
+          },
+          "area_approx": {
+            "formula": "String((Math.PI * (Math.pow(valid_offsets[offset_index].x, 2) + Math.pow(valid_offsets[offset_index].y, 2))).toPrecision(4))"
+          }
+        },
+        "question": "A circle is drawn on a coordinate plane with coordinates measured in meters. The center of the circle is at point C({h}, {k}), and a point on the outer edge of the circle is located at P({p_x}, {p_y}). <br><br>Find the <b>circumference</b> and the <b>area</b> of the circle.",
+        "answer": "1. **Find the radius (r):** Use the distance formula between center C({h}, {k}) and point P({p_x}, {p_y}). <br> r = &radic;<span style='border-top:1px solid;'>( {p_x} - {h} )&sup2; + ( {p_y} - {k} )&sup2;</span> <br> r = &radic;<span style='border-top:1px solid;'>{r_squared}</span> <br> r = {r} m <br><br>2. **Calculate Circumference:** <br> - Exact: C = 2 * pi * r = 2 * pi * {r} = {circumference_coefficient}pi m <br> - Decimal Approximation: {circumference_approx} m (to four significant figures) <br><br>3. **Calculate Area:** <br> - Exact: A = pi * r&sup2; = pi * ({r})&sup2; = {r_squared}pi m&sup2; <br> - Decimal Approximation: {area_approx} m&sup2; (to four significant figures)."
       },
       {
         "id": "GEO 2-4a C",
@@ -18079,10 +18079,10 @@
             "formula": "['Addition Property of Equality', 'Segment Addition Postulate', 'Substitution Property', 'Reflexive Property of Equality', 'Definition of Congruence']"
           },
           "raw_choices_step3": {
-            "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Segment Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
+            "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Segment Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false }, { text: 'Reflexive Property of Equality', correct: false } ]"
           },
           "raw_choices_step4": {
-            "formula": "[ { text: 'Segment Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false } ]"
+            "formula": "[ { text: 'Segment Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
           },
           "shuffled_step3": {
             "formula": "raw_choices_step3.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
@@ -18102,6 +18102,9 @@
           "s3_D": {
             "formula": "shuffled_step3[3].text"
           },
+          "s3_E": {
+            "formula": "shuffled_step3[4].text"
+          },
           "s4_A": {
             "formula": "shuffled_step4[0].text"
           },
@@ -18114,14 +18117,17 @@
           "s4_D": {
             "formula": "shuffled_step4[3].text"
           },
+          "s4_E": {
+            "formula": "shuffled_step4[4].text"
+          },
           "ans_step3": {
-            "formula": "['?', '?', '?', '?'][shuffled_step3.findIndex(c => c.correct)]"
+            "formula": "['A', 'B', 'C', 'D', 'E'][shuffled_step3.findIndex(c => c.correct)]"
           },
           "ans_step4": {
-            "formula": "['?', '?', '?', '?'][shuffled_step4.findIndex(c => c.correct)]"
+            "formula": "['A', 'B', 'C', 'D', 'E'][shuffled_step4.findIndex(c => c.correct)]"
           }
         },
-        "question": "Given: \\( AB \\cong CD \\)<br>Prove: \\( AC \\cong BD \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( AB \\cong CD \\)</td><td>1. Given</td></tr><tr><td>2. \\( AB = CD \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( AB + BC = BC + CD \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( AB + BC = AC \\), \\( BC + CD = BD \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( AC = BD \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( AC \\cong BD \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> ? {s3_A} &nbsp;&nbsp; ? {s3_B} &nbsp;&nbsp; ? {s3_C} &nbsp;&nbsp; ? {s3_D}<br><br><b>Options for Blank 4:</b><br> ? {s4_A} &nbsp;&nbsp; ? {s4_B} &nbsp;&nbsp; ? {s4_C} &nbsp;&nbsp; ? {s4_D}",
+        "question": "Given: \\( AB \\cong CD \\)<br>Prove: \\( AC \\cong BD \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( AB \\cong CD \\)</td><td>1. Given</td></tr><tr><td>2. \\( AB = CD \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( AB + BC = BC + CD \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( AB + BC = AC \\), \\( BC + CD = BD \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( AC = BD \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( AC \\cong BD \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> A. {s3_A} &nbsp;&nbsp; B. {s3_B} &nbsp;&nbsp; C. {s3_C} &nbsp;&nbsp; D. {s3_D} &nbsp;&nbsp; E. {s3_E}<br><br><b>Options for Blank 4:</b><br> A. {s4_A} &nbsp;&nbsp; B. {s4_B} &nbsp;&nbsp; C. {s4_C} &nbsp;&nbsp; D. {s4_D} &nbsp;&nbsp; E. {s4_E}",
         "answer": "Here are the correct reasons to complete the proof:<br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical segment length \\( BC \\) to both sides of the equation \\( AB = CD \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Segment Addition Postulate)</b><br><i>Why:</i> This postulate states that if point \\( B \\) lies between points \\( A \\) and \\( C \\), then the two smaller segment lengths add up to the total length (\\( AB + BC = AC \\)).</li></ul>"
       },
       {
@@ -18142,7 +18148,7 @@
           "ptC": { "formula": "pts[3]" },
           "ptE": { "formula": "pts[4]" },
           "supplement_choices": {
-            "formula": "[{text:'Supplement Theorem',correct:true},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Supplements Theorem',correct:false}]"
+            "formula": "[{text:'Supplement Theorem',correct:true},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Supplements Theorem',correct:false},{text:'Congruent Complements Theorem',correct:false}]"
           },
           "shuffled_supplement_choices": {
             "formula": "supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
@@ -18151,9 +18157,10 @@
           "s1_B": { "formula": "shuffled_supplement_choices[1].text" },
           "s1_C": { "formula": "shuffled_supplement_choices[2].text" },
           "s1_D": { "formula": "shuffled_supplement_choices[3].text" },
-          "ans_s1": { "formula": "['A','B','C','D'][shuffled_supplement_choices.findIndex(c => c.correct)]" },
+          "s1_E": { "formula": "shuffled_supplement_choices[4].text" },
+          "ans_s1": { "formula": "['A','B','C','D','E'][shuffled_supplement_choices.findIndex(c => c.correct)]" },
           "congruent_supplement_choices": {
-            "formula": "[{text:'Congruent Supplements Theorem',correct:true},{text:'Supplement Theorem',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Reflexive Property of Congruence',correct:false}]"
+            "formula": "[{text:'Congruent Supplements Theorem',correct:true},{text:'Supplement Theorem',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Reflexive Property of Congruence',correct:false},{text:'Congruent Complements Theorem',correct:false}]"
           },
           "shuffled_congruent_supplement_choices": {
             "formula": "congruent_supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
@@ -18162,9 +18169,10 @@
           "s3_B": { "formula": "shuffled_congruent_supplement_choices[1].text" },
           "s3_C": { "formula": "shuffled_congruent_supplement_choices[2].text" },
           "s3_D": { "formula": "shuffled_congruent_supplement_choices[3].text" },
-          "ans_s3": { "formula": "['A','B','C','D'][shuffled_congruent_supplement_choices.findIndex(c => c.correct)]" }
+          "s3_E": { "formula": "shuffled_congruent_supplement_choices[4].text" },
+          "ans_s3": { "formula": "['A','B','C','D','E'][shuffled_congruent_supplement_choices.findIndex(c => c.correct)]" }
         },
-        "question": "<b>Given:</b> Points {ptA}, {ptB}, and {ptD} are collinear with {ptB} between {ptA} and {ptD}; points {ptC}, {ptB}, and {ptE} are collinear with {ptB} between {ptC} and {ptE}.<br><b>Prove:</b> \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border='1' cellpadding='6' style='border-collapse:collapse;width:100%;'><thead><tr><th>Statements</th><th>Reasons</th></tr></thead><tbody><tr><td>1. {ptA}, {ptB}, {ptD} are collinear, and {ptC}, {ptB}, {ptE} are collinear; {ptB} is between each pair of outer points.</td><td>1. Given</td></tr><tr><td>2. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) form a linear pair.</td><td>2. Definition of linear pair</td></tr><tr><td>3. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) form a linear pair.</td><td>3. Definition of linear pair</td></tr><tr><td>4. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary.</td><td>4. [Blank 1]</td></tr><tr><td>5. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) are supplementary.</td><td>5. [Blank 2]</td></tr><tr><td>6. \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)</td><td>6. [Blank 3]</td></tr></tbody></table><br><b>Options for Blanks 1 and 2:</b><br>? {s1_A} &nbsp; ? {s1_B} &nbsp; ? {s1_C} &nbsp; ? {s1_D}<br><b>Options for Blank 3:</b><br>? {s3_A} &nbsp; ? {s3_B} &nbsp; ? {s3_C} &nbsp; ? {s3_D}",
+        "question": "<b>Given:</b> Points {ptA}, {ptB}, and {ptD} are collinear with {ptB} between {ptA} and {ptD}; points {ptC}, {ptB}, and {ptE} are collinear with {ptB} between {ptC} and {ptE}.<br><b>Prove:</b> \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)<br><br>Complete the two-column proof by choosing the missing reasons.<br><table border='1' cellpadding='6' style='border-collapse:collapse;width:100%;'><thead><tr><th>Statements</th><th>Reasons</th></tr></thead><tbody><tr><td>1. {ptA}, {ptB}, {ptD} are collinear, and {ptC}, {ptB}, {ptE} are collinear; {ptB} is between each pair of outer points.</td><td>1. Given</td></tr><tr><td>2. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) form a linear pair.</td><td>2. Definition of linear pair</td></tr><tr><td>3. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) form a linear pair.</td><td>3. Definition of linear pair</td></tr><tr><td>4. \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary.</td><td>4. [Blank 1]</td></tr><tr><td>5. \\( \\angle {ptC}{ptB}{ptD} \\) and \\( \\angle {ptD}{ptB}{ptE} \\) are supplementary.</td><td>5. [Blank 2]</td></tr><tr><td>6. \\( \\angle {ptA}{ptB}{ptC} \\cong \\angle {ptD}{ptB}{ptE} \\)</td><td>6. [Blank 3]</td></tr></tbody></table><br><b>Options for Blanks 1 and 2:</b><br>A. {s1_A} &nbsp; B. {s1_B} &nbsp; C. {s1_C} &nbsp; D. {s1_D} &nbsp; E. {s1_E}<br><b>Options for Blank 3:</b><br>A. {s3_A} &nbsp; B. {s3_B} &nbsp; C. {s3_C} &nbsp; D. {s3_D} &nbsp; E. {s3_E}",
         "answer": "<b>Completed proof:</b><br>Blank 1: {ans_s1} — Supplement Theorem, because angles that form a linear pair are supplementary.<br>Blank 2: {ans_s1} — Supplement Theorem, because angles that form a linear pair are supplementary.<br>Blank 3: {ans_s3} — Congruent Supplements Theorem, because angles supplementary to the same angle are congruent."
       },
       {
@@ -18195,10 +18203,10 @@
             "formula": "pts[1] + pts[3]"
           },
           "raw_choices_step3": {
-            "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Segment Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
+            "formula": "[ { text: 'Addition Property of Equality', correct: true }, { text: 'Segment Addition Postulate', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Transitive Property of Equality', correct: false }, { text: 'Reflexive Property of Equality', correct: false } ]"
           },
           "raw_choices_step4": {
-            "formula": "[ { text: 'Segment Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false } ]"
+            "formula": "[ { text: 'Segment Addition Postulate', correct: true }, { text: 'Addition Property of Equality', correct: false }, { text: 'Substitution Property', correct: false }, { text: 'Definition of Congruence', correct: false }, { text: 'Transitive Property of Equality', correct: false } ]"
           },
           "shuffled_step3": {
             "formula": "raw_choices_step3.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
@@ -18218,6 +18226,9 @@
           "s3_D": {
             "formula": "shuffled_step3[3].text"
           },
+          "s3_E": {
+            "formula": "shuffled_step3[4].text"
+          },
           "s4_A": {
             "formula": "shuffled_step4[0].text"
           },
@@ -18230,14 +18241,17 @@
           "s4_D": {
             "formula": "shuffled_step4[3].text"
           },
+          "s4_E": {
+            "formula": "shuffled_step4[4].text"
+          },
           "ans_step3": {
-            "formula": "['?', '?', '?', '?'][shuffled_step3.findIndex(c => c.correct)]"
+            "formula": "['A', 'B', 'C', 'D', 'E'][shuffled_step3.findIndex(c => c.correct)]"
           },
           "ans_step4": {
-            "formula": "['?', '?', '?', '?'][shuffled_step4.findIndex(c => c.correct)]"
+            "formula": "['A', 'B', 'C', 'D', 'E'][shuffled_step4.findIndex(c => c.correct)]"
           }
         },
-        "question": "Given: \\( {seg1} \\cong {seg2} \\)<br>Prove: \\( {whole1} \\cong {whole2} \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( {seg1} \\cong {seg2} \\)</td><td>1. Given</td></tr><tr><td>2. \\( {seg1} = {seg2} \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( {seg1} + {seg3} = {seg3} + {seg2} \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( {seg1} + {seg3} = {whole1} \\), \\( {seg3} + {seg2} = {whole2} \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( {whole1} = {whole2} \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( {whole1} \\cong {whole2} \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> ? {s3_A} &nbsp;&nbsp; ? {s3_B} &nbsp;&nbsp; ? {s3_C} &nbsp;&nbsp; ? {s3_D}<br><br><b>Options for Blank 4:</b><br> ? {s4_A} &nbsp;&nbsp; ? {s4_B} &nbsp;&nbsp; ? {s4_C} &nbsp;&nbsp; ? {s4_D}",
+        "question": "Given: \\( {seg1} \\cong {seg2} \\)<br>Prove: \\( {whole1} \\cong {whole2} \\)<br><br>Complete the two-column proof by choosing the correct missing reasons for Step 3 and Step 4.<br><br><table border='1' cellpadding='6' style='border-collapse: collapse; width: 100%;'><thead><tr style='background-color: #f2f2f2;'><th style='text-align: left; width: 50%;'>Statements</th><th style='text-align: left; width: 50%;'>Reasons</th></tr></thead><tbody><tr><td>1. \\( {seg1} \\cong {seg2} \\)</td><td>1. Given</td></tr><tr><td>2. \\( {seg1} = {seg2} \\)</td><td>2. Definition of congruence</td></tr><tr><td>3. \\( {seg1} + {seg3} = {seg3} + {seg2} \\)</td><td>3. [Blank 3]</td></tr><tr><td>4. \\( {seg1} + {seg3} = {whole1} \\), \\( {seg3} + {seg2} = {whole2} \\)</td><td>4. [Blank 4]</td></tr><tr><td>5. \\( {whole1} = {whole2} \\)</td><td>5. Substitution</td></tr><tr><td>6. \\( {whole1} \\cong {whole2} \\)</td><td>6. Definition of congruence</td></tr></tbody></table><br><b>Options for Blank 3:</b><br> A. {s3_A} &nbsp;&nbsp; B. {s3_B} &nbsp;&nbsp; C. {s3_C} &nbsp;&nbsp; D. {s3_D} &nbsp;&nbsp; E. {s3_E}<br><br><b>Options for Blank 4:</b><br> A. {s4_A} &nbsp;&nbsp; B. {s4_B} &nbsp;&nbsp; C. {s4_C} &nbsp;&nbsp; D. {s4_D} &nbsp;&nbsp; E. {s4_E}",
         "answer": "Here are the correct reasons to complete the proof:<br><br><ul><li><b>Step 3 Blank: {ans_step3} (Addition Property of Equality)</b><br><i>Why:</i> This step adds the identical segment length \\( {seg3} \\) to both sides of the equation \\( {seg1} = {seg2} \\).</li><br><li><b>Step 4 Blank: {ans_step4} (Segment Addition Postulate)</b><br><i>Why:</i> This postulate states that if point \\( {pts[1]} \\) lies between points \\( {pts[0]} \\) and \\( {pts[2]} \\), then the two smaller segment lengths add up to the total length (\\( {seg1} + {seg3} = {whole1} \\)).</li></ul>"
       },
       {
