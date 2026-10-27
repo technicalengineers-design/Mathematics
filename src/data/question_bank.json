@@ -3588,8 +3588,8 @@
             "formula": "['Linear','Not linear','Linear','Linear','Not linear','Not linear','Linear','Not linear','Linear','Not linear','Linear','Not linear'][pick_order[3]]"
           }
         },
-        "question": "For each equation, decide whether it defines a linear function of x:<br>a) {prompt_a}<br>b) {prompt_b}<br>c) {prompt_c}<br>d) {prompt_d}",
-        "answer": "a) {answer_a}<br>b) {answer_b}<br>c) {answer_c}<br>d) {answer_d}"
+        "question": "For each equation, decide whether it defines a linear function of x:<br><div style='display:flex;flex-flow:row wrap;gap:12px;align-items:flex-start;'><div style='flex:1 1 22%;min-width:150px;'>a) {prompt_a}</div><div style='flex:1 1 22%;min-width:150px;'>b) {prompt_b}</div><div style='flex:1 1 22%;min-width:150px;'>c) {prompt_c}</div><div style='flex:1 1 22%;min-width:150px;'>d) {prompt_d}</div></div>",
+        "answer": "<div style='display:flex;flex-flow:row wrap;gap:12px;align-items:flex-start;'><div style='flex:1 1 22%;min-width:150px;'>a) {answer_a}</div><div style='flex:1 1 22%;min-width:150px;'>b) {answer_b}</div><div style='flex:1 1 22%;min-width:150px;'>c) {answer_c}</div><div style='flex:1 1 22%;min-width:150px;'>d) {answer_d}</div></div>"
       },
       {
         "id": "ALG1-3.4 Intercepts",
