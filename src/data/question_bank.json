@@ -2977,7 +2977,7 @@
             "formula": "g4_type <= 2 ? 'Each element in domain X maps to exactly one element in range Y.' : 'An element in domain X maps to more than one element in range Y.'"
           }
         },
-        "question": "Determine whether each of the following mapping diagrams represents a <b>function</b> or <b>not a function</b>.<br><br><div class='mapping-diagrams'><div><b>Diagram A</b><br>{g1_blank}<br><br>Choose one:<br>? Function<br>? Not a Function</div><div><b>Diagram B</b><br>{g2_blank}<br><br>Choose one:<br>? Function<br>? Not a Function</div><div><b>Diagram C</b><br>{g3_blank}<br><br>Choose one:<br>? Function<br>? Not a Function</div><div><b>Diagram D</b><br>{g4_blank}<br><br>Choose one:<br>? Function<br>? Not a Function</div></div>",
+        "question": "Determine whether each of the following mapping diagrams represents a <b>function</b> or <b>not a function</b>.<br><br><div class='mapping-diagrams'><div><b>Diagram A</b><br>{g1_blank}</div><div><b>Diagram B</b><br>{g2_blank}</div><div><b>Diagram C</b><br>{g3_blank}</div><div><b>Diagram D</b><br>{g4_blank}</div></div>",
         "answer": "<b>Correct Interpretations:</b><br><ul><li><b>Diagram A:</b> <b>{ans1}</b> � {reason1}</li><li><b>Diagram B:</b> <b>{ans2}</b> � {reason2}</li><li><b>Diagram C:</b> <b>{ans3}</b> � {reason3}</li><li><b>Diagram D:</b> <b>{ans4}</b> � {reason4}</li></ul>"
       },
       {
