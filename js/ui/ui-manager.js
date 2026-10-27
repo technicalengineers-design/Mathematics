@@ -780,7 +780,7 @@ class UIManager {
 
       const answerItem = document.createElement("div");
       answerItem.className = "answer";
-      answerItem.innerHTML = `<strong>${index + 1})</strong> ${question.answer || 'No answer provided'}`;
+      answerItem.innerHTML = `<strong>${index + 1}) [${question.id || 'No ID'}]</strong> ${question.answer || 'No answer provided'}`;
       answerDiv.appendChild(answerItem);
 
       if (hasDrawCanvas) {
