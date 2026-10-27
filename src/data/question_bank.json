@@ -2978,7 +2978,7 @@
           }
         },
         "question": "Determine whether each of the following mapping diagrams represents a <b>function</b> or <b>not a function</b>.<br><br><div class='mapping-diagrams'><div><b>Diagram A</b><br>{g1_blank}</div><div><b>Diagram B</b><br>{g2_blank}</div><div><b>Diagram C</b><br>{g3_blank}</div><div><b>Diagram D</b><br>{g4_blank}</div></div>",
-        "answer": "<b>Correct Interpretations:</b><br><ul><li><b>Diagram A:</b> <b>{ans1}</b> � {reason1}</li><li><b>Diagram B:</b> <b>{ans2}</b> � {reason2}</li><li><b>Diagram C:</b> <b>{ans3}</b> � {reason3}</li><li><b>Diagram D:</b> <b>{ans4}</b> � {reason4}</li></ul>"
+        "answer": "<b>Correct Interpretations:</b><br><ul><li><b>Diagram A:</b> <b>{ans1}</b><br>{reason1}</li><li><b>Diagram B:</b> <b>{ans2}</b><br>{reason2}</li><li><b>Diagram C:</b> <b>{ans3}</b><br>{reason3}</li><li><b>Diagram D:</b> <b>{ans4}</b><br>{reason4}</li></ul>"
       },
       {
         "id": "ALG1 3.2 Working with Functions",
@@ -4342,7 +4342,7 @@
             "max": 3
           }
         },
-        "question": "<div style='width:100%;'><b>Identify the relative maximum and minimum point(s) for each graph. Write “None” if a graph has no relative maximum or minimum.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div></div></div>",
+        "question": "<div style='width:100%;'><b>Identify the relative maximum and minimum point(s) for each graph with an ordered pair. Write “None” if a graph has no relative maximum or minimum.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div></div></div>",
         "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Relative maximum: {eq1_max}; relative minimum: {eq1_min}<br>Graph B: {eq2_name}<br>Relative maximum: {eq2_max}; relative minimum: {eq2_min}<br>Graph C: {eq3_name}<br>Relative maximum: {eq3_max}; relative minimum: {eq3_min}"
       },
       {
