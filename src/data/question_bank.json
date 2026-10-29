@@ -3601,17 +3601,8 @@
             "min": -4,
             "max": -1
           },
-          "q_x2": {
-            "min": 1,
-            "max": 4
-          },
-          "q_a": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
+          "q_x2": { "formula": "(function(){var choices=[1,2,3,4].filter(function(x){return Math.abs(x-q_x1)<=6});return choices[Math.floor(Math.random()*choices.length)]})()" },
+          "q_a": { "formula": "(function(){var d=Math.abs(q_x2-q_x1),maxA=Math.min(2,Math.floor(40/(d*d))),choices=[];for(var a=1;a<=maxA;a++)choices.push(-a,a);return choices[Math.floor(Math.random()*choices.length)]})()" },
           "q_yint": {
             "formula": "q_a * q_x1 * q_x2"
           },
