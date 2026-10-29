@@ -1,4 +1,4 @@
-﻿{
+{
   "Algebra 1": {
     "1 Expressions": [
       {
@@ -3601,8 +3601,12 @@
             "min": -4,
             "max": -1
           },
-          "q_x2": { "formula": "(function(){var choices=[1,2,3,4].filter(function(x){return Math.abs(x-q_x1)<=6});return choices[Math.floor(Math.random()*choices.length)]})()" },
-          "q_a": { "formula": "(function(){var d=Math.abs(q_x2-q_x1),maxA=Math.min(2,Math.floor(40/(d*d))),choices=[];for(var a=1;a<=maxA;a++)choices.push(-a,a);return choices[Math.floor(Math.random()*choices.length)]})()" },
+          "q_x2": {
+            "formula": "(function(){var choices=[1,2,3,4].filter(function(x){return Math.abs(x-q_x1)<=6});return choices[Math.floor(Math.random()*choices.length)]})()"
+          },
+          "q_a": {
+            "formula": "(function(){var d=Math.abs(q_x2-q_x1),maxA=Math.min(2,Math.floor(40/(d*d))),choices=[];for(var a=1;a<=maxA;a++)choices.push(-a,a);return choices[Math.floor(Math.random()*choices.length)]})()"
+          },
           "q_yint": {
             "formula": "q_a * q_x1 * q_x2"
           },
@@ -3673,7 +3677,7 @@
             "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 400\" style=\"width:100%;max-width:260px;height:auto;margin:10px;border:1px solid #777;background:white;\">' + Array.from({length: 21}, (_, i) => { const v = -10 + i; const coord = 200 + v * 18; const c = v === 0 ? '#222' : '#eee'; const w = v === 0 ? 2 : 1; return '<line x1=\"' + coord + '\" y1=\"20\" x2=\"' + coord + '\" y2=\"380\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>' + '<line x1=\"20\" y1=\"' + coord + '\" x2=\"380\" y2=\"' + coord + '\" stroke=\"' + c + '\" stroke-width=\"' + w + '\"/>'; }).join('') + '<text x=\"385\" y=\"205\" font-size=\"12\" font-weight=\"bold\">x</text><text x=\"205\" y=\"15\" font-size=\"12\" font-weight=\"bold\">y</text>'"
           },
           "graph_path400": {
-            "formula": "(function(){return function(yAt,color,marker,xmin,xmax){var segs=[],cur=null,prev=null;function done(){if(cur&&cur.length>1)segs.push(cur);cur=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-20,380-a.x,a.y-20,380-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=xmin+(xmax-xmin)*i/320,p={x:200+x*18,y:200-yAt(x)*18};if(prev){var z=clip(prev,p);if(z){if(cur&&Math.abs(cur[cur.length-1].x-z[0].x)<.01&&Math.abs(cur[cur.length-1].y-z[0].y)<.01)cur.push(z[1]);else{done();cur=[z[0],z[1]]}if(Math.abs(z[1].x-p.x)>.01||Math.abs(z[1].y-p.y)>.01)done()}else done()}prev=p}done();var defs='<defs><marker id=\"arrowQStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#2980b9\"/></marker><marker id=\"arrowQEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#2980b9\"/></marker><marker id=\"arrowLStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#27ae60\"/></marker><marker id=\"arrowLEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#27ae60\"/></marker><marker id=\"arrowAStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#8e44ad\"/></marker><marker id=\"arrowAEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#8e44ad\"/></marker><marker id=\"arrowCStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#e67e22\"/></marker><marker id=\"arrowCEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#e67e22\"/></marker></defs>';return defs+segs.map(function(s){var d=s.map(function(p,i){return(i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\" marker-start=\"url(#'+marker+'Start)\" marker-end=\"url(#'+marker+'End)\"/>'}).join('')}})()"
+            "formula": "(function(){return function(yAt,color,marker,xmin,xmax){var segs=[],cur=null,prev=null;function done(){if(cur&&cur.length>1)segs.push(cur);cur=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-20,380-a.x,a.y-20,380-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=xmin+(xmax-xmin)*i/320,p={x:200+x*18,y:200-yAt(x)*18};if(prev){var z=clip(prev,p);if(z){if(cur&&Math.abs(cur[cur.length-1].x-z[0].x)<.01&&Math.abs(cur[cur.length-1].y-z[0].y)<.01)cur.push(z[1]);else{done();cur=[z[0],z[1]]}if(Math.abs(z[1].x-p.x)>.01||Math.abs(z[1].y-p.y)>.01)done()}else done()}prev=p}done();return segs.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');function arrow(p,n){var dx=p.x-n.x,dy=p.y-n.y,len=Math.sqrt(dx*dx+dy*dy)||1;dx=dx/len*8;dy=dy/len*8;var bx=p.x-dx,by=p.y-dy,px=-dy*.45,py=dx*.45;return '<polygon points=\"'+p.x+','+p.y+' '+(bx+px)+','+(by+py)+' '+(bx-px)+','+(by-py)+'\" fill=\"'+color+'\"/>'}return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\"/>'+arrow(s[0],s[1])+arrow(s[s.length-1],s[s.length-2])}).join('')}})()"
           },
           "q_path": {
             "formula": "graph_path400(function(x){return q_a*(x-q_x1)*(x-q_x2)},'#2980b9','arrowQ',-10,10)"
@@ -3788,7 +3792,7 @@
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\" style=\"display:block;width:100%;height:auto;border:1px solid #777;background:white;\">' + Array.from({length:21},function(_,i){var n=-10+i,c=150+n*12,col=n===0?'#222':'#e5e5e5',w=n===0?2:1;return '<line x1=\"'+c+'\" y1=\"15\" x2=\"'+c+'\" y2=\"285\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"15\" y1=\"'+c+'\" x2=\"285\" y2=\"'+c+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>';}).join('') + '<text x=\"287\" y=\"155\" font-size=\"10\">x</text><text x=\"153\" y=\"12\" font-size=\"10\">y</text>'"
           },
           "graph_path": {
-            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();var defs='<defs><marker id=\"arrowBlueStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowBlueEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowRustStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowRustEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowPurpleStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#7040a0\"/></marker><marker id=\"arrowPurpleEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#7040a0\"/></marker></defs>';return defs+segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\" marker-start=\"url(#'+marker+'Start)\" marker-end=\"url(#'+marker+'End)\"/>'}).join('')}})()"
+            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();return segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');function arrow(p,n){var dx=p.x-n.x,dy=p.y-n.y,len=Math.sqrt(dx*dx+dy*dy)||1;dx=dx/len*8;dy=dy/len*8;var bx=p.x-dx,by=p.y-dy,px=-dy*.45,py=dx*.45;return '<polygon points=\"'+p.x+','+p.y+' '+(bx+px)+','+(by+py)+' '+(bx-px)+','+(by-py)+'\" fill=\"'+color+'\"/>'}return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\"/>'+arrow(s[0],s[1])+arrow(s[s.length-1],s[s.length-2])}).join('')}})()"
           },
           "p_svg": {
             "formula": "graph_base + graph_path(function(x){return p_a*(x-p_r1)*(x-p_r2)},'#286090','arrowBlue') + '</svg>'"
@@ -4039,7 +4043,7 @@
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\" style=\"display:block;width:100%;height:auto;border:1px solid #777;background:white;\">' + Array.from({length:21},function(_,i){var n=-10+i,c=150+n*12,col=n===0?'#222':'#e5e5e5',w=n===0?2:1;return '<line x1=\"'+c+'\" y1=\"15\" x2=\"'+c+'\" y2=\"285\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"15\" y1=\"'+c+'\" x2=\"285\" y2=\"'+c+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>';}).join('') + '<text x=\"287\" y=\"155\" font-size=\"10\">x</text><text x=\"153\" y=\"12\" font-size=\"10\">y</text>'"
           },
           "graph_path": {
-            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();var defs='<defs><marker id=\"arrowBlueStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowBlueEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowRustStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowRustEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowPurpleStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#7040a0\"/></marker><marker id=\"arrowPurpleEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#7040a0\"/></marker></defs>';return defs+segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\" marker-start=\"url(#'+marker+'Start)\" marker-end=\"url(#'+marker+'End)\"/>'}).join('')}})()"
+            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();return segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');function arrow(p,n){var dx=p.x-n.x,dy=p.y-n.y,len=Math.sqrt(dx*dx+dy*dy)||1;dx=dx/len*8;dy=dy/len*8;var bx=p.x-dx,by=p.y-dy,px=-dy*.45,py=dx*.45;return '<polygon points=\"'+p.x+','+p.y+' '+(bx+px)+','+(by+py)+' '+(bx-px)+','+(by-py)+'\" fill=\"'+color+'\"/>'}return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\"/>'+arrow(s[0],s[1])+arrow(s[s.length-1],s[s.length-2])}).join('')}})()"
           },
           "p_svg": {
             "formula": "graph_base + graph_path(function(x){return p_a*(x-p_r1)*(x-p_r2)},'#286090','arrowBlue') + '</svg>'"
@@ -4237,18 +4241,33 @@
               1
             ]
           },
-          "f_y_low": { "min": -5, "max": 4 },
-          "f_y_high": { "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))" },
-          "f_y_left": { "formula": "f_a > 0 ? f_y_high : f_y_low" },
-          "f_y_right": { "formula": "f_a > 0 ? f_y_low : f_y_high" },
-          "f_scale": { "formula": "(f_y_right - f_y_left) / -2.25" },
-          "f_offset": { "formula": "f_y_left + (5 / 12) * f_scale" },
-          "f_offset_text": { "formula": "(function(){var n=32*f_y_left-5*f_y_right,d=27,a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}n/=a;d/=a;return d===1?String(n):n+'/'+d})()" },
+          "f_y_low": {
+            "min": -5,
+            "max": 4
+          },
+          "f_y_high": {
+            "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))"
+          },
+          "f_y_left": {
+            "formula": "f_a > 0 ? f_y_high : f_y_low"
+          },
+          "f_y_right": {
+            "formula": "f_a > 0 ? f_y_low : f_y_high"
+          },
+          "f_scale": {
+            "formula": "(f_y_right - f_y_left) / -2.25"
+          },
+          "f_offset": {
+            "formula": "f_y_left + (5 / 12) * f_scale"
+          },
+          "f_offset_text": {
+            "formula": "(function(){var n=32*f_y_left-5*f_y_right,d=27,a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}n/=a;d/=a;return d===1?String(n):n+'/'+d})()"
+          },
           "graph_base": {
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\" style=\"display:block;width:100%;height:auto;border:1px solid #777;background:white;\">' + Array.from({length:21},function(_,i){var n=-10+i,c=150+n*12,col=n===0?'#222':'#e5e5e5',w=n===0?2:1;return '<line x1=\"'+c+'\" y1=\"15\" x2=\"'+c+'\" y2=\"285\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"15\" y1=\"'+c+'\" x2=\"285\" y2=\"'+c+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>';}).join('') + '<text x=\"287\" y=\"155\" font-size=\"10\">x</text><text x=\"153\" y=\"12\" font-size=\"10\">y</text>'"
           },
           "graph_path": {
-            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();var defs='<defs><marker id=\"arrowBlueStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowBlueEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowRustStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowRustEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowPurpleStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#7040a0\"/></marker><marker id=\"arrowPurpleEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#7040a0\"/></marker></defs>';return defs+segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\" marker-start=\"url(#'+marker+'Start)\" marker-end=\"url(#'+marker+'End)\"/>'}).join('')}})()"
+            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();return segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');function arrow(p,n){var dx=p.x-n.x,dy=p.y-n.y,len=Math.sqrt(dx*dx+dy*dy)||1;dx=dx/len*8;dy=dy/len*8;var bx=p.x-dx,by=p.y-dy,px=-dy*.45,py=dx*.45;return '<polygon points=\"'+p.x+','+p.y+' '+(bx+px)+','+(by+py)+' '+(bx-px)+','+(by-py)+'\" fill=\"'+color+'\"/>'}return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\"/>'+arrow(s[0],s[1])+arrow(s[s.length-1],s[s.length-2])}).join('')}})()"
           },
           "q_svg": {
             "formula": "graph_base + graph_path(function(x){return q_a*(x-q_h)*(x-q_h)+q_k},'#286090','arrowBlue') + '</svg>'"
@@ -4402,18 +4421,33 @@
               1
             ]
           },
-          "f_y_low": { "min": -5, "max": 4 },
-          "f_y_high": { "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))" },
-          "f_y_left": { "formula": "f_a > 0 ? f_y_high : f_y_low" },
-          "f_y_right": { "formula": "f_a > 0 ? f_y_low : f_y_high" },
-          "f_scale": { "formula": "(f_y_right - f_y_left) / -2.25" },
-          "f_offset": { "formula": "f_y_left + (5 / 12) * f_scale" },
-          "f_offset_text": { "formula": "(function(){var n=32*f_y_left-5*f_y_right,d=27,a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}n/=a;d/=a;return d===1?String(n):n+'/'+d})()" },
+          "f_y_low": {
+            "min": -5,
+            "max": 4
+          },
+          "f_y_high": {
+            "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))"
+          },
+          "f_y_left": {
+            "formula": "f_a > 0 ? f_y_high : f_y_low"
+          },
+          "f_y_right": {
+            "formula": "f_a > 0 ? f_y_low : f_y_high"
+          },
+          "f_scale": {
+            "formula": "(f_y_right - f_y_left) / -2.25"
+          },
+          "f_offset": {
+            "formula": "f_y_left + (5 / 12) * f_scale"
+          },
+          "f_offset_text": {
+            "formula": "(function(){var n=32*f_y_left-5*f_y_right,d=27,a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}n/=a;d/=a;return d===1?String(n):n+'/'+d})()"
+          },
           "graph_base": {
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\" style=\"display:block;width:100%;height:auto;border:1px solid #777;background:white;\">' + Array.from({length:21},function(_,i){var n=-10+i,c=150+n*12,col=n===0?'#222':'#e5e5e5',w=n===0?2:1;return '<line x1=\"'+c+'\" y1=\"15\" x2=\"'+c+'\" y2=\"285\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"15\" y1=\"'+c+'\" x2=\"285\" y2=\"'+c+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>';}).join('') + '<text x=\"287\" y=\"155\" font-size=\"10\">x</text><text x=\"153\" y=\"12\" font-size=\"10\">y</text>'"
           },
           "graph_path": {
-            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();var defs='<defs><marker id=\"arrowBlueStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowBlueEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowRustStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowRustEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowPurpleStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#7040a0\"/></marker><marker id=\"arrowPurpleEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#7040a0\"/></marker></defs>';return defs+segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\" marker-start=\"url(#'+marker+'Start)\" marker-end=\"url(#'+marker+'End)\"/>'}).join('')}})()"
+            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();return segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');function arrow(p,n){var dx=p.x-n.x,dy=p.y-n.y,len=Math.sqrt(dx*dx+dy*dy)||1;dx=dx/len*8;dy=dy/len*8;var bx=p.x-dx,by=p.y-dy,px=-dy*.45,py=dx*.45;return '<polygon points=\"'+p.x+','+p.y+' '+(bx+px)+','+(by+py)+' '+(bx-px)+','+(by-py)+'\" fill=\"'+color+'\"/>'}return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\"/>'+arrow(s[0],s[1])+arrow(s[s.length-1],s[s.length-2])}).join('')}})()"
           },
           "q_svg": {
             "formula": "graph_base + graph_path(function(x){return q_a*(x-q_h)*(x-q_h)+q_k},'#286090','arrowBlue') + '</svg>'"
@@ -4648,18 +4682,33 @@
               1
             ]
           },
-          "f_y_low": { "min": -5, "max": 4 },
-          "f_y_high": { "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))" },
-          "f_y_left": { "formula": "f_a > 0 ? f_y_high : f_y_low" },
-          "f_y_right": { "formula": "f_a > 0 ? f_y_low : f_y_high" },
-          "f_scale": { "formula": "(f_y_right - f_y_left) / -2.25" },
-          "f_offset": { "formula": "f_y_left + (5 / 12) * f_scale" },
-          "f_offset_text": { "formula": "(function(){var n=32*f_y_left-5*f_y_right,d=27,a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}n/=a;d/=a;return d===1?String(n):n+'/'+d})()" },
+          "f_y_low": {
+            "min": -5,
+            "max": 4
+          },
+          "f_y_high": {
+            "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))"
+          },
+          "f_y_left": {
+            "formula": "f_a > 0 ? f_y_high : f_y_low"
+          },
+          "f_y_right": {
+            "formula": "f_a > 0 ? f_y_low : f_y_high"
+          },
+          "f_scale": {
+            "formula": "(f_y_right - f_y_left) / -2.25"
+          },
+          "f_offset": {
+            "formula": "f_y_left + (5 / 12) * f_scale"
+          },
+          "f_offset_text": {
+            "formula": "(function(){var n=32*f_y_left-5*f_y_right,d=27,a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}n/=a;d/=a;return d===1?String(n):n+'/'+d})()"
+          },
           "graph_base": {
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 300\" style=\"display:block;width:100%;height:auto;border:1px solid #777;background:white;\">' + Array.from({length:21},function(_,i){var n=-10+i,c=150+n*12,col=n===0?'#222':'#e5e5e5',w=n===0?2:1;return '<line x1=\"'+c+'\" y1=\"15\" x2=\"'+c+'\" y2=\"285\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"15\" y1=\"'+c+'\" x2=\"285\" y2=\"'+c+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>';}).join('') + '<text x=\"287\" y=\"155\" font-size=\"10\">x</text><text x=\"153\" y=\"12\" font-size=\"10\">y</text>'"
           },
           "graph_path": {
-            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();var defs='<defs><marker id=\"arrowBlueStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowBlueEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#286090\"/></marker><marker id=\"arrowRustStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowRustEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#b04a2f\"/></marker><marker id=\"arrowPurpleStart\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M8,0 L0,4 L8,8 z\" fill=\"#7040a0\"/></marker><marker id=\"arrowPurpleEnd\" viewBox=\"0 0 8 8\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\" overflow=\"visible\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#7040a0\"/></marker></defs>';return defs+segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\" marker-start=\"url(#'+marker+'Start)\" marker-end=\"url(#'+marker+'End)\"/>'}).join('')}})()"
+            "formula": "(function(){return function(yAt,color,marker){var segments=[],current=null,prev=null;function finish(){if(current&&current.length>1)segments.push(current);current=null}function clip(a,b){var dx=b.x-a.x,dy=b.y-a.y,t0=0,t1=1,p=[-dx,dx,-dy,dy],r=[a.x-30,270-a.x,a.y-30,270-a.y];for(var i=0;i<4;i++){if(p[i]===0){if(r[i]<0)return null}else{var t=r[i]/p[i];if(p[i]<0)t0=Math.max(t0,t);else t1=Math.min(t1,t);if(t0>t1)return null}}return [{x:a.x+t0*dx,y:a.y+t0*dy},{x:a.x+t1*dx,y:a.y+t1*dy}]}for(var i=0;i<=320;i++){var x=-10+i/16,point={x:150+x*12,y:150-yAt(x)*12};if(prev){var c=clip(prev,point);if(c){if(current&&Math.abs(current[current.length-1].x-c[0].x)<.01&&Math.abs(current[current.length-1].y-c[0].y)<.01)current.push(c[1]);else{finish();current=[c[0],c[1]]}if(Math.abs(c[1].x-point.x)>.01||Math.abs(c[1].y-point.y)>.01)finish()}else finish()}prev=point}finish();return segments.map(function(s){var d=s.map(function(p,i){return (i?'L ':'M ')+p.x.toFixed(2)+' '+p.y.toFixed(2)}).join(' ');function arrow(p,n){var dx=p.x-n.x,dy=p.y-n.y,len=Math.sqrt(dx*dx+dy*dy)||1;dx=dx/len*8;dy=dy/len*8;var bx=p.x-dx,by=p.y-dy,px=-dy*.45,py=dx*.45;return '<polygon points=\"'+p.x+','+p.y+' '+(bx+px)+','+(by+py)+' '+(bx-px)+','+(by-py)+'\" fill=\"'+color+'\"/>'}return '<path d=\"'+d+'\" fill=\"none\" stroke=\"'+color+'\" stroke-width=\"2.5\"/>'+arrow(s[0],s[1])+arrow(s[s.length-1],s[s.length-2])}).join('')}})()"
           },
           "q_svg": {
             "formula": "graph_base + graph_path(function(x){return q_a*(x-q_h)*(x-q_h)+q_k},'#286090','arrowBlue') + '</svg>'"
@@ -15871,7 +15920,10 @@
             "max": 1000
           },
           "fraction_denominator": {
-            "values": [3, 5]
+            "values": [
+              3,
+              5
+            ]
           },
           "fraction_numerator": {
             "formula": "Math.floor(Math.random() * (fraction_denominator - 1)) + 1"
@@ -15934,7 +15986,10 @@
             "max": 100
           },
           "fraction_denominator": {
-            "values": [3, 5]
+            "values": [
+              3,
+              5
+            ]
           },
           "fraction_numerator": {
             "formula": "Math.floor(Math.random() * (fraction_denominator - 1)) + 1"
@@ -16778,7 +16833,9 @@
           "multiplier_height": {
             "min": 1,
             "max": 3,
-            "exclude": ["multiplier_width"]
+            "exclude": [
+              "multiplier_width"
+            ]
           },
           "v1_x": {
             "formula": "3 * multiplier_width"
@@ -18110,34 +18167,90 @@
         "objective": "Complete a geometric two-column proof using segment addition properties",
         "difficulty": "basic",
         "variables": {
-          "proof_type": { "formula": "Math.floor(Math.random() * 2)" },
-          "blank_layout": { "formula": "proof_type === 1 ? [0,2,4][Math.floor(Math.random() * 3)] : [0,1,2,4][Math.floor(Math.random() * 4)]" },
-          "proof_givens": { "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>, and <span style=text-decoration:overline>CD</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
-          "proof_goal": { "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AC</span> is congruent to <span style=text-decoration:overline>BD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
-          "statement1": { "formula": "'<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>'" },
-          "statement2": { "formula": "proof_type === 0 ? 'AB = CD' : '<span style=text-decoration:overline>CD</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
-          "statement3": { "formula": "proof_type === 0 ? 'AB + BC = BC + CD' : 'AB = CD'" },
-          "statement4": { "formula": "proof_type === 0 ? 'AB + BC = AC; BC + CD = BD' : 'CD = EF'" },
-          "statement5": { "formula": "proof_type === 0 ? 'AC = BD' : 'AB = EF'" },
-          "statement6": { "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AC</span> is congruent to <span style=text-decoration:overline>BD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>EF</span>'" },
-          "reason1": { "formula": "blank_layout === 3 ? '[Blank 1]' : 'Given'" },
-          "reason2": { "formula": "(blank_layout === 1 || blank_layout === 3) ? '[Blank 2]' : (proof_type === 0 ? 'Definition of Congruence' : 'Given')" },
-          "reason3": { "formula": "(blank_layout === 0 || blank_layout === 1) ? '[Blank 3]' : (proof_type === 0 ? 'Addition Property of Equality' : 'Definition of Congruence')" },
-          "reason4": { "formula": "(blank_layout === 0 || blank_layout === 2) ? '[Blank 4]' : (proof_type === 0 ? 'Segment Addition Postulate' : 'Definition of Congruence')" },
-          "reason5": { "formula": "(blank_layout === 2 || blank_layout === 4) ? '[Blank 5]' : (proof_type === 0 ? 'Substitution' : 'Transitive Property of Equality')" },
-          "reason6": { "formula": "blank_layout === 4 ? '[Blank 6]' : 'Definition of Congruence'" },
-          "blank1_step": { "formula": "[3,2,4,1,5][blank_layout]" },
-          "blank2_step": { "formula": "[4,3,5,2,6][blank_layout]" },
-          "blank1_reason": { "formula": "(proof_type === 0 ? ['Addition Property of Equality','Definition of Congruence','Segment Addition Postulate','Given','Substitution'] : ['Definition of Congruence','Given','Definition of Congruence','Given','Transitive Property of Equality'])[blank_layout]" },
-          "blank2_reason": { "formula": "(proof_type === 0 ? ['Segment Addition Postulate','Addition Property of Equality','Substitution','Definition of Congruence','Definition of Congruence'] : ['Definition of Congruence','Definition of Congruence','Transitive Property of Equality','Given','Definition of Congruence'])[blank_layout]" },
-          "reason_options": { "formula": "(proof_type === 0 ? ['Addition Property of Equality','Segment Addition Postulate','Definition of Congruence','Substitution','Given'] : ['Given','Definition of Congruence','Transitive Property of Equality','Addition Property of Equality','Segment Addition Postulate']).map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)" },
-          "optA": { "formula": "reason_options[0]" },
-          "optB": { "formula": "reason_options[1]" },
-          "optC": { "formula": "reason_options[2]" },
-          "optD": { "formula": "reason_options[3]" },
-          "optE": { "formula": "reason_options[4]" },
-          "blank1_letter": { "formula": "['A','B','C','D','E'][reason_options.indexOf(blank1_reason)]" },
-          "blank2_letter": { "formula": "['A','B','C','D','E'][reason_options.indexOf(blank2_reason)]" },
+          "proof_type": {
+            "formula": "Math.floor(Math.random() * 2)"
+          },
+          "blank_layout": {
+            "formula": "proof_type === 1 ? [0,2,4][Math.floor(Math.random() * 3)] : [0,1,2,4][Math.floor(Math.random() * 4)]"
+          },
+          "proof_givens": {
+            "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>, and <span style=text-decoration:overline>CD</span> is congruent to <span style=text-decoration:overline>EF</span>'"
+          },
+          "proof_goal": {
+            "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AC</span> is congruent to <span style=text-decoration:overline>BD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>EF</span>'"
+          },
+          "statement1": {
+            "formula": "'<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>CD</span>'"
+          },
+          "statement2": {
+            "formula": "proof_type === 0 ? 'AB = CD' : '<span style=text-decoration:overline>CD</span> is congruent to <span style=text-decoration:overline>EF</span>'"
+          },
+          "statement3": {
+            "formula": "proof_type === 0 ? 'AB + BC = BC + CD' : 'AB = CD'"
+          },
+          "statement4": {
+            "formula": "proof_type === 0 ? 'AB + BC = AC; BC + CD = BD' : 'CD = EF'"
+          },
+          "statement5": {
+            "formula": "proof_type === 0 ? 'AC = BD' : 'AB = EF'"
+          },
+          "statement6": {
+            "formula": "proof_type === 0 ? '<span style=text-decoration:overline>AC</span> is congruent to <span style=text-decoration:overline>BD</span>' : '<span style=text-decoration:overline>AB</span> is congruent to <span style=text-decoration:overline>EF</span>'"
+          },
+          "reason1": {
+            "formula": "blank_layout === 3 ? '[Blank 1]' : 'Given'"
+          },
+          "reason2": {
+            "formula": "(blank_layout === 1 || blank_layout === 3) ? '[Blank 2]' : (proof_type === 0 ? 'Definition of Congruence' : 'Given')"
+          },
+          "reason3": {
+            "formula": "(blank_layout === 0 || blank_layout === 1) ? '[Blank 3]' : (proof_type === 0 ? 'Addition Property of Equality' : 'Definition of Congruence')"
+          },
+          "reason4": {
+            "formula": "(blank_layout === 0 || blank_layout === 2) ? '[Blank 4]' : (proof_type === 0 ? 'Segment Addition Postulate' : 'Definition of Congruence')"
+          },
+          "reason5": {
+            "formula": "(blank_layout === 2 || blank_layout === 4) ? '[Blank 5]' : (proof_type === 0 ? 'Substitution' : 'Transitive Property of Equality')"
+          },
+          "reason6": {
+            "formula": "blank_layout === 4 ? '[Blank 6]' : 'Definition of Congruence'"
+          },
+          "blank1_step": {
+            "formula": "[3,2,4,1,5][blank_layout]"
+          },
+          "blank2_step": {
+            "formula": "[4,3,5,2,6][blank_layout]"
+          },
+          "blank1_reason": {
+            "formula": "(proof_type === 0 ? ['Addition Property of Equality','Definition of Congruence','Segment Addition Postulate','Given','Substitution'] : ['Definition of Congruence','Given','Definition of Congruence','Given','Transitive Property of Equality'])[blank_layout]"
+          },
+          "blank2_reason": {
+            "formula": "(proof_type === 0 ? ['Segment Addition Postulate','Addition Property of Equality','Substitution','Definition of Congruence','Definition of Congruence'] : ['Definition of Congruence','Definition of Congruence','Transitive Property of Equality','Given','Definition of Congruence'])[blank_layout]"
+          },
+          "reason_options": {
+            "formula": "(proof_type === 0 ? ['Addition Property of Equality','Segment Addition Postulate','Definition of Congruence','Substitution','Given'] : ['Given','Definition of Congruence','Transitive Property of Equality','Addition Property of Equality','Segment Addition Postulate']).map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
+          },
+          "optA": {
+            "formula": "reason_options[0]"
+          },
+          "optB": {
+            "formula": "reason_options[1]"
+          },
+          "optC": {
+            "formula": "reason_options[2]"
+          },
+          "optD": {
+            "formula": "reason_options[3]"
+          },
+          "optE": {
+            "formula": "reason_options[4]"
+          },
+          "blank1_letter": {
+            "formula": "['A','B','C','D','E'][reason_options.indexOf(blank1_reason)]"
+          },
+          "blank2_letter": {
+            "formula": "['A','B','C','D','E'][reason_options.indexOf(blank2_reason)]"
+          },
           "options_pool": {
             "formula": "['Addition Property of Equality', 'Segment Addition Postulate', 'Substitution Property', 'Reflexive Property of Equality', 'Definition of Congruence']"
           },
@@ -18199,32 +18312,60 @@
         "objective": "Complete a basic two-column angle proof using linear pairs and congruent supplements",
         "difficulty": "basic",
         "variables": {
-          "proof_type": { "formula": "Math.floor(Math.random() * 2)" },
-          "proof_question": { "formula": "proof_type === 0 ? `Given: Points ${ptA}, ${ptB}, and ${ptD} are collinear with ${ptB} between ${ptA} and ${ptD}; points ${ptC}, ${ptB}, and ${ptE} are collinear with ${ptB} between ${ptC} and ${ptE}.<br>Prove: ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}.<br><br>Complete the proof by choosing the two missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. The points form the two intersecting lines.</td><td>Given</td></tr><tr><td>2. ∠${ptA}${ptB}${ptC} and ∠${ptC}${ptB}${ptD} form a linear pair.</td><td>Definition of linear pair</td></tr><tr><td>3. ∠${ptC}${ptB}${ptD} and ∠${ptD}${ptB}${ptE} form a linear pair.</td><td>Definition of linear pair</td></tr><tr><td>4. The first and middle angles are supplementary.</td><td>[Blank 1]</td></tr><tr><td>5. The middle and last angles are supplementary.</td><td>[Blank 2]</td></tr><tr><td>6. ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}</td><td>Congruent Supplements Theorem</td></tr></table><br>Options for Blanks 1 and 2: A. {s_A} &nbsp; B. {s_B} &nbsp; C. {s_C} &nbsp; D. {s_D} &nbsp; E. {s_E}` : `Given: angle ABC is congruent to angle DEF and angle DEF is congruent to angle GHI.<br>Prove: ∠ABC ≅ ∠GHI.<br><br>Complete the proof by choosing the two missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. ∠ABC ≅ ∠DEF</td><td>Given</td></tr><tr><td>2. ∠DEF ≅ ∠GHI</td><td>Given</td></tr><tr><td>3. m∠ABC = m∠DEF</td><td>[Blank 1]</td></tr><tr><td>4. m∠DEF = m∠GHI</td><td>[Blank 2]</td></tr><tr><td>5. m∠ABC = m∠GHI</td><td>Transitive Property of Equality</td></tr><tr><td>6. ∠ABC ≅ ∠GHI</td><td>Definition of congruence</td></tr></table><br>Options for Blanks 1 and 2: A. {s_A} &nbsp; B. {s_B} &nbsp; C. {s_C} &nbsp; D. {s_D} &nbsp; E. {s_E}`" },
-          "proof_answer": { "formula": "proof_type === 0 ? `Blank 1: {ans_s} - Supplement Theorem. Blank 2: {ans_s} - Supplement Theorem. Angles supplementary to the same angle are congruent.` : `Blank 1: {ans_s} - Definition of Congruence, converting congruent angles to equal measures.<br>Blank 2: {ans_s} - Definition of Congruence, converting congruent angles to equal measures.`" },
+          "proof_type": {
+            "formula": "Math.floor(Math.random() * 2)"
+          },
+          "proof_question": {
+            "formula": "proof_type === 0 ? `Given: Points ${ptA}, ${ptB}, and ${ptD} are collinear with ${ptB} between ${ptA} and ${ptD}; points ${ptC}, ${ptB}, and ${ptE} are collinear with ${ptB} between ${ptC} and ${ptE}.<br>Prove: ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}.<br><br>Complete the proof by choosing the two missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. The points form the two intersecting lines.</td><td>Given</td></tr><tr><td>2. ∠${ptA}${ptB}${ptC} and ∠${ptC}${ptB}${ptD} form a linear pair.</td><td>Definition of linear pair</td></tr><tr><td>3. ∠${ptC}${ptB}${ptD} and ∠${ptD}${ptB}${ptE} form a linear pair.</td><td>Definition of linear pair</td></tr><tr><td>4. The first and middle angles are supplementary.</td><td>[Blank 1]</td></tr><tr><td>5. The middle and last angles are supplementary.</td><td>[Blank 2]</td></tr><tr><td>6. ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}</td><td>Congruent Supplements Theorem</td></tr></table><br>Options for Blanks 1 and 2: A. {s_A} &nbsp; B. {s_B} &nbsp; C. {s_C} &nbsp; D. {s_D} &nbsp; E. {s_E}` : `Given: angle ABC is congruent to angle DEF and angle DEF is congruent to angle GHI.<br>Prove: ∠ABC ≅ ∠GHI.<br><br>Complete the proof by choosing the two missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. ∠ABC ≅ ∠DEF</td><td>Given</td></tr><tr><td>2. ∠DEF ≅ ∠GHI</td><td>Given</td></tr><tr><td>3. m∠ABC = m∠DEF</td><td>[Blank 1]</td></tr><tr><td>4. m∠DEF = m∠GHI</td><td>[Blank 2]</td></tr><tr><td>5. m∠ABC = m∠GHI</td><td>Transitive Property of Equality</td></tr><tr><td>6. ∠ABC ≅ ∠GHI</td><td>Definition of congruence</td></tr></table><br>Options for Blanks 1 and 2: A. {s_A} &nbsp; B. {s_B} &nbsp; C. {s_C} &nbsp; D. {s_D} &nbsp; E. {s_E}`"
+          },
+          "proof_answer": {
+            "formula": "proof_type === 0 ? `Blank 1: {ans_s} - Supplement Theorem. Blank 2: {ans_s} - Supplement Theorem. Angles supplementary to the same angle are congruent.` : `Blank 1: {ans_s} - Definition of Congruence, converting congruent angles to equal measures.<br>Blank 2: {ans_s} - Definition of Congruence, converting congruent angles to equal measures.`"
+          },
           "point_pools": {
             "formula": "[['A','B','D','C','E'],['P','Q','S','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
           },
-          "ptA": { "formula": "pts[0]" },
-          "ptB": { "formula": "pts[1]" },
-          "ptD": { "formula": "pts[2]" },
-          "ptC": { "formula": "pts[3]" },
-          "ptE": { "formula": "pts[4]" },
+          "ptA": {
+            "formula": "pts[0]"
+          },
+          "ptB": {
+            "formula": "pts[1]"
+          },
+          "ptD": {
+            "formula": "pts[2]"
+          },
+          "ptC": {
+            "formula": "pts[3]"
+          },
+          "ptE": {
+            "formula": "pts[4]"
+          },
           "supplement_choices": {
             "formula": "proof_type === 0 ? [{text:'Supplement Theorem',correct:true},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Supplements Theorem',correct:false},{text:'Given',correct:false}] : [{text:'Definition of Congruence',correct:true},{text:'Given',correct:false},{text:'Supplement Theorem',correct:false},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false}]"
           },
           "shuffled_supplement_choices": {
             "formula": "supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
           },
-          "s_A": { "formula": "shuffled_supplement_choices[0].text" },
-          "s_B": { "formula": "shuffled_supplement_choices[1].text" },
-          "s_C": { "formula": "shuffled_supplement_choices[2].text" },
-          "s_D": { "formula": "shuffled_supplement_choices[3].text" },
-          "s_E": { "formula": "shuffled_supplement_choices[4].text" },
-          "ans_s": { "formula": "['A','B','C','D','E'][shuffled_supplement_choices.findIndex(c => c.correct)]" }
+          "s_A": {
+            "formula": "shuffled_supplement_choices[0].text"
+          },
+          "s_B": {
+            "formula": "shuffled_supplement_choices[1].text"
+          },
+          "s_C": {
+            "formula": "shuffled_supplement_choices[2].text"
+          },
+          "s_D": {
+            "formula": "shuffled_supplement_choices[3].text"
+          },
+          "s_E": {
+            "formula": "shuffled_supplement_choices[4].text"
+          },
+          "ans_s": {
+            "formula": "['A','B','C','D','E'][shuffled_supplement_choices.findIndex(c => c.correct)]"
+          }
         },
         "question": "{proof_question}",
         "answer": "{proof_answer}"
@@ -18235,56 +18376,108 @@
         "objective": "Complete a two-column proof using linear pairs and congruent supplements",
         "difficulty": "intermediate",
         "variables": {
-          "proof_type": { "formula": "Math.floor(Math.random() * 2)" },
-          "proof_question": { "formula": "proof_type === 0 ? `Given: Points ${ptA}, ${ptB}, and ${ptD} are collinear with ${ptB} between ${ptA} and ${ptD}; points ${ptC}, ${ptB}, and ${ptE} are collinear with ${ptB} between ${ptC} and ${ptE}.<br>Prove: ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}.<br><br>Complete the proof by filling in the five missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. The points form the two intersecting lines.</td><td>Given</td></tr><tr><td>2. ∠${ptA}${ptB}${ptC} and ∠${ptC}${ptB}${ptD} form a linear pair.</td><td>[Blank 2]</td></tr><tr><td>3. ∠${ptC}${ptB}${ptD} and ∠${ptD}${ptB}${ptE} form a linear pair.</td><td>[Blank 3]</td></tr><tr><td>4. The first and middle angles are supplementary.</td><td>[Blank 4]</td></tr><tr><td>5. The middle and last angles are supplementary.</td><td>[Blank 5]</td></tr><tr><td>6. ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}</td><td>[Blank 6]</td></tr></table>` : `Given: angle ABC is congruent to angle DEF and angle DEF is congruent to angle GHI.<br>Prove: ∠ABC ≅ ∠GHI.<br><br>Complete the proof by filling in the five missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. ∠ABC ≅ ∠DEF</td><td>Given</td></tr><tr><td>2. ∠DEF ≅ ∠GHI</td><td>Given</td></tr><tr><td>3. m∠ABC = m∠DEF</td><td>[Blank 3]</td></tr><tr><td>4. m∠DEF = m∠GHI</td><td>[Blank 4]</td></tr><tr><td>5. m∠ABC = m∠GHI</td><td>[Blank 5]</td></tr><tr><td>6. m∠GHI = m∠ABC</td><td>[Blank 6]</td></tr><tr><td>7. ∠ABC ≅ ∠GHI</td><td>[Blank 7]</td></tr></table>`" },
-          "proof_answer": { "formula": "proof_type === 0 ? `Blank 2: Definition of linear pair.<br>Blank 3: Definition of linear pair.<br>Blank 4: Supplement Theorem.<br>Blank 5: Supplement Theorem.<br>Blank 6: Congruent Supplements Theorem.` : `Blank 3: Definition of Congruence.<br>Blank 4: Definition of Congruence.<br>Blank 5: Transitive Property of Equality.<br>Blank 6: Symmetric Property of Equality.<br>Blank 7: Definition of Congruence.`" },
+          "proof_type": {
+            "formula": "Math.floor(Math.random() * 2)"
+          },
+          "proof_question": {
+            "formula": "proof_type === 0 ? `Given: Points ${ptA}, ${ptB}, and ${ptD} are collinear with ${ptB} between ${ptA} and ${ptD}; points ${ptC}, ${ptB}, and ${ptE} are collinear with ${ptB} between ${ptC} and ${ptE}.<br>Prove: ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}.<br><br>Complete the proof by filling in the five missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. The points form the two intersecting lines.</td><td>Given</td></tr><tr><td>2. ∠${ptA}${ptB}${ptC} and ∠${ptC}${ptB}${ptD} form a linear pair.</td><td>[Blank 2]</td></tr><tr><td>3. ∠${ptC}${ptB}${ptD} and ∠${ptD}${ptB}${ptE} form a linear pair.</td><td>[Blank 3]</td></tr><tr><td>4. The first and middle angles are supplementary.</td><td>[Blank 4]</td></tr><tr><td>5. The middle and last angles are supplementary.</td><td>[Blank 5]</td></tr><tr><td>6. ∠${ptA}${ptB}${ptC} ≅ ∠${ptD}${ptB}${ptE}</td><td>[Blank 6]</td></tr></table>` : `Given: angle ABC is congruent to angle DEF and angle DEF is congruent to angle GHI.<br>Prove: ∠ABC ≅ ∠GHI.<br><br>Complete the proof by filling in the five missing reasons.<br><table border=1><tr><th>Statements</th><th>Reasons</th></tr><tr><td>1. ∠ABC ≅ ∠DEF</td><td>Given</td></tr><tr><td>2. ∠DEF ≅ ∠GHI</td><td>Given</td></tr><tr><td>3. m∠ABC = m∠DEF</td><td>[Blank 3]</td></tr><tr><td>4. m∠DEF = m∠GHI</td><td>[Blank 4]</td></tr><tr><td>5. m∠ABC = m∠GHI</td><td>[Blank 5]</td></tr><tr><td>6. m∠GHI = m∠ABC</td><td>[Blank 6]</td></tr><tr><td>7. ∠ABC ≅ ∠GHI</td><td>[Blank 7]</td></tr></table>`"
+          },
+          "proof_answer": {
+            "formula": "proof_type === 0 ? `Blank 2: Definition of linear pair.<br>Blank 3: Definition of linear pair.<br>Blank 4: Supplement Theorem.<br>Blank 5: Supplement Theorem.<br>Blank 6: Congruent Supplements Theorem.` : `Blank 3: Definition of Congruence.<br>Blank 4: Definition of Congruence.<br>Blank 5: Transitive Property of Equality.<br>Blank 6: Symmetric Property of Equality.<br>Blank 7: Definition of Congruence.`"
+          },
           "point_pools": {
             "formula": "[['A','B','D','C','E'],['P','Q','S','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
           },
-          "ptA": { "formula": "pts[0]" },
-          "ptB": { "formula": "pts[1]" },
-          "ptD": { "formula": "pts[2]" },
-          "ptC": { "formula": "pts[3]" },
-          "ptE": { "formula": "pts[4]" },
+          "ptA": {
+            "formula": "pts[0]"
+          },
+          "ptB": {
+            "formula": "pts[1]"
+          },
+          "ptD": {
+            "formula": "pts[2]"
+          },
+          "ptC": {
+            "formula": "pts[3]"
+          },
+          "ptE": {
+            "formula": "pts[4]"
+          },
           "linear_pair_choices": {
             "formula": "proof_type === 0 ? [{text:'Definition of linear pair',correct:true},{text:'Given',correct:false},{text:'Supplement Theorem',correct:false},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false}] : [{text:'Definition of Congruence',correct:true},{text:'Given',correct:false},{text:'Transitive Property of Equality',correct:false},{text:'Reflexive Property',correct:false},{text:'Vertical Angles Theorem',correct:false}]"
           },
           "shuffled_linear_pair_choices": {
             "formula": "linear_pair_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
           },
-          "s2_A": { "formula": "shuffled_linear_pair_choices[0].text" },
-          "s2_B": { "formula": "shuffled_linear_pair_choices[1].text" },
-          "s2_C": { "formula": "shuffled_linear_pair_choices[2].text" },
-          "s2_D": { "formula": "shuffled_linear_pair_choices[3].text" },
-          "s2_E": { "formula": "shuffled_linear_pair_choices[4].text" },
-          "ans_s2": { "formula": "['A','B','C','D','E'][shuffled_linear_pair_choices.findIndex(c => c.correct)]" },
+          "s2_A": {
+            "formula": "shuffled_linear_pair_choices[0].text"
+          },
+          "s2_B": {
+            "formula": "shuffled_linear_pair_choices[1].text"
+          },
+          "s2_C": {
+            "formula": "shuffled_linear_pair_choices[2].text"
+          },
+          "s2_D": {
+            "formula": "shuffled_linear_pair_choices[3].text"
+          },
+          "s2_E": {
+            "formula": "shuffled_linear_pair_choices[4].text"
+          },
+          "ans_s2": {
+            "formula": "['A','B','C','D','E'][shuffled_linear_pair_choices.findIndex(c => c.correct)]"
+          },
           "supplement_choices": {
             "formula": "proof_type === 0 ? [{text:'Supplement Theorem',correct:true},{text:'Given',correct:false},{text:'Angle Addition Postulate',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Complements Theorem',correct:false}] : [{text:'Transitive Property of Equality',correct:true},{text:'Given',correct:false},{text:'Definition of Congruence',correct:false},{text:'Supplement Theorem',correct:false},{text:'Vertical Angles Theorem',correct:false}]"
           },
           "shuffled_supplement_choices": {
             "formula": "supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
           },
-          "s1_A": { "formula": "shuffled_supplement_choices[0].text" },
-          "s1_B": { "formula": "shuffled_supplement_choices[1].text" },
-          "s1_C": { "formula": "shuffled_supplement_choices[2].text" },
-          "s1_D": { "formula": "shuffled_supplement_choices[3].text" },
-          "s1_E": { "formula": "shuffled_supplement_choices[4].text" },
-          "ans_s1": { "formula": "['A','B','C','D','E'][shuffled_supplement_choices.findIndex(c => c.correct)]" },
+          "s1_A": {
+            "formula": "shuffled_supplement_choices[0].text"
+          },
+          "s1_B": {
+            "formula": "shuffled_supplement_choices[1].text"
+          },
+          "s1_C": {
+            "formula": "shuffled_supplement_choices[2].text"
+          },
+          "s1_D": {
+            "formula": "shuffled_supplement_choices[3].text"
+          },
+          "s1_E": {
+            "formula": "shuffled_supplement_choices[4].text"
+          },
+          "ans_s1": {
+            "formula": "['A','B','C','D','E'][shuffled_supplement_choices.findIndex(c => c.correct)]"
+          },
           "congruent_supplement_choices": {
             "formula": "proof_type === 0 ? [{text:'Congruent Supplements Theorem',correct:true},{text:'Given',correct:false},{text:'Supplement Theorem',correct:false},{text:'Vertical Angles Theorem',correct:false},{text:'Congruent Complements Theorem',correct:false}] : [{text:'Symmetric Property of Equality',correct:true},{text:'Given',correct:false},{text:'Transitive Property of Equality',correct:false},{text:'Reflexive Property of Equality',correct:false},{text:'Definition of Congruence',correct:false}]"
           },
           "shuffled_congruent_supplement_choices": {
             "formula": "congruent_supplement_choices.map(x => ({x, r: Math.random()})).sort((a,b) => a.r-b.r).map(y => y.x)"
           },
-          "s3_A": { "formula": "shuffled_congruent_supplement_choices[0].text" },
-          "s3_B": { "formula": "shuffled_congruent_supplement_choices[1].text" },
-          "s3_C": { "formula": "shuffled_congruent_supplement_choices[2].text" },
-          "s3_D": { "formula": "shuffled_congruent_supplement_choices[3].text" },
-          "s3_E": { "formula": "shuffled_congruent_supplement_choices[4].text" },
-          "ans_s3": { "formula": "['A','B','C','D','E'][shuffled_congruent_supplement_choices.findIndex(c => c.correct)]" }
+          "s3_A": {
+            "formula": "shuffled_congruent_supplement_choices[0].text"
+          },
+          "s3_B": {
+            "formula": "shuffled_congruent_supplement_choices[1].text"
+          },
+          "s3_C": {
+            "formula": "shuffled_congruent_supplement_choices[2].text"
+          },
+          "s3_D": {
+            "formula": "shuffled_congruent_supplement_choices[3].text"
+          },
+          "s3_E": {
+            "formula": "shuffled_congruent_supplement_choices[4].text"
+          },
+          "ans_s3": {
+            "formula": "['A','B','C','D','E'][shuffled_congruent_supplement_choices.findIndex(c => c.correct)]"
+          }
         },
         "question": "{proof_question}",
         "answer": "{proof_answer}"
