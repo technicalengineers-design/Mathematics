@@ -3945,7 +3945,7 @@
           }
         },
         "question": "<div style='width:100%;'><b>For each equation and graph, choose the set of x-values where y &gt; 0.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq1_A}</li><li>{eq1_B}</li><li>{eq1_C}</li><li>{eq1_D}</li><li>{eq1_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq2_A}</li><li>{eq2_B}</li><li>{eq2_C}</li><li>{eq2_D}</li><li>{eq2_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq3_A}</li><li>{eq3_B}</li><li>{eq3_C}</li><li>{eq3_D}</li><li>{eq3_E}</li></ol></div></div></div>",
-        "answer": "<b>Answer key</b><br>Graph A: {eq1_name}; correct choice {eq1_correct} — {eq1_answer}<br>Graph B: {eq2_name}; correct choice {eq2_correct} — {eq2_answer}<br>Graph C: {eq3_name}; correct choice {eq3_correct} — {eq3_answer}"
+        "answer": "<b>Answer key</b><br>Graph A: correct choice {eq1_correct} ? {eq1_answer}<br>Function: {eq1_name}<br>Graph B: correct choice {eq2_correct} ? {eq2_answer}<br>Function: {eq2_name}<br>Graph C: correct choice {eq3_correct} ? {eq3_answer}<br>Function: {eq3_name}"
       },
       {
         "id": "ALG1 3.4 I Intercepts",
@@ -4196,7 +4196,7 @@
           }
         },
         "question": "<div style='width:100%;'><b>For each graph, write the interval(s) of x-values where y &gt; 0.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<br>Positive interval(s): ____________________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<br>Positive interval(s): ____________________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<br>Positive interval(s): ____________________</div></div></div>",
-        "answer": "<b>Answer key</b><br>Graph A: {eq1_name}; positive interval(s): {eq1_answer}<br>Graph B: {eq2_name}; positive interval(s): {eq2_answer}<br>Graph C: {eq3_name}; positive interval(s): {eq3_answer}"
+        "answer": "<b>Answer key</b><br>Graph A: positive interval(s): {eq1_answer}<br>Function: {eq1_name}<br>Graph B: positive interval(s): {eq2_answer}<br>Function: {eq2_name}<br>Graph C: positive interval(s): {eq3_answer}<br>Function: {eq3_name}"
       },
       {
         "id": "ALG1-3.5 Relative Maximum and Minimum",
@@ -4361,7 +4361,7 @@
           }
         },
         "question": "<div style='width:100%;'><b>Identify the relative maximum and minimum point(s) for each graph with an ordered pair. Write “None” if a graph has no relative maximum or minimum.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<br>Relative maximum: ___________<br>Relative minimum: ___________</div></div></div>",
-        "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Relative maximum: {eq1_max}; relative minimum: {eq1_min}<br>Graph B: {eq2_name}<br>Relative maximum: {eq2_max}; relative minimum: {eq2_min}<br>Graph C: {eq3_name}<br>Relative maximum: {eq3_max}; relative minimum: {eq3_min}"
+        "answer": "<b>Answer key</b><br>Graph A: relative maximum: {eq1_max}; relative minimum: {eq1_min}<br>Function: {eq1_name}<br>Graph B: relative maximum: {eq2_max}; relative minimum: {eq2_min}<br>Function: {eq2_name}<br>Graph C: relative maximum: {eq3_max}; relative minimum: {eq3_min}<br>Function: {eq3_name}"
       },
       {
         "id": "ALG1-3.5 Increasing Intervals",
