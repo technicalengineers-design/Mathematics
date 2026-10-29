@@ -2519,7 +2519,7 @@
           }
         },
         "question": "Solve for \\( y \\): <br> \\( \\frac{ {a|coef}ry {b|signedCoef}z }{ m } {c|signedCoef}t = x \\).",
-        "answer": "\\( y = \\frac{ m(x {negC|sign}t) {negB|sign}z }{ {a}r } \\)"
+        "answer": "\\( y = \\frac{ m(x {negC|sign}t) {negB|sign}z }{ {a|coef}r } \\)"
       },
       {
         "id": "ALG1-2.7-A1",
