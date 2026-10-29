@@ -15880,8 +15880,7 @@
             "max": 1000
           },
           "fraction_denominator": {
-            "min": 2,
-            "max": 5
+            "values": [3, 5]
           },
           "fraction_numerator": {
             "formula": "Math.floor(Math.random() * (fraction_denominator - 1)) + 1"
@@ -15944,8 +15943,7 @@
             "max": 100
           },
           "fraction_denominator": {
-            "min": 2,
-            "max": 5
+            "values": [3, 5]
           },
           "fraction_numerator": {
             "formula": "Math.floor(Math.random() * (fraction_denominator - 1)) + 1"
