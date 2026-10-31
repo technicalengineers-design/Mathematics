@@ -18748,6 +18748,165 @@
         },
         "question": "<div style=\"display:grid;grid-template-columns:minmax(0,360px) minmax(300px,1fr);align-items:start;gap:18px\"><div>{transversal_diagram}</div><div>Lines m and n are parallel.<br><br>\\( m\\angle {quadratic_angle_number} = ({quadratic_angle_expression})^\\circ \\)<br>\\( m\\angle {linear_angle_number} = ({linear_angle_expression})^\\circ \\)<br><br>Solve for \\(x\\).<div style=\"height:180px\"></div></div></div>",
         "answer": "Angles {quadratic_angle_number} and {linear_angle_number} are {angle_relationship}.<br>{angle_equation}.<br>Using the angle relationship and simplifying gives \\( (x - {solution_x})^2 = 0 \\). Therefore, \\( x = {solution_x} \\). The angles measure \\( {quadratic_angle_measure_at_solution}^\\circ \\) and \\( {angle_measure_at_solution}^\\circ \\)."
+      },
+      {
+        "id": "GEO 3.8a Two Lines",
+        "type": "template",
+        "objective": "Classify two lines as parallel, perpendicular, or neither using plotted points and slopes",
+        "difficulty": "basic",
+        "variables": {
+          "relationship_type": {
+            "values": ["parallel", "perpendicular", "neither"]
+          },
+          "direction_pool": {
+            "formula": "[[1,1],[1,-1],[1,2],[1,-2],[2,1],[2,-1],[2,3],[3,2],[2,-3],[3,-2]]"
+          },
+          "direction_one": {
+            "formula": "direction_pool[Math.floor(Math.random() * direction_pool.length)]"
+          },
+          "direction_two_pool": {
+            "formula": "relationship_type === 'parallel' ? [direction_one] : relationship_type === 'perpendicular' ? [[Math.abs(direction_one[1]),-Math.sign(direction_one[1])*direction_one[0]]] : direction_pool.filter(direction => direction[0]*direction_one[1] !== direction[1]*direction_one[0] && direction[0]*direction_one[0] + direction[1]*direction_one[1] !== 0)"
+          },
+          "direction_two": {
+            "formula": "direction_two_pool[Math.floor(Math.random() * direction_two_pool.length)]"
+          },
+          "a_x": {
+            "min": -4,
+            "max": 4
+          },
+          "a_y": {
+            "min": -4,
+            "max": 4
+          },
+          "c_x": {
+            "min": -3,
+            "max": 3
+          },
+          "c_y_seed": {
+            "min": -3,
+            "max": 3
+          },
+          "c_y": {
+            "formula": "relationship_type === 'parallel' && (c_y_seed - a_y) * direction_one[0] === (c_x - a_x) * direction_one[1] ? c_y_seed + 1 : c_y_seed"
+          },
+          "b_x": {
+            "formula": "a_x + direction_one[0]"
+          },
+          "b_y": {
+            "formula": "a_y + direction_one[1]"
+          },
+          "d_x": {
+            "formula": "c_x + direction_two[0]"
+          },
+          "d_y": {
+            "formula": "c_y + direction_two[1]"
+          },
+          "slope_one": {
+            "formula": "direction_one[1] / direction_one[0]"
+          },
+          "slope_two": {
+            "formula": "direction_two[1] / direction_two[0]"
+          },
+          "slope_one_text": {
+            "formula": "(function(n,d){var g=function(a,b){return b?g(b,a%b):Math.abs(a)}(n,d);n/=g;d/=g;return n===0?'0':(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(direction_one[1],direction_one[0])"
+          },
+          "slope_two_text": {
+            "formula": "(function(n,d){var g=function(a,b){return b?g(b,a%b):Math.abs(a)}(n,d);n/=g;d/=g;return n===0?'0':(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(direction_two[1],direction_two[0])"
+          },
+          "intercept_one_num": {
+            "formula": "a_y * direction_one[0] - direction_one[1] * a_x"
+          },
+          "intercept_two_num": {
+            "formula": "c_y * direction_two[0] - direction_two[1] * c_x"
+          },
+          "intercept_one_text": {
+            "formula": "(function(n,d){if(n===0)return '0';var sign=n<0?'-':'';n=Math.abs(n);var g=function(a,b){return b?g(b,a%b):a}(n,d);n/=g;d/=g;return sign+(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(intercept_one_num,direction_one[0])"
+          },
+          "intercept_two_text": {
+            "formula": "(function(n,d){if(n===0)return '0';var sign=n<0?'-':'';n=Math.abs(n);var g=function(a,b){return b?g(b,a%b):a}(n,d);n/=g;d/=g;return sign+(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(intercept_two_num,direction_two[0])"
+          },
+          "equation_one": {
+            "formula": "'y = ' + (slope_one===0?'0':(slope_one===1?'':slope_one===-1?'-':slope_one_text)+'x') + (intercept_one_num===0?'':(intercept_one_num>0?' + ':' - ')+intercept_one_text.replace(/^-/,'') )"
+          },
+          "equation_two": {
+            "formula": "'y = ' + (slope_two===0?'0':(slope_two===1?'':slope_two===-1?'-':slope_two_text)+'x') + (intercept_two_num===0?'':(intercept_two_num>0?' + ':' - ')+intercept_two_text.replace(/^-/,'') )"
+          },
+          "line_relationship": {
+            "formula": "relationship_type"
+          },
+          "blank_grid_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 570 570\" role=\"img\" aria-label=\"Blank coordinate grid from negative eight to eight\" style=\"display:block;width:100%;max-width:570px;height:auto;background:white\"><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#555\"/>' + Array.from({length:17},(_,i)=>{var p=30+i*31.875;var strong=i===8;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"540\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/>'}).join('') + Array.from({length:9},(_,i)=>{var n=(i-4)*2;var x=30+(n+8)*31.875;var y=30+(8-n)*31.875;return '<text x=\"'+x+'\" y=\"558\" text-anchor=\"middle\" font-size=\"11\">'+n+'</text><text x=\"20\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"11\">'+n+'</text>'}).join('') + '<text x=\"545\" y=\"286\" font-size=\"13\">x</text><text x=\"286\" y=\"24\" font-size=\"13\">y</text></svg>'"
+          },
+          "solution_graph_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 570 570\" role=\"img\" aria-label=\"Coordinate graph of lines AB and CD\" style=\"display:block;width:100%;max-width:570px;height:auto;background:white\"><defs><clipPath id=\"plot-area\"><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\"/></clipPath></defs><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#555\"/>' + Array.from({length:17},(_,i)=>{var p=30+i*31.875;var strong=i===8;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"540\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/>'}).join('') + Array.from({length:9},(_,i)=>{var n=(i-4)*2;var x=30+(n+8)*31.875;var y=30+(8-n)*31.875;return '<text x=\"'+x+'\" y=\"558\" text-anchor=\"middle\" font-size=\"11\">'+n+'</text><text x=\"20\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"11\">'+n+'</text>'}).join('') + '<g clip-path=\"url(#plot-area)\"><line x1=\"30\" y1=\"'+(30+(8-(a_y+slope_one*(-8-a_x)))*31.875)+'\" x2=\"540\" y2=\"'+(30+(8-(a_y+slope_one*(8-a_x)))*31.875)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/><line x1=\"30\" y1=\"'+(30+(8-(c_y+slope_two*(-8-c_x)))*31.875)+'\" x2=\"540\" y2=\"'+(30+(8-(c_y+slope_two*(8-c_x)))*31.875)+'\" stroke=\"#2471a3\" stroke-width=\"3\"/></g>' + [{name:'A',x:a_x,y:a_y,color:'#c0392b'},{name:'B',x:b_x,y:b_y,color:'#c0392b'},{name:'C',x:c_x,y:c_y,color:'#2471a3'},{name:'D',x:d_x,y:d_y,color:'#2471a3'}].map(p=>{var px=30+(p.x+8)*31.875,py=30+(8-p.y)*31.875;return '<circle cx=\"'+px+'\" cy=\"'+py+'\" r=\"5\" fill=\"'+p.color+'\"/><text x=\"'+(px+7)+'\" y=\"'+(py-7)+'\" font-size=\"14\" font-weight=\"bold\" fill=\"'+p.color+'\">'+p.name+'</text>'}).join('') + '<text x=\"545\" y=\"286\" font-size=\"13\">x</text><text x=\"286\" y=\"24\" font-size=\"13\">y</text></svg>'"
+          }
+        },
+        "question": "Four points define two lines: \\(A({a_x},{a_y})\\), \\(B({b_x},{b_y})\\), \\(C({c_x},{c_y})\\), and \\(D({d_x},{d_y})\\). Graph \\(\\overleftrightarrow{AB}\\) and \\(\\overleftrightarrow{CD}\\) on the grid, then determine whether the lines are parallel, perpendicular, or neither.<br>{blank_grid_svg}",
+        "answer": "<b>Classification:</b> The lines are {line_relationship}.<br><b>Slope of \\(AB\\):</b> \\(m_1={slope_one_text}\\). <b>Equation:</b> \\({equation_one}\\).<br><b>Slope of \\(CD\\):</b> \\(m_2={slope_two_text}\\). <b>Equation:</b> \\({equation_two}\\).<br><b>Graph:</b><br>{solution_graph_svg}"
+      },
+      {
+        "id": "GEO 3.8b Perpendicular to a Line",
+        "type": "template",
+        "objective": "Graph and find the equation of a line perpendicular to a given line through a point",
+        "difficulty": "intermediate",
+        "variables": {
+          "slope_direction_pool": {
+            "formula": "[[1,1],[1,-1],[1,2],[1,-2],[2,1],[2,-1],[2,3],[2,-3],[3,2],[3,-2]]"
+          },
+          "original_direction": {
+            "formula": "slope_direction_pool[Math.floor(Math.random()*slope_direction_pool.length)]"
+          },
+          "original_slope": {
+            "formula": "original_direction[1]/original_direction[0]"
+          },
+          "original_slope_text": {
+            "formula": "(function(n,d){var a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}var g=a||1;n/=g;d/=g;return n<0?'-'+(d===1?String(-n):'\\\\frac{'+(-n)+'}{'+d+'}'):(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(original_direction[1],original_direction[0])"
+          },
+          "original_slope_term": {
+            "formula": "(Math.abs(original_slope)===1?(original_slope<0?'-':'')+'x':original_slope_text+'x')"
+          },
+          "original_intercept": {
+            "min": -4,
+            "max": 4
+          },
+          "original_equation": {
+            "formula": "'y = ' + original_slope_term + (original_intercept===0?'':(original_intercept>0?' + ':' - ')+Math.abs(original_intercept))"
+          },
+          "point_x": {
+            "min": -5,
+            "max": 5
+          },
+          "point_y": {
+            "min": -5,
+            "max": 5
+          },
+          "perpendicular_slope": {
+            "formula": "-original_direction[0]/original_direction[1]"
+          },
+          "perpendicular_slope_text": {
+            "formula": "(function(n,d){if(d<0){n=-n;d=-d}var a=Math.abs(n),b=d;while(b){var r=a%b;a=b;b=r}var g=a||1;n/=g;d/=g;return n<0?'-'+(d===1?String(-n):'\\\\frac{'+(-n)+'}{'+d+'}'):(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(-original_direction[0],original_direction[1])"
+          },
+          "perpendicular_intercept_numerator": {
+            "formula": "point_y*original_direction[1]+original_direction[0]*point_x"
+          },
+          "perpendicular_intercept_text": {
+            "formula": "(function(n,d){if(d<0){n=-n;d=-d}var sign=n<0?'-':'';n=Math.abs(n);var a=n,b=d;while(b){var r=a%b;a=b;b=r}var g=a||1;n/=g;d/=g;return sign+(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(perpendicular_intercept_numerator,original_direction[1])"
+          },
+          "perpendicular_slope_term": {
+            "formula": "(Math.abs(perpendicular_slope)===1?(perpendicular_slope<0?'-':'')+'x':perpendicular_slope_text+'x')"
+          },
+          "perpendicular_equation": {
+            "formula": "'y = ' + perpendicular_slope_term + (perpendicular_intercept_numerator===0?'':(perpendicular_intercept_numerator/original_direction[1]>0?' + ':' - ')+perpendicular_intercept_text.replace(/^-/,'') )"
+          },
+          "blank_grid_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 570 570\" role=\"img\" aria-label=\"Blank coordinate grid from negative eight to eight\" style=\"display:block;width:100%;max-width:570px;height:auto;background:white\"><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#555\"/>' + Array.from({length:17},(_,i)=>{var p=30+i*31.875;var strong=i===8;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"540\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/>'}).join('') + Array.from({length:9},(_,i)=>{var n=(i-4)*2;var x=30+(n+8)*31.875;var y=30+(8-n)*31.875;return '<text x=\"'+x+'\" y=\"558\" text-anchor=\"middle\" font-size=\"11\">'+n+'</text><text x=\"20\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"11\">'+n+'</text>'}).join('') + '<text x=\"545\" y=\"286\" font-size=\"13\">x</text><text x=\"286\" y=\"24\" font-size=\"13\">y</text></svg>'"
+          },
+          "solution_graph_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 570 570\" role=\"img\" aria-label=\"Graph of the given line and perpendicular line through point P\" style=\"display:block;width:100%;max-width:570px;height:auto;background:white\"><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#555\"/>' + Array.from({length:17},(_,i)=>{var p=30+i*31.875;var strong=i===8;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"540\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/>'}).join('') + Array.from({length:9},(_,i)=>{var n=(i-4)*2;var x=30+(n+8)*31.875;var y=30+(8-n)*31.875;return '<text x=\"'+x+'\" y=\"558\" text-anchor=\"middle\" font-size=\"11\">'+n+'</text><text x=\"20\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"11\">'+n+'</text>'}).join('') + '<line x1=\"30\" y1=\"'+(30+(8-(original_slope*(-10)+original_intercept))*31.875)+'\" x2=\"540\" y2=\"'+(30+(8-(original_slope*10+original_intercept))*31.875)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/><line x1=\"30\" y1=\"'+(30+(8-(perpendicular_slope*(-10)+point_y-perpendicular_slope*point_x))*31.875)+'\" x2=\"540\" y2=\"'+(30+(8-(perpendicular_slope*10+point_y-perpendicular_slope*point_x))*31.875)+'\" stroke=\"#2471a3\" stroke-width=\"3\"/><circle cx=\"'+(30+(point_x+8)*31.875)+'\" cy=\"'+(30+(8-point_y)*31.875)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(37+(point_x+8)*31.875)+'\" y=\"'+(23+(8-point_y)*31.875)+'\" font-size=\"14\" font-weight=\"bold\" fill=\"#2471a3\">P</text><text x=\"545\" y=\"286\" font-size=\"13\">x</text><text x=\"286\" y=\"24\" font-size=\"13\">y</text></svg>'"
+          }
+        },
+        "question": "Graph the given line \\( {original_equation} \\) and the perpendicular line through \\( P({point_x},{point_y}) \\). Mark point P, draw both lines, and write the equation of the perpendicular line.<br>{blank_grid_svg}",
+        "answer": "<b>Perpendicular slope:</b> \\(m_\\perp=-\\frac{1}{{original_slope_text}}={perpendicular_slope_text}\\).<br>Using point-slope form through \\(P({point_x},{point_y})\\): \\(y-({point_y})={perpendicular_slope_text}(x-({point_x}))\\).<br><b>Perpendicular line equation:</b> \\({perpendicular_equation}\\).<br><b>Graph:</b> Red: given line \\({original_equation}\\). Blue: perpendicular line \\({perpendicular_equation}\\), passing through P.<br>{solution_graph_svg}"
       }
     ],
     "Scratch Pad Practice Problems": [
@@ -19323,101 +19482,6 @@
         },
         "question": "<b>WINDOWS</b> &nbsp;A contemporary architectural window is designed in the shape of a right trapezoid as shown below.<br><br><ChartPlaceholder chartDescription=\"An architectural blueprint diagram of a right-trapezoid window frame layout. One vertical side side forms perfect perpendicular 90-degree right angles with both the straight horizontal top border and the flat horizontal bottom sill. The opposite side is slanted, creating an acute angle at the bottom corner labeled '{deg_acute}ï¿½' and an upper obtuse angle labeled with a question mark '?'. This illustrates consecutive interior angles between parallel lines layout.\" /><br><br>If the acute angle measures <b>{deg_acute}ï¿½</b>, what is the measure of the upper obtuse angle?<br><br>? {choice_A}<br>? {choice_B}<br>? {choice_C}<br>? {choice_D}<br><br><i>(Illustrations not to scale)</i>",
         "answer": "Here is the step-by-step geometric calculation to determine the missing angle measure:<br><br><b>Step 1: Identify the parallel lines in the window frame.</b><br>Because the window is a right trapezoid, the horizontal top frame edge and the horizontal bottom frame sill are perfectly parallel to each other.<br><br><b>Step 2: Apply consecutive interior angle properties.</b><br>When a slanting transversal line crosses two parallel lines, the consecutive interior angles formed (the acute angle and the obtuse angle) are **supplementary**. This means they always add up to exactly \\( 180^\\circ \\):<br>\\[ \\text{Acute Angle} + \\text{Obtuse Angle} = 180^\\circ \\]<br><br><b>Step 3: Substitute the known value and subtract.</b><br>\\[ {deg_acute}^\\circ + \\text{Obtuse Angle} = 180^\\circ \\]<br>\\[ \\text{Obtuse Angle} = 180^\\circ - {deg_acute}^\\circ = {deg_obtuse}^\\circ \\]<br><br>Therefore, the correct choice is <b>{correct_letter}</b>."
-      },
-      {
-        "id": "GEO 3.8a Two Lines",
-        "type": "template",
-        "objective": "Classify two lines as parallel, perpendicular, or neither using plotted points and slopes",
-        "difficulty": "intermediate",
-        "variables": {
-          "relationship_type": {
-            "values": ["parallel", "perpendicular", "neither"]
-          },
-          "direction_pool": {
-            "formula": "[[1,1],[1,-1],[1,2],[1,-2],[2,1],[2,-1],[2,3],[3,2],[2,-3],[3,-2]]"
-          },
-          "direction_one": {
-            "formula": "direction_pool[Math.floor(Math.random() * direction_pool.length)]"
-          },
-          "direction_two_pool": {
-            "formula": "relationship_type === 'parallel' ? [direction_one] : relationship_type === 'perpendicular' ? [[Math.abs(direction_one[1]),-Math.sign(direction_one[1])*direction_one[0]]] : direction_pool.filter(direction => direction[0]*direction_one[1] !== direction[1]*direction_one[0] && direction[0]*direction_one[0] + direction[1]*direction_one[1] !== 0)"
-          },
-          "direction_two": {
-            "formula": "direction_two_pool[Math.floor(Math.random() * direction_two_pool.length)]"
-          },
-          "a_x": {
-            "min": -4,
-            "max": 4
-          },
-          "a_y": {
-            "min": -4,
-            "max": 4
-          },
-          "c_x": {
-            "min": -3,
-            "max": 3
-          },
-          "c_y_seed": {
-            "min": -3,
-            "max": 3
-          },
-          "c_y": {
-            "formula": "relationship_type === 'parallel' && (c_y_seed - a_y) * direction_one[0] === (c_x - a_x) * direction_one[1] ? c_y_seed + 1 : c_y_seed"
-          },
-          "b_x": {
-            "formula": "a_x + direction_one[0]"
-          },
-          "b_y": {
-            "formula": "a_y + direction_one[1]"
-          },
-          "d_x": {
-            "formula": "c_x + direction_two[0]"
-          },
-          "d_y": {
-            "formula": "c_y + direction_two[1]"
-          },
-          "slope_one": {
-            "formula": "direction_one[1] / direction_one[0]"
-          },
-          "slope_two": {
-            "formula": "direction_two[1] / direction_two[0]"
-          },
-          "slope_one_text": {
-            "formula": "(function(n,d){var g=function(a,b){return b?g(b,a%b):Math.abs(a)}(n,d);n/=g;d/=g;return n===0?'0':(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(direction_one[1],direction_one[0])"
-          },
-          "slope_two_text": {
-            "formula": "(function(n,d){var g=function(a,b){return b?g(b,a%b):Math.abs(a)}(n,d);n/=g;d/=g;return n===0?'0':(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(direction_two[1],direction_two[0])"
-          },
-          "intercept_one_num": {
-            "formula": "a_y * direction_one[0] - direction_one[1] * a_x"
-          },
-          "intercept_two_num": {
-            "formula": "c_y * direction_two[0] - direction_two[1] * c_x"
-          },
-          "intercept_one_text": {
-            "formula": "(function(n,d){if(n===0)return '0';var sign=n<0?'-':'';n=Math.abs(n);var g=function(a,b){return b?g(b,a%b):a}(n,d);n/=g;d/=g;return sign+(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(intercept_one_num,direction_one[0])"
-          },
-          "intercept_two_text": {
-            "formula": "(function(n,d){if(n===0)return '0';var sign=n<0?'-':'';n=Math.abs(n);var g=function(a,b){return b?g(b,a%b):a}(n,d);n/=g;d/=g;return sign+(d===1?String(n):'\\\\frac{'+n+'}{'+d+'}')})(intercept_two_num,direction_two[0])"
-          },
-          "equation_one": {
-            "formula": "'y = ' + (slope_one===0?'0':(slope_one===1?'':slope_one===-1?'-':slope_one_text)+'x') + (intercept_one_num===0?'':(intercept_one_num>0?' + ':' - ')+intercept_one_text.replace(/^-/,'') )"
-          },
-          "equation_two": {
-            "formula": "'y = ' + (slope_two===0?'0':(slope_two===1?'':slope_two===-1?'-':slope_two_text)+'x') + (intercept_two_num===0?'':(intercept_two_num>0?' + ':' - ')+intercept_two_text.replace(/^-/,'') )"
-          },
-          "line_relationship": {
-            "formula": "relationship_type"
-          },
-          "blank_grid_svg": {
-            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 570 570\" role=\"img\" aria-label=\"Blank coordinate grid from negative eight to eight\" style=\"display:block;width:100%;max-width:570px;height:auto;background:white\"><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#555\"/>' + Array.from({length:17},(_,i)=>{var p=30+i*31.875;var strong=i===8;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"540\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/>'}).join('') + Array.from({length:9},(_,i)=>{var n=(i-4)*2;var x=30+(n+8)*31.875;var y=30+(8-n)*31.875;return '<text x=\"'+x+'\" y=\"558\" text-anchor=\"middle\" font-size=\"11\">'+n+'</text><text x=\"20\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"11\">'+n+'</text>'}).join('') + '<text x=\"545\" y=\"286\" font-size=\"13\">x</text><text x=\"286\" y=\"24\" font-size=\"13\">y</text></svg>'"
-          },
-          "solution_graph_svg": {
-            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 570 570\" role=\"img\" aria-label=\"Coordinate graph of lines AB and CD\" style=\"display:block;width:100%;max-width:570px;height:auto;background:white\"><defs><clipPath id=\"plot-area\"><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\"/></clipPath></defs><rect x=\"30\" y=\"30\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#555\"/>' + Array.from({length:17},(_,i)=>{var p=30+i*31.875;var strong=i===8;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"540\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"'+(strong?'#333':'#ddd')+'\" stroke-width=\"'+(strong?2:1)+'\"/>'}).join('') + Array.from({length:9},(_,i)=>{var n=(i-4)*2;var x=30+(n+8)*31.875;var y=30+(8-n)*31.875;return '<text x=\"'+x+'\" y=\"558\" text-anchor=\"middle\" font-size=\"11\">'+n+'</text><text x=\"20\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"11\">'+n+'</text>'}).join('') + '<g clip-path=\"url(#plot-area)\"><line x1=\"30\" y1=\"'+(30+(8-(a_y+slope_one*(-8-a_x)))*31.875)+'\" x2=\"540\" y2=\"'+(30+(8-(a_y+slope_one*(8-a_x)))*31.875)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/><line x1=\"30\" y1=\"'+(30+(8-(c_y+slope_two*(-8-c_x)))*31.875)+'\" x2=\"540\" y2=\"'+(30+(8-(c_y+slope_two*(8-c_x)))*31.875)+'\" stroke=\"#2471a3\" stroke-width=\"3\"/></g>' + [{name:'A',x:a_x,y:a_y,color:'#c0392b'},{name:'B',x:b_x,y:b_y,color:'#c0392b'},{name:'C',x:c_x,y:c_y,color:'#2471a3'},{name:'D',x:d_x,y:d_y,color:'#2471a3'}].map(p=>{var px=30+(p.x+8)*31.875,py=30+(8-p.y)*31.875;return '<circle cx=\"'+px+'\" cy=\"'+py+'\" r=\"5\" fill=\"'+p.color+'\"/><text x=\"'+(px+7)+'\" y=\"'+(py-7)+'\" font-size=\"14\" font-weight=\"bold\" fill=\"'+p.color+'\">'+p.name+'</text>'}).join('') + '<text x=\"545\" y=\"286\" font-size=\"13\">x</text><text x=\"286\" y=\"24\" font-size=\"13\">y</text></svg>'"
-          }
-        },
-        "question": "Four points define two lines: \\(A({a_x},{a_y})\\), \\(B({b_x},{b_y})\\), \\(C({c_x},{c_y})\\), and \\(D({d_x},{d_y})\\). Graph \\(\\overleftrightarrow{AB}\\) and \\(\\overleftrightarrow{CD}\\) on the grid, then determine whether the lines are parallel, perpendicular, or neither.<br>{blank_grid_svg}",
-        "answer": "<b>Classification:</b> The lines are {line_relationship}.<br><b>Slope of \\(AB\\):</b> \\(m_1={slope_one_text}\\). <b>Equation:</b> \\({equation_one}\\).<br><b>Slope of \\(CD\\):</b> \\(m_2={slope_two_text}\\). <b>Equation:</b> \\({equation_two}\\).<br><b>Graph:</b><br>{solution_graph_svg}"
       },
       {
         "id": "GEO 3-8 Parallel",
