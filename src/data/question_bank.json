@@ -18580,6 +18580,52 @@
         },
         "question": "{proof_question}",
         "answer": "{proof_answer}"
+      },
+      {
+        "id": "GEO 3-7a Skew Lines",
+        "type": "template",
+        "objective": "Identify lines that are skew to a given line in a cube",
+        "difficulty": "intermediate",
+        "variables": {
+          "cube_vertex_letters": {
+            "formula": "'ABCDEFGHJKLMNPQRTUVWXYZ'.split('').sort(() => Math.random() - 0.5).slice(0, 8)"
+          },
+          "cube_vertices": {
+            "formula": "[[90,95],[250,95],[250,255],[90,255],[150,45],[310,45],[310,205],[150,205]]"
+          },
+          "cube_coordinates": {
+            "formula": "[[0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[1,0,1],[1,1,1],[0,1,1]]"
+          },
+          "cube_edges": {
+            "formula": "[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]"
+          },
+          "target_edge_index": {
+            "formula": "Math.floor(Math.random() * cube_edges.length)"
+          },
+          "target_edge": {
+            "formula": "cube_edges[target_edge_index]"
+          },
+          "target_line": {
+            "formula": "cube_vertex_letters[target_edge[0]] + cube_vertex_letters[target_edge[1]]"
+          },
+          "skew_edge_names": {
+            "formula": "cube_edges.filter(edge => !edge.some(vertex => target_edge.includes(vertex)) && ((cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])-(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1]) !== 0 || (cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])-(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2]) !== 0 || (cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])-(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0]) !== 0)).map(edge => cube_vertex_letters[edge[0]] + cube_vertex_letters[edge[1]])"
+          },
+          "perpendicular_edge_names": {
+            "formula": "cube_edges.filter(edge => edge.filter(vertex => target_edge.includes(vertex)).length === 1 && (cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0]) + (cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1]) + (cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2]) === 0).map(edge => cube_vertex_letters[edge[0]] + cube_vertex_letters[edge[1]])"
+          },
+          "skew_edge_answer": {
+            "formula": "skew_edge_names.map(name => '\\\\( \\\\overleftrightarrow{' + name + '} \\\\)').join(', ')"
+          },
+          "perpendicular_edge_answer": {
+            "formula": "perpendicular_edge_names.map(name => '\\\\( \\\\overleftrightarrow{' + name + '} \\\\)').join(', ')"
+          },
+          "cube_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 310\" role=\"img\" aria-label=\"Cube with randomized vertex labels and dashed hidden edges\" style=\"display:block;width:100%;max-width:400px;height:auto;background:white\"><title>Cube with randomized vertex labels</title>' + cube_edges.map((edge,index) => { const a=cube_vertices[edge[0]], b=cube_vertices[edge[1]], hidden=[6,7,11].includes(index); return '<line x1=\"'+a[0]+'\" y1=\"'+a[1]+'\" x2=\"'+b[0]+'\" y2=\"'+b[1]+'\" stroke=\"#222\" stroke-width=\"2.5\"'+(hidden?' stroke-dasharray=\"6 5\"':'')+'/>'; }).join('') + cube_vertices.map((point,index) => { const offsets=[[-16,-10],[13,-10],[14,20],[-17,20],[-17,-10],[13,-10],[14,20],[-17,20]]; return '<text x=\"'+(point[0]+offsets[index][0])+'\" y=\"'+(point[1]+offsets[index][1])+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"18\" font-weight=\"bold\" fill=\"#111\" style=\"paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round\">'+cube_vertex_letters[index]+'</text>'; }).join('') + '</svg>'"
+          }
+        },
+        "question": "The cube shows eight vertices labeled with capital letters.<br><div style=\"display:grid;grid-template-columns:minmax(0,400px) minmax(180px,1fr);align-items:center;gap:20px\"><div>{cube_svg}</div><div>For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) List all lines that are skew to it.<br><br>B) List all lines that are perpendicular to it.</div></div>",
+        "answer": "For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) Skew: {skew_edge_answer}.<br>B) Perpendicular: {perpendicular_edge_answer}."
       }
     ],
     "Scratch Pad Practice Problems": [
