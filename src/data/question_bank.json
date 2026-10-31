@@ -15643,34 +15643,34 @@
         "answer": "Purchase fee: ${formatted_purchase_fee}; Total cost: ${formatted_total_cost}; Sale proceeds: ${formatted_sale_proceeds}; Profit (or loss): ${formatted_profit}"
       }
     ],
-    "Module 4 (under construction)": [
-      {
-        "id": "ALG1-6.1-B1",
-        "type": "template",
-        "objective": "Solving One-Step Inequalities",
-        "difficulty": "basic",
-        "variables": {
-          "a": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "x": {
-            "formula": "b - a"
-          }
-        },
-        "question": "Solve and graph: <br> \\( x {a|sign} \\geq {b} \\).",
-        "answer": "\\( x \\leq {x} \\)"
-      }
+    "4 Budgeting": [
+   {
+  "id": "CM 4.1a Disposable Income",
+  "type": "template",
+  "objective": "Interpreting Multivariable Pie Charts and Multi-Category Budgets",
+  "difficulty": "basic",
+  "variables": {
+    "disposable_income": { "min": 50000, "max": 150000, "step": 5000 },
+    "pct_housing": { "min": 25, "max": 35, "step": 1 },
+    "pct_food": { "min": 10, "max": 15, "step": 1 },
+    "pct_utilities": { "min": 5, "max": 8, "step": 1 },
+    "pct_transportation": { "min": 8, "max": 12, "step": 1 },
+    "pct_clothing": { "min": 3, "max": 6, "step": 1 },
+    "pct_medical": { "min": 4, "max": 7, "step": 1 },
+    "pct_insurance": { "min": 4, "max": 7, "step": 1 },
+    "pct_recreation": { "min": 5, "max": 10, "step": 1 },
+    "pct_savings": { "min": 5, "max": 10, "step": 1 },
+    "pct_miscellaneous": { "formula": "100 - pct_housing - pct_food - pct_utilities - pct_transportation - pct_clothing - pct_medical - pct_insurance - pct_recreation - pct_savings" },
+    "target_category": { "values": ["Housing", "Food", "Utilities", "Transportation", "Clothing", "Medical", "Insurance", "Recreation", "Savings", "Miscellaneous"] },
+    "target_percent": { "formula": "({ Housing: pct_housing, Food: pct_food, Utilities: pct_utilities, Transportation: pct_transportation, Clothing: pct_clothing, Medical: pct_medical, Insurance: pct_insurance, Recreation: pct_recreation, Savings: pct_savings, Miscellaneous: pct_miscellaneous })[target_category]" },
+    "calculated_answer": { "formula": "Math.round((disposable_income * target_percent) / 100)" }
+  },
+  "chart_generation_script": "import matplotlib.pyplot as plt\nlabels = ['Housing', 'Food', 'Utilities', 'Transportation', 'Clothing', 'Medical', 'Insurance', 'Recreation', 'Savings', 'Misc']\nsizes = [{pct_housing}, {pct_food}, {pct_utilities}, {pct_transportation}, {pct_clothing}, {pct_medical}, {pct_insurance}, {pct_recreation}, {pct_savings}, {pct_miscellaneous}]\nplt.figure(figsize=(8, 8))\nplt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff','#99ff99','#ffcc99','#c2c2f0','#ffb3e6','#c4e17f','#76d7c4','#f7dc6f','#af7ac5'])\nplt.title('Annual Disposable Income Breakdown')\nplt.savefig('budget_pie_chart.png')",
+  "question": "A household has a total annual disposable income of <b>\\${disposable_income}</b>. Based on their annual budget, they allocate their income into the following categories: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).\n\nAccording to this allocation, exactly how much money is budgeted annually for <b>{target_category}</b>?",
+  "answer": "\\${calculated_answer}"
+}
+
+
     ]
   },
   "Geometry": {
@@ -18193,6 +18193,15 @@
         },
         "question": "Complete each postulate by filling in the blank:<br><br>1. {p1_text}<br><br>2. {p2_text}<br><br>3. {p3_text}",
         "answer": "Completed postulates:<br><br>1. {p1_ans}<br><i>Explanation:</i> {p1_exp}<br><br>2. {p2_ans}<br><i>Explanation:</i> {p2_exp}<br><br>3. {p3_ans}<br><i>Explanation:</i> {p3_exp}"
+      },
+      {
+        "id": "GEO 3-4b Five Parts of a Proof",
+        "type": "template",
+        "objective": "Identify the five parts of a proof",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Write the five parts of a proof.",
+        "answer": "1. Given statements<br>2. Prove statement<br>3. Figure<br>4. Statements<br>5. Reasons"
       },
       {
         "id": "GEO 3-5 Segment Proofs",
