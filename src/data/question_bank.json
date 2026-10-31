@@ -18517,46 +18517,6 @@
         },
         "question": "{proof_question}",
         "answer": "{proof_answer}"
-      },
-      {
-        "id": "GEO 3-5 B Segment Addition v2",
-        "type": "template",
-        "objective": "Solve for an unknown point variable using rational segment addition equations and midpoint constraints",
-        "difficulty": "intermediate",
-        "variables": {
-          "point_pools": {
-            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
-          },
-          "pts": {
-            "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
-          },
-          "ptA": {
-            "formula": "pts"
-          },
-          "ptB": {
-            "formula": "pts"
-          },
-          "ptC": {
-            "formula": "pts"
-          },
-          "ptD": {
-            "formula": "pts"
-          },
-          "x_val": {
-            "formula": "2"
-          },
-          "expr_CB": {
-            "formula": "'3 + \\\\frac{1}{x}'"
-          },
-          "expr_AB": {
-            "formula": "'6 + \\\\frac{2}{x}'"
-          },
-          "expr_BD": {
-            "formula": "'\\\\frac{5x}{1 + x}'"
-          }
-        },
-        "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>If the total length \\( {ptA}{ptD} = \\frac{31}{3} \\), find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______<br><br><i>(Illustrations not to scale)</i>",
-        "answer": "Here are the step-by-step mathematical calculations to solve the problem:<br><br><b>Step 1: Express the full segment length \\( {ptA}{ptB} \\) algebraically.</b><br>Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the full segment length is exactly double the length of \\( {ptC}{ptB} \\):<br>\\[ {ptA}{ptB} = 2 \\cdot {ptC}{ptB} = 2 \\left( 3 + \\frac{1}{x} \\right) = 6 + \\frac{2}{x} \\]<br><br><b>Step 2: Apply the Segment Addition Postulate.</b><br>Since point {ptB} lies between points {ptA} and {ptD}, we set up our main balance equation:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our algebraic expressions and the given total numerical value into the formula:<br>\\[ \\left( 6 + \\frac{2}{x} \\right) + \\frac{5x}{1 + x} = \\frac{31}{3} \\]<br><br><b>Step 3: Isolate and solve the rational parts for \\( x \\).</b><br>Subtract 6 from both sides of the equation to clear the integer constant:<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - 6 \\]<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - \\frac{18}{3} = \\frac{13}{3} \\]<br><br>Find a common denominator for the algebraic expressions on the left side, which is \\( x(1 + x) \\):<br>\\[ \\frac{2(1 + x) + 5x(x)}{x(1 + x)} = \\frac{13}{3} \\]<br>\\[ \\frac{5x^2 + 2x + 2}{x^2 + x} = \\frac{13}{3} \\]<br><br>Cross-multiply to convert the rational equation into a standard quadratic equation:<br>\\[ 3(5x^2 + 2x + 2) = 13(x^2 + x) \\]<br>\\[ 15x^2 + 6x + 6 = 13x^2 + 13x \\]<br><br>Move all terms to one side to set the quadratic expression equal to zero:<br>\\[ 2x^2 - 7x + 6 = 0 \\]<br><br>Factor the resulting quadratic polynomial equation:<br>\\[ (2x - 3)(x - 2) = 0 \\]<br>This gives us two possible values: \\( x = 1.5 \\) or \\( x = 2 \\). Testing both against standard integer boundaries shows that <b>\\( x = 2 \\)</b> yields valid lengths.<br><br><b>Step 4: Compute the final numerical value of segment \\( {ptC}{ptD} \\).</b><br>Substitute \\( x = 2 \\) back into our individual segment expressions:<br><ul><li>\\( {ptC}{ptB} = 3 + \\frac{1}{2} = \\frac{7}{2} \\)</li><li>\\( {ptB}{ptD} = \\frac{5(2)}{1 + 2} = \\frac{10}{3} \\)</li></ul><br>Now combine the two sub-segments via the Segment Addition Postulate to find the total requested length:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} = \tfrac{7}{2} + \tfrac{10}{3} \\]<br>Find a common denominator of 6:<br>\\[ {ptC}{ptD} = \\frac{21}{6} + \\frac{20}{6} = \\frac{41}{6} \\]<br><br><b>Final Answer:</b><br>\\( x = 2 \\)<br>\\( {ptC}{ptD} = \\frac{41}{6} \\)"
       }
     ],
     "Scratch Pad Practice Problems": [
@@ -18828,6 +18788,46 @@
         },
         "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>If the total length \\( {ptA}{ptD} = \\frac{31}{3} \\), find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______<br><br><i>(Illustrations not to scale)</i>",
         "answer": "To solve this problem, we use geometric definitions to set up an algebraic equation:<br><br><b>Step 1: Use the Midpoint Definition to find \\( {ptA}{ptB} \\).</b><br>Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the full segment \\( {ptA}{ptB} \\) is exactly twice the length of \\( {ptC}{ptB} \\):<br>\\[ {ptA}{ptB} = 2 \\cdot {ptC}{ptB} = 2 \\left( 3 + \\frac{1}{x} \\right) = 6 + \\frac{2}{x} \\]<br><br><b>Step 2: Use the Segment Addition Postulate to solve for \\( x \\).</b><br>Because point {ptB} is between points {ptA} and {ptD}, we know that:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our expressions and the given total value into the equation:<br>\\[ \\left( 6 + \\frac{2}{x} \\right) + \\frac{5x}{1 + x} = \\frac{31}{3} \\]<br><br>Subtract 6 from both sides to clear the integer constant:<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - \\frac{18}{3} = \\frac{13}{3} \\]<br><br>Find a common denominator on the left side: \\( x(1+x) \\):<br>\\[ \\frac{2(1 + x) + 5x^2}{x(1 + x)} = \\frac{13}{3} \\]<br>\\[ \\frac{5x^2 + 2x + 2}{x^2 + x} = \\frac{13}{3} \\]<br><br>Cross-multiply to get a standard quadratic equation:<br>\\[ 3(5x^2 + 2x + 2) = 13(x^2 + x) \\]<br>\\[ 15x^2 + 6x + 6 = 13x^2 + 13x \\]<br>\\[ 2x^2 - 7x + 6 = 0 \\]<br><br>Factor the quadratic equation:<br>\\[ (2x - 3)(x - 2) = 0 \\]<br>This yields two potential solutions: \\( x = 1.5 \\) or \\( x = 2 \\). Given our geometric segment lengths must evaluate to integers/clean fractions matching the chart configurations, we use <b>\\( x = 2 \\)</b>.<br><br><b>Step 3: Calculate the segment lengths using \\( x = 2 \\).</b><br><ul><li>\\( {ptC}{ptB} = 3 + \\frac{1}{2} = 3.5 \\)</li><li>\\( {ptB}{ptD} = \\frac{5(2)}{1 + 2} = \\frac{10}{3} \\)</li></ul><br><b>Step 4: Combine segments to find \\( {ptC}{ptD} \\).</b><br>Using segment addition for the target intervals:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} = 3.5 + \\frac{10}{3} = \\frac{7}{2} + \\frac{10}{3} = \\frac{21 + 20}{6} = \\frac{41}{6} \\]<br><br>Therefore, the answers are:<br><b>\\( x = 2 \\)</b><br><b>\\( {ptC}{ptD} = \\frac{41}{6} \\)</b>"
+      },
+      {
+        "id": "GEO 3-5 B Segment Addition v2",
+        "type": "template",
+        "objective": "Solve for an unknown point variable using rational segment addition equations and midpoint constraints",
+        "difficulty": "intermediate",
+        "variables": {
+          "point_pools": {
+            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+          },
+          "pts": {
+            "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
+          },
+          "ptA": {
+            "formula": "pts"
+          },
+          "ptB": {
+            "formula": "pts"
+          },
+          "ptC": {
+            "formula": "pts"
+          },
+          "ptD": {
+            "formula": "pts"
+          },
+          "x_val": {
+            "formula": "2"
+          },
+          "expr_CB": {
+            "formula": "'3 + \\\\frac{1}{x}'"
+          },
+          "expr_AB": {
+            "formula": "'6 + \\\\frac{2}{x}'"
+          },
+          "expr_BD": {
+            "formula": "'\\\\frac{5x}{1 + x}'"
+          }
+        },
+        "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>If the total length \\( {ptA}{ptD} = \\frac{31}{3} \\), find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______<br><br><i>(Illustrations not to scale)</i>",
+        "answer": "Here are the step-by-step mathematical calculations to solve the problem:<br><br><b>Step 1: Express the full segment length \\( {ptA}{ptB} \\) algebraically.</b><br>Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the full segment length is exactly double the length of \\( {ptC}{ptB} \\):<br>\\[ {ptA}{ptB} = 2 \\cdot {ptC}{ptB} = 2 \\left( 3 + \\frac{1}{x} \\right) = 6 + \\frac{2}{x} \\]<br><br><b>Step 2: Apply the Segment Addition Postulate.</b><br>Since point {ptB} lies between points {ptA} and {ptD}, we set up our main balance equation:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our algebraic expressions and the given total numerical value into the formula:<br>\\[ \\left( 6 + \\frac{2}{x} \\right) + \\frac{5x}{1 + x} = \\frac{31}{3} \\]<br><br><b>Step 3: Isolate and solve the rational parts for \\( x \\).</b><br>Subtract 6 from both sides of the equation to clear the integer constant:<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - 6 \\]<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - \\frac{18}{3} = \\frac{13}{3} \\]<br><br>Find a common denominator for the algebraic expressions on the left side, which is \\( x(1 + x) \\):<br>\\[ \\frac{2(1 + x) + 5x(x)}{x(1 + x)} = \\frac{13}{3} \\]<br>\\[ \\frac{5x^2 + 2x + 2}{x^2 + x} = \\frac{13}{3} \\]<br><br>Cross-multiply to convert the rational equation into a standard quadratic equation:<br>\\[ 3(5x^2 + 2x + 2) = 13(x^2 + x) \\]<br>\\[ 15x^2 + 6x + 6 = 13x^2 + 13x \\]<br><br>Move all terms to one side to set the quadratic expression equal to zero:<br>\\[ 2x^2 - 7x + 6 = 0 \\]<br><br>Factor the resulting quadratic polynomial equation:<br>\\[ (2x - 3)(x - 2) = 0 \\]<br>This gives us two possible values: \\( x = 1.5 \\) or \\( x = 2 \\). Testing both against standard integer boundaries shows that <b>\\( x = 2 \\)</b> yields valid lengths.<br><br><b>Step 4: Compute the final numerical value of segment \\( {ptC}{ptD} \\).</b><br>Substitute \\( x = 2 \\) back into our individual segment expressions:<br><ul><li>\\( {ptC}{ptB} = 3 + \\frac{1}{2} = \\frac{7}{2} \\)</li><li>\\( {ptB}{ptD} = \\frac{5(2)}{1 + 2} = \\frac{10}{3} \\)</li></ul><br>Now combine the two sub-segments via the Segment Addition Postulate to find the total requested length:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} = \tfrac{7}{2} + \tfrac{10}{3} \\]<br>Find a common denominator of 6:<br>\\[ {ptC}{ptD} = \\frac{21}{6} + \\frac{20}{6} = \\frac{41}{6} \\]<br><br><b>Final Answer:</b><br>\\( x = 2 \\)<br>\\( {ptC}{ptD} = \\frac{41}{6} \\)"
       },
       {
         "id": "3-6 Angles",
