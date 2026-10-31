@@ -18152,25 +18152,19 @@
         "answer": "Combine each statement with the one whose hypothesis matches its conclusion:<br><br><b>Pair 1:</b> If {chain_1a}, then {chain_1b}. And if {chain_1b}, then {chain_1c}.<br><b>Conclusion 1:</b> If {chain_1a}, then {chain_1c}.<br><br><b>Pair 2:</b> If {chain_2a}, then {chain_2b}. And if {chain_2b}, then {chain_2c}.<br><b>Conclusion 2:</b> If {chain_2a}, then {chain_2c}.<br><br><b>Pair 3:</b> If {chain_3a}, then {chain_3b}. And if {chain_3b}, then {chain_3c}.<br><b>Conclusion 3:</b> If {chain_3a}, then {chain_3c}.<br><br><b>Pair 4:</b> If {chain_4a}, then {chain_4b}. And if {chain_4b}, then {chain_4c}.<br><b>Conclusion 4:</b> If {chain_4a}, then {chain_4c}."
       },
       {
-        "id": "GEO 3-4",
+        "id": "GEO 3-4a Points, Lines, and Planes",
         "type": "template",
         "objective": "Complete fundamental geometric postulates regarding points, lines, and planes",
         "difficulty": "basic",
         "variables": {
           "postulate_pool": {
-            "formula": "[ { text: 'If two ______ intersect, then their intersection is a point.', options: ['lines', 'planes'], ans: 'lines', explanation: 'If two lines intersect, they meet at exactly one point.' }, { text: 'Through three noncollinear points there is exactly one ______.', options: ['line', 'plane'], ans: 'plane', explanation: 'Three noncollinear points uniquely determine a flat 2D plane.' }, { text: 'If two planes intersect, then their intersection is a ______.', options: ['point', 'line'], ans: 'line', explanation: 'The intersection of two flat planes forms a straight line.' }, { text: 'Through any two distinct points there is exactly one ______.', options: ['line', 'plane'], ans: 'line', explanation: 'Two points are required to define a unique straight line.' } ]"
+            "formula": "[{\"text\":\"If two lines intersect, their intersection is exactly one ______.\",\"options\":[\"point\"],\"ans\":\"point\",\"explanation\":\"Two intersecting lines meet at exactly one point.\"},{\"text\":\"Through three noncollinear points there is exactly one ______.\",\"options\":[\"plane\"],\"ans\":\"plane\",\"explanation\":\"Three noncollinear points determine exactly one plane.\"},{\"text\":\"If two planes intersect, their intersection is a ______.\",\"options\":[\"line\"],\"ans\":\"line\",\"explanation\":\"The intersection of two distinct planes is a line.\"},{\"text\":\"Through any two distinct points there is exactly one ______.\",\"options\":[\"line\"],\"ans\":\"line\",\"explanation\":\"Two distinct points determine exactly one line.\"},{\"text\":\"Through a line and a point not on the line, there is exactly one ______.\",\"options\":[\"plane\"],\"ans\":\"plane\",\"explanation\":\"A line and a point outside it determine exactly one plane.\"}]"
           },
           "shuffled_pool": {
             "formula": "postulate_pool.map(x => ({ x, r: Math.random() })).sort((a, b) => a.r - b.r).map(y => y.x)"
           },
           "p1_text": {
             "formula": "shuffled_pool[0].text"
-          },
-          "p1_optA": {
-            "formula": "shuffled_pool[0].options[0]"
-          },
-          "p1_optB": {
-            "formula": "shuffled_pool[0].options[1]"
           },
           "p1_ans": {
             "formula": "shuffled_pool[0].ans"
@@ -18181,21 +18175,24 @@
           "p2_text": {
             "formula": "shuffled_pool[1].text"
           },
-          "p2_optA": {
-            "formula": "shuffled_pool[1].options[0]"
-          },
-          "p2_optB": {
-            "formula": "shuffled_pool[1].options[1]"
-          },
           "p2_ans": {
             "formula": "shuffled_pool[1].ans"
           },
           "p2_exp": {
             "formula": "shuffled_pool[1].explanation"
+          },
+          "p3_text": {
+            "formula": "shuffled_pool[2].text"
+          },
+          "p3_ans": {
+            "formula": "shuffled_pool[2].ans"
+          },
+          "p3_exp": {
+            "formula": "shuffled_pool[2].explanation"
           }
         },
-        "question": "Complete each postulate by choosing the correct terms:<br><br>1. {p1_text}<br>&nbsp;&nbsp;&nbsp;&nbsp;[ ? {p1_optA} &nbsp;&nbsp; ? {p1_optB} ]<br><br>2. {p2_text}<br>&nbsp;&nbsp;&nbsp;&nbsp;[ ? {p2_optA} &nbsp;&nbsp; ? {p2_optB} ]",
-        "answer": "Here are the completed geometric postulates:<br><br>1. <b>{p1_ans}</b><br><i>Explanation:</i> {p1_exp}<br><br>2. <b>{p2_ans}</b><br><i>Explanation:</i> {p2_exp}"
+        "question": "Complete each postulate by filling in the blank:<br><br>1. {p1_text}<br><br>2. {p2_text}<br><br>3. {p3_text}",
+        "answer": "Completed postulates:<br><br>1. {p1_ans}<br><i>Explanation:</i> {p1_exp}<br><br>2. {p2_ans}<br><i>Explanation:</i> {p2_exp}<br><br>3. {p3_ans}<br><i>Explanation:</i> {p3_exp}"
       },
       {
         "id": "GEO 3-5 Segment Proofs",
