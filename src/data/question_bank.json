@@ -18246,10 +18246,19 @@
           },
           "p3_exp": {
             "formula": "shuffled_pool[2].explanation"
+          },
+          "p4_text": {
+            "formula": "shuffled_pool[3].text"
+          },
+          "p4_ans": {
+            "formula": "shuffled_pool[3].ans"
+          },
+          "p4_exp": {
+            "formula": "shuffled_pool[3].explanation"
           }
         },
-        "question": "Complete each postulate by filling in the blank:<br><br>1. {p1_text}<br><br>2. {p2_text}<br><br>3. {p3_text}",
-        "answer": "Completed postulates:<br><br>1. {p1_ans}<br><i>Explanation:</i> {p1_exp}<br><br>2. {p2_ans}<br><i>Explanation:</i> {p2_exp}<br><br>3. {p3_ans}<br><i>Explanation:</i> {p3_exp}"
+        "question": "Complete each postulate by filling in the blank:<br><div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px\"><div><b>A)</b> {p1_text}</div><div><b>B)</b> {p2_text}</div><div><b>C)</b> {p3_text}</div><div><b>D)</b> {p4_text}</div></div>",
+        "answer": "Completed postulates:<br><div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px\"><div><b>A)</b> {p1_ans}<br><i>Explanation:</i> {p1_exp}</div><div><b>B)</b> {p2_ans}<br><i>Explanation:</i> {p2_exp}</div><div><b>C)</b> {p3_ans}<br><i>Explanation:</i> {p3_exp}</div><div><b>D)</b> {p4_ans}<br><i>Explanation:</i> {p4_exp}</div></div>"
       },
       {
         "id": "GEO 3-4b Five Parts of a Proof",
