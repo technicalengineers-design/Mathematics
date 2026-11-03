@@ -15703,7 +15703,7 @@
   "answer": "Annual disposable income: \\${disposable_income_formatted}<br>Recommended annual amount for {target_category}: \\${recommended_amount_formatted}"
 },
 {
-  "id": "CM 4.2a Salary Conversions",
+  "id": "CM 4.2 Salary Conversions",
   "type": "template",
   "objective": "Convert between payroll cycle increments incorporating a year-end bonus",
   "difficulty": "medium",
@@ -15730,6 +15730,45 @@
   },
   "question": "An employee earns a <b>{source_cycle}</b> salary of <b>${source_amount}</b>. In addition to this pay rate, they receive a guaranteed year-end bonus of <b>${bonus}</b>. <br><br>Based on these total combined earnings, what is their equivalent <b>{target_cycle}</b> salary? <br><br>*(Assume there are 12 months, 26 bi-weekly periods, and 52 weeks in a calendar year. Round your final answer to two decimal places if necessary)*",
   "answer": "Step 1: Identify the incoming payment details:<br>Stated cycle rate: ${source_amount} ({source_cycle})<br>Year-end bonus multiplier: ${bonus}<br><br>Step 2: {step2_desc}<br>{step2_math}<br><br>Step 3: Convert the total annual income into the requested target increment ({target_cycle}):<br>{step3_math}"
+},
+{
+  "id": "CM 4.3 Budget Increase",
+  "type": "template",
+  "objective": "Calculate the monthly increase resulting from a percentage increase to an annual budget item",
+  "difficulty": "basic",
+  "variables": {
+    "budget_category": {
+      "values": ["housing", "groceries", "transportation", "utilities", "healthcare", "insurance", "childcare", "education"]
+    },
+    "annual_budget_thousands": {
+      "min": 6,
+      "max": 36
+    },
+    "annual_budget_amount": {
+      "formula": "annual_budget_thousands * 1000"
+    },
+    "increase_percent": {
+      "min": 3,
+      "max": 11
+    },
+    "annual_increase_amount": {
+      "formula": "annual_budget_amount * increase_percent / 100"
+    },
+    "monthly_increase_amount": {
+      "formula": "Math.round(annual_increase_amount / 12 * 100) / 100"
+    },
+    "annual_budget_formatted": {
+      "formula": "annual_budget_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "annual_increase_formatted": {
+      "formula": "annual_increase_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "monthly_increase_formatted": {
+      "formula": "monthly_increase_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    }
+  },
+  "question": "A household spends <b>{annual_budget_formatted} per year</b> on {budget_category}. The annual budget for this item is increasing by <b>{increase_percent}%</b>. How much should the household increase its monthly budget for this item? Round to the nearest cent.",
+  "answer": "First find the annual increase: {annual_budget_formatted} &times; {increase_percent}% = {annual_increase_formatted}. Then divide by 12 months: {annual_increase_formatted} &divide; 12 = <b>{monthly_increase_formatted} per month</b>."
 }
 
 
