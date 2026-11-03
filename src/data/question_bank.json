@@ -15665,11 +15665,13 @@
     "pct_miscellaneous": { "formula": "100 - pct_housing - pct_food - pct_utilities - pct_transportation - pct_clothing - pct_medical - pct_insurance - pct_recreation - pct_savings" },
     "target_category": { "values": ["Housing", "Food", "Utilities", "Transportation", "Clothing", "Medical", "Insurance", "Recreation", "Savings", "Miscellaneous"] },
     "target_percent": { "formula": "({ Housing: pct_housing, Food: pct_food, Utilities: pct_utilities, Transportation: pct_transportation, Clothing: pct_clothing, Medical: pct_medical, Insurance: pct_insurance, Recreation: pct_recreation, Savings: pct_savings, Miscellaneous: pct_miscellaneous })[target_category]" },
-    "calculated_answer": { "formula": "Math.round((disposable_income * target_percent) / 100)" }
+    "calculated_answer": { "formula": "Math.round((disposable_income * target_percent) / 100)" },
+    "disposable_income_formatted": { "formula": "disposable_income.toLocaleString('en-US')" },
+    "calculated_answer_formatted": { "formula": "calculated_answer.toLocaleString('en-US')" }
   },
   "chart_generation_script": "import matplotlib.pyplot as plt\nlabels = ['Housing', 'Food', 'Utilities', 'Transportation', 'Clothing', 'Medical', 'Insurance', 'Recreation', 'Savings', 'Misc']\nsizes = [{pct_housing}, {pct_food}, {pct_utilities}, {pct_transportation}, {pct_clothing}, {pct_medical}, {pct_insurance}, {pct_recreation}, {pct_savings}, {pct_miscellaneous}]\nplt.figure(figsize=(8, 8))\nplt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff','#99ff99','#ffcc99','#c2c2f0','#ffb3e6','#c4e17f','#76d7c4','#f7dc6f','#af7ac5'])\nplt.title('Annual Disposable Income Breakdown')\nplt.savefig('budget_pie_chart.png')",
-  "question": "A household has a total annual disposable income of <b>\\${disposable_income}</b>. Based on their annual budget, they allocate their income into the following categories: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).\n\nAccording to this allocation, exactly how much money is budgeted annually for <b>{target_category}</b>?",
-  "answer": "\\${calculated_answer}"
+  "question": "A household has a total annual disposable income of <b>\\${disposable_income_formatted}</b>. Based on their annual budget, they allocate their income into the following categories: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).\n\nAccording to this allocation, exactly how much money is budgeted annually for <b>{target_category}</b>?",
+  "answer": "\\${calculated_answer_formatted}"
 },
 {
   "id": "CM 4-1b Recommended Budget Amount",
@@ -15692,10 +15694,13 @@
     "pct_miscellaneous": { "formula": "100 - pct_housing - pct_food - pct_utilities - pct_transportation - pct_clothing - pct_medical - pct_insurance - pct_recreation - pct_savings" },
     "target_category": { "values": ["Housing", "Food", "Utilities", "Transportation", "Clothing", "Medical", "Insurance", "Recreation", "Savings", "Miscellaneous"] },
     "target_percent": { "formula": "({ Housing: pct_housing, Food: pct_food, Utilities: pct_utilities, Transportation: pct_transportation, Clothing: pct_clothing, Medical: pct_medical, Insurance: pct_insurance, Recreation: pct_recreation, Savings: pct_savings, Miscellaneous: pct_miscellaneous })[target_category]" },
-    "recommended_amount": { "formula": "Math.round(disposable_income * target_percent / 100)" }
+    "recommended_amount": { "formula": "Math.round(disposable_income * target_percent / 100)" },
+    "gross_income_formatted": { "formula": "gross_income.toLocaleString('en-US')" },
+    "disposable_income_formatted": { "formula": "disposable_income.toLocaleString('en-US')" },
+    "recommended_amount_formatted": { "formula": "recommended_amount.toLocaleString('en-US')" }
   },
-  "question": "A family earns a gross annual income of <b>\\${gross_income}</b>. Their disposable income is 69% for an annual income near $52,000 or below, 67% for an annual income near $63,000, and 65% for income near $81,000 or above. They use this recommended budget allocation: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).<br><br>What is the recommended annual amount for <b>{target_category}</b>, rounded to the nearest dollar?",
-  "answer": "Annual disposable income: \\${disposable_income}<br>Recommended annual amount for {target_category}: \\${recommended_amount}"
+  "question": "A family earns a gross annual income of <b>\\${gross_income_formatted}</b>. Their disposable income is 69% for an annual income near $52,000 or below, 67% for an annual income near $63,000, and 65% for income near $81,000 or above. They use this recommended budget allocation: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).<br><br>What is the recommended annual amount for <b>{target_category}</b>, rounded to the nearest dollar?",
+  "answer": "Annual disposable income: \\${disposable_income_formatted}<br>Recommended annual amount for {target_category}: \\${recommended_amount_formatted}"
 },
 {
   "id": "CM 4.2a Salary Conversions",
