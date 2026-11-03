@@ -6587,6 +6587,8 @@
         "answer": "\\( {x2} < x < {x1} \\)"
       }
     ],
+    "Semester 1 Review": [],
+    "Objective Assessment 1": [],
     "7 Systems": [
       {
         "id": "ALG1-7.1-B1",
@@ -17502,7 +17504,7 @@
     ],
     "3 Logical Arguments and Line Relationships": [
       {
-        "id": "GEO 3-1 Conjecture v1",
+        "id": "GEO 3-1 Conjecture",
         "type": "template",
         "objective": "Write the conjecture describing the next term in the sequence",
         "difficulty": "basic",
@@ -17550,7 +17552,7 @@
             "formula": "Math.round((a3 - a2) * 100) / 100"
           }
         },
-        "question": "Write the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ï¿½.",
+        "question": "Write the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ...",
         "choices": [
           {
             "text": "Multiply {a4} by {r_text}.",
@@ -17572,7 +17574,7 @@
         "answer": "To find the pattern, look at the relationship between consecutive terms:\n \\( {a2} \\div {a1} = {r_latex} \\)\n, \\( {a3} \\div {a2} = {r_latex} \\)\n, \\( {a4} \\div {a3} = {r_latex} \\)\n\nEach term is found by multiplying the previous term by a common factor of **{r_text}**. Therefore, the conjecture to find the next (5th) term is to **multiply {a4} by {r_text}**.\n\n**Correct Choice:** Multiply {a4} by {r_text}."
       },
       {
-        "id": "GEO 3-1 Conjecture v2",
+        "id": "GEO 3-1 Conjecture.",
         "type": "template",
         "objective": "Write the conjecture describing the next term in the sequence",
         "difficulty": "basic",
@@ -17602,7 +17604,7 @@
             "formula": "Math.floor((a1 + d + d + d) / (a1 + d))"
           }
         },
-        "question": "Write the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ï¿½.",
+        "question": "Write the conjecture that describes how to find the 5th term in the sequence {a1}, {a2}, {a3}, {a4}, ...",
         "choices": [
           {
             "text": "Add {d} to {a4}.",
@@ -19049,6 +19051,57 @@
       }
     ],
     "Scratch Pad Practice Problems": [
+      {
+  "meta": {
+    "title": "Discrete to Continuous Data Scale Transition Animation",
+    "description": "Visualizing macro scaling using room occupancy vs. world population zoom simulation."
+  },
+  "global_parameters": {
+    "total_frames": 180,
+    "frames_per_second": 12,
+    "frame_interval_ms": 80,
+    "theme_hex_color": "#1f77b4"
+  },
+  "animation_stages": [
+    {
+      "phase_id": 1,
+      "name": "Slow Discrete Addition (First Quarter)",
+      "frame_range": [0, 79],
+      "behavior": "Slowly increments isolated points one-by-one to illustrate clear gaps.",
+      "axes": {
+        "x_axis": { "label": "Time (Minutes)", "min_value": 0, "max_value": 12 },
+        "y_axis": { "label": "Count of People", "min_value": 0, "max_value": 12 }
+      },
+      "render_components": {
+        "style": "stem_plot",
+        "maximum_discrete_elements": 10,
+        "show_vertical_stems": true,
+        "show_whitespace_gaps": true
+      }
+    },
+    {
+      "phase_id": 2,
+      "name": "Exponential Zoom Out & Continuous Blur",
+      "frame_range": [80, 179],
+      "behavior": "Expands view parameters continuously, compressing space gaps into a smooth function.",
+      "axes": {
+        "x_axis": { "label": "Time Horizon (Expanded)", "min_value": 0, "max_value": "10 * zoom_factor" },
+        "y_axis": { "label": "Population Curve Scale", "min_value": 0, "max_value": "10 * zoom_factor" }
+      },
+      "proportional_logic": {
+        "zoom_factor_equation": "1 + (999 * ((frame - 80) / 100)^3)",
+        "scatter_density_equation": "min(20 + (frame - 80) * 3, 350)",
+        "particle_render_size_equation": "max(16 - ((frame - 80) / 7), 1.5)"
+      },
+      "render_components": {
+        "style": "dense_scatter_with_trendline",
+        "show_vertical_stems": false,
+        "show_whitespace_gaps": false,
+        "visual_result": "fluid_calculus_curve"
+      }
+    }
+  ]
+},
       {
         "id": "GEO 3-3 Logic (practice only)",
         "type": "template",
