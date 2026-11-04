@@ -15792,6 +15792,77 @@
   },
   "question": "On {expense_date}, Theo Blake had an unexpected <b>$1,500 transmission repair</b>. He needs to pay this emergency bill from this month's budget. The table shows planned spending and the minimum amount needed for each item this month. Recommend which budget item to reduce and by how much to reduce each in order to balance the budget.<br><br>{budget_table}<br>",
   "answer": "The budget items with excess funds and one valid reduction for each are:<br>{budget_solution}<br>The recommended reductions total <b>$1,500</b>, enough to pay the transmission bill, and each reduction is no greater than the item's excess."
+},
+{
+  "id": "CM 4.5a Bonus",
+  "type": "template",
+  "objective": "Calculate disposable overtime income remaining after a budget allocation",
+  "difficulty": "basic",
+  "variables": {
+    "person_name": {
+      "textValue": ["Theo", "Maya", "Jordan", "Avery", "Riley", "Casey", "Morgan", "Taylor"]
+    },
+    "gross_overtime_pay_cents": {
+      "min": 150000,
+      "max": 400000,
+      "step": 5000
+    },
+    "gross_overtime_pay": {
+      "formula": "gross_overtime_pay_cents / 100"
+    },
+    "disposable_percent": {
+      "formula": "[65, 67, 69][Math.floor(Math.random() * 3)]"
+    },
+    "other_budget_item_amount_cents": {
+      "min": 10000,
+      "max": 60000,
+      "step": 2500
+    },
+    "other_budget_item_amount": {
+      "formula": "other_budget_item_amount_cents / 100"
+    },
+    "disposable_overtime_pay_unrounded": {
+      "formula": "(gross_overtime_pay * disposable_percent / 100).toFixed(3)"
+    },
+    "disposable_overtime_pay": {
+      "formula": "Math.round(gross_overtime_pay * disposable_percent) / 100"
+    },
+    "donation_amount_unrounded": {
+      "formula": "(disposable_overtime_pay * 0.1).toFixed(3)"
+    },
+    "donation_amount": {
+      "formula": "Math.round(disposable_overtime_pay * 10) / 100"
+    },
+    "remaining_after_donation": {
+      "formula": "disposable_overtime_pay - donation_amount"
+    },
+    "vacation_amount": {
+      "formula": "Math.round((remaining_after_donation - other_budget_item_amount) * 100) / 100"
+    },
+    "gross_overtime_pay_formatted": {
+      "formula": "gross_overtime_pay.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "disposable_percent_formatted": {
+      "formula": "disposable_percent + '%'"
+    },
+    "disposable_overtime_pay_formatted": {
+      "formula": "disposable_overtime_pay.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "donation_amount_formatted": {
+      "formula": "donation_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "remaining_after_donation_formatted": {
+      "formula": "remaining_after_donation.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "other_budget_item_amount_formatted": {
+      "formula": "other_budget_item_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "vacation_amount_formatted": {
+      "formula": "vacation_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    }
+  },
+  "question": "{person_name} planned to use overtime pay for a vacation this year. Of the gross overtime pay of <b>{gross_overtime_pay_formatted}</b>, {disposable_percent_formatted} is disposable income. From those disposable funds, 10% will be donated and <b>{other_budget_item_amount_formatted}</b> will be spent on another budget item. How much will remain for the vacation? Answer to the nearest penny.",
+  "answer": "First find the disposable income: {gross_overtime_pay_formatted} &times; {disposable_percent}% = ${disposable_overtime_pay_unrounded}, which rounds to <b>{disposable_overtime_pay_formatted}</b>.<br>Next find the donation: {disposable_overtime_pay_formatted} &times; 10% = ${donation_amount_unrounded}, which rounds to <b>{donation_amount_formatted}</b>. Subtract it from the disposable income: {disposable_overtime_pay_formatted} - {donation_amount_formatted} = {remaining_after_donation_formatted}.<br>Finally subtract the other budget item: {remaining_after_donation_formatted} - {other_budget_item_amount_formatted} = <b>{vacation_amount_formatted}</b> left for the vacation."
 }
 
 
