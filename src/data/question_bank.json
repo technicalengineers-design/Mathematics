@@ -15863,6 +15863,61 @@
   },
   "question": "{person_name} planned to use overtime pay for a vacation this year. Of the gross overtime pay of <b>{gross_overtime_pay_formatted}</b>, {disposable_percent_formatted} is disposable income. From those disposable funds, 10% will be donated and <b>{other_budget_item_amount_formatted}</b> will be spent on another budget item. How much will remain for the vacation? Answer to the nearest penny.",
   "answer": "First find the disposable income: {gross_overtime_pay_formatted} &times; {disposable_percent}% = ${disposable_overtime_pay_unrounded}, which rounds to <b>{disposable_overtime_pay_formatted}</b>.<br>Next find the donation: {disposable_overtime_pay_formatted} &times; 10% = ${donation_amount_unrounded}, which rounds to <b>{donation_amount_formatted}</b>. Subtract it from the disposable income: {disposable_overtime_pay_formatted} - {donation_amount_formatted} = {remaining_after_donation_formatted}.<br>Finally subtract the other budget item: {remaining_after_donation_formatted} - {other_budget_item_amount_formatted} = <b>{vacation_amount_formatted}</b> left for the vacation."
+},
+{
+  "id": "CM 4.5b Raise",
+  "type": "template",
+  "objective": "Calculate a new hourly wage, annual gross income, and disposable income after tax and donation",
+  "difficulty": "basic",
+  "variables": {
+    "person_name": {
+      "textValue": ["Theo", "Maya", "Jordan", "Avery", "Riley", "Casey", "Morgan", "Taylor"]
+    },
+    "original_wage": 12.95,
+    "raise_amount": 0.35,
+    "new_wage": {
+      "formula": "Math.round((original_wage + raise_amount) * 100) / 100"
+    },
+    "hours_per_week": 40,
+    "weeks_per_year": 52,
+    "annual_gross_income": {
+      "formula": "Math.round(new_wage * hours_per_week * weeks_per_year * 100) / 100"
+    },
+    "tax_rate": 21,
+    "donation_rate": 10,
+    "annual_tax": {
+      "formula": "Math.round(annual_gross_income * tax_rate) / 100"
+    },
+    "annual_donation": {
+      "formula": "Math.round(annual_gross_income * donation_rate) / 100"
+    },
+    "disposable_income": {
+      "formula": "Math.round((annual_gross_income - annual_tax - annual_donation) * 100) / 100"
+    },
+    "original_wage_formatted": {
+      "formula": "original_wage.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "raise_amount_formatted": {
+      "formula": "raise_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "new_wage_formatted": {
+      "formula": "new_wage.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "annual_gross_income_formatted": {
+      "formula": "annual_gross_income.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "annual_tax_formatted": {
+      "formula": "annual_tax.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "annual_donation_formatted": {
+      "formula": "annual_donation.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    },
+    "disposable_income_formatted": {
+      "formula": "disposable_income.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+    }
+  },
+  "question": "{person_name} received a raise of <b>{raise_amount_formatted} per hour</b>. The original wage was <b>{original_wage_formatted} per hour</b>.<br><br><b>A)</b> What is the new hourly wage? What is the annual gross income if {person_name} works 40 hours per week for 52 weeks?<br><br><b>B)</b> The tax rate is 21%. In addition, 10% of annual gross income is donated. How much annual disposable income remains? Answer all amounts to the nearest penny.",
+  "answer": "<b>A)</b> New hourly wage: {original_wage_formatted} + {raise_amount_formatted} = <b>{new_wage_formatted}</b>.<br>Annual gross income: {new_wage_formatted} &times; 40 hours &times; 52 weeks = <b>{annual_gross_income_formatted}</b>.<br><br><b>B)</b> Annual tax: {annual_gross_income_formatted} &times; 21% = <b>{annual_tax_formatted}</b>.<br>Donation: {annual_gross_income_formatted} &times; 10% = <b>{annual_donation_formatted}</b>.<br>Disposable income: {annual_gross_income_formatted} - {annual_tax_formatted} - {annual_donation_formatted} = <b>{disposable_income_formatted}</b>."
 }
 
 
