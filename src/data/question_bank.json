@@ -15873,8 +15873,22 @@
     "person_name": {
       "textValue": ["Theo", "Maya", "Jordan", "Avery", "Riley", "Casey", "Morgan", "Taylor"]
     },
-    "original_wage": 12.95,
-    "raise_amount": 0.35,
+    "original_wage_cents": {
+      "min": 1000,
+      "max": 2500,
+      "step": 25
+    },
+    "original_wage": {
+      "formula": "original_wage_cents / 100"
+    },
+    "raise_amount_cents": {
+      "min": 25,
+      "max": 100,
+      "step": 5
+    },
+    "raise_amount": {
+      "formula": "raise_amount_cents / 100"
+    },
     "new_wage": {
       "formula": "Math.round((original_wage + raise_amount) * 100) / 100"
     },
