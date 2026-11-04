@@ -15769,6 +15769,29 @@
   },
   "question": "A household spends <b>{annual_budget_formatted} per year</b> on {budget_category}. The annual budget for this item is increasing by <b>{increase_percent}%</b>. How much should the household increase its monthly budget for this item? Round to the nearest cent.",
   "answer": "First find the annual increase: {annual_budget_formatted} &times; {increase_percent}% = {annual_increase_formatted}. Then divide by 12 months: {annual_increase_formatted} &divide; 12 = <b>{monthly_increase_formatted} per month</b>."
+},
+{
+  "id": "CM 4.4 Emergency",
+  "type": "template",
+  "objective": "Identify excess funds in a monthly budget and reallocate them to cover an emergency expense",
+  "difficulty": "basic",
+  "variables": {
+    "days_ago": { "min": 5, "max": 9 },
+    "expense_date": {
+      "formula": "new Date(Date.now() - days_ago * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })"
+    },
+    "budget_rows": {
+      "formula": "(function() { var items = [['Rent',1500],['Groceries',500],['Dining out',150],['Entertainment',100],['Clothing',100],['Utilities',250],['Transportation',200],['Medical',100],['Pets',75],['Savings',100],['Miscellaneous',75],['Phone',100]]; for (var i = items.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var temp = items[i]; items[i] = items[j]; items[j] = temp; } var count = 2 + Math.floor(Math.random() * 3); var cuts = [0,30]; while (cuts.length < count + 1) { var cut = 1 + Math.floor(Math.random() * 29); if (!cuts.includes(cut)) cuts.push(cut); } cuts.sort(function(a,b) { return a-b; }); var reductions = []; for (var k = 1; k < cuts.length; k++) reductions.push((cuts[k] - cuts[k-1]) * 50); return items.map(function(item,index) { var reduction = index < count ? reductions[index] : 0; var extra = reduction > 0 ? Math.floor(Math.random() * 5) * 50 : 0; return { category:item[0], minimum:item[1], planned:item[1] + reduction + extra, reduction:reduction, excess:reduction + extra }; }); })()"
+    },
+    "budget_table": {
+      "formula": "'<table border=\"1\" style=\"border-collapse:collapse; text-align:left;\"><tr><th>Budget item</th><th>Planned</th><th>Minimum</th><th>Budget item</th><th>Planned</th><th>Minimum</th></tr>' + Array.from({length:6}, function(_,index) { var left = budget_rows[index]; var right = budget_rows[index+6]; return '<tr><td>' + left.category + '</td><td>$' + left.planned.toLocaleString('en-US') + '</td><td>$' + left.minimum.toLocaleString('en-US') + '</td><td>' + right.category + '</td><td>$' + right.planned.toLocaleString('en-US') + '</td><td>$' + right.minimum.toLocaleString('en-US') + '</td></tr>'; }).join('') + '</table>'"
+    },
+    "budget_solution": {
+      "formula": "budget_rows.filter(function(item) { return item.reduction > 0; }).map(function(item) { return item.category + ': excess $' + item.excess.toLocaleString('en-US') + ', reduce by $' + item.reduction.toLocaleString('en-US'); }).join('<br>')"
+    }
+  },
+  "question": "On {expense_date}, Theo Blake had an unexpected <b>$1,500 transmission repair</b>. He needs to pay this emergency bill from this month's budget. The table shows planned spending and the minimum amount needed for each item this month.<br><br>{budget_table}<br>Compare the planned and minimum amounts to find the two to four budget items with excess funds. Recommend how much to reduce each of those items so the reductions total exactly <b>$1,500</b>. Do not reduce any item below its minimum needed amount.",
+  "answer": "The budget items with excess funds and one valid reduction for each are:<br>{budget_solution}<br>The recommended reductions total <b>$1,500</b>, enough to pay the transmission bill, and each reduction is no greater than the item's excess."
 }
 
 
