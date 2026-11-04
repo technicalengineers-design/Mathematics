@@ -15674,7 +15674,7 @@
   "answer": "\\${calculated_answer_formatted}"
 },
 {
-  "id": "CM 4-1b Recommended Budget Amount",
+  "id": "CM 4.1b Recommended Budget Amount",
   "type": "template",
   "objective": "Calculate recommended budget amounts from gross income and disposable income rates",
   "difficulty": "basic",
@@ -15703,10 +15703,10 @@
   "answer": "Annual disposable income: \\${disposable_income_formatted}<br>Recommended annual amount for {target_category}: \\${recommended_amount_formatted}"
 },
 {
-  "id": "CM 4.2 Salary Conversions",
+  "id": "CM 4.2 Salary Conversion",
   "type": "template",
   "objective": "Convert between payroll cycle increments incorporating a year-end bonus",
-  "difficulty": "medium",
+  "difficulty": "basic",
   "variables": {
     "source_type_idx": { "formula": "Math.floor(Math.random() * 4)" },
     "target_type_idx": { "formula": "Math.floor(Math.random() * 3)" },
