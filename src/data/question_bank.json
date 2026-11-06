@@ -5027,55 +5027,34 @@
             "formula": "'<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"0 0 360 360\\\" role=\\\"img\\\" aria-label=\\\"Sample graph of the linear function\\\" style=\\\"display:block;width:100%;max-width:360px;height:auto;border:1px solid #777;background:white\\\">' + Array.from({length:9}, function(_, i){var p=30+i*37.5; var strong=i===4; var label=-20+i*5; return '<line x1=\\\"'+p+'\\\" y1=\\\"30\\\" x2=\\\"'+p+'\\\" y2=\\\"330\\\" stroke=\\\"'+(strong?'#333':'#ddd')+'\\\" stroke-width=\\\"'+(strong?2:1)+'\\\"/><line x1=\\\"30\\\" y1=\\\"'+p+'\\\" x2=\\\"330\\\" y2=\\\"'+p+'\\\" stroke=\\\"'+(strong?'#333':'#ddd')+'\\\" stroke-width=\\\"'+(strong?2:1)+'\\\"/><text x=\\\"'+p+'\\\" y=\\\"346\\\" text-anchor=\\\"middle\\\" font-size=\\\"9\\\">'+label+'</text><text x=\\\"24\\\" y=\\\"'+(p+3)+'\\\" text-anchor=\\\"end\\\" font-size=\\\"9\\\">'+(20-i*5)+'</text>'; }).join('') + '<text x=\\\"334\\\" y=\\\"183\\\" font-size=\\\"11\\\">x</text><text x=\\\"183\\\" y=\\\"24\\\" font-size=\\\"11\\\">y</text>' + '<defs><clipPath id=\\\"alg41a-plot\\\"><rect x=\\\"30\\\" y=\\\"30\\\" width=\\\"300\\\" height=\\\"300\\\"/></clipPath></defs><g clip-path=\\\"url(#alg41a-plot)\\\"><line x1=\\\"30\\\" y1=\\\"'+(180-(slope*(-20)+b)*7.5)+'\\\" x2=\\\"330\\\" y2=\\\"'+(180-(slope*20+b)*7.5)+'\\\" stroke=\\\"#c0392b\\\" stroke-width=\\\"3\\\"/>' + [[x1,y1],[x2,y2],[x3,y3],[x4,y4],[x5,y5]].map(function(pair){return '<circle cx=\\\"'+(180+pair[0]*7.5)+'\\\" cy=\\\"'+(180-pair[1]*7.5)+'\\\" r=\\\"4\\\" fill=\\\"#c0392b\\\"/>';}).join('') + '</g></svg>'"
           }
         },
-        "question": "For the function \\( y = {m_text}x {b|sign} \\), fill in five appropriate x-values and graph the function.<br><div style='display:flex;align-items:flex-start;gap:16px;'><table border='1' cellpadding='4' cellspacing='0' style='border-collapse:collapse;font-size:14px;width:380px;'><tr><th style='width:20%;text-align:center;background:#f2f2f2;padding:12px 4px;'>x</th><th style='width:80%;text-align:center;background:#f2f2f2;padding:12px 4px;'>Equation</th></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr></table>{blank_square_graph_svg}</div>",
+        "question": "For the function \\( y = {m_text}x {b|sign} \\), choose and fill in five appropriate x-values and graph the function.<br><div style='display:flex;align-items:flex-start;gap:16px;'><table border='1' cellpadding='4' cellspacing='0' style='border-collapse:collapse;font-size:14px;width:380px;'><tr><th style='width:20%;text-align:center;background:#f2f2f2;padding:12px 4px;'>x</th><th style='width:80%;text-align:center;background:#f2f2f2;padding:12px 4px;'>Equation</th></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr></table>{blank_square_graph_svg}</div>",
         "answer": "<b>Sample answer:</b><br><table border='1' cellpadding='4' cellspacing='0' style='border-collapse:collapse;font-size:14px;width:420px;'><tr><th style='background:#f2f2f2;padding:12px 4px;'>x</th><th style='background:#f2f2f2;padding:12px 4px;'>Equation</th><th style='background:#f2f2f2;padding:12px 4px;'>y</th></tr><tr><td style='height:37.5px;padding:4px;'>{x1}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x1}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y1} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x2}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x2}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y2} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x3}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x3}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y3} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x4}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x4}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y4} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x5}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x5}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y5} \\)</td></tr></table><br><b>Graph:</b><br>{answer_graph_svg}"
       },
       {
-        "id": "ALG 4.1 Intercepts",
+        "id": "ALG 4.1b Intercepts",
         "type": "template",
         "objective": "Graphing Linear Functions with Intercepts",
         "difficulty": "basic",
         "variables": {
-          "xIntercept": {
-            "values": [
-              -7,
-              -6,
-              -5,
-              -4,
-              -3,
-              -2,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7
-            ]
-          },
-          "yIntercept": {
-            "values": [
-              -7,
-              -6,
-              -5,
-              -4,
-              -3,
-              -2,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7
-            ]
+          "equation": {
+            "formula": "(function(){var candidates=[];function gcd(x,y){return y===0?x:gcd(y,x%y)}for(var a=-7;a<=7;a++){if(a===0)continue;for(var b=-7;b<=7;b++){if(b===0)continue;for(var c=-7;c<=7;c++){if(c===0||gcd(gcd(Math.abs(a),Math.abs(b)),Math.abs(c))!==1)continue;var x=c/a,y=c/b;if(Math.abs(x)<2||Math.abs(x)>7||Math.abs(y)<2||Math.abs(y)>7)continue;if(Number.isInteger(x)&&Number.isInteger(y))continue;candidates.push({a:a,b:b,c:c})}}}return candidates[Math.floor(Math.random()*candidates.length)]})()"
           },
           "a": {
-            "formula": "c / xIntercept"
+            "formula": "equation.a"
           },
           "b": {
-            "formula": "c / yIntercept"
+            "formula": "equation.b"
           },
           "c": {
-            "formula": "xIntercept * yIntercept"
+            "formula": "equation.c"
+          },
+          "xIntercept": {
+            "formula": "c / a",
+            "format": "fraction"
+          },
+          "yIntercept": {
+            "formula": "c / b",
+            "format": "fraction"
           }
         },
         "draw": {
@@ -5108,13 +5087,13 @@
             }
           ]
         },
-        "question": "Calculate and show the intercepts then sketch the graph of \\( {a|coef}x {b|signedCoef}y = {c} \\).",
+        "question": "Calculate and show the intercepts then sketch the graph of \\( {a|coef}x {b|signedCoef}y = {c} \\) in standard form.",
         "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
       },
       {
-        "id": "ALG1-4.1 & 4.2-I1",
+        "id": "ALG 4.2 Ia Two Points to Slope",
         "type": "template",
-        "objective": "Graphing Linear Functions and Rate of Change",
+        "objective": "Graphing Linear Functions and Slope",
         "difficulty": "intermediate",
         "variables": {
           "x1": {
@@ -5150,10 +5129,16 @@
           "m": {
             "formula": "(y2 - y1)/(x2 - x1)",
             "format": "fraction"
+          },
+          "blank_graph_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 420\" role=\"img\" aria-label=\"Blank coordinate graph\" style=\"display:block;width:100%;max-width:420px;height:auto;background:white;border:1px solid #777\">' + Array.from({length:21},function(_,i){var p=30+i*18,n=i-10,strong=i===10,grid=strong?'#333':'#ddd',width=strong?2:1,label=n%2===0?'<text x=\"'+p+'\" y=\"410\" text-anchor=\"middle\" font-size=\"9\">'+n+'</text><text x=\"23\" y=\"'+(p+3)+'\" text-anchor=\"end\" font-size=\"9\">'+(-n)+'</text>':'';return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"390\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"390\" y2=\"'+p+'\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/>'+label}).join('')+'<text x=\"395\" y=\"213\" font-size=\"11\">x</text><text x=\"213\" y=\"24\" font-size=\"11\">y</text></svg>'"
+          },
+          "answer_graph_svg": {
+            "formula": "blank_graph_svg.replace('</svg>',(function(){var dx=x2-x1,dy=y2-y1,pts=[];function add(x,y){if(x>=-10-1e-8&&x<=10+1e-8&&y>=-10-1e-8&&y<=10+1e-8&&!pts.some(function(p){return Math.abs(p.x-x)<1e-8&&Math.abs(p.y-y)<1e-8}))pts.push({x:x,y:y})}[-10,10].forEach(function(x){add(x,y1+(x-x1)*dy/dx)});[-10,10].forEach(function(y){if(dy!==0)add(x1+(y-y1)*dx/dy,y)});var p=pts[0],q=pts[1];return '<defs><clipPath id=\"two-points-slope-clip\"><rect x=\"30\" y=\"30\" width=\"360\" height=\"360\"/></clipPath></defs><g clip-path=\"url(#two-points-slope-clip)\"><line x1=\"'+(210+p.x*18)+'\" y1=\"'+(210-p.y*18)+'\" x2=\"'+(210+q.x*18)+'\" y2=\"'+(210-q.y*18)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/></g><circle cx=\"'+(210+x1*18)+'\" cy=\"'+(210-y1*18)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(217+x1*18)+'\" y=\"'+(205-y1*18)+'\" font-size=\"12\" font-weight=\"bold\" fill=\"#2471a3\">P1</text><circle cx=\"'+(210+x2*18)+'\" cy=\"'+(210-y2*18)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(217+x2*18)+'\" y=\"'+(205-y2*18)+'\" font-size=\"12\" font-weight=\"bold\" fill=\"#2471a3\">P2</text>'})()+'</svg>')"
           }
         },
-        "question": "Find the slope of the line passing through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
-        "answer": "\\( m = {m} \\)"
+        "question": "Find the slope of the line passing through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) and graph the points and line.<br>{blank_graph_svg}",
+        "answer": "\\( m = \\frac{{y2} - {y1}}{{x2} - {x1}} = {m} \\)<br>{answer_graph_svg}"
       },
       {
         "id": "ALG1-4.3 & 5.1-B1",

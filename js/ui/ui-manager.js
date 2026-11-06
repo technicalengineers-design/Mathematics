@@ -751,7 +751,7 @@ class UIManager {
       const questionDiv = document.createElement("div");
       questionDiv.className = "question";
       if (question.id === "ALG1-3.2 Mapping Diagram") questionDiv.classList.add("question--mapping-diagrams");
-      if (hasGraphQuestions && !hasDrawCanvas) {
+      if (hasGraphQuestions && !hasDrawCanvas && question.id !== "ALG 4-1a Table of Values") {
         questionDiv.classList.add("question--graph-footprint-reserved");
       }
       
