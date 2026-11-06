@@ -5507,9 +5507,9 @@
         "answer": "The glider starts at \\( {starting_height} \\) meters and loses \\( {descent_rate} \\) meters of height each second, so its height is modeled by \\( h(t) = {starting_height} - {descent_rate}t \\). It reaches the flat ground after \\( {landing_time} \\) seconds, at the ordered pair \\( ({landing_time}, 0) \\).<br>{answer_graph_svg}"
       },
       {
-        "id": "ALG1-4.3 & 5.1-B1",
+        "id": "ALG 5.2a",
         "type": "template",
-        "objective": "Writing Equations in Slope-Intercept Form",
+        "objective": "Graph Equations in Slope-Intercept Form",
         "difficulty": "basic",
         "variables": {
           "m_num": {
@@ -5565,10 +5565,10 @@
         "answer": "\\( y = {m|coef}x {b|sign} \\)"
       },
       {
-        "id": "ALG1-4.3 & 5.1-I1",
+        "id": "ALG 5.2b",
         "type": "template",
-        "objective": "Writing Equations in Slope-Intercept Form",
-        "difficulty": "intermediate",
+        "objective": "Writing Equations from Standard to Slope-Intercept Form",
+        "difficulty": "basic",
         "variables": {
           "a": {
             "min": -5,
@@ -5672,7 +5672,7 @@
         "answer": "\\( y = {m|coef}x {b|sign} \\)"
       },
       {
-        "id": "ALG1-5.2-B1",
+        "id": "ALG 5.2 (remove repeat)",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "basic",
@@ -5720,7 +5720,7 @@
         "answer": "\\( y {negb|sign} = {m|coef}(x {nega|sign}) \\)"
       },
       {
-        "id": "ALG1-5.2-B2",
+        "id": "ALG1-5.2-B2 (remove, not objective)",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "basic",
@@ -5886,7 +5886,7 @@
         "answer": "Standard Form: \\( {std_a|coef}x {std_b|signedCoef}y = {std_c} \\) <br> Slope-Intercept Form: \\( y = {m|coef}x {yint|sign} \\)"
       },
       {
-        "id": "ALG1-5.2-I2",
+        "id": "ALG 5.2 Ib (considered)",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "intermediate",
@@ -5938,7 +5938,7 @@
         "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\)"
       },
       {
-        "id": "ALG1-5.2-A1",
+        "id": "ALG 5.2 Aa",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "advanced",
@@ -6016,7 +6016,7 @@
         "answer": "Point-Slope Form: \\( y {negy1|sign} = {m|coef}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = {m|coef}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)"
       },
       {
-        "id": "ALG1-5.2-A2",
+        "id": "ALG 5.2 Ab",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "advanced",
