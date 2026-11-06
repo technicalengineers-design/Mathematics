@@ -5188,9 +5188,9 @@
         "answer": "{calculation_steps}<br>Completed points: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).<br>{answer_graph_svg}"
       },
       {
-        "id": "ALG 4.3a Lines",
+        "id": "ALG 4.3a Two Lines",
         "type": "template",
-        "objective": "Graphing Vertical and Horizontal Lines",
+        "objective": "Graphing Lines",
         "difficulty": "basic",
         "variables": {
           "vertical_value": {
@@ -5269,10 +5269,121 @@
         "answer": "\\( y {negative_y|sign} = {m}(x {negative_x|sign}) \\)"
       },
       {
+        "id": "ALG 4.3 Ia Two Lines",
+        "type": "template",
+        "objective": "Graphing and Classifying Lines",
+        "difficulty": "intermediate",
+        "variables": {
+          "relationship_type": {
+            "values": [
+              "perpendicular",
+              "near_perpendicular"
+            ]
+          },
+          "slope1": {
+            "values": [
+              -2,
+              -1,
+              -0.5,
+              0.5,
+              1,
+              2
+            ]
+          },
+          "slope_adjustment": {
+            "values": [
+              -0.25,
+              0.25
+            ]
+          },
+          "slope2": {
+            "formula": "relationship_type === 'perpendicular' ? -1/slope1 : -1/slope1 + slope_adjustment",
+            "format": "fraction"
+          },
+          "intercept1": {
+            "min": -4,
+            "max": 4
+          },
+          "intercept2": {
+            "min": -4,
+            "max": 4,
+            "exclude": [
+              "intercept1"
+            ]
+          },
+          "relationship": {
+            "formula": "relationship_type === 'perpendicular' ? 'perpendicular' : 'neither'"
+          },
+          "blank_graph_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 420\" role=\"img\" aria-label=\"Blank coordinate graph\" style=\"display:block;width:100%;max-width:420px;height:auto;background:white;border:1px solid #777\">' + Array.from({length:21},function(_,i){var p=30+i*18,n=i-10,strong=i===10,grid=strong?'#333':'#ddd',width=strong?2:1,label=n%2===0?'<text x=\"'+p+'\" y=\"410\" text-anchor=\"middle\" font-size=\"9\">'+n+'</text><text x=\"23\" y=\"'+(p+3)+'\" text-anchor=\"end\" font-size=\"9\">'+(-n)+'</text>':'';return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"390\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"390\" y2=\"'+p+'\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/>'+label}).join('')+'<text x=\"395\" y=\"213\" font-size=\"11\">x</text><text x=\"213\" y=\"24\" font-size=\"11\">y</text></svg>'"
+          },
+          "answer_graph_svg": {
+            "formula": "blank_graph_svg.replace('</svg>',(function(){function clip(m,b){var pts=[];function add(x,y){if(x>=-10-1e-8&&x<=10+1e-8&&y>=-10-1e-8&&y<=10+1e-8&&!pts.some(function(p){return Math.abs(p.x-x)<1e-8&&Math.abs(p.y-y)<1e-8}))pts.push({x:x,y:y})}[-10,10].forEach(function(x){add(x,m*x+b)});[-10,10].forEach(function(y){add((y-b)/m,y)});return pts}var a=clip(slope1,intercept1),b=clip(slope2,intercept2),p=a[0],q=a[1],r=b[0],s=b[1];return '<defs><clipPath id=\"alg-43ia-lines-clip\"><rect x=\"30\" y=\"30\" width=\"360\" height=\"360\"/></clipPath></defs><text x=\"45\" y=\"20\" font-size=\"11\" font-weight=\"bold\" fill=\"#c0392b\">Line 1</text><text x=\"105\" y=\"20\" font-size=\"11\" font-weight=\"bold\" fill=\"#2471a3\">Line 2</text><g clip-path=\"url(#alg-43ia-lines-clip)\"><line x1=\"'+(210+p.x*18)+'\" y1=\"'+(210-p.y*18)+'\" x2=\"'+(210+q.x*18)+'\" y2=\"'+(210-q.y*18)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/><line x1=\"'+(210+r.x*18)+'\" y1=\"'+(210-r.y*18)+'\" x2=\"'+(210+s.x*18)+'\" y2=\"'+(210-s.y*18)+'\" stroke=\"#2471a3\" stroke-width=\"3\"/></g></svg>'})())"
+          }
+        },
+        "question": "Graph the lines \\( y = {slope1|coef}x {intercept1|sign} \\) and \\( y = {slope2|coef}x {intercept2|sign} \\) on the coordinate plane. Then state whether the lines are parallel, perpendicular, or neither.<br>{blank_graph_svg}",
+        "answer": "Line 1 (red): \\( y = {slope1|coef}x {intercept1|sign} \\)<br>Line 2 (blue): \\( y = {slope2|coef}x {intercept2|sign} \\)<br>The lines are <b>{relationship}</b>.<br>{answer_graph_svg}"
+      },
+      {
+        "id": "ALG 4.3 Ib Lines",
+        "type": "template",
+        "objective": "Writing and Graphing Point-Slope Equations",
+        "difficulty": "intermediate",
+        "variables": {
+          "x": {
+            "min": -3,
+            "max": 3
+          },
+          "y": {
+            "min": -3,
+            "max": 3
+          },
+          "m": {
+            "values": [
+              -2,
+              -1.5,
+              -0.5,
+              0.5,
+              1.5,
+              2
+            ],
+            "format": "fraction"
+          },
+          "negative_x": {
+            "formula": "-x"
+          },
+          "negative_y": {
+            "formula": "-y"
+          },
+          "xIntercept": {
+            "formula": "x - y/m",
+            "format": "fraction"
+          },
+          "yIntercept": {
+            "formula": "y - m*x",
+            "format": "fraction"
+          },
+          "xInterceptLabel": {
+            "formula": "Number(xIntercept.toFixed(2)).toString()"
+          },
+          "yInterceptLabel": {
+            "formula": "Number(yIntercept.toFixed(2)).toString()"
+          },
+          "blank_graph_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 420\" role=\"img\" aria-label=\"Blank coordinate graph without numbered axes\" style=\"display:block;width:100%;max-width:420px;height:auto;background:white;border:1px solid #777\">' + Array.from({length:21},function(_,i){var p=30+i*18,strong=i===10,grid=strong?'#333':'#ddd',width=strong?2:1;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"390\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"390\" y2=\"'+p+'\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/>'}).join('')+'<text x=\"395\" y=\"213\" font-size=\"11\">x</text><text x=\"213\" y=\"24\" font-size=\"11\">y</text></svg>'"
+          },
+          "answer_graph_svg": {
+            "formula": "blank_graph_svg.replace('</svg>',(function(){var pts=[];function add(x,y){if(x>=-10-1e-8&&x<=10+1e-8&&y>=-10-1e-8&&y<=10+1e-8&&!pts.some(function(p){return Math.abs(p.x-x)<1e-8&&Math.abs(p.y-y)<1e-8}))pts.push({x:x,y:y})}[-10,10].forEach(function(px){add(px,m*px+y-m*x)});[-10,10].forEach(function(py){add((py-y)/m+x,py)});var p=pts[0],q=pts[1],ix=210+xIntercept*18,iy=210-yIntercept*18;return '<defs><clipPath id=\"alg-43ib-lines-clip\"><rect x=\"30\" y=\"30\" width=\"360\" height=\"360\"/></clipPath></defs><g clip-path=\"url(#alg-43ib-lines-clip)\"><line x1=\"'+(210+p.x*18)+'\" y1=\"'+(210-p.y*18)+'\" x2=\"'+(210+q.x*18)+'\" y2=\"'+(210-q.y*18)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/></g><circle cx=\"'+ix+'\" cy=\"210\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(ix+7)+'\" y=\"198\" font-size=\"11\" font-weight=\"bold\" fill=\"#2471a3\" stroke=\"white\" stroke-width=\"3\" paint-order=\"stroke\">('+xInterceptLabel+', 0)</text><circle cx=\"210\" cy=\"'+iy+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"218\" y=\"'+(iy-7)+'\" font-size=\"11\" font-weight=\"bold\" fill=\"#2471a3\" stroke=\"white\" stroke-width=\"3\" paint-order=\"stroke\">(0, '+yInterceptLabel+')</text></svg>'})())"
+          }
+        },
+        "question": "Write the equation in point-slope form for the line passing through \\( ({x}, {y}) \\) with slope \\( m = {m} \\). Then graph the line and label the ordered pair for each intercept.<br>{blank_graph_svg}",
+        "answer": "Point-slope equation: \\( y {negative_y|sign} = {m}(x {negative_x|sign}) \\)<br>x-intercept: \\( ({xIntercept}, 0) \\)<br>y-intercept: \\( (0, {yIntercept}) \\)<br>{answer_graph_svg}"
+      },
+      {
         "id": "ALG 5.1 Aa Sales",
         "type": "template",
         "objective": "Modeling Profit with Linear Functions",
-        "difficulty": "intermediate",
+        "difficulty": "advanced",
         "variables": {
           "business_scenario": {
             "formula": "(function(){var scenarios=[{product:'custom skateboards',equipment:'woodworking equipment'},{product:'handcrafted leather bags',equipment:'leatherworking equipment'},{product:'custom furniture pieces',equipment:'a small workshop setup'},{product:'handmade ceramic pieces',equipment:'a pottery kiln and tools'},{product:'custom jewelry sets',equipment:'jewelry-making equipment'}];return scenarios[Math.floor(Math.random()*scenarios.length)]})()"
@@ -5340,7 +5451,7 @@
         "id": "ALG 5.1 Ab Glider",
         "type": "template",
         "objective": "Modeling Linear Descent",
-        "difficulty": "intermediate",
+        "difficulty": "advanced",
         "variables": {
           "glider": {
             "values": [
