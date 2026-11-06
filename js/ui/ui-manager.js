@@ -750,11 +750,19 @@ class UIManager {
       // Create question element
       const questionDiv = document.createElement("div");
       questionDiv.className = "question";
+      if (question.id === "ALG 4.1b Intercepts" ||
+          question.id === "ALG 4.3a Lines" ||
+          question.id === "ALG 4.3b Point/Slope") {
+        questionDiv.classList.add("question--compact");
+      }
       if (question.id === "ALG1-3.2 Mapping Diagram") questionDiv.classList.add("question--mapping-diagrams");
       if (hasGraphQuestions && !hasDrawCanvas &&
           question.id !== "ALG 4-1a Table of Values" &&
           question.id !== "ALG 4.2 Ia Two Points to Slope" &&
-          question.id !== "ALG 4.2 Ib Missing Coordinate") {
+          question.id !== "ALG 4.2 Ib Missing Coordinate" &&
+          question.id !== "ALG 4.1b Intercepts" &&
+          question.id !== "ALG 4.3a Lines" &&
+          question.id !== "ALG 4.3b Point/Slope") {
         questionDiv.classList.add("question--graph-footprint-reserved");
       }
       

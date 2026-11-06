@@ -267,6 +267,10 @@ button.small {
   padding-bottom: calc(var(--question-spacing, 20px) + var(--graph-canvas-footprint, 0pt));
 }
 
+.question.question--compact {
+  padding-bottom: 0;
+}
+
 
 /* Layout Controls */
 .layout-controls {
@@ -579,6 +583,10 @@ canvas {
     padding-top: 2pt;
     padding-bottom: var(--question-spacing, 15pt);
     border-left-width: 3pt;
+  }
+
+  .question.question--compact {
+    padding-bottom: 0;
   }
   
   .answers {
