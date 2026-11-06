@@ -753,7 +753,8 @@ class UIManager {
       if (question.id === "ALG1-3.2 Mapping Diagram") questionDiv.classList.add("question--mapping-diagrams");
       if (hasGraphQuestions && !hasDrawCanvas &&
           question.id !== "ALG 4-1a Table of Values" &&
-          question.id !== "ALG 4.2 Ia Two Points to Slope") {
+          question.id !== "ALG 4.2 Ia Two Points to Slope" &&
+          question.id !== "ALG 4.2 Ib Missing Coordinate") {
         questionDiv.classList.add("question--graph-footprint-reserved");
       }
       

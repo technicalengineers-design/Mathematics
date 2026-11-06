@@ -5141,6 +5141,71 @@
         "answer": "\\( m = \\frac{{y2} - {y1}}{{x2} - {x1}} = {m} \\)<br>{answer_graph_svg}"
       },
       {
+        "id": "ALG 4.2 Ib Missing Coordinate",
+        "type": "template",
+        "objective": "Graphing Linear Functions and Slope",
+        "difficulty": "intermediate",
+        "variables": {
+          "x1": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0
+            ]
+          },
+          "y1": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0
+            ]
+          },
+          "x2": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0,
+              "x1"
+            ]
+          },
+          "y2": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0,
+              "y1"
+            ]
+          },
+          "m": {
+            "formula": "(y2 - y1)/(x2 - x1)",
+            "format": "fraction"
+          },
+          "blank_graph_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 420\" role=\"img\" aria-label=\"Blank coordinate graph\" style=\"display:block;width:100%;max-width:420px;height:auto;background:white;border:1px solid #777\">' + Array.from({length:21},function(_,i){var p=30+i*18,n=i-10,strong=i===10,grid=strong?'#333':'#ddd',width=strong?2:1,label=n%2===0?'<text x=\"'+p+'\" y=\"410\" text-anchor=\"middle\" font-size=\"9\">'+n+'</text><text x=\"23\" y=\"'+(p+3)+'\" text-anchor=\"end\" font-size=\"9\">'+(-n)+'</text>':'';return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"390\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"390\" y2=\"'+p+'\" stroke=\"'+grid+'\" stroke-width=\"'+width+'\"/>'+label}).join('')+'<text x=\"395\" y=\"213\" font-size=\"11\">x</text><text x=\"213\" y=\"24\" font-size=\"11\">y</text></svg>'"
+          },
+          "answer_graph_svg": {
+            "formula": "blank_graph_svg.replace('</svg>',(function(){var dx=x2-x1,dy=y2-y1,pts=[];function add(x,y){if(x>=-10-1e-8&&x<=10+1e-8&&y>=-10-1e-8&&y<=10+1e-8&&!pts.some(function(p){return Math.abs(p.x-x)<1e-8&&Math.abs(p.y-y)<1e-8}))pts.push({x:x,y:y})}[-10,10].forEach(function(x){add(x,y1+(x-x1)*dy/dx)});[-10,10].forEach(function(y){if(dy!==0)add(x1+(y-y1)*dx/dy,y)});var p=pts[0],q=pts[1];return '<defs><clipPath id=\"two-points-missing-coordinate-clip\"><rect x=\"30\" y=\"30\" width=\"360\" height=\"360\"/></clipPath></defs><g clip-path=\"url(#two-points-slope-clip)\"><line x1=\"'+(210+p.x*18)+'\" y1=\"'+(210-p.y*18)+'\" x2=\"'+(210+q.x*18)+'\" y2=\"'+(210-q.y*18)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/></g><circle cx=\"'+(210+x1*18)+'\" cy=\"'+(210-y1*18)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(217+x1*18)+'\" y=\"'+(205-y1*18)+'\" font-size=\"12\" font-weight=\"bold\" fill=\"#2471a3\">P1</text><circle cx=\"'+(210+x2*18)+'\" cy=\"'+(210-y2*18)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(217+x2*18)+'\" y=\"'+(205-y2*18)+'\" font-size=\"12\" font-weight=\"bold\" fill=\"#2471a3\">P2</text>'})()+'</svg>')"
+          },
+          "missing_coordinate": {
+            "values": [
+              "x2",
+              "y2"
+            ]
+          },
+          "point2_x": {
+            "formula": "missing_coordinate === 'x2' ? '____' : String(x2)"
+          },
+          "point2_y": {
+            "formula": "missing_coordinate === 'y2' ? '____' : String(y2)"
+          },
+          "calculation_steps": {
+            "formula": "missing_coordinate === 'x2' ? '<b>Find x2:</b> x2 = x1 + (y2 - y1) / m = ' + x1 + ' + (' + y2 + ' - ' + y1 + ') / (' + m + ') = ' + x2 : '<b>Find y2:</b> y2 = y1 + m(x2 - x1) = ' + y1 + ' + (' + m + ')(' + x2 + ' - ' + x1 + ') = ' + y2"
+          }
+        },
+        "question": "Given the slope \\( m = {m} \\), find the missing coordinate of the points \\( ({x1}, {y1}) \\) and \\( ({point2_x}, {point2_y}) \\).<br>{blank_graph_svg}",
+        "answer": "{calculation_steps}<br>Completed points: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).<br>{answer_graph_svg}"
+      },
+      {
         "id": "ALG1-4.3 & 5.1-B1",
         "type": "template",
         "objective": "Writing Equations in Slope-Intercept Form",
