@@ -5269,7 +5269,7 @@
         "answer": "\\( y {negative_y|sign} = {m}(x {negative_x|sign}) \\)"
       },
       {
-        "id": "ALG 4.3 Ia Sales",
+        "id": "ALG 5.1 Aa Sales",
         "type": "template",
         "objective": "Modeling Profit with Linear Functions",
         "difficulty": "intermediate",
@@ -5337,7 +5337,7 @@
         "answer": "Revenue is the sale price times the number sold, so the profit equation is \\( P(x) = {sale_price}x - {investment} \\).<br>Profit is zero at \\( \\left( {break_even}, 0 \\right) \\), so the break-even number of sales is \\( {break_even} \\).<br>The business makes a profit when \\( x > {break_even} \\). Since sales are whole numbers, profit begins at {first_profit_sales} sales.<br>{answer_graph_svg}"
       },
       {
-        "id": "ALG 4.3 Ib Glider",
+        "id": "ALG 5.1 Ab Glider",
         "type": "template",
         "objective": "Modeling Linear Descent",
         "difficulty": "intermediate",
