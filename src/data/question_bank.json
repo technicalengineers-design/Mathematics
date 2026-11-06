@@ -2567,7 +2567,7 @@
           }
         },
         "question": "Solve for \\( x \\): <br> \\( \\frac{ x {a|sign}}{ x {b|sign}} = {c}y \\).",
-        "answer": "\\( x = \\frac{ {d} y {negA|sign} }{ 1 {negC|sign}y}\\)"
+        "answer": "<b>Solution steps:</b><br>1. \\( \\frac{ x {a|sign}}{ x {b|sign}} = {c}y \\)<br>2. \\( x {a|sign} = {c}y(x {b|sign}) \\)<br>3. \\( x {a|sign} = {c}yx + {d}y \\)<br>4. \\( x {negC|sign} {c}yx = {d}y {negA|sign} \\)<br>5. \\( x(1 {negC|sign} y) = {d}y {negA|sign} \\)<br>6. \\( x = \\frac{ {d}y {negA|sign} }{ 1 {negC|sign}y } \\)"
       }
     ],
     "3 Relations": [
@@ -4961,18 +4961,27 @@
       }
     ],
     "4 Functions": [
-      {
-        "id": "ALG1-4.1 & 4.2-B1",
+            {
+        "id": "ALG 4-1a Table of Values",
         "type": "template",
         "objective": "Graphing Linear Functions and Rate of Change",
         "difficulty": "basic",
         "variables": {
-          "m": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
+          "m_den": {
+            "values": [
+              3,
+              4,
+              5
             ]
+          },
+          "m_num": {
+            "formula": "(function(values){var choices=values.filter(function(value){return Math.abs(value)!==m_den;});return choices[Math.floor(Math.random()*choices.length)];})([-3,-4,-5,3,4,5])"
+          },
+          "m_text": {
+            "formula": "(m_num < 0 ? '-' : '') + '\\\\frac{' + Math.abs(m_num) + '}{' + m_den + '}'"
+          },
+          "slope": {
+            "formula": "m_num / m_den"
           },
           "b": {
             "min": -6,
@@ -4981,46 +4990,45 @@
               0
             ]
           },
-          "xIntercept": {
-            "formula": "-b/m",
-            "format": "fraction"
+          "x1": {
+            "formula": "-2 * m_den"
           },
-          "yIntercept": {
-            "formula": "b"
+          "x2": {
+            "formula": "-m_den"
+          },
+          "x3": {
+            "formula": "0"
+          },
+          "x4": {
+            "formula": "m_den"
+          },
+          "x5": {
+            "formula": "2 * m_den"
+          },
+          "y1": {
+            "formula": "slope * x1 + b"
+          },
+          "y2": {
+            "formula": "slope * x2 + b"
+          },
+          "y3": {
+            "formula": "slope * x3 + b"
+          },
+          "y4": {
+            "formula": "slope * x4 + b"
+          },
+          "y5": {
+            "formula": "slope * x5 + b"
+          },
+          "blank_square_graph_svg": {
+            "formula": "'<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"0 0 360 360\\\" role=\\\"img\\\" aria-label=\\\"Blank coordinate grid\\\" style=\\\"display:block;width:100%;max-width:360px;height:auto;border:1px solid #777;background:white\\\">' + Array.from({length:9}, function(_, i){var p=30+i*37.5; var strong=i===4; var label=-20+i*5; return '<line x1=\\\"'+p+'\\\" y1=\\\"30\\\" x2=\\\"'+p+'\\\" y2=\\\"330\\\" stroke=\\\"'+(strong?'#333':'#ddd')+'\\\" stroke-width=\\\"'+(strong?2:1)+'\\\"/><line x1=\\\"30\\\" y1=\\\"'+p+'\\\" x2=\\\"330\\\" y2=\\\"'+p+'\\\" stroke=\\\"'+(strong?'#333':'#ddd')+'\\\" stroke-width=\\\"'+(strong?2:1)+'\\\"/><text x=\\\"'+p+'\\\" y=\\\"346\\\" text-anchor=\\\"middle\\\" font-size=\\\"9\\\">'+label+'</text><text x=\\\"24\\\" y=\\\"'+(p+3)+'\\\" text-anchor=\\\"end\\\" font-size=\\\"9\\\">'+(20-i*5)+'</text>'; }).join('') + '<text x=\\\"334\\\" y=\\\"183\\\" font-size=\\\"11\\\">x</text><text x=\\\"183\\\" y=\\\"24\\\" font-size=\\\"11\\\">y</text>' + '</svg>'"
+          },
+          "answer_graph_svg": {
+            "formula": "'<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"0 0 360 360\\\" role=\\\"img\\\" aria-label=\\\"Sample graph of the linear function\\\" style=\\\"display:block;width:100%;max-width:360px;height:auto;border:1px solid #777;background:white\\\">' + Array.from({length:9}, function(_, i){var p=30+i*37.5; var strong=i===4; var label=-20+i*5; return '<line x1=\\\"'+p+'\\\" y1=\\\"30\\\" x2=\\\"'+p+'\\\" y2=\\\"330\\\" stroke=\\\"'+(strong?'#333':'#ddd')+'\\\" stroke-width=\\\"'+(strong?2:1)+'\\\"/><line x1=\\\"30\\\" y1=\\\"'+p+'\\\" x2=\\\"330\\\" y2=\\\"'+p+'\\\" stroke=\\\"'+(strong?'#333':'#ddd')+'\\\" stroke-width=\\\"'+(strong?2:1)+'\\\"/><text x=\\\"'+p+'\\\" y=\\\"346\\\" text-anchor=\\\"middle\\\" font-size=\\\"9\\\">'+label+'</text><text x=\\\"24\\\" y=\\\"'+(p+3)+'\\\" text-anchor=\\\"end\\\" font-size=\\\"9\\\">'+(20-i*5)+'</text>'; }).join('') + '<text x=\\\"334\\\" y=\\\"183\\\" font-size=\\\"11\\\">x</text><text x=\\\"183\\\" y=\\\"24\\\" font-size=\\\"11\\\">y</text>' + '<defs><clipPath id=\\\"alg41a-plot\\\"><rect x=\\\"30\\\" y=\\\"30\\\" width=\\\"300\\\" height=\\\"300\\\"/></clipPath></defs><g clip-path=\\\"url(#alg41a-plot)\\\"><line x1=\\\"30\\\" y1=\\\"'+(180-(slope*(-20)+b)*7.5)+'\\\" x2=\\\"330\\\" y2=\\\"'+(180-(slope*20+b)*7.5)+'\\\" stroke=\\\"#c0392b\\\" stroke-width=\\\"3\\\"/>' + [[x1,y1],[x2,y2],[x3,y3],[x4,y4],[x5,y5]].map(function(pair){return '<circle cx=\\\"'+(180+pair[0]*7.5)+'\\\" cy=\\\"'+(180-pair[1]*7.5)+'\\\" r=\\\"4\\\" fill=\\\"#c0392b\\\"/>';}).join('') + '</g></svg>'"
           }
         },
-        "draw": {
-          "window": {
-            "xMin": -10,
-            "xMax": 10,
-            "yMin": -10,
-            "yMax": 10
-          },
-          "gridStep": 1,
-          "eq1": {
-            "relation": "y = {m}*x + ({b})",
-            "showInQuestion": false,
-            "showInAnswer": true
-          },
-          "points": [
-            {
-              "x": "{xIntercept}",
-              "y": 0,
-              "label": "x-int",
-              "showInQuestion": false,
-              "showInAnswer": true
-            },
-            {
-              "x": 0,
-              "y": "{yIntercept}",
-              "label": "y-int",
-              "showInQuestion": false,
-              "showInAnswer": true
-            }
-          ]
-        },
-        "question": "Use intercepts or a table to sketch the graph of \\( y = {m|coef}x {b|sign} \\).",
-        "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+        "question": "For the function \\( y = {m_text}x {b|sign} \\), fill in five appropriate x-values and graph the function.<br><div style='display:flex;align-items:flex-start;gap:16px;'><table border='1' cellpadding='4' cellspacing='0' style='border-collapse:collapse;font-size:14px;width:380px;'><tr><th style='width:20%;text-align:center;background:#f2f2f2;padding:12px 4px;'>x</th><th style='width:80%;text-align:center;background:#f2f2f2;padding:12px 4px;'>Equation</th></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr><tr><td style='height:37.5px;padding:4px;'></td><td style='height:37.5px;padding:4px;'></td></tr></table>{blank_square_graph_svg}</div>",
+        "answer": "<b>Sample answer:</b><br><table border='1' cellpadding='4' cellspacing='0' style='border-collapse:collapse;font-size:14px;width:420px;'><tr><th style='background:#f2f2f2;padding:12px 4px;'>x</th><th style='background:#f2f2f2;padding:12px 4px;'>Equation</th><th style='background:#f2f2f2;padding:12px 4px;'>y</th></tr><tr><td style='height:37.5px;padding:4px;'>{x1}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x1}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y1} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x2}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x2}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y2} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x3}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x3}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y3} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x4}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x4}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y4} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x5}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x5}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y5} \\)</td></tr></table><br><b>Graph:</b><br>{answer_graph_svg}"
       },
       {
         "id": "ALG1-4.1 & 4.2-B2",
