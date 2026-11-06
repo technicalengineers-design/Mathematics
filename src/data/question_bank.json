@@ -5031,39 +5031,51 @@
         "answer": "<b>Sample answer:</b><br><table border='1' cellpadding='4' cellspacing='0' style='border-collapse:collapse;font-size:14px;width:420px;'><tr><th style='background:#f2f2f2;padding:12px 4px;'>x</th><th style='background:#f2f2f2;padding:12px 4px;'>Equation</th><th style='background:#f2f2f2;padding:12px 4px;'>y</th></tr><tr><td style='height:37.5px;padding:4px;'>{x1}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x1}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y1} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x2}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x2}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y2} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x3}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x3}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y3} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x4}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x4}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y4} \\)</td></tr><tr><td style='height:37.5px;padding:4px;'>{x5}</td><td style='height:37.5px;padding:4px;'>\\( y = {m_text}({x5}) {b|sign} \\)</td><td style='height:37.5px;padding:4px;'>\\( {y5} \\)</td></tr></table><br><b>Graph:</b><br>{answer_graph_svg}"
       },
       {
-        "id": "ALG1-4.1 & 4.2-B2",
+        "id": "ALG 4.1 Intercepts",
         "type": "template",
-        "objective": "Graphing Linear Functions and Rate of Change",
+        "objective": "Graphing Linear Functions with Intercepts",
         "difficulty": "basic",
         "variables": {
-          "a": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "min": -6,
-            "max": 6,
-            "exclude": [
-              0
-            ]
-          },
-          "c": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
-            ]
-          },
           "xIntercept": {
-            "formula": "c/a",
-            "format": "fraction"
+            "values": [
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
           },
           "yIntercept": {
-            "formula": "c/b",
-            "format": "fraction"
+            "values": [
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "a": {
+            "formula": "c / xIntercept"
+          },
+          "b": {
+            "formula": "c / yIntercept"
+          },
+          "c": {
+            "formula": "xIntercept * yIntercept"
           }
         },
         "draw": {
@@ -5096,7 +5108,7 @@
             }
           ]
         },
-        "question": "Use intercepts or a table to sketch the graph of \\( {a|coef}x {b|signedCoef}y = {c} \\).",
+        "question": "Calculate and show the intercepts then sketch the graph of \\( {a|coef}x {b|signedCoef}y = {c} \\).",
         "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
       },
       {
