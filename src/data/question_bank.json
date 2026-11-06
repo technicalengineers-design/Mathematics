@@ -5726,207 +5726,6 @@
         },
         "question": "Write the equation of a line perpendicular to \\( {a|coef}x {b|signedCoef}y = {c} \\) that passes through the point \\( ({x1}, {y1}) \\). Write your answer in all three forms.",
         "answer": "Point-Slope: \\( y {negy1|sign} = {m2|coef}(x {negx1|sign}) \\) <br> Slope-Intercept: \\( y = {m2|coef}x {b2|sign} \\) <br> Standard Form: \\( {b|coef}x {a|signedCoef}y = {c2} \\)"
-      },
-      {
-        "id": "ALG1-6.5-B1",
-        "type": "template",
-        "objective": "Graphing Inequalities in Two Variables",
-        "difficulty": "basic",
-        "variables": {
-          "m_num": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
-            ]
-          },
-          "m_den": {
-            "min": 2,
-            "max": 6,
-            "exclude": [
-              "m_num"
-            ]
-          },
-          "m": {
-            "formula": "m_num/m_den",
-            "format": "fraction"
-          },
-          "b": {
-            "min": -5,
-            "max": 5,
-            "exclude": [
-              0
-            ]
-          }
-        },
-        "draw": {
-          "window": {
-            "xMin": -10,
-            "xMax": 10,
-            "yMin": -10,
-            "yMax": 10
-          },
-          "gridStep": 1,
-          "eq1": {
-            "relation": "y > {m}*x + ({b})",
-            "boundaryStyle": "dashed",
-            "showInQuestion": false,
-            "showInAnswer": true
-          }
-        },
-        "question": "Graph the inequality \\( y > {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
-        "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (dashed); Shade the region above the line."
-      },
-      {
-        "id": "ALG1-6.5-B2",
-        "type": "template",
-        "objective": "Graphing Inequalities in Two Variables",
-        "difficulty": "basic",
-        "variables": {
-          "m_num": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
-            ]
-          },
-          "m_den": {
-            "min": 2,
-            "max": 6,
-            "exclude": [
-              "m_num"
-            ]
-          },
-          "m": {
-            "formula": "m_num/m_den",
-            "format": "fraction"
-          },
-          "b": {
-            "min": -5,
-            "max": 5,
-            "exclude": [
-              0
-            ]
-          }
-        },
-        "draw": {
-          "window": {
-            "xMin": -10,
-            "xMax": 10,
-            "yMin": -10,
-            "yMax": 10
-          },
-          "gridStep": 1,
-          "eq1": {
-            "relation": "y <= {m}*x + ({b})",
-            "showInQuestion": false,
-            "showInAnswer": true
-          }
-        },
-        "question": "Graph the inequality \\( y \\leq {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
-        "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (solid); Shade the region below the line (including the line)."
-      },
-      {
-        "id": "ALG1-6.5-I1",
-        "type": "template",
-        "objective": "Graphing Inequalities in Two Variables",
-        "difficulty": "intermediate",
-        "variables": {
-          "a": {
-            "min": -5,
-            "max": 5,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "min": 2,
-            "max": 5
-          },
-          "c": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "m": {
-            "formula": "-a/b",
-            "format": "fraction"
-          },
-          "yint": {
-            "formula": "c/b",
-            "format": "fraction"
-          }
-        },
-        "draw": {
-          "window": {
-            "xMin": -10,
-            "xMax": 10,
-            "yMin": -10,
-            "yMax": 10
-          },
-          "gridStep": 1,
-          "eq1": {
-            "relation": "y > ({c} - {a}*x)/({b})",
-            "boundaryStyle": "dashed",
-            "showInQuestion": false,
-            "showInAnswer": true
-          }
-        },
-        "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
-        "answer": "Rewrite as \\( y > {m|coef}x {yint|sign} \\); boundary line is dashed; shade above the line."
-      },
-      {
-        "id": "ALG1-6.5-I2",
-        "type": "template",
-        "objective": "Graphing Inequalities in Two Variables",
-        "difficulty": "intermediate",
-        "variables": {
-          "a": {
-            "min": -5,
-            "max": 5,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "min": -5,
-            "max": -2
-          },
-          "c": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "m": {
-            "formula": "-a/b",
-            "format": "fraction"
-          },
-          "yint": {
-            "formula": "c/b",
-            "format": "fraction"
-          }
-        },
-        "draw": {
-          "window": {
-            "xMin": -10,
-            "xMax": 10,
-            "yMin": -10,
-            "yMax": 10
-          },
-          "gridStep": 1,
-          "eq1": {
-            "relation": "y < ({c} - {a}*x)/({b})",
-            "boundaryStyle": "dashed",
-            "showInQuestion": false,
-            "showInAnswer": true
-          }
-        },
-        "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
-        "answer": "Rewrite as \\( y < {m|coef}x {yint|sign} \\); boundary line is dashed; shade below the line."
       }
     ],
     "6 Inequalities": [
@@ -6591,7 +6390,208 @@
         "question": "Solve and graph: <br> \\( \\frac{ | {a|coef} x {b|sign} | }{ {k} } {b|sign} < {c} \\)",
         "answer": "\\( {x2} < x < {x1} \\)"
       }
-    ],
+    ,
+      {
+        "id": "ALG1-6.5-B1",
+        "type": "template",
+        "objective": "Graphing Inequalities in Two Variables",
+        "difficulty": "basic",
+        "variables": {
+          "m_num": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              0
+            ]
+          },
+          "m_den": {
+            "min": 2,
+            "max": 6,
+            "exclude": [
+              "m_num"
+            ]
+          },
+          "m": {
+            "formula": "m_num/m_den",
+            "format": "fraction"
+          },
+          "b": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0
+            ]
+          }
+        },
+        "draw": {
+          "window": {
+            "xMin": -10,
+            "xMax": 10,
+            "yMin": -10,
+            "yMax": 10
+          },
+          "gridStep": 1,
+          "eq1": {
+            "relation": "y > {m}*x + ({b})",
+            "boundaryStyle": "dashed",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        },
+        "question": "Graph the inequality \\( y > {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
+        "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (dashed); Shade the region above the line."
+      },
+      {
+        "id": "ALG1-6.5-B2",
+        "type": "template",
+        "objective": "Graphing Inequalities in Two Variables",
+        "difficulty": "basic",
+        "variables": {
+          "m_num": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              0
+            ]
+          },
+          "m_den": {
+            "min": 2,
+            "max": 6,
+            "exclude": [
+              "m_num"
+            ]
+          },
+          "m": {
+            "formula": "m_num/m_den",
+            "format": "fraction"
+          },
+          "b": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0
+            ]
+          }
+        },
+        "draw": {
+          "window": {
+            "xMin": -10,
+            "xMax": 10,
+            "yMin": -10,
+            "yMax": 10
+          },
+          "gridStep": 1,
+          "eq1": {
+            "relation": "y <= {m}*x + ({b})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        },
+        "question": "Graph the inequality \\( y \\leq {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
+        "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (solid); Shade the region below the line (including the line)."
+      },
+      {
+        "id": "ALG1-6.5-I1",
+        "type": "template",
+        "objective": "Graphing Inequalities in Two Variables",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0
+            ]
+          },
+          "b": {
+            "min": 2,
+            "max": 5
+          },
+          "c": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0
+            ]
+          },
+          "m": {
+            "formula": "-a/b",
+            "format": "fraction"
+          },
+          "yint": {
+            "formula": "c/b",
+            "format": "fraction"
+          }
+        },
+        "draw": {
+          "window": {
+            "xMin": -10,
+            "xMax": 10,
+            "yMin": -10,
+            "yMax": 10
+          },
+          "gridStep": 1,
+          "eq1": {
+            "relation": "y > ({c} - {a}*x)/({b})",
+            "boundaryStyle": "dashed",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        },
+        "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
+        "answer": "Rewrite as \\( y > {m|coef}x {yint|sign} \\); boundary line is dashed; shade above the line."
+      },
+      {
+        "id": "ALG1-6.5-I2",
+        "type": "template",
+        "objective": "Graphing Inequalities in Two Variables",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": {
+            "min": -5,
+            "max": 5,
+            "exclude": [
+              0
+            ]
+          },
+          "b": {
+            "min": -5,
+            "max": -2
+          },
+          "c": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0
+            ]
+          },
+          "m": {
+            "formula": "-a/b",
+            "format": "fraction"
+          },
+          "yint": {
+            "formula": "c/b",
+            "format": "fraction"
+          }
+        },
+        "draw": {
+          "window": {
+            "xMin": -10,
+            "xMax": 10,
+            "yMin": -10,
+            "yMax": 10
+          },
+          "gridStep": 1,
+          "eq1": {
+            "relation": "y < ({c} - {a}*x)/({b})",
+            "boundaryStyle": "dashed",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        },
+        "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
+        "answer": "Rewrite as \\( y < {m|coef}x {yint|sign} \\); boundary line is dashed; shade below the line."
+      }],
     "Semester 1 Review": [],
     "Objective Assessment 1": [],
     "7 Systems": [
