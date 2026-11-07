@@ -2572,7 +2572,7 @@
     ],
     "3 Relations": [
       {
-        "id": "ALG1 3.1 Graphing Relations",
+        "id": "ALG 3.1a Graphing Relations",
         "type": "template",
         "objective": "Representing Relations",
         "difficulty": "basic",
@@ -2666,7 +2666,7 @@
         "answer": "Table: <table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>{x1}</td><td>{y1}</td></tr><tr><td>{x2}</td><td>{y2}</td></tr><tr><td>{x3}</td><td>{y3}</td></tr><tr><td>{x4}</td><td>{y4}</td></tr></table><br><b>Graph:</b><br>{solution_graph_svg}"
       },
       {
-        "id": "ALG1 3.1 Ind/Dep Variables",
+        "id": "ALG 3.1b Ind/Dep Variables",
         "type": "template",
         "objective": "Independent and Dependent Variables",
         "difficulty": "basic",
@@ -2817,7 +2817,7 @@
         "answer": "<b>Correct Variable Identifications:</b><br><ol type='1'><li><b>Scenario A:</b> {s1_t}<ul><li><b>Independent Variable:</b> {s1_i}</li><li><b>Dependent Variable:</b> {s1_d}</li></ul></li><br><li><b>Scenario B:</b> {s2_t}<ul><li><b>Independent Variable:</b> {s2_i}</li><li><b>Dependent Variable:</b> {s2_d}</li></ul></li><br><li><b>Scenario C:</b> {s3_t}<ul><li><b>Independent Variable:</b> {s3_i}</li><li><b>Dependent Variable:</b> {s3_d}</li></ul></li><br><li><b>Scenario D:</b> {s4_t}<ul><li><b>Independent Variable:</b> {s4_i}</li><li><b>Dependent Variable:</b> {s4_d}</li></ul></li></ol>"
       },
       {
-        "id": "ALG1-3.2 Mapping Diagram",
+        "id": "ALG 3.2a Mapping Diagram",
         "type": "template",
         "objective": "Mapping Diagrams",
         "difficulty": "basic",
@@ -2981,7 +2981,7 @@
         "answer": "<b>Correct Interpretations:</b><br><ul><li><b>Diagram A:</b> <b>{ans1}</b><br>{reason1}</li><li><b>Diagram B:</b> <b>{ans2}</b><br>{reason2}</li><li><b>Diagram C:</b> <b>{ans3}</b><br>{reason3}</li><li><b>Diagram D:</b> <b>{ans4}</b><br>{reason4}</li></ul>"
       },
       {
-        "id": "ALG1 3.2 Working with Functions",
+        "id": "ALG 3.2b Functions",
         "type": "template",
         "objective": "Working with Functions",
         "difficulty": "basic",
@@ -3048,7 +3048,7 @@
         "answer": "a) \\( f({x1}) = {value1} \\) <br> b) \\( f({x2}) = {value2} \\) <br> c) \\( f(x {x3|sign}) = {a|coef}x {value3|sign} \\) <br> d) \\( f({x4}x) = {value4|coef}x {b|sign} \\)"
       },
       {
-        "id": "ALG1 3.2 I Compound Functions",
+        "id": "ALG 3.2 I Compound Functions",
         "type": "template",
         "objective": "Working with Functions",
         "difficulty": "intermediate",
@@ -3150,7 +3150,7 @@
         "answer": "a) {solution_a}<br>b) {solution_b}<br>c) {solution_c}<br>d) {solution_d}"
       },
       {
-        "id": "ALG1 3.3 Linearity of Graphs",
+        "id": "ALG 3.3a Linearity of Graphs",
         "type": "template",
         "objective": "Linearity of Graphs",
         "difficulty": "basic",
@@ -3359,7 +3359,71 @@
         "answer": "<div style='display:flex;flex-flow:row nowrap;justify-content:space-between;gap:24px;'><span>a) \\(f(x)\\): {f_answer}</span><span>b) \\(g(x)\\): {g_answer}</span><span>c) \\(h(x)\\): {h_answer}</span><span>d) \\(j(x)\\): {j_answer}</span></div>"
       },
       {
-        "id": "ALG1 3.3 I Linearity of Equations",
+        "id": "ALG 3.3b Discrete/Continuous",
+        "type": "template",
+        "objective": "Identify discrete and continuous variables",
+        "difficulty": "basic",
+        "variables": {
+          "discrete_count": {
+            "formula": "Math.floor(Math.random()*3)+1"
+          },
+          "discrete_order": {
+            "formula": "[0,1,2,3,4,5,6,7,8,9].sort(function(){return Math.random()-0.5})"
+          },
+          "continuous_order": {
+            "formula": "[0,1,2,3,4,5,6,7,8,9].sort(function(){return Math.random()-0.5})"
+          },
+          "category_order": {
+            "formula": "Array(discrete_count).fill('Discrete').concat(Array(4-discrete_count).fill('Continuous')).sort(function(){return Math.random()-0.5})"
+          },
+          "d1": {
+            "formula": "['the number of people in this room','the number of books on a shelf','the number of cars in a parking lot','the number of text messages received today','the number of goals scored by a team','the number of students absent from class','the number of pets in a household','the number of emails in an inbox','the number of water bottles in a case','the number of customers entering a store'][discrete_order[0]]"
+          },
+          "d2": {
+            "formula": "['the number of people in this room','the number of books on a shelf','the number of cars in a parking lot','the number of text messages received today','the number of goals scored by a team','the number of students absent from class','the number of pets in a household','the number of emails in an inbox','the number of water bottles in a case','the number of customers entering a store'][discrete_order[1]]"
+          },
+          "d3": {
+            "formula": "['the number of people in this room','the number of books on a shelf','the number of cars in a parking lot','the number of text messages received today','the number of goals scored by a team','the number of students absent from class','the number of pets in a household','the number of emails in an inbox','the number of water bottles in a case','the number of customers entering a store'][discrete_order[2]]"
+          },
+          "c1": {
+            "formula": "['the amount of water in a water bottle','the height of a plant','the time it takes to run a mile','the temperature outside','the distance from home to school','the mass of a backpack','the amount of water in a glass','the length of a ribbon','the rainfall in one day','the speed of a car'][continuous_order[0]]"
+          },
+          "c2": {
+            "formula": "['the amount of water in a water bottle','the height of a plant','the time it takes to run a mile','the temperature outside','the distance from home to school','the mass of a backpack','the amount of water in a glass','the length of a ribbon','the rainfall in one day','the speed of a car'][continuous_order[1]]"
+          },
+          "c3": {
+            "formula": "['the amount of water in a water bottle','the height of a plant','the time it takes to run a mile','the temperature outside','the distance from home to school','the mass of a backpack','the amount of water in a glass','the length of a ribbon','the rainfall in one day','the speed of a car'][continuous_order[2]]"
+          },
+          "item_a": {
+            "formula": "category_order[0]==='Discrete'?[d1,d2,d3][category_order.slice(0,0).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,0).filter(function(x){return x==='Continuous'}).length]"
+          },
+          "answer_a": {
+            "formula": "category_order[0]"
+          },
+          "item_b": {
+            "formula": "category_order[1]==='Discrete'?[d1,d2,d3][category_order.slice(0,1).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,1).filter(function(x){return x==='Continuous'}).length]"
+          },
+          "answer_b": {
+            "formula": "category_order[1]"
+          },
+          "item_c": {
+            "formula": "category_order[2]==='Discrete'?[d1,d2,d3][category_order.slice(0,2).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,2).filter(function(x){return x==='Continuous'}).length]"
+          },
+          "answer_c": {
+            "formula": "category_order[2]"
+          },
+          "item_d": {
+            "formula": "category_order[3]==='Discrete'?[d1,d2,d3][category_order.slice(0,3).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,3).filter(function(x){return x==='Continuous'}).length]"
+          },
+          "answer_d": {
+            "formula": "category_order[3]"
+          }
+        },
+        "question": "Classify each variable as <b>discrete</b> or <b>continuous</b>.<br><br><b>A.</b> {item_a}<br><b>B.</b> {item_b}<br><b>C.</b> {item_c}<br><b>D.</b> {item_d}",
+        "answer": "<b>Answer key</b><br>A. {answer_a}<br>B. {answer_b}<br>C. {answer_c}<br>D. {answer_d}"
+      },
+      {
+        "id": "ALG 3.3 I Linearity of Equations",
         "type": "template",
         "objective": "Linearity of Equations",
         "difficulty": "intermediate",
@@ -3592,71 +3656,7 @@
         "answer": "<div style='display:flex;flex-flow:row wrap;gap:12px;align-items:flex-start;'><div style='flex:1 1 22%;min-width:150px;'>a) {answer_a}</div><div style='flex:1 1 22%;min-width:150px;'>b) {answer_b}</div><div style='flex:1 1 22%;min-width:150px;'>c) {answer_c}</div><div style='flex:1 1 22%;min-width:150px;'>d) {answer_d}</div></div>"
       },
       {
-        "id": "ALG 3.3b Discrete/Continuous",
-        "type": "template",
-        "objective": "Identify discrete and continuous variables",
-        "difficulty": "basic",
-        "variables": {
-          "discrete_count": {
-            "formula": "Math.floor(Math.random()*3)+1"
-          },
-          "discrete_order": {
-            "formula": "[0,1,2,3,4,5,6,7,8,9].sort(function(){return Math.random()-0.5})"
-          },
-          "continuous_order": {
-            "formula": "[0,1,2,3,4,5,6,7,8,9].sort(function(){return Math.random()-0.5})"
-          },
-          "category_order": {
-            "formula": "Array(discrete_count).fill('Discrete').concat(Array(4-discrete_count).fill('Continuous')).sort(function(){return Math.random()-0.5})"
-          },
-          "d1": {
-            "formula": "['the number of people in this room','the number of books on a shelf','the number of cars in a parking lot','the number of text messages received today','the number of goals scored by a team','the number of students absent from class','the number of pets in a household','the number of emails in an inbox','the number of water bottles in a case','the number of customers entering a store'][discrete_order[0]]"
-          },
-          "d2": {
-            "formula": "['the number of people in this room','the number of books on a shelf','the number of cars in a parking lot','the number of text messages received today','the number of goals scored by a team','the number of students absent from class','the number of pets in a household','the number of emails in an inbox','the number of water bottles in a case','the number of customers entering a store'][discrete_order[1]]"
-          },
-          "d3": {
-            "formula": "['the number of people in this room','the number of books on a shelf','the number of cars in a parking lot','the number of text messages received today','the number of goals scored by a team','the number of students absent from class','the number of pets in a household','the number of emails in an inbox','the number of water bottles in a case','the number of customers entering a store'][discrete_order[2]]"
-          },
-          "c1": {
-            "formula": "['the amount of water in a water bottle','the height of a plant','the time it takes to run a mile','the temperature outside','the distance from home to school','the mass of a backpack','the amount of water in a glass','the length of a ribbon','the rainfall in one day','the speed of a car'][continuous_order[0]]"
-          },
-          "c2": {
-            "formula": "['the amount of water in a water bottle','the height of a plant','the time it takes to run a mile','the temperature outside','the distance from home to school','the mass of a backpack','the amount of water in a glass','the length of a ribbon','the rainfall in one day','the speed of a car'][continuous_order[1]]"
-          },
-          "c3": {
-            "formula": "['the amount of water in a water bottle','the height of a plant','the time it takes to run a mile','the temperature outside','the distance from home to school','the mass of a backpack','the amount of water in a glass','the length of a ribbon','the rainfall in one day','the speed of a car'][continuous_order[2]]"
-          },
-          "item_a": {
-            "formula": "category_order[0]==='Discrete'?[d1,d2,d3][category_order.slice(0,0).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,0).filter(function(x){return x==='Continuous'}).length]"
-          },
-          "answer_a": {
-            "formula": "category_order[0]"
-          },
-          "item_b": {
-            "formula": "category_order[1]==='Discrete'?[d1,d2,d3][category_order.slice(0,1).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,1).filter(function(x){return x==='Continuous'}).length]"
-          },
-          "answer_b": {
-            "formula": "category_order[1]"
-          },
-          "item_c": {
-            "formula": "category_order[2]==='Discrete'?[d1,d2,d3][category_order.slice(0,2).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,2).filter(function(x){return x==='Continuous'}).length]"
-          },
-          "answer_c": {
-            "formula": "category_order[2]"
-          },
-          "item_d": {
-            "formula": "category_order[3]==='Discrete'?[d1,d2,d3][category_order.slice(0,3).filter(function(x){return x==='Discrete'}).length]:[c1,c2,c3][category_order.slice(0,3).filter(function(x){return x==='Continuous'}).length]"
-          },
-          "answer_d": {
-            "formula": "category_order[3]"
-          }
-        },
-        "question": "Classify each variable as <b>discrete</b> or <b>continuous</b>.<br><br><b>A.</b> {item_a}<br><b>B.</b> {item_b}<br><b>C.</b> {item_c}<br><b>D.</b> {item_d}",
-        "answer": "<b>Answer key</b><br>A. {answer_a}<br>B. {answer_b}<br>C. {answer_c}<br>D. {answer_d}"
-      },
-      {
-        "id": "ALG1-3.4 Intercepts",
+        "id": "ALG 3.4a Intercepts",
         "type": "template",
         "objective": "Intercepts",
         "difficulty": "basic",
@@ -3796,7 +3796,7 @@
         "answer": "<b>Labeled Intercept Solutions:</b><br><div style='display:flex; flex-wrap:wrap; justify-content:space-around;'><div><b>Graph A</b><br>{g1_sol}</div><div><b>Graph B</b><br>{g2_sol}</div><div><b>Graph C</b><br>{g3_sol}</div><div><b>Graph D</b><br>{g4_sol}</div></div>"
       },
       {
-        "id": "ALG1-3.4 Positive Intervals",
+        "id": "ALG 3.4b Positive Intervals",
         "type": "template",
         "objective": "Intervals where y is Positive",
         "difficulty": "basic",
@@ -4007,7 +4007,7 @@
         "answer": "<b>Answer key</b><br>Graph A: correct choice {eq1_correct} ? {eq1_answer}<br>Function: {eq1_name}<br>Graph B: correct choice {eq2_correct} ? {eq2_answer}<br>Function: {eq2_name}<br>Graph C: correct choice {eq3_correct} ? {eq3_answer}<br>Function: {eq3_name}"
       },
       {
-        "id": "ALG1 3.4 I Intercepts",
+        "id": "ALG 3.4 Ia Intercepts",
         "type": "template",
         "objective": "Intercepts",
         "difficulty": "intermediate",
@@ -4047,7 +4047,7 @@
         "answer": "<b>Algebraic solution:</b><br><b>x-intercept:</b> Set y=0: \\( {A}x + {B}(0) = {C} \\), so \\( {A}x = {C} \\) and \\( x = \\frac{ {C} }{ {A} } = {x_int} \\). Thus the x-intercept is \\( ({x_int},0) \\).<br><b>y-intercept:</b> Set x=0: \\( {A}(0) + {B}y = {C} \\), so \\( {B}y = {C} \\) and \\( y = \\frac{ {C} }{ {B} } = {y_int} \\). Thus the y-intercept is \\( (0,{y_int}) \\).<br><br><b>Graph of the function:</b><br>{function_graph_svg}"
       },
       {
-        "id": "ALG1 3.4 I Positive Intervals",
+        "id": "ALG 3.4 Ib Positive Intervals",
         "type": "template",
         "objective": "Intervals where y is Positive",
         "difficulty": "intermediate",
@@ -4258,7 +4258,7 @@
         "answer": "<b>Answer key</b><br>Graph A: positive interval(s): {eq1_answer}<br>Function: {eq1_name}<br>Graph B: positive interval(s): {eq2_answer}<br>Function: {eq2_name}<br>Graph C: positive interval(s): {eq3_answer}<br>Function: {eq3_name}"
       },
       {
-        "id": "ALG1-3.5 Relative Maximum and Minimum",
+        "id": "ALG 3.5a Relative Maximum and Minimum",
         "type": "template",
         "objective": "Relative Maximum and Minimum",
         "difficulty": "basic",
@@ -4438,7 +4438,7 @@
         "answer": "<b>Answer key</b><br>Graph A: relative maximum: {eq1_max}; relative minimum: {eq1_min}<br>Function: {eq1_name}<br>Graph B: relative maximum: {eq2_max}; relative minimum: {eq2_min}<br>Function: {eq2_name}<br>Graph C: relative maximum: {eq3_max}; relative minimum: {eq3_min}<br>Function: {eq3_name}"
       },
       {
-        "id": "ALG1-3.5 Increasing Intervals",
+        "id": "ALG 3.5b Increasing Intervals",
         "type": "template",
         "objective": "Intervals where a Function is Increasing",
         "difficulty": "basic",
@@ -4699,7 +4699,7 @@
         "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Correct choice: {eq1_correct_letter} â€” {eq1_correct_interval}<br>Graph B: {eq2_name}<br>Correct choice: {eq2_correct_letter} â€” {eq2_correct_interval}<br>Graph C: {eq3_name}<br>Correct choice: {eq3_correct_letter} â€” {eq3_correct_interval}"
       },
       {
-        "id": "ALG1-3.5 I Increasing Intervals",
+        "id": "ALG 3.5 I Increasing Intervals",
         "type": "template",
         "objective": "Intervals where a Function is Increasing",
         "difficulty": "intermediate",
@@ -15475,6 +15475,15 @@
             "min": 0,
             "max": 59
           },
+          "start_time": {
+            "formula": "(sh < 10 ? '0' + sh : String(sh)) + ':' + (sm < 10 ? '0' + sm : String(sm))"
+          },
+          "lunch_time": {
+            "formula": "(lh < 10 ? '0' + lh : String(lh)) + ':' + (lm < 10 ? '0' + lm : String(lm))"
+          },
+          "end_time": {
+            "formula": "(eh < 10 ? '0' + eh : String(eh)) + ':' + (em < 10 ? '0' + em : String(em))"
+          },
           "total_mins": {
             "formula": "(eh * 60 + em) - (sh * 60 + sm) - duration"
           },
@@ -15491,7 +15500,7 @@
             "formula": "raw_mins < 10 ? '0' + raw_mins : raw_mins"
           }
         },
-        "question": "An employee clocks in at {sh}:{sm} and clocks out for lunch at {lh}:{lm}. They take a {duration}-minute lunch break. After returning, they work until clocking out at {eh}:{em}. Calculate the total time worked in HH:MM format.",
+        "question": "An employee clocks in at {start_time} and clocks out for lunch at {lunch_time}. They take a {duration}-minute lunch break. After returning, they work until clocking out at {end_time}. Calculate the total time worked in HH:MM format.",
         "answer": "{ans_hours}:{ans_mins}"
       },
       {
