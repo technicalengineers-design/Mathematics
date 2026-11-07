@@ -3818,7 +3818,7 @@
             ]
           },
           "c_r1": {
-            "min": -4,
+            "min": -3,
             "max": -2
           },
           "c_r2": {
@@ -3827,12 +3827,12 @@
           },
           "c_r3": {
             "min": 2,
-            "max": 4
+            "max": 3
           },
           "c_a": {
             "values": [
-              -0.1,
-              0.1
+              -0.5,
+              0.5
             ]
           },
           "v_h": {
@@ -4012,29 +4012,24 @@
         "objective": "Intercepts",
         "difficulty": "intermediate",
         "variables": {
-          "A": {
-            "min": -5,
-            "max": 5,
-            "exclude": [
-              0
-            ]
-          },
-          "B": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "C": {
-            "min": -10,
-            "max": 10
-          },
           "x_int": {
-            "formula": "C/A"
+            "formula": "(Math.floor(Math.random()*17)+4)/2*(Math.random()<0.5?-1:1)",
+            "format": "decimal"
           },
           "y_int": {
-            "formula": "C/B"
+            "formula": "(Math.floor(Math.random()*17)+4)/2*(Math.random()<0.5?-1:1)",
+            "format": "decimal"
+          },
+          "A": {
+            "formula": "y_int",
+            "format": "decimal"
+          },
+          "B": {
+            "formula": "x_int",
+            "format": "decimal"
+          },
+          "C": {
+            "formula": "A*x_int"
           },
           "blank_coordinate_grid_svg": {
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 420\" role=\"img\" aria-label=\"Blank coordinate graphing grid from negative ten to ten\" style=\"display:block;width:100%;max-width:420px;height:auto;border:1px solid #777;background:white\">' + Array.from({length:21},function(_,i){var p=30+i*18,col=i===10?'#222':'#ddd',sw=i===10?1.8:0.7;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"390\" stroke=\"'+col+'\" stroke-width=\"'+sw+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"390\" y2=\"'+p+'\" stroke=\"'+col+'\" stroke-width=\"'+sw+'\"/>';}).join('') + Array.from({length:11},function(_,i){var n=-10+i*2,x=210+n*18,y=210-n*18;return '<text x=\"'+x+'\" y=\"224\" text-anchor=\"middle\" font-size=\"9\">'+n+'</text><text x=\"24\" y=\"'+(y+3)+'\" text-anchor=\"end\" font-size=\"9\">'+n+'</text>';}).join('') + '<text x=\"396\" y=\"207\" font-size=\"11\">x</text><text x=\"214\" y=\"25\" font-size=\"11\">y</text></svg>'"
@@ -4306,11 +4301,11 @@
             ]
           },
           "f_y_low": {
-            "min": -5,
-            "max": 4
+            "min": -7,
+            "max": -5
           },
           "f_y_high": {
-            "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))"
+            "formula": "f_y_low + 11 + Math.floor(Math.random() * (8 - f_y_low - 11))"
           },
           "f_y_left": {
             "formula": "f_a > 0 ? f_y_high : f_y_low"
@@ -4418,7 +4413,7 @@
             "formula": "eq3_type===1?q_min:eq3_type===2?c_min:f_min"
           },
           "c_d": {
-            "min": 1,
+            "min": 2,
             "max": 7
           },
           "f_d": {
@@ -4486,11 +4481,11 @@
             ]
           },
           "f_y_low": {
-            "min": -5,
-            "max": 4
+            "min": -7,
+            "max": -5
           },
           "f_y_high": {
-            "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))"
+            "formula": "f_y_low + 11 + Math.floor(Math.random() * (8 - f_y_low - 11))"
           },
           "f_y_left": {
             "formula": "f_a > 0 ? f_y_high : f_y_low"
@@ -4559,10 +4554,10 @@
             "formula": "q_a>0?'('+q_h+', '+q_k+')':'None'"
           },
           "c_max": {
-            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_d)+', '+(c_k+1)+')'"
+            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_dx)+', '+(c_k+c_d)+')'"
           },
           "c_min": {
-            "formula": "c_a>0?'('+(c_h+c_d)+', '+(c_k-1)+')':'('+c_h+', '+c_k+')'"
+            "formula": "c_a>0?'('+(c_h+c_dx)+', '+(c_k-c_d)+')':'('+c_h+', '+c_k+')'"
           },
           "f_max": {
             "formula": "f_a>0?'(' + f_h + ', ' + f_offset_text + ')':'(' + (f_h-f_dx) + ', ' + f_y_left + '), (' + (f_h+2*f_dx) + ', ' + f_y_right + ')'"
@@ -4598,7 +4593,7 @@
             "formula": "eq3_type===1?q_min:eq3_type===2?c_min:f_min"
           },
           "c_d": {
-            "min": 1,
+            "min": 2,
             "max": 7
           },
           "f_d": {
@@ -4747,11 +4742,11 @@
             ]
           },
           "f_y_low": {
-            "min": -5,
-            "max": 4
+            "min": -7,
+            "max": -5
           },
           "f_y_high": {
-            "formula": "f_y_low + 1 + Math.floor(Math.random() * (6 - f_y_low))"
+            "formula": "f_y_low + 11 + Math.floor(Math.random() * (8 - f_y_low - 11))"
           },
           "f_y_left": {
             "formula": "f_a > 0 ? f_y_high : f_y_low"
@@ -4820,10 +4815,10 @@
             "formula": "q_a>0?'('+q_h+', '+q_k+')':'None'"
           },
           "c_max": {
-            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_d)+', '+(c_k+1)+')'"
+            "formula": "c_a>0?'('+c_h+', '+c_k+')':'('+(c_h+c_dx)+', '+(c_k+c_d)+')'"
           },
           "c_min": {
-            "formula": "c_a>0?'('+(c_h+c_d)+', '+(c_k-1)+')':'('+c_h+', '+c_k+')'"
+            "formula": "c_a>0?'('+(c_h+c_dx)+', '+(c_k-c_d)+')':'('+c_h+', '+c_k+')'"
           },
           "f_max": {
             "formula": "f_a>0?'(' + f_h + ', ' + f_offset_text + ')':'(' + (f_h-f_dx) + ', ' + f_y_left + '), (' + (f_h+2*f_dx) + ', ' + f_y_right + ')'"
@@ -4859,7 +4854,7 @@
             "formula": "eq3_type===1?q_min:eq3_type===2?c_min:f_min"
           },
           "c_d": {
-            "min": 1,
+            "min": 2,
             "max": 7
           },
           "f_d": {
