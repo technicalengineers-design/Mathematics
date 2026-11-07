@@ -18082,7 +18082,7 @@
     ],
     "3 Logical Arguments and Line Relationships": [
       {
-        "id": "GEO 3-1 Conjecture",
+        "id": "GEO 3-1a Conjecture",
         "type": "template",
         "objective": "Write the conjecture describing the next term in the sequence",
         "difficulty": "basic",
@@ -18152,7 +18152,7 @@
         "answer": "To find the pattern, look at the relationship between consecutive terms:\n \\( {a2} \\div {a1} = {r_latex} \\)\n, \\( {a3} \\div {a2} = {r_latex} \\)\n, \\( {a4} \\div {a3} = {r_latex} \\)\n\nEach term is found by multiplying the previous term by a common factor of **{r_text}**. Therefore, the conjecture to find the next (5th) term is to **multiply {a4} by {r_text}**.\n\n**Correct Choice:** Multiply {a4} by {r_text}."
       },
       {
-        "id": "GEO 3-1 Conjecture.",
+        "id": "GEO 3-1a Conjecture.",
         "type": "template",
         "objective": "Write the conjecture describing the next term in the sequence",
         "difficulty": "basic",
@@ -18204,7 +18204,7 @@
         "answer": "To find the pattern, look at the difference between consecutive terms:\n \\( {a2} - {a1} = {d} \\)\n, \\( {a3} - {a2} = {d} \\)\n. \\( {a4} - {a3} = {d} \\)\n\nThe sequence increases by a common difference of **{d}** each time. Therefore, the conjecture to find the next (5th) term is to **add {d} to {a4}**.\n\n**Correct Choice:** Add {d} to {a4}."
       },
       {
-        "id": "GEO 3-1 Conjecture Sequences",
+        "id": "GEO 3-1a Conjecture Sequences",
         "type": "template",
         "objective": "Write the conjecture describing the sequence. Identify Patterns and Extend Total Elements in a Visual Sequence to the 5th Figure",
         "difficulty": "basic",
@@ -18262,7 +18262,7 @@
         "answer": "To determine the total line segments needed for Step 5, let's analyze the visual growth pattern step-by-step:<br><br><b>Step 1: Count the individual boundary line segments in the given figures.</b><br>Examining the structural layout reveals a progression of {network_desc}:<br>&bull; <b>Step 1:</b> Consists of 1 shape constructed using exactly <b>{s1}</b> line segments.<br>&bull; <b>Step 2:</b> Connects elements using a total of <b>{s2}</b> line segments.<br>&bull; <b>Step 3:</b> Expands components using a total of <b>{s3}</b> line segments.<br><br><b>Step 2: Isolate the core rate of change.</b><br>Subtract consecutive step totals to identify the constant arithmetic pattern difference:<br>\\[ {s2} - {s1} = {inc} \\]<br>\\[ {s3} - {s2} = {inc} \\]<br>Each subsequent figure adds a net addition of <b>{inc}</b> segments to the total count.<br><br><b>Step 3: Extrapolate to Step 5.</b><br>We can calculate the totals for the remaining steps sequentially:<br>&bull; <b>Step 4:</b> \\( {s3} + {inc} = {s4} \\) segments.<br>&bull; <b>Step 5:</b> \\( {s4} + {inc} = {result} \\) segments.<br><br>Alternatively, using the arithmetic progression formula:<br>\\[ \\text{Total} = \\text{Base} + (n - 1) \\times \\text{Increase} \\]<br>\\[ \\text{Total} = {s1} + (5 - 1) \\times {inc} = {s1} + 4 \\times {inc} = {result} \\]<br><br>Therefore, Step 5 will require exactly <b>{result} segments</b> to complete."
       },
       {
-        "id": "GEO 3-1 Counterexample Math",
+        "id": "GEO 3-1b Counterexample Math",
         "type": "template",
         "objective": "Provide a specific counterexample to disprove the mathematical or geometric conjecture",
         "difficulty": "basic",
@@ -18287,7 +18287,7 @@
         "answer": "A counterexample is a specific case that makes the statement false.<br><br><b>Example:</b> {acceptable_inputs}<br><br><i>Why it works:</i><br>{exp_text}"
       },
       {
-        "id": "GEO 3-1 Counterexample Science",
+        "id": "GEO 3-1b Counterexample Science",
         "type": "template",
         "objective": "Provide a specific counterexample to disprove the statement",
         "difficulty": "basic",
@@ -18568,7 +18568,7 @@
         "answer": "1. {ans1}, 2. {ans2}, 3. {ans3}"
       },
       {
-        "id": "GEO-3.3 Inductive vs Deductive Reasoning",
+        "id": "GEO 3.3a Inductive vs Deductive Reasoning",
         "type": "template",
         "objective": "Inductive vs Deductive Reasoning",
         "difficulty": "basic",
@@ -18707,7 +18707,7 @@
         "answer": "<b>Correct Logical Reasoning Implementations:</b> <b>Inductive Reasoning</b> (drawing a general conclusion from specific observations or patterns) or <b>Deductive Reasoning</b> (logical tracking from a general rule, law, or known fact to a specific conclusion).<br><ol type='1'><li><b>Scenario A:</b> {s1_t}<ul><li><b>Type:</b> {s1_y}</li><li><b>Explanation:</b> {s1_e}</li></ul></li><br><li><b>Scenario B:</b> {s2_t}<ul><li><b>Type:</b> {s2_y}</li><li><b>Explanation:</b> {s2_e}</li></ul></li><br><li><b>Scenario C:</b> {s3_t}<ul><li><b>Type:</b> {s3_y}</li><li><b>Explanation:</b> {s3_e}</li></ul></li></ol>"
       },
       {
-        "id": "GEO 3-3 Syllogism",
+        "id": "GEO 3-3b Syllogism",
         "type": "template",
         "objective": "Apply the Law of Syllogism to two pairs of true conditional statements",
         "difficulty": "basic",
