@@ -750,7 +750,17 @@ class UIManager {
       // Create question element
       const questionDiv = document.createElement("div");
       questionDiv.className = "question";
+      const graphBesidePrompt = [
+        "ALG 4.1b Intercepts",
+        "ALG 4.2 Ia Two Points to Slope",
+        "ALG 4.2 Ib Missing Coordinate",
+        "ALG 4.3a Two Lines",
+        "ALG 4.3 Ia Two Lines",
+        "ALG 4.3 Ib Lines"
+      ].includes(question.id);
       if (question.id === "ALG 4.1b Intercepts" ||
+          question.id === "ALG 4.2 Ia Two Points to Slope" ||
+          question.id === "ALG 4.2 Ib Missing Coordinate" ||
           question.id === "ALG 4.3a Two Lines" ||
           question.id === "ALG 4.3b Point/Slope" ||
           question.id === "ALG 4.3 Ia Two Lines" ||
@@ -787,6 +797,33 @@ class UIManager {
         </div>
         <div>${question.questionText || 'No question text'}</div>
       `;
+      if (graphBesidePrompt) {
+        const content = questionDiv.lastElementChild;
+        const graph = content.querySelector("svg");
+        if (graph) {
+          const promptPanel = document.createElement("div");
+          const graphPanel = document.createElement("div");
+          promptPanel.className = "question-graph-prompt";
+          graphPanel.className = "question-graph-panel";
+          let node = content.firstChild;
+          while (node && node !== graph) {
+            const next = node.nextSibling;
+            promptPanel.appendChild(node);
+            node = next;
+          }
+          node = graph.nextSibling;
+          graphPanel.appendChild(graph);
+          while (node) {
+            const next = node.nextSibling;
+            if (node.nodeType !== Node.ELEMENT_NODE || node.tagName !== "BR") {
+              graphPanel.appendChild(node);
+            }
+            node = next;
+          }
+          content.replaceChildren(graphPanel, promptPanel);
+          content.classList.add("question--graph-side-by-side");
+        }
+      }
 
       output.appendChild(questionDiv);
 
