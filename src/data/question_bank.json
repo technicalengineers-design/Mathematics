@@ -5260,7 +5260,7 @@
             "formula": "-y"
           }
         },
-        "question": "Write the equation of the line passing through \\( ({x}, {y}) \\) with slope \\( m = {m} \\) in point-slope form.",
+        "question": "Write the equation of the line passing through \\( ({x}, {y}) \\) with slope \\( m = {m} \\) in point-slope form.<br><br><br>",
         "answer": "\\( y {negative_y|sign} = {m}(x {negative_x|sign}) \\)"
       },
       {
@@ -5601,7 +5601,7 @@
         "answer": "\\( y = {m|coef}x {yint|sign} \\)"
       },
       {
-        "id": "ALG1-5.2-I1",
+        "id": "ALG 5.2 Ia",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "intermediate",
@@ -5677,7 +5677,7 @@
         "answer": "Standard Form: \\( {std_a|coef}x {std_b|signedCoef}y = {std_c} \\) <br> Slope-Intercept Form: \\( y = {m|coef}x {yint|sign} \\)"
       },
       {
-        "id": "ALG 5.2 Ib (considered)",
+        "id": "ALG 5.2 Ib",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "intermediate",

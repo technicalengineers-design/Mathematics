@@ -751,10 +751,13 @@ class UIManager {
       const questionDiv = document.createElement("div");
       questionDiv.className = "question";
       if (question.id === "ALG 4.1b Intercepts" ||
-          question.id === "ALG 4.3a Lines" ||
+          question.id === "ALG 4.3a Two Lines" ||
           question.id === "ALG 4.3b Point/Slope" ||
-          question.id === "ALG 4.3 Ia Sales" ||
-          question.id === "ALG 4.3 Ib Gliding") {
+          question.id === "ALG 4.3 Ia Two Lines" ||
+          question.id === "ALG 4.3 Ib Lines" ||
+          question.id === "ALG 5.1 Aa Sales" ||
+          question.id === "ALG 5.1 Ab Glider" ||
+          question.id === "ALG 5.2a") {
         questionDiv.classList.add("question--compact");
       }
       if (question.id === "ALG1-3.2 Mapping Diagram") questionDiv.classList.add("question--mapping-diagrams");
@@ -763,10 +766,13 @@ class UIManager {
           question.id !== "ALG 4.2 Ia Two Points to Slope" &&
           question.id !== "ALG 4.2 Ib Missing Coordinate" &&
           question.id !== "ALG 4.1b Intercepts" &&
-          question.id !== "ALG 4.3a Lines" &&
+          question.id !== "ALG 4.3a Two Lines" &&
           question.id !== "ALG 4.3b Point/Slope" &&
-          question.id !== "ALG 4.3 Ia Sales" &&
-          question.id !== "ALG 4.3 Ib Gliding") {
+          question.id !== "ALG 4.3 Ia Two Lines" &&
+          question.id !== "ALG 4.3 Ib Lines" &&
+          question.id !== "ALG 5.1 Aa Sales" &&
+          question.id !== "ALG 5.1 Ab Glider" &&
+          question.id !== "ALG 5.2a") {
         questionDiv.classList.add("question--graph-footprint-reserved");
       }
       
