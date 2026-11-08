@@ -5032,7 +5032,7 @@
         "difficulty": "basic",
         "variables": {
           "equation": {
-            "formula": "(function(){var candidates=[];function gcd(x,y){return y===0?x:gcd(y,x%y)}for(var a=-7;a<=7;a++){if(a===0)continue;for(var b=-7;b<=7;b++){if(b===0)continue;for(var c=-7;c<=7;c++){if(c===0||gcd(gcd(Math.abs(a),Math.abs(b)),Math.abs(c))!==1)continue;var x=c/a,y=c/b;if(Math.abs(x)<2||Math.abs(x)>7||Math.abs(y)<2||Math.abs(y)>7)continue;if(Number.isInteger(x)&&Number.isInteger(y))continue;candidates.push({a:a,b:b,c:c})}}}return candidates[Math.floor(Math.random()*candidates.length)]})()"
+            "formula": "(function(){var candidates=[];function gcd(x,y){return y===0?x:gcd(y,x%y)}for(var a=-7;a<=7;a++){if(a===0)continue;for(var b=-7;b<=7;b++){if(b===0||Math.abs(a)===Math.abs(b))continue;for(var c=-7;c<=7;c++){if(c===0||gcd(gcd(Math.abs(a),Math.abs(b)),Math.abs(c))!==1)continue;var x=c/a,y=c/b;if(Math.abs(x)<2||Math.abs(x)>7||Math.abs(y)<2||Math.abs(y)>7)continue;if(Number.isInteger(x)&&Number.isInteger(y))continue;candidates.push({a:a,b:b,c:c})}}}return candidates[Math.floor(Math.random()*candidates.length)]})()"
           },
           "a": {
             "formula": "equation.a"
@@ -5599,210 +5599,6 @@
         },
         "question": "Rewrite the equation \\( {a|coef}x {b|signedCoef}y = {c} \\) in slope-intercept form.",
         "answer": "\\( y = {m|coef}x {yint|sign} \\)"
-      },
-      {
-        "id": "ALG1-4.3 & 5.1-A1",
-        "type": "template",
-        "objective": "Writing Equations in Slope-Intercept Form",
-        "difficulty": "advanced",
-        "variables": {
-          "x1": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "y1": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "x2": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0,
-              "x1"
-            ]
-          },
-          "y2": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0,
-              "y1"
-            ]
-          },
-          "mnum": {
-            "formula": "y2 - y1"
-          },
-          "mden": {
-            "formula": "x2 - x1"
-          },
-          "m": {
-            "formula": "mnum/mden",
-            "format": "fraction"
-          },
-          "b_num_raw": {
-            "formula": "mden*y1 - mnum*x1"
-          },
-          "b_den_raw": {
-            "formula": "mden"
-          },
-          "b_num": {
-            "formula": "b_den_raw < 0 ? -1*b_num_raw : b_num_raw"
-          },
-          "b_den": {
-            "formula": "b_den_raw < 0 ? -1*b_den_raw : b_den_raw"
-          },
-          "b": {
-            "formula": "b_num/b_den",
-            "format": "fraction"
-          }
-        },
-        "question": "A line passes through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\). Write the equation of the line in slope-intercept form.",
-        "answer": "\\( y = {m|coef}x {b|sign} \\)"
-      },
-      {
-        "id": "ALG 5.2 (remove repeat)",
-        "type": "template",
-        "objective": "Writing Equations in Standard and Point-Slope Forms",
-        "difficulty": "basic",
-        "variables": {
-          "a": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "negb": {
-            "formula": "-1*b"
-          },
-          "nega": {
-            "formula": "-1*a"
-          },
-          "c": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "d": {
-            "min": 2,
-            "max": 10,
-            "exclude": [
-              "c"
-            ]
-          },
-          "m": {
-            "formula": "c/d",
-            "format": "fraction"
-          }
-        },
-        "question": "Write the equation of the line that passes through the point \\( ({a}, {b}) \\) with slope \\( m = {m} \\) in point-slope form.",
-        "answer": "\\( y {negb|sign} = {m|coef}(x {nega|sign}) \\)"
-      },
-      {
-        "id": "ALG1-5.2-B2 (remove, not objective)",
-        "type": "template",
-        "objective": "Writing Equations in Standard and Point-Slope Forms",
-        "difficulty": "basic",
-        "variables": {
-          "x1": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0
-            ]
-          },
-          "y1": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0,
-              1,
-              -1
-            ]
-          },
-          "negx1": {
-            "formula": "-1*x1"
-          },
-          "negy1": {
-            "formula": "-1*y1"
-          },
-          "m_num": {
-            "min": -5,
-            "max": 5,
-            "exclude": [
-              0
-            ]
-          },
-          "m_den": {
-            "min": 2,
-            "max": 6,
-            "exclude": [
-              "m_num"
-            ]
-          },
-          "m": {
-            "formula": "m_num/m_den",
-            "format": "fraction"
-          },
-          "yint_num": {
-            "formula": "m_den*y1 - m_num*x1"
-          },
-          "yint_den": {
-            "formula": "m_den"
-          },
-          "yint": {
-            "formula": "yint_num/yint_den",
-            "format": "fraction"
-          }
-        },
-        "draw": {
-          "window": {
-            "xMin": -10,
-            "xMax": 10,
-            "yMin": -10,
-            "yMax": 10
-          },
-          "gridStep": 1,
-          "eq1": {
-            "relation": "y = {m}*(x - ({x1})) + ({y1})",
-            "showInQuestion": false,
-            "showInAnswer": true
-          },
-          "points": [
-            {
-              "x": "{x1}",
-              "y": "{y1}",
-              "label": "Point",
-              "showInQuestion": false,
-              "showInAnswer": true
-            },
-            {
-              "x": 0,
-              "y": "{yint}",
-              "label": "y-int",
-              "showInQuestion": false,
-              "showInAnswer": true
-            }
-          ]
-        },
-        "question": "Graph the equation without rewriting: \\( y {negy1|sign} = {m|coef}(x {negx1|sign}) \\).",
-        "answer": "Equivalent slope-intercept form: \\( y = {m|coef}x {yint|sign} \\). Plot \\( ({x1}, {y1}) \\), use slope \\( {m} \\), and draw the line."
       },
       {
         "id": "ALG1-5.2-I1",
@@ -13835,10 +13631,13 @@
           },
           "result": {
             "formula": "Math.round(fee/percent)*100"
+          },
+          "formatted_result": {
+            "formula": "result.toLocaleString('en-US')"
           }
         },
         "question": "You pay $\\({fee} \\) for a tax that is \\({percent}\\)% of the value of a property. What is the value of the property rounded to the nearest one hundred dollars?",
-        "answer": "The value of the property is $\\({result}\\)."
+        "answer": "The value of the property is $\\({formatted_result}\\)."
       },
       {
         "id": "CM 1.4a",
@@ -15533,7 +15332,7 @@
             "formula": "mins < 10 ? '0' + mins : mins"
           },
           "ans_pay": {
-            "formula": "rounded_pay.toFixed(2)"
+            "formula": "rounded_pay.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
         "question": "An employee worked {hours} hours and {pad_hours} minutes this week. Their hourly wage rate is ${wage}. Calculate the employee's gross pay for the week.",
@@ -15563,11 +15362,14 @@
           "period_salary": {
             "formula": "Math.round(yearly_salary * 100 / periods_per_year) / 100"
           },
+          "formatted_yearly_salary": {
+            "formula": "yearly_salary.toLocaleString('en-US')"
+          },
           "formatted_salary": {
-            "formula": "period_salary.toFixed(2)"
+            "formula": "period_salary.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
-        "question": "An employee earns an annual salary of ${yearly_salary}. What is their gross {pay_period} salary?",
+        "question": "An employee earns an annual salary of ${formatted_yearly_salary}. What is their gross {pay_period} salary?",
         "answer": "${formatted_salary}"
       },
       {
@@ -15594,7 +15396,7 @@
             "formula": "Math.round((40 * hourly_wage + overtime_hours * hourly_wage * 1.5) * 100) / 100"
           },
           "formatted_pay": {
-            "formula": "weekly_pay.toFixed(2)"
+            "formula": "weekly_pay.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
         "question": "An employee worked {hours_worked} hours this week and earns ${hourly_wage} per hour. They receive time-and-a-half for hours worked over 40. Calculate their total gross pay for the week.",
@@ -15634,11 +15436,17 @@
           "raise_amount": {
             "formula": "pay_type === 'hourly' ? hourly_raise_cents / 100 : yearly_raise"
           },
+          "formatted_yearly_salary": {
+            "formula": "old_yearly_salary.toLocaleString('en-US')"
+          },
+          "formatted_yearly_raise": {
+            "formula": "yearly_raise.toLocaleString('en-US')"
+          },
           "old_wage_display": {
-            "formula": "pay_type === 'hourly' ? '$' + (old_hourly_cents / 100).toFixed(2) + ' per hour' : '$' + old_yearly_salary + ' per year'"
+            "formula": "pay_type === 'hourly' ? '$' + (old_hourly_cents / 100).toFixed(2) + ' per hour' : '$' + formatted_yearly_salary + ' per year'"
           },
           "raise_display": {
-            "formula": "pay_type === 'hourly' ? '$' + (hourly_raise_cents / 100).toFixed(2) + ' per hour' : '$' + yearly_raise + ' per year'"
+            "formula": "pay_type === 'hourly' ? '$' + (hourly_raise_cents / 100).toFixed(2) + ' per hour' : '$' + formatted_yearly_raise + ' per year'"
           },
           "percentage_increase": {
             "formula": "Math.round(raise_amount / old_wage * 10000) / 100"
@@ -15669,17 +15477,20 @@
           "total_fica": {
             "formula": "social_security_deduction + medicare_deduction"
           },
+          "formatted_annual_salary": {
+            "formula": "annual_salary.toLocaleString('en-US')"
+          },
           "formatted_social_security": {
-            "formula": "social_security_deduction.toFixed(2)"
+            "formula": "social_security_deduction.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_medicare": {
-            "formula": "medicare_deduction.toFixed(2)"
+            "formula": "medicare_deduction.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_total_fica": {
-            "formula": "total_fica.toFixed(2)"
+            "formula": "total_fica.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
-        "question": "An employee earns an annual salary of ${annual_salary}. Assume the full salary is subject to Social Security tax and calculate the employee's annual Social Security deduction at 6.2%, Medicare deduction at 1.45%, and total FICA payroll deduction.",
+        "question": "An employee earns an annual salary of ${formatted_annual_salary}. Assume the full salary is subject to Social Security tax and calculate the employee's annual Social Security deduction at 6.2%, Medicare deduction at 1.45%, and total FICA payroll deduction.",
         "answer": "Social Security: ${formatted_social_security}; Medicare: ${formatted_medicare}; Total FICA: ${formatted_total_fica}"
       },
       {
@@ -15704,17 +15515,20 @@
           "biweekly_withholding": {
             "formula": "Math.round(annual_federal_tax / 26 * 100) / 100"
           },
+          "formatted_annual_salary": {
+            "formula": "annual_salary.toLocaleString('en-US')"
+          },
           "formatted_taxable_income": {
-            "formula": "taxable_income.toFixed(2)"
+            "formula": "taxable_income.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_annual_tax": {
-            "formula": "annual_federal_tax.toFixed(2)"
+            "formula": "annual_federal_tax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_biweekly_withholding": {
-            "formula": "biweekly_withholding.toFixed(2)"
+            "formula": "biweekly_withholding.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
-        "question": "An employee earns ${annual_salary} per year. For this 2026 estimate, assume they file as single, take a $16,100 standard deduction, and have no credits or other adjustments. Find taxable income, then apply the marginal rates progressively: 10% on the first $12,400, 12% on the next $38,000, 22% on the next $55,300, and 24% on any remaining taxable income. Estimate federal income tax withholding by dividing the annual tax evenly across 26 biweekly paychecks.",
+        "question": "An employee earns ${formatted_annual_salary} per year. For this 2026 estimate, assume they file as single, take a $16,100 standard deduction, and have no credits or other adjustments. Find taxable income, then apply the marginal rates progressively: 10% on the first $12,400, 12% on the next $38,000, 22% on the next $55,300, and 24% on any remaining taxable income. Estimate federal income tax withholding by dividing the annual tax evenly across 26 biweekly paychecks.",
         "answer": "Taxable income: ${formatted_taxable_income}; Annual federal income tax: ${formatted_annual_tax}; Estimated deduction per biweekly paycheck: ${formatted_biweekly_withholding}"
       },
       {
@@ -15737,14 +15551,17 @@
           "biweekly_state_withholding": {
             "formula": "Math.round(annual_state_tax / 26 * 100) / 100"
           },
+          "formatted_annual_salary": {
+            "formula": "annual_salary.toLocaleString('en-US')"
+          },
           "formatted_annual_state_tax": {
-            "formula": "annual_state_tax.toFixed(2)"
+            "formula": "annual_state_tax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_biweekly_state_withholding": {
-            "formula": "biweekly_state_withholding.toFixed(2)"
+            "formula": "biweekly_state_withholding.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
-        "question": "An employee earns ${annual_salary} per year in a state with a flat {state_rate_percent}% income tax rate. Assume the rate applies to the entire salary with no deductions or exemptions. Calculate the annual state income tax deduction and estimate the amount withheld from each of 26 equal biweekly paychecks.",
+        "question": "An employee earns ${formatted_annual_salary} per year in a state with a flat {state_rate_percent}% income tax rate. Assume the rate applies to the entire salary with no deductions or exemptions. Calculate the annual state income tax deduction and estimate the amount withheld from each of 26 equal biweekly paychecks.",
         "answer": "Annual state income tax: ${formatted_annual_state_tax}; Estimated deduction per biweekly paycheck: ${formatted_biweekly_state_withholding}"
       },
       {
@@ -15794,19 +15611,19 @@
             "formula": "Math.round((tier_one_commission + tier_two_commission + tier_three_commission) * 100) / 100"
           },
           "formatted_sales": {
-            "formula": "sales_amount.toFixed(2)"
+            "formula": "sales_amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_tier_one": {
-            "formula": "tier_one_commission.toFixed(2)"
+            "formula": "tier_one_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_tier_two": {
-            "formula": "tier_two_commission.toFixed(2)"
+            "formula": "tier_two_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_tier_three": {
-            "formula": "tier_three_commission.toFixed(2)"
+            "formula": "tier_three_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_total_commission": {
-            "formula": "total_commission.toFixed(2)"
+            "formula": "total_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "sales_period_label": {
             "formula": "sales_period === 'day' ? 'daily' : sales_period === 'week' ? 'weekly' : 'monthly'"
@@ -15850,19 +15667,19 @@
             "formula": "Math.round((tier_one_commission + tier_two_commission + tier_three_commission) * 100) / 100"
           },
           "formatted_monthly_sales": {
-            "formula": "monthly_sales.toFixed(2)"
+            "formula": "monthly_sales.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_tier_one": {
-            "formula": "tier_one_commission.toFixed(2)"
+            "formula": "tier_one_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_tier_two": {
-            "formula": "tier_two_commission.toFixed(2)"
+            "formula": "tier_two_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_tier_three": {
-            "formula": "tier_three_commission.toFixed(2)"
+            "formula": "tier_three_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_total_commission": {
-            "formula": "total_commission.toFixed(2)"
+            "formula": "total_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
         "question": "A salesperson makes ${formatted_monthly_sales} in monthly sales. They earn 3% commission on the first $20,000, 5% on the portion from $20,000 through $100,000, and 8% on any sales above $100,000. Calculate the commission from each tier and the total monthly commission. Apply each rate only to the sales in its tier.",
@@ -15898,16 +15715,16 @@
             "formula": "Math.round((monthly_salary + total_commission) * 100) / 100"
           },
           "formatted_monthly_salary": {
-            "formula": "monthly_salary.toFixed(2)"
+            "formula": "monthly_salary.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_monthly_sales": {
-            "formula": "monthly_sales.toFixed(2)"
+            "formula": "monthly_sales.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_total_commission": {
-            "formula": "total_commission.toFixed(2)"
+            "formula": "total_commission.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_monthly_gross_pay": {
-            "formula": "monthly_gross_pay.toFixed(2)"
+            "formula": "monthly_gross_pay.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
         "question": "An employee earns a base salary of ${formatted_monthly_salary} per month and generates ${formatted_monthly_sales} in monthly sales. They earn 3% commission on the first $20,000 in sales, 5% on the portion from $20,000 through $100,000, and 8% on any sales above $100,000. Calculate the total monthly commission, then add it to the base salary to find monthly gross pay.",
@@ -15927,9 +15744,15 @@
             "min": 850,
             "max": 1150
           },
+          "formatted_purchase_price": {
+            "formula": "purchase_price.toLocaleString('en-US')"
+          },
           "sale_price": {
             "min": 850,
             "max": 1250
+          },
+          "formatted_sale_price": {
+            "formula": "sale_price.toLocaleString('en-US')"
           },
           "fee_rate_percent": {
             "min": 1,
@@ -15951,19 +15774,19 @@
             "formula": "Math.round((sale_proceeds - total_cost) * 100) / 100"
           },
           "formatted_purchase_fee": {
-            "formula": "purchase_fee.toFixed(2)"
+            "formula": "purchase_fee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_total_cost": {
-            "formula": "total_cost.toFixed(2)"
+            "formula": "total_cost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_sale_proceeds": {
-            "formula": "sale_proceeds.toFixed(2)"
+            "formula": "sale_proceeds.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_profit": {
-            "formula": "profit.toFixed(2)"
+            "formula": "profit.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
-        "question": "An investor buys {bond_count} bonds for ${purchase_price} each. The broker charges a {fee_rate_percent}% purchase fee. The investor later sells all the bonds for ${sale_price} each. Ignoring coupon interest, taxes, and selling fees, calculate the purchase fee, total cost, sale proceeds, and profit or loss.",
+        "question": "An investor buys {bond_count} bonds for ${formatted_purchase_price} each. The broker charges a {fee_rate_percent}% purchase fee. The investor later sells all the bonds for ${formatted_sale_price} each. Ignoring coupon interest, taxes, and selling fees, calculate the purchase fee, total cost, sale proceeds, and profit or loss.",
         "answer": "Purchase fee: ${formatted_purchase_fee}; Total cost: ${formatted_total_cost}; Sale proceeds: ${formatted_sale_proceeds}; Profit (or loss): ${formatted_profit}"
       },
       {
@@ -16004,16 +15827,16 @@
             "formula": "Math.round((sale_proceeds - total_cost) * 100) / 100"
           },
           "formatted_purchase_fee": {
-            "formula": "purchase_fee.toFixed(2)"
+            "formula": "purchase_fee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_total_cost": {
-            "formula": "total_cost.toFixed(2)"
+            "formula": "total_cost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_sale_proceeds": {
-            "formula": "sale_proceeds.toFixed(2)"
+            "formula": "sale_proceeds.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           },
           "formatted_profit": {
-            "formula": "profit.toFixed(2)"
+            "formula": "profit.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
           }
         },
         "question": "An investor buys {share_count} shares of stock for ${purchase_price_per_share} per share. The broker charges a {fee_rate_percent}% purchase fee. The investor later sells all the shares for ${sale_price_per_share} per share. Ignoring dividends, taxes, and selling fees, calculate the purchase fee, total cost, sale proceeds, and profit or loss.",
@@ -16199,11 +16022,17 @@
     "disposable_overtime_pay_unrounded": {
       "formula": "(gross_overtime_pay * disposable_percent / 100).toFixed(3)"
     },
+    "disposable_overtime_pay_unrounded_formatted": {
+      "formula": "Number(disposable_overtime_pay_unrounded).toLocaleString('en-US', {minimumFractionDigits: 3, maximumFractionDigits: 3})"
+    },
     "disposable_overtime_pay": {
       "formula": "Math.round(gross_overtime_pay * disposable_percent) / 100"
     },
     "donation_amount_unrounded": {
       "formula": "(disposable_overtime_pay * 0.1).toFixed(3)"
+    },
+    "donation_amount_unrounded_formatted": {
+      "formula": "Number(donation_amount_unrounded).toLocaleString('en-US', {minimumFractionDigits: 3, maximumFractionDigits: 3})"
     },
     "donation_amount": {
       "formula": "Math.round(disposable_overtime_pay * 10) / 100"
@@ -16237,7 +16066,7 @@
     }
   },
   "question": "{person_name} planned to use overtime pay for a vacation this year. Of the gross overtime pay of <b>{gross_overtime_pay_formatted}</b>, {disposable_percent_formatted} is disposable income. From those disposable funds, 10% will be donated and <b>{other_budget_item_amount_formatted}</b> will be spent on another budget item. How much will remain for the vacation? Answer to the nearest penny.",
-  "answer": "First find the disposable income: {gross_overtime_pay_formatted} &times; {disposable_percent}% = ${disposable_overtime_pay_unrounded}, which rounds to <b>{disposable_overtime_pay_formatted}</b>.<br>Next find the donation: {disposable_overtime_pay_formatted} &times; 10% = ${donation_amount_unrounded}, which rounds to <b>{donation_amount_formatted}</b>. Subtract it from the disposable income: {disposable_overtime_pay_formatted} - {donation_amount_formatted} = {remaining_after_donation_formatted}.<br>Finally subtract the other budget item: {remaining_after_donation_formatted} - {other_budget_item_amount_formatted} = <b>{vacation_amount_formatted}</b> left for the vacation."
+  "answer": "First find the disposable income: {gross_overtime_pay_formatted} &times; {disposable_percent}% = ${disposable_overtime_pay_unrounded_formatted}, which rounds to <b>{disposable_overtime_pay_formatted}</b>.<br>Next find the donation: {disposable_overtime_pay_formatted} &times; 10% = ${donation_amount_unrounded_formatted}, which rounds to <b>{donation_amount_formatted}</b>. Subtract it from the disposable income: {disposable_overtime_pay_formatted} - {donation_amount_formatted} = {remaining_after_donation_formatted}.<br>Finally subtract the other budget item: {remaining_after_donation_formatted} - {other_budget_item_amount_formatted} = <b>{vacation_amount_formatted}</b> left for the vacation."
 },
 {
   "id": "CM 4.5b Raise",
@@ -17765,7 +17594,7 @@
         "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D rectangular prism (box structure). The longest horizontal front edge must be labeled as {l} cm, the depth/receding horizontal edge labeled as {w} cm, and the vertical edge labeled as {h} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 270\" role=\"img\" aria-label=\"Rectangular toy chest with length, width, and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"chest-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><polygon points=\"95,92 290,92 355,48 160,48\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"290,92 355,48 355,178 290,222\" fill=\"#ead4aa\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"95,92 290,92 290,222 95,222\" fill=\"#f2dfbb\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"100\" y1=\"245\" x2=\"285\" y2=\"245\" stroke=\"#333\" marker-start=\"url(#chest-arrow)\" marker-end=\"url(#chest-arrow)\"/><text x=\"192\" y=\"263\" text-anchor=\"middle\" font-size=\"14\">Length: {l} cm</text><line x1=\"75\" y1=\"95\" x2=\"75\" y2=\"218\" stroke=\"#333\" marker-start=\"url(#chest-arrow)\" marker-end=\"url(#chest-arrow)\"/><text x=\"65\" y=\"160\" text-anchor=\"end\" font-size=\"14\">Height: {h} cm</text><line x1=\"300\" y1=\"78\" x2=\"348\" y2=\"46\" stroke=\"#333\" marker-start=\"url(#chest-arrow)\" marker-end=\"url(#chest-arrow)\"/><text x=\"365\" y=\"58\" font-size=\"14\">Width: {w} cm</text></svg></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: \\(A = 2(lw + lh + wh)\\)<br>&bull; Top & Bottom Faces: \\(2 \\cdot ({l} \\cdot {w}) = 2 \\cdot {base_area} = \\) <b>\\(2 \\cdot {base_area}\\) cm&sup2;</b><br>&bull; Front & Back Faces: \\(2 \\cdot ({l} \\cdot {h}) = \\) <b>{front_back_area} cm&sup2;</b><br>&bull; Left & Right Side Faces: \\(2 \\cdot ({w} \\cdot {h}) = \\) <b>{side_area} cm&sup2;</b><br>&bull; Total Surface Area: <b>{total_area} cm&sup2;</b><br><br><b>2. Total Volumetric Capacity:</b><br>&bull; Formula: \\(V = l \\cdot w \\cdot h\\)<br>&bull; Volume Calculation: \\({l} \\cdot {w} \\cdot {h}\\)<br>&bull; Total Volume: <b>{total_vol} cm&sup3;</b>"
       },
       {
-        "id": "GEO 2.5 C Tank v1",
+        "id": "GEO 2.5 Tank",
         "type": "template",
         "objective": "Surface Area and Volume of Cylinders with Sketching",
         "difficulty": "basic",
@@ -17775,8 +17604,7 @@
             "max": 8
           },
           "h": {
-            "min": 6,
-            "max": 15
+            "formula": "(function(){var value=Math.floor(Math.random()*9)+6;return value>=r?value+1:value})()"
           },
           "base_area_coeff": {
             "formula": "r * r"
@@ -18316,7 +18144,7 @@
         "answer": "A counterexample must show a real-world case where the condition (the \"if\" part) is true, but the conclusion (the \"then\" part) is proven false.<br><br><b>Examples of valid counterexamples include:</b>{acceptable_inputs}<br><br><i>Explanation:</i><br>{exp_text}"
       },
       {
-        "id": "GEO 3-2a Conjunction",
+        "id": "GEO 3-2a1 Conjunction",
         "type": "template",
         "objective": "Deduce the truth value of a conjunction.",
         "difficulty": "basic",
@@ -18344,7 +18172,7 @@
         "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound logic statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"), and the symbol <b>\\( \\wedge \\)</b> represents a conjunction (\"and\"). Translating \\( \\sim p \\wedge \\sim q \\) gives:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT complementary, AND \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are NOT vertical angles.\"</i><br><br><b>Step 2: Evaluate the truth value of individual statement \\( p \\) and its negation \\( \\sim p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) form a straight angle line, they are a linear pair and must sum to exactly \\( 180^\\circ \\) (supplementary) by the <i>Linear Pair Postulate</i>. Therefore, statement \\( p \\) is false, making its negation <b>\\( \\sim p \\) TRUE</b>.<br><br><b>Step 3: Evaluate the truth value of individual statement \\( q \\) and its negation \\( \\sim q \\).</b><br>Vertical angles are nonadjacent angles formed by two intersecting lines. Since \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) share a common side ray \\( \\overrightarrow{{ptB}{ptC}} \\), they are adjacent angles and cannot be vertical. Therefore, statement \\( q \\) is false, making its negation <b>\\( \\sim q \\) TRUE</b>.<br><br><b>Step 4: Evaluate the complete conjunction \\( \\sim p \\wedge \\sim q \\).</b><br>A conjunction (\"and\" statement) is true if and only if both of its components evaluate to true:<br>\\[ \\text{True} \\wedge \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>TRUE</span>.<br><br><b>Conclusion Summary:</b><br>&bull; <b>Compound Statement:</b> \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are not complementary, and \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are not vertical angles.<br>&bull; <b>Truth Value:</b> <span style='color: #2b579a; font-weight: bold;'>TRUE</span>"
       },
       {
-        "id": "GEO 3-2a Disjunction",
+        "id": "GEO 3-2a2 Disjunction",
         "type": "template",
         "objective": "Deduce the truth value of a disjunction.",
         "difficulty": "basic",
@@ -18372,7 +18200,7 @@
         "answer": "Here is the complete logical breakdown and step-by-step evaluation for the compound logic statement:<br><br><b>Step 1: Write the compound statement in words.</b><br>The symbol <b>\\( \\sim \\)</b> represents a negation (\"not\"), and the symbol <b>\\( \\vee \\)</b> represents a disjunction (\"or\"). Translating \\( p \\vee \\sim r \\) gives:<br><i>\"\\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, OR segment \\( \\overline{{ptA}{ptB}} \\) is not congruent to segment \\( \\overline{{ptB}{ptD}} \\).\"</i><br><br><b>Step 2: Evaluate the truth value of individual statement \\( p \\).</b><br>Complementary angles must add up to exactly \\( 90^\\circ \\). Because points \\( {ptA} \\), \\( {ptB} \\), and \\( {ptD} \\) lie along a straight horizontal baseline frame, they form a straight angle. By the <i>Linear Pair Postulate</i>, \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are supplementary and must add up to exactly \\( 180^\\circ \\). Therefore, statement \\( p \\) is <b>FALSE</b>.<br><br><b>Step 3: Evaluate the truth value of individual statement \\( r \\) and its negation \\( \\sim r \\).</b><br>Looking at the diagram blueprint, there are no geometry indicators or tick marks stating that vertex point \\( {ptB} \\) is the exact numerical midpoint of the horizontal line segment. Therefore, we cannot assume segment lengths match, meaning statement \\( r \\) is fundamentally false. Negating a false statement makes it true, so <b>\\( \\sim r \\) is TRUE</b> (it is true that they are not confirmed congruent).<br><br><b>Step 4: Evaluate the complete disjunction \\( p \\vee \\sim r \\).</b><br>A disjunction (\"or\" statement) is true if at least one of its components evaluates to true:<br>\\[ \\text{False} \\vee \\text{True} = \\text{TRUE} \\]<br>This balances out to a final value of <b>TRUE</b>.<br><br><b>Conclusion Summary:</b><br>&bull; <b>Compound Statement:</b> \\( \\angle {ptA}{ptB}{ptC} \\) and \\( \\angle {ptC}{ptB}{ptD} \\) are complementary, or segment \\( \\overline{{ptA}{ptB}} \\) is not congruent to segment \\( \\overline{{ptB}{ptD}} \\).<br>&bull; <b>Truth Value:</b> <b>TRUE</b>"
       },
       {
-        "id": "GEO-3-2b Conditional - Law of Detachment",
+        "id": "GEO-3-2b1 Conditional - Law of Detachment",
         "type": "template",
         "objective": "Deduce the truth value of a conditional if-then statement based on a geometric diagram.",
         "difficulty": "basic",
@@ -18436,7 +18264,7 @@
         "answer": "Here is the complete logical breakdown and step-by-step evaluation for the conditional statement:<br><br><b>Step 1: Write the compound conditional statement in words.</b><br>The arrow symbol <b>\\( \\rightarrow \\)</b> represents a conditional \"if-then\" statement. Translating \\( {target_sym} \\) yields:<br><i>\"{words_desc}\"</i><br><br><b>Step 2: Evaluate the component components.</b><br><ul><li>The hypothesis condition is evaluated as <b>{hypothesis_text}</b> based on the geometric properties shown in the structural blueprint.</li><li>The conclusion condition is evaluated as <b>{conclusion_text}</b>.</li></ul><br><b>Step 3: Apply conditional truth table logic rules.</b><br>{step_reasoning}<br><br>This translates to the formal logic validation:<br>\\[ \\text{{hypothesis_math_text}} \\rightarrow \\text{{conclusion_math_text}} = \\text{{final_truth_value}} \\]<br>This balances out to a final value of <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>.<br><br><b>Final Answer Summary:</b><br>&bull; Target Statement: \\( {target_sym} \\)<br>&bull; Final Evaluation Value: <span style='color: #2b579a; font-weight: bold;'>{final_truth_value}</span>"
       },
       {
-        "id": "GEO-3-2b Biconditional",
+        "id": "GEO-3-2b2 Biconditional",
         "type": "template",
         "objective": "Deduce the truth value of a biconditional if-and-only-if statement based on a geometric diagram.",
         "difficulty": "basic",
@@ -19684,6 +19512,72 @@
     }
   ]
 },
+      {
+        "id": "ALG1-4.3 & 5.1-A1",
+        "type": "template",
+        "objective": "Writing Equations in Slope-Intercept Form",
+        "difficulty": "advanced",
+        "variables": {
+          "x1": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0
+            ]
+          },
+          "y1": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0
+            ]
+          },
+          "x2": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0,
+              "x1"
+            ]
+          },
+          "y2": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0,
+              "y1"
+            ]
+          },
+          "mnum": {
+            "formula": "y2 - y1"
+          },
+          "mden": {
+            "formula": "x2 - x1"
+          },
+          "m": {
+            "formula": "mnum/mden",
+            "format": "fraction"
+          },
+          "b_num_raw": {
+            "formula": "mden*y1 - mnum*x1"
+          },
+          "b_den_raw": {
+            "formula": "mden"
+          },
+          "b_num": {
+            "formula": "b_den_raw < 0 ? -1*b_num_raw : b_num_raw"
+          },
+          "b_den": {
+            "formula": "b_den_raw < 0 ? -1*b_den_raw : b_den_raw"
+          },
+          "b": {
+            "formula": "b_num/b_den",
+            "format": "fraction"
+          }
+        },
+        "question": "A line passes through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\). Write the equation of the line in slope-intercept form.",
+        "answer": "\\( y = {m|coef}x {b|sign} \\)"
+      },
       {
         "id": "GEO 3-3 Logic (practice only)",
         "type": "template",
