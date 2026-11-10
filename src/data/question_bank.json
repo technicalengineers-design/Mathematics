@@ -19670,6 +19670,49 @@
     ],
     "5 Triangles and Congruence": [
       {
+        "id": "GEO 5.5a Interacting Triangles",
+        "type": "template",
+        "objective": "Use a straight angle and a perpendicular line to solve for an unknown angle",
+        "difficulty": "basic",
+        "variables": {
+          "x_value": {
+            "formula": "2 + Math.floor(Math.random() * 5)"
+          },
+          "m1": {
+            "formula": "2 + Math.floor(Math.random() * 3)"
+          },
+          "m2": {
+            "formula": "2 + Math.floor(Math.random() * 3)"
+          },
+          "c1": {
+            "formula": "12 + Math.floor(Math.random() * 14)"
+          },
+          "c2": {
+            "formula": "90 - (m1 + m2) * x_value - c1"
+          },
+          "expr1": {
+            "formula": "m1 + 'x + ' + c1"
+          },
+          "expr2": {
+            "formula": "m2 + 'x + ' + c2"
+          },
+          "angle1": {
+            "formula": "m1 * x_value + c1"
+          },
+          "question_text": {
+            "formula": "'Line AC is straight, ray OD is perpendicular to AC, and ray OE lies inside angle AOD. Determine the value of x and the measure of angle AOE. <i>(Illustrations not to scale)</i>'"
+          },
+          "diagram_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"520\" height=\"280\" viewBox=\"0 0 520 280\" role=\"img\" aria-label=\"Two triangles sharing a ray, with a straight line and one marked right angle\"><rect width=\"520\" height=\"280\" fill=\"#ffffff\"/><path d=\"M120 238 L420 238 M255 238 L255 38 M120 238 L190 115 L255 38 M255 238 L190 115\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M255 218 L275 218 L275 238\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"104\" y=\"258\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">A</text><text x=\"255\" y=\"261\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">O</text><text x=\"431\" y=\"258\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">C</text><text x=\"255\" y=\"28\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">D</text><text x=\"180\" y=\"108\" text-anchor=\"end\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">E</text><text <path d=\"M219 238 A36 36 0 0 1 238.2 206.2\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/><path d=\"M228.4 221.7 L220.4 216\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/><path d=\"M232.6 195.6 A48 48 0 0 1 255 190\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/><path d=\"M241 197.3 L237.7 187.9 M247.5 195.7 L245.8 185.8\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/><text x=\"137\" y=\"227\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;AOE = '+expr1+'</text><text x=\"263\" y=\"154\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;EOD = '+expr2+'</text></svg>'"
+          },
+          "answer_text": {
+            "formula": "'Since ray OD is perpendicular to straight line AC, angle AOD is 90°. The two adjacent angles satisfy (' + expr1 + ') + (' + expr2 + ') = 90°, so (' + (m1 + m2) + ')x + ' + (c1 + c2) + ' = 90. Solving gives x = ' + x_value + '. Then m∠AOE = ' + m1 + '(' + x_value + ') + ' + c1 + ' = ' + angle1 + '°. '"
+          }
+        },
+        "question": "<div style=\"display:grid;grid-template-columns:minmax(0,520px) minmax(220px,1fr);align-items:start;gap:18px;\"><div>{diagram_svg}</div><div>{question_text}</div></div>",
+        "answer": "{answer_text}"
+      },
+      {
         "id": "GEO 5.6a Isosceles",
         "type": "template",
         "objective": "Use the Isosceles Triangle Theorem to solve for a missing side length or angle measure",
