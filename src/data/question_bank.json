@@ -4956,7 +4956,7 @@
       }
     ],
     "4 Functions": [
-            {
+      {
         "id": "ALG 4-1a Table of Values",
         "type": "template",
         "objective": "Graphing Linear Functions and Rate of Change",
@@ -6546,8 +6546,7 @@
         },
         "question": "Solve and graph: <br> \\( \\frac{ | {a|coef} x {b|sign} | }{ {k} } {b|sign} < {c} \\)",
         "answer": "\\( {x2} < x < {x1} \\)"
-      }
-    ,
+      },
       {
         "id": "ALG1-6.5-B1",
         "type": "template",
@@ -6748,7 +6747,8 @@
         },
         "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
         "answer": "Rewrite as \\( y < {m|coef}x {yint|sign} \\); boundary line is dashed; shade below the line."
-      }],
+      }
+    ],
     "Semester 1 Review": [],
     "Objective Assessment 1": [],
     "7 Systems": [
@@ -15844,303 +15844,505 @@
       }
     ],
     "4 Budgeting": [
-   {
-  "id": "CM 4.1a Disposable Income",
-  "type": "template",
-  "objective": "Interpreting Multivariable Pie Charts and Multi-Category Budgets",
-  "difficulty": "basic",
-  "variables": {
-    "disposable_income": { "min": 50000, "max": 150000, "step": 5000 },
-    "pct_housing": { "min": 25, "max": 35, "step": 1 },
-    "pct_food": { "min": 10, "max": 15, "step": 1 },
-    "pct_utilities": { "min": 5, "max": 8, "step": 1 },
-    "pct_transportation": { "min": 8, "max": 12, "step": 1 },
-    "pct_clothing": { "min": 3, "max": 6, "step": 1 },
-    "pct_medical": { "min": 4, "max": 7, "step": 1 },
-    "pct_insurance": { "min": 4, "max": 7, "step": 1 },
-    "pct_recreation": { "min": 5, "max": 10, "step": 1 },
-    "pct_savings": { "min": 5, "max": 10, "step": 1 },
-    "pct_miscellaneous": { "formula": "100 - pct_housing - pct_food - pct_utilities - pct_transportation - pct_clothing - pct_medical - pct_insurance - pct_recreation - pct_savings" },
-    "target_category": { "values": ["Housing", "Food", "Utilities", "Transportation", "Clothing", "Medical", "Insurance", "Recreation", "Savings", "Miscellaneous"] },
-    "target_percent": { "formula": "({ Housing: pct_housing, Food: pct_food, Utilities: pct_utilities, Transportation: pct_transportation, Clothing: pct_clothing, Medical: pct_medical, Insurance: pct_insurance, Recreation: pct_recreation, Savings: pct_savings, Miscellaneous: pct_miscellaneous })[target_category]" },
-    "calculated_answer": { "formula": "Math.round((disposable_income * target_percent) / 100)" },
-    "disposable_income_formatted": { "formula": "disposable_income.toLocaleString('en-US')" },
-    "calculated_answer_formatted": { "formula": "calculated_answer.toLocaleString('en-US')" }
-  },
-  "chart_generation_script": "import matplotlib.pyplot as plt\nlabels = ['Housing', 'Food', 'Utilities', 'Transportation', 'Clothing', 'Medical', 'Insurance', 'Recreation', 'Savings', 'Misc']\nsizes = [{pct_housing}, {pct_food}, {pct_utilities}, {pct_transportation}, {pct_clothing}, {pct_medical}, {pct_insurance}, {pct_recreation}, {pct_savings}, {pct_miscellaneous}]\nplt.figure(figsize=(8, 8))\nplt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff','#99ff99','#ffcc99','#c2c2f0','#ffb3e6','#c4e17f','#76d7c4','#f7dc6f','#af7ac5'])\nplt.title('Annual Disposable Income Breakdown')\nplt.savefig('budget_pie_chart.png')",
-  "question": "A household has a total annual disposable income of <b>\\${disposable_income_formatted}</b>. Based on their annual budget, they allocate their income into the following categories: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).\n\nAccording to this allocation, exactly how much money is budgeted annually for <b>{target_category}</b>?",
-  "answer": "\\${calculated_answer_formatted}"
-},
-{
-  "id": "CM 4.1b Recommended Budget Amount",
-  "type": "template",
-  "objective": "Calculate recommended budget amounts from gross income and disposable income rates",
-  "difficulty": "basic",
-  "variables": {
-    "gross_income": { "min": 30000, "max": 120000 },
-    "disposable_rate": { "formula": "gross_income < 52000 ? 69 : gross_income <= 80000 ? 67 : 65" },
-    "disposable_income": { "formula": "Math.round(gross_income * disposable_rate / 100)" },
-    "pct_housing": { "min": 25, "max": 30, "step": 1 },
-    "pct_food": { "min": 10, "max": 13, "step": 1 },
-    "pct_utilities": { "min": 5, "max": 7, "step": 1 },
-    "pct_transportation": { "min": 8, "max": 10, "step": 1 },
-    "pct_clothing": { "min": 3, "max": 5, "step": 1 },
-    "pct_medical": { "min": 4, "max": 6, "step": 1 },
-    "pct_insurance": { "min": 4, "max": 6, "step": 1 },
-    "pct_recreation": { "min": 5, "max": 8, "step": 1 },
-    "pct_savings": { "min": 5, "max": 8, "step": 1 },
-    "pct_miscellaneous": { "formula": "100 - pct_housing - pct_food - pct_utilities - pct_transportation - pct_clothing - pct_medical - pct_insurance - pct_recreation - pct_savings" },
-    "target_category": { "values": ["Housing", "Food", "Utilities", "Transportation", "Clothing", "Medical", "Insurance", "Recreation", "Savings", "Miscellaneous"] },
-    "target_percent": { "formula": "({ Housing: pct_housing, Food: pct_food, Utilities: pct_utilities, Transportation: pct_transportation, Clothing: pct_clothing, Medical: pct_medical, Insurance: pct_insurance, Recreation: pct_recreation, Savings: pct_savings, Miscellaneous: pct_miscellaneous })[target_category]" },
-    "recommended_amount": { "formula": "Math.round(disposable_income * target_percent / 100)" },
-    "gross_income_formatted": { "formula": "gross_income.toLocaleString('en-US')" },
-    "disposable_income_formatted": { "formula": "disposable_income.toLocaleString('en-US')" },
-    "recommended_amount_formatted": { "formula": "recommended_amount.toLocaleString('en-US')" }
-  },
-  "question": "A family earns a gross annual income of <b>\\${gross_income_formatted}</b>. Their disposable income is 69% for an annual income near $52,000 or below, 67% for an annual income near $63,000, and 65% for income near $81,000 or above. They use this recommended budget allocation: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).<br><br>What is the recommended annual amount for <b>{target_category}</b>, rounded to the nearest dollar?",
-  "answer": "Annual disposable income: \\${disposable_income_formatted}<br>Recommended annual amount for {target_category}: \\${recommended_amount_formatted}"
-},
-{
-  "id": "CM 4.2 Salary Conversion",
-  "type": "template",
-  "objective": "Convert between payroll cycle increments incorporating a year-end bonus",
-  "difficulty": "basic",
-  "variables": {
-    "source_type_idx": { "formula": "Math.floor(Math.random() * 4)" },
-    "target_type_idx": { "formula": "Math.floor(Math.random() * 3)" },
-    "source_labels": { "formula": "['annual', 'monthly', 'bi-weekly', 'weekly']" },
-    "target_labels_matrix": { "formula": "[['monthly', 'bi-weekly', 'weekly'], ['annual', 'bi-weekly', 'weekly'], ['annual', 'monthly', 'weekly'], ['annual', 'monthly', 'bi-weekly']]" },
-    "source_cycle": { "formula": "source_labels[source_type_idx]" },
-    "target_cycle": { "formula": "target_labels_matrix[source_type_idx][target_type_idx]" },
-    "base_annual": { "min": 45000, "max": 120000, "step": 1200 },
-    "bonus_num": { "min": 2000, "max": 8000, "step": 500 },
-    "bonus": { "formula": "'' + bonus_num.toLocaleString('en-US')" },
-    "source_amount_num": { "formula": "source_cycle === 'annual' ? base_annual : (source_cycle === 'monthly' ? base_annual / 12 : (source_cycle === 'bi-weekly' ? base_annual / 26 : base_annual / 52))" },
-    "source_amount": { "formula": "'' + Number(source_amount_num.toFixed(2)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})" },
-    "total_annual_calc": { "formula": "source_cycle === 'annual' ? (source_amount_num + bonus_num) : (base_annual + bonus_num)" },
-    "total_annual_str": { "formula": "'' + total_annual_calc.toLocaleString('en-US')" },
-    "base_annual_str": { "formula": "'' + base_annual.toLocaleString('en-US')" },
-    "calculated_answer_num": { "formula": "target_cycle === 'annual' ? total_annual_calc : (target_cycle === 'monthly' ? total_annual_calc / 12 : (target_cycle === 'bi-weekly' ? total_annual_calc / 26 : total_annual_calc / 52))" },
-    "calculated_answer": { "formula": "'' + Number(calculated_answer_num.toFixed(2)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})" },
-    "step2_desc": { "formula": "source_cycle === 'annual' ? 'Add the base annual salary to the year-end bonus:' : 'Find the base annual salary first, then add the year-end bonus:'" },
-    "step2_math": { "formula": "source_cycle === 'annual' ? '$' + source_amount + ' + $' + bonus + ' = $' + total_annual_str : '$' + source_amount + ' * ' + (source_cycle === 'monthly' ? '12' : (source_cycle === 'bi-weekly' ? '26' : '52')) + ' = $' + base_annual_str + ' base annual salary. Total annual earnings: $' + base_annual_str + ' + $' + bonus + ' = $' + total_annual_str" },
-    "step3_math": { "formula": "target_cycle === 'annual' ? 'The total annual amount is already calculated.' : 'Divide the total annual earnings of $' + total_annual_str + ' by the number of pay periods in the target cycle: $' + total_annual_str + ' / ' + (target_cycle === 'monthly' ? '12' : (target_cycle === 'bi-weekly' ? '26' : '52')) + ' = $' + calculated_answer" }
-  },
-  "question": "An employee earns a <b>{source_cycle}</b> salary of <b>${source_amount}</b>. In addition to this pay rate, they receive a guaranteed year-end bonus of <b>${bonus}</b>. <br><br>Based on these total combined earnings, what is their equivalent <b>{target_cycle}</b> salary? <br><br>*(Assume there are 12 months, 26 bi-weekly periods, and 52 weeks in a calendar year. Round your final answer to two decimal places if necessary)*",
-  "answer": "Step 1: Identify the incoming payment details:<br>Stated cycle rate: ${source_amount} ({source_cycle})<br>Year-end bonus multiplier: ${bonus}<br><br>Step 2: {step2_desc}<br>{step2_math}<br><br>Step 3: Convert the total annual income into the requested target increment ({target_cycle}):<br>{step3_math}"
-},
-{
-  "id": "CM 4.3 Budget Increase",
-  "type": "template",
-  "objective": "Calculate the monthly increase resulting from a percentage increase to an annual budget item",
-  "difficulty": "basic",
-  "variables": {
-    "budget_category": {
-      "values": ["housing", "groceries", "transportation", "utilities", "healthcare", "insurance", "childcare", "education"]
-    },
-    "annual_budget_thousands": {
-      "min": 6,
-      "max": 36
-    },
-    "annual_budget_amount": {
-      "formula": "annual_budget_thousands * 1000"
-    },
-    "increase_percent": {
-      "min": 3,
-      "max": 11
-    },
-    "annual_increase_amount": {
-      "formula": "annual_budget_amount * increase_percent / 100"
-    },
-    "monthly_increase_amount": {
-      "formula": "Math.round(annual_increase_amount / 12 * 100) / 100"
-    },
-    "annual_budget_formatted": {
-      "formula": "annual_budget_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "annual_increase_formatted": {
-      "formula": "annual_increase_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "monthly_increase_formatted": {
-      "formula": "monthly_increase_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    }
-  },
-  "question": "A household spends <b>{annual_budget_formatted} per year</b> on {budget_category}. The annual budget for this item is increasing by <b>{increase_percent}%</b>. How much should the household increase its monthly budget for this item? Round to the nearest cent.",
-  "answer": "First find the annual increase: {annual_budget_formatted} &times; {increase_percent}% = {annual_increase_formatted}. Then divide by 12 months: {annual_increase_formatted} &divide; 12 = <b>{monthly_increase_formatted} per month</b>."
-},
-{
-  "id": "CM 4.4 Emergency",
-  "type": "template",
-  "objective": "Identify excess funds in a monthly budget and reallocate them to cover an emergency expense",
-  "difficulty": "basic",
-  "variables": {
-    "days_ago": { "min": 5, "max": 9 },
-    "expense_date": {
-      "formula": "new Date(Date.now() - days_ago * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })"
-    },
-    "budget_rows": {
-      "formula": "(function() { var items = [['Rent',1500],['Groceries',500],['Dining out',150],['Entertainment',100],['Clothing',100],['Utilities',250],['Transportation',200],['Medical',100],['Pets',75],['Savings',100],['Miscellaneous',75],['Phone',100]]; var count = 2 + Math.floor(Math.random() * 3); var shuffled = items.slice(); for (var i = shuffled.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var temp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = temp; } var selected = shuffled.slice(0, count).map(function(item) { return item[0]; }); var cuts = [0,30]; while (cuts.length < count + 1) { var cut = 1 + Math.floor(Math.random() * 29); if (!cuts.includes(cut)) cuts.push(cut); } cuts.sort(function(a,b) { return a-b; }); var reductions = []; for (var k = 1; k < cuts.length; k++) reductions.push((cuts[k] - cuts[k-1]) * 50); var rows = items.map(function(item) { var selectedIndex = selected.indexOf(item[0]); var reduction = selectedIndex >= 0 ? reductions[selectedIndex] : 0; var extra = reduction > 0 ? Math.floor(Math.random() * 5) * 50 : 0; return { category:item[0], minimum:item[1], planned:item[1] + reduction + extra, reduction:reduction, excess:reduction + extra }; }); for (var n = rows.length - 1; n > 0; n--) { var m = Math.floor(Math.random() * (n + 1)); var row = rows[n]; rows[n] = rows[m]; rows[m] = row; } return rows; })()"
-    },
-    "budget_table": {
-      "formula": "'<table style=\"border-collapse:collapse;text-align:left;border:0\"><tr><th style=\"border:1px solid #000;padding:4px\">Budget item</th><th style=\"border:1px solid #000;padding:4px\">Planned</th><th style=\"border:1px solid #000;padding:4px\">Minimum</th><th style=\"width:30%;min-width:180px;border:0!important;padding:0\"></th><th style=\"border:1px solid #000;padding:4px\">Budget item</th><th style=\"border:1px solid #000;padding:4px\">Planned</th><th style=\"border:1px solid #000;padding:4px\">Minimum</th></tr>' + Array.from({length:6}, function(_,index) { var left = budget_rows[index]; var right = budget_rows[index+6]; return '<tr><td style=\"border:1px solid #000;padding:4px\">' + left.category + '</td><td style=\"border:1px solid #000;padding:4px\">$' + left.planned.toLocaleString('en-US') + '</td><td style=\"border:1px solid #000;padding:4px\">$' + left.minimum.toLocaleString('en-US') + '</td><td style=\"width:30%;min-width:180px;border:0!important;padding:0\"></td><td style=\"border:1px solid #000;padding:4px\">' + right.category + '</td><td style=\"border:1px solid #000;padding:4px\">$' + right.planned.toLocaleString('en-US') + '</td><td style=\"border:1px solid #000;padding:4px\">$' + right.minimum.toLocaleString('en-US') + '</td></tr>'; }).join('') + '</table>'"
-    },
-    "budget_solution": {
-      "formula": "budget_rows.filter(function(item) { return item.reduction > 0; }).map(function(item) { return item.category + ': excess $' + item.excess.toLocaleString('en-US') + ', reduce by $' + item.reduction.toLocaleString('en-US'); }).join('<br>')"
-    }
-  },
-  "question": "On {expense_date}, Theo Blake had an unexpected <b>$1,500 transmission repair</b>. He needs to pay this emergency bill from this month's budget. The table shows planned spending and the minimum amount needed for each item this month. Recommend which budget item to reduce and by how much to reduce each in order to balance the budget.<br><br>{budget_table}<br>",
-  "answer": "The budget items with excess funds and one valid reduction for each are:<br>{budget_solution}<br>The recommended reductions total <b>$1,500</b>, enough to pay the transmission bill, and each reduction is no greater than the item's excess."
-},
-{
-  "id": "CM 4.5a Bonus",
-  "type": "template",
-  "objective": "Calculate disposable overtime income remaining after a budget allocation",
-  "difficulty": "basic",
-  "variables": {
-    "person_name": {
-      "textValue": ["Theo", "Maya", "Jordan", "Avery", "Riley", "Casey", "Morgan", "Taylor"]
-    },
-    "gross_overtime_pay_cents": {
-      "min": 150000,
-      "max": 400000,
-      "step": 5000
-    },
-    "gross_overtime_pay": {
-      "formula": "gross_overtime_pay_cents / 100"
-    },
-    "disposable_percent": {
-      "formula": "[65, 67, 69][Math.floor(Math.random() * 3)]"
-    },
-    "other_budget_item_amount_cents": {
-      "min": 10000,
-      "max": 60000,
-      "step": 2500
-    },
-    "other_budget_item_amount": {
-      "formula": "other_budget_item_amount_cents / 100"
-    },
-    "disposable_overtime_pay_unrounded": {
-      "formula": "(gross_overtime_pay * disposable_percent / 100).toFixed(3)"
-    },
-    "disposable_overtime_pay_unrounded_formatted": {
-      "formula": "Number(disposable_overtime_pay_unrounded).toLocaleString('en-US', {minimumFractionDigits: 3, maximumFractionDigits: 3})"
-    },
-    "disposable_overtime_pay": {
-      "formula": "Math.round(gross_overtime_pay * disposable_percent) / 100"
-    },
-    "donation_amount_unrounded": {
-      "formula": "(disposable_overtime_pay * 0.1).toFixed(3)"
-    },
-    "donation_amount_unrounded_formatted": {
-      "formula": "Number(donation_amount_unrounded).toLocaleString('en-US', {minimumFractionDigits: 3, maximumFractionDigits: 3})"
-    },
-    "donation_amount": {
-      "formula": "Math.round(disposable_overtime_pay * 10) / 100"
-    },
-    "remaining_after_donation": {
-      "formula": "disposable_overtime_pay - donation_amount"
-    },
-    "vacation_amount": {
-      "formula": "Math.round((remaining_after_donation - other_budget_item_amount) * 100) / 100"
-    },
-    "gross_overtime_pay_formatted": {
-      "formula": "gross_overtime_pay.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "disposable_percent_formatted": {
-      "formula": "disposable_percent + '%'"
-    },
-    "disposable_overtime_pay_formatted": {
-      "formula": "disposable_overtime_pay.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "donation_amount_formatted": {
-      "formula": "donation_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "remaining_after_donation_formatted": {
-      "formula": "remaining_after_donation.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "other_budget_item_amount_formatted": {
-      "formula": "other_budget_item_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "vacation_amount_formatted": {
-      "formula": "vacation_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    }
-  },
-  "question": "{person_name} planned to use overtime pay for a vacation this year. Of the gross overtime pay of <b>{gross_overtime_pay_formatted}</b>, {disposable_percent_formatted} is disposable income. From those disposable funds, 10% will be donated and <b>{other_budget_item_amount_formatted}</b> will be spent on another budget item. How much will remain for the vacation? Answer to the nearest penny.",
-  "answer": "First find the disposable income: {gross_overtime_pay_formatted} &times; {disposable_percent}% = ${disposable_overtime_pay_unrounded_formatted}, which rounds to <b>{disposable_overtime_pay_formatted}</b>.<br>Next find the donation: {disposable_overtime_pay_formatted} &times; 10% = ${donation_amount_unrounded_formatted}, which rounds to <b>{donation_amount_formatted}</b>. Subtract it from the disposable income: {disposable_overtime_pay_formatted} - {donation_amount_formatted} = {remaining_after_donation_formatted}.<br>Finally subtract the other budget item: {remaining_after_donation_formatted} - {other_budget_item_amount_formatted} = <b>{vacation_amount_formatted}</b> left for the vacation."
-},
-{
-  "id": "CM 4.5b Raise",
-  "type": "template",
-  "objective": "Calculate a new hourly wage, annual gross income, and disposable income after tax and donation",
-  "difficulty": "basic",
-  "variables": {
-    "person_name": {
-      "textValue": ["Theo", "Njabulo","Maya", "Jordan", "Avery", "Riley", "Green", "Kasey", "Morgan", "Davan","Taylor"]
-    },
-    "original_wage_cents": {
-      "min": 1000,
-      "max": 2500,
-      "step": 25
-    },
-    "original_wage": {
-      "formula": "original_wage_cents / 100"
-    },
-    "raise_amount_cents": {
-      "min": 25,
-      "max": 100,
-      "step": 5
-    },
-    "raise_amount": {
-      "formula": "raise_amount_cents / 100"
-    },
-    "new_wage": {
-      "formula": "Math.round((original_wage + raise_amount) * 100) / 100"
-    },
-    "hours_per_week": 40,
-    "weeks_per_year": 52,
-    "annual_gross_income": {
-      "formula": "Math.round(new_wage * hours_per_week * weeks_per_year * 100) / 100"
-    },
-    "tax_rate": 21,
-    "donation_rate": 10,
-    "annual_tax": {
-      "formula": "Math.round(annual_gross_income * tax_rate) / 100"
-    },
-    "annual_donation": {
-      "formula": "Math.round(annual_gross_income * donation_rate) / 100"
-    },
-    "disposable_income": {
-      "formula": "Math.round((annual_gross_income - annual_tax - annual_donation) * 100) / 100"
-    },
-    "original_wage_formatted": {
-      "formula": "original_wage.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "raise_amount_formatted": {
-      "formula": "raise_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "new_wage_formatted": {
-      "formula": "new_wage.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "annual_gross_income_formatted": {
-      "formula": "annual_gross_income.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "annual_tax_formatted": {
-      "formula": "annual_tax.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "annual_donation_formatted": {
-      "formula": "annual_donation.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    },
-    "disposable_income_formatted": {
-      "formula": "disposable_income.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
-    }
-  },
-  "question": "{person_name} received a raise of <b>{raise_amount_formatted} per hour</b>. The original wage was <b>{original_wage_formatted} per hour</b>.<br><br><b>A)</b> What is the new hourly wage? What is the annual gross income if {person_name} works 40 hours per week for 52 weeks?<br><br><b>B)</b> The tax rate is 21%. In addition, 10% of annual gross income is donated. How much annual disposable income remains? Answer all amounts to the nearest penny.",
-  "answer": "<b>A)</b> New hourly wage: {original_wage_formatted} + {raise_amount_formatted} = <b>{new_wage_formatted}</b>.<br>Annual gross income: {new_wage_formatted} &times; 40 hours &times; 52 weeks = <b>{annual_gross_income_formatted}</b>.<br><br><b>B)</b> Annual tax: {annual_gross_income_formatted} &times; 21% = <b>{annual_tax_formatted}</b>.<br>Donation: {annual_gross_income_formatted} &times; 10% = <b>{annual_donation_formatted}</b>.<br>Disposable income: {annual_gross_income_formatted} - {annual_tax_formatted} - {annual_donation_formatted} = <b>{disposable_income_formatted}</b>."
-}
-
-
-
-
+      {
+        "id": "CM 4.1a Disposable Income",
+        "type": "template",
+        "objective": "Interpreting Multivariable Pie Charts and Multi-Category Budgets",
+        "difficulty": "basic",
+        "variables": {
+          "disposable_income": {
+            "min": 50000,
+            "max": 150000,
+            "step": 5000
+          },
+          "pct_housing": {
+            "min": 25,
+            "max": 35,
+            "step": 1
+          },
+          "pct_food": {
+            "min": 10,
+            "max": 15,
+            "step": 1
+          },
+          "pct_utilities": {
+            "min": 5,
+            "max": 8,
+            "step": 1
+          },
+          "pct_transportation": {
+            "min": 8,
+            "max": 12,
+            "step": 1
+          },
+          "pct_clothing": {
+            "min": 3,
+            "max": 6,
+            "step": 1
+          },
+          "pct_medical": {
+            "min": 4,
+            "max": 7,
+            "step": 1
+          },
+          "pct_insurance": {
+            "min": 4,
+            "max": 7,
+            "step": 1
+          },
+          "pct_recreation": {
+            "min": 5,
+            "max": 10,
+            "step": 1
+          },
+          "pct_savings": {
+            "min": 5,
+            "max": 10,
+            "step": 1
+          },
+          "pct_miscellaneous": {
+            "formula": "100 - pct_housing - pct_food - pct_utilities - pct_transportation - pct_clothing - pct_medical - pct_insurance - pct_recreation - pct_savings"
+          },
+          "target_category": {
+            "values": [
+              "Housing",
+              "Food",
+              "Utilities",
+              "Transportation",
+              "Clothing",
+              "Medical",
+              "Insurance",
+              "Recreation",
+              "Savings",
+              "Miscellaneous"
+            ]
+          },
+          "target_percent": {
+            "formula": "({ Housing: pct_housing, Food: pct_food, Utilities: pct_utilities, Transportation: pct_transportation, Clothing: pct_clothing, Medical: pct_medical, Insurance: pct_insurance, Recreation: pct_recreation, Savings: pct_savings, Miscellaneous: pct_miscellaneous })[target_category]"
+          },
+          "calculated_answer": {
+            "formula": "Math.round((disposable_income * target_percent) / 100)"
+          },
+          "disposable_income_formatted": {
+            "formula": "disposable_income.toLocaleString('en-US')"
+          },
+          "calculated_answer_formatted": {
+            "formula": "calculated_answer.toLocaleString('en-US')"
+          }
+        },
+        "chart_generation_script": "import matplotlib.pyplot as plt\nlabels = ['Housing', 'Food', 'Utilities', 'Transportation', 'Clothing', 'Medical', 'Insurance', 'Recreation', 'Savings', 'Misc']\nsizes = [{pct_housing}, {pct_food}, {pct_utilities}, {pct_transportation}, {pct_clothing}, {pct_medical}, {pct_insurance}, {pct_recreation}, {pct_savings}, {pct_miscellaneous}]\nplt.figure(figsize=(8, 8))\nplt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff','#99ff99','#ffcc99','#c2c2f0','#ffb3e6','#c4e17f','#76d7c4','#f7dc6f','#af7ac5'])\nplt.title('Annual Disposable Income Breakdown')\nplt.savefig('budget_pie_chart.png')",
+        "question": "A household has a total annual disposable income of <b>\\${disposable_income_formatted}</b>. Based on their annual budget, they allocate their income into the following categories: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).\n\nAccording to this allocation, exactly how much money is budgeted annually for <b>{target_category}</b>?",
+        "answer": "\\${calculated_answer_formatted}"
+      },
+      {
+        "id": "CM 4.1b Recommended Budget Amount",
+        "type": "template",
+        "objective": "Calculate recommended budget amounts from gross income and disposable income rates",
+        "difficulty": "basic",
+        "variables": {
+          "gross_income": {
+            "min": 30000,
+            "max": 120000
+          },
+          "disposable_rate": {
+            "formula": "gross_income < 52000 ? 69 : gross_income <= 80000 ? 67 : 65"
+          },
+          "disposable_income": {
+            "formula": "Math.round(gross_income * disposable_rate / 100)"
+          },
+          "pct_housing": {
+            "min": 25,
+            "max": 30,
+            "step": 1
+          },
+          "pct_food": {
+            "min": 10,
+            "max": 13,
+            "step": 1
+          },
+          "pct_utilities": {
+            "min": 5,
+            "max": 7,
+            "step": 1
+          },
+          "pct_transportation": {
+            "min": 8,
+            "max": 10,
+            "step": 1
+          },
+          "pct_clothing": {
+            "min": 3,
+            "max": 5,
+            "step": 1
+          },
+          "pct_medical": {
+            "min": 4,
+            "max": 6,
+            "step": 1
+          },
+          "pct_insurance": {
+            "min": 4,
+            "max": 6,
+            "step": 1
+          },
+          "pct_recreation": {
+            "min": 5,
+            "max": 8,
+            "step": 1
+          },
+          "pct_savings": {
+            "min": 5,
+            "max": 8,
+            "step": 1
+          },
+          "pct_miscellaneous": {
+            "formula": "100 - pct_housing - pct_food - pct_utilities - pct_transportation - pct_clothing - pct_medical - pct_insurance - pct_recreation - pct_savings"
+          },
+          "target_category": {
+            "values": [
+              "Housing",
+              "Food",
+              "Utilities",
+              "Transportation",
+              "Clothing",
+              "Medical",
+              "Insurance",
+              "Recreation",
+              "Savings",
+              "Miscellaneous"
+            ]
+          },
+          "target_percent": {
+            "formula": "({ Housing: pct_housing, Food: pct_food, Utilities: pct_utilities, Transportation: pct_transportation, Clothing: pct_clothing, Medical: pct_medical, Insurance: pct_insurance, Recreation: pct_recreation, Savings: pct_savings, Miscellaneous: pct_miscellaneous })[target_category]"
+          },
+          "recommended_amount": {
+            "formula": "Math.round(disposable_income * target_percent / 100)"
+          },
+          "gross_income_formatted": {
+            "formula": "gross_income.toLocaleString('en-US')"
+          },
+          "disposable_income_formatted": {
+            "formula": "disposable_income.toLocaleString('en-US')"
+          },
+          "recommended_amount_formatted": {
+            "formula": "recommended_amount.toLocaleString('en-US')"
+          }
+        },
+        "question": "A family earns a gross annual income of <b>\\${gross_income_formatted}</b>. Their disposable income is 69% for an annual income near $52,000 or below, 67% for an annual income near $63,000, and 65% for income near $81,000 or above. They use this recommended budget allocation: Housing ({pct_housing}%), Food ({pct_food}%), Utilities ({pct_utilities}%), Transportation ({pct_transportation}%), Clothing ({pct_clothing}%), Medical ({pct_medical}%), Insurance ({pct_insurance}%), Recreation ({pct_recreation}%), Savings ({pct_savings}%), and Miscellaneous ({pct_miscellaneous}%).<br><br>What is the recommended annual amount for <b>{target_category}</b>, rounded to the nearest dollar?",
+        "answer": "Annual disposable income: \\${disposable_income_formatted}<br>Recommended annual amount for {target_category}: \\${recommended_amount_formatted}"
+      },
+      {
+        "id": "CM 4.2 Salary Conversion",
+        "type": "template",
+        "objective": "Convert between payroll cycle increments incorporating a year-end bonus",
+        "difficulty": "basic",
+        "variables": {
+          "source_type_idx": {
+            "formula": "Math.floor(Math.random() * 4)"
+          },
+          "target_type_idx": {
+            "formula": "Math.floor(Math.random() * 3)"
+          },
+          "source_labels": {
+            "formula": "['annual', 'monthly', 'bi-weekly', 'weekly']"
+          },
+          "target_labels_matrix": {
+            "formula": "[['monthly', 'bi-weekly', 'weekly'], ['annual', 'bi-weekly', 'weekly'], ['annual', 'monthly', 'weekly'], ['annual', 'monthly', 'bi-weekly']]"
+          },
+          "source_cycle": {
+            "formula": "source_labels[source_type_idx]"
+          },
+          "target_cycle": {
+            "formula": "target_labels_matrix[source_type_idx][target_type_idx]"
+          },
+          "base_annual": {
+            "min": 45000,
+            "max": 120000,
+            "step": 1200
+          },
+          "bonus_num": {
+            "min": 2000,
+            "max": 8000,
+            "step": 500
+          },
+          "bonus": {
+            "formula": "'' + bonus_num.toLocaleString('en-US')"
+          },
+          "source_amount_num": {
+            "formula": "source_cycle === 'annual' ? base_annual : (source_cycle === 'monthly' ? base_annual / 12 : (source_cycle === 'bi-weekly' ? base_annual / 26 : base_annual / 52))"
+          },
+          "source_amount": {
+            "formula": "'' + Number(source_amount_num.toFixed(2)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+          },
+          "total_annual_calc": {
+            "formula": "source_cycle === 'annual' ? (source_amount_num + bonus_num) : (base_annual + bonus_num)"
+          },
+          "total_annual_str": {
+            "formula": "'' + total_annual_calc.toLocaleString('en-US')"
+          },
+          "base_annual_str": {
+            "formula": "'' + base_annual.toLocaleString('en-US')"
+          },
+          "calculated_answer_num": {
+            "formula": "target_cycle === 'annual' ? total_annual_calc : (target_cycle === 'monthly' ? total_annual_calc / 12 : (target_cycle === 'bi-weekly' ? total_annual_calc / 26 : total_annual_calc / 52))"
+          },
+          "calculated_answer": {
+            "formula": "'' + Number(calculated_answer_num.toFixed(2)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+          },
+          "step2_desc": {
+            "formula": "source_cycle === 'annual' ? 'Add the base annual salary to the year-end bonus:' : 'Find the base annual salary first, then add the year-end bonus:'"
+          },
+          "step2_math": {
+            "formula": "source_cycle === 'annual' ? '$' + source_amount + ' + $' + bonus + ' = $' + total_annual_str : '$' + source_amount + ' * ' + (source_cycle === 'monthly' ? '12' : (source_cycle === 'bi-weekly' ? '26' : '52')) + ' = $' + base_annual_str + ' base annual salary. Total annual earnings: $' + base_annual_str + ' + $' + bonus + ' = $' + total_annual_str"
+          },
+          "step3_math": {
+            "formula": "target_cycle === 'annual' ? 'The total annual amount is already calculated.' : 'Divide the total annual earnings of $' + total_annual_str + ' by the number of pay periods in the target cycle: $' + total_annual_str + ' / ' + (target_cycle === 'monthly' ? '12' : (target_cycle === 'bi-weekly' ? '26' : '52')) + ' = $' + calculated_answer"
+          }
+        },
+        "question": "An employee earns a <b>{source_cycle}</b> salary of <b>${source_amount}</b>. In addition to this pay rate, they receive a guaranteed year-end bonus of <b>${bonus}</b>. <br><br>Based on these total combined earnings, what is their equivalent <b>{target_cycle}</b> salary? <br><br>*(Assume there are 12 months, 26 bi-weekly periods, and 52 weeks in a calendar year. Round your final answer to two decimal places if necessary)*",
+        "answer": "Step 1: Identify the incoming payment details:<br>Stated cycle rate: ${source_amount} ({source_cycle})<br>Year-end bonus multiplier: ${bonus}<br><br>Step 2: {step2_desc}<br>{step2_math}<br><br>Step 3: Convert the total annual income into the requested target increment ({target_cycle}):<br>{step3_math}"
+      },
+      {
+        "id": "CM 4.3 Budget Increase",
+        "type": "template",
+        "objective": "Calculate the monthly increase resulting from a percentage increase to an annual budget item",
+        "difficulty": "basic",
+        "variables": {
+          "budget_category": {
+            "values": [
+              "housing",
+              "groceries",
+              "transportation",
+              "utilities",
+              "healthcare",
+              "insurance",
+              "childcare",
+              "education"
+            ]
+          },
+          "annual_budget_thousands": {
+            "min": 6,
+            "max": 36
+          },
+          "annual_budget_amount": {
+            "formula": "annual_budget_thousands * 1000"
+          },
+          "increase_percent": {
+            "min": 3,
+            "max": 11
+          },
+          "annual_increase_amount": {
+            "formula": "annual_budget_amount * increase_percent / 100"
+          },
+          "monthly_increase_amount": {
+            "formula": "Math.round(annual_increase_amount / 12 * 100) / 100"
+          },
+          "annual_budget_formatted": {
+            "formula": "annual_budget_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "annual_increase_formatted": {
+            "formula": "annual_increase_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "monthly_increase_formatted": {
+            "formula": "monthly_increase_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          }
+        },
+        "question": "A household spends <b>{annual_budget_formatted} per year</b> on {budget_category}. The annual budget for this item is increasing by <b>{increase_percent}%</b>. How much should the household increase its monthly budget for this item? Round to the nearest cent.",
+        "answer": "First find the annual increase: {annual_budget_formatted} &times; {increase_percent}% = {annual_increase_formatted}. Then divide by 12 months: {annual_increase_formatted} &divide; 12 = <b>{monthly_increase_formatted} per month</b>."
+      },
+      {
+        "id": "CM 4.4 Emergency",
+        "type": "template",
+        "objective": "Identify excess funds in a monthly budget and reallocate them to cover an emergency expense",
+        "difficulty": "basic",
+        "variables": {
+          "days_ago": {
+            "min": 5,
+            "max": 9
+          },
+          "expense_date": {
+            "formula": "new Date(Date.now() - days_ago * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })"
+          },
+          "budget_rows": {
+            "formula": "(function() { var items = [['Rent',1500],['Groceries',500],['Dining out',150],['Entertainment',100],['Clothing',100],['Utilities',250],['Transportation',200],['Medical',100],['Pets',75],['Savings',100],['Miscellaneous',75],['Phone',100]]; var count = 2 + Math.floor(Math.random() * 3); var shuffled = items.slice(); for (var i = shuffled.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var temp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = temp; } var selected = shuffled.slice(0, count).map(function(item) { return item[0]; }); var cuts = [0,30]; while (cuts.length < count + 1) { var cut = 1 + Math.floor(Math.random() * 29); if (!cuts.includes(cut)) cuts.push(cut); } cuts.sort(function(a,b) { return a-b; }); var reductions = []; for (var k = 1; k < cuts.length; k++) reductions.push((cuts[k] - cuts[k-1]) * 50); var rows = items.map(function(item) { var selectedIndex = selected.indexOf(item[0]); var reduction = selectedIndex >= 0 ? reductions[selectedIndex] : 0; var extra = reduction > 0 ? Math.floor(Math.random() * 5) * 50 : 0; return { category:item[0], minimum:item[1], planned:item[1] + reduction + extra, reduction:reduction, excess:reduction + extra }; }); for (var n = rows.length - 1; n > 0; n--) { var m = Math.floor(Math.random() * (n + 1)); var row = rows[n]; rows[n] = rows[m]; rows[m] = row; } return rows; })()"
+          },
+          "budget_table": {
+            "formula": "'<table style=\"border-collapse:collapse;text-align:left;border:0\"><tr><th style=\"border:1px solid #000;padding:4px\">Budget item</th><th style=\"border:1px solid #000;padding:4px\">Planned</th><th style=\"border:1px solid #000;padding:4px\">Minimum</th><th style=\"width:30%;min-width:180px;border:0!important;padding:0\"></th><th style=\"border:1px solid #000;padding:4px\">Budget item</th><th style=\"border:1px solid #000;padding:4px\">Planned</th><th style=\"border:1px solid #000;padding:4px\">Minimum</th></tr>' + Array.from({length:6}, function(_,index) { var left = budget_rows[index]; var right = budget_rows[index+6]; return '<tr><td style=\"border:1px solid #000;padding:4px\">' + left.category + '</td><td style=\"border:1px solid #000;padding:4px\">$' + left.planned.toLocaleString('en-US') + '</td><td style=\"border:1px solid #000;padding:4px\">$' + left.minimum.toLocaleString('en-US') + '</td><td style=\"width:30%;min-width:180px;border:0!important;padding:0\"></td><td style=\"border:1px solid #000;padding:4px\">' + right.category + '</td><td style=\"border:1px solid #000;padding:4px\">$' + right.planned.toLocaleString('en-US') + '</td><td style=\"border:1px solid #000;padding:4px\">$' + right.minimum.toLocaleString('en-US') + '</td></tr>'; }).join('') + '</table>'"
+          },
+          "budget_solution": {
+            "formula": "budget_rows.filter(function(item) { return item.reduction > 0; }).map(function(item) { return item.category + ': excess $' + item.excess.toLocaleString('en-US') + ', reduce by $' + item.reduction.toLocaleString('en-US'); }).join('<br>')"
+          }
+        },
+        "question": "On {expense_date}, Theo Blake had an unexpected <b>$1,500 transmission repair</b>. He needs to pay this emergency bill from this month's budget. The table shows planned spending and the minimum amount needed for each item this month. Recommend which budget item to reduce and by how much to reduce each in order to balance the budget.<br><br>{budget_table}<br>",
+        "answer": "The budget items with excess funds and one valid reduction for each are:<br>{budget_solution}<br>The recommended reductions total <b>$1,500</b>, enough to pay the transmission bill, and each reduction is no greater than the item's excess."
+      },
+      {
+        "id": "CM 4.5a Bonus",
+        "type": "template",
+        "objective": "Calculate disposable overtime income remaining after a budget allocation",
+        "difficulty": "basic",
+        "variables": {
+          "person_name": {
+            "textValue": [
+              "Theo",
+              "Maya",
+              "Jordan",
+              "Avery",
+              "Riley",
+              "Casey",
+              "Morgan",
+              "Taylor"
+            ]
+          },
+          "gross_overtime_pay_cents": {
+            "min": 150000,
+            "max": 400000,
+            "step": 5000
+          },
+          "gross_overtime_pay": {
+            "formula": "gross_overtime_pay_cents / 100"
+          },
+          "disposable_percent": {
+            "formula": "[65, 67, 69][Math.floor(Math.random() * 3)]"
+          },
+          "other_budget_item_amount_cents": {
+            "min": 10000,
+            "max": 60000,
+            "step": 2500
+          },
+          "other_budget_item_amount": {
+            "formula": "other_budget_item_amount_cents / 100"
+          },
+          "disposable_overtime_pay_unrounded": {
+            "formula": "(gross_overtime_pay * disposable_percent / 100).toFixed(3)"
+          },
+          "disposable_overtime_pay_unrounded_formatted": {
+            "formula": "Number(disposable_overtime_pay_unrounded).toLocaleString('en-US', {minimumFractionDigits: 3, maximumFractionDigits: 3})"
+          },
+          "disposable_overtime_pay": {
+            "formula": "Math.round(gross_overtime_pay * disposable_percent) / 100"
+          },
+          "donation_amount_unrounded": {
+            "formula": "(disposable_overtime_pay * 0.1).toFixed(3)"
+          },
+          "donation_amount_unrounded_formatted": {
+            "formula": "Number(donation_amount_unrounded).toLocaleString('en-US', {minimumFractionDigits: 3, maximumFractionDigits: 3})"
+          },
+          "donation_amount": {
+            "formula": "Math.round(disposable_overtime_pay * 10) / 100"
+          },
+          "remaining_after_donation": {
+            "formula": "disposable_overtime_pay - donation_amount"
+          },
+          "vacation_amount": {
+            "formula": "Math.round((remaining_after_donation - other_budget_item_amount) * 100) / 100"
+          },
+          "gross_overtime_pay_formatted": {
+            "formula": "gross_overtime_pay.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "disposable_percent_formatted": {
+            "formula": "disposable_percent + '%'"
+          },
+          "disposable_overtime_pay_formatted": {
+            "formula": "disposable_overtime_pay.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "donation_amount_formatted": {
+            "formula": "donation_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "remaining_after_donation_formatted": {
+            "formula": "remaining_after_donation.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "other_budget_item_amount_formatted": {
+            "formula": "other_budget_item_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "vacation_amount_formatted": {
+            "formula": "vacation_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          }
+        },
+        "question": "{person_name} planned to use overtime pay for a vacation this year. Of the gross overtime pay of <b>{gross_overtime_pay_formatted}</b>, {disposable_percent_formatted} is disposable income. From those disposable funds, 10% will be donated and <b>{other_budget_item_amount_formatted}</b> will be spent on another budget item. How much will remain for the vacation? Answer to the nearest penny.",
+        "answer": "First find the disposable income: {gross_overtime_pay_formatted} &times; {disposable_percent}% = ${disposable_overtime_pay_unrounded_formatted}, which rounds to <b>{disposable_overtime_pay_formatted}</b>.<br>Next find the donation: {disposable_overtime_pay_formatted} &times; 10% = ${donation_amount_unrounded_formatted}, which rounds to <b>{donation_amount_formatted}</b>. Subtract it from the disposable income: {disposable_overtime_pay_formatted} - {donation_amount_formatted} = {remaining_after_donation_formatted}.<br>Finally subtract the other budget item: {remaining_after_donation_formatted} - {other_budget_item_amount_formatted} = <b>{vacation_amount_formatted}</b> left for the vacation."
+      },
+      {
+        "id": "CM 4.5b Raise",
+        "type": "template",
+        "objective": "Calculate a new hourly wage, annual gross income, and disposable income after tax and donation",
+        "difficulty": "basic",
+        "variables": {
+          "person_name": {
+            "textValue": [
+              "Theo",
+              "Njabulo",
+              "Maya",
+              "Jordan",
+              "Avery",
+              "Riley",
+              "Green",
+              "Kasey",
+              "Morgan",
+              "Davan",
+              "Taylor"
+            ]
+          },
+          "original_wage_cents": {
+            "min": 1000,
+            "max": 2500,
+            "step": 25
+          },
+          "original_wage": {
+            "formula": "original_wage_cents / 100"
+          },
+          "raise_amount_cents": {
+            "min": 25,
+            "max": 100,
+            "step": 5
+          },
+          "raise_amount": {
+            "formula": "raise_amount_cents / 100"
+          },
+          "new_wage": {
+            "formula": "Math.round((original_wage + raise_amount) * 100) / 100"
+          },
+          "hours_per_week": 40,
+          "weeks_per_year": 52,
+          "annual_gross_income": {
+            "formula": "Math.round(new_wage * hours_per_week * weeks_per_year * 100) / 100"
+          },
+          "tax_rate": 21,
+          "donation_rate": 10,
+          "annual_tax": {
+            "formula": "Math.round(annual_gross_income * tax_rate) / 100"
+          },
+          "annual_donation": {
+            "formula": "Math.round(annual_gross_income * donation_rate) / 100"
+          },
+          "disposable_income": {
+            "formula": "Math.round((annual_gross_income - annual_tax - annual_donation) * 100) / 100"
+          },
+          "original_wage_formatted": {
+            "formula": "original_wage.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "raise_amount_formatted": {
+            "formula": "raise_amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "new_wage_formatted": {
+            "formula": "new_wage.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "annual_gross_income_formatted": {
+            "formula": "annual_gross_income.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "annual_tax_formatted": {
+            "formula": "annual_tax.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "annual_donation_formatted": {
+            "formula": "annual_donation.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          },
+          "disposable_income_formatted": {
+            "formula": "disposable_income.toLocaleString('en-US', {style: 'currency', currency: 'USD'})"
+          }
+        },
+        "question": "{person_name} received a raise of <b>{raise_amount_formatted} per hour</b>. The original wage was <b>{original_wage_formatted} per hour</b>.<br><br><b>A)</b> What is the new hourly wage? What is the annual gross income if {person_name} works 40 hours per week for 52 weeks?<br><br><b>B)</b> The tax rate is 21%. In addition, 10% of annual gross income is donated. How much annual disposable income remains? Answer all amounts to the nearest penny.",
+        "answer": "<b>A)</b> New hourly wage: {original_wage_formatted} + {raise_amount_formatted} = <b>{new_wage_formatted}</b>.<br>Annual gross income: {new_wage_formatted} &times; 40 hours &times; 52 weeks = <b>{annual_gross_income_formatted}</b>.<br><br><b>B)</b> Annual tax: {annual_gross_income_formatted} &times; 21% = <b>{annual_tax_formatted}</b>.<br>Donation: {annual_gross_income_formatted} &times; 10% = <b>{annual_donation_formatted}</b>.<br>Disposable income: {annual_gross_income_formatted} - {annual_tax_formatted} - {annual_donation_formatted} = <b>{disposable_income_formatted}</b>."
+      }
     ]
   },
   "Geometry": {
@@ -17232,7 +17434,7 @@
             "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 260\" role=\"img\" aria-label=\"Ray EB bisecting angle AEC over opposite rays ED and EA\" style=\"width:100%;max-width:400px;height:auto\"><style>.lbl{font-family:sans-serif;font-size:14px;font-style:italic;fill:#222;}.dot{fill:#222;}</style><line x1=\"40\" y1=\"200\" x2=\"360\" y2=\"200\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"200\" x2=\"' + bx + '\" y2=\"' + by + '\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"200\" y1=\"200\" x2=\"' + cx + '\" y2=\"' + cy + '\" stroke=\"#222\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"200\" r=\"3.5\" class=\"dot\"/><circle cx=\"70\" cy=\"200\" r=\"3\" class=\"dot\"/><circle cx=\"330\" cy=\"200\" r=\"3\" class=\"dot\"/><circle cx=\"' + bx + '\" cy=\"' + by + '\" r=\"3\" class=\"dot\"/><circle cx=\"' + cx + '\" cy=\"' + cy + '\" r=\"3\" class=\"dot\"/><text x=\"200\" y=\"220\" text-anchor=\"middle\" class=\"lbl\">E</text><text x=\"70\" y=\"185\" text-anchor=\"middle\" class=\"lbl\">D</text><text x=\"330\" y=\"185\" text-anchor=\"middle\" class=\"lbl\">A</text><text x=\"' + blx + '\" y=\"' + bly + '\" text-anchor=\"middle\" class=\"lbl\">B</text><text x=\"' + clx + '\" y=\"' + cly + '\" text-anchor=\"middle\" class=\"lbl\">C</text></svg>'"
           }
         },
-        "question": "Use the geometric diagram below to solve the problem.<br>{bisector_svg}<br><br>In the figure, \\( \\overrightarrow{ED} \\) and \\( \\overrightarrow{EA} \\) are opposite rays, and \\( \\overrightarrow{EB} \\) bisects \\( \\angle AEC \\).<br><br>If \\( m\\angle AEC = {angle_aec}^\\circ \\) and \\( m\\angle AEB = {k}x^\\circ \\), then what is the value of \\( x \\)?<br><br><i>(Illustrations not to scale)</i>",
+        "question": "Use the geometric diagram below to solve the problem.<br>{bisector_svg}<br><br>In the figure, \\( \\overrightarrow{ED} \\) and \\( \\overrightarrow{EA} \\) are opposite rays, and \\( \\overrightarrow{EB} \\) bisects \\( \\angle AEC \\). What is the value of \\( x \\)?<br><br><i>(Illustrations not to scale)</i>",
         "answer": "Refer to the diagram for verification:<br>{bisector_svg}<br><br>Since \\( \\overrightarrow{EB} \\) bisects \\( \\angle AEC \\), it divides the angle into two equal halves. Therefore, the measure of \\( \\angle AEB \\) is exactly half the measure of \\( \\angle AEC \\):<br>\\( m\\angle AEB = \\frac{m\\angle AEC}{2} \\)<br>\\( m\\angle AEB = \\frac{{angle_aec}^\\circ}{2} = {angle_aeb}^\\circ \\)<br><br>We are given that \\( m\\angle AEB = {k}x^\\circ \\). Set up the equation to solve for \\( x \\):<br>\\( {k}x = {angle_aeb} \\)<br>\\( x = \\frac{{angle_aeb}}{{k}} \\)<br><b>\\( x = {x_val} \\)</b>"
       },
       {
@@ -19177,7 +19379,11 @@
         "difficulty": "basic",
         "variables": {
           "relationship_type": {
-            "values": ["parallel", "perpendicular", "neither"]
+            "values": [
+              "parallel",
+              "perpendicular",
+              "neither"
+            ]
           },
           "direction_pool": {
             "formula": "[[1,1],[1,-1],[1,2],[1,-2],[2,1],[2,-1],[2,3],[3,2],[2,-3],[3,-2]]"
@@ -19368,7 +19574,9 @@
           "coefficient_two": {
             "min": 2,
             "max": 9,
-            "exclude": ["coefficient_one"]
+            "exclude": [
+              "coefficient_one"
+            ]
           },
           "constant_one": {
             "formula": "angle_measure - coefficient_one * solution_x"
@@ -19460,58 +19668,204 @@
         "answer": "<b>A)</b> {answer_text}<br><br><b>B)</b> {second_answer_text}<br><br><b>C)</b> {third_answer_text}"
       }
     ],
+    "5 Triangles and Congruence": [
+      {
+        "id": "GEO 5.6a Isosceles",
+        "type": "template",
+        "objective": "Use the Isosceles Triangle Theorem to solve for a missing side length or angle measure",
+        "difficulty": "basic",
+        "variables": {
+          "mode": {
+            "formula": "'sides'"
+          },
+          "A": {
+            "formula": "['A', 'D', 'P', 'L'][Math.floor(Math.random() * 4)]"
+          },
+          "B": {
+            "formula": "['B', 'E', 'Q', 'M'][Math.floor(Math.random() * 4)]"
+          },
+          "C": {
+            "formula": "['C', 'F', 'R', 'N'][Math.floor(Math.random() * 4)]"
+          },
+          "x_value": {
+            "formula": "2 + Math.floor(Math.random() * 7)"
+          },
+          "m1": {
+            "formula": "2 + Math.floor(Math.random() * 4)"
+          },
+          "m2": {
+            "formula": "(function(){ var n = 2 + Math.floor(Math.random() * 4); while (n === m1) { n = 2 + Math.floor(Math.random() * 4); } return n; })()"
+          },
+          "c2": {
+            "formula": "2 + Math.floor(Math.random() * 9)"
+          },
+          "c1": {
+            "formula": "c2 + (m2 - m1) * x_value"
+          },
+          "expr1": {
+            "formula": "m1 + 'x + ' + c1"
+          },
+          "expr2": {
+            "formula": "m2 + 'x + ' + c2"
+          },
+          "same_value": {
+            "formula": "m1 * x_value + c1"
+          },
+          "base_angle": {
+            "formula": "m1 * x_value + c1"
+          },
+          "vertex_angle": {
+            "formula": "180 - 2 * base_angle"
+          },
+          "diagram_svg": {
+            "formula": "mode === 'sides' ? '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"260\" viewBox=\"0 0 480 260\" role=\"img\" aria-label=\"Isosceles triangle with congruent sides and algebraic expressions\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><path d=\"M240 30 L160 215 L320 215 Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M186.7 134.3 L200.5 140.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><path d=\"M279.5 140.3 L293.3 134.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"240\" y=\"23\" text-anchor=\"middle\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+A+'</text><text x=\"147\" y=\"231\" text-anchor=\"end\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+B+'</text><text x=\"333\" y=\"231\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+C+'</text><text x=\"80\" y=\"139\" font-size=\"13\" font-family=\"Arial, sans-serif\">'+A+B+' = '+expr1+'</text><text x=\"400\" y=\"139\" text-anchor=\"end\" font-size=\"13\" font-family=\"Arial, sans-serif\">'+A+C+' = '+expr2+'</text></svg>' : '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"260\" viewBox=\"0 0 480 260\" role=\"img\" aria-label=\"Isosceles triangle with congruent base angles and algebraic expressions\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><path d=\"M240 30 L160 215 L320 215 Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M188 215 A28 28 0 0 0 171.1 189.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><path d=\"M292 215 A28 28 0 0 1 308.9 189.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"240\" y=\"23\" text-anchor=\"middle\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+A+'</text><text x=\"147\" y=\"231\" text-anchor=\"end\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+B+'</text><text x=\"333\" y=\"231\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+C+'</text><text x=\"80\" y=\"139\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+B+' = '+expr1+'</text><text x=\"400\" y=\"139\" text-anchor=\"end\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+C+' = '+expr2+'</text></svg>'"
+          },
+          "question_text": {
+            "formula": "(mode === 'sides' ? 'In isosceles triangle ' + A + B + C + ', sides ' + A + B + ' and ' + A + C + ' are congruent. Determine the value of x and the length of each congruent side.' : 'In isosceles triangle ' + A + B + C + ', angles ' + B + ' and ' + C + ' are congruent. Determine the value of x and the measure of the vertex angle ' + A + '.') + ' <i>(Illustrations not to scale)</i>'"
+          },
+          "answer_text": {
+            "formula": "mode === 'sides' ? 'Because the equal sides of an isosceles triangle are congruent, set ' + expr1 + ' = ' + expr2 + '. This gives ' + (m1 - m2) + 'x = ' + (c2 - c1) + ', so x = ' + x_value + '. Substituting back gives each congruent side length: ' + same_value + '. Therefore, each equal side is ' + same_value + ' units long.' : 'Because the base angles of an isosceles triangle are congruent, set ' + expr1 + ' = ' + expr2 + '. This gives x = ' + x_value + '. Each base angle measures ' + base_angle + '°, so the vertex angle is 180° - 2(' + base_angle + ') = ' + vertex_angle + '°.'"
+          }
+        },
+        "question": "<div style=\"display:grid;grid-template-columns:minmax(0,480px) minmax(220px,1fr);align-items:start;gap:18px;\"><div>{diagram_svg}</div><div>{question_text}</div></div>",
+        "answer": "{answer_text}"
+      },
+      {
+        "id": "GEO 5.6b Isosceles",
+        "type": "template",
+        "objective": "Use the Isosceles Triangle Theorem to solve for a missing side length or angle measure",
+        "difficulty": "basic",
+        "variables": {
+          "mode": {
+            "formula": "'angles'"
+          },
+          "A": {
+            "formula": "['A', 'D', 'P', 'L'][Math.floor(Math.random() * 4)]"
+          },
+          "B": {
+            "formula": "['B', 'E', 'Q', 'M'][Math.floor(Math.random() * 4)]"
+          },
+          "C": {
+            "formula": "['C', 'F', 'R', 'N'][Math.floor(Math.random() * 4)]"
+          },
+          "x_value": {
+            "formula": "2 + Math.floor(Math.random() * 7)"
+          },
+          "m1": {
+            "formula": "2 + Math.floor(Math.random() * 4)"
+          },
+          "m2": {
+            "formula": "(function(){ var n = 2 + Math.floor(Math.random() * 4); while (n === m1) { n = 2 + Math.floor(Math.random() * 4); } return n; })()"
+          },
+          "c2": {
+            "formula": "2 + Math.floor(Math.random() * 9)"
+          },
+          "c1": {
+            "formula": "c2 + (m2 - m1) * x_value"
+          },
+          "expr1": {
+            "formula": "m1 + 'x + ' + c1"
+          },
+          "expr2": {
+            "formula": "m2 + 'x + ' + c2"
+          },
+          "same_value": {
+            "formula": "m1 * x_value + c1"
+          },
+          "base_angle": {
+            "formula": "m1 * x_value + c1"
+          },
+          "vertex_angle": {
+            "formula": "180 - 2 * base_angle"
+          },
+          "diagram_svg": {
+            "formula": "mode === 'sides' ? '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"260\" viewBox=\"0 0 480 260\" role=\"img\" aria-label=\"Isosceles triangle with congruent sides and algebraic expressions\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><path d=\"M240 30 L160 215 L320 215 Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M186.7 134.3 L200.5 140.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><path d=\"M279.5 140.3 L293.3 134.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"240\" y=\"23\" text-anchor=\"middle\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+A+'</text><text x=\"147\" y=\"231\" text-anchor=\"end\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+B+'</text><text x=\"333\" y=\"231\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+C+'</text><text x=\"80\" y=\"139\" font-size=\"13\" font-family=\"Arial, sans-serif\">'+A+B+' = '+expr1+'</text><text x=\"400\" y=\"139\" text-anchor=\"end\" font-size=\"13\" font-family=\"Arial, sans-serif\">'+A+C+' = '+expr2+'</text></svg>' : '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"260\" viewBox=\"0 0 480 260\" role=\"img\" aria-label=\"Isosceles triangle with congruent base angles and algebraic expressions\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><path d=\"M240 30 L160 215 L320 215 Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M188 215 A28 28 0 0 0 171.1 189.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><path d=\"M292 215 A28 28 0 0 1 308.9 189.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"240\" y=\"23\" text-anchor=\"middle\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+A+'</text><text x=\"147\" y=\"231\" text-anchor=\"end\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+B+'</text><text x=\"333\" y=\"231\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+C+'</text><text x=\"80\" y=\"139\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+B+' = '+expr1+'</text><text x=\"400\" y=\"139\" text-anchor=\"end\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+C+' = '+expr2+'</text></svg>'"
+          },
+          "question_text": {
+            "formula": "(mode === 'sides' ? 'In isosceles triangle ' + A + B + C + ', sides ' + A + B + ' and ' + A + C + ' are congruent. Determine the value of x and the length of each congruent side.' : 'In isosceles triangle ' + A + B + C + ', angles ' + B + ' and ' + C + ' are congruent. Determine the value of x and the measure of the vertex angle ' + A + '.') + ' <i>(Illustrations not to scale)</i>'"
+          },
+          "answer_text": {
+            "formula": "mode === 'sides' ? 'Because the equal sides of an isosceles triangle are congruent, set ' + expr1 + ' = ' + expr2 + '. This gives ' + (m1 - m2) + 'x = ' + (c2 - c1) + ', so x = ' + x_value + '. Substituting back gives each congruent side length: ' + same_value + '. Therefore, each equal side is ' + same_value + ' units long.' : 'Because the base angles of an isosceles triangle are congruent, set ' + expr1 + ' = ' + expr2 + '. This gives x = ' + x_value + '. Each base angle measures ' + base_angle + '°, so the vertex angle is 180° - 2(' + base_angle + ') = ' + vertex_angle + '°.'"
+          }
+        },
+        "question": "<div style=\"display:grid;grid-template-columns:minmax(0,480px) minmax(220px,1fr);align-items:start;gap:18px;\"><div>{diagram_svg}</div><div>{question_text}</div></div>",
+        "answer": "{answer_text}"
+      }
+    ],
     "Scratch Pad Practice Problems": [
       {
-  "meta": {
-    "title": "Discrete to Continuous Data Scale Transition Animation",
-    "description": "Visualizing macro scaling using room occupancy vs. world population zoom simulation."
-  },
-  "global_parameters": {
-    "total_frames": 180,
-    "frames_per_second": 12,
-    "frame_interval_ms": 80,
-    "theme_hex_color": "#1f77b4"
-  },
-  "animation_stages": [
-    {
-      "phase_id": 1,
-      "name": "Slow Discrete Addition (First Quarter)",
-      "frame_range": [0, 79],
-      "behavior": "Slowly increments isolated points one-by-one to illustrate clear gaps.",
-      "axes": {
-        "x_axis": { "label": "Time (Minutes)", "min_value": 0, "max_value": 12 },
-        "y_axis": { "label": "Count of People", "min_value": 0, "max_value": 12 }
+        "meta": {
+          "title": "Discrete to Continuous Data Scale Transition Animation",
+          "description": "Visualizing macro scaling using room occupancy vs. world population zoom simulation."
+        },
+        "global_parameters": {
+          "total_frames": 180,
+          "frames_per_second": 12,
+          "frame_interval_ms": 80,
+          "theme_hex_color": "#1f77b4"
+        },
+        "animation_stages": [
+          {
+            "phase_id": 1,
+            "name": "Slow Discrete Addition (First Quarter)",
+            "frame_range": [
+              0,
+              79
+            ],
+            "behavior": "Slowly increments isolated points one-by-one to illustrate clear gaps.",
+            "axes": {
+              "x_axis": {
+                "label": "Time (Minutes)",
+                "min_value": 0,
+                "max_value": 12
+              },
+              "y_axis": {
+                "label": "Count of People",
+                "min_value": 0,
+                "max_value": 12
+              }
+            },
+            "render_components": {
+              "style": "stem_plot",
+              "maximum_discrete_elements": 10,
+              "show_vertical_stems": true,
+              "show_whitespace_gaps": true
+            }
+          },
+          {
+            "phase_id": 2,
+            "name": "Exponential Zoom Out & Continuous Blur",
+            "frame_range": [
+              80,
+              179
+            ],
+            "behavior": "Expands view parameters continuously, compressing space gaps into a smooth function.",
+            "axes": {
+              "x_axis": {
+                "label": "Time Horizon (Expanded)",
+                "min_value": 0,
+                "max_value": "10 * zoom_factor"
+              },
+              "y_axis": {
+                "label": "Population Curve Scale",
+                "min_value": 0,
+                "max_value": "10 * zoom_factor"
+              }
+            },
+            "proportional_logic": {
+              "zoom_factor_equation": "1 + (999 * ((frame - 80) / 100)^3)",
+              "scatter_density_equation": "min(20 + (frame - 80) * 3, 350)",
+              "particle_render_size_equation": "max(16 - ((frame - 80) / 7), 1.5)"
+            },
+            "render_components": {
+              "style": "dense_scatter_with_trendline",
+              "show_vertical_stems": false,
+              "show_whitespace_gaps": false,
+              "visual_result": "fluid_calculus_curve"
+            }
+          }
+        ]
       },
-      "render_components": {
-        "style": "stem_plot",
-        "maximum_discrete_elements": 10,
-        "show_vertical_stems": true,
-        "show_whitespace_gaps": true
-      }
-    },
-    {
-      "phase_id": 2,
-      "name": "Exponential Zoom Out & Continuous Blur",
-      "frame_range": [80, 179],
-      "behavior": "Expands view parameters continuously, compressing space gaps into a smooth function.",
-      "axes": {
-        "x_axis": { "label": "Time Horizon (Expanded)", "min_value": 0, "max_value": "10 * zoom_factor" },
-        "y_axis": { "label": "Population Curve Scale", "min_value": 0, "max_value": "10 * zoom_factor" }
-      },
-      "proportional_logic": {
-        "zoom_factor_equation": "1 + (999 * ((frame - 80) / 100)^3)",
-        "scatter_density_equation": "min(20 + (frame - 80) * 3, 350)",
-        "particle_render_size_equation": "max(16 - ((frame - 80) / 7), 1.5)"
-      },
-      "render_components": {
-        "style": "dense_scatter_with_trendline",
-        "show_vertical_stems": false,
-        "show_whitespace_gaps": false,
-        "visual_result": "fluid_calculus_curve"
-      }
-    }
-  ]
-},
       {
         "id": "ALG1-4.3 & 5.1-A1",
         "type": "template",
@@ -19844,7 +20198,7 @@
             "formula": "3.5 + (10 / 3)"
           }
         },
-        "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>If the total length \\( {ptA}{ptD} = \\frac{31}{3} \\), find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______<br><br><i>(Illustrations not to scale)</i>",
+        "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>Find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______<br><br><i>(Illustrations not to scale)</i>",
         "answer": "To solve this problem, we use geometric definitions to set up an algebraic equation:<br><br><b>Step 1: Use the Midpoint Definition to find \\( {ptA}{ptB} \\).</b><br>Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the full segment \\( {ptA}{ptB} \\) is exactly twice the length of \\( {ptC}{ptB} \\):<br>\\[ {ptA}{ptB} = 2 \\cdot {ptC}{ptB} = 2 \\left( 3 + \\frac{1}{x} \\right) = 6 + \\frac{2}{x} \\]<br><br><b>Step 2: Use the Segment Addition Postulate to solve for \\( x \\).</b><br>Because point {ptB} is between points {ptA} and {ptD}, we know that:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our expressions and the given total value into the equation:<br>\\[ \\left( 6 + \\frac{2}{x} \\right) + \\frac{5x}{1 + x} = \\frac{31}{3} \\]<br><br>Subtract 6 from both sides to clear the integer constant:<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - \\frac{18}{3} = \\frac{13}{3} \\]<br><br>Find a common denominator on the left side: \\( x(1+x) \\):<br>\\[ \\frac{2(1 + x) + 5x^2}{x(1 + x)} = \\frac{13}{3} \\]<br>\\[ \\frac{5x^2 + 2x + 2}{x^2 + x} = \\frac{13}{3} \\]<br><br>Cross-multiply to get a standard quadratic equation:<br>\\[ 3(5x^2 + 2x + 2) = 13(x^2 + x) \\]<br>\\[ 15x^2 + 6x + 6 = 13x^2 + 13x \\]<br>\\[ 2x^2 - 7x + 6 = 0 \\]<br><br>Factor the quadratic equation:<br>\\[ (2x - 3)(x - 2) = 0 \\]<br>This yields two potential solutions: \\( x = 1.5 \\) or \\( x = 2 \\). Given our geometric segment lengths must evaluate to integers/clean fractions matching the chart configurations, we use <b>\\( x = 2 \\)</b>.<br><br><b>Step 3: Calculate the segment lengths using \\( x = 2 \\).</b><br><ul><li>\\( {ptC}{ptB} = 3 + \\frac{1}{2} = 3.5 \\)</li><li>\\( {ptB}{ptD} = \\frac{5(2)}{1 + 2} = \\frac{10}{3} \\)</li></ul><br><b>Step 4: Combine segments to find \\( {ptC}{ptD} \\).</b><br>Using segment addition for the target intervals:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} = 3.5 + \\frac{10}{3} = \\frac{7}{2} + \\frac{10}{3} = \\frac{21 + 20}{6} = \\frac{41}{6} \\]<br><br>Therefore, the answers are:<br><b>\\( x = 2 \\)</b><br><b>\\( {ptC}{ptD} = \\frac{41}{6} \\)</b>"
       },
       {
@@ -19884,7 +20238,7 @@
             "formula": "'\\\\frac{5x}{1 + x}'"
           }
         },
-        "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>If the total length \\( {ptA}{ptD} = \\frac{31}{3} \\), find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______<br><br><i>(Illustrations not to scale)</i>",
+        "question": "Point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\) and point {ptB} is between points {ptA} and {ptD}. The lengths of the segments are given as algebraic expressions:<br><br>\\[ {ptC}{ptB} = {expr_CB} \\]<br>\\[ {ptB}{ptD} = {expr_BD} \\]<br><br>Find the value of \\( x \\) and calculate the length of \\( {ptC}{ptD} \\).<br><br><ChartPlaceholder chartDescription=\"A horizontal line segment layout showing four collinear points labeled consecutively with algebraic function flags above each component interval.\" /><br><br>\\( x = \\) ______<br>\\( {ptC}{ptD} = \\) ______<br><br><i>(Illustrations not to scale)</i>",
         "answer": "Here are the step-by-step mathematical calculations to solve the problem:<br><br><b>Step 1: Express the full segment length \\( {ptA}{ptB} \\) algebraically.</b><br>Since point {ptC} is the midpoint of \\( \\overline{{ptA}{ptB}} \\), the full segment length is exactly double the length of \\( {ptC}{ptB} \\):<br>\\[ {ptA}{ptB} = 2 \\cdot {ptC}{ptB} = 2 \\left( 3 + \\frac{1}{x} \\right) = 6 + \\frac{2}{x} \\]<br><br><b>Step 2: Apply the Segment Addition Postulate.</b><br>Since point {ptB} lies between points {ptA} and {ptD}, we set up our main balance equation:<br>\\[ {ptA}{ptB} + {ptB}{ptD} = {ptA}{ptD} \\]<br>Substitute our algebraic expressions and the given total numerical value into the formula:<br>\\[ \\left( 6 + \\frac{2}{x} \\right) + \\frac{5x}{1 + x} = \\frac{31}{3} \\]<br><br><b>Step 3: Isolate and solve the rational parts for \\( x \\).</b><br>Subtract 6 from both sides of the equation to clear the integer constant:<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - 6 \\]<br>\\[ \\frac{2}{x} + \\frac{5x}{1 + x} = \\frac{31}{3} - \\frac{18}{3} = \\frac{13}{3} \\]<br><br>Find a common denominator for the algebraic expressions on the left side, which is \\( x(1 + x) \\):<br>\\[ \\frac{2(1 + x) + 5x(x)}{x(1 + x)} = \\frac{13}{3} \\]<br>\\[ \\frac{5x^2 + 2x + 2}{x^2 + x} = \\frac{13}{3} \\]<br><br>Cross-multiply to convert the rational equation into a standard quadratic equation:<br>\\[ 3(5x^2 + 2x + 2) = 13(x^2 + x) \\]<br>\\[ 15x^2 + 6x + 6 = 13x^2 + 13x \\]<br><br>Move all terms to one side to set the quadratic expression equal to zero:<br>\\[ 2x^2 - 7x + 6 = 0 \\]<br><br>Factor the resulting quadratic polynomial equation:<br>\\[ (2x - 3)(x - 2) = 0 \\]<br>This gives us two possible values: \\( x = 1.5 \\) or \\( x = 2 \\). Testing both against standard integer boundaries shows that <b>\\( x = 2 \\)</b> yields valid lengths.<br><br><b>Step 4: Compute the final numerical value of segment \\( {ptC}{ptD} \\).</b><br>Substitute \\( x = 2 \\) back into our individual segment expressions:<br><ul><li>\\( {ptC}{ptB} = 3 + \\frac{1}{2} = \\frac{7}{2} \\)</li><li>\\( {ptB}{ptD} = \\frac{5(2)}{1 + 2} = \\frac{10}{3} \\)</li></ul><br>Now combine the two sub-segments via the Segment Addition Postulate to find the total requested length:<br>\\[ {ptC}{ptD} = {ptC}{ptB} + {ptB}{ptD} = \tfrac{7}{2} + \tfrac{10}{3} \\]<br>Find a common denominator of 6:<br>\\[ {ptC}{ptD} = \\frac{21}{6} + \\frac{20}{6} = \\frac{41}{6} \\]<br><br><b>Final Answer:</b><br>\\( x = 2 \\)<br>\\( {ptC}{ptD} = \\frac{41}{6} \\)"
       },
       {
