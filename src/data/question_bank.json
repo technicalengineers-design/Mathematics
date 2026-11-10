@@ -19670,11 +19670,26 @@
     ],
     "5 Triangles and Congruence": [
       {
-        "id": "GEO 5.5a Interacting Triangles",
+        "id": "GEO 5.5a Perpendicular",
         "type": "template",
         "objective": "Use a straight angle and a perpendicular line to solve for an unknown angle",
         "difficulty": "basic",
         "variables": {
+          "letters": {
+            "formula": "['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'].sort(() => Math.random() - 0.5)"
+          },
+          "left_letter": {
+            "formula": "letters[0]"
+          },
+          "bottom_letter": {
+            "formula": "letters[1]"
+          },
+          "top_letter": {
+            "formula": "letters[2]"
+          },
+          "right_letter": {
+            "formula": "letters[3]"
+          },
           "x_value": {
             "formula": "2 + Math.floor(Math.random() * 5)"
           },
@@ -19700,17 +19715,51 @@
             "formula": "m1 * x_value + c1"
           },
           "question_text": {
-            "formula": "'In right triangle AOD, OD is perpendicular to straight line AC. The expressions label the unknown angles at the top and left. Determine x and the measure of the left angle, angle OAD. <i>(Illustrations not to scale)</i>'"
+            "formula": "'In triangle ' + left_letter + bottom_letter + top_letter + ', the expressions label the unknown angles at the top and left. Determine x and the measure of the left angle, angle ' + bottom_letter + left_letter + top_letter + '. <i>(Illustrations not to scale)</i>'"
           },
           "diagram_svg": {
-            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"520\" height=\"280\" viewBox=\"0 0 520 280\" role=\"img\" aria-label=\"One right triangle to the left of perpendicular lines, with unknown angles at its top and left\"><rect width=\"520\" height=\"280\" fill=\"#ffffff\"/><path d=\"M120 238 L420 238 M255 238 L255 38 M120 238 L255 38\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M255 218 L275 218 L275 238\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><path d=\"M152 238 A32 32 0 0 0 137.9 211.4\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.2\"/><path d=\"M146 218.5 L150.5 227.5\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/><path d=\"M255 68 A30 30 0 0 1 238.2 62.9\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.2\"/><path d=\"M246.3 66.7 L251.8 63.5 M241.4 63.8 L245.8 59.4\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/><text x=\"104\" y=\"258\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">A</text><text x=\"255\" y=\"261\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">O</text><text x=\"431\" y=\"258\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">C</text><text x=\"255\" y=\"28\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">D</text><text x=\"130\" y=\"276\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;OAD = '+expr1+'</text><text x=\"267\" y=\"84\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;ADO = '+expr2+'</text></svg>'"
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"520\" height=\"280\" viewBox=\"0 0 520 280\" role=\"img\" aria-label=\"One right triangle to the left of perpendicular lines, with unknown angles at its top and left\"><rect width=\"520\" height=\"280\" fill=\"#ffffff\"/><path d=\"M120 238 L420 238 M255 238 L255 38 M120 238 L255 38\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M255 218 L275 218 L275 238\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"104\" y=\"258\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+left_letter+'</text><text x=\"255\" y=\"261\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+bottom_letter+'</text><text x=\"431\" y=\"258\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+right_letter+'</text><text x=\"255\" y=\"28\" text-anchor=\"middle\" font-size=\"17\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+top_letter+'</text><text x=\"130\" y=\"276\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+bottom_letter+left_letter+top_letter+' = '+expr1+'</text><text x=\"267\" y=\"84\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+left_letter+top_letter+bottom_letter+' = '+expr2+'</text></svg>'"
           },
           "answer_text": {
-            "formula": "'Since OD is perpendicular to straight line AC, angle AOD measures 90 degrees. The two acute angles in triangle AOD are complementary, so (' + expr1 + ') + (' + expr2 + ') = 90. This gives (' + (m1 + m2) + ')x + ' + (c1 + c2) + ' = 90, so x = ' + x_value + '. The left angle, angle OAD, measures ' + m1 + '(' + x_value + ') + ' + c1 + ' = ' + angle1 + ' degrees.'"
+            "formula": "'Since segment ' + top_letter + bottom_letter + ' is perpendicular to straight line ' + left_letter + right_letter + ', angle ' + left_letter + bottom_letter + top_letter + ' measures 90°. The two acute angles in triangle ' + left_letter + bottom_letter + top_letter + ' are complementary, so (' + expr1 + ') + (' + expr2 + ') = 90. This gives (' + (m1 + m2) + ')x + ' + (c1 + c2) + ' = 90, so x = ' + x_value + '. The left angle, angle ' + bottom_letter + left_letter + top_letter + ', measures ' + m1 + '(' + x_value + ') + ' + c1 + ' = ' + angle1 + '°.'"
           }
         },
         "question": "<div style=\"display:grid;grid-template-columns:minmax(0,520px) minmax(220px,1fr);align-items:start;gap:18px;\"><div>{diagram_svg}</div><div>{question_text}</div></div>",
         "answer": "{answer_text}"
+      },
+      {
+        "id": "GEO 5.5b Triangle Congruence Postulates",
+        "type": "template",
+        "objective": "Identify the triangle congruence theorem shown by congruent markings",
+        "difficulty": "basic",
+        "variables": {
+          "all_scenarios": {
+            "formula": "(function(){ var proofTypes=['SSS','SAS','ASA','AAS']; var scenarios=[]; for (var i=0;i<12;i++){ var proof=proofTypes[i % 4]; var leftLabel = ['A','B','C','D','E','F','G','H','J','K','L','M'][i]; var rightLabel = ['M','N','P','Q','R','S','T','U','V','W','X','Y'][i]; var svg = '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"170\" height=\"110\" viewBox=\"0 0 170 110\" role=\"img\" aria-label=\"Triangle pair showing '+proof+' congruence\"><rect width=\"170\" height=\"110\" fill=\"#ffffff\"/><path d=\"M12 84 L48 22 L86 84 Z\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/><path d=\"M84 84 L120 22 L158 84 Z\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2\"/>'; if (proof === 'SSS') { svg += '<g stroke=\"#1f2937\" stroke-width=\"1.7\" fill=\"none\"><line x1=\"28\" y1=\"70\" x2=\"33\" y2=\"64\"/><line x1=\"33\" y1=\"70\" x2=\"38\" y2=\"64\"/><line x1=\"100\" y1=\"70\" x2=\"105\" y2=\"64\"/><line x1=\"105\" y1=\"70\" x2=\"110\" y2=\"64\"/><line x1=\"59\" y1=\"42\" x2=\"64\" y2=\"36\"/><line x1=\"64\" y1=\"42\" x2=\"69\" y2=\"36\"/><line x1=\"131\" y1=\"42\" x2=\"136\" y2=\"36\"/><line x1=\"136\" y1=\"42\" x2=\"141\" y2=\"36\"/><path d=\"M50 85 L56 89 M56 85 L62 89\"/><path d=\"M122 85 L128 89 M128 85 L134 89\"/></g>'; } else if (proof === 'SAS') { svg += '<g stroke=\"#1f2937\" stroke-width=\"1.7\" fill=\"none\"><line x1=\"22\" y1=\"70\" x2=\"28\" y2=\"64\"/><line x1=\"28\" y1=\"70\" x2=\"34\" y2=\"64\"/><line x1=\"94\" y1=\"70\" x2=\"100\" y2=\"64\"/><line x1=\"100\" y1=\"70\" x2=\"106\" y2=\"64\"/><line x1=\"57\" y1=\"42\" x2=\"63\" y2=\"36\"/><line x1=\"63\" y1=\"42\" x2=\"69\" y2=\"36\"/><line x1=\"129\" y1=\"42\" x2=\"135\" y2=\"36\"/><line x1=\"135\" y1=\"42\" x2=\"141\" y2=\"36\"/><path d=\"M62 68 A12 12 0 0 1 48 78\"/><path d=\"M128 68 A12 12 0 0 0 142 78\"/></g>'; } else if (proof === 'ASA') { svg += '<g stroke=\"#1f2937\" stroke-width=\"1.7\" fill=\"none\"><path d=\"M34 66 A11 11 0 0 1 22 78\"/><path d=\"M101 66 A11 11 0 0 0 113 78\"/><path d=\"M57 43 A11 11 0 0 1 46 31\"/><path d=\"M128 43 A11 11 0 0 0 139 31\"/><line x1=\"25\" y1=\"84\" x2=\"31\" y2=\"78\"/><line x1=\"31\" y1=\"84\" x2=\"37\" y2=\"78\"/><line x1=\"97\" y1=\"84\" x2=\"103\" y2=\"78\"/><line x1=\"103\" y1=\"84\" x2=\"109\" y2=\"78\"/></g>'; } else { svg += '<g stroke=\"#1f2937\" stroke-width=\"1.7\" fill=\"none\"><path d=\"M32 65 A11 11 0 0 1 20 77\"/><path d=\"M99 65 A11 11 0 0 0 111 77\"/><path d=\"M57 42 A11 11 0 0 1 46 30\"/><path d=\"M128 42 A11 11 0 0 0 139 30\"/><line x1=\"40\" y1=\"84\" x2=\"46\" y2=\"78\"/><line x1=\"46\" y1=\"84\" x2=\"52\" y2=\"78\"/><line x1=\"112\" y1=\"84\" x2=\"118\" y2=\"78\"/><line x1=\"118\" y1=\"84\" x2=\"124\" y2=\"78\"/></g>'; } svg += '<text x=\"12\" y=\"104\" font-size=\"10\" font-family=\"Arial, sans-serif\">'+leftLabel+'</text><text x=\"84\" y=\"104\" font-size=\"10\" font-family=\"Arial, sans-serif\">'+rightLabel+'</text><text x=\"48\" y=\"18\" font-size=\"10\" font-family=\"Arial, sans-serif\">'+leftLabel+'</text><text x=\"120\" y=\"18\" font-size=\"10\" font-family=\"Arial, sans-serif\">'+rightLabel+'</text></svg>'; scenarios.push({ type: proof, diagram: svg }); } return scenarios; })()"
+          },
+          "selected_indices": {
+            "formula": "Array.from({ length: 12 }, function(_, i) { return i; }).sort(function() { return Math.random() - 0.5; }).slice(0, 3)"
+          },
+          "scenario_1_type": {
+            "formula": "all_scenarios[selected_indices[0]].type"
+          },
+          "scenario_1_diagram": {
+            "formula": "all_scenarios[selected_indices[0]].diagram"
+          },
+          "scenario_2_type": {
+            "formula": "all_scenarios[selected_indices[1]].type"
+          },
+          "scenario_2_diagram": {
+            "formula": "all_scenarios[selected_indices[1]].diagram"
+          },
+          "scenario_3_type": {
+            "formula": "all_scenarios[selected_indices[2]].type"
+          },
+          "scenario_3_diagram": {
+            "formula": "all_scenarios[selected_indices[2]].diagram"
+          }
+        },
+        "question": "<div style=\"display:flex;flex-direction:column;gap:12px;\"><div>For each of the following pairs, indicate which congruent postulate would be used to prove the two triangles congruent; SSS, SAS, ASA, or AAS.</div><div style=\"display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:nowrap;\"><div style=\"width:180px;text-align:center;\"><strong>A)</strong><br>{scenario_1_diagram}</div><div style=\"width:180px;text-align:center;\"><strong>B)</strong><br>{scenario_2_diagram}</div><div style=\"width:180px;text-align:center;\"><strong>C)</strong><br>{scenario_3_diagram}</div></div></div>",
+        "answer": "<div style=\"display:flex;gap:18px;align-items:center;flex-wrap:nowrap;\"><div><b>A)</b> {scenario_1_type}</div><div><b>B)</b> {scenario_2_type}</div><div><b>C)</b> {scenario_3_type}</div></div>"
       },
       {
         "id": "GEO 5.6a Isosceles",
