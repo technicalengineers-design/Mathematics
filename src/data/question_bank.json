@@ -17468,7 +17468,7 @@
     ],
     "2 Angles and Geometric Figures": [
       {
-        "id": "GEO 2-1 C v1",
+        "id": "GEO 2-1a",
         "type": "template",
         "objective": "Identify Intersecting Line Relationships, Vertical Angles, Linear Pairs, and Opposite Rays",
         "difficulty": "basic",
@@ -17517,7 +17517,7 @@
         "answer": "Refer to the diagram for verification:<br>{lines_svg}<br><br><b>A.</b> The angle formed by ray \\( \\overrightarrow{{v}{requested_ray_1}} \\) and ray \\( \\overrightarrow{{v}{requested_ray_2}} \\) is named <b>\\( \\angle {requested_ray_1}{v}{requested_ray_2} \\)</b> (or \\( \\angle {requested_ray_2}{v}{requested_ray_1} \\)).<br><br><b>B.</b> Vertical angles are opposite each other across an intersection and are equal in measure. Example pairs include <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p4}{v}{p6} \\)</b>, where \\( \\angle {p1}{v}{p3} = \\angle {p4}{v}{p6} \\). (Other valid pairs include \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p4}{v}{p5} \\), or \\( \\angle {p3}{v}{p5} \\) and \\( \\angle {p2}{v}{p6} \\)).<br><br><b>C.</b> A linear pair consists of adjacent angles whose non-common sides form a straight line. An example pair is <b>\\( \\angle {p1}{v}{p3} \\) and \\( \\angle {p3}{v}{p4} \\)</b>. (Any two adjacent angles along a straight line, such as \\( \\angle {p1}{v}{p2} \\) and \\( \\angle {p2}{v}{p4} \\), are correct).<br><br><b>D.</b> Opposite rays share a common endpoint and extend in completely opposite directions along the same line. Valid pairs from this diagram are: <b>\\( \\overrightarrow{{v}{p1}} \\) and \\( \\overrightarrow{{v}{p4}} \\)</b>, \\( \\overrightarrow{{v}{p2}} \\) and \\( \\overrightarrow{{v}{p5}} \\) or \\( \\overrightarrow{{v}{p3}} \\) and \\( \\overrightarrow{{v}{p6}} \\)."
       },
       {
-        "id": "GEO 2-1 C v2",
+        "id": "GEO 2-1b",
         "type": "template",
         "objective": "Solve for a variable using angle bisectors and opposite rays",
         "difficulty": "basic",
@@ -17578,7 +17578,7 @@
         "answer": "Refer to the diagram for verification:<br>{bisector_svg}<br><br>Since \\( \\overrightarrow{EB} \\) bisects \\( \\angle AEC \\), it divides the angle into two equal halves. Therefore, the measure of \\( \\angle AEB \\) is exactly half the measure of \\( \\angle AEC \\):<br>\\( m\\angle AEB = \\frac{m\\angle AEC}{2} \\)<br>\\( m\\angle AEB = \\frac{{angle_aec}^\\circ}{2} = {angle_aeb}^\\circ \\)<br><br>We are given that \\( m\\angle AEB = {k}x^\\circ \\). Set up the equation to solve for \\( x \\):<br>\\( {k}x = {angle_aeb} \\)<br>\\( x = \\frac{{angle_aeb}}{{k}} \\)<br><b>\\( x = {x_val} \\)</b>"
       },
       {
-        "id": "GEO 2-2 C v1",
+        "id": "GEO 2-2a",
         "type": "template",
         "objective": "Apply the definitions of complementary and congruent angles to find angle measures",
         "difficulty": "basic",
@@ -17639,7 +17639,7 @@
         "answer": "Here is the diagram with the matching congruence tick marks indicating that the two angles are equal:<br>{answer_svg}<br><br><b>Step 1: Apply definitions</b><br>&bull; <b>Complementary angles</b> add up to exactly \\( 90^\\circ \\).<br>&bull; <b>Congruent angles</b> have completely equal measures, so \\( m\\angle {angle1_start}{v}{angle1_end} = m\\angle {angle2_start}{v}{angle2_end} \\).<br><br><b>Step 2: Calculate the values</b><br>Let the measure of each angle be represented by \\( x \\):<br>\\( x + x = 90^\\circ \\)<br>\\( 2x = 90^\\circ \\)<br>\\( x = 45^\\circ \\)<br><br>Therefore, the value of each angle is:<br>&bull; <b>\\( m\\angle {angle1_start}{v}{angle1_end} = 45^\\circ \\)</b><br>&bull; <b>\\( m\\angle {angle2_start}{v}{angle2_end} = 45^\\circ \\)</b>"
       },
       {
-        "id": "GEO 2-2 C v2a",
+        "id": "GEO 2-2b1",
         "type": "template",
         "objective": "Find the measure of supplementary angles",
         "difficulty": "basic",
@@ -17664,7 +17664,7 @@
         "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are supplementary, their sum is \\( 180^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 180 \\) or \\( \\left({n} + 1\\right)x = 180 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
       },
       {
-        "id": "GEO 2-2 C v2b",
+        "id": "GEO 2-2b2",
         "type": "template",
         "objective": "Find the measure of complimentary angles",
         "difficulty": "basic",
@@ -17689,7 +17689,7 @@
         "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are complimenary, their sum is \\( 90^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 90 \\) or \\( \\left({n} + 1\\right)x = 90 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
       },
       {
-        "id": "GEO 2-3 rectangle",
+        "id": "GEO 2-3a rectangle",
         "type": "template",
         "objective": "Calculate the Perimeter and Area of a Tilted Rectangle on a Coordinate Plane",
         "difficulty": "basic",
@@ -17790,7 +17790,7 @@
         "answer": "1. **Find Side Length AB:** Use the distance formula between A({a_x}, {a_y}) and B({b_x}, {b_y}). <br> AB = &radic;<span style='border-top:1px solid;'>( {b_x} - {a_x} )&sup2; + ( {b_y} - {a_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>( {v1_x} )&sup2; + ( {v1_y} )&sup2;</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_x_sq} + {v1_y_sq}</span> <br> AB = &radic;<span style='border-top:1px solid;'>{v1_sum}</span> <br> AB = {str_side1} m <br><br>2. **Find Side Length AD:** Use the distance formula between A({a_x}, {a_y}) and D({d_x}, {d_y}). <br> AD = &radic;<span style='border-top:1px solid;'>( {d_x} - {a_x} )&sup2; + ( {d_y} - {a_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>( {v2_x} )&sup2; + ( {v2_y} )&sup2;</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_x_sq} + {v2_y_sq}</span> <br> AD = &radic;<span style='border-top:1px solid;'>{v2_sum}</span> <br> AD = {str_side2} m <br><br>3. **Calculate Perimeter:** <br> P = 2 * (AB + AD) <br> P = 2 * ({str_side1} + {str_side2}) <br> P = {str_perimeter} m <br><br>4. **Calculate Area:** <br> A = AB * AD <br> A = {str_side1} * {str_side2} <br> A = {str_area} m&sup2;"
       },
       {
-        "id": "GEO 2-3 Circle",
+        "id": "GEO 2-3b Circle",
         "type": "template",
         "objective": "Calculate the Area and Circumference of a Circle on a Coordinate Plane",
         "difficulty": "basic",
@@ -17835,7 +17835,7 @@
         "answer": "1. **Find the radius (r):** Use the distance formula between center C({h}, {k}) and point P({p_x}, {p_y}). <br> r = &radic;<span style='border-top:1px solid;'>( {p_x} - {h} )&sup2; + ( {p_y} - {k} )&sup2;</span> <br> r = &radic;<span style='border-top:1px solid;'>{r_squared}</span> <br> r = {r} m <br><br>2. **Calculate Circumference:** <br> - Exact: C = 2 * pi * r = 2 * pi * {r} = {circumference_coefficient}pi m <br> - Decimal Approximation: {circumference_approx} m (to four significant figures) <br><br>3. **Calculate Area:** <br> - Exact: A = pi * r&sup2; = pi * ({r})&sup2; = {r_squared}pi m&sup2; <br> - Decimal Approximation: {area_approx} m&sup2; (to four significant figures)."
       },
       {
-        "id": "GEO 2-4a C",
+        "id": "GEO 2-4 Rotation",
         "type": "template",
         "objective": "Rotate a Triangle About the Origin by 90, 180, or 270 Degrees and Sketch",
         "difficulty": "basic",
@@ -17899,7 +17899,7 @@
         "answer": "1. Sketch the Pre-Image: Plot points A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. Apply the Rotation Rule: <br> For a counterclockwise rotation about the origin: <br> - A 90&bull; rotation follows the rule (x, y) -> (-y, x). <br> - A 180&bull; rotation follows the rule (x, y) -> (-x, -y). <br> - A 270&bull; rotation follows the rule (x, y) -> (y, -x). <br><br>3. Calculate Image Coordinates: <br> - Vertex A: A({a_x}, {a_y}) -> A'({a_prime_x}, {a_prime_y}) <br> - Vertex B: B({b_x}, {b_y}) -> B'({b_prime_x}, {b_prime_y}) <br> - Vertex C: C({c_x}, {c_y}) -> C'({c_prime_x}, {c_prime_y}) <br><br>4. Sketch the Image: Plot points A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y})."
       },
       {
-        "id": "GEO 2.5 C Toy Chest",
+        "id": "GEO 2.5a Toy Chest",
         "type": "template",
         "objective": "Surface Area and Volume of Rectangular Prisms with Sketching",
         "difficulty": "basic",
@@ -17936,7 +17936,7 @@
         "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D rectangular prism (box structure). The longest horizontal front edge must be labeled as {l} cm, the depth/receding horizontal edge labeled as {w} cm, and the vertical edge labeled as {h} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 270\" role=\"img\" aria-label=\"Rectangular toy chest with length, width, and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"chest-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><polygon points=\"95,92 290,92 355,48 160,48\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"290,92 355,48 355,178 290,222\" fill=\"#ead4aa\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"95,92 290,92 290,222 95,222\" fill=\"#f2dfbb\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"100\" y1=\"245\" x2=\"285\" y2=\"245\" stroke=\"#333\" marker-start=\"url(#chest-arrow)\" marker-end=\"url(#chest-arrow)\"/><text x=\"192\" y=\"263\" text-anchor=\"middle\" font-size=\"14\">Length: {l} cm</text><line x1=\"75\" y1=\"95\" x2=\"75\" y2=\"218\" stroke=\"#333\" marker-start=\"url(#chest-arrow)\" marker-end=\"url(#chest-arrow)\"/><text x=\"65\" y=\"160\" text-anchor=\"end\" font-size=\"14\">Height: {h} cm</text><line x1=\"300\" y1=\"78\" x2=\"348\" y2=\"46\" stroke=\"#333\" marker-start=\"url(#chest-arrow)\" marker-end=\"url(#chest-arrow)\"/><text x=\"365\" y=\"58\" font-size=\"14\">Width: {w} cm</text></svg></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: \\(A = 2(lw + lh + wh)\\)<br>&bull; Top & Bottom Faces: \\(2 \\cdot ({l} \\cdot {w}) = 2 \\cdot {base_area} = \\) <b>\\(2 \\cdot {base_area}\\) cm&sup2;</b><br>&bull; Front & Back Faces: \\(2 \\cdot ({l} \\cdot {h}) = \\) <b>{front_back_area} cm&sup2;</b><br>&bull; Left & Right Side Faces: \\(2 \\cdot ({w} \\cdot {h}) = \\) <b>{side_area} cm&sup2;</b><br>&bull; Total Surface Area: <b>{total_area} cm&sup2;</b><br><br><b>2. Total Volumetric Capacity:</b><br>&bull; Formula: \\(V = l \\cdot w \\cdot h\\)<br>&bull; Volume Calculation: \\({l} \\cdot {w} \\cdot {h}\\)<br>&bull; Total Volume: <b>{total_vol} cm&sup3;</b>"
       },
       {
-        "id": "GEO 2.5 Tank",
+        "id": "GEO 2.5b Tank",
         "type": "template",
         "objective": "Surface Area and Volume of Cylinders with Sketching",
         "difficulty": "basic",
@@ -17971,7 +17971,7 @@
         "answer": "<b>Expected Student Sketch:</b> The sketch should depict a vertical cylinder with a flat circular top and bottom. A dashed or solid radius line on one of the circular faces should be labeled as {r} m, and the vertical height connecting the two bases should be labeled as {h} m.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 290\" role=\"img\" aria-label=\"Cylinder-shaped tank with radius and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"tank-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><path d=\"M115 70 A105 28 0 0 0 325 70 L325 210 A105 28 0 0 1 115 210 Z\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M115 70 A105 28 0 1 1 325 70 A105 28 0 1 1 115 70\" fill=\"#f7fbfd\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M115 210 A105 28 0 0 0 325 210\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"220\" y1=\"70\" x2=\"315\" y2=\"70\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-end=\"url(#tank-arrow)\"/><text x=\"264\" y=\"60\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} m</text><line x1=\"355\" y1=\"75\" x2=\"355\" y2=\"205\" stroke=\"#333\" marker-start=\"url(#tank-arrow)\" marker-end=\"url(#tank-arrow)\"/><text x=\"365\" y=\"145\" font-size=\"14\">Height: {h} m</text></svg></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: \\(A = 2\\pi r^2 + 2\\pi rh\\)<br>&bull; Base Area Component: \\(2 \\cdot \\pi \\cdot {r}^2 = {base_area_coeff}\\pi\\) m&sup2; (for both bases)<br>&bull; Lateral Area Component: \\(2 \\cdot \\pi \\cdot {r} \\cdot {h} = {lateral_area_coeff}\\pi\\) m&sup2;<br>&bull; Total Surface Area (Exact): <b>{total_area_coeff}\\(\\pi\\) m&sup2;</b><br>&bull; Total Surface Area (Decimal): <b>{dec_area} m&sup2;</b><br><br><b>2. Total Volumetric Capacity:</b><br>&bull; Formula: \\(V = \\pi r^2 h\\)<br>&bull; Volume Calculation: \\(\\pi \\cdot {r}^2 \\cdot {h} = {vol_coeff}\\pi\\)<br>&bull; Total Volume (Exact): <b>{vol_coeff}\\(\\pi\\) m&sup3;</b><br>&bull; Total Volume (Decimal): <b>{dec_vol} m&sup3;</b>"
       },
       {
-        "id": "GEO 2.5 C Tank v2",
+        "id": "GEO 2.5b Tank v2",
         "type": "template",
         "objective": "Surface Area and Volume of Cylinders with Sketching",
         "difficulty": "basic",
@@ -18007,7 +18007,7 @@
         "answer": "<b>Expected Student Sketch:</b> The sketch should depict a vertical cylinder with a flat circular top and bottom. A dashed or solid radius line on one of the circular faces should be labeled as {r} m, and the vertical height connecting the two bases should be labeled as {h} m.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 290\" role=\"img\" aria-label=\"Cylinder-shaped tank with radius and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"tank-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><path d=\"M115 70 A105 28 0 0 0 325 70 L325 210 A105 28 0 0 1 115 210 Z\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M115 70 A105 28 0 1 1 325 70 A105 28 0 1 1 115 70\" fill=\"#f7fbfd\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M115 210 A105 28 0 0 0 325 210\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"220\" y1=\"70\" x2=\"315\" y2=\"70\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-end=\"url(#tank-arrow)\"/><text x=\"264\" y=\"60\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} m</text><line x1=\"355\" y1=\"75\" x2=\"355\" y2=\"205\" stroke=\"#333\" marker-start=\"url(#tank-arrow)\" marker-end=\"url(#tank-arrow)\"/><text x=\"365\" y=\"145\" font-size=\"14\">Height: {h} m</text></svg></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: \\(A = 2\\pi r^2 + 2\\pi rh\\)<br>&bull; Base Area Component: \\(2 \\cdot \\pi \\cdot {r}^2 = {base_area_coeff}\\pi\\) m&sup2; (for both bases)<br>&bull; Lateral Area Component: \\(2 \\cdot \\pi \\cdot {r} \\cdot {h} = {lateral_area_coeff}\\pi\\) m&sup2;<br>&bull; Total Surface Area (Exact): <b>{total_area_coeff}\\(\\pi\\) m&sup2;</b><br>&bull; Total Surface Area (Decimal): <b>{dec_area} m&sup2;</b><br><br><b>2. Total Volumetric Capacity:</b><br>&bull; Formula: \\(V = \\pi r^2 h\\)<br>&bull; Volume Calculation: \\(\\pi \\cdot {r}^2 \\cdot {h} = {vol_coeff}\\pi\\)<br>&bull; Total Volume (Exact): <b>{vol_coeff}\\(\\pi\\) m&sup3;</b><br>&bull; Total Volume (Decimal): <b>{dec_vol} m&sup3;</b>"
       },
       {
-        "id": "GEO 2.5 C Kids Ball with picture",
+        "id": "GEO 2.5 Ball (optional)",
         "type": "template",
         "objective": "Surface Area and Volume of Spheres with Sketching",
         "difficulty": "basic",
