@@ -16473,6 +16473,31 @@
         },
         "question": "The checkbook has an initial balance of <b>{initial_balance_formatted}</b>. Determine the balance after entering the complete details of the following four transactions that occurred during the week:<ol>{entry_details}</ol>{blank_ledger}",
         "answer": "{completed_ledger}"
+      },
+      {
+        "id": "CM 5.2a Check Endorsement",
+        "type": "template",
+        "objective": "Identify types of check endorsements",
+        "difficulty": "basic",
+        "variables": {
+          "endorsement_options": {
+            "formula": "(function(){var items=[{title:'Blank Endorsement',text:'Deposit at bank'},{title:'Blank Endorsement',text:'Signature only'},{title:'Special Endorsement',text:'Pay to another person'},{title:'Special Endorsement',text:'Sign and write “pay to the order of (name of person)”'},{title:'Restricted Endorsement',text:'Deposit by mobile'},{title:'Restricted Endorsement',text:'Sign and write “for deposit only at (name of bank)”'}];for(var i=items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),temp=items[i];items[i]=items[j];items[j]=temp;}return items.map(function(item,index){return {letter:String.fromCharCode(65+index),title:item.title,text:item.text};});})()"
+          },
+          "option_list": {
+            "formula": "'<ol type=\"A\">'+endorsement_options.map(function(item){return '<li>'+item.text+'</li>';}).join('')+'</ol>'"
+          },
+          "endorsement_titles": {
+            "formula": "(function(){var titles=['Blank Endorsement','Special Endorsement','Restricted Endorsement'];for(var i=titles.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),temp=titles[i];titles[i]=titles[j];titles[j]=temp;}return titles;})()"
+          },
+          "matching_table": {
+            "formula": "'<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse:collapse;min-width:360px\"><tr><th>Endorsement title</th><th>Your letter</th></tr>'+endorsement_titles.map(function(title){return '<tr><td>'+title+'</td><td style=\"width:120px;height:36px\"></td></tr>';}).join('')+'</table>'"
+          },
+          "answer_key": {
+            "formula": "endorsement_titles.map(function(title){return '<b>'+title+':</b> '+endorsement_options.filter(function(item){return item.title===title;}).map(function(item){return item.letter;}).join(' and ');}).join('<br>')"
+          }
+        },
+        "question": "Match each of the six options to the appropriate check endorsement. Write the letter of the matching options in the blank next to each title.<br><br><div style=\"display:flex;align-items:flex-start;gap:24px;flex-wrap:nowrap\"><div><b>Options</b>{option_list}</div><div>{matching_table}</div></div>",
+        "answer": "{answer_key}"
       }
     ]
   },
