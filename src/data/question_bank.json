@@ -16471,7 +16471,7 @@
             "formula": "transactions.map(function(item){return '<li><b>Number:</b> '+item.number+'; <b>Date:</b> '+item.date+'; <b>Description:</b> '+item.description+'; <b>Type:</b> '+item.type+'; <b>Amount:</b> '+item.amount_formatted+'</li>';}).join('')"
           }
         },
-        "question": "The checkbook has an initial balance of <b>{initial_balance_formatted}</b>. The following four transactions occurred during the prior week, including one deposit and three payments or withdrawals:<ol>{entry_details}</ol>Enter the initial balance on the first row (write “Beginning balance” in the description); then enter each payment or withdrawal as a positive amount in the PAYMENT/WITHDRAWAL columns and each deposit as a positive amount in the AMOUNT of DEPOSIT columns on the next four rows. Record the running balance after each row, subtracting payments and withdrawals and adding deposits, then determine the ending checkbook balance.<br><br>{blank_ledger}",
+        "question": "The checkbook has an initial balance of <b>{initial_balance_formatted}</b>. Determine the balance after entering the complete details of the following four transactions that occurred during the week:<ol>{entry_details}</ol>{blank_ledger}",
         "answer": "{completed_ledger}"
       }
     ]
