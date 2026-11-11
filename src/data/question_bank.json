@@ -16435,6 +16435,44 @@
         },
         "question": "Complete the practice check below. Use today's date. Write the check to <b>{recipient}</b> for <b>${amount_formatted}</b>, for {reason}. Fill in the payee, date, amount in numbers, and amount in words; write the reason on the memo line. Sign your check as <b>{person_name}</b>, the account holder whose details are printed on it. The bank, check number, and account number are fictional and for practice only.<br><br>{blank_check_svg}",
         "answer": "{completed_check_svg}"
+      },
+      {
+        "id": "CM 5.1b Checkbook Balance",
+        "type": "template",
+        "objective": "Recording checking account transactions and calculating a running balance",
+        "difficulty": "basic",
+        "variables": {
+          "ending_negative": {
+            "formula": "Math.random()<0.5"
+          },
+          "transactions": {
+            "formula": "(function(){var choices=[{type:'Payment',description:'Electric utility bill'},{type:'Withdrawal',description:'ATM cash withdrawal'},{type:'Payment',description:'Grocery store purchase'},{type:'Payment',description:'Water service bill'},{type:'Withdrawal',description:'Pharmacy purchase'},{type:'Payment',description:'Internet service bill'},{type:'Withdrawal',description:'Gas station purchase'},{type:'Payment',description:'Mobile phone bill'}];for(var i=choices.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),temp=choices[i];choices[i]=choices[j];choices[j]=temp;}var days=[];while(days.length<3){var d=1+Math.floor(Math.random()*7);if(days.indexOf(d)<0)days.push(d);}days.sort(function(a,b){return b-a;});return choices.slice(0,3).map(function(item,index){var amount_cents=15000+Math.floor(Math.random()*35001);return {number:1000+Math.floor(Math.random()*6000)+index,date:new Date(Date.now()-days[index]*86400000).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}),days_ago:days[index],type:item.type,description:item.description,amount_cents:amount_cents,amount_formatted:'$'+(amount_cents/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};});})()"
+          },
+          "ending_difference_cents": {
+            "min": 1000,
+            "max": 20000
+          },
+          "total_transactions_cents": {
+            "formula": "transactions.reduce(function(total,item){return total+item.amount_cents;},0)"
+          },
+          "initial_balance_cents": {
+            "formula": "total_transactions_cents+(ending_negative?-ending_difference_cents:ending_difference_cents)"
+          },
+          "initial_balance_formatted": {
+            "formula": "'$'+(initial_balance_cents/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})"
+          },
+          "blank_ledger": {
+            "formula": "(function(){var style='border:1px solid #59636e;padding:5px 4px;text-align:center;';var rows=Array.from({length:4},function(){return '<tr>'+Array.from({length:9},function(_,i){return '<td style=\"'+style+'height:34px;'+(i===5||i===7?'border-right:2px solid #59636e;':'')+'\"></td>';}).join('')+'</tr>';}).join('');return '<table style=\"width:100%;min-width:720px;border-collapse:collapse;font-family:Arial,sans-serif;font-size:12px;color:#202b36\"><thead><tr style=\"background:#e8eef3\"><th rowspan=\"2\" style=\"'+style+'width:9%\">NUMBER</th><th rowspan=\"2\" style=\"'+style+'width:14%\">DATE</th><th rowspan=\"2\" style=\"'+style+'width:24%\"></th><th rowspan=\"2\" style=\"'+style+'width:17%\">PAYMENT<br>OR<br>WITHDRAWAL</th><th rowspan=\"2\" style=\"'+style+'width:5%\">&#10003;</th><th colspan=\"2\" style=\"'+style+'width:15%\">AMOUNT</th><th colspan=\"2\" style=\"'+style+'width:16%\">BALANCE</th></tr><tr style=\"background:#f4f6f8\"><th style=\"'+style+'width:9%\">$</th><th style=\"'+style+'width:6%\">&#162;</th><th style=\"'+style+'width:10%\">$</th><th style=\"'+style+'width:6%\">&#162;</th></tr></thead><tbody>'+rows+'</tbody></table>';})()"
+          },
+          "completed_ledger": {
+            "formula": "(function(){var style='border:1px solid #59636e;padding:5px 4px;text-align:center;';function money(cents){var dollars=Math.floor(Math.abs(cents)/100),coins=String(Math.abs(cents)%100).padStart(2,'0');return {dollars:(cents<0?'-':'')+'$'+dollars.toLocaleString('en-US'),cents:coins};}function row(number,date,description,type,amount,balance){var a=money(amount),b=money(balance);return '<tr><td style=\"'+style+'\">'+number+'</td><td style=\"'+style+'\">'+date+'</td><td style=\"'+style+'text-align:left\">'+description+'</td><td style=\"'+style+'\">'+type+'</td><td style=\"'+style+'\">&#9744;</td><td style=\"'+style+'text-align:right;border-right:2px solid #59636e\">'+(amount===0?'':a.dollars)+'</td><td style=\"'+style+'border-right:2px solid #59636e\">'+(amount===0?'':a.cents)+'</td><td style=\"'+style+'text-align:right\">'+b.dollars+'</td><td style=\"'+style+'\">'+b.cents+'</td></tr>';}var rows=row('','','Beginning balance','',0,initial_balance_cents),balance=initial_balance_cents;transactions.forEach(function(item){balance-=item.amount_cents;rows+=row(item.number,item.date,item.description,item.type,item.amount_cents,balance);});return '<table style=\"width:100%;min-width:720px;border-collapse:collapse;font-family:Arial,sans-serif;font-size:12px;color:#202b36\"><thead><tr style=\"background:#e8eef3\"><th rowspan=\"2\" style=\"'+style+'width:9%\">NUMBER</th><th rowspan=\"2\" style=\"'+style+'width:14%\">DATE</th><th rowspan=\"2\" style=\"'+style+'width:24%\"></th><th rowspan=\"2\" style=\"'+style+'width:17%\">PAYMENT<br>OR<br>WITHDRAWAL</th><th rowspan=\"2\" style=\"'+style+'width:5%\">&#10003;</th><th colspan=\"2\" style=\"'+style+'width:15%\">AMOUNT</th><th colspan=\"2\" style=\"'+style+'width:16%\">BALANCE</th></tr><tr style=\"background:#f4f6f8\"><th style=\"'+style+'width:9%\">$</th><th style=\"'+style+'width:6%\">&#162;</th><th style=\"'+style+'width:10%\">$</th><th style=\"'+style+'width:6%\">&#162;</th></tr></thead><tbody>'+rows+'</tbody></table><br>Ending checkbook balance: <b>'+(balance<0?'-$'+(Math.abs(balance)/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'$'+(balance/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}))+'</b>';})()"
+          },
+          "entry_details": {
+            "formula": "transactions.map(function(item){return '<li><b>Number:</b> '+item.number+'; <b>Date:</b> '+item.date+'; <b>Description:</b> '+item.description+'; <b>Type:</b> '+item.type+'; <b>Amount:</b> '+item.amount_formatted+'</li>';}).join('')"
+          }
+        },
+        "question": "The checkbook has an initial balance of <b>{initial_balance_formatted}</b>. The following three transactions occurred during the prior week:<ol>{entry_details}</ol>Enter the initial balance on the first row (write “Beginning balance” in the description); then enter the number, date, description, payment or withdrawal, and amount for each transaction on the next three rows. Leave the checkmark boxes blank. Record the running balance after each row and determine the ending checkbook balance.<br><br>{blank_ledger}",
+        "answer": "{completed_ledger}"
       }
     ]
   },
