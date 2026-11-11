@@ -16343,6 +16343,99 @@
         "question": "{person_name} received a raise of <b>{raise_amount_formatted} per hour</b>. The original wage was <b>{original_wage_formatted} per hour</b>.<br><br><b>A)</b> What is the new hourly wage? What is the annual gross income if {person_name} works 40 hours per week for 52 weeks?<br><br><b>B)</b> The tax rate is 21%. In addition, 10% of annual gross income is donated. How much annual disposable income remains? Answer all amounts to the nearest penny.",
         "answer": "<b>A)</b> New hourly wage: {original_wage_formatted} + {raise_amount_formatted} = <b>{new_wage_formatted}</b>.<br>Annual gross income: {new_wage_formatted} &times; 40 hours &times; 52 weeks = <b>{annual_gross_income_formatted}</b>.<br><br><b>B)</b> Annual tax: {annual_gross_income_formatted} &times; 21% = <b>{annual_tax_formatted}</b>.<br>Donation: {annual_gross_income_formatted} &times; 10% = <b>{annual_donation_formatted}</b>.<br>Disposable income: {annual_gross_income_formatted} - {annual_tax_formatted} - {annual_donation_formatted} = <b>{disposable_income_formatted}</b>."
       }
+    ],
+    "5 Personal Banking": [
+      {
+        "id": "CM 5.1a Writing a Check",
+        "type": "template",
+        "objective": "Completing a personal check",
+        "difficulty": "basic",
+        "variables": {
+          "person_profile": {
+            "formula": "([{name:'Jordan Ellis',street:'1842 Willow Creek Lane',city:'Lakeview',state:'MN',zip:'55001'},{name:'Taylor Morgan',street:'73 Cedar Ridge Road',city:'Fairview',state:'OH',zip:'44126'},{name:'Avery Brooks',street:'291 Meadow Park Drive',city:'Riverton',state:'CO',zip:'80102'},{name:'Riley Parker',street:'506 Harbor Street',city:'Bayfield',state:'WI',zip:'54814'}])[Math.floor(Math.random()*4)]"
+          },
+          "person_name": {
+            "formula": "person_profile.name"
+          },
+          "person_street": {
+            "formula": "person_profile.street"
+          },
+          "person_city_state_zip": {
+            "formula": "person_profile.city+', '+person_profile.state+' '+person_profile.zip"
+          },
+          "bank_profile": {
+            "formula": "([{name:'Northstar Practice Bank',street:'100 Example Plaza',city:'Lakeview',state:'MN',zip:'55001'},{name:'Cedar Valley Savings',street:'25 Sample Avenue',city:'Fairview',state:'OH',zip:'44126'},{name:'Pine Ridge Community Bank',street:'800 Training Center Drive',city:'Riverton',state:'CO',zip:'80102'},{name:'Harborlight Bank',street:'42 Classroom Way',city:'Bayfield',state:'WI',zip:'54814'}])[Math.floor(Math.random()*4)]"
+          },
+          "bank_name": {
+            "formula": "bank_profile.name"
+          },
+          "bank_street": {
+            "formula": "bank_profile.street"
+          },
+          "bank_city_state_zip": {
+            "formula": "bank_profile.city+', '+bank_profile.state+' '+bank_profile.zip"
+          },
+          "transaction": {
+            "formula": "([{recipient:'Lakeside Bicycle Repair',reason:'bicycle repairs'},{recipient:'Meadowbrook Dental Care',reason:'dental services'},{recipient:'Cedar Lane Property Management',reason:'monthly rent'},{recipient:'North Point Veterinary Clinic',reason:'veterinary care'},{recipient:'Summit Music School',reason:'music lessons'}])[Math.floor(Math.random()*5)]"
+          },
+          "recipient": {
+            "formula": "transaction.recipient"
+          },
+          "reason": {
+            "formula": "transaction.reason"
+          },
+          "account_number": {
+            "min": 10000000,
+            "max": 99999999
+          },
+          "routing_number": {
+            "min": 100000000,
+            "max": 999999999
+          },
+          "check_number": {
+            "min": 1001,
+            "max": 9999
+          },
+          "dollar_amount": {
+            "min": 1000,
+            "max": 9999
+          },
+          "cents_tens": {
+            "min": 1,
+            "max": 9
+          },
+          "cents_ones": {
+            "min": 1,
+            "max": 9
+          },
+          "amount_cents": {
+            "formula": "cents_tens*10+cents_ones"
+          },
+          "amount": {
+            "formula": "dollar_amount+amount_cents/100"
+          },
+          "amount_formatted": {
+            "formula": "amount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})"
+          },
+          "amount_words": {
+            "formula": "(function(){var ones=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'],tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];function words(n){if(n<20)return ones[n];if(n<100)return tens[Math.floor(n/10)]+(n%10?'-'+ones[n%10]:'');if(n<1000)return ones[Math.floor(n/100)]+' hundred'+(n%100?' '+words(n%100):'');return ones[Math.floor(n/1000)]+' thousand'+(n%1000?' '+words(n%1000):'');}var result=words(dollar_amount)+' dollars and '+words(amount_cents)+' cents';return result.charAt(0).toUpperCase()+result.slice(1);})()"
+          },
+          "check_date": {
+            "formula": "new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})"
+          },
+          "blank_check_svg": {
+            "formula": "check_svg(false)"
+          },
+          "completed_check_svg": {
+            "formula": "check_svg(true)"
+          },
+          "check_svg": {
+            "formula": "(function(showAnswers){var text=function(x,y,value,size,weight,color){return '<text x=\"'+x+'\" y=\"'+y+'\" font-family=\"Arial,sans-serif\" font-size=\"'+size+'\" font-weight=\"'+weight+'\" fill=\"'+color+'\">'+value+'</text>';};var line=function(x1,y1,x2,y2){return '<line x1=\"'+x1+'\" y1=\"'+y1+'\" x2=\"'+x2+'\" y2=\"'+y2+'\" stroke=\"#34495e\" stroke-width=\"1\"/>';};var ink='#17324d',recipient=showAnswers?transaction.recipient:'',date=showAnswers?check_date:'',numeric=showAnswers?amount_formatted:'',written=showAnswers?amount_words:'',memo=showAnswers?transaction.reason:'',signature=showAnswers?person_profile.name:'';return '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6in\" height=\"2.75in\" viewBox=\"0 0 720 330\" role=\"img\" aria-label=\"'+(showAnswers?'Completed':'Blank')+' life-size practice check\" style=\"display:block;width:6in;max-width:100%;height:auto;background:#fffefa\"><rect x=\"2\" y=\"2\" width=\"716\" height=\"326\" rx=\"8\" fill=\"#fffefa\" stroke=\"#17324d\" stroke-width=\"3\"/><rect x=\"8\" y=\"8\" width=\"704\" height=\"314\" rx=\"5\" fill=\"none\" stroke=\"#9db7c7\" stroke-width=\"1\"/><path d=\"M18 94H702M18 202H702\" stroke=\"#e1eaf0\" stroke-width=\"1\"/>'+text(30,34,person_profile.name,16,'bold',ink)+text(30,52,person_profile.street,11,'normal',ink)+text(30,68,person_profile.city+', '+person_profile.state+' '+person_profile.zip,11,'normal',ink)+text(310,34,bank_profile.name,16,'bold',ink)+text(310,52,bank_profile.street,11,'normal',ink)+text(310,68,bank_profile.city+', '+bank_profile.state+' '+bank_profile.zip,11,'normal',ink)+text(610,22,'CHECK NO.',9,'bold',ink)+text(610,42,String(check_number),16,'bold',ink)+text(500,75,'DATE',9,'bold',ink)+line(500,90,690,90)+text(503,85,date,12,'normal',ink)+text(30,112,'PAY TO THE ORDER OF',9,'bold',ink)+line(30,148,570,148)+text(36,140,recipient,15,'normal',ink)+text(568,133,'$',16,'bold',ink)+'<rect x=\"584\" y=\"103\" width=\"106\" height=\"48\" rx=\"2\" fill=\"#fff\" stroke=\"#34495e\" stroke-width=\"1\"/>'+text(592,133,numeric,16,'bold',ink)+line(30,190,620,190)+text(36,183,written,13,'normal',ink)+text(632,183,'DOLLARS',9,'bold',ink)+text(30,220,'MEMO',9,'bold',ink)+line(30,256,350,256)+text(36,249,memo,12,'normal',ink)+line(420,256,690,256)+text(446,249,signature,14,'normal',ink)+text(452,271,'SIGNATURE',9,'bold',ink)+text(28,298,String(routing_number)+'   '+String(account_number)+'   '+String(check_number),11,'normal','#34495e')+text(568,298,'NO VALUE - PRACTICE ONLY',9,'bold','#9b2c2c')+'</svg>';})"
+          }
+        },
+        "question": "Complete the practice check below. Use today's date. Write the check to <b>{recipient}</b> for <b>${amount_formatted}</b>, for {reason}. Fill in the payee, date, amount in numbers, and amount in words; write the reason on the memo line. Sign your check as <b>{person_name}</b>, the account holder whose details are printed on it. The bank, check number, and account number are fictional and for practice only.<br><br>{blank_check_svg}",
+        "answer": "{completed_check_svg}"
+      }
     ]
   },
   "Geometry": {
