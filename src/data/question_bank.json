@@ -17689,7 +17689,7 @@
         "answer": "Let the measure of the smaller angle be \\( x \\). Since the angles are complimenary, their sum is \\( 90^\\circ \\). The larger angle is \\( {n}x \\). Set up the equation: \\( x + {n}x = 90 \\) or \\( \\left({n} + 1\\right)x = 90 \\). Solving for \\( x \\) gives the smaller angle: \\( x = {smaller_angle}^\\circ \\) (and the larger angle is \\( {larger_angle}^\\circ \\))."
       },
       {
-        "id": "GEO 2-3a rectangle",
+        "id": "GEO 2-3a Rectangle",
         "type": "template",
         "objective": "Calculate the Perimeter and Area of a Tilted Rectangle on a Coordinate Plane",
         "difficulty": "basic",
@@ -17996,32 +17996,6 @@
         },
         "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the children's play ball described below. Label its radius with the correct dimension.<br><br><b>Task 2:</b> A spherical children's play ball has a radius of <b>\\( {r} \\) cm</b>.<br><br>1. Calculate the total external surface area of the ball.<br>2. Calculate the total internal volume of the ball.",
         "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D sphere (a circle with an elliptical contour line passing through the center to give a three-dimensional perspective). A radius line drawn from the center point to the outer edge must be clearly labeled as {r} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 260\" role=\"img\" aria-label=\"Sphere with radius labeled\" style=\"display:block;width:100%;max-width:360px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"sphere-radius-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#1f5f8b\"/></marker></defs><circle cx=\"160\" cy=\"125\" r=\"82\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M78 125 A82 25 0 0 1 242 125\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><path d=\"M78 125 A82 25 0 0 0 242 125\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\"/><circle cx=\"160\" cy=\"125\" r=\"3.5\" fill=\"#1f5f8b\"/><line x1=\"160\" y1=\"125\" x2=\"241\" y2=\"125\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-end=\"url(#sphere-radius-arrow)\"/><text x=\"194\" y=\"113\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} cm</text></svg><br><i>Sphere diagram with radius labeled</i></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: A = 4 &times; &pi; &times; r&sup2;<br>&bull; Surface Area Calculation: 4 &times; &pi; &times; {r}&sup2; = {area_coeff}&pi;<br>&bull; Total Surface Area (Exact): <b>{area_coeff}&pi; cm&sup2;</b><br>&bull; Total Surface Area (Decimal): <b>{dec_area} cm&sup2;</b><br><br><b>2. Total Internal Volume:</b><br>&bull; Formula: V = \\(\\frac{4}{3}\\) &times; &pi; &times; r&sup3;<br>&bull; Volume Calculation: \\(\\frac{4}{3}\\) &times; &pi; &times; {r}&sup3; = {vol_coeff}&pi;<br>&bull; Total Volume (Exact): <b>{vol_coeff}&pi; cm&sup3;</b><br>&bull; Total Volume (Decimal): <b>{dec_vol} cm&sup3;</b>"
-      },
-      {
-        "id": "GEO 2.5 C Ball",
-        "type": "template",
-        "objective": "Surface Area and Volume of Spheres with Sketching",
-        "difficulty": "basic",
-        "variables": {
-          "r": {
-            "min": 3,
-            "max": 25
-          },
-          "area_coeff": {
-            "formula": "4 * r * r"
-          },
-          "vol_coeff": {
-            "formula": "((4/3) * r * r * r).toFixed(1)"
-          },
-          "dec_area": {
-            "formula": "(Math.PI * 4 * r * r).toFixed(1)"
-          },
-          "dec_vol": {
-            "formula": "(Math.PI * (4/3) * r * r * r).toFixed(1)"
-          }
-        },
-        "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the children's play ball described below. Label its radius with the correct dimension.<br><br><b>Task 2:</b> A spherical children's play ball has a radius of <b>{r} cm</b>.<br><br>1. Calculate the total external surface area of the ball.<br>2. Calculate the total internal volume of the ball.",
-        "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D sphere (a circle with an elliptical contour line passing through the center to give a three-dimensional perspective). A radius line drawn from the center point to the outer edge must be clearly labeled as {r} cm.<br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: \\(A = 4\\pi r^2\\)<br>&bull; Surface Area Calculation: \\(4 \\cdot \\pi \\cdot {r}^2 = {area_coeff}\\pi\\)<br>&bull; Total Surface Area (Exact): <b>{area_coeff}\\(\\pi\\) cm&sup2;</b><br>&bull; Total Surface Area (Decimal): <b>{dec_area} cm&sup2;</b><br><br><b>2. Total Internal Volume:</b><br>&bull; Formula: \\(V = \\frac{4}{3}\\pi r^3\\)<br>&bull; Volume Calculation: \\(\\frac{4}{3} \\cdot \\pi \\cdot {r}^3 = {vol_coeff}\\pi\\)<br>&bull; Total Volume (Exact): <b>{vol_coeff}\\(\\pi\\) cm&sup3;</b><br>&bull; Total Volume (Decimal): <b>{dec_vol} cm&sup3;</b>"
       },
       {
         "id": "GEO 2.5 B Silo Cone",
