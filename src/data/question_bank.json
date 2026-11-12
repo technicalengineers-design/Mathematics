@@ -16490,13 +16490,13 @@
             "formula": "(function(){var titles=['Blank Endorsement','Special Endorsement','Restricted Endorsement'];for(var i=titles.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),temp=titles[i];titles[i]=titles[j];titles[j]=temp;}return titles;})()"
           },
           "matching_table": {
-            "formula": "'<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse:collapse;min-width:360px\"><tr><th>Endorsement title</th><th>Your letter</th></tr>'+endorsement_titles.map(function(title){return '<tr><td>'+title+'</td><td style=\"width:120px;height:36px\"></td></tr>';}).join('')+'</table>'"
+            "formula": "'<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse:collapse;min-width:360px\"><tr><th>Endorsement</th><th></th></tr>'+endorsement_titles.map(function(title){return '<tr><td>'+title+'</td><td style=\"width:120px;height:36px\"></td></tr>';}).join('')+'</table>'"
           },
           "answer_key": {
             "formula": "endorsement_titles.map(function(title){return '<b>'+title+':</b> '+endorsement_options.filter(function(item){return item.title===title;}).map(function(item){return item.letter;}).join(' and ');}).join('<br>')"
           }
         },
-        "question": "Match each of the six options to the appropriate check endorsement. Write the letter of the matching options in the blank next to each title.<br><br><div style=\"display:flex;align-items:flex-start;gap:24px;flex-wrap:nowrap\"><div><b>Options</b>{option_list}</div><div>{matching_table}</div></div>",
+        "question": "Match each of the six options to the appropriate check endorsement. Write the letter of the matching options in the blank next to each endorsement.<br><br><div style=\"display:flex;align-items:flex-start;gap:24px;flex-wrap:nowrap\"><div><b>Options</b>{option_list}</div><div>{matching_table}</div></div>",
         "answer": "{answer_key}"
       }
     ]
