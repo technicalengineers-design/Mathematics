@@ -19923,7 +19923,7 @@
 {
         "id": "GEO 5.1c Tent",
         "type": "template",
-        "objective": "Calculate missing angles using the exterior angle theorem and the interior angle sum of a triangle",
+        "objective": "Calculate missing angles",
         "difficulty": "basic",
         "variables": {
           "prob": {
