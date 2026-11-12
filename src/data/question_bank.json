@@ -16498,7 +16498,111 @@
         },
         "question": "Match each of the six options to the appropriate check endorsement. Write the letter of the matching options in the blank next to each endorsement.<br><br><div style=\"display:flex;align-items:flex-start;gap:24px;flex-wrap:nowrap\"><div><b>Options</b>{option_list}</div><div>{matching_table}</div></div>",
         "answer": "{answer_key}"
+      },
+      {
+  "id": "CM 5.2b Deposit Slip",
+  "type": "template",
+  "objective": "Completing a bank deposit slip with currency, coins, multiple checks, and cash back",
+  "difficulty": "basic",
+  "variables": {
+    "deposit_date": {
+      "formula": "new Date(Date.now() - (1 + Math.floor(Math.random() * 5)) * 86400000).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})"
+    },
+    "bills_dollars": {
+      "formula": "(1 + Math.floor(Math.random() * 15)) * 5"
+    },
+    "quarters": {
+      "min": 1,
+      "max": 19
+    },
+    "dimes": {
+      "min": 1,
+      "max": 19
+    },
+    "nickels": {
+      "min": 1,
+      "max": 19
+    },
+    "pennies": {
+      "min": 1,
+      "max": 24
+    },
+    "coins_cents": {
+      "formula": "quarters * 25 + dimes * 10 + nickels * 5 + pennies"
+    },
+    "cash_total_cents": {
+      "formula": "bills_dollars * 100 + coins_cents"
+    },
+    "checks": {
+      "formula": "(function(){var payers=['Paycheck - Oakridge Corp','Refund - Valley Electric','Gift - Aunt Martha','Rebate - Apex Auto','Reimbursement - PTA','Payment - Freelance Client','Dividend - First Mutual'];for(var i=payers.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=payers[i];payers[i]=payers[j];payers[j]=t;}return [0,1,2].map(function(idx){var cents=2500+Math.floor(Math.random()*32501);return {number:101+Math.floor(Math.random()*890),payer:payers[idx],cents:cents,formatted:'$'+(cents/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};});})()"
+    },
+    "subtotal_cents": {
+      "formula": "cash_total_cents + checks[0].cents + checks[1].cents + checks[2].cents"
+    },
+    "cash_back_cents": {
+      "formula": "(1 + Math.floor(Math.random() * 8)) * 1000"
+    },
+    "net_deposit_cents": {
+      "formula": "subtotal_cents - cash_back_cents"
+    },
+    "bills_formatted": {
+      "formula": "'$' + bills_dollars.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+    },
+    "coins_formatted": {
+      "formula": "'$' + (coins_cents / 100).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+    },
+    "cash_back_formatted": {
+      "formula": "'$' + (cash_back_cents / 100).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+    },
+    "net_deposit_formatted": {
+      "formula": "'$' + (net_deposit_cents / 100).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+    },
+    "check_details": {
+      "formula": "checks.map(function(c){return '<li><b>Check #' + c.number + '</b> (' + c.payer + '): ' + c.formatted + '</li>';}).join('')"
+    },
+    "blank_slip": {
+      "formula": "(function(){var style='border:1px solid #59636e;padding:6px 8px;';var labels=['Currency (Bills)','Coins','Check #'+checks[0].number,'Check #'+checks[1].number,'Check #'+checks[2].number,'SUBTOTAL','LESS CASH RECEIVED','NET DEPOSIT'];var rows=labels.map(function(label,idx){var bold=idx>=5?'font-weight:bold;background:#f4f6f8;':'';return '<tr style=\"'+bold+'\"><td style=\"'+style+'text-align:left;width:64%\">'+label+'</td><td style=\"'+style+'width:22%;height:30px\"></td><td style=\"'+style+'width:14%;height:30px\"></td></tr>';}).join('');return '<table style=\"width:100%;max-width:520px;border-collapse:collapse;font-family:Arial,sans-serif;font-size:12px;color:#202b36\"><thead><tr style=\"background:#e8eef3\"><th style=\"'+style+'text-align:left\">DEPOSIT TICKET &mdash; Date: '+deposit_date+'</th><th style=\"'+style+'text-align:center\">$</th><th style=\"'+style+'text-align:center\">¢</th></tr></thead><tbody>'+rows+'</tbody></table>';})()"
+    },
+    "completed_slip": {
+      "formula": "(function(){var style='border:1px solid #59636e;padding:6px 8px;';function money(cents){return {dollars:'$'+Math.floor(cents/100).toLocaleString('en-US'),cents:String(cents%100).padStart(2,'0')};}var items=[{label:'Currency (Bills)',cents:bills_dollars*100,bold:false},{label:'Coins ('+quarters+'Q, '+dimes+'D, '+nickels+'N, '+pennies+'P)',cents:coins_cents,bold:false},{label:'Check #'+checks[0].number,cents:checks[0].cents,bold:false},{label:'Check #'+checks[1].number,cents:checks[1].cents,bold:false},{label:'Check #'+checks[2].number,cents:checks[2].cents,bold:false},{label:'SUBTOTAL',cents:subtotal_cents,bold:true},{label:'LESS CASH RECEIVED',cents:cash_back_cents,bold:true},{label:'NET DEPOSIT',cents:net_deposit_cents,bold:true}];var rows=items.map(function(item){var m=money(item.cents),trStyle=item.bold?'font-weight:bold;background:#f4f6f8;':'';return '<tr style=\"'+trStyle+'\"><td style=\"'+style+'text-align:left;width:64%\">'+item.label+'</td><td style=\"'+style+'text-align:right;width:22%\">'+m.dollars+'</td><td style=\"'+style+'text-align:center;width:14%\">'+m.cents+'</td></tr>';}).join('');return '<table style=\"width:100%;max-width:520px;border-collapse:collapse;font-family:Arial,sans-serif;font-size:12px;color:#202b36\"><thead><tr style=\"background:#e8eef3\"><th style=\"'+style+'text-align:left\">DEPOSIT TICKET &mdash; Date: '+deposit_date+'</th><th style=\"'+style+'text-align:center\">$</th><th style=\"'+style+'text-align:center\">¢</th></tr></thead><tbody>'+rows+'</tbody></table><br>Total coins: <b>'+coins_formatted+'</b> &bull; Net deposit: <b>'+net_deposit_formatted+'</b>';})()"
+    }
+  },
+  "question": "On <b>{deposit_date}</b>, you are making a bank deposit that includes <b>{bills_formatted}</b> in paper bills, loose coins consisting of <b>{quarters} quarters, {dimes} dimes, {nickels} nickels, and {pennies} pennies</b>, and the following three checks:<ul>{check_details}</ul>You also want to receive <b>{cash_back_formatted}</b> in cash back from the deposit. Complete the deposit slip below to determine the subtotal and net deposit:<br><br>{blank_slip}",
+  "answer": "{completed_slip}"
+},
+{
+        "id": "CM 5.3a Avoiding Overdraft",
+        "type": "template",
+        "objective": "Identify ways to avoid account overdraft",
+        "difficulty": "basic",
+        "variables": {
+          "overdraft_ways": {
+            "formula": "[{title:'Maintain a cash cushion',text:'Keep an extra buffer (such as $50 to $100) in your checking account to absorb minor timing mistakes or pending transactions.'},{title:'Set up low-balance alerts',text:'Use your bank’s mobile app or online portal to enable automated text or email notifications whenever your balance dips below a chosen threshold.'},{title:'Track pending transactions and payments',text:'Check your account balance regularly and remember that debit card purchases, automated bill payments, and checks may take a day or two to clear.'},{title:'Link a backup account',text:'Set up overdraft protection by linking your checking account to a savings account, money market account, or line of credit so funds transfer automatically if you run low.'},{title:'Opt out of debit card overdraft coverage',text:'You can decline standard overdraft services for everyday debit card and ATM transactions; if you don\\'t have enough money, the card will simply be declined at the register instead of going negative and triggering a fee.'},{title:'Switch to a fee-free bank',text:'Consider opening a checking account at institutions or with policies that do not charge overdraft or non-sufficient funds (NSF) fees.'}]"
+          },
+          "answer_key": {
+            "formula": "'Answers may include any four of the following:<br><ul>'+overdraft_ways.map(function(item){return '<li><b>'+item.title+':</b> '+item.text+'</li>';}).join('')+'</ul>'"
+          }
+        },
+        "question": "Name four ways to avoid account overdraft.",
+        "answer": "{answer_key}"
+      },
+      {
+        "id": "CM 5.3b Bank Account Check",
+        "type": "template",
+        "objective": "Identify key items to review when checking a bank account statement",
+        "difficulty": "basic",
+        "variables": {
+          "account_checks": {
+            "formula": "[{title:'Unauthorized or Fraudulent Charges',text:'Look for unfamiliar business names, strange out-of-state purchases, or small \"card testing\" charges (such as $1.00 or $5.00) that scammers use to test stolen card numbers.'},{title:'Unexpected or Incorrect Fees',text:'Check for monthly maintenance fees, out-of-network ATM surcharges, wire fees, or accidental overdraft charges.'},{title:'Missing or Delayed Deposits',text:'Confirm that your direct deposits, paychecks, or incoming transfers are posted for the correct amount and on time.'},{title:'Duplicate Transactions',text:'Make sure a single purchase or bill payment was not processed twice by mistake.'},{title:'Recurring Subscriptions',text:'Look for forgotten streaming services, gym memberships, or software trials that continue to auto-renew.'},{title:'Personal Information',text:'Verify that your name, mailing address, and contact details listed at the top of the statement and online are accurate.'}]"
+          },
+          "answer_key": {
+            "formula": "'Answers may include any four of the following:<br><ul>'+account_checks.map(function(item){return '<li><b>'+item.title+':</b> '+item.text+'</li>';}).join('')+'</ul>'"
+          }
+        },
+        "question": "Name four things you should look for when reviewing your bank account statement.",
+        "answer": "{answer_key}"
       }
+
     ]
   },
   "Geometry": {
