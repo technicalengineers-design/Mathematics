@@ -19945,7 +19945,7 @@
 {
         "id": "GEO 5.1d Parallel Lines",
         "type": "template",
-        "objective": "Calculate missing interior and exterior angles formed by a triangle between two parallel lines",
+        "objective": "Calculate missing angles",
         "difficulty": "basic",
         "variables": {
           "prob": {
