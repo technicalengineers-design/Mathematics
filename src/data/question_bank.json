@@ -6838,90 +6838,6 @@
 {
   "id": "ALG S1 2.1 Counting",
   "type": "template",
-  "objective": "Tracking positive and negative adjustments to an initial quantity to verify a final headcount",
-  "difficulty": "intermediate",
-  "variables": {
-    "roster_total": {
-      "min": 42,
-      "max": 68
-    },
-    "reported_count": {
-      "formula": "roster_total - (4 + Math.floor(Math.random() * 8))"
-    },
-    "classroom_initial": {
-      "min": 4,
-      "max": 8
-    },
-    "classroom_correction": {
-      "min": 1,
-      "max": 3
-    },
-    "classroom_actual": {
-      "formula": "classroom_initial - classroom_correction"
-    },
-    "restroom_out": {
-      "min": 2,
-      "max": 5
-    },
-    "restroom_returned": {
-      "min": 1,
-      "max": 2
-    },
-    "restroom_actual": {
-      "formula": "restroom_out - restroom_returned"
-    },
-    "nurse_count": {
-      "min": 1,
-      "max": 3
-    },
-    "pickup_count": {
-      "min": 1,
-      "max": 4
-    },
-    "late_arrivals": {
-      "min": 2,
-      "max": 5
-    },
-    "art_room_initial": {
-      "min": 3,
-      "max": 7
-    },
-    "art_room_correction": {
-      "min": 1,
-      "max": 2
-    },
-    "art_room_actual": {
-      "formula": "art_room_initial + art_room_correction"
-    },
-    "missing_count": {
-      "min": 0,
-      "max": 3
-    },
-    "expected_on_field": {
-      "formula": "roster_total + late_arrivals - pickup_count - classroom_actual - restroom_actual - nurse_count - art_room_actual"
-    },
-    "actual_counted_on_field": {
-      "formula": "expected_on_field - missing_count"
-    },
-    "off_field_total": {
-      "formula": "classroom_actual + restroom_actual + nurse_count + art_room_actual"
-    },
-    "adjusted_roster": {
-      "formula": "roster_total + late_arrivals - pickup_count"
-    },
-    "accounted_for_total": {
-      "formula": "actual_counted_on_field + off_field_total"
-    },
-    "solution_html": {
-      "formula": "(function(){var tableStyle='width:100%;max-width:620px;border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px;color:#202b36;margin-top:10px;';var cell='border:1px solid #59636e;padding:7px 10px;';var rows=[['Starting Morning Roster', '+'+roster_total, roster_total],['Late Arrivals Added to Group', '+'+late_arrivals, roster_total+late_arrivals],['Early Parent Pickups (Signed Out)', '&minus;'+pickup_count, adjusted_roster],['<b>Adjusted Total Campers to Account For</b>', '', '<b>'+adjusted_roster+'</b>'],['Art Room (Initial '+art_room_initial+' + Correction '+art_room_correction+')', '&minus;'+art_room_actual, adjusted_roster-art_room_actual],['Classroom with Ms. Alvarez (Initial '+classroom_initial+' &minus; '+classroom_correction+' returned)', '&minus;'+classroom_actual, adjusted_roster-art_room_actual-classroom_actual],['Restroom Break ('+restroom_out+' left &minus; '+restroom_returned+' came back)', '&minus;'+restroom_actual, adjusted_roster-art_room_actual-classroom_actual-restroom_actual],['Nurse\\'s Office (Ice pack / Bandage)', '&minus;'+nurse_count, expected_on_field],['<b>Expected Count on Playground</b>', '', '<b>'+expected_on_field+'</b>'],['Your Actual Headcount on Playground', '', '<b>'+actual_counted_on_field+'</b>']].map(function(r,idx){var isBold=idx===3||idx===8||idx===9;var bg=isBold?'background:#f4f6f8;':'';return '<tr style=\"'+bg+'\"><td style=\"'+cell+'text-align:left\">'+r[0]+'</td><td style=\"'+cell+'text-align:center;width:18%\">'+r[1]+'</td><td style=\"'+cell+'text-align:right;width:18%\">'+r[2]+'</td></tr>';}).join('');var verdict=missing_count===0?'<span style=\"color:#1b5e20;font-weight:bold\">All campers are accounted for!</span> Your count of <b>'+actual_counted_on_field+'</b> matches the expected playground count of <b>'+expected_on_field+'</b> (<b>'+accounted_for_total+'</b> total active campers across all locations).':'<span style=\"color:#b71c1c;font-weight:bold\">ALERT: '+missing_count+' camper'+(missing_count>1?'s are':' is')+' unaccounted for!</span> You counted <b>'+actual_counted_on_field+'</b> on the playground, but <b>'+expected_on_field+'</b> should be present (a discrepancy of <b>'+missing_count+'</b>). Immediate search near the perimeter and lakefront is required.';return '<div style=\"font-family:Arial,sans-serif;font-size:13px;color:#202b36;line-height:1.5\"><b>Step 1: Correct the Active Roster</b><br>Start with the morning roster of <b>'+roster_total+'</b>, add the <b>'+late_arrivals+'</b> late arrivals, and subtract the <b>'+pickup_count+'</b> early pickups: '+roster_total+' + '+late_arrivals+' &minus; '+pickup_count+' = <b>'+adjusted_roster+' active campers</b>.<br><br><b>Step 2: Reconcile Off-Playground Locations</b><br><ul><li><b>Art Room:</b> Another counselor first said '+art_room_initial+', then corrected it to '+art_room_correction+' more: '+art_room_initial+' + '+art_room_correction+' = <b>'+art_room_actual+'</b>.</li><li><b>Classroom:</b> Ms. Alvarez took '+classroom_initial+' inside, but '+classroom_correction+' returned to recess: '+classroom_initial+' &minus; '+classroom_correction+' = <b>'+classroom_actual+'</b>.</li><li><b>Restroom:</b> '+restroom_out+' went inside, and '+restroom_returned+' came back out: '+restroom_out+' &minus; '+restroom_returned+' = <b>'+restroom_actual+'</b>.</li><li><b>Nurse\\'s Office:</b> <b>'+nurse_count+'</b> camper'+(nurse_count>1?'s':'')+' remained with the nurse.</li></ul>Total campers safely supervised indoors: '+art_room_actual+' + '+classroom_actual+' + '+restroom_actual+' + '+nurse_count+' = <b>'+off_field_total+'</b>.<br><br><b>Step 3: Verify Playground Count</b><br>Subtract the '+off_field_total+' indoor campers from the '+adjusted_roster+' active campers: '+adjusted_roster+' &minus; '+off_field_total+' = <b>'+expected_on_field+' expected on the playground</b>.<table style=\"'+tableStyle+'\"><thead><tr style=\"background:#e8eef3\"><th style=\"'+cell+'text-align:left\">Location / Adjustment</th><th style=\"'+cell+'text-align:center\">Change</th><th style=\"'+cell+'text-align:right\">Running Count</th></tr></thead><tbody>'+rows+'</tbody></table><br><b>Final Status:</b> '+verdict+'</div>';})()"
-    }
-  },
-  "question": "You are a counselor at an elementary camp and you have recess duty. Because there is no fence and there is a large lake, your responsibility is to ensure all the children are accounted for. You arrive and are requested to confirm the count.<br><br>The morning attendance sheet starts with <b>{roster_total} campers</b>. As you begin checking the grounds, the counselor you are relieving says they last counted <b>{reported_count} kids</b> on the field, and gives you the following updates:<ul><li><b>Early Pickups &amp; Late Arrivals:</b> <b>{pickup_count} campers</b> were signed out early at the front office, while <b>{late_arrivals} campers</b> arrived late and joined the group after attendance was taken.</li><li><b>Classroom:</b> Ms. Alvarez took <b>{classroom_initial} campers</b> inside to finish a science project, though she radios a moment later to clarify that <b>{classroom_correction}</b> of them already finished and walked back out to the playground.</li><li><b>Art Room:</b> Mr. Ortiz originally reported he had <b>{art_room_initial} campers</b> cleaning paintbrushes, but corrects his message to say he actually has <b>{art_room_correction} more</b> than he first thought.</li><li><b>Restroom:</b> <b>{restroom_out} campers</b> went inside to use the restroom; as you watch the door, <b>{restroom_returned}</b> of them walk back out onto the grass.</li><li><b>Nurse's Office:</b> <b>{nurse_count} camper(s)</b> went to the nurse's office for an ice pack and have not returned.</li></ul>After gathering all these notes, you walk the perimeter and carefully count <b>{actual_counted_on_field} campers</b> currently on the playground. Show a detailed reconciliation of the count and determine whether all campers are accounted for or if anyone is missing.",
-  "answer": "{solution_html}"
-},
-{
-  "id": "ALG S1 2.1 Counting v2",
-  "type": "template",
   "objective": "Tracking signed integers, multi-step adjustments, and count corrections to reconcile a total headcount",
   "difficulty": "intermediate",
   "variables": {
@@ -6936,6 +6852,25 @@
     }
   },
   "question": "{story_html}",
+  "answer": "{solution_html}"
+},
+{
+  "id": "ALG 2.2 Simplify",
+  "type": "template",
+  "objective": "Simplifying integer expressions involving signed numbers, addition, subtraction, and multiplication of grouped terms",
+  "difficulty": "intermediate",
+  "variables": {
+    "problems": {
+      "formula": "(function(){function randInt(min,max){return min+Math.floor(Math.random()*(max-min+1));}function fmtSigned(n){return n<0?String(n):'+'+n;}function buildExpr(){var attempts=0;while(attempts<200){attempts++;var pattern=randInt(1,4);var a=randInt(2,11),b=randInt(2,11),c=randInt(2,11),d=randInt(2,11),e=randInt(2,11),f=randInt(2,11),g=randInt(2,11);var sA=Math.random()<0.75?-1:1;var sB=Math.random()<0.65?-1:1;var sC=Math.random()<0.55?-1:1;var sD=Math.random()<0.7?-1:1;var sE=Math.random()<0.7?-1:1;var sF=Math.random()<0.65?-1:1;var sG=Math.random()<0.65?-1:1;var op1=Math.random()<0.5?'+':'-';var op2=Math.random()<0.5?'+':'-';var vA=sA*a,vB=sB*b,vC=sC*c,vD=sD*d,vE=sE*e,vF=sF*f,vG=sG*g;var expr='',steps=[],val=0;if(pattern===1){var g1=vB+vC;var prod1=vA*g1*vD;var prod2=vE*vF;var tail=op1==='+'?vG:-vG;val=prod1+prod2+tail;var tailStr=(op1==='+'?'+':'-')+(vG<0?vG:vG);expr=vA+'('+vB+fmtSigned(vC)+')('+vD+')'+fmtSigned(vE)+'('+vF+')'+tailStr;steps=['Evaluate inside parentheses: <code>('+vB+fmtSigned(vC)+') = '+g1+'</code>','Rewrite expression: <code>'+vA+'('+g1+')('+vD+')'+fmtSigned(vE)+'('+vF+')'+tailStr+'</code>','Multiply grouped terms left to right: <code>'+vA+' &times; '+g1+' &times; '+vD+' = '+prod1+'</code> and <code>'+vE+' &times; '+vF+' = '+prod2+'</code>','Combine remaining terms: <code>'+prod1+fmtSigned(prod2)+tailStr+' = <b>'+val+'</b></code>'];}else if(pattern===2){var g1=vB+vC;var g2=vD+vE;var prod1=vA*g1;var prod2=vF*g2;var tail=op1==='+'?vG:-vG;val=prod1+prod2+tail;var tailStr=(op1==='+'?'+':'-')+(vG<0?vG:vG);expr=vA+'('+vB+fmtSigned(vC)+')'+fmtSigned(vF)+'('+vD+fmtSigned(vE)+')'+tailStr;steps=['Evaluate inside both parentheses: <code>('+vB+fmtSigned(vC)+') = '+g1+'</code> and <code>('+vD+fmtSigned(vE)+') = '+g2+'</code>','Rewrite expression: <code>'+vA+'('+g1+')'+fmtSigned(vF)+'('+g2+')'+tailStr+'</code>','Multiply grouped terms: <code>'+vA+' &times; '+g1+' = '+prod1+'</code> and <code>'+vF+' &times; '+g2+' = '+prod2+'</code>','Combine remaining terms: <code>'+prod1+fmtSigned(prod2)+tailStr+' = <b>'+val+'</b></code>'];}else if(pattern===3){var g1=vC+vD;var prod1=vA*vB*g1;var tail1=op1==='+'?vE:-vE;var tail2=op2==='+'?vF:-vF;var tail3=-vG;val=prod1+tail1+tail2+tail3;var t1Str=(op1==='+'?'+':'-')+vE;var t2Str=(op2==='+'?'+':'-')+vF;var t3Str='-('+vG+')';expr=vA+'('+vB+')('+vC+fmtSigned(vD)+')'+t1Str+t2Str+t3Str;steps=['Evaluate inside parentheses: <code>('+vC+fmtSigned(vD)+') = '+g1+'</code>','Rewrite expression: <code>'+vA+'('+vB+')('+g1+')'+t1Str+t2Str+t3Str+'</code>','Multiply grouped terms: <code>'+vA+' &times; '+vB+' &times; '+g1+' = '+prod1+'</code>','Simplify double signs and add/subtract left to right: <code>'+prod1+fmtSigned(tail1)+fmtSigned(tail2)+fmtSigned(tail3)+' = <b>'+val+'</b></code>'];}else{var g1=vB+vC;var prod1=vA*g1;var prod2=vD*vE*vF;var tail=op1==='+'?vG:-vG;val=prod1+prod2+tail;var tailStr=(op1==='+'?'+':'-')+vG;expr=vA+'('+vB+fmtSigned(vC)+')'+fmtSigned(vD)+'('+vE+')('+vF+')'+tailStr;steps=['Evaluate inside parentheses: <code>('+vB+fmtSigned(vC)+') = '+g1+'</code>','Rewrite expression: <code>'+vA+'('+g1+')'+fmtSigned(vD)+'('+vE+')('+vF+')'+tailStr+'</code>','Multiply grouped terms: <code>'+vA+' &times; '+g1+' = '+prod1+'</code> and <code>'+vD+' &times; '+vE+' &times; '+vF+' = '+prod2+'</code>','Combine remaining terms: <code>'+prod1+fmtSigned(prod2)+tailStr+' = <b>'+val+'</b></code>'];}var minusCount=(expr.match(/-/g)||[]).length;if(minusCount>=6&&minusCount<=10){return {expr:expr,val:val,steps:steps,minusCount:minusCount};}}return {expr:'-2(-3+5)(-4)-7(-8)+-9-5',val:14,steps:['Evaluate inside parentheses: <code>(-3+5) = 2</code>','Multiply grouped terms: <code>-2(2)(-4) = 16</code> and <code>-7(-8) = 56</code>','Combine remaining terms: <code>16 + 56 - 9 - 5 = <b>58</b></code>'],minusCount:6};}var labels=['A)','B)','C)'];return labels.map(function(lbl){var item=buildExpr();return {label:lbl,expr:item.expr,val:item.val,steps:item.steps};});})()"
+    },
+    "problem_cards": {
+      "formula": "(function(){return '<div style=\"display:flex;flex-wrap:wrap;gap:14px;width:100%;margin-top:12px;font-family:Arial,sans-serif\">'+problems.map(function(p){return '<div style=\"flex:1 1 240px;border:1px solid #59636e;border-radius:6px;background:#f8fafc;padding:12px 14px\"><div style=\"font-weight:bold;color:#1e293b;margin-bottom:6px;font-size:14px\">'+p.label+'</div><div style=\"font-family:Courier New,Courier,monospace;font-size:15px;font-weight:bold;color:#0f172a;letter-spacing:0.3px\">'+p.expr+'</div></div>';}).join('')+'</div>';})()"
+    },
+    "solution_html": {
+      "formula": "(function(){return '<div style=\"display:flex;flex-wrap:wrap;gap:14px;width:100%;font-family:Arial,sans-serif;font-size:13px;color:#202b36\">'+problems.map(function(p){var stepList=p.steps.map(function(s){return '<li style=\"margin-bottom:5px\">'+s+'</li>';}).join('');return '<div style=\"flex:1 1 260px;border:1px solid #cbd5e1;border-radius:6px;background:#ffffff;padding:12px 14px\"><div style=\"font-weight:bold;font-size:14px;color:#0f172a;border-bottom:1px solid #e2e8f0;padding-bottom:6px;margin-bottom:8px\">'+p.label+' &nbsp;<span style=\"font-family:Courier New,Courier,monospace;font-size:13px\">'+p.expr+'</span></div><ol style=\"padding-left:18px;margin:0 0 8px 0\">'+stepList+'</ol><div style=\"background:#e8eef3;padding:6px 10px;border-radius:4px;font-weight:bold\">Answer: '+p.val+'</div></div>';}).join('')+'</div>';})()"
+    }
+  },
+  "question": "Simplify each of the following integer expressions using the order of operations:<br>{problem_cards}",
   "answer": "{solution_html}"
 }
     ],
