@@ -6834,6 +6834,109 @@
   },
   "question": "Your friends will be taking home pie to their siblings, one to one sibling, so receives Set B, and the other to two siblings, so receives Set A. Which family received the most pie per person?{pie_display}",
   "answer": "{solution_steps}"
+},
+{
+  "id": "ALG S1 2.1 Counting",
+  "type": "template",
+  "objective": "Tracking positive and negative adjustments to an initial quantity to verify a final headcount",
+  "difficulty": "intermediate",
+  "variables": {
+    "roster_total": {
+      "min": 42,
+      "max": 68
+    },
+    "reported_count": {
+      "formula": "roster_total - (4 + Math.floor(Math.random() * 8))"
+    },
+    "classroom_initial": {
+      "min": 4,
+      "max": 8
+    },
+    "classroom_correction": {
+      "min": 1,
+      "max": 3
+    },
+    "classroom_actual": {
+      "formula": "classroom_initial - classroom_correction"
+    },
+    "restroom_out": {
+      "min": 2,
+      "max": 5
+    },
+    "restroom_returned": {
+      "min": 1,
+      "max": 2
+    },
+    "restroom_actual": {
+      "formula": "restroom_out - restroom_returned"
+    },
+    "nurse_count": {
+      "min": 1,
+      "max": 3
+    },
+    "pickup_count": {
+      "min": 1,
+      "max": 4
+    },
+    "late_arrivals": {
+      "min": 2,
+      "max": 5
+    },
+    "art_room_initial": {
+      "min": 3,
+      "max": 7
+    },
+    "art_room_correction": {
+      "min": 1,
+      "max": 2
+    },
+    "art_room_actual": {
+      "formula": "art_room_initial + art_room_correction"
+    },
+    "missing_count": {
+      "min": 0,
+      "max": 3
+    },
+    "expected_on_field": {
+      "formula": "roster_total + late_arrivals - pickup_count - classroom_actual - restroom_actual - nurse_count - art_room_actual"
+    },
+    "actual_counted_on_field": {
+      "formula": "expected_on_field - missing_count"
+    },
+    "off_field_total": {
+      "formula": "classroom_actual + restroom_actual + nurse_count + art_room_actual"
+    },
+    "adjusted_roster": {
+      "formula": "roster_total + late_arrivals - pickup_count"
+    },
+    "accounted_for_total": {
+      "formula": "actual_counted_on_field + off_field_total"
+    },
+    "solution_html": {
+      "formula": "(function(){var tableStyle='width:100%;max-width:620px;border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px;color:#202b36;margin-top:10px;';var cell='border:1px solid #59636e;padding:7px 10px;';var rows=[['Starting Morning Roster', '+'+roster_total, roster_total],['Late Arrivals Added to Group', '+'+late_arrivals, roster_total+late_arrivals],['Early Parent Pickups (Signed Out)', '&minus;'+pickup_count, adjusted_roster],['<b>Adjusted Total Campers to Account For</b>', '', '<b>'+adjusted_roster+'</b>'],['Art Room (Initial '+art_room_initial+' + Correction '+art_room_correction+')', '&minus;'+art_room_actual, adjusted_roster-art_room_actual],['Classroom with Ms. Alvarez (Initial '+classroom_initial+' &minus; '+classroom_correction+' returned)', '&minus;'+classroom_actual, adjusted_roster-art_room_actual-classroom_actual],['Restroom Break ('+restroom_out+' left &minus; '+restroom_returned+' came back)', '&minus;'+restroom_actual, adjusted_roster-art_room_actual-classroom_actual-restroom_actual],['Nurse\\'s Office (Ice pack / Bandage)', '&minus;'+nurse_count, expected_on_field],['<b>Expected Count on Playground</b>', '', '<b>'+expected_on_field+'</b>'],['Your Actual Headcount on Playground', '', '<b>'+actual_counted_on_field+'</b>']].map(function(r,idx){var isBold=idx===3||idx===8||idx===9;var bg=isBold?'background:#f4f6f8;':'';return '<tr style=\"'+bg+'\"><td style=\"'+cell+'text-align:left\">'+r[0]+'</td><td style=\"'+cell+'text-align:center;width:18%\">'+r[1]+'</td><td style=\"'+cell+'text-align:right;width:18%\">'+r[2]+'</td></tr>';}).join('');var verdict=missing_count===0?'<span style=\"color:#1b5e20;font-weight:bold\">All campers are accounted for!</span> Your count of <b>'+actual_counted_on_field+'</b> matches the expected playground count of <b>'+expected_on_field+'</b> (<b>'+accounted_for_total+'</b> total active campers across all locations).':'<span style=\"color:#b71c1c;font-weight:bold\">ALERT: '+missing_count+' camper'+(missing_count>1?'s are':' is')+' unaccounted for!</span> You counted <b>'+actual_counted_on_field+'</b> on the playground, but <b>'+expected_on_field+'</b> should be present (a discrepancy of <b>'+missing_count+'</b>). Immediate search near the perimeter and lakefront is required.';return '<div style=\"font-family:Arial,sans-serif;font-size:13px;color:#202b36;line-height:1.5\"><b>Step 1: Correct the Active Roster</b><br>Start with the morning roster of <b>'+roster_total+'</b>, add the <b>'+late_arrivals+'</b> late arrivals, and subtract the <b>'+pickup_count+'</b> early pickups: '+roster_total+' + '+late_arrivals+' &minus; '+pickup_count+' = <b>'+adjusted_roster+' active campers</b>.<br><br><b>Step 2: Reconcile Off-Playground Locations</b><br><ul><li><b>Art Room:</b> Another counselor first said '+art_room_initial+', then corrected it to '+art_room_correction+' more: '+art_room_initial+' + '+art_room_correction+' = <b>'+art_room_actual+'</b>.</li><li><b>Classroom:</b> Ms. Alvarez took '+classroom_initial+' inside, but '+classroom_correction+' returned to recess: '+classroom_initial+' &minus; '+classroom_correction+' = <b>'+classroom_actual+'</b>.</li><li><b>Restroom:</b> '+restroom_out+' went inside, and '+restroom_returned+' came back out: '+restroom_out+' &minus; '+restroom_returned+' = <b>'+restroom_actual+'</b>.</li><li><b>Nurse\\'s Office:</b> <b>'+nurse_count+'</b> camper'+(nurse_count>1?'s':'')+' remained with the nurse.</li></ul>Total campers safely supervised indoors: '+art_room_actual+' + '+classroom_actual+' + '+restroom_actual+' + '+nurse_count+' = <b>'+off_field_total+'</b>.<br><br><b>Step 3: Verify Playground Count</b><br>Subtract the '+off_field_total+' indoor campers from the '+adjusted_roster+' active campers: '+adjusted_roster+' &minus; '+off_field_total+' = <b>'+expected_on_field+' expected on the playground</b>.<table style=\"'+tableStyle+'\"><thead><tr style=\"background:#e8eef3\"><th style=\"'+cell+'text-align:left\">Location / Adjustment</th><th style=\"'+cell+'text-align:center\">Change</th><th style=\"'+cell+'text-align:right\">Running Count</th></tr></thead><tbody>'+rows+'</tbody></table><br><b>Final Status:</b> '+verdict+'</div>';})()"
+    }
+  },
+  "question": "You are a counselor at an elementary camp and you have recess duty. Because there is no fence and there is a large lake, your responsibility is to ensure all the children are accounted for. You arrive and are requested to confirm the count.<br><br>The morning attendance sheet starts with <b>{roster_total} campers</b>. As you begin checking the grounds, the counselor you are relieving says they last counted <b>{reported_count} kids</b> on the field, and gives you the following updates:<ul><li><b>Early Pickups &amp; Late Arrivals:</b> <b>{pickup_count} campers</b> were signed out early at the front office, while <b>{late_arrivals} campers</b> arrived late and joined the group after attendance was taken.</li><li><b>Classroom:</b> Ms. Alvarez took <b>{classroom_initial} campers</b> inside to finish a science project, though she radios a moment later to clarify that <b>{classroom_correction}</b> of them already finished and walked back out to the playground.</li><li><b>Art Room:</b> Mr. Ortiz originally reported he had <b>{art_room_initial} campers</b> cleaning paintbrushes, but corrects his message to say he actually has <b>{art_room_correction} more</b> than he first thought.</li><li><b>Restroom:</b> <b>{restroom_out} campers</b> went inside to use the restroom; as you watch the door, <b>{restroom_returned}</b> of them walk back out onto the grass.</li><li><b>Nurse's Office:</b> <b>{nurse_count} camper(s)</b> went to the nurse's office for an ice pack and have not returned.</li></ul>After gathering all these notes, you walk the perimeter and carefully count <b>{actual_counted_on_field} campers</b> currently on the playground. Show a detailed reconciliation of the count and determine whether all campers are accounted for or if anyone is missing.",
+  "answer": "{solution_html}"
+},
+{
+  "id": "ALG S1 2.1 Counting v2",
+  "type": "template",
+  "objective": "Tracking signed integers, multi-step adjustments, and count corrections to reconcile a total headcount",
+  "difficulty": "intermediate",
+  "variables": {
+    "data": {
+      "formula": "(function(){\n  var initial_roster = 61 + Math.floor(Math.random() * 38); // 61 to 98\n  var late_arrivals = 2 + Math.floor(Math.random() * 5);\n  var early_pickups = 1 + Math.floor(Math.random() * 4);\n  var expected_total = initial_roster + late_arrivals - early_pickups;\n\n  // Locations away from the main recess yard\n  var classroom_initial = 8 + Math.floor(Math.random() * 8);\n  var classroom_correction = (Math.random() < 0.5 ? 1 : -1) * (1 + Math.floor(Math.random() * 3));\n  var classroom_actual = classroom_initial + classroom_correction;\n\n  var art_room = 5 + Math.floor(Math.random() * 6);\n  var music_room = 4 + Math.floor(Math.random() * 6);\n  var restroom_initial = 2 + Math.floor(Math.random() * 4);\n  var restroom_returned = 1 + Math.floor(Math.random() * 2);\n  var restroom_actual = restroom_initial - restroom_returned;\n\n  var nurse_office = 1 + Math.floor(Math.random() * 3);\n  var library_initial = 4 + Math.floor(Math.random() * 6);\n  var library_correction = (Math.random() < 0.5 ? 1 : -1) * (1 + Math.floor(Math.random() * 2));\n  var library_actual = library_initial + library_correction;\n\n  var indoor_total = classroom_actual + art_room + music_room + restroom_actual + nurse_office + library_actual;\n\n  // Decide if everyone is accounted for (50%) or 1 to 3 campers are missing (50%)\n  var is_missing = Math.random() < 0.5;\n  var missing_count = is_missing ? (1 + Math.floor(Math.random() * 3)) : 0;\n\n  var yard_actual = expected_total - indoor_total - missing_count;\n  var yard_miscount_diff = (Math.random() < 0.5 ? 1 : -1) * (2 + Math.floor(Math.random() * 4));\n  var yard_first_count = yard_actual + yard_miscount_diff;\n\n  var total_accounted = yard_actual + indoor_total;\n\n  return {\n    initial_roster: initial_roster,\n    late_arrivals: late_arrivals,\n    early_pickups: early_pickups,\n    expected_total: expected_total,\n    classroom_initial: classroom_initial,\n    classroom_correction: classroom_correction,\n    classroom_actual: classroom_actual,\n    art_room: art_room,\n    music_room: music_room,\n    restroom_initial: restroom_initial,\n    restroom_returned: restroom_returned,\n    restroom_actual: restroom_actual,\n    nurse_office: nurse_office,\n    library_initial: library_initial,\n    library_correction: library_correction,\n    library_actual: library_actual,\n    indoor_total: indoor_total,\n    yard_first_count: yard_first_count,\n    yard_miscount_diff: yard_miscount_diff,\n    yard_actual: yard_actual,\n    total_accounted: total_accounted,\n    is_missing: is_missing,\n    missing_count: missing_count\n  };\n})()"
+    },
+    "story_html": {
+      "formula": "(function(){\n  var d = data;\n  var class_corr_text = d.classroom_correction > 0\n    ? 'actually brought <b>' + d.classroom_correction + ' more</b> campers than initially reported (for a corrected total of <b>' + d.classroom_actual + '</b>)'\n    : 'misspoke and actually took <b>' + Math.abs(d.classroom_correction) + ' fewer</b> campers than initially reported (for a corrected total of <b>' + d.classroom_actual + '</b>)';\n\n  var lib_corr_text = d.library_correction > 0\n    ? 'the librarian calls to say <b>' + d.library_correction + ' additional</b> camper(s) slipped in with that group'\n    : 'the librarian calls to say <b>' + Math.abs(d.library_correction) + '</b> of those campers never arrived and stayed outside';\n\n  var yard_corr_text = d.yard_miscount_diff > 0\n    ? 'you realize you double-counted <b>' + d.yard_miscount_diff + '</b> campers running near the swings'\n    : 'you realize you missed a group of <b>' + Math.abs(d.yard_miscount_diff) + '</b> campers sitting behind the slide';\n\n  return 'You are a counselor at an elementary camp and you have recess duty. Because there is no fence and there is a large lake, your responsibility is to ensure all the children are accounted for. You arrive and are requested to confirm the count.' +\n    '<ul style=\"line-height:1.6\">' +\n    '<li><b>Morning Roster &amp; Office Log:</b> The morning attendance sheet started with <b>' + d.initial_roster + '</b> campers. Since check-in, <b>' + d.late_arrivals + '</b> late campers arrived at the front desk, and <b>' + d.early_pickups + '</b> campers were signed out early by parents.</li>' +\n    '<li><b>Classroom &amp; Specials:</b> Ms. Alvarez initially radioed that she took <b>' + d.classroom_initial + '</b> campers into Room 104 for reading, but later corrected her message to clarify she ' + class_corr_text + '. Additionally, <b>' + d.art_room + '</b> campers are in the art room working on clay projects, and <b>' + d.music_room + '</b> campers are practicing percussion in the music room.</li>' +\n    '<li><b>Library Update:</b> A volunteer walked <b>' + d.library_initial + '</b> campers to the library, though ' + lib_corr_text + '.</li>' +\n    '<li><b>Restroom &amp; Nurse:</b> You sent <b>' + d.restroom_initial + '</b> campers to the hallway restrooms, and <b>' + d.restroom_returned + '</b> of them have already returned to the recess yard. Meanwhile, <b>' + d.nurse_office + '</b> camper(s) are resting in the nurse&apos;s office.</li>' +\n    '<li><b>Recess Yard Sweep:</b> On your first sweep of the recess field, you count <b>' + d.yard_first_count + '</b> campers. Before submitting your report, ' + yard_corr_text + '.</li>' +\n    '</ul>' +\n    'Determine the exact expected camp attendance, the corrected count in each location, and whether all children are accounted for (or how many are missing).';\n})()"
+    },
+    "solution_html": {
+      "formula": "(function(){\n  var d = data;\n  var cell = 'border:1px solid #59636e;padding:6px 10px;';\n  var class_sign = d.classroom_correction > 0 ? '+' + d.classroom_correction : String(d.classroom_correction);\n  var lib_sign = d.library_correction > 0 ? '+' + d.library_correction : String(d.library_correction);\n  var yard_sign = d.yard_miscount_diff > 0 ? '-' + d.yard_miscount_diff : '+' + Math.abs(d.yard_miscount_diff);\n\n  var status_banner = d.is_missing\n    ? '<div style=\"padding:10px 12px;background:#fdecea;border-left:4px solid #b42318;color:#7a271a;margin-top:12px\"><b>ALERT &mdash; UNACCOUNTED CAMPERS:</b> Only <b>' + d.total_accounted + '</b> of <b>' + d.expected_total + '</b> campers are accounted for. <b>' + d.missing_count + ' camper(s) are missing</b>\u2014initiate a perimeter and lakefront check immediately!</div>'\n    : '<div style=\"padding:10px 12px;background:#ecfdf3;border-left:4px solid #027a48;color:#054f31;margin-top:12px\"><b>ALL CLEAR:</b> All <b>' + d.total_accounted + '</b> of <b>' + d.expected_total + '</b> expected campers are safely accounted for (<b>0 missing</b>).</div>';\n\n  return '<div style=\"font-family:Arial,sans-serif;font-size:13px;color:#202b36;line-height:1.5\">' +\n    '<p><b>Step 1: Calculate Expected Total Attendance</b><br>' +\n    'Start with the morning roster, add late arrivals, and subtract early parent pickups:<br>' +\n    d.initial_roster + ' + ' + d.late_arrivals + ' &minus; ' + d.early_pickups + ' = <b>' + d.expected_total + ' expected campers</b></p>' +\n    '<p><b>Step 2: Reconcile Corrected Counts by Location</b></p>' +\n    '<table style=\"width:100%;max-width:600px;border-collapse:collapse;font-size:12px;margin-bottom:10px\">' +\n    '<thead><tr style=\"background:#e8eef3\"><th style=\"' + cell + 'text-align:left\">Location</th><th style=\"' + cell + 'text-align:left\">Calculation / Adjustment</th><th style=\"' + cell + 'text-align:right\">Verified Count</th></tr></thead>' +\n    '<tbody>' +\n    '<tr><td style=\"' + cell + '\">Classroom (Room 104)</td><td style=\"' + cell + '\">' + d.classroom_initial + ' (' + class_sign + ' correction)</td><td style=\"' + cell + 'text-align:right\"><b>' + d.classroom_actual + '</b></td></tr>' +\n    '<tr><td style=\"' + cell + '\">Art Room</td><td style=\"' + cell + '\">No adjustment</td><td style=\"' + cell + 'text-align:right\"><b>' + d.art_room + '</b></td></tr>' +\n    '<tr><td style=\"' + cell + '\">Music Room</td><td style=\"' + cell + '\">No adjustment</td><td style=\"' + cell + 'text-align:right\"><b>' + d.music_room + '</b></td></tr>' +\n    '<tr><td style=\"' + cell + '\">Library</td><td style=\"' + cell + '\">' + d.library_initial + ' (' + lib_sign + ' correction)</td><td style=\"' + cell + 'text-align:right\"><b>' + d.library_actual + '</b></td></tr>' +\n    '<tr><td style=\"' + cell + '\">Hallway Restrooms</td><td style=\"' + cell + '\">' + d.restroom_initial + ' &minus; ' + d.restroom_returned + ' returned to yard</td><td style=\"' + cell + 'text-align:right\"><b>' + d.restroom_actual + '</b></td></tr>' +\n    '<tr><td style=\"' + cell + '\">Nurse&apos;s Office</td><td style=\"' + cell + '\">No adjustment</td><td style=\"' + cell + 'text-align:right\"><b>' + d.nurse_office + '</b></td></tr>' +\n    '<tr style=\"background:#f4f6f8\"><td style=\"' + cell + '\"><b>Subtotal (Indoor Locations)</b></td><td style=\"' + cell + '\">' + d.classroom_actual + ' + ' + d.art_room + ' + ' + d.music_room + ' + ' + d.library_actual + ' + ' + d.restroom_actual + ' + ' + d.nurse_office + '</td><td style=\"' + cell + 'text-align:right\"><b>' + d.indoor_total + '</b></td></tr>' +\n    '<tr><td style=\"' + cell + '\">Recess Yard (Outdoors)</td><td style=\"' + cell + '\">' + d.yard_first_count + ' (' + yard_sign + ' sweep correction)</td><td style=\"' + cell + 'text-align:right\"><b>' + d.yard_actual + '</b></td></tr>' +\n    '<tr style=\"background:#e8eef3\"><td style=\"' + cell + '\"><b>Total Accounted For</b></td><td style=\"' + cell + '\">' + d.indoor_total + ' indoor + ' + d.yard_actual + ' outdoor</td><td style=\"' + cell + 'text-align:right\"><b>' + d.total_accounted + '</b></td></tr>' +\n    '</tbody></table>' +\n    '<p><b>Step 3: Compare Accounted Count to Expected Attendance</b><br>' +\n    'Expected: <b>' + d.expected_total + '</b> &bull; Accounted For: <b>' + d.total_accounted + '</b> &bull; Difference: <b>' + d.missing_count + ' missing</b></p>' +\n    status_banner +\n    '</div>';\n})()"
+    }
+  },
+  "question": "{story_html}",
+  "answer": "{solution_html}"
 }
     ],
     "Objective Assessment 1": [],
