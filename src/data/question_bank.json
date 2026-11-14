@@ -6146,71 +6146,7 @@
         "answer": "\\( x \\leq {x} \\) (Swap the inequality if \\( {a} < 0 \\)"
       },
       {
-        "id": "ALG1-6.2-I1",
-        "type": "template",
-        "objective": "Solving Multi-Step Inequalities",
-        "difficulty": "intermediate",
-        "variables": {
-          "a": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0,
-              1,
-              -1
-            ]
-          },
-          "b": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              "a",
-              0,
-              1,
-              -1
-            ]
-          },
-          "c": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              "a",
-              "b",
-              0,
-              -1,
-              1
-            ]
-          },
-          "d": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              -1,
-              0,
-              1
-            ]
-          },
-          "e": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              -1,
-              0,
-              1
-            ]
-          },
-          "f": {
-            "formula": "a - c*e"
-          },
-          "x": {
-            "formula": "(c*d - b) / (a - c*e)"
-          }
-        },
-        "question": "Solve and graph: <br> \\( \\frac{ {a|coef} x {b|sign} }{ {c} } > {d} {e|signedCoef}x \\).",
-        "answer": "\\( x > {x} \\) (Swap the inequality if \\( {f} < 0 \\)"
-      },
-      {
-  "id": "ALG 6.1 Ib Multi-Step Inequalities",
+  "id": "ALG 6.2 Ib Multi-Step Inequalities",
   "type": "template",
   "objective": "Solving multi-step linear inequalities with multiplication, division, and negative coefficients, and graphing solutions on a number line",
   "difficulty": "intermediate",
@@ -6227,7 +6163,26 @@
   },
   "question": "Solve each multi-step inequality and graph its solution on the number line:{question_html}",
   "answer": "{answer_html}"
-}
+},
+{
+  "id": "ALG 6.2 Ib Multi-Step Inequalities",
+  "type": "template",
+  "objective": "Solving and graphing multi-step linear inequalities with one or two occurrences of the variable on one side",
+  "difficulty": "intermediate",
+  "variables": {
+    "data": {
+      "formula": "(function(){\n  function randInt(min, max){ return min + Math.floor(Math.random() * (max - min + 1)); }\n  function pick(arr){ return arr[Math.floor(Math.random() * arr.length)]; }\n  function sTerm(n){ return n >= 0 ? ' + ' + n : ' - ' + Math.abs(n); }\n  function cVar(a){ return a === 1 ? 'x' : (a === -1 ? '-x' : a + 'x'); }\n  function xInner(b){ return b === 0 ? 'x' : (b > 0 ? 'x + ' + b : 'x - ' + Math.abs(b)); }\n  function flipOp(op){\n    if(op === '<') return '>';\n    if(op === '>') return '<';\n    if(op === '&le;') return '&ge;';\n    return '&le;';\n  }\n  function texOp(op){\n    if(op === '&le;') return '\\\\leq';\n    if(op === '&ge;') return '\\\\geq';\n    return op;\n  }\n\n  var pairs = [\n    ['&ge;', '<'],\n    ['>', '&le;'],\n    ['&le;', '>'],\n    ['<', '&ge;']\n  ];\n  var chosenPair = pick(pairs);\n  var multIsA = Math.random() < 0.5;\n  var negIsA = Math.random() < 0.5;\n  var twoOccIsA = Math.random() < 0.5;\n\n  function buildMult(isNeg, twoOcc, op){\n    var xVal = randInt(-12, 12);\n    if(!twoOcc){\n      // 4-step with 1 occurrence of x: a(x + b) + c + d op rhs\n      var a = (isNeg ? -1 : 1) * randInt(2, 5);\n      var b = pick([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]);\n      var c = pick([-8, -7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 8]);\n      var d = pick([-8, -7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 8]);\n      while(c + d === 0){ d = pick([-8, -7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 8]); }\n      var ab = a * b;\n      var cd = c + d;\n      var totalConst = ab + cd;\n      var rhs = a * xVal + totalConst;\n      var rhs1 = rhs - cd;\n      var rhs2 = rhs - totalConst;\n      var finalOp = isNeg ? flipOp(op) : op;\n      var tOp = texOp(op);\n      var fOp = texOp(finalOp);\n\n      var eq = a + '(' + xInner(b) + ')' + sTerm(c) + sTerm(d) + ' ' + tOp + ' ' + rhs;\n      var s1 = a + '(' + xInner(b) + ')' + sTerm(cd) + ' ' + tOp + ' ' + rhs;\n      var s2 = cVar(a) + sTerm(ab) + sTerm(cd) + ' ' + tOp + ' ' + rhs;\n      var s3 = cVar(a) + sTerm(totalConst) + ' ' + tOp + ' ' + rhs;\n      var s4 = cVar(a) + ' ' + tOp + ' ' + rhs2;\n      var sol = 'x ' + fOp + ' ' + xVal;\n      return {\n        eq: eq,\n        steps: [\n          'Combine constants: \\\\(' + s1 + '\\\\)',\n          'Distribute: \\\\(' + s2 + '\\\\) &rarr; \\\\(' + s3 + '\\\\)',\n          'Isolate variable term: \\\\(' + s4 + '\\\\)',\n          'Divide by ' + a + (isNeg ? ' (flip sign)' : '') + ': \\\\(' + sol + '\\\\)'\n        ],\n        solText: 'x ' + finalOp + ' ' + xVal,\n        solTex: sol,\n        xVal: xVal,\n        finalOp: finalOp\n      };\n    } else {\n      // 4-step with 2 occurrences of x on the left: a1(x + b) + a2*x + c op rhs\n      var a1 = pick([-4, -3, -2, 2, 3, 4]);\n      var a2 = pick([-5, -4, -3, -2, 2, 3, 4, 5]);\n      var aSum = a1 + a2;\n      if(isNeg){\n        while(aSum >= -1){\n          a1 = pick([-5, -4, -3, -2]);\n          a2 = pick([-4, -3, -2, 1]);\n          aSum = a1 + a2;\n        }\n      } else {\n        while(aSum <= 1){\n          a1 = pick([2, 3, 4, 5]);\n          a2 = pick([-1, 2, 3, 4]);\n          aSum = a1 + a2;\n        }\n      }\n      var b = pick([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]);\n      var c = pick([-9, -8, -7, -6, -5, -4, -3, 3, 4, 5, 6, 7, 8, 9]);\n      var ab = a1 * b;\n      var totalConst = ab + c;\n      var rhs = aSum * xVal + totalConst;\n      var rhsAfterConst = rhs - totalConst;\n      var finalOp = isNeg ? flipOp(op) : op;\n      var tOp = texOp(op);\n      var fOp = texOp(finalOp);\n\n      var eq = a1 + '(' + xInner(b) + ')' + (a2 >= 0 ? ' + ' + cVar(a2) : ' - ' + cVar(Math.abs(a2))) + sTerm(c) + ' ' + tOp + ' ' + rhs;\n      var s1 = cVar(a1) + sTerm(ab) + (a2 >= 0 ? ' + ' + cVar(a2) : ' - ' + cVar(Math.abs(a2))) + sTerm(c) + ' ' + tOp + ' ' + rhs;\n      var s2 = cVar(aSum) + sTerm(totalConst) + ' ' + tOp + ' ' + rhs;\n      var s3 = cVar(aSum) + ' ' + tOp + ' ' + rhsAfterConst;\n      var sol = 'x ' + fOp + ' ' + xVal;\n      return {\n        eq: eq,\n        steps: [\n          'Distribute: \\\\(' + s1 + '\\\\)',\n          'Combine like terms: \\\\(' + s2 + '\\\\)',\n          'Isolate variable term: \\\\(' + s3 + '\\\\)',\n          'Divide by ' + aSum + (isNeg ? ' (flip sign)' : '') + ': \\\\(' + sol + '\\\\)'\n        ],\n        solText: 'x ' + finalOp + ' ' + xVal,\n        solTex: sol,\n        xVal: xVal,\n        finalOp: finalOp\n      };\n    }\n  }\n\n  function buildDiv(isNeg, twoOcc, op){\n    if(!twoOcc){\n      // 4-step with 1 occurrence of x: (x + b)/d + c + e op rhs  (with optional negative divisor)\n      var d = pick([2, 3, 4, 5]);\n      var xVal = randInt(-10, 10);\n      var b = pick([-6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6]);\n      while((xVal + b) % d !== 0){ xVal = randInt(-10, 10); }\n      var q = (xVal + b) / d;\n      if(isNeg) q = -q;\n      var c = pick([-7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7]);\n      var e = pick([-7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7]);\n      while(c + e === 0){ e = pick([-7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7]); }\n      var ce = c + e;\n      var rhs = q + ce;\n      var rhs1 = rhs - ce;\n      var prod = rhs1 * (isNeg ? -d : d);\n      var finalOp = isNeg ? flipOp(op) : op;\n      var tOp = texOp(op);\n      var fOp = texOp(finalOp);\n\n      var frac = (isNeg ? '-' : '') + '\\\\frac{' + xInner(b) + '}{' + d + '}';\n      var eq = frac + sTerm(c) + sTerm(e) + ' ' + tOp + ' ' + rhs;\n      var s1 = frac + sTerm(ce) + ' ' + tOp + ' ' + rhs;\n      var s2 = frac + ' ' + tOp + ' ' + rhs1;\n      var s3 = xInner(b) + ' ' + fOp + ' ' + prod;\n      var sol = 'x ' + fOp + ' ' + xVal;\n      return {\n        eq: eq,\n        steps: [\n          'Combine constants: \\\\(' + s1 + '\\\\)',\n          'Isolate fraction: \\\\(' + s2 + '\\\\)',\n          'Multiply by ' + (isNeg ? -d : d) + (isNeg ? ' (flip sign)' : '') + ': \\\\(' + s3 + '\\\\)',\n          'Isolate \\\\(x\\\\): \\\\(' + sol + '\\\\)'\n        ],\n        solText: 'x ' + finalOp + ' ' + xVal,\n        solTex: sol,\n        xVal: xVal,\n        finalOp: finalOp\n      };\n    } else {\n      // 4-step with 2 occurrences of x on the left: x/d1 + x/d2 + c op rhs\n      var pairD = pick([[2, 3], [2, 4], [3, 4], [2, 5]]);\n      var d1 = pairD[0];\n      var d2 = pairD[1];\n      var lcm = (d1 === 2 && d2 === 4) ? 4 : d1 * d2;\n      var m1 = lcm / d1;\n      var m2 = lcm / d2;\n      var sign1 = isNeg ? -1 : 1;\n      var sign2 = isNeg ? -1 : 1;\n      var coeffSum = sign1 * m1 + sign2 * m2;\n      var xVal = randInt(-10, 10);\n      var fracVal = (sign1 * xVal) / d1 + (sign2 * xVal) / d2;\n      while(Math.abs(fracVal - Math.round(fracVal)) > 1e-9){ xVal = randInt(-10, 10); fracVal = (sign1 * xVal) / d1 + (sign2 * xVal) / d2; }\n      fracVal = Math.round(fracVal);\n      var c = pick([-8, -7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 8]);\n      var rhs = fracVal + c;\n      var rhs1 = rhs - c;\n      var clearedRhs = rhs1 * lcm;\n      var finalOp = isNeg ? flipOp(op) : op;\n      var tOp = texOp(op);\n      var fOp = texOp(finalOp);\n\n      var t1 = (isNeg ? '-' : '') + '\\\\frac{x}{' + d1 + '}';\n      var t2 = (isNeg ? ' - ' : ' + ') + '\\\\frac{x}{' + d2 + '}';\n      var eq = t1 + t2 + sTerm(c) + ' ' + tOp + ' ' + rhs;\n      var s1 = t1 + t2 + ' ' + tOp + ' ' + rhs1;\n      var s2 = cVar(sign1 * m1) + (sign2 * m2 >= 0 ? ' + ' + cVar(sign2 * m2) : ' - ' + cVar(Math.abs(sign2 * m2))) + ' ' + tOp + ' ' + clearedRhs;\n      var s3 = cVar(coeffSum) + ' ' + tOp + ' ' + clearedRhs;\n      var sol = 'x ' + fOp + ' ' + xVal;\n      return {\n        eq: eq,\n        steps: [\n          'Isolate variable terms: \\\\(' + s1 + '\\\\)',\n          'Multiply all terms by LCD (' + lcm + '): \\\\(' + s2 + '\\\\)',\n          'Combine like terms: \\\\(' + s3 + '\\\\)',\n          'Divide by ' + coeffSum + (isNeg ? ' (flip sign)' : '') + ': \\\\(' + sol + '\\\\)'\n        ],\n        solText: 'x ' + finalOp + ' ' + xVal,\n        solTex: sol,\n        xVal: xVal,\n        finalOp: finalOp\n      };\n    }\n  }\n\n  function makeSvg(xVal, op, solved){\n    var w = 360, h = 66, pad = 26, y = 34;\n    var span = w - 2 * pad;\n    function toX(v){ return pad + ((v + 20) / 40) * span; }\n    var ticks = '';\n    for(var v = -20; v <= 20; v++){\n      var tx = toX(v).toFixed(1);\n      var isMajor = v % 5 === 0;\n      var th = isMajor ? 7 : 3.5;\n      ticks += '<line x1=\"'+tx+'\" y1=\"'+(y-th)+'\" x2=\"'+tx+'\" y2=\"'+(y+th)+'\" stroke=\"#334155\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';\n      if(isMajor){\n        ticks += '<text x=\"'+tx+'\" y=\"'+(y+20)+'\" font-family=\"Arial,sans-serif\" font-size=\"10\" fill=\"#334155\" text-anchor=\"middle\">'+v+'</text>';\n      }\n    }\n    var overlay = '';\n    if(solved){\n      var cx = toX(xVal);\n      var isRight = (op === '>' || op === '&ge;');\n      var isClosed = (op === '&le;' || op === '&ge;');\n      var endX = isRight ? w - 8 : 8;\n      var arrowPts = isRight\n        ? (w-2)+','+y+' '+(w-11)+','+(y-5)+' '+(w-11)+','+(y+5)\n        : '2,'+y+' 11,'+(y-5)+' 11,'+(y+5);\n      overlay += '<line x1=\"'+cx.toFixed(1)+'\" y1=\"'+y+'\" x2=\"'+endX+'\" y2=\"'+y+'\" stroke=\"#1d4ed8\" stroke-width=\"3.5\"/>';\n      overlay += '<polygon points=\"'+arrowPts+'\" fill=\"#1d4ed8\"/>';\n      overlay += '<circle cx=\"'+cx.toFixed(1)+'\" cy=\"'+y+'\" r=\"5\" fill=\"'+(isClosed ? '#1d4ed8' : '#ffffff')+'\" stroke=\"#1d4ed8\" stroke-width=\"2.5\"/>';\n    }\n    return '<svg viewBox=\"0 0 '+w+' '+h+'\" style=\"width:100%;max-width:360px;height:auto;display:block;margin:6px auto 0 auto\">'\n      + '<line x1=\"8\" y1=\"'+y+'\" x2=\"'+(w-8)+'\" y2=\"'+y+'\" stroke=\"#334155\" stroke-width=\"1.6\"/>'\n      + '<polygon points=\"2,'+y+' 10,'+(y-4)+' 10,'+(y+4)+'\" fill=\"#334155\"/>'\n      + '<polygon points=\"'+(w-2)+','+y+' '+(w-10)+','+(y-4)+' '+(w-10)+','+(y+4)+'\" fill=\"#334155\"/>'\n      + ticks + overlay + '</svg>';\n  }\n\n  var probA = multIsA ? buildMult(negIsA, twoOccIsA, chosenPair[0]) : buildDiv(negIsA, twoOccIsA, chosenPair[0]);\n  var probB = multIsA ? buildDiv(!negIsA, !twoOccIsA, chosenPair[1]) : buildMult(!negIsA, !twoOccIsA, chosenPair[1]);\n\n  var cardStyle = 'flex:1 1 320px;border:1px solid #cbd5e1;border-radius:8px;padding:12px 14px;background:#f8fafc;box-sizing:border-box';\n\n  var qHtml = '<div style=\"display:flex;flex-wrap:wrap;gap:14px;margin-top:8px\">'\n    + '<div style=\"'+cardStyle+'\"><div style=\"font-weight:bold;color:#1e293b;margin-bottom:6px\">A) &nbsp; \\\\(' + probA.eq + '\\\\)</div>' + makeSvg(probA.xVal, probA.finalOp, false) + '</div>'\n    + '<div style=\"'+cardStyle+'\"><div style=\"font-weight:bold;color:#1e293b;margin-bottom:6px\">B) &nbsp; \\\\(' + probB.eq + '\\\\)</div>' + makeSvg(probB.xVal, probB.finalOp, false) + '</div>'\n    + '</div>';\n\n  function ansCard(label, p){\n    var stepsHtml = p.steps.map(function(st, idx){\n      var isLast = idx === p.steps.length - 1;\n      return '<div style=\"margin-top:3px;'+(isLast ? 'font-weight:bold;color:#1d4ed8;' : 'color:#334155;')+'\">Step '+(idx+1)+': '+st+'</div>';\n    }).join('');\n    return '<div style=\"'+cardStyle+'\">'\n      + '<div style=\"font-weight:bold;color:#1e293b;margin-bottom:4px\">'+label+' &nbsp; \\\\(' + p.eq + '\\\\)</div>'\n      + '<div style=\"font-size:13px;line-height:1.45\">'+stepsHtml+'</div>'\n      + makeSvg(p.xVal, p.finalOp, true)\n      + '</div>';\n  }\n\n  var aHtml = '<div style=\"display:flex;flex-wrap:wrap;gap:14px;margin-top:6px\">'\n    + ansCard('A)', probA)\n    + ansCard('B)', probB)\n    + '</div>';\n\n  return { questionHtml: qHtml, answerHtml: aHtml };\n})()"
+    },
+    "question_html": {
+      "formula": "data.questionHtml"
+    },
+    "answer_html": {
+      "formula": "data.answerHtml"
+    }
+  },
+  "question": "Solve each inequality and graph its solution on the number line below:{question_html}",
+  "answer": "{answer_html}"
+},
       {
         "id": "ALG1-6.3-B1",
         "type": "template",
