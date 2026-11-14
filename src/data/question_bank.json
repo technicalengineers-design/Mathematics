@@ -5886,33 +5886,75 @@
       }
     ],
     "6 Inequalities": [
-      {
-        "id": "ALG1-6.1-B1",
-        "type": "template",
-        "objective": "Solving One-Step Inequalities",
-        "difficulty": "basic",
-        "variables": {
-          "a": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          },
-          "x": {
-            "formula": "b - a"
-          }
-        },
-        "question": "Solve and graph: <br> \\( x {a|sign} \\geq {b} \\).",
-        "answer": "\\( x \\leq {x} \\)"
-      },
+{
+  "id": "ALG 6.1a Addition and Subtraction",
+  "type": "template",
+  "objective": "Solving and Graphing One-Step Inequalities",
+  "difficulty": "basic",
+  "variables": {
+    "pair_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "a1": {
+      "min": -10,
+      "max": 10,
+      "exclude": [
+        0
+      ]
+    },
+    "b1": {
+      "min": -10,
+      "max": 10,
+      "exclude": [
+        0
+      ]
+    },
+    "x1": {
+      "formula": "b1 - a1"
+    },
+    "a2": {
+      "min": -10,
+      "max": 10,
+      "exclude": [
+        0
+      ]
+    },
+    "b2": {
+      "min": -10,
+      "max": 10,
+      "exclude": [
+        0
+      ]
+    },
+    "x2": {
+      "formula": "b2 - a2"
+    },
+    "pairs_data": {
+      "formula": "(function(){var pairs=[{a:{tex:'\\\\geq',dir:'right',closed:true},b:{tex:'<',dir:'left',closed:false}},{a:{tex:'>',dir:'right',closed:false},b:{tex:'\\\\leq',dir:'left',closed:true}},{a:{tex:'\\\\leq',dir:'left',closed:true},b:{tex:'>',dir:'right',closed:false}},{a:{tex:'<',dir:'left',closed:false},b:{tex:'\\\\geq',dir:'right',closed:true}}];return pairs[pair_idx];})()"
+    },
+    "ineq_a_tex": {
+      "formula": "'x ' + (a1 >= 0 ? '+ ' + a1 : '- ' + Math.abs(a1)) + ' ' + pairs_data.a.tex + ' ' + b1"
+    },
+    "ans_a_tex": {
+      "formula": "'x ' + pairs_data.a.tex + ' ' + x1"
+    },
+    "ineq_b_tex": {
+      "formula": "'x ' + (a2 >= 0 ? '+ ' + a2 : '- ' + Math.abs(a2)) + ' ' + pairs_data.b.tex + ' ' + b2"
+    },
+    "ans_b_tex": {
+      "formula": "'x ' + pairs_data.b.tex + ' ' + x2"
+    },
+    "question_layout": {
+      "formula": "(function(){function makeLine(){var w=440,h=68,min=-20,max=20,pad=24,usable=w-2*pad,step=usable/(max-min),y=30;var svg='<svg viewBox=\"0 0 '+w+' '+h+'\" style=\"width:100%;max-width:440px;height:auto;display:block;margin-top:8px\" xmlns=\"http://www.w3.org/2000/svg\">';svg+='<line x1=\"'+(pad-10)+'\" y1=\"'+y+'\" x2=\"'+(w-pad+10)+'\" y2=\"'+y+'\" stroke=\"#202b36\" stroke-width=\"1.8\"/>';svg+='<polygon points=\"'+(pad-15)+','+y+' '+(pad-7)+','+(y-4)+' '+(pad-7)+','+(y+4)+'\" fill=\"#202b36\"/>';svg+='<polygon points=\"'+(w-pad+15)+','+y+' '+(w-pad+7)+','+(y-4)+' '+(w-pad+7)+','+(y+4)+'\" fill=\"#202b36\"/>';for(var i=min;i<=max;i++){var cx=pad+(i-min)*step;var isMajor=i%5===0;var th=isMajor?6:3;svg+='<line x1=\"'+cx.toFixed(1)+'\" y1=\"'+(y-th)+'\" x2=\"'+cx.toFixed(1)+'\" y2=\"'+(y+th)+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){svg+='<text x=\"'+cx.toFixed(1)+'\" y=\"'+(y+19)+'\" font-family=\"Arial,sans-serif\" font-size=\"10\" fill=\"#202b36\" text-anchor=\"middle\">'+i+'</text>';}}svg+='</svg>';return svg;}var cardStyle='flex:1;min-width:290px;border:1px solid #d0d7de;border-radius:6px;padding:12px 14px;background:#ffffff;box-sizing:border-box;';return '<div style=\"display:flex;flex-wrap:wrap;gap:16px;width:100%;margin-top:10px\"><div style=\"'+cardStyle+'\"><div style=\"font-weight:bold;font-size:14px;margin-bottom:6px;color:#202b36\">A) &nbsp; \\\\( '+ineq_a_tex+' \\\\)</div>'+makeLine()+'</div><div style=\"'+cardStyle+'\"><div style=\"font-weight:bold;font-size:14px;margin-bottom:6px;color:#202b36\">B) &nbsp; \\\\( '+ineq_b_tex+' \\\\)</div>'+makeLine()+'</div></div>';})()"
+    },
+    "answer_layout": {
+      "formula": "(function(){function makeSolvedLine(sol,dir,closed){var w=440,h=68,min=-20,max=20,pad=24,usable=w-2*pad,step=usable/(max-min),y=30;var sx=pad+(sol-min)*step;var svg='<svg viewBox=\"0 0 '+w+' '+h+'\" style=\"width:100%;max-width:440px;height:auto;display:block;margin-top:8px\" xmlns=\"http://www.w3.org/2000/svg\">';svg+='<line x1=\"'+(pad-10)+'\" y1=\"'+y+'\" x2=\"'+(w-pad+10)+'\" y2=\"'+y+'\" stroke=\"#202b36\" stroke-width=\"1.8\"/>';svg+='<polygon points=\"'+(pad-15)+','+y+' '+(pad-7)+','+(y-4)+' '+(pad-7)+','+(y+4)+'\" fill=\"#202b36\"/>';svg+='<polygon points=\"'+(w-pad+15)+','+y+' '+(w-pad+7)+','+(y-4)+' '+(w-pad+7)+','+(y+4)+'\" fill=\"#202b36\"/>';for(var i=min;i<=max;i++){var cx=pad+(i-min)*step;var isMajor=i%5===0;var th=isMajor?6:3;svg+='<line x1=\"'+cx.toFixed(1)+'\" y1=\"'+(y-th)+'\" x2=\"'+cx.toFixed(1)+'\" y2=\"'+(y+th)+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){svg+='<text x=\"'+cx.toFixed(1)+'\" y=\"'+(y+19)+'\" font-family=\"Arial,sans-serif\" font-size=\"10\" fill=\"#202b36\" text-anchor=\"middle\">'+i+'</text>';}}if(dir==='right'){svg+='<line x1=\"'+sx.toFixed(1)+'\" y1=\"'+y+'\" x2=\"'+(w-pad+10)+'\" y2=\"'+y+'\" stroke=\"#0969da\" stroke-width=\"3.5\"/>';svg+='<polygon points=\"'+(w-pad+16)+','+y+' '+(w-pad+6)+','+(y-5)+' '+(w-pad+6)+','+(y+5)+'\" fill=\"#0969da\"/>';}else{svg+='<line x1=\"'+(pad-10)+'\" y1=\"'+y+'\" x2=\"'+sx.toFixed(1)+'\" y2=\"'+y+'\" stroke=\"#0969da\" stroke-width=\"3.5\"/>';svg+='<polygon points=\"'+(pad-16)+','+y+' '+(pad-6)+','+(y-5)+' '+(pad-6)+','+(y+5)+'\" fill=\"#0969da\"/>';}svg+='<circle cx=\"'+sx.toFixed(1)+'\" cy=\"'+y+'\" r=\"5\" fill=\"'+(closed?'#0969da':'#ffffff')+'\" stroke=\"#0969da\" stroke-width=\"2.2\"/>';svg+='<text x=\"'+sx.toFixed(1)+'\" y=\"'+(y-11)+'\" font-family=\"Arial,sans-serif\" font-size=\"11\" font-weight=\"bold\" fill=\"#0969da\" text-anchor=\"middle\">'+sol+'</text>';svg+='</svg>';return svg;}var cardStyle='flex:1;min-width:290px;border:1px solid #d0d7de;border-radius:6px;padding:12px 14px;background:#f6f8fa;box-sizing:border-box;';return '<div style=\"display:flex;flex-wrap:wrap;gap:16px;width:100%;margin-top:10px\"><div style=\"'+cardStyle+'\"><div style=\"font-weight:bold;font-size:14px;margin-bottom:6px;color:#202b36\">A) &nbsp; \\\\( '+ans_a_tex+' \\\\)</div>'+makeSolvedLine(x1,pairs_data.a.dir,pairs_data.a.closed)+'</div><div style=\"'+cardStyle+'\"><div style=\"font-weight:bold;font-size:14px;margin-bottom:6px;color:#202b36\">B) &nbsp; \\\\( '+ans_b_tex+' \\\\)</div>'+makeSolvedLine(x2,pairs_data.b.dir,pairs_data.b.closed)+'</div></div>';})()"
+    }
+  },
+  "question": "Solve and graph each inequality on its number line: {question_layout}",
+  "answer": "{answer_layout}"
+},
       {
         "id": "ALG1-6.1-B2",
         "type": "template",
@@ -5938,6 +5980,60 @@
         "question": "Solve and graph: <br> \\( {a}x < {b} \\).",
         "answer": "\\( x \\geq \\frac{ {b} }{ {a} } \\) (Swap inequality if \\( {a} < 0) \\)"
       },
+      {
+  "id": "ALG 6.1b Multiplication and Division",
+  "type": "template",
+  "objective": "Solving and graphing one-step multiplication and division inequalities",
+  "difficulty": "basic",
+  "variables": {
+    "pair_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "mult_first": {
+      "formula": "Math.random() < 0.5"
+    },
+    "mult_left_neg": {
+      "formula": "Math.random() < 0.5"
+    },
+    "mult_right_neg": {
+      "formula": "Math.random() < 0.5"
+    },
+    "div_left_neg": {
+      "formula": "!mult_left_neg"
+    },
+    "div_right_neg": {
+      "formula": "!mult_right_neg"
+    },
+    "c_mult_abs": {
+      "min": 2,
+      "max": 5
+    },
+    "x_mult_abs": {
+      "min": 1,
+      "max": 4
+    },
+    "c_div_abs": {
+      "min": 2,
+      "max": 4
+    },
+    "x_div_abs": {
+      "min": 1,
+      "max": 4
+    },
+    "problems_data": {
+      "formula": "(function(){var pairs=[['\\\\geq','<'],['>','\\\\leq'],['\\\\leq','>'],['<','\\\\geq']];var chosen=pairs[pair_idx];function flip(s){return s==='\\\\geq'?'\\\\leq':(s==='\\\\leq'?'\\\\geq':(s==='>'?'<':'>'));}function symText(s){return s==='\\\\geq'?'&ge;':(s==='\\\\leq'?'&le;':(s==='>'?'&gt;':'&lt;'));}function buildMult(sym){var c=(mult_left_neg?-1:1)*c_mult_abs;var signMatch=(mult_left_neg===mult_right_neg);var x=(signMatch?1:-1)*x_mult_abs;var rhs=c*x;var solvedSym=mult_left_neg?flip(sym):sym;var expr='\\\\( '+c+'x '+sym+' '+rhs+' \\\\)';var step='Divide both sides by '+c+(mult_left_neg?' (flip inequality sign)':'');var sol='\\\\( x '+solvedSym+' '+x+' \\\\)';return {expr:expr,step:step,sol:sol,x:x,solvedSym:solvedSym,symHtml:symText(solvedSym)};}function buildDiv(sym){var d=(div_left_neg?-1:1)*c_div_abs;var signMatch=(div_left_neg===div_right_neg);var x=(signMatch?1:-1)*x_div_abs;var rhs=x/d;var solvedSym=div_left_neg?flip(sym):sym;var expr=div_left_neg?'\\\\( -\\\\frac{x}{'+c_div_abs+'} '+sym+' '+rhs+' \\\\)':'\\\\( \\\\frac{x}{'+c_div_abs+'} '+sym+' '+rhs+' \\\\)';var step='Multiply both sides by '+d+(div_left_neg?' (flip inequality sign)':'');var sol='\\\\( x '+solvedSym+' '+x+' \\\\)';return {expr:expr,step:step,sol:sol,x:x,solvedSym:solvedSym,symHtml:symText(solvedSym)};}var itemA=mult_first?buildMult(chosen[0]):buildDiv(chosen[0]);var itemB=mult_first?buildDiv(chosen[1]):buildMult(chosen[1]);return [itemA,itemB];})()"
+    },
+    "blank_cards": {
+      "formula": "(function(){function svgBlank(){var w=360,h=68,x0=20,x1=340,y=36,minV=-20,maxV=20;var out='<svg viewBox=\"0 0 '+w+' '+h+'\" style=\"width:100%;max-width:360px;height:auto;display:block;margin:4px auto 0 auto\" xmlns=\"http://www.w3.org/2000/svg\">';out+='<line x1=\"'+(x0-8)+'\" y1=\"'+y+'\" x2=\"'+(x1+8)+'\" y2=\"'+y+'\" stroke=\"#202b36\" stroke-width=\"1.8\"/>';out+='<polygon points=\"'+(x0-12)+','+y+' '+(x0-5)+','+(y-4)+' '+(x0-5)+','+(y+4)+'\" fill=\"#202b36\"/>';out+='<polygon points=\"'+(x1+12)+','+y+' '+(x1+5)+','+(y-4)+' '+(x1+5)+','+(y+4)+'\" fill=\"#202b36\"/>';for(var v=minV;v<=maxV;v++){var px=x0+((v-minV)/(maxV-minV))*(x1-x0);var major=(v%5===0);var tickH=major?7:4;out+='<line x1=\"'+px.toFixed(1)+'\" y1=\"'+(y-tickH)+'\" x2=\"'+px.toFixed(1)+'\" y2=\"'+(y+tickH)+'\" stroke=\"#202b36\" stroke-width=\"'+(major?'1.5':'1')+'\"/>';if(major){out+='<text x=\"'+px.toFixed(1)+'\" y=\"'+(y+20)+'\" font-family=\"Arial,sans-serif\" font-size=\"10\" fill=\"#202b36\" text-anchor=\"middle\">'+v+'</text>';}}out+='</svg>';return out;}var labels=['A)','B)'];var cards=problems_data.map(function(p,idx){return '<div style=\"flex:1;min-width:290px;border:1px solid #cbd5e1;border-radius:6px;padding:10px 12px;background:#ffffff;box-sizing:border-box\"><div style=\"font-weight:bold;font-size:14px;color:#202b36;margin-bottom:4px\">'+labels[idx]+' &nbsp; '+p.expr+'</div>'+svgBlank()+'</div>';}).join('');return '<div style=\"display:flex;flex-wrap:wrap;gap:12px;width:100%;margin-top:8px\">'+cards+'</div>';})()"
+    },
+    "solved_cards": {
+      "formula": "(function(){function svgSolved(val,sym){var w=360,h=72,x0=20,x1=340,y=40,minV=-20,maxV=20;var isClosed=(sym==='\\\\geq'||sym==='\\\\leq');var isRight=(sym==='\\\\geq'||sym==='>');var vx=x0+((val-minV)/(maxV-minV))*(x1-x0);var out='<svg viewBox=\"0 0 '+w+' '+h+'\" style=\"width:100%;max-width:360px;height:auto;display:block;margin:4px auto 0 auto\" xmlns=\"http://www.w3.org/2000/svg\">';out+='<line x1=\"'+(x0-8)+'\" y1=\"'+y+'\" x2=\"'+(x1+8)+'\" y2=\"'+y+'\" stroke=\"#59636e\" stroke-width=\"1.5\"/>';out+='<polygon points=\"'+(x0-12)+','+y+' '+(x0-5)+','+(y-4)+' '+(x0-5)+','+(y+4)+'\" fill=\"#59636e\"/>';out+='<polygon points=\"'+(x1+12)+','+y+' '+(x1+5)+','+(y-4)+' '+(x1+5)+','+(y+4)+'\" fill=\"#59636e\"/>';for(var v=minV;v<=maxV;v++){var px=x0+((v-minV)/(maxV-minV))*(x1-x0);var major=(v%5===0);var tickH=major?7:4;out+='<line x1=\"'+px.toFixed(1)+'\" y1=\"'+(y-tickH)+'\" x2=\"'+px.toFixed(1)+'\" y2=\"'+(y+tickH)+'\" stroke=\"#59636e\" stroke-width=\"'+(major?'1.4':'0.9')+'\"/>';if(major){out+='<text x=\"'+px.toFixed(1)+'\" y=\"'+(y+20)+'\" font-family=\"Arial,sans-serif\" font-size=\"10\" fill=\"#202b36\" text-anchor=\"middle\">'+v+'</text>';}}if(isRight){out+='<line x1=\"'+vx.toFixed(1)+'\" y1=\"'+y+'\" x2=\"'+(x1+8)+'\" y2=\"'+y+'\" stroke=\"#1d4ed8\" stroke-width=\"4\"/>';out+='<polygon points=\"'+(x1+14)+','+y+' '+(x1+4)+','+(y-5.5)+' '+(x1+4)+','+(y+5.5)+'\" fill=\"#1d4ed8\"/>';}else{out+='<line x1=\"'+(x0-8)+'\" y1=\"'+y+'\" x2=\"'+vx.toFixed(1)+'\" y2=\"'+y+'\" stroke=\"#1d4ed8\" stroke-width=\"4\"/>';out+='<polygon points=\"'+(x0-14)+','+y+' '+(x0-4)+','+(y-5.5)+' '+(x0-4)+','+(y+5.5)+'\" fill=\"#1d4ed8\"/>';}out+='<circle cx=\"'+vx.toFixed(1)+'\" cy=\"'+y+'\" r=\"5\" fill=\"'+(isClosed?'#1d4ed8':'#ffffff')+'\" stroke=\"#1d4ed8\" stroke-width=\"2.5\"/>';out+='<text x=\"'+vx.toFixed(1)+'\" y=\"'+(y-11)+'\" font-family=\"Arial,sans-serif\" font-size=\"11\" font-weight=\"bold\" fill=\"#1d4ed8\" text-anchor=\"middle\">'+val+'</text>';out+='</svg>';return out;}var labels=['A)','B)'];var cards=problems_data.map(function(p,idx){return '<div style=\"flex:1;min-width:290px;border:1px solid #cbd5e1;border-radius:6px;padding:10px 12px;background:#f8fafc;box-sizing:border-box\"><div style=\"font-weight:bold;font-size:14px;color:#202b36;margin-bottom:2px\">'+labels[idx]+' &nbsp; '+p.sol+'</div><div style=\"font-size:11px;color:#475569;margin-bottom:4px\">'+p.step+'</div>'+svgSolved(p.x,p.solvedSym)+'</div>';}).join('');return '<div style=\"display:flex;flex-wrap:wrap;gap:12px;width:100%\">'+cards+'</div>';})()"
+    }
+  },
+  "question": "Solve and graph each inequality:{blank_cards}",
+  "answer": "{solved_cards}"
+},
       {
         "id": "ALG1-6.1-I1",
         "type": "template",
@@ -6751,7 +6847,7 @@
     ],
     "Semester 1 Review": [
       {
-  "id": "ALG S1 1.1 Pies",
+  "id": "ALG S1.1 Pies",
   "type": "template",
   "objective": "Adding fractions with unlike denominators to compare two sets of quantities",
   "difficulty": "basic",
@@ -6773,7 +6869,7 @@
   "answer": "{solution_steps}"
 },
 {
-  "id": "ALG S1 1.2 'Pies and 2 Friends'",
+  "id": "ALG S1.2 'Pies and 2 Friends'",
   "type": "template",
   "objective": "Adding fractions with unlike denominators and comparing three sums to find the smallest total",
   "difficulty": "basic",
@@ -6798,7 +6894,7 @@
   "answer": "{solution_steps}"
 },
 {
-  "id": "ALG S1 1.3 More Pie",
+  "id": "ALG S11.3 More Pie",
   "type": "template",
   "objective": "Adding mixed numbers with unlike denominators and comparing sums",
   "difficulty": "basic",
@@ -6817,7 +6913,7 @@
   "answer": "{solution_steps}"
 },
 {
-  "id": "ALG 1.4 Pie Sharing",
+  "id": "ALG S11.4 Pie Sharing",
   "type": "template",
   "objective": "Adding mixed numbers and dividing by group size to compare unit rates (serving per person)",
   "difficulty": "intermediate",
@@ -6836,10 +6932,10 @@
   "answer": "{solution_steps}"
 },
 {
-  "id": "ALG S1 2.1 Counting",
+  "id": "ALG S12.1 Counting",
   "type": "template",
   "objective": "Tracking signed integers, multi-step adjustments, and count corrections to reconcile a total headcount",
-  "difficulty": "intermediate",
+  "difficulty": "basic",
   "variables": {
     "data": {
       "formula": "(function(){\n  var initial_roster = 61 + Math.floor(Math.random() * 38); // 61 to 98\n  var late_arrivals = 2 + Math.floor(Math.random() * 5);\n  var early_pickups = 1 + Math.floor(Math.random() * 4);\n  var expected_total = initial_roster + late_arrivals - early_pickups;\n\n  // Locations away from the main recess yard\n  var classroom_initial = 8 + Math.floor(Math.random() * 8);\n  var classroom_correction = (Math.random() < 0.5 ? 1 : -1) * (1 + Math.floor(Math.random() * 3));\n  var classroom_actual = classroom_initial + classroom_correction;\n\n  var art_room = 5 + Math.floor(Math.random() * 6);\n  var music_room = 4 + Math.floor(Math.random() * 6);\n  var restroom_initial = 2 + Math.floor(Math.random() * 4);\n  var restroom_returned = 1 + Math.floor(Math.random() * 2);\n  var restroom_actual = restroom_initial - restroom_returned;\n\n  var nurse_office = 1 + Math.floor(Math.random() * 3);\n  var library_initial = 4 + Math.floor(Math.random() * 6);\n  var library_correction = (Math.random() < 0.5 ? 1 : -1) * (1 + Math.floor(Math.random() * 2));\n  var library_actual = library_initial + library_correction;\n\n  var indoor_total = classroom_actual + art_room + music_room + restroom_actual + nurse_office + library_actual;\n\n  // Decide if everyone is accounted for (50%) or 1 to 3 campers are missing (50%)\n  var is_missing = Math.random() < 0.5;\n  var missing_count = is_missing ? (1 + Math.floor(Math.random() * 3)) : 0;\n\n  var yard_actual = expected_total - indoor_total - missing_count;\n  var yard_miscount_diff = (Math.random() < 0.5 ? 1 : -1) * (2 + Math.floor(Math.random() * 4));\n  var yard_first_count = yard_actual + yard_miscount_diff;\n\n  var total_accounted = yard_actual + indoor_total;\n\n  return {\n    initial_roster: initial_roster,\n    late_arrivals: late_arrivals,\n    early_pickups: early_pickups,\n    expected_total: expected_total,\n    classroom_initial: classroom_initial,\n    classroom_correction: classroom_correction,\n    classroom_actual: classroom_actual,\n    art_room: art_room,\n    music_room: music_room,\n    restroom_initial: restroom_initial,\n    restroom_returned: restroom_returned,\n    restroom_actual: restroom_actual,\n    nurse_office: nurse_office,\n    library_initial: library_initial,\n    library_correction: library_correction,\n    library_actual: library_actual,\n    indoor_total: indoor_total,\n    yard_first_count: yard_first_count,\n    yard_miscount_diff: yard_miscount_diff,\n    yard_actual: yard_actual,\n    total_accounted: total_accounted,\n    is_missing: is_missing,\n    missing_count: missing_count\n  };\n})()"
@@ -6855,7 +6951,7 @@
   "answer": "{solution_html}"
 },
 {
-  "id": "ALG 2.2 Simplifying with a Calculator",
+  "id": "ALG S12.2 Simplifying with a Calculator",
   "type": "template",
   "objective": "Simplifying integer expressions involving signed numbers, addition, subtraction, and multiplication of grouped terms",
   "difficulty": "basic",
@@ -6874,7 +6970,7 @@
   "answer": "{solution_html}"
 },
 {
-  "id": "ALG 2.3 Simplify with a Calculator and Nested Parenthesis",
+  "id": "ALG S12.3 Simplify with a Calculator and Nested Parenthesis",
   "type": "template",
   "objective": "Simplifying multi-step numerical expressions with nested parentheses",
   "difficulty": "intermediate",
@@ -6893,7 +6989,7 @@
   "answer": "{solution_grid}"
 },
 {
-  "id": "ALG 2.4 Simplify with Exponents",
+  "id": "ALG S12.4 Simplify with Exponents",
   "type": "template",
   "objective": "Simplifying multi-step numerical expressions",
   "difficulty": "advanced",
@@ -6912,7 +7008,7 @@
   "answer": "{solution_grid}"
 },
 {
-  "id": "ALG 2.4 Simplify v2",
+  "id": "ALG S12.4 Simplify v2",
   "type": "template",
   "objective": "Simplifying numerical expressions with three levels of grouping symbols, exponents on negative bases vs. negative signs outside exponents",
   "difficulty": "advanced",
@@ -6931,23 +7027,23 @@
   "answer": "{solution_grid}"
 },
 {
-  "id": "ALG 2.5 Simplify",
+  "id": "ALG S12.5 Simplify",
   "type": "template",
-  "objective": "Simplifying algebraic expressions with one level of brackets, signed integers, and exponents of 2 with negative signs inside and outside parentheses",
+  "objective": "Simplifying numerical expressions with one level of brackets, exponents of 2, and negative signs inside and outside exponents",
   "difficulty": "basic",
   "variables": {
-    "items": {
-      "formula": "(function(){   function randInt(min, max) {     return min + Math.floor(Math.random() * (max - min + 1));   }   function pick(arr) {     return arr[Math.floor(Math.random() * arr.length)];   }   function shuffle(arr) {     var a = arr.slice();     for (var i = a.length - 1; i > 0; i--) {       var j = Math.floor(Math.random() * (i + 1));       var t = a[i]; a[i] = a[j]; a[j] = t;     }     return a;   }    // Randomly assign 1 or 2 expressions to have negative sign OUTSIDE the exponent,   // and the remaining 1 or 2 to have negative sign INSIDE the exponent.   var outsideCount = randInt(1, 2);   var modes = [];   for (var k = 0; k < 3; k++) {     modes.push(k < outsideCount ? 'outside' : 'inside');   }   modes = shuffle(modes);    var labels = ['A)', 'B)', 'C)'];   var results = [];    for (var idx = 0; idx < 3; idx++) {     var mode = modes[idx];     var pattern = randInt(0, 2);      var a = randInt(2, 6);     var b = randInt(2, 5);     var c = randInt(2, 9);     var d = randInt(2, 9);     var e = randInt(2, 8);     var f = randInt(2, 9);      // Ensure inner expression is non-zero and reasonably small     while (c === d) {       d = randInt(2, 9);     }      var expBase = b;     var expStr = '';     var expVal = 0;     var expNote = '';      if (mode === 'outside') {       // Negative sign outside exponent: e.g., -b^2 or -(b)^2 -> -(b^2)       expStr = '-' + expBase + '<sup>2</sup>';       expVal = -(expBase * expBase);       expNote = 'Negative outside exponent: -' + expBase + '<sup>2</sup> = -(' + expBase + ' &middot; ' + expBase + ') = ' + expVal;     } else {       // Negative sign inside exponent: (-b)^2 -> (-b)*(-b) = +b^2       expStr = '(-' + expBase + ')<sup>2</sup>';       expVal = expBase * expBase;       expNote = 'Negative inside exponent: (-' + expBase + ')<sup>2</sup> = (-' + expBase + ')(-' + expBase + ') = ' + expVal;     }      var exprHtml = '';     var steps = [];     var finalVal = 0;      if (pattern === 0) {       // Pattern 0: -a[ expTerm - c + (-d) ] - (-e)       var s1 = randInt(0, 1) === 0 ? '-' : '+';       var innerSum = (s1 === '-' ? -c : c) - d;       var bracketTotal = expVal + innerSum;       var multVal = -a * bracketTotal;       finalVal = multVal + e;        exprHtml = '-' + a + '[' + expStr + ' ' + s1 + ' ' + c + ' + (-' + d + ')] - (-' + e + ')';       steps.push(expNote);       steps.push('Inside brackets: [' + expVal + ' ' + s1 + ' ' + c + ' - ' + d + '] = ' + bracketTotal);       steps.push('Multiply: -' + a + '(' + bracketTotal + ') = ' + multVal);       steps.push('Subtract negative: ' + multVal + ' + ' + e + ' = <b>' + finalVal + '</b>');      } else if (pattern === 1) {       // Pattern 1: expTerm - a[ -c + (-d) ] + (-e)       var innerSum1 = -c - d;       var multVal1 = -a * innerSum1;       finalVal = expVal + multVal1 - e;        exprHtml = expStr + ' - ' + a + '[-' + c + ' + (-' + d + ')] + (-' + e + ')';       steps.push(expNote);       steps.push('Inside brackets: [-' + c + ' - ' + d + '] = ' + innerSum1);       steps.push('Multiply: -' + a + '(' + innerSum1 + ') = ' + (multVal1 >= 0 ? '+' + multVal1 : multVal1));       steps.push('Combine left to right: ' + expVal + (multVal1 >= 0 ? ' + ' + multVal1 : ' - ' + Math.abs(multVal1)) + ' - ' + e + ' = <b>' + finalVal + '</b>');      } else {       // Pattern 2: -a[ -c - (-d) ] + expTerm - f       var innerSum2 = -c + d;       var multVal2 = -a * innerSum2;       finalVal = multVal2 + expVal - f;        exprHtml = '-' + a + '[-' + c + ' - (-' + d + ')] + ' + expStr + ' - ' + f;       steps.push(expNote);       steps.push('Inside brackets: [-' + c + ' + ' + d + '] = ' + innerSum2);       steps.push('Multiply: -' + a + '(' + innerSum2 + ') = ' + multVal2);       steps.push('Combine: ' + multVal2 + (expVal >= 0 ? ' + ' + expVal : ' - ' + Math.abs(expVal)) + ' - ' + f + ' = <b>' + finalVal + '</b>');     }      results.push({       label: labels[idx],       mode: mode,       expr: exprHtml,       steps: steps,       answer: finalVal     });   }    return results; })()"
+    "problems": {
+      "formula": "(function(){var labels=['A)','B)','C)'];var outsideFlags=[true,false,Math.random()<0.5];for(var i=outsideFlags.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=outsideFlags[i];outsideFlags[i]=outsideFlags[j];outsideFlags[j]=t;}function rInt(min,max){return min+Math.floor(Math.random()*(max-min+1));}function sSign(n){return n<0?'-'+Math.abs(n):'+'+n;}return labels.map(function(label,idx){var outside=outsideFlags[idx];var b=rInt(2,7);var powVal=outside?-(b*b):(b*b);var powExpr=outside?('-'+b+'<sup>2</sup>'):('(-'+b+')<sup>2</sup>');var ruleNote=outside?('Negative outside: -'+b+'<sup>2</sup> = -('+b+' &times; '+b+') = '+powVal):('Negative inside: (-'+b+')<sup>2</sup> = (-'+b+') &times; (-'+b+') = +'+powVal);var a=rInt(2,6)*(Math.random()<0.5?-1:1);var c=rInt(2,9)*(Math.random()<0.5?-1:1);var d=rInt(2,9)*(Math.random()<0.5?-1:1);var e=rInt(2,11)*(Math.random()<0.5?-1:1);var type=idx%3;var expr='',step1='',step2='',step3='',ans=0;if(type===0){var inSum=powVal+c;var prod=a*inSum;ans=prod+e;expr=a+'['+powExpr+' '+sSign(c)+'] '+sSign(e);step1=a+'['+powVal+' '+sSign(c)+'] '+sSign(e);step2=a+'('+inSum+') '+sSign(e);step3=prod+' '+sSign(e);}else if(type===1){var inSum=c+powVal;var prod=a*inSum;ans=prod+e;expr=a+'['+c+' + '+powExpr+'] '+sSign(e);step1=a+'['+c+' + ('+powVal+')] '+sSign(e);step2=a+'('+inSum+') '+sSign(e);step3=prod+' '+sSign(e);}else{var inSum=c+d;var prod=a*inSum;ans=powVal+prod+e;expr=powExpr+' '+sSign(a)+'['+c+' '+sSign(d)+'] '+sSign(e);step1=powVal+' '+sSign(a)+'['+c+' '+sSign(d)+'] '+sSign(e);step2=powVal+' '+sSign(a)+'('+inSum+') '+sSign(e);step3=powVal+' '+sSign(prod)+' '+sSign(e);}return {label:label,outside:outside,ruleNote:ruleNote,expr:expr,step1:step1,step2:step2,step3:step3,ans:ans};});})()"
     },
-    "problems_html": {
-      "formula": "(function(){   var cols = items.map(function(item){     return '<div style=\"flex:1;min-width:210px;border:1px solid #cbd5e1;border-radius:6px;padding:12px 14px;background:#f8fafc;\">' +       '<div style=\"font-weight:bold;color:#1e293b;margin-bottom:6px;font-size:13px;\">' + item.label + '</div>' +       '<div style=\"font-family:Georgia,serif;font-size:16px;color:#0f172a;letter-spacing:0.3px;\">' + item.expr + '</div>' +     '</div>';   }).join('');   return '<div style=\"display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-family:Arial,sans-serif;\">' + cols + '</div>'; })()"
+    "question_grid": {
+      "formula": "(function(){return '<div style=\"display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-family:Arial,sans-serif;font-size:15px;color:#202b36\">'+problems.map(function(p){return '<div style=\"flex:1;min-width:210px;border:1px solid #cbd5e1;border-radius:6px;padding:12px 14px;background:#f8fafc\"><div style=\"font-weight:bold;color:#334155;margin-bottom:6px\">'+p.label+'</div><div style=\"font-size:16px;font-weight:bold;letter-spacing:0.3px\">'+p.expr+'</div></div>';}).join('')+'</div>';})()"
     },
-    "solutions_html": {
-      "formula": "(function(){   var cols = items.map(function(item){     var badgeColor = item.mode === 'outside' ? '#fef3c7;color:#92400e;border:1px solid #f59e0b' : '#dbeafe;color:#1e40af;border:1px solid #3b82f6';     var badgeText = item.mode === 'outside' ? 'Negative Outside Exponent' : 'Negative Inside Exponent';     var stepLines = item.steps.map(function(s){       return '<li style=\"margin-bottom:4px;\">' + s + '</li>';     }).join('');     return '<div style=\"flex:1;min-width:230px;border:1px solid #cbd5e1;border-radius:6px;padding:12px 14px;background:#ffffff;font-family:Arial,sans-serif;font-size:12.5px;color:#1e293b;\">' +       '<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;\">' +         '<span style=\"font-weight:bold;font-size:14px;\">' + item.label + '</span>' +         '<span style=\"font-size:10px;padding:2px 6px;border-radius:4px;background:' + badgeColor + ';\">' + badgeText + '</span>' +       '</div>' +       '<div style=\"font-family:Georgia,serif;font-size:15px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #e2e8f0;\">' + item.expr + '</div>' +       '<ol style=\"padding-left:18px;margin:0 0 8px 0;line-height:1.45;\">' + stepLines + '</ol>' +       '<div style=\"background:#f1f5f9;padding:6px 8px;border-radius:4px;font-weight:bold;\">Final Answer: ' + item.answer + '</div>' +     '</div>';   }).join('');   return '<div style=\"display:flex;flex-wrap:wrap;gap:12px;font-family:Arial,sans-serif;\">' + cols + '</div>'; })()"
+    "solution_grid": {
+      "formula": "(function(){return '<div style=\"display:flex;flex-wrap:wrap;gap:14px;font-family:Arial,sans-serif;font-size:13px;color:#202b36\">'+problems.map(function(p){var badgeBg=p.outside?'#fee2e2':'#dcfce7';var badgeColor=p.outside?'#991b1b':'#166534';return '<div style=\"flex:1;min-width:220px;border:1px solid #cbd5e1;border-radius:6px;padding:12px 14px;background:#ffffff\"><div style=\"font-weight:bold;font-size:15px;margin-bottom:6px\">'+p.label+' '+p.expr+'</div><div style=\"display:inline-block;background:'+badgeBg+';color:'+badgeColor+';font-size:11px;font-weight:bold;padding:3px 7px;border-radius:4px;margin-bottom:8px\">'+p.ruleNote+'</div><div style=\"line-height:1.7\"><div><b>Step 1 (Exponent):</b> '+p.step1+'</div><div><b>Step 2 (Brackets):</b> '+p.step2+'</div><div><b>Step 3 (Multiply):</b> '+p.step3+'</div><div style=\"margin-top:6px;padding-top:6px;border-top:1px solid #e2e8f0;font-size:14px\"><b>Answer: '+p.ans+'</b></div></div></div>';}).join('')+'</div>';})()"
     }
   },
-  "question": "Simplify each expression completely. Pay close attention to whether each negative sign is inside or outside the exponent of 2:<br>{problems_html}",
-  "answer": "{solutions_html}"
+  "question": "Simplify each of the following expressions using the order of operations. Pay close attention to whether the negative sign is inside or outside the exponent:{question_grid}",
+  "answer": "{solution_grid}"
 }
     ],
     "Objective Assessment 1": [],
