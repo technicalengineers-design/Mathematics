@@ -5956,31 +5956,6 @@
   "answer": "{answer_layout}"
 },
       {
-        "id": "ALG1-6.1-B2",
-        "type": "template",
-        "objective": "Solving One-Step Inequalities",
-        "difficulty": "basic",
-        "variables": {
-          "a": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0,
-              1
-            ]
-          },
-          "b": {
-            "min": -10,
-            "max": 10,
-            "exclude": [
-              0
-            ]
-          }
-        },
-        "question": "Solve and graph: <br> \\( {a}x < {b} \\).",
-        "answer": "\\( x \\geq \\frac{ {b} }{ {a} } \\) (Swap inequality if \\( {a} < 0) \\)"
-      },
-      {
   "id": "ALG 6.1b Multiplication and Division",
   "type": "template",
   "objective": "Solving and graphing one-step multiplication and division inequalities",
@@ -6068,6 +6043,136 @@
         "question": "Solve and graph: <br> \\( \\frac{ {a|coef} x }{{b}} > {c} \\).",
         "answer": "\\( x > {x} \\) (Swap inequality if \\( {a} < 0) \\)"
       },
+      {
+  "id": "ALG 6.1 Ia",
+  "type": "template",
+  "objective": "Solving and Graphing Two-Step Inequalities",
+  "difficulty": "intermediate",
+  "variables": {
+    "pair_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "mult_is_a": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "neg_is_mult": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "mult_inside": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "div_inside": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "a1": {
+      "formula": "(neg_is_mult === 1 ? -1 : 1) * (2 + Math.floor(Math.random() * 4))"
+    },
+    "b1": {
+      "formula": "(Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 7))"
+    },
+    "x1": {
+      "formula": "-12 + Math.floor(Math.random() * 25)"
+    },
+    "c1": {
+      "formula": "mult_inside === 1 ? a1 * (x1 + b1) : a1 * x1 + b1"
+    },
+    "a2": {
+      "formula": "(neg_is_mult === 0 ? -1 : 1) * (2 + Math.floor(Math.random() * 3))"
+    },
+    "b2": {
+      "formula": "(Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 6))"
+    },
+    "k2": {
+      "formula": "-4 + Math.floor(Math.random() * 9)"
+    },
+    "x2": {
+      "formula": "div_inside === 1 ? k2 * a2 - b2 : k2 * a2"
+    },
+    "c2": {
+      "formula": "div_inside === 1 ? k2 : k2 + b2"
+    },
+    "blank_line": {
+      "formula": "(function(){var ticks='',labels='';for(var i=-20;i<=20;i++){var px=20+(i+20)*7.5;var isMajor=i%5===0;var y1=isMajor?23:26;var y2=isMajor?37:34;ticks+='<line x1=\"'+px+'\" y1=\"'+y1+'\" x2=\"'+px+'\" y2=\"'+y2+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){labels+='<text x=\"'+px+'\" y=\"50\" font-size=\"10\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" fill=\"#202b36\">'+i+'</text>';}}return '<svg viewBox=\"0 0 340 60\" style=\"width:100%;max-width:340px;height:auto;display:block;margin-top:6px\"><line x1=\"10\" y1=\"30\" x2=\"330\" y2=\"30\" stroke=\"#202b36\" stroke-width=\"1.8\"/><polygon points=\"6,30 14,26 14,34\" fill=\"#202b36\"/><polygon points=\"334,30 326,26 326,34\" fill=\"#202b36\"/>'+ticks+labels+'</svg>';})()"
+    },
+    "cards": {
+      "formula": "(function(){var pairs=[['\\\\geq','<'],['>','\\\\leq'],['\\\\leq','>'],['<','\\\\geq']];var syms=pairs[pair_idx];var symA=syms[0],symB=syms[1];function flip(s){return s==='<'?'>':(s==='>'?'<':(s==='\\\\leq'?'\\\\geq':'\\\\leq'));}function sgn(n){return n>=0?'+ '+n:'- '+Math.abs(n);}function makeMult(sym){var lhs=mult_inside===1?a1+'(x '+sgn(b1)+')':a1+'x '+sgn(b1);var expr='\\\\( '+lhs+' '+sym+' '+c1+' \\\\)';var solSym=a1<0?flip(sym):sym;var step1=mult_inside===1?'\\\\( x '+sgn(b1)+' '+solSym+' '+(c1/a1)+' \\\\)':'\\\\( '+a1+'x '+sym+' '+(c1-b1)+' \\\\)';var ans='\\\\( x '+solSym+' '+x1+' \\\\)';return {expr:expr,step1:step1,ans:ans,x:x1,sym:solSym};}function makeDiv(sym){var absA=Math.abs(a2);var signPrefix=a2<0?'-':'';var lhs=div_inside===1?signPrefix+'\\\\frac{x '+sgn(b2)+'}{'+absA+'}':signPrefix+'\\\\frac{x}{'+absA+'} '+sgn(b2);var expr='\\\\( '+lhs+' '+sym+' '+c2+' \\\\)';var solSym=a2<0?flip(sym):sym;var step1=div_inside===1?'\\\\( x '+sgn(b2)+' '+solSym+' '+(c2*a2)+' \\\\)':'\\\\( '+signPrefix+'\\\\frac{x}{'+absA+'} '+sym+' '+(c2-b2)+' \\\\)';var ans='\\\\( x '+solSym+' '+x2+' \\\\)';return {expr:expr,step1:step1,ans:ans,x:x2,sym:solSym};}function makeGraph(xVal,solSym){var ticks='',labels='';for(var i=-20;i<=20;i++){var px=20+(i+20)*7.5;var isMajor=i%5===0;var y1=isMajor?23:26;var y2=isMajor?37:34;ticks+='<line x1=\"'+px+'\" y1=\"'+y1+'\" x2=\"'+px+'\" y2=\"'+y2+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){labels+='<text x=\"'+px+'\" y=\"50\" font-size=\"10\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" fill=\"#202b36\">'+i+'</text>';}}var cx=20+(xVal+20)*7.5;var isRight=(solSym==='>'||solSym==='\\\\geq');var isClosed=(solSym==='\\\\leq'||solSym==='\\\\geq');var rayEnd=isRight?330:10;var arrow=isRight?'<polygon points=\"334,30 324,25 324,35\" fill=\"#1a73e8\"/>':'<polygon points=\"6,30 16,25 16,35\" fill=\"#1a73e8\"/>';var circle='<circle cx=\"'+cx+'\" cy=\"30\" r=\"4.5\" fill=\"'+(isClosed?'#1a73e8':'#ffffff')+'\" stroke=\"#1a73e8\" stroke-width=\"2.2\"/>';return '<svg viewBox=\"0 0 340 60\" style=\"width:100%;max-width:340px;height:auto;display:block;margin-top:6px\"><line x1=\"10\" y1=\"30\" x2=\"330\" y2=\"30\" stroke=\"#202b36\" stroke-width=\"1.8\"/><polygon points=\"6,30 14,26 14,34\" fill=\"#202b36\"/><polygon points=\"334,30 326,26 326,34\" fill=\"#202b36\"/>'+ticks+labels+'<line x1=\"'+cx+'\" y1=\"30\" x2=\"'+rayEnd+'\" y2=\"30\" stroke=\"#1a73e8\" stroke-width=\"3.5\"/>'+arrow+circle+'</svg>';}var pA=mult_is_a===1?makeMult(symA):makeDiv(symA);var pB=mult_is_a===1?makeDiv(symB):makeMult(symB);var cardStyle='flex:1;min-width:290px;border:1px solid #d0d7de;border-radius:8px;padding:10px 12px;background:#ffffff;box-sizing:border-box';var qHtml='<div style=\"display:flex;flex-wrap:wrap;gap:12px;margin-top:8px\"><div style=\"'+cardStyle+'\"><div><b>A)</b> '+pA.expr+'</div>'+blank_line+'</div><div style=\"'+cardStyle+'\"><div><b>B)</b> '+pB.expr+'</div>'+blank_line+'</div></div>';var aHtml='<div style=\"display:flex;flex-wrap:wrap;gap:12px\"><div style=\"'+cardStyle+'\"><div><b>A)</b> '+pA.expr+'</div><div style=\"font-size:12px;color:#59636e;margin-top:4px\">Step 1: '+pA.step1+'</div><div style=\"margin-top:2px\">Solution: <b>'+pA.ans+'</b></div>'+makeGraph(pA.x,pA.sym)+'</div><div style=\"'+cardStyle+'\"><div><b>B)</b> '+pB.expr+'</div><div style=\"font-size:12px;color:#59636e;margin-top:4px\">Step 1: '+pB.step1+'</div><div style=\"margin-top:2px\">Solution: <b>'+pB.ans+'</b></div>'+makeGraph(pB.x,pB.sym)+'</div></div>';return {qHtml:qHtml,aHtml:aHtml};})()"
+    },
+    "question_html": {
+      "formula": "cards.qHtml"
+    },
+    "answer_html": {
+      "formula": "cards.aHtml"
+    }
+  },
+  "question": "Solve and graph each two-step inequality:{question_html}",
+  "answer": "{answer_html}"
+},
+{
+  "id": "ALG 6.1 Ia",
+  "type": "template",
+  "objective": "Solving and Graphing Two-Step Inequalities",
+  "difficulty": "intermediate",
+  "variables": {
+    "pair_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "mult_is_a": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "neg_is_mult": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "mult_inside": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "div_inside": {
+      "formula": "Math.random() < 0.5 ? 1 : 0"
+    },
+    "a1": {
+      "formula": "(neg_is_mult === 1 ? -1 : 1) * (2 + Math.floor(Math.random() * 4))"
+    },
+    "b1": {
+      "formula": "(Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 7))"
+    },
+    "x1": {
+      "formula": "-12 + Math.floor(Math.random() * 25)"
+    },
+    "c1": {
+      "formula": "mult_inside === 1 ? a1 * (x1 + b1) : a1 * x1 + b1"
+    },
+    "a2": {
+      "formula": "(neg_is_mult === 0 ? -1 : 1) * (2 + Math.floor(Math.random() * 3))"
+    },
+    "b2": {
+      "formula": "(Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 6))"
+    },
+    "k2": {
+      "formula": "-4 + Math.floor(Math.random() * 9)"
+    },
+    "x2": {
+      "formula": "div_inside === 1 ? k2 * a2 - b2 : k2 * a2"
+    },
+    "c2": {
+      "formula": "div_inside === 1 ? k2 : k2 + b2"
+    },
+    "blank_line": {
+      "formula": "(function(){var ticks='',labels='';for(var i=-20;i<=20;i++){var px=20+(i+20)*7.5;var isMajor=i%5===0;var y1=isMajor?23:26;var y2=isMajor?37:34;ticks+='<line x1=\"'+px+'\" y1=\"'+y1+'\" x2=\"'+px+'\" y2=\"'+y2+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){labels+='<text x=\"'+px+'\" y=\"50\" font-size=\"10\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" fill=\"#202b36\">'+i+'</text>';}}return '<svg viewBox=\"0 0 340 60\" style=\"width:100%;max-width:340px;height:auto;display:block;margin-top:6px\"><line x1=\"10\" y1=\"30\" x2=\"330\" y2=\"30\" stroke=\"#202b36\" stroke-width=\"1.8\"/><polygon points=\"6,30 14,26 14,34\" fill=\"#202b36\"/><polygon points=\"334,30 326,26 326,34\" fill=\"#202b36\"/>'+ticks+labels+'</svg>';})()"
+    },
+    "cards": {
+      "formula": "(function(){var pairs=[['\\\\geq','<'],['>','\\\\leq'],['\\\\leq','>'],['<','\\\\geq']];var syms=pairs[pair_idx];var symA=syms[0],symB=syms[1];function flip(s){return s==='<'?'>':(s==='>'?'<':(s==='\\\\leq'?'\\\\geq':'\\\\leq'));}function sgn(n){return n>=0?'+ '+n:'- '+Math.abs(n);}function makeMult(sym){var lhs=mult_inside===1?a1+'(x '+sgn(b1)+')':a1+'x '+sgn(b1);var expr='\\\\( '+lhs+' '+sym+' '+c1+' \\\\)';var solSym=a1<0?flip(sym):sym;var step1=mult_inside===1?'\\\\( x '+sgn(b1)+' '+solSym+' '+(c1/a1)+' \\\\)':'\\\\( '+a1+'x '+sym+' '+(c1-b1)+' \\\\)';var ans='\\\\( x '+solSym+' '+x1+' \\\\)';return {expr:expr,step1:step1,ans:ans,x:x1,sym:solSym};}function makeDiv(sym){var absA=Math.abs(a2);var signPrefix=a2<0?'-':'';var lhs=div_inside===1?signPrefix+'\\\\frac{x '+sgn(b2)+'}{'+absA+'}':signPrefix+'\\\\frac{x}{'+absA+'} '+sgn(b2);var expr='\\\\( '+lhs+' '+sym+' '+c2+' \\\\)';var solSym=a2<0?flip(sym):sym;var step1=div_inside===1?'\\\\( x '+sgn(b2)+' '+solSym+' '+(c2*a2)+' \\\\)':'\\\\( '+signPrefix+'\\\\frac{x}{'+absA+'} '+sym+' '+(c2-b2)+' \\\\)';var ans='\\\\( x '+solSym+' '+x2+' \\\\)';return {expr:expr,step1:step1,ans:ans,x:x2,sym:solSym};}function makeGraph(xVal,solSym){var ticks='',labels='';for(var i=-20;i<=20;i++){var px=20+(i+20)*7.5;var isMajor=i%5===0;var y1=isMajor?23:26;var y2=isMajor?37:34;ticks+='<line x1=\"'+px+'\" y1=\"'+y1+'\" x2=\"'+px+'\" y2=\"'+y2+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){labels+='<text x=\"'+px+'\" y=\"50\" font-size=\"10\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" fill=\"#202b36\">'+i+'</text>';}}var cx=20+(xVal+20)*7.5;var isRight=(solSym==='>'||solSym==='\\\\geq');var isClosed=(solSym==='\\\\leq'||solSym==='\\\\geq');var rayEnd=isRight?330:10;var arrow=isRight?'<polygon points=\"334,30 324,25 324,35\" fill=\"#1a73e8\"/>':'<polygon points=\"6,30 16,25 16,35\" fill=\"#1a73e8\"/>';var circle='<circle cx=\"'+cx+'\" cy=\"30\" r=\"4.5\" fill=\"'+(isClosed?'#1a73e8':'#ffffff')+'\" stroke=\"#1a73e8\" stroke-width=\"2.2\"/>';return '<svg viewBox=\"0 0 340 60\" style=\"width:100%;max-width:340px;height:auto;display:block;margin-top:6px\"><line x1=\"10\" y1=\"30\" x2=\"330\" y2=\"30\" stroke=\"#202b36\" stroke-width=\"1.8\"/><polygon points=\"6,30 14,26 14,34\" fill=\"#202b36\"/><polygon points=\"334,30 326,26 326,34\" fill=\"#202b36\"/>'+ticks+labels+'<line x1=\"'+cx+'\" y1=\"30\" x2=\"'+rayEnd+'\" y2=\"30\" stroke=\"#1a73e8\" stroke-width=\"3.5\"/>'+arrow+circle+'</svg>';}var pA=mult_is_a===1?makeMult(symA):makeDiv(symA);var pB=mult_is_a===1?makeDiv(symB):makeMult(symB);var cardStyle='flex:1;min-width:290px;border:1px solid #d0d7de;border-radius:8px;padding:10px 12px;background:#ffffff;box-sizing:border-box';var qHtml='<div style=\"display:flex;flex-wrap:wrap;gap:12px;margin-top:8px\"><div style=\"'+cardStyle+'\"><div><b>A)</b> '+pA.expr+'</div>'+blank_line+'</div><div style=\"'+cardStyle+'\"><div><b>B)</b> '+pB.expr+'</div>'+blank_line+'</div></div>';var aHtml='<div style=\"display:flex;flex-wrap:wrap;gap:12px\"><div style=\"'+cardStyle+'\"><div><b>A)</b> '+pA.expr+'</div><div style=\"font-size:12px;color:#59636e;margin-top:4px\">Step 1: '+pA.step1+'</div><div style=\"margin-top:2px\">Solution: <b>'+pA.ans+'</b></div>'+makeGraph(pA.x,pA.sym)+'</div><div style=\"'+cardStyle+'\"><div><b>B)</b> '+pB.expr+'</div><div style=\"font-size:12px;color:#59636e;margin-top:4px\">Step 1: '+pB.step1+'</div><div style=\"margin-top:2px\">Solution: <b>'+pB.ans+'</b></div>'+makeGraph(pB.x,pB.sym)+'</div></div>';return {qHtml:qHtml,aHtml:aHtml};})()"
+    },
+    "question_html": {
+      "formula": "cards.qHtml"
+    },
+    "answer_html": {
+      "formula": "cards.aHtml"
+    }
+  },
+  "question": "Solve and graph each two-step inequality:{question_html}",
+  "answer": "{answer_html}"
+},
       {
         "id": "ALG1-6.2-B1",
         "type": "template",
