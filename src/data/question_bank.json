@@ -6010,68 +6010,22 @@
   "answer": "{solved_cards}"
 },
 {
-  "id": "ALG 6.1 Ia Two-Step Inequalities",
+  "id": "ALG 6.1 Ia Two-Step Inequality",
   "type": "template",
-  "objective": "Solving and Graphing Two-Step Inequalities",
+  "objective": "Solving Two-Step Inequalities",
   "difficulty": "intermediate",
   "variables": {
-    "pair_idx": {
-      "min": 0,
-      "max": 3
-    },
-    "mult_is_a": {
-      "formula": "Math.random() < 0.5 ? 1 : 0"
-    },
-    "neg_is_mult": {
-      "formula": "Math.random() < 0.5 ? 1 : 0"
-    },
-    "mult_inside": {
-      "formula": "Math.random() < 0.5 ? 1 : 0"
-    },
-    "div_inside": {
-      "formula": "Math.random() < 0.5 ? 1 : 0"
-    },
-    "a1": {
-      "formula": "(neg_is_mult === 1 ? -1 : 1) * (2 + Math.floor(Math.random() * 4))"
-    },
-    "b1": {
-      "formula": "(Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 7))"
-    },
-    "x1": {
-      "formula": "-12 + Math.floor(Math.random() * 25)"
-    },
-    "c1": {
-      "formula": "mult_inside === 1 ? a1 * (x1 + b1) : a1 * x1 + b1"
-    },
-    "a2": {
-      "formula": "(neg_is_mult === 0 ? -1 : 1) * (2 + Math.floor(Math.random() * 3))"
-    },
-    "b2": {
-      "formula": "(Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 6))"
-    },
-    "k2": {
-      "formula": "-4 + Math.floor(Math.random() * 9)"
-    },
-    "x2": {
-      "formula": "div_inside === 1 ? k2 * a2 - b2 : k2 * a2"
-    },
-    "c2": {
-      "formula": "div_inside === 1 ? k2 : k2 + b2"
-    },
-    "blank_line": {
-      "formula": "(function(){var ticks='',labels='';for(var i=-20;i<=20;i++){var px=20+(i+20)*7.5;var isMajor=i%5===0;var y1=isMajor?23:26;var y2=isMajor?37:34;ticks+='<line x1=\"'+px+'\" y1=\"'+y1+'\" x2=\"'+px+'\" y2=\"'+y2+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){labels+='<text x=\"'+px+'\" y=\"50\" font-size=\"10\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" fill=\"#202b36\">'+i+'</text>';}}return '<svg viewBox=\"0 0 340 60\" style=\"width:100%;max-width:340px;height:auto;display:block;margin-top:6px\"><line x1=\"10\" y1=\"30\" x2=\"330\" y2=\"30\" stroke=\"#202b36\" stroke-width=\"1.8\"/><polygon points=\"6,30 14,26 14,34\" fill=\"#202b36\"/><polygon points=\"334,30 326,26 326,34\" fill=\"#202b36\"/>'+ticks+labels+'</svg>';})()"
-    },
-    "cards": {
-      "formula": "(function(){var pairs=[['\\\\geq','<'],['>','\\\\leq'],['\\\\leq','>'],['<','\\\\geq']];var syms=pairs[pair_idx];var symA=syms[0],symB=syms[1];function flip(s){return s==='<'?'>':(s==='>'?'<':(s==='\\\\leq'?'\\\\geq':'\\\\leq'));}function sgn(n){return n>=0?'+ '+n:'- '+Math.abs(n);}function makeMult(sym){var lhs=mult_inside===1?a1+'(x '+sgn(b1)+')':a1+'x '+sgn(b1);var expr='\\\\( '+lhs+' '+sym+' '+c1+' \\\\)';var solSym=a1<0?flip(sym):sym;var step1=mult_inside===1?'\\\\( x '+sgn(b1)+' '+solSym+' '+(c1/a1)+' \\\\)':'\\\\( '+a1+'x '+sym+' '+(c1-b1)+' \\\\)';var ans='\\\\( x '+solSym+' '+x1+' \\\\)';return {expr:expr,step1:step1,ans:ans,x:x1,sym:solSym};}function makeDiv(sym){var absA=Math.abs(a2);var signPrefix=a2<0?'-':'';var lhs=div_inside===1?signPrefix+'\\\\frac{x '+sgn(b2)+'}{'+absA+'}':signPrefix+'\\\\frac{x}{'+absA+'} '+sgn(b2);var expr='\\\\( '+lhs+' '+sym+' '+c2+' \\\\)';var solSym=a2<0?flip(sym):sym;var step1=div_inside===1?'\\\\( x '+sgn(b2)+' '+solSym+' '+(c2*a2)+' \\\\)':'\\\\( '+signPrefix+'\\\\frac{x}{'+absA+'} '+sym+' '+(c2-b2)+' \\\\)';var ans='\\\\( x '+solSym+' '+x2+' \\\\)';return {expr:expr,step1:step1,ans:ans,x:x2,sym:solSym};}function makeGraph(xVal,solSym){var ticks='',labels='';for(var i=-20;i<=20;i++){var px=20+(i+20)*7.5;var isMajor=i%5===0;var y1=isMajor?23:26;var y2=isMajor?37:34;ticks+='<line x1=\"'+px+'\" y1=\"'+y1+'\" x2=\"'+px+'\" y2=\"'+y2+'\" stroke=\"#202b36\" stroke-width=\"'+(isMajor?'1.5':'1')+'\"/>';if(isMajor){labels+='<text x=\"'+px+'\" y=\"50\" font-size=\"10\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" fill=\"#202b36\">'+i+'</text>';}}var cx=20+(xVal+20)*7.5;var isRight=(solSym==='>'||solSym==='\\\\geq');var isClosed=(solSym==='\\\\leq'||solSym==='\\\\geq');var rayEnd=isRight?330:10;var arrow=isRight?'<polygon points=\"334,30 324,25 324,35\" fill=\"#1a73e8\"/>':'<polygon points=\"6,30 16,25 16,35\" fill=\"#1a73e8\"/>';var circle='<circle cx=\"'+cx+'\" cy=\"30\" r=\"4.5\" fill=\"'+(isClosed?'#1a73e8':'#ffffff')+'\" stroke=\"#1a73e8\" stroke-width=\"2.2\"/>';return '<svg viewBox=\"0 0 340 60\" style=\"width:100%;max-width:340px;height:auto;display:block;margin-top:6px\"><line x1=\"10\" y1=\"30\" x2=\"330\" y2=\"30\" stroke=\"#202b36\" stroke-width=\"1.8\"/><polygon points=\"6,30 14,26 14,34\" fill=\"#202b36\"/><polygon points=\"334,30 326,26 326,34\" fill=\"#202b36\"/>'+ticks+labels+'<line x1=\"'+cx+'\" y1=\"30\" x2=\"'+rayEnd+'\" y2=\"30\" stroke=\"#1a73e8\" stroke-width=\"3.5\"/>'+arrow+circle+'</svg>';}var pA=mult_is_a===1?makeMult(symA):makeDiv(symA);var pB=mult_is_a===1?makeDiv(symB):makeMult(symB);var cardStyle='flex:1;min-width:290px;border:1px solid #d0d7de;border-radius:8px;padding:10px 12px;background:#ffffff;box-sizing:border-box';var qHtml='<div style=\"display:flex;flex-wrap:wrap;gap:12px;margin-top:8px\"><div style=\"'+cardStyle+'\"><div><b>A)</b> '+pA.expr+'</div>'+blank_line+'</div><div style=\"'+cardStyle+'\"><div><b>B)</b> '+pB.expr+'</div>'+blank_line+'</div></div>';var aHtml='<div style=\"display:flex;flex-wrap:wrap;gap:12px\"><div style=\"'+cardStyle+'\"><div><b>A)</b> '+pA.expr+'</div><div style=\"font-size:12px;color:#59636e;margin-top:4px\">Step 1: '+pA.step1+'</div><div style=\"margin-top:2px\">Solution: <b>'+pA.ans+'</b></div>'+makeGraph(pA.x,pA.sym)+'</div><div style=\"'+cardStyle+'\"><div><b>B)</b> '+pB.expr+'</div><div style=\"font-size:12px;color:#59636e;margin-top:4px\">Step 1: '+pB.step1+'</div><div style=\"margin-top:2px\">Solution: <b>'+pB.ans+'</b></div>'+makeGraph(pB.x,pB.sym)+'</div></div>';return {qHtml:qHtml,aHtml:aHtml};})()"
+    "bundle": {
+      "formula": "(function(){function gcd(x,y){x=Math.abs(x);y=Math.abs(y);while(y){var t=y;y=x%y;x=t;}return x||1;}function makeFrac(n,d){if(d<0){n=-n;d=-d;}var g=gcd(n,d);return {n:n/g,d:d/g,val:n/d};}function minusHtml(){return '<span style=\"display:inline-block;font-weight:500;font-size:1.12em;transform:translateY(-0.08em);margin-right:2px\">&minus;</span>';}function opMinusHtml(){return '<span style=\"display:inline-block;font-weight:500;font-size:1.12em;transform:translateY(-0.08em);margin:0 4px\">&minus;</span>';}function numHtml(v){return v<0?minusHtml()+Math.abs(v):String(v);}function fracHtml(f){if(f.d===1)return numHtml(f.n);var sign=f.n<0?minusHtml():'';return '<span style=\"display:inline-flex;align-items:center;vertical-align:middle\">'+sign+'<span style=\"display:inline-flex;flex-direction:column;align-items:center;font-size:0.88em;line-height:1.05;margin:0 1px\"><span style=\"border-bottom:1.5px solid #202b36;padding:0 3px\">'+Math.abs(f.n)+'</span><span style=\"padding:0 3px\">'+f.d+'</span></span></span>';}function fracLabel(f){return f.d===1?String(f.n):(f.n+'/'+f.d);}function symHtml(s){if(s==='<=')return '&le;';if(s==='>=')return '&ge;';if(s==='<')return '&lt;';return '&gt;';}function flipSym(s){if(s==='<=')return '>=';if(s==='>=')return '<=';if(s==='<')return '>';return '<';}function isClosed(s){return s==='<='||s==='>=';}function isRight(s){return s==='>'||s==='>=';}function signedConstOp(k){return k>=0?' + '+k:opMinusHtml()+Math.abs(k);}function coefX(a){if(a===1)return 'x';if(a===-1)return minusHtml()+'x';return numHtml(a)+'x';}function termX(a,first){if(first)return coefX(a);if(a===1)return ' + x';if(a===-1)return opMinusHtml()+'x';return a>0?' + '+a+'x':opMinusHtml()+Math.abs(a)+'x';}function fracBox(numStr,denStr){return '<span style=\"display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;font-size:0.92em;line-height:1.1;margin:0 2px\"><span style=\"border-bottom:1.5px solid #202b36;padding:0 4px\">'+numStr+'</span><span style=\"padding:0 4px\">'+denStr+'</span></span>';}function drawLine(sol){var W=360,H=68,pad=24,minV=-20,maxV=20,span=maxV-minV;function xOf(v){return pad+((v-minV)/span)*(W-2*pad);}var svg='<svg width=\"100%\" viewBox=\"0 0 '+W+' '+H+'\" style=\"max-width:360px;display:block;margin-top:6px\">';svg+='<line x1=\"'+(pad-8)+'\" y1=\"38\" x2=\"'+(W-pad+8)+'\" y2=\"38\" stroke=\"#202b36\" stroke-width=\"1.5\"/>';svg+='<polygon points=\"'+(pad-12)+',38 '+(pad-5)+',34 '+(pad-5)+',42\" fill=\"#202b36\"/>';svg+='<polygon points=\"'+(W-pad+12)+',38 '+(W-pad+5)+',34 '+(W-pad+5)+',42\" fill=\"#202b36\"/>';for(var t=minV;t<=maxV;t++){var tx=xOf(t),maj=(t%5===0);svg+='<line x1=\"'+tx.toFixed(1)+'\" y1=\"'+(maj?31:34)+'\" x2=\"'+tx.toFixed(1)+'\" y2=\"'+(maj?45:42)+'\" stroke=\"#59636e\" stroke-width=\"'+(maj?1.4:1)+'\"/>';if(maj){svg+='<text x=\"'+tx.toFixed(1)+'\" y=\"58\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"10\" fill=\"#202b36\">'+t+'</text>';}}if(sol){var sx=xOf(sol.val),right=isRight(sol.sym),closed=isClosed(sol.sym);if(right){svg+='<line x1=\"'+sx.toFixed(1)+'\" y1=\"38\" x2=\"'+(W-pad+6)+'\" y2=\"38\" stroke=\"#1a73e8\" stroke-width=\"3.5\"/>';svg+='<polygon points=\"'+(W-pad+12)+',38 '+(W-pad+3)+',32 '+(W-pad+3)+',44\" fill=\"#1a73e8\"/>';}else{svg+='<line x1=\"'+(pad-6)+'\" y1=\"38\" x2=\"'+sx.toFixed(1)+'\" y2=\"38\" stroke=\"#1a73e8\" stroke-width=\"3.5\"/>';svg+='<polygon points=\"'+(pad-12)+',38 '+(pad-3)+',32 '+(pad-3)+',44\" fill=\"#1a73e8\"/>';}svg+='<circle cx=\"'+sx.toFixed(1)+'\" cy=\"38\" r=\"4.5\" fill=\"'+(closed?'#1a73e8':'#ffffff')+'\" stroke=\"#1a73e8\" stroke-width=\"2\"/>';svg+='<text x=\"'+sx.toFixed(1)+'\" y=\"22\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"10.5\" font-weight=\"bold\" fill=\"#1a73e8\">'+fracLabel(sol)+'</text>';}svg+='</svg>';return svg;}function randInt(lo,hi){return lo+Math.floor(Math.random()*(hi-lo+1));}function nonZero(lo,hi){var v=0;while(v===0)v=randInt(lo,hi);return v;}var pairs=[['>=','<'],['>','<='],['<=','>'],['<','>=']];var pair=pairs[randInt(0,3)];var multFirst=Math.random()<0.5;var negFirst=Math.random()<0.5;var types=multFirst?['mult','div']:['div','mult'];var negs=negFirst?[true,false]:[false,true];var probs=[];for(var idx=0;idx<2;idx++){var sym=pair[idx],isMult=(types[idx]==='mult'),isNeg=negs[idx],inside=(Math.random()<0.5);var probHtml='',s1='',s2='',sol=null;if(isMult){var a=(isNeg?-1:1)*randInt(2,6);if(!inside){var b=nonZero(-10,10),c=nonZero(-18,18);var num=c-b,den=a;sol=makeFrac(num,den);while(Math.abs(sol.val)>18){b=nonZero(-10,10);c=nonZero(-18,18);num=c-b;sol=makeFrac(num,den);}var fSym=a<0?flipSym(sym):sym;probHtml=coefX(a)+signedConstOp(b)+' '+symHtml(sym)+' '+numHtml(c);s1=coefX(a)+' '+symHtml(sym)+' '+numHtml(num);s2='x '+symHtml(fSym)+' '+fracHtml(sol);sol.sym=fSym;}else{var b=nonZero(-8,8),c=nonZero(-18,18);var q=makeFrac(c,a),fSym=a<0?flipSym(sym):sym;sol=makeFrac(c-a*b,a);while(Math.abs(sol.val)>18){b=nonZero(-8,8);c=nonZero(-18,18);q=makeFrac(c,a);sol=makeFrac(c-a*b,a);}probHtml=numHtml(a)+'(x'+signedConstOp(b)+') '+symHtml(sym)+' '+numHtml(c);s1='x'+signedConstOp(b)+' '+symHtml(fSym)+' '+fracHtml(q);s2='x '+symHtml(fSym)+' '+fracHtml(sol);sol.sym=fSym;}}else{var d=randInt(2,5);if(!inside){var b=nonZero(-9,9),c=nonZero(-9,9);var num=(c-b)*(isNeg?-d:d);sol=makeFrac(num,1);while(Math.abs(sol.val)>18){b=nonZero(-9,9);c=nonZero(-9,9);num=(c-b)*(isNeg?-d:d);sol=makeFrac(num,1);}var fSym=isNeg?flipSym(sym):sym;var leftFrac=(isNeg?minusHtml():'')+fracBox('x',String(d));probHtml=leftFrac+signedConstOp(b)+' '+symHtml(sym)+' '+numHtml(c);s1=leftFrac+' '+symHtml(sym)+' '+numHtml(c-b);s2='x '+symHtml(fSym)+' '+fracHtml(sol);sol.sym=fSym;}else{var b=nonZero(-8,8),c=nonZero(-5,5);var num=c*(isNeg?-d:d)-b;sol=makeFrac(num,1);while(Math.abs(sol.val)>18){b=nonZero(-8,8);c=nonZero(-5,5);num=c*(isNeg?-d:d)-b;sol=makeFrac(num,1);}var fSym=isNeg?flipSym(sym):sym;var leftFrac=(isNeg?minusHtml():'')+fracBox('x'+signedConstOp(b),String(d));probHtml=leftFrac+' '+symHtml(sym)+' '+numHtml(c);s1='x'+signedConstOp(b)+' '+symHtml(fSym)+' '+numHtml(c*(isNeg?-d:d));s2='x '+symHtml(fSym)+' '+fracHtml(sol);sol.sym=fSym;}}probs.push({letter:idx===0?'A)':'B)',probHtml:probHtml,s1:s1,s2:s2,sol:sol});}var qHtml='<div style=\"display:flex;flex-wrap:wrap;gap:24px;margin-top:8px\">'+probs.map(function(p){return '<div style=\"flex:1;min-width:280px\"><div style=\"font-size:15px;margin-bottom:4px\"><b>'+p.letter+'</b> '+p.probHtml+'</div>'+drawLine(null)+'</div>';}).join('')+'</div>';var aHtml='<div style=\"display:flex;flex-wrap:wrap;gap:24px\">'+probs.map(function(p){return '<div style=\"flex:1;min-width:280px;border:1px solid #d9e2ec;border-radius:6px;padding:10px 12px;background:#f8fafc\"><div style=\"font-weight:bold;margin-bottom:6px;color:#202b36\">'+p.letter+' '+p.probHtml+'</div><div style=\"font-size:13px;line-height:1.7;color:#202b36\"><div><b>Step 1:</b> '+p.s1+'</div><div><b>Solution:</b> <span style=\"color:#1a73e8;font-weight:bold\">'+p.s2+'</span></div></div>'+drawLine(p.sol)+'</div>';}).join('')+'</div>';return {qHtml:qHtml,aHtml:aHtml};})()"
     },
     "question_html": {
-      "formula": "cards.qHtml"
+      "formula": "bundle.qHtml"
     },
     "answer_html": {
-      "formula": "cards.aHtml"
+      "formula": "bundle.aHtml"
     }
   },
-  "question": "Solve and graph each two-step inequality:{question_html}",
+  "question": "Solve and graph each two-step inequality:<br>{question_html}",
   "answer": "{answer_html}"
 },
 {
@@ -6400,7 +6354,8 @@
   },
   "question": "Rewrite each inequality in slope-intercept form, identify and label the <i>x</i>- and <i>y</i>-intercepts, and graph the solution set on the coordinate grid:<br>{question_html}",
   "answer": "{answer_html}"
-},{
+},
+{
   "id": "ALG 6.5 Ib",
   "type": "template",
   "objective": "Solving and graphing standard-form linear inequalities including horizontal and vertical boundaries",
