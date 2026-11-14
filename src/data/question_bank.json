@@ -6104,7 +6104,7 @@
   "answer": "{answer_html}"
 },
 {
-        "id": "ALG1-6.2-B1",
+        "id": "ALG 6.2a Solve and Graph the Inequality",
         "type": "template",
         "objective": "Solving Multi-Step Inequalities",
         "difficulty": "basic",
@@ -6144,11 +6144,30 @@
         },
         "question": "Solve and graph: <br> \\( {a|coef}x {b|sign} \\leq {c} \\).",
         "answer": "\\( x \\leq {x} \\) (Swap the inequality if \\( {a} < 0 \\)"
-      },
-      {
-  "id": "ALG 6.2 Ib Multi-Step Inequalities",
+},
+{
+  "id": "ALG 6.2b Write the Inequality",
   "type": "template",
-  "objective": "Solving multi-step linear inequalities with multiplication, division, and negative coefficients, and graphing solutions on a number line",
+  "objective": "Writing linear inequalities from 1D number line graphs",
+  "difficulty": "basic",
+  "variables": {
+    "data": {
+      "formula": "(function(){\n  var pairs = [\n    ['&ge;', '&lt;'],\n    ['&gt;', '&le;'],\n    ['&le;', '&gt;'],\n    ['&lt;', '&ge;']\n  ];\n  var pair = pairs[Math.floor(Math.random() * pairs.length)];\n  \n  var x1 = -16 + Math.floor(Math.random() * 33);\n  var x2 = -16 + Math.floor(Math.random() * 33);\n  while (x2 === x1) {\n    x2 = -16 + Math.floor(Math.random() * 33);\n  }\n  \n  var items = [\n    { label: 'A)', op: pair[0], x: x1 },\n    { label: 'B)', op: pair[1], x: x2 }\n  ];\n\n  function drawNumberLine(xVal, op) {\n    var w = 420, h = 76;\n    var left = 26, right = 394;\n    var span = right - left;\n    var minVal = -20, maxVal = 20;\n    function toX(v) {\n      return left + ((v - minVal) / (maxVal - minVal)) * span;\n    }\n    var yAxis = 38;\n    var svg = '<svg viewBox=\"0 0 ' + w + ' ' + h + '\" style=\"width:100%;height:auto;display:block;font-family:Arial,sans-serif\">';\n    svg += '<line x1=\"' + (left - 12) + '\" y1=\"' + yAxis + '\" x2=\"' + (right + 12) + '\" y2=\"' + yAxis + '\" stroke=\"#59636e\" stroke-width=\"1.5\"/>';\n    svg += '<polygon points=\"' + (left - 18) + ',' + yAxis + ' ' + (left - 10) + ',' + (yAxis - 4) + ' ' + (left - 10) + ',' + (yAxis + 4) + '\" fill=\"#59636e\"/>';\n    svg += '<polygon points=\"' + (right + 18) + ',' + yAxis + ' ' + (right + 10) + ',' + (yAxis - 4) + ' ' + (right + 10) + ',' + (yAxis + 4) + '\" fill=\"#59636e\"/>';\n    \n    for (var v = minVal; v <= maxVal; v++) {\n      var px = toX(v);\n      var isMajor = (v % 5 === 0);\n      var tickH = isMajor ? 7 : 3.5;\n      var sw = (v === 0) ? 2 : 1;\n      svg += '<line x1=\"' + px.toFixed(1) + '\" y1=\"' + (yAxis - tickH) + '\" x2=\"' + px.toFixed(1) + '\" y2=\"' + (yAxis + tickH) + '\" stroke=\"#59636e\" stroke-width=\"' + sw + '\"/>';\n      if (isMajor) {\n        svg += '<text x=\"' + px.toFixed(1) + '\" y=\"' + (yAxis + 21) + '\" font-size=\"11\" text-anchor=\"middle\" fill=\"#202b36\"' + (v === 0 ? ' font-weight=\"bold\"' : '') + '>' + v + '</text>';\n      }\n    }\n\n    var cx = toX(xVal);\n    var isRight = (op === '&gt;' || op === '&ge;');\n    var isClosed = (op === '&le;' || op === '&ge;');\n    var rayEnd = isRight ? (right + 12) : (left - 12);\n\n    svg += '<line x1=\"' + cx.toFixed(1) + '\" y1=\"' + yAxis + '\" x2=\"' + rayEnd + '\" y2=\"' + yAxis + '\" stroke=\"#1a73e8\" stroke-width=\"4\"/>';\n    if (isRight) {\n      svg += '<polygon points=\"' + (right + 19) + ',' + yAxis + ' ' + (right + 9) + ',' + (yAxis - 6) + ' ' + (right + 9) + ',' + (yAxis + 6) + '\" fill=\"#1a73e8\"/>';\n    } else {\n      svg += '<polygon points=\"' + (left - 19) + ',' + yAxis + ' ' + (left - 9) + ',' + (yAxis - 6) + ' ' + (left - 9) + ',' + (yAxis + 6) + '\" fill=\"#1a73e8\"/>';\n    }\n\n    if (isClosed) {\n      svg += '<circle cx=\"' + cx.toFixed(1) + '\" cy=\"' + yAxis + '\" r=\"5.5\" fill=\"#1a73e8\" stroke=\"#1a73e8\" stroke-width=\"2\"/>';\n    } else {\n      svg += '<circle cx=\"' + cx.toFixed(1) + '\" cy=\"' + yAxis + '\" r=\"5.5\" fill=\"#ffffff\" stroke=\"#1a73e8\" stroke-width=\"2.5\"/>';\n    }\n\n    svg += '</svg>';\n    return svg;\n  }\n\n  var qCards = items.map(function(it) {\n    return '<div style=\"flex:1;min-width:300px;border:1px solid #d0d7de;border-radius:6px;padding:10px 12px;background:#ffffff\">' +\n           '<div style=\"font-weight:bold;font-size:14px;color:#202b36;margin-bottom:6px\">' + it.label + '</div>' +\n           drawNumberLine(it.x, it.op) +\n           '</div>';\n  }).join('');\n\n  var aCards = items.map(function(it) {\n    var circleDesc = (it.op === '&le;' || it.op === '&ge;') ? 'Closed circle (includes ' + it.x + ')' : 'Open circle (excludes ' + it.x + ')';\n    var dirDesc = (it.op === '&gt;' || it.op === '&ge;') ? 'Shaded right (greater than)' : 'Shaded left (less than)';\n    return '<div style=\"flex:1;min-width:300px;border:1px solid #d0d7de;border-radius:6px;padding:10px 12px;background:#f8fafc\">' +\n           '<div style=\"font-weight:bold;font-size:14px;color:#202b36;margin-bottom:4px\">' + it.label + ' <span style=\"font-size:16px;color:#1a73e8\">x ' + it.op + ' ' + it.x + '</span></div>' +\n           '<div style=\"font-size:12px;color:#59636e;margin-bottom:6px\">' + circleDesc + ' &bull; ' + dirDesc + '</div>' +\n           drawNumberLine(it.x, it.op) +\n           '</div>';\n  }).join('');\n\n  return {\n    questionHtml: '<div style=\"display:flex;flex-wrap:wrap;gap:12px;margin-top:8px\">' + qCards + '</div>',\n    answerHtml: '<div style=\"display:flex;flex-wrap:wrap;gap:12px\">' + aCards + '</div>'\n  };\n})()"
+    },
+    "question_html": {
+      "formula": "data.questionHtml"
+    },
+    "answer_html": {
+      "formula": "data.answerHtml"
+    }
+  },
+  "question": "Write the inequality represented by each number line graph below using <b>x</b> as the variable:{question_html}",
+  "answer": "{answer_html}"
+},
+      {
+  "id": "ALG 6.2 Ia Multi-Step Inequalities",
+  "type": "template",
+  "objective": "Solving multi-step linear inequalities",
   "difficulty": "intermediate",
   "variables": {
     "bundle": {
@@ -6167,7 +6186,7 @@
 {
   "id": "ALG 6.2 Ib Multi-Step Inequalities",
   "type": "template",
-  "objective": "Solving and graphing multi-step linear inequalities with one or two occurrences of the variable on one side",
+  "objective": "Solving and graphing with multiple occurrences of the variable",
   "difficulty": "intermediate",
   "variables": {
     "data": {
