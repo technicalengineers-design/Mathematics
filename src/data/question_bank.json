@@ -16496,7 +16496,27 @@
         "question": "Name four things you should look for when reviewing your bank account statement.",
         "answer": "{answer_key}"
       }
-
+    ],
+    "6 Loans": [
+      {
+  "id": "CM 6.1a Interest",
+  "type": "template",
+  "objective": "Calculating simple interest for a short-term loan using Banker's Rule (exact days / 360)",
+  "difficulty": "basic",
+  "variables": {
+    "data": {
+      "formula": "(function(){var situations=[{borrower:'Maya Lin',purpose:'purchase seasonal inventory for her boutique'},{borrower:'Carlos Mendez',purpose:'cover equipment repair costs for his landscaping business'},{borrower:'Hannah Brooks',purpose:'finance a short-term bridge loan for home renovations'},{borrower:'Devon Patel',purpose:'pay supplier invoices ahead of a holiday rush'},{borrower:'Rachel Kim',purpose:'upgrade commercial kitchen appliances at her bakery'},{borrower:'Trevor Wallace',purpose:'buy materials for a custom woodworking contract'}];var sit=situations[Math.floor(Math.random()*situations.length)];var principal=(12+Math.floor(Math.random()*69))*250;var rateTenths=45+Math.floor(Math.random()*81);var rate=(rateTenths/10).toFixed(1);var rateDec=rateTenths/1000;var days=35+Math.floor(Math.random()*276);var exactInterest=principal*rateDec*(days/360);var interestCents=Math.round(exactInterest*100);var interestFormatted='$'+(interestCents/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});var totalCents=principal*100+interestCents;var totalFormatted='$'+(totalCents/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});var principalFormatted='$'+principal.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});var rawDisplay=exactInterest.toFixed(6).replace(/0+$/,'').replace(/\\.$/,'');return {borrower:sit.borrower,purpose:sit.purpose,principalFormatted:principalFormatted,rate:rate,rateDec:rateDec.toFixed(4).replace(/0+$/,''),days:days,rawDisplay:rawDisplay,interestFormatted:interestFormatted,totalFormatted:totalFormatted};})()"
+    },
+    "question_html": {
+      "formula": "'<div style=\"font-family:Arial,sans-serif;font-size:15px;color:#202b36;line-height:1.5\"><b>'+data.borrower+'</b> took out a short-term loan of <b>'+data.principalFormatted+'</b> to '+data.purpose+'. The loan carries an annual simple interest rate of <b>'+data.rate+'%</b> for <b>'+data.days+' days</b>.<br><br>Using <b>Banker\\x27s Rule</b> (a 360-day year), calculate the simple interest owed on the loan. Round your answer to the nearest cent.<div style=\"height:120px;\"></div></div>'"
+    },
+    "answer_html": {
+      "formula": "'<div style=\"font-family:Arial,sans-serif;font-size:14px;color:#202b36;line-height:1.6\"><b>Step 1 \u2014 Identify the Banker\\x27s Rule formula:</b><br><i>I</i> = <i>P</i> &times; <i>r</i> &times; (<i>t</i> / 360)<br><br><b>Step 2 \u2014 Substitute the given values:</b><br>&bull; Principal (<i>P</i>) = '+data.principalFormatted+'<br>&bull; Annual rate (<i>r</i>) = '+data.rate+'% = '+data.rateDec+'<br>&bull; Time (<i>t</i>) = '+data.days+' / 360 years<br><br><b>Step 3 \u2014 Calculate the simple interest:</b><br><i>I</i> = '+data.principalFormatted+' &times; '+data.rateDec+' &times; ('+data.days+' / 360)<br><i>I</i> = $'+data.rawDisplay+'<br><br><b>Simple Interest Owed:</b> <span style=\"font-size:16px;color:#1b365d\"><b>'+data.interestFormatted+'</b></span><br><span style=\"font-size:13px;color:#59636e\">(Total repayment at maturity: '+data.totalFormatted+')</span></div>'"
+    }
+  },
+  "question": "{question_html}",
+  "answer": "{answer_html}"
+}
     ]
   },
   "Geometry": {
