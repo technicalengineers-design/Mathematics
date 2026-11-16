@@ -16535,6 +16535,25 @@
   },
   "question": "{question_html}",
   "answer": "{answer_html}"
+},
+{
+  "id": "CM 6.2 Add-On Loan",
+  "type": "template",
+  "objective": "Calculating the monthly payment for an add-on interest loan",
+  "difficulty": "basic",
+  "variables": {
+    "data": {
+      "formula": "(function(){var items=['an outdoor patio furniture set','a new kitchen refrigerator','a set of all-terrain tires','a home theater sound system','a heavy-duty riding lawn mower','a laptop and home office bundle','a living room sectional sofa','a garage tool chest and compressor'];for(var i=items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=items[i];items[i]=items[j];items[j]=t;}var shortMonths=[5,7,8,9,10,11];var longMonths=[13,14,15,16,17,18,19,20,21,22,23];var mShort=shortMonths[Math.floor(Math.random()*shortMonths.length)];var mLong=longMonths[Math.floor(Math.random()*longMonths.length)];var configs=[{months:mShort,item:items[0]},{months:mLong,item:items[1]}];if(Math.random()<0.5){var tmp=configs[0];configs[0]=configs[1];configs[1]=tmp;}var letters=['A)','B)'];function fmtMoney(val){return '$'+val.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}var qCards=[];var aCards=[];for(var idx=0;idx<2;idx++){var cfg=configs[idx];var pDollars=(8+Math.floor(Math.random()*43))*100;var ratePct=(40+Math.floor(Math.random()*76))/10;var rateDec=ratePct/100;var timeYears=cfg.months/12;var rawInterest=pDollars*rateDec*timeYears;var interest=Math.round(rawInterest*100)/100;var totalPayback=Math.round((pDollars+interest)*100)/100;var rawMonthly=totalPayback/cfg.months;var monthlyPayment=Math.round(rawMonthly*100)/100;var pFmt='$'+pDollars.toLocaleString('en-US');var rateFmt=ratePct.toFixed(1)+'%';var tStr=cfg.months+' / 12';qCards.push('<div style=\"flex:1;min-width:260px;box-sizing:border-box\"><div style=\"line-height:1.55\"><b>'+letters[idx]+'</b> Find the monthly payment for an add-on loan of <b>'+pFmt+'</b> to finance '+cfg.item+' at <b>'+rateFmt+'</b> simple interest for <b>'+cfg.months+' months</b>.</div><div style=\"height:120px\"></div></div>');aCards.push('<div style=\"flex:1;min-width:260px;box-sizing:border-box;border:1px solid #d0d7de;border-radius:6px;padding:12px 14px;background:#f8fafc;line-height:1.6\"><div><b>'+letters[idx]+'</b></div><div><b>Step 1 (Simple Interest):</b> <i>I</i> = <i>P</i> &times; <i>r</i> &times; <i>t</i></div><div><i>I</i> = '+pFmt+' &times; '+rateDec.toFixed(3)+' &times; ('+tStr+') = <b>'+fmtMoney(interest)+'</b></div><div style=\"margin-top:4px\"><b>Step 2 (Total Amount to Repay):</b> <i>A</i> = <i>P</i> + <i>I</i></div><div><i>A</i> = '+pFmt+' + '+fmtMoney(interest)+' = <b>'+fmtMoney(totalPayback)+'</b></div><div style=\"margin-top:4px\"><b>Step 3 (Monthly Payment):</b> <i>M</i> = <i>A</i> &divide; <i>n</i></div><div><i>M</i> = '+fmtMoney(totalPayback)+' &divide; '+cfg.months+' = <b>'+fmtMoney(monthlyPayment)+'</b></div><div style=\"margin-top:6px;padding-top:6px;border-top:1px solid #d0d7de\">Monthly Payment: <b>'+fmtMoney(monthlyPayment)+'</b></div></div>');}return {questionHtml:'<div style=\"display:flex;flex-direction:row;gap:20px;align-items:flex-start;width:100%;font-family:Arial,sans-serif;font-size:14px;color:#202b36\">'+qCards.join('')+'</div>',answerHtml:'<div style=\"display:flex;flex-direction:row;gap:20px;align-items:stretch;width:100%;font-family:Arial,sans-serif;font-size:13px;color:#202b36\">'+aCards.join('')+'</div>'};})()"
+    },
+    "question_html": {
+      "formula": "data.questionHtml"
+    },
+    "answer_html": {
+      "formula": "data.answerHtml"
+    }
+  },
+  "question": "{question_html}",
+  "answer": "{answer_html}"
 }
     ]
   },
