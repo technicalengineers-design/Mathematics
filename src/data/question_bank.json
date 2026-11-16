@@ -6613,13 +6613,13 @@
       "formula": "bundle.answer_html"
     }
   },
-  "question": "Translate each English description into an algebraic equation using the specified variable:<br><br>{question_html}",
+  "question": "Translate each English description into an algebraic equation using the specified variable, then solve:<br><br>{question_html}",
   "answer": "{answer_html}"
 },
 {
   "id": "Key 2.5 A Mathian",
   "type": "template",
-  "objective": "Translating multi-step real-world word problems with four to five operations into algebraic equations",
+  "objective": "Translating and solving multi-step real-world word problems with four to five operations into algebraic equations",
   "difficulty": "advanced",
   "variables": {
     "bundle": {
@@ -6632,7 +6632,7 @@
       "formula": "bundle.a"
     }
   },
-  "question": "Read each real-world scenario carefully and write an algebraic equation that models the situation (do not solve):{question_html}",
+  "question": "Read each real-world scenario carefully and write an algebraic equation that models the situation, then solve:{question_html}",
   "answer": "{answer_html}"
 }
     ],
