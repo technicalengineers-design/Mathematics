@@ -20296,7 +20296,7 @@
     ],
     "B-level Problems": [
       {
-  "id": "GEO B001 Pentagon Area",
+  "id": "GEO B0901 Pentagon Area",
   "type": "template",
   "objective": "Calculating the area of a regular pentagon given only the side length",
   "difficulty": "intermediate",
@@ -20318,7 +20318,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "GEO B002 Hexagon Area",
+  "id": "GEO B0902 Hexagon Area",
   "type": "template",
   "objective": "Calculating the area of a regular hexagon given only the side length",
   "difficulty": "basic",
@@ -20337,7 +20337,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "GEO B003 Heptagon Area",
+  "id": "GEO B0903 Heptagon Area",
   "type": "template",
   "objective": "Calculating the area of a regular heptagon given only the side length",
   "difficulty": "basic",
@@ -20356,7 +20356,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "GEO B004 Octagon Area",
+  "id": "GEO B0904 Octagon Area",
   "type": "template",
   "objective": "Calculating the area of a regular octagon given only the side length",
   "difficulty": "basic",
