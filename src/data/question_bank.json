@@ -17574,7 +17574,7 @@
         "difficulty": "basic",
         "variables": {
           "labels_pool": {
-            "formula": "['A', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'R', 'S', 'T', 'W', 'Z']"
+            "formula": "['A', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'R', 'T', 'W', 'Z']"
           },
           "shuffled_labels": {
             "formula": "labels_pool.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)"
@@ -17684,7 +17684,7 @@
         "difficulty": "basic",
         "variables": {
           "labels_pool": {
-            "formula": "['A', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z']"
+            "formula": "['A', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'P', 'Q', 'R', 'T', 'W', 'X', 'Y', 'Z']"
           },
           "shuffled": {
             "formula": "labels_pool.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)"
@@ -18568,7 +18568,7 @@
         "difficulty": "basic",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
+            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
           },
           "v": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -18596,7 +18596,7 @@
         "difficulty": "basic",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
+            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
           },
           "v": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -18624,7 +18624,7 @@
         "difficulty": "basic",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
+            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
           },
           "v": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -18688,7 +18688,7 @@
         "difficulty": "basic",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'S', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
+            "formula": "[ ['A', 'B', 'D', 'C'], ['P', 'Q', 'R'], ['X', 'Y', 'Z', 'W'], ['K', 'L', 'N', 'M'] ]"
           },
           "v": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -19260,7 +19260,7 @@
             "formula": "proof_type === 0 ? `Blank 1: {ans_s} - Supplement Theorem. Blank 2: {ans_s} - Supplement Theorem. Angles supplementary to the same angle are congruent.` : `Blank 1: {ans_s} - Definition of Congruence, converting congruent angles to equal measures.<br>Blank 2: {ans_s} - Definition of Congruence, converting congruent angles to equal measures.`"
           },
           "point_pools": {
-            "formula": "[['A','B','D','C','E'],['P','Q','S','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
+            "formula": "[['A','B','D','C','E'],['P','Q','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -19324,7 +19324,7 @@
             "formula": "proof_type === 0 ? `Blank 2: Definition of linear pair.<br>Blank 3: Definition of linear pair.<br>Blank 4: Supplement Theorem.<br>Blank 5: Supplement Theorem.<br>Blank 6: Congruent Supplements Theorem.` : `Blank 3: Definition of Congruence.<br>Blank 4: Definition of Congruence.<br>Blank 5: Transitive Property of Equality.<br>Blank 6: Symmetric Property of Equality.<br>Blank 7: Definition of Congruence.`"
           },
           "point_pools": {
-            "formula": "[['A','B','D','C','E'],['P','Q','S','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
+            "formula": "[['A','B','D','C','E'],['P','Q','R','T'],['W','X','Z','Y','V'],['J','K','M','L','N']]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -19986,7 +19986,7 @@
       "formula": "(function(){var p=['x','y','n','k','a','b','t'];p.sort(function(){return Math.random()-0.5;});return {vx:p.shift(),vy:p.shift()};})()"
     },
     "vtx": {
-      "formula": "(function(){var p=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T'];p.sort(function(){return Math.random()-0.5;});return {A:p.shift(),B:p.shift(),C:p.shift(),D:p.shift(),E:p.shift()};})()"
+      "formula": "(function(){var p=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','T'];p.sort(function(){return Math.random()-0.5;});return {A:p.shift(),B:p.shift(),C:p.shift(),D:p.shift(),E:p.shift()};})()"
     },
     "sides": {
       "formula": "(function(){var tr=new Array(new Array(3,4,5),new Array(5,12,13),new Array(8,15,17),new Array(7,24,25))[Math.floor(Math.random()*4)],sw=Math.random()<0.5,sc=Math.floor(Math.random()*4)+2,l1=tr.shift(),l2=tr.shift(),hy=tr.shift(),v0=(sw?l2:l1)*sc,v1=(sw?l1:l2)*sc,v2=hy*sc;var map=[{n1:vtx.A+vtx.B,n2:vtx.E+vtx.D,v:v0},{n1:vtx.B+vtx.C,n2:vtx.D+vtx.C,v:v1},{n1:vtx.A+vtx.C,n2:vtx.E+vtx.C,v:v2}];var i=Math.floor(Math.random()*3),xv=Math.floor(Math.random()*7)+4,m=Math.floor(Math.random()*3)+2,b=map[i].v-m*xv;if(b===0){xv++;b=-m;}var sg=b>0?' + ':' - ',ex='('+m+vars.vx+sg+Math.abs(b)+') '+units,fl=Math.random()<0.5,lbl={AB:'',BC:'',AC:'',ED:'',DC:'',EC:''},k1=['AB','BC','AC'],k2=['ED','DC','EC'];if(fl){lbl.AB=v0+' '+units;lbl.BC=v1+' '+units;lbl.AC=v2+' '+units;lbl[k2[i]]=ex;}else{lbl.ED=v0+' '+units;lbl.DC=v1+' '+units;lbl.EC=v2+' '+units;lbl[k1[i]]=ex;}return {xv:xv,m:m,b:b,sg:sg,val:map[i].v,ask:fl?map[i].n2:map[i].n1,giv:fl?map[i].n1:map[i].n2,lbl:lbl};})()"
@@ -20080,7 +20080,7 @@
         "difficulty": "basic",
         "variables": {
           "letters": {
-            "formula": "['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'].sort(() => Math.random() - 0.5)"
+            "formula": "['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'].sort(() => Math.random() - 0.5)"
           },
           "left_letter": {
             "formula": "letters[0]"
@@ -20175,7 +20175,7 @@
             "formula": "'sides'"
           },
           "vertex_labels": {
-            "formula": "(function(){var labels=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,3);})()"
+            "formula": "(function(){var labels=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,3);})()"
           },
           "A": {
             "formula": "vertex_labels[0]"
@@ -20239,7 +20239,7 @@
             "formula": "'angles'"
           },
           "vertex_labels": {
-            "formula": "(function(){var labels=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,3);})()"
+            "formula": "(function(){var labels=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,3);})()"
           },
           "A": {
             "formula": "vertex_labels[0]"
@@ -20550,7 +20550,7 @@
         "difficulty": "Intermediate",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'], ['E', 'F', 'G', 'H'] ]"
+            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R'], ['J', 'K', 'L', 'M'], ['E', 'F', 'G', 'H'] ]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -20629,7 +20629,7 @@
         "difficulty": "basic",
         "variables": {
           "point_pools": {
-            "formula": "[ ['R', 'S', 'T'], ['A', 'B', 'C'], ['X', 'Y', 'Z'], ['P', 'Q', 'R'], ['D', 'E', 'F'] ]"
+            "formula": "[ ['R', 'T'], ['A', 'B', 'C'], ['X', 'Y', 'Z'], ['P', 'Q', 'R'], ['D', 'E', 'F'] ]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -20693,7 +20693,7 @@
         "difficulty": "basic",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'], ['E', 'F', 'G', 'H'] ]"
+            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R'], ['J', 'K', 'L', 'M'], ['E', 'F', 'G', 'H'] ]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -20736,7 +20736,7 @@
         "difficulty": "intermediate",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R'], ['J', 'K', 'L', 'M'] ]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -20791,7 +20791,7 @@
         "difficulty": "intermediate",
         "variables": {
           "point_pools": {
-            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+            "formula": "[ ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'], ['P', 'Q', 'R'], ['J', 'K', 'L', 'M'] ]"
           },
           "pts": {
             "formula": "point_pools[Math.floor(Math.random() * point_pools.length)]"
@@ -20831,7 +20831,7 @@
         "difficulty": "basic",
         "variables": {
           "vertex_pools": {
-            "formula": "[ ['E', 'F', 'G', 'H'], ['A', 'B', 'C', 'D'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+            "formula": "[ ['E', 'F', 'G', 'H'], ['A', 'B', 'C', 'D'], ['P', 'Q', 'R'], ['J', 'K', 'L', 'M'] ]"
           },
           "v": {
             "formula": "vertex_pools[Math.floor(Math.random() * vertex_pools.length)]"
@@ -20868,7 +20868,7 @@
         "difficulty": "basic",
         "variables": {
           "vertex_pools": {
-            "formula": "[ ['E', 'F', 'G', 'H'], ['A', 'B', 'C', 'D'], ['P', 'Q', 'R', 'S'], ['J', 'K', 'L', 'M'] ]"
+            "formula": "[ ['E', 'F', 'G', 'H'], ['A', 'B', 'C', 'D'], ['P', 'Q', 'R'], ['J', 'K', 'L', 'M'] ]"
           },
           "v": {
             "formula": "vertex_pools[Math.floor(Math.random() * vertex_pools.length)]"
