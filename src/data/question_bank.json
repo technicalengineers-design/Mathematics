@@ -20019,7 +20019,7 @@
 {
   "id": "GEO 5.2b Congruent Polygons",
   "type": "template",
-  "objective": "Determine whether pairs of irregular polygons are congruent based on side and angle congruence markings",
+  "objective": "Determine whether pairs of irregular polygons are congruent",
   "difficulty": "basic",
   "variables": {
     "pairs": {
