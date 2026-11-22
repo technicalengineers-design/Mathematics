@@ -20175,7 +20175,7 @@
             "formula": "'angles'"
           },
           "vertex_labels": {
-            "formula": "(function(){var labels=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,6);})()"
+            "formula": "(function(){var labels=['A','B','C','D','E','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,6);})()"
           },
           "apex_pos": {
             "formula": "Math.floor(Math.random() * 3)"
@@ -20241,7 +20241,7 @@
             "formula": "(function(){\nfunction fmt(n){return Number(n).toFixed(1)}\nfunction draw(cx,top,bottom,halfW,apex,nA,nB,nC,e1,e2,e3,tag){\n var pts=[{x:cx,y:top},{x:cx-halfW,y:bottom},{x:cx+halfW,y:bottom}],ai=apex,bi=(ai+1)%3,ci=(ai+2)%3;\n var pa=pts[ai],pb=pts[bi],pc=pts[ci],gx=(pts[0].x+pts[1].x+pts[2].x)/3,gy=(pts[0].y+pts[1].y+pts[2].y)/3;\n function tick(p,q){var dx=q.x-p.x,dy=q.y-p.y,l=Math.sqrt(dx*dx+dy*dy),mx=(p.x+q.x)/2,my=(p.y+q.y)/2,tx=-dy/l*9,ty=dx/l*9;return '<path d=\"M'+fmt(mx-tx/2)+' '+fmt(my-ty/2)+' L'+fmt(mx+tx/2)+' '+fmt(my+ty/2)+'\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.3\"/>';}\n function outward(p){var dx=p.x-gx,dy=p.y-gy,l=Math.sqrt(dx*dx+dy*dy);return {x:dx/l,y:dy/l};}\n function angleLabel(p,dist,label){var v=outward(p),w=label.length*6.8+10,min=cx<260?5:265,max=cx<260?255:515,x=Math.max(min+w/2,Math.min(max-w/2,p.x+v.x*dist)),y=Math.max(23,Math.min(226,p.y+v.y*dist));return '<g><rect x=\"'+fmt(x-w/2)+'\" y=\"'+fmt(y-10)+'\" width=\"'+fmt(w)+'\" height=\"18\" rx=\"3\" fill=\"#ffffff\" stroke=\"#d1d5db\" stroke-width=\"0.7\"/><text x=\"'+fmt(x)+'\" y=\"'+fmt(y+3)+'\" text-anchor=\"middle\" font-size=\"11.5\" font-family=\"Arial,sans-serif\" fill=\"#202b36\">'+label+'</text></g>';}\n function vertex(p,name){var v=outward(p),x=p.x-v.x*27,y=p.y-v.y*27+4;return '<text x=\"'+fmt(x)+'\" y=\"'+fmt(y)+'\" text-anchor=\"middle\" font-size=\"15\" font-family=\"Arial,sans-serif\" font-weight=\"600\" fill=\"#1f2937\">'+name+'</text>';}\n var out='<text x=\"'+(cx-108)+'\" y=\"19\" font-size=\"15\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" fill=\"#202b36\">'+tag+'</text><path d=\"M'+cx+' '+top+' L'+(cx-halfW)+' '+bottom+' L'+(cx+halfW)+' '+bottom+' Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'+tick(pa,pb)+tick(pa,pc);\n out+=vertex(pa,nA)+vertex(pb,nB)+vertex(pc,nC);\n out+=angleLabel(pb,31,'m&#8736;'+nB+' = '+e1)+angleLabel(pc,31,'m&#8736;'+nC+' = '+e2)+angleLabel(pa,34,'m&#8736;'+nA+' = '+e3);\n return out;\n}\nreturn '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" viewBox=\"0 0 520 240\" role=\"img\" aria-label=\"Two isosceles triangle diagrams with different congruent side pairs\"><rect width=\"520\" height=\"240\" fill=\"#ffffff\"/><line x1=\"260\" y1=\"10\" x2=\"260\" y2=\"230\" stroke=\"#e5e7eb\" stroke-width=\"1\"/>'+draw(130,46,171,51,apex_pos,A,B,C,expr1,expr2,third_angle_expr,'A)')+draw(390,46,171,51,apex_pos2,D,E,F,expr1,expr2,third_angle_expr,'B)')+'</svg>';\n})()"
           },
           "question_text": {
-            "formula": "'For the isosceles triangles labeled A) and B), use the congruent side markings to determine x. <i>(Illustrations not to scale)</i>'"
+            "formula": "'For each isosceles triangle, use the congruent markings to determine x. <i>(Illustrations not to scale)</i>'"
           },
           "answer_text": {
             "formula": "mode === 'sides' ? 'Because congruent base angles in an isosceles triangle are opposite congruent sides, set ' + expr1 + ' = ' + expr2 + '. This gives ' + (m1 - m2) + 'x = ' + (c2 - c1) + ', so x = ' + x_value + '. Substituting back gives each congruent side length: ' + same_value + '. Therefore, each equal side is ' + same_value + ' units long.' : 'In each isosceles triangle, the angles opposite the marked congruent sides are congruent. Set ' + expr1 + ' = ' + expr2 + '. This gives x = ' + x_value + '.'"
@@ -20249,7 +20249,7 @@
         },
         "question": "<div style=\"display:grid;grid-template-columns:minmax(0,480px) minmax(220px,1fr);align-items:start;gap:18px;\"><div>{diagram_svg}</div><div>{question_text}</div></div>",
         "answer": "{answer_text}"
-      },
+    },
       {
         "id": "GEO 5.6b Isosceles",
         "type": "template",
@@ -20260,7 +20260,7 @@
             "formula": "'sides'"
           },
           "vertex_labels": {
-            "formula": "(function(){var labels=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,6);})()"
+            "formula": "(function(){var labels=['A','B','C','D','E','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,6);})()"
           },
           "apex_pos": {
             "formula": "Math.floor(Math.random() * 3)"
@@ -20323,7 +20323,7 @@
             "formula": "(function(){\nfunction fmt(n){return Number(n).toFixed(1)}\nfunction draw(cx,top,bottom,halfW,apex,nA,nB,nC,e1,e2,e3,tag){\n var pts=[{x:cx,y:top},{x:cx-halfW,y:bottom},{x:cx+halfW,y:bottom}],ai=apex,bi=(ai+1)%3,ci=(ai+2)%3;\n var pa=pts[ai],pb=pts[bi],pc=pts[ci],gx=cx,gy=(top+bottom+bottom)/3;\n function angleMark(v,p,q){var a1=Math.atan2(p.y-v.y,p.x-v.x),a2=Math.atan2(q.y-v.y,q.x-v.x),two=Math.PI*2,delta=(a2-a1+two)%two;if(delta>Math.PI){var t=a1;a1=a2;a2=t;delta=two-delta;}var r=12,x1=v.x+r*Math.cos(a1),y1=v.y+r*Math.sin(a1),x2=v.x+r*Math.cos(a2),y2=v.y+r*Math.sin(a2);return '<path d=\"M'+fmt(x1)+' '+fmt(y1)+' A'+r+' '+r+' 0 0 1 '+fmt(x2)+' '+fmt(y2)+'\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.2\"/>';}\n function label(p,q,dist,text){var mx=(p.x+q.x)/2,my=(p.y+q.y)/2,dx=mx-gx,dy=my-gy,l=Math.sqrt(dx*dx+dy*dy),w=text.length*6.2+10,x=mx+dx/l*dist,y=my+dy/l*dist,min=cx<260?5:265,max=cx<260?255:515;x=Math.max(min+w/2,Math.min(max-w/2,x));y=Math.max(20,Math.min(222,y));return '<g><rect x=\"'+fmt(x-w/2)+'\" y=\"'+fmt(y-10)+'\" width=\"'+fmt(w)+'\" height=\"18\" rx=\"3\" fill=\"#ffffff\" stroke=\"#d1d5db\" stroke-width=\"0.7\"/><text x=\"'+fmt(x)+'\" y=\"'+fmt(y+3)+'\" text-anchor=\"middle\" font-size=\"11\" font-family=\"Arial,sans-serif\" fill=\"#202b36\">'+text+'</text></g>';}\n function vertex(p,name){var dx=p.x-gx,dy=p.y-gy,l=Math.sqrt(dx*dx+dy*dy),x=p.x-dx/l*27,y=p.y-dy/l*27+4;return '<text x=\"'+fmt(x)+'\" y=\"'+fmt(y)+'\" text-anchor=\"middle\" font-size=\"15\" font-family=\"Arial,sans-serif\" font-weight=\"600\" fill=\"#1f2937\">'+name+'</text>';}\n var out='<text x=\"'+(cx-108)+'\" y=\"19\" font-size=\"15\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" fill=\"#202b36\">'+tag+'</text><path d=\"M'+cx+' '+top+' L'+(cx-halfW)+' '+bottom+' L'+(cx+halfW)+' '+bottom+' Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>'+angleMark(pb,pa,pc)+angleMark(pc,pa,pb);\n out+=vertex(pa,nA)+vertex(pb,nB)+vertex(pc,nC);\n out+=label(pa,pb,25,nA+nB+' = '+e1)+label(pa,pc,25,nA+nC+' = '+e2)+label(pb,pc,20,nB+nC+' = '+e3);\n return out;\n}\nreturn '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" viewBox=\"0 0 520 240\" role=\"img\" aria-label=\"Two isosceles triangle diagrams with different congruent angle pairs\"><rect width=\"520\" height=\"240\" fill=\"#ffffff\"/><line x1=\"260\" y1=\"10\" x2=\"260\" y2=\"230\" stroke=\"#e5e7eb\" stroke-width=\"1\"/>'+draw(130,46,171,51,apex_pos,A,B,C,expr1,expr2,third_segment_expr,'A)')+draw(390,46,171,51,apex_pos2,D,E,F,expr1,expr2,third_segment_expr,'B)')+'</svg>';\n})()"
           },
           "question_text": {
-            "formula": "'For the isosceles triangles labeled A) and B), use the congruent angle markings to determine x and the length of each congruent side in feet. <i>(Illustrations not to scale)</i>'"
+            "formula": "'For each isosceles triangle, use the congruent markings to determine x and the length of each congruent side in millimeters. <i>(Illustrations not to scale)</i>'"
           },
           "answer_text": {
             "formula": "'The congruent angle markings in each triangle show that the opposite side lengths are equal. Set ' + expr1 + ' = ' + expr2 + '. This gives ' + (m1 - m2) + 'x = ' + (c2 - c1) + ', so x = ' + x_value + '. Each congruent side has length ' + same_value + ' feet.'"
