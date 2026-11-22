@@ -20311,7 +20311,7 @@
             "formula": "'For the isosceles triangles labeled A) and B), use the congruent side markings to determine x. <i>(Illustrations not to scale)</i>'"
           },
           "answer_text": {
-            "formula": "mode === 'sides' ? 'Because congruent base angles in an isosceles triangle are opposite congruent sides, set ' + expr1 + ' = ' + expr2 + '. This gives ' + (m1 - m2) + 'x = ' + (c2 - c1) + ', so x = ' + x_value + '. Substituting back gives each congruent side length: ' + same_value + '. Therefore, each equal side is ' + same_value + ' units long.' : 'In each isosceles triangle, the angles opposite the marked congruent sides are congruent. Set ' + expr1 + ' = ' + expr2 + '. This gives x = ' + x_value + '."
+            "formula": "mode === 'sides' ? 'Because congruent base angles in an isosceles triangle are opposite congruent sides, set ' + expr1 + ' = ' + expr2 + '. This gives ' + (m1 - m2) + 'x = ' + (c2 - c1) + ', so x = ' + x_value + '. Substituting back gives each congruent side length: ' + same_value + '. Therefore, each equal side is ' + same_value + ' units long.' : 'In each isosceles triangle, the angles opposite the marked congruent sides are congruent. Set ' + expr1 + ' = ' + expr2 + '. This gives x = ' + x_value + '.'"
           }
         },
         "question": "<div style=\"display:grid;grid-template-columns:minmax(0,480px) minmax(220px,1fr);align-items:start;gap:18px;\"><div>{diagram_svg}</div><div>{question_text}</div></div>",
