@@ -20244,6 +20244,9 @@
           "vertex_labels": {
             "formula": "(function(){var labels=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','T','U','V','W','X','Y','Z'];for(var i=labels.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=labels[i];labels[i]=labels[j];labels[j]=t;}return labels.slice(0,3);})()"
           },
+          "apex_pos": {
+            "formula": "Math.floor(Math.random() * 3)"
+          },
           "A": {
             "formula": "vertex_labels[0]"
           },
@@ -20274,9 +20277,6 @@
           "expr2": {
             "formula": "m2 + 'x + ' + c2"
           },
-          "third_angle_expr": {
-            "formula": "'180 - 2(' + expr1 + ')'"
-          },
           "same_value": {
             "formula": "m1 * x_value + c1"
           },
@@ -20286,8 +20286,14 @@
           "vertex_angle": {
             "formula": "180 - 2 * base_angle"
           },
+          "third_angle_m": {
+            "formula": "1 + Math.floor(Math.random() * 4)"
+          },
+          "third_angle_expr": {
+            "formula": "third_angle_m + 'x + ' + (vertex_angle - third_angle_m * x_value)"
+          },
           "diagram_svg": {
-            "formula": "mode === 'sides' ? '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"260\" viewBox=\"0 0 480 260\" role=\"img\" aria-label=\"Isosceles triangle with congruent sides and algebraic expressions\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><path d=\"M240 30 L160 215 L320 215 Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M186.7 134.3 L200.5 140.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><path d=\"M279.5 140.3 L293.3 134.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"240\" y=\"23\" text-anchor=\"middle\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+A+'</text><text x=\"147\" y=\"231\" text-anchor=\"end\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+B+'</text><text x=\"333\" y=\"231\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+C+'</text><text x=\"140\" y=\"194\" font-size=\"13\" font-family=\"Arial, sans-serif\">'+A+B+' = '+expr1+'</text><text x=\"340\" y=\"194\" text-anchor=\"end\" font-size=\"13\" font-family=\"Arial, sans-serif\">'+A+C+' = '+expr2+'</text><rect x=\"136\" y=\"50\" width=\"208\" height=\"28\" rx=\"4\" fill=\"#ffffff\"/><rect x=\"136\" y=\"50\" width=\"208\" height=\"28\" rx=\"4\" fill=\"#ffffff\"/><text x=\"240\" y=\"67\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+A+' = '+third_angle_expr+'</text></svg>' : '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"260\" viewBox=\"0 0 480 260\" role=\"img\" aria-label=\"Isosceles triangle with congruent base angles and algebraic expressions\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><path d=\"M240 30 L160 215 L320 215 Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M186.7 134.3 L200.5 140.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><path d=\"M279.5 140.3 L293.3 134.3\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/><text x=\"240\" y=\"23\" text-anchor=\"middle\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+A+'</text><text x=\"147\" y=\"231\" text-anchor=\"end\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+B+'</text><text x=\"333\" y=\"231\" font-size=\"18\" font-family=\"Arial, sans-serif\" font-weight=\"600\">'+C+'</text><rect x=\"14\" y=\"176\" width=\"142\" height=\"28\" rx=\"4\" fill=\"#ffffff\"/><text x=\"22\" y=\"194\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+B+' = '+expr1+'</text><rect x=\"324\" y=\"176\" width=\"142\" height=\"28\" rx=\"4\" fill=\"#ffffff\"/><text x=\"458\" y=\"194\" text-anchor=\"end\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+C+' = '+expr2+'</text><text x=\"240\" y=\"67\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial, sans-serif\">m&#8736;'+A+' = '+third_angle_expr+'</text></svg>'"
+            "formula": "(function(){\nvar pts=[{x:240,y:30},{x:160,y:215},{x:320,y:215}];\nvar ai=apex_pos,bi=(ai+1)%3,ci=(ai+2)%3;\nvar pa=pts[ai],pb=pts[bi],pc=pts[ci];\nvar cx=(pa.x+pb.x+pc.x)/3,cy=(pa.y+pb.y+pc.y)/3;\nfunction f(n){return Number(n).toFixed(1)}\nfunction tick(p,q){var dx=q.x-p.x,dy=q.y-p.y,len=Math.sqrt(dx*dx+dy*dy),mx=(p.x+q.x)/2,my=(p.y+q.y)/2,tx=-dy/len*8,ty=dx/len*8;return '<path d=\"M'+f(mx-tx/2)+' '+f(my-ty/2)+' L'+f(mx+tx/2)+' '+f(my+ty/2)+'\" fill=\"none\" stroke=\"#1f2937\" stroke-width=\"2.5\"/>';}\nfunction norm(p){var dx=p.x-cx,dy=p.y-cy,l=Math.sqrt(dx*dx+dy*dy);return {x:dx/l,y:dy/l};}\nfunction boxed(p,dist,label){var v=norm(p),w=label.length*7.2+12,x=Math.max(w/2+4,Math.min(476-w/2,p.x+v.x*dist)),y=Math.max(20,Math.min(270,p.y+v.y*dist));return '<g><rect x=\"'+f(x-w/2)+'\" y=\"'+f(y-12)+'\" width=\"'+f(w)+'\" height=\"20\" rx=\"4\" fill=\"#ffffff\" stroke=\"#d1d5db\" stroke-width=\"0.8\"/><text x=\"'+f(x)+'\" y=\"'+f(y+3)+'\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,sans-serif\" fill=\"#202b36\">'+label+'</text></g>';}\nfunction vertex(p,name){var v=norm(p),x=p.x-v.x*14,y=p.y-v.y*14+5;return '<text x=\"'+f(x)+'\" y=\"'+f(y)+'\" text-anchor=\"middle\" font-size=\"18\" font-family=\"Arial,sans-serif\" font-weight=\"600\" fill=\"#1f2937\">'+name+'</text>';}\nvar svg='<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"480\" height=\"290\" viewBox=\"0 0 480 290\" role=\"img\" aria-label=\"Isosceles triangle with randomly located congruent sides and algebraic angle expressions\"><rect width=\"480\" height=\"290\" fill=\"#ffffff\"/><path d=\"M240 30 L160 215 L320 215 Z\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"3\" stroke-linejoin=\"round\"/>'+tick(pa,pb)+tick(pa,pc);\nsvg+=vertex(pa,A)+vertex(pb,B)+vertex(pc,C);\nsvg+=boxed(pb,48,'m&#8736;'+B+' = '+expr1)+boxed(pc,48,'m&#8736;'+C+' = '+expr2)+boxed(pa,54,'m&#8736;'+A+' = '+third_angle_expr);\nreturn svg+'</svg>';\n})()"
           },
           "question_text": {
             "formula": "'In isosceles triangle '+A+B+C+', sides '+A+B+' and '+A+C+' are congruent. Determine the value of x and the measure of the vertex angle '+A+'. <i>(Illustrations not to scale)</i>'"
