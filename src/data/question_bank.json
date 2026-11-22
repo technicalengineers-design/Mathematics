@@ -20266,7 +20266,7 @@
             "formula": "(function(){ var n = 2 + Math.floor(Math.random() * 4); while (n === m1) { n = 2 + Math.floor(Math.random() * 4); } return n; })()"
           },
           "c2": {
-            "formula": "2 + Math.floor(Math.random() * 9)"
+            "formula": "58 + Math.floor(Math.random() * 5) - m2 * x_value"
           },
           "c1": {
             "formula": "c2 + (m2 - m1) * x_value"
