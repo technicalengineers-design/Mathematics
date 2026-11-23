@@ -16849,6 +16849,22 @@
   },
   "question": "{q_html}",
   "answer": "{a_html}"
+},
+{
+  "id": "CM 6.6 Loan Approval",
+  "type": "template",
+  "objective": "Identify and describe the five C's of lending used to evaluate loan applications.",
+  "difficulty": "basic",
+  "variables": {
+    "q_html": {
+      "formula": "'<div>List the five C&rsquo;s of lending and describe each.</div><div style=\"height:200px;\"></div>'"
+    },
+    "a_html": {
+      "formula": "'<div style=\"line-height:1.55;\"><ol style=\"margin:0;padding-left:20px;\"><li style=\"margin-bottom:6px;\"><b>Character:</b> Measures the borrower&rsquo;s trustworthiness and track record of repaying debts on time, primarily evaluated through credit history and a FICO credit score (ranging from 300 to 850).</li><li style=\"margin-bottom:6px;\"><b>Capacity:</b> Evaluates the borrower&rsquo;s financial ability to repay a new loan by comparing recurring monthly debt payments to gross monthly income using the debt-to-income (DTI) ratio.</li><li style=\"margin-bottom:6px;\"><b>Conditions:</b> Considers external and situational factors affecting repayment, including the current state of the broader economy, industry trends, borrower job stability, and the intended purpose of the loan.</li><li style=\"margin-bottom:6px;\"><b>Capital:</b> Reflects the borrower&rsquo;s personal financial reserves\u2014such as cash savings, investments, and net worth (solvency)\u2014that provide a cushion to pay debts if income is interrupted.</li><li><b>Collateral:</b> Refers to valuable assets pledged by the borrower to secure the loan, which the lender can claim through repossession or foreclosure if the borrower defaults.</li></ol></div>'"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
 }
     ]
   },
