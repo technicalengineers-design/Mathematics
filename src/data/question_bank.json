@@ -3868,13 +3868,13 @@
             "formula": "graph_base + graph_path(function(x){return v_sign*(Math.abs(x-v_h)-v_k)},'#7040a0','arrowPurple') + '</svg>'"
           },
           "p_choices": {
-            "formula": "(function(){var inner=p_a<0;var a=p_r1,b=p_r2;var correct=inner?a+' &lt; x &lt; '+b:'x &lt; '+a+' or x &gt; '+b;var wrong=inner?'x &lt; '+a+' or x &gt; '+b:a+' &lt; x &lt; '+b;return [correct,wrong,'x &lt; '+a,'x &gt; '+b,'x &lt; '+a+' and x &gt; '+b].map(function(t,i){return {text:t,correct:i===0,key:Math.random()}}).sort(function(x,y){return x.key-y.key})})()"
+            "formula": "(function(){var inner=p_a<0,a=p_r1,b=p_r2;var correct=inner?a+' &lt; x &lt; '+b:'x &lt; '+a+' or x &gt; '+b;return [correct,'x &lt; '+a,'x &gt; '+b,'x &gt; '+a].map(function(t,i){return {text:t,correct:i===0,key:Math.random()}}).sort(function(x,y){return x.key-y.key})})()"
           },
           "c_choices": {
-            "formula": "(function(){var a=c_r1,b=c_r2,d=c_r3;var correct=c_a>0?'('+a+' &lt; x &lt; '+b+') or (x &gt; '+d+')':'(x &lt; '+a+') or ('+b+' &lt; x &lt; '+d+')';var wrong1=c_a>0?'(x &lt; '+a+') or ('+b+' &lt; x &lt; '+d+')':'('+a+' &lt; x &lt; '+b+') or (x &gt; '+d+')';return [correct,wrong1,a+' &lt; x &lt; '+d,'x &lt; '+b,'x &gt; '+b].map(function(t,i){return {text:t,correct:i===0,key:Math.random()}}).sort(function(x,y){return x.key-y.key})})()"
+            "formula": "(function(){var a=c_r1,b=c_r2,d=c_r3;var correct=c_a>0?'('+a+' &lt; x &lt; '+b+') or (x &gt; '+d+')':'(x &lt; '+a+') or ('+b+' &lt; x &lt; '+d+')';return [correct,'x &lt; '+a,'x &gt; '+b,'x &lt; '+d].map(function(t,i){return {text:t,correct:i===0,key:Math.random()}}).sort(function(x,y){return x.key-y.key})})()"
           },
           "v_choices": {
-            "formula": "(function(){var a=v_h-v_k,b=v_h+v_k;var outside='x &lt; '+a+' or x &gt; '+b,inside=a+' &lt; x &lt; '+b,correct=v_sign>0?outside:inside,wrong=v_sign>0?inside:outside;return [correct,wrong,'x &lt; '+a,'x &gt; '+b,'x &lt; '+a+' and x &gt; '+b].map(function(t,i){return {text:t,correct:i===0,key:Math.random()}}).sort(function(x,y){return x.key-y.key})})()"
+            "formula": "(function(){var a=v_h-v_k,b=v_h+v_k;var outside='x &lt; '+a+' or x &gt; '+b,inside=a+' &lt; x &lt; '+b,correct=v_sign>0?outside:inside;return [correct,'x &lt; '+a,'x &gt; '+b,'x &lt; '+b].map(function(t,i){return {text:t,correct:i===0,key:Math.random()}}).sort(function(x,y){return x.key-y.key})})()"
           },
           "eq_order": {
             "formula": "[1,2,3].map(function(n){return {n:n,key:Math.random()}}).sort(function(a,b){return a.key-b.key}).map(function(x){return x.n})"
@@ -3927,9 +3927,6 @@
           "eq1_D": {
             "formula": "eq1_choices[3].text"
           },
-          "eq1_E": {
-            "formula": "eq1_choices[4].text"
-          },
           "eq2_A": {
             "formula": "eq2_choices[0].text"
           },
@@ -3941,9 +3938,6 @@
           },
           "eq2_D": {
             "formula": "eq2_choices[3].text"
-          },
-          "eq2_E": {
-            "formula": "eq2_choices[4].text"
           },
           "eq3_A": {
             "formula": "eq3_choices[0].text"
@@ -3957,17 +3951,14 @@
           "eq3_D": {
             "formula": "eq3_choices[3].text"
           },
-          "eq3_E": {
-            "formula": "eq3_choices[4].text"
-          },
           "eq1_correct": {
-            "formula": "['A','B','C','D','E'][eq1_choices.findIndex(function(x){return x.correct})]"
+            "formula": "['A','B','C','D'][eq1_choices.findIndex(function(x){return x.correct})]"
           },
           "eq2_correct": {
-            "formula": "['A','B','C','D','E'][eq2_choices.findIndex(function(x){return x.correct})]"
+            "formula": "['A','B','C','D'][eq2_choices.findIndex(function(x){return x.correct})]"
           },
           "eq3_correct": {
-            "formula": "['A','B','C','D','E'][eq3_choices.findIndex(function(x){return x.correct})]"
+            "formula": "['A','B','C','D'][eq3_choices.findIndex(function(x){return x.correct})]"
           },
           "eq1_answer": {
             "formula": "eq1_choices.find(function(x){return x.correct}).text"
@@ -4003,7 +3994,7 @@
             "formula": "'\\\\( y = '+(v_sign<0?'-':'')+'|x '+(v_h<0?'+ '+Math.abs(v_h):v_h>0?'- '+v_h:'')+'| '+(v_sign<0?'+ ':'- ')+v_k+' \\\\)'"
           }
         },
-        "question": "<div style='width:100%;'><b>For each equation and graph, choose the set of x-values where y &gt; 0. Note the x values and shade those values of x where y &gt; 0 or choose from the choices below.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq1_A}</li><li>{eq1_B}</li><li>{eq1_C}</li><li>{eq1_D}</li><li>{eq1_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq2_A}</li><li>{eq2_B}</li><li>{eq2_C}</li><li>{eq2_D}</li><li>{eq2_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq3_A}</li><li>{eq3_B}</li><li>{eq3_C}</li><li>{eq3_D}</li><li>{eq3_E}</li></ol></div></div></div>",
+        "question": "<div style='width:100%;'><b>For each equation and graph, choose the set of x-values where y &gt; 0. Note the x values and shade those values of x where y &gt; 0. You may also choose from the inequality choices below.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq1_A}</li><li>{eq1_B}</li><li>{eq1_C}</li><li>{eq1_D}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq2_A}</li><li>{eq2_B}</li><li>{eq2_C}</li><li>{eq2_D}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq3_A}</li><li>{eq3_B}</li><li>{eq3_C}</li><li>{eq3_D}</li></ol></div></div></div>",
         "answer": "<b>Answer key</b><br>Graph A: correct choice {eq1_correct} ? {eq1_answer}<br>Function: {eq1_name}<br>Graph B: correct choice {eq2_correct} ? {eq2_answer}<br>Function: {eq2_name}<br>Graph C: correct choice {eq3_correct} ? {eq3_answer}<br>Function: {eq3_name}"
       },
       {
@@ -4601,13 +4592,13 @@
             "max": 7
           },
           "q_choices": {
-            "formula": "(function(){var h=q_h,correct=q_a>0?'x &gt; '+h:'x &lt; '+h,wrong=q_a>0?'x &lt; '+h:'x &gt; '+h;return [{text:correct,correct:true},{text:wrong},{text:(h-2)+' &lt; x &lt; '+h},{text:h+' &lt; x &lt; '+(h+2)},{text:'x &lt; '+h+' or x &gt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+            "formula": "(function(){var h=q_h,correct=q_a>0?'x &gt; '+h:'x &lt; '+h,wrong=q_a>0?'x &lt; '+h:'x &gt; '+h;return [{text:correct,correct:true},{text:wrong},{text:'x &gt; '+(h+2)},{text:'x &lt; '+(h-2)}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
           },
           "c_choices": {
-            "formula": "(function(){var h=c_h,r=h+c_dx,correct=c_a>0?'x &lt; '+h+' or x &gt; '+r:h+' &lt; x &lt; '+r,wrong=c_a>0?h+' &lt; x &lt; '+r:'x &lt; '+h+' or x &gt; '+r;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+h},{text:'x &gt; '+r},{text:(h-2)+' &lt; x &lt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+            "formula": "(function(){var h=c_h,r=h+c_dx,correct=c_a>0?'x &lt; '+h+' or x &gt; '+r:h+' &lt; x &lt; '+r;return [{text:correct,correct:true},{text:'x &lt; '+h},{text:'x &gt; '+r},{text:'x &gt; '+h}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
           },
           "f_choices": {
-            "formula": "(function(){var a=f_h-f_dx,b=f_h,c=f_h+2*f_dx,correct=f_a>0?a+' &lt; x &lt; '+b+' or x &gt; '+c:'x &lt; '+a+' or '+b+' &lt; x &lt; '+c,wrong=f_a>0?'x &lt; '+a+' or '+b+' &lt; x &lt; '+c:a+' &lt; x &lt; '+b+' or x &gt; '+c;return [{text:correct,correct:true},{text:wrong},{text:'x &lt; '+a},{text:a+' &lt; x &lt; '+c},{text:'x &gt; '+c}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
+            "formula": "(function(){var a=f_h-f_dx,b=f_h,c=f_h+2*f_dx,correct=f_a>0?a+' &lt; x &lt; '+b+' or x &gt; '+c:'x &lt; '+a+' or '+b+' &lt; x &lt; '+c;return [{text:correct,correct:true},{text:'x &lt; '+a},{text:'x &gt; '+b},{text:'x &gt; '+c}].map(function(o){o.key=Math.random();return o}).sort(function(a,b){return a.key-b.key})})()"
           },
           "eq1_choices": {
             "formula": "eq1_type===1?q_choices:eq1_type===2?c_choices:f_choices"
@@ -4624,11 +4615,8 @@
           "eq1_D": {
             "formula": "eq1_choices[3].text"
           },
-          "eq1_E": {
-            "formula": "eq1_choices[4].text"
-          },
           "eq1_correct_letter": {
-            "formula": "['A','B','C','D','E'][eq1_choices.findIndex(function(o){return o.correct})]"
+            "formula": "['A','B','C','D'][eq1_choices.findIndex(function(o){return o.correct})]"
           },
           "eq1_correct_interval": {
             "formula": "eq1_choices.find(function(o){return o.correct}).text"
@@ -4648,11 +4636,8 @@
           "eq2_D": {
             "formula": "eq2_choices[3].text"
           },
-          "eq2_E": {
-            "formula": "eq2_choices[4].text"
-          },
           "eq2_correct_letter": {
-            "formula": "['A','B','C','D','E'][eq2_choices.findIndex(function(o){return o.correct})]"
+            "formula": "['A','B','C','D'][eq2_choices.findIndex(function(o){return o.correct})]"
           },
           "eq2_correct_interval": {
             "formula": "eq2_choices.find(function(o){return o.correct}).text"
@@ -4672,11 +4657,8 @@
           "eq3_D": {
             "formula": "eq3_choices[3].text"
           },
-          "eq3_E": {
-            "formula": "eq3_choices[4].text"
-          },
           "eq3_correct_letter": {
-            "formula": "['A','B','C','D','E'][eq3_choices.findIndex(function(o){return o.correct})]"
+            "formula": "['A','B','C','D'][eq3_choices.findIndex(function(o){return o.correct})]"
           },
           "eq3_correct_interval": {
             "formula": "eq3_choices.find(function(o){return o.correct}).text"
@@ -4690,7 +4672,7 @@
             "max": 3
           }
         },
-        "question": "<div style='width:100%;'><b>For each graph, choose the interval(s) of x-values where the function is increasing. Note the x values and shade those values of x where the function is increasing or choose from the choices below.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq1_A}</li><li>{eq1_B}</li><li>{eq1_C}</li><li>{eq1_D}</li><li>{eq1_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq2_A}</li><li>{eq2_B}</li><li>{eq2_C}</li><li>{eq2_D}</li><li>{eq2_E}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq3_A}</li><li>{eq3_B}</li><li>{eq3_C}</li><li>{eq3_D}</li><li>{eq3_E}</li></ol></div></div></div>",
+        "question": "<div style='width:100%;'><b>For each graph, choose the interval(s) of x-values where the function is increasing. Note the x values and shade those values of x where the function is increasing. You may also choose from the inequality choices below.</b><div style='display:flex;flex-wrap:nowrap;gap:8px;width:100%;align-items:flex-start;'><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph A</b><br>{eq1_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq1_A}</li><li>{eq1_B}</li><li>{eq1_C}</li><li>{eq1_D}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph B</b><br>{eq2_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq2_A}</li><li>{eq2_B}</li><li>{eq2_C}</li><li>{eq2_D}</li></ol></div><div style='box-sizing:border-box;width:33.333%;min-width:0;padding:4px;border:1px solid #999;'><b>Graph C</b><br>{eq3_graph}<b>Choose one:</b><ol type='A' style='padding-left:22px;margin:2px 0;line-height:1.05;'><li>{eq3_A}</li><li>{eq3_B}</li><li>{eq3_C}</li><li>{eq3_D}</li></ol></div></div></div>",
         "answer": "<b>Answer key</b><br>Graph A: {eq1_name}<br>Correct choice: {eq1_correct_letter} â€” {eq1_correct_interval}<br>Graph B: {eq2_name}<br>Correct choice: {eq2_correct_letter} â€” {eq2_correct_interval}<br>Graph C: {eq3_name}<br>Correct choice: {eq3_correct_letter} â€” {eq3_correct_interval}"
       },
       {
