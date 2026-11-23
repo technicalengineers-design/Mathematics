@@ -16753,6 +16753,25 @@
   },
   "question": "{question_html}",
   "answer": "{answer_html}"
+},
+{
+  "id": "CM 6.3a Discount Loans",
+  "type": "template",
+  "objective": "Calculate bank discount, proceeds received, and maturity payoff on a simple discount loan",
+  "difficulty": "basic",
+  "variables": {
+    "data": {
+      "formula": "(function(){\n  var scenarios = [\n    \"a local bakery upgrading its commercial ovens\",\n    \"a family-owned landscaping business purchasing new equipment\",\n    \"an independent auto repair shop expanding its service bays\",\n    \"a small coffee roastery financing seasonal bean inventory\",\n    \"a private dental practice updating its diagnostic equipment\",\n    \"a neighborhood bookstore remodeling its storefront\",\n    \"a local carpentry workshop buying a CNC router\",\n    \"a boutique fitness studio installing new flooring and mirrors\",\n    \"a regional trucking contractor covering short-term fleet maintenance\",\n    \"a private catering company purchasing a refrigerated delivery van\"\n  ];\n  var sIdx = Math.floor(Math.random() * scenarios.length);\n  var scenario = scenarios[sIdx];\n\n  var principals = [8000, 10000, 12000, 15000, 18000, 20000, 24000, 25000, 30000, 35000, 40000, 45000, 50000];\n  var S = principals[Math.floor(Math.random() * principals.length)];\n\n  var rates = [4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11];\n  var ratePct = rates[Math.floor(Math.random() * rates.length)];\n  var d = ratePct / 100;\n\n  var times = [\n    { label: \"6 months\", t: 0.5, tDisp: \"0.5 years (6/12)\" },\n    { label: \"9 months\", t: 0.75, tDisp: \"0.75 years (9/12)\" },\n    { label: \"1 year\", t: 1, tDisp: \"1 year\" },\n    { label: \"18 months\", t: 1.5, tDisp: \"1.5 years (18/12)\" },\n    { label: \"2 years\", t: 2, tDisp: \"2 years\" },\n    { label: \"3 years\", t: 3, tDisp: \"3 years\" },\n    { label: \"4 years\", t: 4, tDisp: \"4 years\" }\n  ];\n  var timeObj = times[Math.floor(Math.random() * times.length)];\n  var t = timeObj.t;\n\n  var D = Math.round(S * d * t * 100) / 100;\n  var proceeds = Math.round((S - D) * 100) / 100;\n\n  function fmtMoney(val) {\n    var fixed = val.toFixed(2);\n    var parts = fixed.split(\".\");\n    parts[0] = parts[0].replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\n    return \"$\" + (parts[1] === \"00\" ? parts[0] : parts[0] + \".\" + parts[1]);\n  }\n\n  function fmtMoneyCents(val) {\n    var fixed = val.toFixed(2);\n    var parts = fixed.split(\".\");\n    parts[0] = parts[0].replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\n    return \"$\" + parts[0] + \".\" + parts[1];\n  }\n\n  var q_html = \"<div style='font-size:1.05em; line-height:1.5;'>\" +\n    \"To help fund \" + scenario + \", a business takes out a <b>\" + fmtMoney(S) + \"</b> discount loan for <b>\" + timeObj.label + \"</b> at a <b>\" + ratePct + \"%</b> discount rate. \" +\n    \"Find the discount, calculate the proceeds (what the borrower will receive), and state what they will pay back at maturity.\" +\n    \"</div>\" +\n    \"<div style='height:150px;'></div>\";\n\n  var a_html = \"<div style='font-size:1.02em; line-height:1.65;'>\" +\n    \"<div><b>Step 1 — Calculate the Bank Discount (<i>D</i>):</b></div>\" +\n    \"<div style='margin-left:14px;'>\" +\n      \"<i>D</i> = <i>S</i> &times; <i>d</i> &times; <i>t</i><br>\" +\n      \"<i>D</i> = \" + fmtMoney(S) + \" &times; \" + d + \" &times; \" + timeObj.tDisp + \" = <b>\" + fmtMoneyCents(D) + \"</b>\" +\n    \"</div>\" +\n    \"<div style='margin-top:8px;'><b>Step 2 — Calculate the Proceeds (Amount Received):</b></div>\" +\n    \"<div style='margin-left:14px;'>\" +\n      \"Proceeds = <i>S</i> &minus; <i>D</i><br>\" +\n      \"Proceeds = \" + fmtMoney(S) + \" &minus; \" + fmtMoneyCents(D) + \" = <b>\" + fmtMoneyCents(proceeds) + \"</b> (what they will receive)\" +\n    \"</div>\" +\n    \"<div style='margin-top:8px;'><b>Step 3 — Amount Paid Back at Maturity:</b></div>\" +\n    \"<div style='margin-left:14px;'>\" +\n      \"Maturity Value (<i>S</i>) = <b>\" + fmtMoneyCents(S) + \"</b> (what they will pay back)\" +\n    \"</div>\" +\n  \"</div>\";\n\n  return { q_html: q_html, a_html: a_html };\n})()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
 }
     ]
   },
