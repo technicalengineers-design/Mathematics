@@ -16815,7 +16815,7 @@
   "id": "CM 6.4b Amortized Payments",
   "type": "template",
   "objective": "Calculate the required monthly payment and total interest for an amortized loan given the loan principal, nominal annual interest rate, and term.",
-  "difficulty": "intermediate",
+  "difficulty": "basic",
   "variables": {
     "data": {
       "formula": "(function() {\n  function randInt(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n  }\n  function fmtMoney(val) {\n    return \"$\" + Number(val).toLocaleString(\"en-US\", { minimumFractionDigits: 2, maximumFractionDigits: 2 });\n  }\n  function fmtWhole(val) {\n    return \"$\" + Number(val).toLocaleString(\"en-US\", { minimumFractionDigits: 0, maximumFractionDigits: 0 });\n  }\n  function fracHtml(num, den) {\n    return '<span style=\"display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 4px;line-height:1.15;\">'\n      + '<span style=\"padding:0 5px;border-bottom:1.5px solid #222;font-size:0.95em;\">' + num + '</span>'\n      + '<span style=\"padding:1px 5px 0 5px;font-size:0.95em;\">' + den + '</span>'\n      + '</span>';\n  }\n\n  var scenarios = [\n    { item: \"a used vehicle\", lender: \"a credit union\" },\n    { item: \"home kitchen appliances\", lender: \"a local bank\" },\n    { item: \"medical and dental expenses\", lender: \"a healthcare lender\" },\n    { item: \"commercial landscaping equipment\", lender: \"an equipment finance company\" },\n    { item: \"home solar panels\", lender: \"a green-energy lender\" },\n    { item: \"a boat trailer and outboard motor\", lender: \"a marine credit union\" },\n    { item: \"basement waterproofing repairs\", lender: \"a home improvement lender\" },\n    { item: \"atelier woodworking machinery\", lender: \"a small-business lender\" }\n  ];\n\n  var yearWords = {\n    2: \"two years\",\n    3: \"three years\",\n    4: \"four years\",\n    5: \"five years\",\n    6: \"six years\",\n    7: \"seven years\"\n  };\n\n  var sc = scenarios[randInt(0, scenarios.length - 1)];\n  var An = randInt(8, 60) * 500;\n  var rateSteps = [4.5, 4.8, 5.1, 5.4, 5.7, 6.0, 6.3, 6.6, 6.9, 7.2, 7.5, 7.8, 8.1, 8.4, 8.7, 9.0, 9.6, 10.2, 10.8, 11.4, 12.0];\n  var rPct = rateSteps[randInt(0, rateSteps.length - 1)];\n  var rDec = rPct / 100;\n  var m = 12;\n  var t = randInt(2, 7);\n  var n = m * t;\n  var i = rDec / m;\n\n  var factor = i / (1 - Math.pow(1 + i, -n));\n  var R_unrounded = An * factor;\n  var R = Math.round(R_unrounded * 100) / 100;\n\n  var totalPaid = Math.round(R * n * 100) / 100;\n  var totalInterest = Math.round((totalPaid - An) * 100) / 100;\n\n  var rDisplay = Number.isInteger(rPct) ? rPct.toFixed(0) : rPct.toFixed(1);\n  var iDisplay = i.toFixed(6).replace(/0+$/, \"\").replace(/\\.$/, \"\");\n\n  var q_html = ''\n    + '<div style=\"font-size:1.05em;line-height:1.55;color:#1a1a1a;\">'\n    + 'Suppose ' + sc.lender + ' offers you a loan of ' + fmtWhole(An) + ' at ' + rDisplay + '%(12) interest for ' + yearWords[t] + ' to finance ' + sc.item + '. '\n    + 'What will your monthly payment be? How much total interest will you pay on the loan?'\n    + '</div>'\n    + '<div style=\"height:150px;\"></div>';\n\n  var eqHtml = '<div style=\"display:flex;align-items:center;flex-wrap:wrap;margin:8px 0 10px 0;font-size:1.05em;\">'\n    + '<i>R</i> &nbsp;=&nbsp; <i>A<sub>n</sub></i> &middot; '\n    + fracHtml('<i>i</i>', '1 &minus; (1 + <i>i</i>)<sup>&minus;<i>n</i></sup>')\n    + '</div>';\n\n  var subHtml = '<div style=\"display:flex;align-items:center;flex-wrap:wrap;margin:8px 0 10px 0;font-size:1.02em;\">'\n    + '<i>R</i> &nbsp;=&nbsp; ' + fmtWhole(An) + ' &middot; '\n    + fracHtml(iDisplay, '1 &minus; (1 + ' + iDisplay + ')<sup>&minus;' + n + '</sup>')\n    + '</div>';\n\n  var a_html = ''\n    + '<div style=\"font-size:1.02em;line-height:1.6;color:#1a1a1a;\">'\n    + '<div style=\"margin-bottom:8px;\"><b>Formula:</b>' + eqHtml + '</div>'\n    + '<div style=\"margin-bottom:8px;\"><b>Step 1 — Identify Variables:</b><br>'\n    + '<i>A<sub>n</sub></i> = ' + fmtWhole(An) + ', &nbsp; <i>r</i> = ' + rDisplay + '% = ' + rDec.toFixed(4).replace(/0+$/, \"\").replace(/\\.$/, \"\") + ', &nbsp; <i>m</i> = 12, &nbsp; <i>t</i> = ' + t + ' years<br>'\n    + '<i>i</i> = ' + fracHtml('<i>r</i>', '<i>m</i>') + ' = ' + fracHtml(rDec.toFixed(4).replace(/0+$/, \"\").replace(/\\.$/, \"\"), '12') + ' = ' + iDisplay + '<br>'\n    + '<i>n</i> = <i>m</i> &middot; <i>t</i> = 12 &middot; ' + t + ' = ' + n + ' monthly payments'\n    + '</div>'\n    + '<div style=\"margin-bottom:8px;\"><b>Step 2 — Calculate Monthly Payment (<i>R</i>):</b>'\n    + subHtml\n    + '<i>R</i> &approx; ' + fmtMoney(R_unrounded) + ' &rarr; <b>' + fmtMoney(R) + '</b> per month'\n    + '</div>'\n    + '<div><b>Step 3 — Calculate Total Interest Paid:</b><br>'\n    + 'Total Payments = ' + fmtMoney(R) + ' &times; ' + n + ' = ' + fmtMoney(totalPaid) + '<br>'\n    + 'Total Interest = ' + fmtMoney(totalPaid) + ' &minus; ' + fmtWhole(An) + ' = <b>' + fmtMoney(totalInterest) + '</b>'\n    + '</div>'\n    + '</div>';\n\n  return {\n    q_html: q_html,\n    a_html: a_html\n  };\n})()"
@@ -16825,6 +16825,26 @@
     },
     "a_html": {
       "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
+},
+{
+  "id": "CM 6.5 Credit Cards",
+  "type": "template",
+  "objective": "Responsible Credit Card Use",
+  "difficulty": "basic",
+  "variables": {
+    "dummy": {
+      "min": 1,
+      "max": 1
+    },
+    "q_html": {
+      "formula": "'<div style=\"font-size:1.05em; line-height:1.5;\">Name three recommendations for credit card use.</div><div style=\"height:120px;\"></div>'"
+    },
+    "a_html": {
+      "formula": "'<div style=\"font-size:0.98em; line-height:1.6;\"><b>Any three of the following four recommendations:</b><div style=\"margin-top:6px;\">1) Never charge more than you have money to pay when the statement arrives.</div><div>2) Always pay the entire balance.</div><div>3) Never pay late.</div><div>4) Never lose sight of the fact that credit is not your money but a loan.</div></div>'"
     }
   },
   "question": "{q_html}",
