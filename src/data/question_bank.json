@@ -16772,6 +16772,25 @@
   },
   "question": "{q_html}",
   "answer": "{a_html}"
+},
+{
+  "id": "CM 6.3b Discount Rate",
+  "type": "template",
+  "objective": "Find the simple discount rate on a Treasury bill using Banker's Rule",
+  "difficulty": "basic",
+  "variables": {
+    "data": {
+      "formula": "(() => {\n  const faceValues = [5000, 10000, 15000, 20000, 25000, 50000, 100000];\n  const S = faceValues[Math.floor(Math.random() * faceValues.length)];\n\n  const dayOptions = [\n    { num: 28, word: 'twenty-eight-day' },\n    { num: 42, word: 'forty-two-day' },\n    { num: 56, word: 'fifty-six-day' },\n    { num: 91, word: 'ninety-one-day' },\n    { num: 119, word: 'one-hundred-nineteen-day' },\n    { num: 154, word: 'one-hundred-fifty-four-day' },\n    { num: 182, word: 'one-hundred-eighty-two-day' },\n    { num: 273, word: 'two-hundred-seventy-three-day' },\n    { num: 364, word: 'three-hundred-sixty-four-day' }\n  ];\n  const dayObj = dayOptions[Math.floor(Math.random() * dayOptions.length)];\n  const days = dayObj.num;\n\n  const targetRatePct = (3.2 + Math.floor(Math.random() * 58) * 0.1);\n  const exactDiscount = S * (targetRatePct / 100) * (days / 360);\n  const D = Math.round(exactDiscount * 100) / 100;\n  const P = Math.round((S - D) * 100) / 100;\n\n  const dDecimal = D / (S * (days / 360));\n  const dPct = Math.round(dDecimal * 10000) / 100;\n\n  const fmtMoney = (v) => '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });\n  const fmtInt = (v) => '$' + v.toLocaleString('en-US', { maximumFractionDigits: 0 });\n\n  const q_html = `\n    <div style=\"font-family:Arial,sans-serif;font-size:15px;line-height:1.65;color:#111827;\">\n      At a United States Treasury bill auction, an individual purchased a ${fmtInt(S)} ${dayObj.word} Treasury bill for ${fmtMoney(P)}. Find the discount rate using Banker&rsquo;s Rule.\n      <div style=\"height:150px;\"></div>\n    </div>\n  `;\n\n  const a_html = `\n    <div style=\"font-family:Arial,sans-serif;font-size:14.5px;line-height:1.7;color:#111827;\">\n      <div style=\"margin-bottom:8px;\">\n        <strong>Given:</strong>\n        Maturity (Face) Value <em>S</em> = <strong>${fmtInt(S)}</strong>,\n        Proceeds (Purchase Price) <em>P</em> = <strong>${fmtMoney(P)}</strong>,\n        Time <em>t</em> = <sup>${days}</sup>&frasl;<sub>360</sub> years\n      </div>\n      <div style=\"margin-bottom:8px;\">\n        <strong>Step 1 &mdash; Find the Bank Discount (<em>D</em>):</strong><br>\n        <em>D</em> = <em>S</em> &minus; <em>P</em> = ${fmtInt(S)} &minus; ${fmtMoney(P)} = <strong>${fmtMoney(D)}</strong>\n      </div>\n      <div style=\"margin-bottom:8px;\">\n        <strong>Step 2 &mdash; Solve for the Discount Rate (<em>d</em>) from <em>D</em> = <em>Sdt</em>:</strong><br>\n        <em>d</em> = <sup><em>D</em></sup>&frasl;<sub><em>S</em> &times; <em>t</em></sub>\n        = <sup>${D.toFixed(2)}</sup>&frasl;<sub>${S.toLocaleString('en-US')} &times; (${days}/360)</sub>\n        = <sup>${D.toFixed(2)}</sup>&frasl;<sub>${(S * days / 360).toFixed(4)}</sub>\n        &approx; ${dDecimal.toFixed(6)}\n      </div>\n      <div style=\"padding:8px 12px;background:#f0fdf4;border-left:3px solid #16a34a;border-radius:4px;\">\n        <strong>Discount Rate (<em>d</em>):</strong> <strong>${dPct.toFixed(2)}%</strong>\n      </div>\n    </div>\n  `;\n\n  return { q_html, a_html };\n})()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
 }
     ]
   },
