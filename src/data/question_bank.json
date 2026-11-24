@@ -1327,7 +1327,7 @@
             "formula": "'' + Number((Math.abs(a_num - x_num) + Math.abs((c_num / y_num) + (z_num / f_num))).toFixed(2))"
           }
         },
-        "question": "Evaluate the expression: \\( |a - x| + \\left|\\dfrac{c\\,}{y\\,} + \\dfrac{z\\,}{f\\,}\\right| \\)<br><br>Given values: a = {a} x = {x} c = {c} y = {y} z = {z} f = {f}<br><br>*(Round your final answer to two decimal places if necessary)*",
+        "question": "Evaluate the expression: \\( |a - x| + \\left|\\dfrac{c\\,}{y\\,} + \\dfrac{z\\,}{f\\,}\\right| \\)<br><br>Given values: a = {a}, x = {x}, c = {c}, y = {y}, z = {z}, f = {f}<br><br>*(Round your final answer to two decimal places if necessary)*",
         "answer": "Step 1: Substitute the given values:<br>\\( |{a} - ({x})| + \\left|\\dfrac{{{c}}}{{{y}}} + \\dfrac{{{z}}}{{{f}}}\\right| \\)<br><br>Step 2: Evaluate each part:<br>First part: \\( |{a} - ({x})| = |{diff}| = {abs_diff} \\)<br>Second part: \\( \\left|\\dfrac{{{c}}}{{{y}}} + \\dfrac{{{z}}}{{{f}}}\\right| = |{frac1_val} + ({frac2_val})| = |{frac_sum}| = {abs_frac_sum} \\)<br><br>Step 3: Add the two parts:<br>\\( {abs_diff} + {abs_frac_sum} = {result} \\)"
       }
     ],
