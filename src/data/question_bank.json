@@ -6954,6 +6954,29 @@
   "answer": "{a_html}"
 },
 {
+  "id": "Key 6-5 A Forensics",
+  "type": "template",
+  "objective": "Write and solve an inequality involving margin of error in a real-world formula",
+  "difficulty": "basic",
+  "variables": {
+    "scenarios": { "formula": "[{ person: 'woman', pronoun: 'her', slope: 2.4, intercept: 46.2 }, { person: 'man', pronoun: 'his', slope: 2.3, intercept: 65.5 }]" },
+    "scenario_index": { "formula": "Math.floor(Math.random() * scenarios.length)" },
+    "person": { "formula": "scenarios[scenario_index].person" },
+    "pronoun": { "formula": "scenarios[scenario_index].pronoun" },
+    "slope": { "formula": "scenarios[scenario_index].slope" },
+    "intercept": { "formula": "scenarios[scenario_index].intercept" },
+    "f": { "formula": "Math.floor(Math.random() * 15) + 38" },
+    "error": { "formula": "Math.floor(Math.random() * 4) + 2" },
+    "est_height": { "formula": "Number((slope * f + intercept).toFixed(1))" },
+    "min_height": { "formula": "Number((est_height - error).toFixed(1))" },
+    "max_height": { "formula": "Number((est_height + error).toFixed(1))" },
+    "min_height_dec": { "formula": "(est_height - error).toFixed(1)" },
+    "max_height_dec": { "formula": "(est_height + error).toFixed(1)" }
+  },
+  "question": "Forensic scientists use the equation \\( h = {slope}f + {intercept} \\) to estimate the height \\( h \\) (in centimeters) of a {person} given the length in centimeters \\( f \\) of {pronoun} femur bone. Suppose the equation has a margin of error of \\( {error} \\) centimeters. Write an inequality and determine the potential height for a {person} with a femur that is \\( {f}\\text{ cm} \\) long.",
+  "answer": "<b>Step 1: Calculate the estimated height</b><br>Substitute \\( f = {f} \\) into the equation:<br>\\( h = {slope}({f}) + {intercept} = {est_height}\\text{ cm} \\)<br><br><b>Step 2: Write the inequality</b><br>With a margin of error of \\( {error}\\text{ cm} \\), the actual height \\( h \\) can be written as an absolute value inequality:<br><b>\\( |h - {est_height}| \\le {error} \\)</b><br>(Or as a compound inequality: <b>\\( {est_height} - {error} \\le h \\le {est_height} + {error} \\)</b>)<br><br><b>Step 3: Solve for the potential height range</b><br>Subtract and add the margin of error from the estimated height:<br>• Minimum height: \\( {est_height} - {error} = {min_height}\\text{ cm} \\)<br>• Maximum height: \\( {est_height} + {error} = {max_height}\\text{ cm} \\)<br><br>The potential height of the {person} is between <b>\\( {min_height}\\text{ cm} \\) and \\( {max_height}\\text{ cm} \\)</b>.<br><br><b>Compound Inequality:</b> <b>\\( {min_height_dec} \\le h \\le {max_height_dec} \\)</b>"
+},
+{
   "id": "Key 8-1 B Scientific Notation Addition and Subtraction",
   "title": "Key 8-1 B Scientific Notation Addition and Subtraction",
   "difficulty": "basic",
