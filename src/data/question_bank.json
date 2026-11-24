@@ -6511,6 +6511,25 @@
   "answer": "{a_html}"
 },
 {
+  "id": "Key 1-1d I Area and Circumference of a Circle",
+  "type": "template",
+  "objective": "Area and Circumference of a Circle",
+  "difficulty": "intermediate",
+  "variables": {
+    "data": {
+      "formula": "(() => {\n  const units = ['mm', 'cm', 'in.', 'ft', 'yd', 'm', 'km', 'mi'];\n  const unit = units[Math.floor(Math.random() * units.length)];\n\n  const useDecimal = Math.random() < 0.45;\n  const r = useDecimal\n    ? (Math.floor(Math.random() * 16) + 3) + 0.5\n    : Math.floor(Math.random() * 19) + 2;\n\n  const angleDeg = Math.floor(Math.random() * 360);\n  const angleRad = (angleDeg * Math.PI) / 180;\n\n  const cx = 180;\n  const cy = 155;\n  const pxRadius = 92;\n\n  const x2 = Number((cx + pxRadius * Math.cos(angleRad)).toFixed(2));\n  const y2 = Number((cy + pxRadius * Math.sin(angleRad)).toFixed(2));\n\n  const mx = Number(((cx + x2) / 2).toFixed(2));\n  const my = Number(((cy + y2) / 2).toFixed(2));\n\n  let nx = -Math.sin(angleRad);\n  let ny = Math.cos(angleRad);\n  if (ny > 0.35) {\n    nx = -nx;\n    ny = -ny;\n  }\n\n  const labelText = r + ' ' + unit;\n  const labelW = Math.max(54, labelText.length * 10 + 18);\n  const labelH = 26;\n\n  const offsetDist = 24;\n  const lx = Number((mx + nx * offsetDist).toFixed(2));\n  const ly = Number((my + ny * offsetDist).toFixed(2));\n  const rectX = Number((lx - labelW / 2).toFixed(2));\n  const rectY = Number((ly - labelH / 2).toFixed(2));\n  const textY = Number((ly + 5.5).toFixed(2));\n\n  const svg =\n    '<svg viewBox=\"0 0 360 310\" width=\"320\" height=\"275\" style=\"display:block; margin: 6px 0;\" xmlns=\"http://www.w3.org/2000/svg\">' +\n      '<circle cx=\"' + cx + '\" cy=\"' + cy + '\" r=\"' + pxRadius + '\" fill=\"#f8fafc\" stroke=\"#1e293b\" stroke-width=\"2.5\" />' +\n      '<line x1=\"' + cx + '\" y1=\"' + cy + '\" x2=\"' + x2 + '\" y2=\"' + y2 + '\" stroke=\"#0f172a\" stroke-width=\"2.2\" />' +\n      '<circle cx=\"' + cx + '\" cy=\"' + cy + '\" r=\"3.8\" fill=\"#0f172a\" />' +\n      '<rect x=\"' + rectX + '\" y=\"' + rectY + '\" width=\"' + labelW + '\" height=\"' + labelH + '\" rx=\"5\" fill=\"#ffffff\" stroke=\"#cbd5e1\" stroke-width=\"1\" />' +\n      '<text x=\"' + lx + '\" y=\"' + textY + '\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-size=\"16\" font-weight=\"bold\" fill=\"#0f172a\">' + labelText + '</text>' +\n    '</svg>';\n\n  const fracHtml = (num, den) =>\n    '<span style=\"display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; margin:0 3px; line-height:1.05; font-size:0.92em;\">' +\n      '<span style=\"border-bottom:1.5px solid currentColor; padding:0 3px;\">' + num + '</span>' +\n      '<span style=\"padding:0 3px;\">' + den + '</span>' +\n    '</span>';\n\n  const rSq = Number((r * r).toFixed(2));\n  const twoR = Number((2 * r).toFixed(2));\n  const areaVal = (Math.PI * r * r).toFixed(2);\n  const circVal = (2 * Math.PI * r).toFixed(2);\n\n  const eqHeader =\n    '<div style=\"font-size:1.15em; margin-bottom:6px; color:#0f172a;\">' +\n      '<i>A</i> = &pi;<i>r</i><sup>2</sup>' +\n      '<span style=\"display:inline-block; width:36px;\"></span>' +\n      '<i>C</i> = 2&pi;<i>r</i>' +\n    '</div>';\n\n  const q_html =\n    '<div>' +\n      eqHeader +\n      svg +\n      '<div style=\"height:120px;\"></div>' +\n    '</div>';\n\n  const a_html =\n    '<div style=\"line-height:1.65; color:#0f172a;\">' +\n      '<div style=\"margin-bottom:8px;\"><b>Given Radius:</b> <i>r</i> = ' + r + ' ' + unit + '</div>' +\n      '<div style=\"display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start;\">' +\n        '<div style=\"min-width:210px;\">' +\n          '<div style=\"font-weight:bold; margin-bottom:4px; color:#1e3a8a;\">Area Calculation:</div>' +\n          '<div>Step 1: <i>A</i> = &pi;<i>r</i><sup>2</sup></div>' +\n          '<div>Step 2: <i>A</i> = &pi;(' + r + ')<sup>2</sup></div>' +\n          '<div>Step 3: <i>A</i> = ' + rSq + '&pi; ' + unit + '<sup>2</sup></div>' +\n          '<div>Step 4: <i>A</i> &approx; <b>' + areaVal + ' ' + unit + '<sup>2</sup></b></div>' +\n        '</div>' +\n        '<div style=\"min-width:210px;\">' +\n          '<div style=\"font-weight:bold; margin-bottom:4px; color:#1e3a8a;\">Circumference Calculation:</div>' +\n          '<div>Step 1: <i>C</i> = 2&pi;<i>r</i></div>' +\n          '<div>Step 2: <i>C</i> = 2&pi;(' + r + ')</div>' +\n          '<div>Step 3: <i>C</i> = ' + twoR + '&pi; ' + unit + '</div>' +\n          '<div>Step 4: <i>C</i> &approx; <b>' + circVal + ' ' + unit + '</b></div>' +\n        '</div>' +\n      '</div>' +\n    '</div>';\n\n  return { q_html, a_html };\n})()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
+},
+{
   "id": "Key 1.2 B Mathian",
   "type": "template",
   "objective": "Translating two-operation English sentences with signed numbers into algebraic equations",
