@@ -5716,7 +5716,7 @@
             "formula": "Math.abs(mden)/slope_gcd"
           },
           "slope_display": {
-            "formula": "(function(){var bs=String.fromCharCode(92);return slope_den===1?String(slope_num):(slope_num<0?'-':'')+bs+'frac{'+Math.abs(slope_num)+'}{'+slope_den+'}';})()"
+            "formula": "(function(){var bs=String.fromCharCode(92);return slope_den===1?(slope_num===1?'':slope_num===-1?'-':String(slope_num)):(slope_num<0?'-':'')+bs+'frac{'+Math.abs(slope_num)+'}{'+slope_den+'}';})()"
           }
         },
         "question": "Write the equation of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) in point-slope form.",
