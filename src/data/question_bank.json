@@ -6492,6 +6492,25 @@
   "answer": "{a_html}"
 },
 {
+  "id": "Key 1-1d B Area of a Triangle",
+  "type": "template",
+  "objective": "Calculate the area of a triangle given its base and perpendicular height in varying shapes and orientations.",
+  "difficulty": "basic",
+  "variables": {
+    "data": {
+      "formula": "(() => {\n  const units = ['mm', 'cm', 'in.', 'ft', 'yd', 'm', 'km', 'mi'];\n  const unit = units[Math.floor(Math.random() * units.length)];\n\n  // Randomize b and h (integers or clean half-integers, keeping product nice)\n  const bVals = [4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 20, 22, 24];\n  const hVals = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18];\n  const b = bVals[Math.floor(Math.random() * bVals.length)];\n  const h = hVals[Math.floor(Math.random() * hVals.length)];\n  const area = 0.5 * b * h;\n  const areaStr = Number.isInteger(area) ? String(area) : area.toFixed(1);\n\n  // Triangle shape: acute (apex above interior of base) or obtuse (apex overhangs base)\n  const isObtuse = Math.random() < 0.45;\n  // Randomize orientation angle (0 to 345 deg in 15 deg increments so base isn't always horizontal)\n  const angles = [0, 20, 35, 50, 75, 90, 115, 140, 165, 180, 205, 230, 255, 270, 295, 320, 340];\n  const rotDeg = angles[Math.floor(Math.random() * angles.length)];\n  const rad = (rotDeg * Math.PI) / 180;\n\n  // Build local coordinates centered near (0,0) before rotation\n  // Visual base width and height scaled cleanly for SVG\n  const visB = 150 + Math.floor(Math.random() * 40); // 150..189\n  const visH = 105 + Math.floor(Math.random() * 35); // 105..139\n\n  let apexOffset;\n  if (isObtuse) {\n    // Apex outside [0, visB] either to the left or right\n    const dir = Math.random() < 0.5 ? -1 : 1;\n    const overhang = 35 + Math.floor(Math.random() * 25); // 35..59\n    apexOffset = dir < 0 ? -overhang : visB + overhang;\n  } else {\n    // Acute/scalene: apex above interior [0.2*visB, 0.8*visB]\n    const frac = 0.22 + Math.random() * 0.56;\n    apexOffset = frac * visB;\n  }\n\n  // Local points: P1=(0,0), P2=(visB,0), Apex=(apexOffset, -visH), Foot=(apexOffset, 0)\n  const rawPts = [\n    { x: 0, y: 0 },\n    { x: visB, y: 0 },\n    { x: apexOffset, y: -visH },\n    { x: apexOffset, y: 0 }\n  ];\n\n  // Center bounding box of triangle+foot around (0,0)\n  const minX = Math.min(...rawPts.map(p => p.x));\n  const maxX = Math.max(...rawPts.map(p => p.x));\n  const minY = Math.min(...rawPts.map(p => p.y));\n  const maxY = Math.max(...rawPts.map(p => p.y));\n  const cx0 = (minX + maxX) / 2;\n  const cy0 = (minY + maxY) / 2;\n\n  const rot = (pt) => {\n    const dx = pt.x - cx0;\n    const dy = pt.y - cy0;\n    return {\n      x: 210 + dx * Math.cos(rad) - dy * Math.sin(rad),\n      y: 165 + dx * Math.sin(rad) + dy * Math.cos(rad)\n    };\n  };\n\n  const P1 = rot(rawPts[0]);\n  const P2 = rot(rawPts[1]);\n  const Apex = rot(rawPts[2]);\n  const Foot = rot(rawPts[3]);\n\n  // Unit vectors for base (P1 -> P2) and outward normal away from Apex\n  const bLen = Math.hypot(P2.x - P1.x, P2.y - P1.y);\n  const ux = (P2.x - P1.x) / bLen;\n  const uy = (P2.y - P1.y) / bLen;\n\n  // Height vector from Foot -> Apex\n  const hLen = Math.hypot(Apex.x - Foot.x, Apex.y - Foot.y);\n  const hx = (Apex.x - Foot.x) / hLen;\n  const hy = (Apex.y - Foot.y) / hLen;\n\n  // Outward normal from base (opposite to Foot -> Apex)\n  const nx = -hx;\n  const ny = -hy;\n\n  // Right-angle marker at Foot (size 10px)\n  const ra = 10;\n  // Direction along base toward midpoint of base so right-angle box sits neatly\n  const midBase = { x: (P1.x + P2.x) / 2, y: (P1.y + P2.y) / 2 };\n  const toMidDot = (midBase.x - Foot.x) * ux + (midBase.y - Foot.y) * uy;\n  const sgn = toMidDot >= 0 ? 1 : -1;\n\n  const ra1 = { x: Foot.x + sgn * ux * ra, y: Foot.y + sgn * uy * ra };\n  const ra2 = { x: ra1.x + hx * ra, y: ra1.y + hy * ra };\n  const ra3 = { x: Foot.x + hx * ra, y: Foot.y + hy * ra };\n\n  // Base label position: offset outward from base midpoint by 24px\n  const baseLabelPos = {\n    x: midBase.x + nx * 24,\n    y: midBase.y + ny * 24\n  };\n\n  // Height label position: offset perpendicular to altitude line\n  // Choose side away from the triangle interior if obtuse, or slightly offset to right of altitude vector\n  const midAlt = { x: (Foot.x + Apex.x) / 2, y: (Foot.y + Apex.y) / 2 };\n  let altSide = 1;\n  if (isObtuse) {\n    // Push label away from base midpoint\n    const dotSide = (midAlt.x - midBase.x) * ux + (midAlt.y - midBase.y) * uy;\n    altSide = dotSide >= 0 ? 1 : -1;\n  } else {\n    altSide = (Apex.x - P1.x) * ux + (Apex.y - P1.y) * uy > bLen / 2 ? -1 : 1;\n  }\n  const heightLabelPos = {\n    x: midAlt.x + altSide * ux * 28,\n    y: midAlt.y + altSide * uy * 28\n  };\n\n  // Extension dashed line if obtuse (from nearest base endpoint to Foot)\n  let extLineSvg = '';\n  if (isObtuse) {\n    const d1 = Math.hypot(Foot.x - P1.x, Foot.y - P1.y);\n    const d2 = Math.hypot(Foot.x - P2.x, Foot.y - P2.y);\n    const nearPt = d1 < d2 ? P1 : P2;\n    extLineSvg = `<line x1=\"${nearPt.x.toFixed(1)}\" y1=\"${nearPt.y.toFixed(1)}\" x2=\"${Foot.x.toFixed(1)}\" y2=\"${Foot.y.toFixed(1)}\" stroke=\"#64748b\" stroke-width=\"1.5\" stroke-dasharray=\"4,4\" />`;\n  }\n\n  const labelPill = (x, y, text, color) => {\n    const w = Math.max(44, text.length * 8.2 + 12);\n    const hBox = 22;\n    return `\n      <rect x=\"${(x - w / 2).toFixed(1)}\" y=\"${(y - hBox / 2).toFixed(1)}\" width=\"${w.toFixed(1)}\" height=\"${hBox}\" rx=\"4\" fill=\"#ffffff\" fill-opacity=\"0.92\" />\n      <text x=\"${x.toFixed(1)}\" y=\"${(y + 5).toFixed(1)}\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"${color}\">${text}</text>\n    `;\n  };\n\n  const bText = `${b} ${unit}`;\n  const hText = `${h} ${unit}`;\n\n  const svg = `\n    <svg width=\"420\" height=\"330\" viewBox=\"0 0 420 330\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:100%; height:auto; display:block; margin: 4px 0;\">\n      <polygon points=\"${P1.x.toFixed(1)},${P1.y.toFixed(1)} ${P2.x.toFixed(1)},${P2.y.toFixed(1)} ${Apex.x.toFixed(1)},${Apex.y.toFixed(1)}\" fill=\"#eff6ff\" stroke=\"#1e293b\" stroke-width=\"2.4\" stroke-linejoin=\"round\" />\n      ${extLineSvg}\n      <line x1=\"${Apex.x.toFixed(1)}\" y1=\"${Apex.y.toFixed(1)}\" x2=\"${Foot.x.toFixed(1)}\" y2=\"${Foot.y.toFixed(1)}\" stroke=\"#dc2626\" stroke-width=\"2\" stroke-dasharray=\"5,4\" />\n      <polyline points=\"${ra1.x.toFixed(1)},${ra1.y.toFixed(1)} ${ra2.x.toFixed(1)},${ra2.y.toFixed(1)} ${ra3.x.toFixed(1)},${ra3.y.toFixed(1)}\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"1.6\" />\n      ${labelPill(baseLabelPos.x, baseLabelPos.y, bText, '#1e3a8a')}\n      ${labelPill(heightLabelPos.x, heightLabelPos.y, hText, '#b91c1c')}\n    </svg>\n  `.trim();\n\n  const fracHalf = `<span style=\"display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; font-size:0.88em; line-height:1.05; margin:0 3px;\"><span style=\"border-bottom:1.5px solid currentColor; padding:0 3px;\">1</span><span style=\"padding:0 3px;\">2</span></span>`;\n\n  const q_html = `\n    <div style=\"font-size:15px; line-height:1.5; color:#0f172a;\">\n      <div>Find the area of the triangle shown below using the formula <b><i>A</i> = ${fracHalf}<i>bh</i></b>.</div>\n      <div style=\"margin-top:6px;\">${svg}</div>\n      <div style=\"height:110px;\"></div>\n    </div>\n  `.trim();\n\n  const a_html = `\n    <div style=\"font-size:15px; line-height:1.65; color:#0f172a;\">\n      <div><b>Formula:</b> <i>A</i> = ${fracHalf}<i>bh</i></div>\n      <div><b>Identify values from figure:</b> Base <i>b</i> = ${b} ${unit}, Perpendicular height <i>h</i> = ${h} ${unit}</div>\n      <div><b>Substitute &amp; calculate:</b></div>\n      <div style=\"padding-left:14px;\">\n        <i>A</i> = ${fracHalf}(${b} ${unit})(${h} ${unit})<br>\n        <i>A</i> = ${fracHalf}(${b * h} ${unit}<sup>2</sup>)<br>\n        <b><i>A</i> = ${areaStr} ${unit}<sup>2</sup></b>\n      </div>\n    </div>\n  `.trim();\n\n  return { q_html, a_html };\n})()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
+},
+{
   "id": "Key 1.2 B Mathian",
   "type": "template",
   "objective": "Translating two-operation English sentences with signed numbers into algebraic equations",
@@ -6644,156 +6663,183 @@
   "answer": "{solution_html}"
 },
 {
-        "id": "Key 3.4 I Calculator - sketch and find intercepts",
-        "type": "template",
-        "objective": "Intercepts",
-        "difficulty": "intermediate",
-        "variables": {
-          "p": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0
-            ]
-          },
-          "q": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "formula": "-1*(p + q)"
-          },
-          "c": {
-            "formula": "p*q"
-          }
-        },
-        "question": "Use a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
-        "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
-      },
-      {
-        "id": "Key 3.5 I Calculator - sketch and find values of given points",
-        "type": "template",
-        "objective": "Shapes of Graphs",
-        "difficulty": "intermediate",
-        "variables": {
-          "a": {
-            "values": [
-              2
-            ]
-          },
-          "r1": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "r2": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "formula": "-3*(r1 + r2)"
-          },
-          "c": {
-            "formula": "6*r1*r2"
-          },
-          "d": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "x1": {
-            "min": -3,
-            "max": 3
-          },
-          "x2": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1"
-            ]
-          },
-          "x3": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1",
-              "x2"
-            ]
-          },
-          "x4": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1",
-              "x2",
-              "x3"
-            ]
-          },
-          "y1": {
-            "formula": "a * x1**3 + b * x1**2 + c * x1 + d"
-          },
-          "y2": {
-            "formula": "a * x2**3 + b * x2**2 + c * x2 + d"
-          },
-          "y3": {
-            "formula": "a * x3**3 + b * x3**2 + c * x3 + d"
-          },
-          "y4": {
-            "formula": "a * x4**3 + b * x4**2 + c * x4 + d"
-          }
-        },
-        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign}\\), then find the missing values: <br> a) \\( f({x1}) = ? \\) <br> b) \\( f({x2}) = ? \\) <br> c) \\( f(?) = {y3} \\) <br> d) \\( f(?) = {y4} \\)",
-        "answer": "a) \\( f({x1}) = {y1} \\) <br> b) \\( f({x2}) = {y2} \\) <br> c) \\( f({x3}) = {y3} \\) <br> d) \\( f({x4}) = {y4} \\)"
-      },
-      {
-        "id": "Key 3.5 A Calculator - sketch and specify where the function is increasing and positive",
-        "type": "template",
-        "objective": "Shapes of Graphs",
-        "difficulty": "advanced",
-        "variables": {
-          "a": {
-            "min": -1,
-            "max": 1,
-            "exclude": [
-              0
-            ]
-          },
-          "h": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
-            ]
-          },
-          "k": {
-            "formula": "-a*4"
-          },
-          "b": {
-            "formula": "-2*a*h"
-          },
-          "c": {
-            "formula": "a * h**2 + k"
-          },
-          "z1": {
-            "formula": "h - 2"
-          },
-          "z2": {
-            "formula": "h + 2"
-          }
-        },
-        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.",
-        "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
-      }
+  "id": "Key 3.4 I Calculator - sketch and find intercepts",
+  "type": "template",
+  "objective": "Intercepts",
+  "difficulty": "intermediate",
+  "variables": {
+    "p": {
+      "min": -8,
+      "max": 8,
+      "exclude": [
+        0
+      ]
+    },
+    "q": {
+      "min": -8,
+      "max": 8,
+      "exclude": [
+        0
+      ]
+    },
+    "b": {
+      "formula": "-1*(p + q)"
+    },
+    "c": {
+      "formula": "p*q"
+    },
+    "graph_assets": {
+      "formula": "(function(){\n var f=function(x){return x*x+b*x+c;},markers=[{x:p,y:0,label:\"(\"+p+\", 0)\"},{x:q,y:0,label:\"(\"+q+\", 0)\"},{x:0,y:c,label:\"(0, \"+c+\")\"}],xMin=-10,xMax=10,xStep=2;\n var W=420,H=360,L=42,R=405,T=20,B=320,minY=0,maxY=0;\n for(var i=0;i<=240;i++){var x=xMin+(xMax-xMin)*i/240,y=f(x);if(y<minY)minY=y;if(y>maxY)maxY=y;}\n var pad=(maxY-minY)*0.08;if(!pad)pad=1;minY-=pad;maxY+=pad;\n function sx(x){return L+(x-xMin)*(R-L)/(xMax-xMin);}\n function sy(y){return B-(y-minY)*(B-T)/(maxY-minY);}\n function tickStep(){var r=(maxY-minY)/8,p=Math.pow(10,Math.floor(Math.log10(r))),n=r/p;return(n<1.5?1:n<3.5?2:n<7.5?5:10)*p;}\n function build(show){var s='<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 '+W+' '+H+'\" role=\"img\" aria-label=\"'+(show?'Graphed function':'Blank coordinate graph')+'\" style=\"display:block;width:100%;max-width:420px;height:auto;background:#fff;border:1px solid #777\">';var zx=sx(0),zy=sy(0),step=tickStep();\n for(var xv=Math.ceil(xMin/xStep)*xStep;xv<=xMax;xv+=xStep){var px=sx(xv);s+='<line x1=\"'+px+'\" y1=\"'+T+'\" x2=\"'+px+'\" y2=\"'+B+'\" stroke=\"'+(xv===0?'#333':'#ddd')+'\" stroke-width=\"'+(xv===0?2:1)+'\"/><text x=\"'+px+'\" y=\"'+(B+16)+'\" text-anchor=\"middle\" font-size=\"10\" fill=\"#222\">'+xv+'</text>';}\n for(var yv=Math.ceil(minY/step)*step;yv<=maxY;yv+=step){var py=sy(yv);s+='<line x1=\"'+L+'\" y1=\"'+py+'\" x2=\"'+R+'\" y2=\"'+py+'\" stroke=\"'+(Math.abs(yv)<1e-8?'#333':'#ddd')+'\" stroke-width=\"'+(Math.abs(yv)<1e-8?2:1)+'\"/><text x=\"'+(L-6)+'\" y=\"'+(py+3)+'\" text-anchor=\"end\" font-size=\"9\" fill=\"#222\">'+Number(yv.toPrecision(3))+'</text>';}\n if(Math.abs(zy-T)>1&&Math.abs(zy-B)>1)s+='<line x1=\"'+L+'\" y1=\"'+zy+'\" x2=\"'+R+'\" y2=\"'+zy+'\" stroke=\"#333\" stroke-width=\"2\"/>';\n if(Math.abs(zx-L)>1&&Math.abs(zx-R)>1)s+='<line x1=\"'+zx+'\" y1=\"'+T+'\" x2=\"'+zx+'\" y2=\"'+B+'\" stroke=\"#333\" stroke-width=\"2\"/>';\n s+='<text x=\"'+(R-2)+'\" y=\"'+(B+34)+'\" text-anchor=\"end\" font-size=\"11\" fill=\"#222\">x</text><text x=\"'+(L-22)+'\" y=\"'+(T+4)+'\" font-size=\"11\" fill=\"#222\">y</text>';\n if(show){var path='';for(var j=0;j<=240;j++){var xx=xMin+(xMax-xMin)*j/240,yy=f(xx);path+=(j===0?'M':'L')+sx(xx).toFixed(2)+' '+sy(yy).toFixed(2)+' ';}s+='<path d=\"'+path+'\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2.5\"/>';markers.forEach(function(m){var mx=sx(m.x),my=sy(m.y);s+='<circle cx=\"'+mx+'\" cy=\"'+my+'\" r=\"4\" fill=\"#dc2626\" stroke=\"#fff\" stroke-width=\"1\"/><text x=\"'+(mx+5)+'\" y=\"'+(my-6)+'\" font-size=\"9\" fill=\"#991b1b\">'+m.label+'</text>';});}\n return s+'</svg>';}\n return {blank:build(false),solution:build(true)};\n})()"
+    },
+    "blank_graph_svg": {
+      "formula": "graph_assets.blank"
+    },
+    "solution_graph_svg": {
+      "formula": "graph_assets.solution"
+    }
+  },
+  "question": "Use a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)<br>{blank_graph_svg}",
+  "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)<br>{solution_graph_svg}"
+},
+{
+  "id": "Key 3.5 I Calculator - sketch and find values of given points",
+  "type": "template",
+  "objective": "Shapes of Graphs",
+  "difficulty": "intermediate",
+  "variables": {
+    "a": {
+      "values": [
+        2
+      ]
+    },
+    "r1": {
+      "min": -2,
+      "max": 2,
+      "exclude": [
+        0
+      ]
+    },
+    "r2": {
+      "min": -2,
+      "max": 2,
+      "exclude": [
+        0
+      ]
+    },
+    "b": {
+      "formula": "-3*(r1 + r2)"
+    },
+    "c": {
+      "formula": "6*r1*r2"
+    },
+    "d": {
+      "min": -2,
+      "max": 2,
+      "exclude": [
+        0
+      ]
+    },
+    "x1": {
+      "min": -3,
+      "max": 3
+    },
+    "x2": {
+      "min": -3,
+      "max": 3,
+      "exclude": [
+        "x1"
+      ]
+    },
+    "x3": {
+      "min": -3,
+      "max": 3,
+      "exclude": [
+        "x1",
+        "x2"
+      ]
+    },
+    "x4": {
+      "min": -3,
+      "max": 3,
+      "exclude": [
+        "x1",
+        "x2",
+        "x3"
+      ]
+    },
+    "y1": {
+      "formula": "a * x1**3 + b * x1**2 + c * x1 + d"
+    },
+    "y2": {
+      "formula": "a * x2**3 + b * x2**2 + c * x2 + d"
+    },
+    "y3": {
+      "formula": "a * x3**3 + b * x3**2 + c * x3 + d"
+    },
+    "y4": {
+      "formula": "a * x4**3 + b * x4**2 + c * x4 + d"
+    },
+    "graph_assets": {
+      "formula": "(function(){\n var f=function(x){return a*x*x*x+b*x*x+c*x+d;},markers=[{x:x1,y:y1,label:\"x1\"},{x:x2,y:y2,label:\"x2\"},{x:x3,y:y3,label:\"x3\"},{x:x4,y:y4,label:\"x4\"}],xMin=-4,xMax=4,xStep=2;\n var W=420,H=360,L=42,R=405,T=20,B=320,minY=0,maxY=0;\n for(var i=0;i<=240;i++){var x=xMin+(xMax-xMin)*i/240,y=f(x);if(y<minY)minY=y;if(y>maxY)maxY=y;}\n var pad=(maxY-minY)*0.08;if(!pad)pad=1;minY-=pad;maxY+=pad;\n function sx(x){return L+(x-xMin)*(R-L)/(xMax-xMin);}\n function sy(y){return B-(y-minY)*(B-T)/(maxY-minY);}\n function tickStep(){var r=(maxY-minY)/8,p=Math.pow(10,Math.floor(Math.log10(r))),n=r/p;return(n<1.5?1:n<3.5?2:n<7.5?5:10)*p;}\n function build(show){var s='<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 '+W+' '+H+'\" role=\"img\" aria-label=\"'+(show?'Graphed function':'Blank coordinate graph')+'\" style=\"display:block;width:100%;max-width:420px;height:auto;background:#fff;border:1px solid #777\">';var zx=sx(0),zy=sy(0),step=tickStep();\n for(var xv=Math.ceil(xMin/xStep)*xStep;xv<=xMax;xv+=xStep){var px=sx(xv);s+='<line x1=\"'+px+'\" y1=\"'+T+'\" x2=\"'+px+'\" y2=\"'+B+'\" stroke=\"'+(xv===0?'#333':'#ddd')+'\" stroke-width=\"'+(xv===0?2:1)+'\"/><text x=\"'+px+'\" y=\"'+(B+16)+'\" text-anchor=\"middle\" font-size=\"10\" fill=\"#222\">'+xv+'</text>';}\n for(var yv=Math.ceil(minY/step)*step;yv<=maxY;yv+=step){var py=sy(yv);s+='<line x1=\"'+L+'\" y1=\"'+py+'\" x2=\"'+R+'\" y2=\"'+py+'\" stroke=\"'+(Math.abs(yv)<1e-8?'#333':'#ddd')+'\" stroke-width=\"'+(Math.abs(yv)<1e-8?2:1)+'\"/><text x=\"'+(L-6)+'\" y=\"'+(py+3)+'\" text-anchor=\"end\" font-size=\"9\" fill=\"#222\">'+Number(yv.toPrecision(3))+'</text>';}\n if(Math.abs(zy-T)>1&&Math.abs(zy-B)>1)s+='<line x1=\"'+L+'\" y1=\"'+zy+'\" x2=\"'+R+'\" y2=\"'+zy+'\" stroke=\"#333\" stroke-width=\"2\"/>';\n if(Math.abs(zx-L)>1&&Math.abs(zx-R)>1)s+='<line x1=\"'+zx+'\" y1=\"'+T+'\" x2=\"'+zx+'\" y2=\"'+B+'\" stroke=\"#333\" stroke-width=\"2\"/>';\n s+='<text x=\"'+(R-2)+'\" y=\"'+(B+34)+'\" text-anchor=\"end\" font-size=\"11\" fill=\"#222\">x</text><text x=\"'+(L-22)+'\" y=\"'+(T+4)+'\" font-size=\"11\" fill=\"#222\">y</text>';\n if(show){var path='';for(var j=0;j<=240;j++){var xx=xMin+(xMax-xMin)*j/240,yy=f(xx);path+=(j===0?'M':'L')+sx(xx).toFixed(2)+' '+sy(yy).toFixed(2)+' ';}s+='<path d=\"'+path+'\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2.5\"/>';markers.forEach(function(m){var mx=sx(m.x),my=sy(m.y);s+='<circle cx=\"'+mx+'\" cy=\"'+my+'\" r=\"4\" fill=\"#dc2626\" stroke=\"#fff\" stroke-width=\"1\"/><text x=\"'+(mx+5)+'\" y=\"'+(my-6)+'\" font-size=\"9\" fill=\"#991b1b\">'+m.label+'</text>';});}\n return s+'</svg>';}\n return {blank:build(false),solution:build(true)};\n})()"
+    },
+    "blank_graph_svg": {
+      "formula": "graph_assets.blank"
+    },
+    "solution_graph_svg": {
+      "formula": "graph_assets.solution"
+    }
+  },
+  "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign}\\), then find the missing values: <br> a) \\( f({x1}) = ? \\) <br> b) \\( f({x2}) = ? \\) <br> c) \\( f(?) = {y3} \\) <br> d) \\( f(?) = {y4} \\)<br>{blank_graph_svg}",
+  "answer": "a) \\( f({x1}) = {y1} \\) <br> b) \\( f({x2}) = {y2} \\) <br> c) \\( f({x3}) = {y3} \\) <br> d) \\( f({x4}) = {y4} \\)<br>{solution_graph_svg}"
+},
+{
+  "id": "Key 3.5 A Calculator - sketch and specify where the function is increasing and positive",
+  "type": "template",
+  "objective": "Shapes of Graphs",
+  "difficulty": "advanced",
+  "variables": {
+    "a": {
+      "min": -1,
+      "max": 1,
+      "exclude": [
+        0
+      ]
+    },
+    "h": {
+      "min": -3,
+      "max": 3,
+      "exclude": [
+        0
+      ]
+    },
+    "k": {
+      "formula": "-a*4"
+    },
+    "b": {
+      "formula": "-2*a*h"
+    },
+    "c": {
+      "formula": "a * h**2 + k"
+    },
+    "z1": {
+      "formula": "h - 2"
+    },
+    "z2": {
+      "formula": "h + 2"
+    },
+    "graph_assets": {
+      "formula": "(function(){\n var f=function(x){return a*x*x+b*x+c;},markers=[{x:z1,y:0,label:\"z1\"},{x:z2,y:0,label:\"z2\"},{x:h,y:k,label:\"V\"}],xMin=-8,xMax=8,xStep=2;\n var W=420,H=360,L=42,R=405,T=20,B=320,minY=0,maxY=0;\n for(var i=0;i<=240;i++){var x=xMin+(xMax-xMin)*i/240,y=f(x);if(y<minY)minY=y;if(y>maxY)maxY=y;}\n var pad=(maxY-minY)*0.08;if(!pad)pad=1;minY-=pad;maxY+=pad;\n function sx(x){return L+(x-xMin)*(R-L)/(xMax-xMin);}\n function sy(y){return B-(y-minY)*(B-T)/(maxY-minY);}\n function tickStep(){var r=(maxY-minY)/8,p=Math.pow(10,Math.floor(Math.log10(r))),n=r/p;return(n<1.5?1:n<3.5?2:n<7.5?5:10)*p;}\n function build(show){var s='<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 '+W+' '+H+'\" role=\"img\" aria-label=\"'+(show?'Graphed function':'Blank coordinate graph')+'\" style=\"display:block;width:100%;max-width:420px;height:auto;background:#fff;border:1px solid #777\">';var zx=sx(0),zy=sy(0),step=tickStep();\n for(var xv=Math.ceil(xMin/xStep)*xStep;xv<=xMax;xv+=xStep){var px=sx(xv);s+='<line x1=\"'+px+'\" y1=\"'+T+'\" x2=\"'+px+'\" y2=\"'+B+'\" stroke=\"'+(xv===0?'#333':'#ddd')+'\" stroke-width=\"'+(xv===0?2:1)+'\"/><text x=\"'+px+'\" y=\"'+(B+16)+'\" text-anchor=\"middle\" font-size=\"10\" fill=\"#222\">'+xv+'</text>';}\n for(var yv=Math.ceil(minY/step)*step;yv<=maxY;yv+=step){var py=sy(yv);s+='<line x1=\"'+L+'\" y1=\"'+py+'\" x2=\"'+R+'\" y2=\"'+py+'\" stroke=\"'+(Math.abs(yv)<1e-8?'#333':'#ddd')+'\" stroke-width=\"'+(Math.abs(yv)<1e-8?2:1)+'\"/><text x=\"'+(L-6)+'\" y=\"'+(py+3)+'\" text-anchor=\"end\" font-size=\"9\" fill=\"#222\">'+Number(yv.toPrecision(3))+'</text>';}\n if(Math.abs(zy-T)>1&&Math.abs(zy-B)>1)s+='<line x1=\"'+L+'\" y1=\"'+zy+'\" x2=\"'+R+'\" y2=\"'+zy+'\" stroke=\"#333\" stroke-width=\"2\"/>';\n if(Math.abs(zx-L)>1&&Math.abs(zx-R)>1)s+='<line x1=\"'+zx+'\" y1=\"'+T+'\" x2=\"'+zx+'\" y2=\"'+B+'\" stroke=\"#333\" stroke-width=\"2\"/>';\n s+='<text x=\"'+(R-2)+'\" y=\"'+(B+34)+'\" text-anchor=\"end\" font-size=\"11\" fill=\"#222\">x</text><text x=\"'+(L-22)+'\" y=\"'+(T+4)+'\" font-size=\"11\" fill=\"#222\">y</text>';\n if(show){var path='';for(var j=0;j<=240;j++){var xx=xMin+(xMax-xMin)*j/240,yy=f(xx);path+=(j===0?'M':'L')+sx(xx).toFixed(2)+' '+sy(yy).toFixed(2)+' ';}s+='<path d=\"'+path+'\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2.5\"/>';markers.forEach(function(m){var mx=sx(m.x),my=sy(m.y);s+='<circle cx=\"'+mx+'\" cy=\"'+my+'\" r=\"4\" fill=\"#dc2626\" stroke=\"#fff\" stroke-width=\"1\"/><text x=\"'+(mx+5)+'\" y=\"'+(my-6)+'\" font-size=\"9\" fill=\"#991b1b\">'+m.label+'</text>';});}\n return s+'</svg>';}\n return {blank:build(false),solution:build(true)};\n})()"
+    },
+    "blank_graph_svg": {
+      "formula": "graph_assets.blank"
+    },
+    "solution_graph_svg": {
+      "formula": "graph_assets.solution"
+    }
+  },
+  "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.<br>{blank_graph_svg}",
+  "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\).<br>{solution_graph_svg}"
+}
     ],
     "Summative 1": [
       {
