@@ -5705,10 +5705,22 @@
           },
           "mden": {
             "formula": "x2 - x1"
+          },
+          "slope_gcd": {
+            "formula": "(function(){var a=Math.abs(mnum),b=Math.abs(mden);while(b){var t=a%b;a=b;b=t;}return a||1;})()"
+          },
+          "slope_num": {
+            "formula": "(mnum/slope_gcd)*(mden<0?-1:1)"
+          },
+          "slope_den": {
+            "formula": "Math.abs(mden)/slope_gcd"
+          },
+          "slope_display": {
+            "formula": "(function(){var bs=String.fromCharCode(92);return slope_den===1?String(slope_num):(slope_num<0?'-':'')+bs+'frac{'+Math.abs(slope_num)+'}{'+slope_den+'}';})()"
           }
         },
         "question": "Write the equation of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) in point-slope form.",
-        "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\)"
+        "answer": "Point-Slope Form: \\( y {negy1|sign} = {slope_display}(x {negx1|sign}) \\)"
       },
       {
         "id": "ALG 5.2 Aa",
@@ -20492,69 +20504,49 @@
   "answer": "{answer_html}"
 },
       {
-        "id": "GEO 2-4 Rotation",
-        "type": "template",
-        "objective": "Rotate a Triangle About the Origin by 90, 180, or 270 Degrees and Sketch",
-        "difficulty": "basic",
-        "variables": {
-          "a_x": {
-            "min": -5,
-            "max": 5
-          },
-          "a_y": {
-            "min": -5,
-            "max": 5
-          },
-          "b_x": {
-            "min": -5,
-            "max": 5
-          },
-          "b_y": {
-            "min": -5,
-            "max": 5
-          },
-          "c_x": {
-            "min": -5,
-            "max": 5
-          },
-          "c_y": {
-            "min": -5,
-            "max": 5
-          },
-          "angle_index": {
-            "min": 1,
-            "max": 3
-          },
-          "angle": {
-            "formula": "angle_index * 90"
-          },
-          "direction": {
-            "choice": [
-              "counterclockwise"
-            ]
-          },
-          "a_prime_x": {
-            "formula": "angle_index == 1 ? -a_y : (angle_index == 2 ? -a_x : a_y)"
-          },
-          "a_prime_y": {
-            "formula": "angle_index == 1 ? a_x : (angle_index == 2 ? -a_y : -a_x)"
-          },
-          "b_prime_x": {
-            "formula": "angle_index == 1 ? -b_y : (angle_index == 2 ? -b_x : b_y)"
-          },
-          "b_prime_y": {
-            "formula": "angle_index == 1 ? b_x : (angle_index == 2 ? -b_y : -b_x)"
-          },
-          "c_prime_x": {
-            "formula": "angle_index == 1 ? -c_y : (angle_index == 2 ? -c_x : c_y)"
-          },
-          "c_prime_y": {
-            "formula": "angle_index == 1 ? c_x : (angle_index == 2 ? -c_y : -c_x)"
-          }
-        },
-        "question": "Triangle ABC has vertices at the following coordinates on a coordinate plane: <br> A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}). <br><br>1. **Sketch** the pre-image triangle ABC on a coordinate grid. <br>2. Find the coordinates of the image triangle A'B'C' after a **{angle}&bull; counterclockwise** rotation about the origin. <br>3. **Sketch** the resulting image triangle A'B'C' on the same coordinate grid.",
-        "answer": "1. Sketch the Pre-Image: Plot points A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}) on your coordinate grid and connect them to form triangle ABC. <br><br>2. Apply the Rotation Rule: <br> For a counterclockwise rotation about the origin: <br> - A 90&bull; rotation follows the rule (x, y) -> (-y, x). <br> - A 180&bull; rotation follows the rule (x, y) -> (-x, -y). <br> - A 270&bull; rotation follows the rule (x, y) -> (y, -x). <br><br>3. Calculate Image Coordinates: <br> - Vertex A: A({a_x}, {a_y}) -> A'({a_prime_x}, {a_prime_y}) <br> - Vertex B: B({b_x}, {b_y}) -> B'({b_prime_x}, {b_prime_y}) <br> - Vertex C: C({c_x}, {c_y}) -> C'({c_prime_x}, {c_prime_y}) <br><br>4. Sketch the Image: Plot points A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y}) on your grid and connect them to form the rotated triangle A'B'C'. <br><br>**Final Coordinates:** <br> A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y})."
-      },
+  "id": "GEO 2-4 Rotation",
+  "type": "template",
+  "objective": "Rotate a Triangle About the Origin by 90, 180, or 270 Degrees and Sketch",
+  "difficulty": "basic",
+  "variables": {
+    "a_x": { "min": -5, "max": 5 },
+    "a_y": { "min": -5, "max": 5 },
+    "b_x": { "min": -5, "max": 5 },
+    "b_y": { "min": -5, "max": 5 },
+    "raw_c_x": { "min": -5, "max": 5 },
+    "raw_c_y": { "min": -5, "max": 5 },
+    "is_collinear": { "formula": "(b_x - a_x) * (raw_c_y - a_y) === (b_y - a_y) * (raw_c_x - a_x)" },
+    "c_x": { "formula": "is_collinear ? (raw_c_x < 5 ? raw_c_x + 1 : raw_c_x - 1) : raw_c_x" },
+    "c_y": { "formula": "is_collinear && (b_x === a_x) ? (raw_c_y < 5 ? raw_c_y + 1 : raw_c_y - 1) : raw_c_y" },
+    "angle_index": { "min": 1, "max": 3 },
+    "angle": { "formula": "angle_index * 90" },
+    "direction": { "choice": ["counterclockwise"] },
+    "a_prime_x": { "formula": "angle_index == 1 ? -a_y : (angle_index == 2 ? -a_x : a_y)" },
+    "a_prime_y": { "formula": "angle_index == 1 ? a_x : (angle_index == 2 ? -a_y : -a_x)" },
+    "b_prime_x": { "formula": "angle_index == 1 ? -b_y : (angle_index == 2 ? -b_x : b_y)" },
+    "b_prime_y": { "formula": "angle_index == 1 ? b_x : (angle_index == 2 ? -b_y : -b_x)" },
+    "c_prime_x": { "formula": "angle_index == 1 ? -c_y : (angle_index == 2 ? -c_x : c_y)" },
+    "c_prime_y": { "formula": "angle_index == 1 ? c_x : (angle_index == 2 ? -c_y : -c_x)" },
+    "px_ax": { "formula": "200 + a_x * 25" },
+    "py_ay": { "formula": "200 - a_y * 25" },
+    "px_bx": { "formula": "200 + b_x * 25" },
+    "py_by": { "formula": "200 - b_y * 25" },
+    "px_cx": { "formula": "200 + c_x * 25" },
+    "py_cy": { "formula": "200 - c_y * 25" },
+    "px_apx": { "formula": "200 + a_prime_x * 25" },
+    "py_apy": { "formula": "200 - a_prime_y * 25" },
+    "px_bpx": { "formula": "200 + b_prime_x * 25" },
+    "py_bpy": { "formula": "200 - b_prime_y * 25" },
+    "px_cpx": { "formula": "200 + c_prime_x * 25" },
+    "py_cpy": { "formula": "200 - c_prime_y * 25" },
+    "grid_base": { "formula": "'<rect x=\"50\" y=\"50\" width=\"300\" height=\"300\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length: 13}, (_, i) => { const n = i - 6; const pos = 200 + n * 25; const color = n === 0 ? '#222' : '#dcdcdc'; const width = n === 0 ? 2 : 1; const lbl = n !== 0 ? '<text x=\"' + pos + '\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#444\">' + n + '</text><text x=\"193\" y=\"' + (pos + 3) + '\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#444\">' + (-n) + '</text>' : ''; return '<line x1=\"' + pos + '\" y1=\"50\" x2=\"' + pos + '\" y2=\"350\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/><line x1=\"50\" y1=\"' + pos + '\" x2=\"350\" y2=\"' + pos + '\" stroke=\"' + color + '\" stroke-width=\"' + width + '\"/>' + lbl; }).join('') + '<text x=\"356\" y=\"204\" font-family=\"sans-serif\" font-size=\"12\" font-style=\"italic\" fill=\"#222\">x</text><text x=\"205\" y=\"44\" font-family=\"sans-serif\" font-size=\"12\" font-style=\"italic\" fill=\"#222\">y</text>'" },
+    "blank_grid_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 380 380\" role=\"img\" aria-label=\"Blank coordinate plane from -6 to 6\" style=\"width:100%;max-width:380px;height:auto\">' + grid_base + '</svg>'" },
+    "answer_grid_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 380 380\" role=\"img\" aria-label=\"Coordinate plane showing triangle ABC and rotated triangle A prime B prime C prime\" style=\"width:100%;max-width:380px;height:auto\">' + grid_base + '<polygon points=\"' + px_ax + ',' + py_ay + ' ' + px_bx + ',' + py_by + ' ' + px_cx + ',' + py_cy + '\" fill=\"rgba(37, 99, 235, 0.18)\" stroke=\"#2563eb\" stroke-width=\"2\"/><polygon points=\"' + px_apx + ',' + py_apy + ' ' + px_bpx + ',' + py_bpy + ' ' + px_cpx + ',' + py_cpy + '\" fill=\"rgba(217, 83, 79, 0.18)\" stroke=\"#d9534f\" stroke-width=\"2\" stroke-dasharray=\"4,2\"/><circle cx=\"' + px_ax + '\" cy=\"' + py_ay + '\" r=\"4\" fill=\"#2563eb\"/><circle cx=\"' + px_bx + '\" cy=\"' + py_by + '\" r=\"4\" fill=\"#2563eb\"/><circle cx=\"' + px_cx + '\" cy=\"' + py_cy + '\" r=\"4\" fill=\"#2563eb\"/><text x=\"' + (px_ax + 6) + '\" y=\"' + (py_ay - 6) + '\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#1d4ed8\">A</text><text x=\"' + (px_bx + 6) + '\" y=\"' + (py_by - 6) + '\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#1d4ed8\">B</text><text x=\"' + (px_cx + 6) + '\" y=\"' + (py_cy - 6) + '\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#1d4ed8\">C</text><circle cx=\"' + px_apx + '\" cy=\"' + py_apy + '\" r=\"4\" fill=\"#d9534f\"/><circle cx=\"' + px_bpx + '\" cy=\"' + py_bpy + '\" r=\"4\" fill=\"#d9534f\"/><circle cx=\"' + px_cpx + '\" cy=\"' + py_cpy + '\" r=\"4\" fill=\"#d9534f\"/><text x=\"' + (px_apx + 6) + '\" y=\"' + (py_apy + 14) + '\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#b91c1c\">A&#39;</text><text x=\"' + (px_bpx + 6) + '\" y=\"' + (py_bpy + 14) + '\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#b91c1c\">B&#39;</text><text x=\"' + (px_cpx + 6) + '\" y=\"' + (py_cpy + 14) + '\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#b91c1c\">C&#39;</text></svg>'" }
+  },
+  "question": "Triangle ABC has vertices at the following coordinates on a coordinate plane: <br> A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}). <br><br>1. **Sketch** the pre-image triangle ABC on the coordinate grid below. <br>2. Find the coordinates of the image triangle A'B'C' after a **{angle}&deg; counterclockwise** rotation about the origin. <br>3. **Sketch** the resulting image triangle A'B'C' on the same coordinate grid.<br><br>{blank_grid_svg}",
+  "answer": "1. **Sketch the Pre-Image:** Plot points A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}) on your coordinate grid and connect them to form triangle ABC (shown in blue below). <br><br>2. **Apply the Rotation Rule:** <br> For a counterclockwise rotation about the origin: <br> - A 90&deg; rotation follows the rule (x, y) &rarr; (-y, x). <br> - A 180&deg; rotation follows the rule (x, y) &rarr; (-x, -y). <br> - A 270&deg; rotation follows the rule (x, y) &rarr; (y, -x). <br><br>3. **Calculate Image Coordinates:** <br> - Vertex A: A({a_x}, {a_y}) &rarr; A'({a_prime_x}, {a_prime_y}) <br> - Vertex B: B({b_x}, {b_y}) &rarr; B'({b_prime_x}, {b_prime_y}) <br> - Vertex C: C({c_x}, {c_y}) &rarr; C'({c_prime_x}, {c_prime_y}) <br><br>4. **Sketch the Image:** Plot points A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y}) on your grid and connect them to form the rotated triangle A'B'C' (shown in red below).<br><br>{answer_grid_svg}<br><br>**Final Coordinates:** <br> A'({a_prime_x}, {a_prime_y}), B'({b_prime_x}, {b_prime_y}), and C'({c_prime_x}, {c_prime_y})."
+},
+
       {
         "id": "GEO 2.5a Toy Chest",
         "type": "template",
