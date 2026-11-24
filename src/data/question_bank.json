@@ -6918,7 +6918,7 @@
   "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\).<br>{solution_graph_svg}"
 },
 {
-  "id": "Key 6-2a I Rental",
+  "id": "Key 6-2 I Rental",
   "title": "Key 6-2a I Rental",
   "difficulty": "intermediate",
   "variables": {
@@ -6936,7 +6936,7 @@
   "answer": "{a_html}"
 },
 {
-  "id": "Key 6-2a A Weather",
+  "id": "Key 6-2 A Weather",
   "title": "Key 6-2b A Weather",
   "difficulty": "advanced",
   "variables": {
@@ -6954,7 +6954,7 @@
   "answer": "{a_html}"
 },
 {
-  "id": "Key 6-5 A Forensics",
+  "id": "Key 6-4 A Forensics",
   "type": "template",
   "objective": "Write and solve an inequality involving margin of error in a real-world formula",
   "difficulty": "basic",
@@ -6975,6 +6975,30 @@
   },
   "question": "Forensic scientists use the equation \\( h = {slope}f + {intercept} \\) to estimate the height \\( h \\) (in centimeters) of a {person} given the length in centimeters \\( f \\) of {pronoun} femur bone. Suppose the equation has a margin of error of \\( {error} \\) centimeters. Write an inequality and determine the potential height for a {person} with a femur that is \\( {f}\\text{ cm} \\) long.",
   "answer": "<b>Step 1: Calculate the estimated height</b><br>Substitute \\( f = {f} \\) into the equation:<br>\\( h = {slope}({f}) + {intercept} = {est_height}\\text{ cm} \\)<br><br><b>Step 2: Write the inequality</b><br>With a margin of error of \\( {error}\\text{ cm} \\), the actual height \\( h \\) can be written as an absolute value inequality:<br><b>\\( |h - {est_height}| \\le {error} \\)</b><br>(Or as a compound inequality: <b>\\( {est_height} - {error} \\le h \\le {est_height} + {error} \\)</b>)<br><br><b>Step 3: Solve for the potential height range</b><br>Subtract and add the margin of error from the estimated height:<br>• Minimum height: \\( {est_height} - {error} = {min_height}\\text{ cm} \\)<br>• Maximum height: \\( {est_height} + {error} = {max_height}\\text{ cm} \\)<br><br>The potential height of the {person} is between <b>\\( {min_height}\\text{ cm} \\) and \\( {max_height}\\text{ cm} \\)</b>.<br><br><b>Compound Inequality:</b> <b>\\( {min_height_dec} \\le h \\le {max_height_dec} \\)</b>"
+},
+{
+  "id": "Key 6-5 A Drinks",
+  "type": "template",
+  "objective": "Write, solve, and graph a two-variable linear inequality in standard form from a real-world scenario",
+  "difficulty": "basic",
+  "variables": {
+    "scenarios": { "formula": "[{ budget: 20, w: 0.80, s: 1.25 }, { budget: 24, w: 0.80, s: 1.50 }, { budget: 30, w: 1.00, s: 1.50 }, { budget: 18, w: 0.75, s: 1.50 }, { budget: 30, w: 1.25, s: 1.50 }, { budget: 20, w: 0.80, s: 1.00 }, { budget: 24, w: 1.20, s: 1.60 }, { budget: 15, w: 0.75, s: 1.25 }, { budget: 30, w: 1.20, s: 1.50 }]" },
+    "idx": { "formula": "Math.floor(Math.random() * scenarios.length)" },
+    "budget": { "formula": "scenarios[idx].budget" },
+    "w_price": { "formula": "scenarios[idx].w" },
+    "s_price": { "formula": "scenarios[idx].s" },
+    "w_str": { "formula": "w_price.toFixed(2)" },
+    "s_str": { "formula": "s_price.toFixed(2)" },
+    "x_int": { "formula": "Math.round(budget / w_price)" },
+    "y_int": { "formula": "Math.round(budget / s_price)" },
+    "px_x": { "formula": "60 + x_int * 10" },
+    "py_y": { "formula": "340 - y_int * 10" },
+    "grid_base": { "formula": "Array.from({length: 16}, (_, i) => { const offset = i * 20; const x = 60 + offset; const y = 340 - offset; const val = i * 2; const lbl = (i > 0 && i % 2 === 0) ? '<text x=\"' + x + '\" y=\"356\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#333\">' + val + '</text><text x=\"52\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#333\">' + val + '</text>' : ''; return '<line x1=\"' + x + '\" y1=\"40\" x2=\"' + x + '\" y2=\"340\" stroke=\"#dcdcdc\" stroke-width=\"1\"/><line x1=\"60\" y1=\"' + y + '\" x2=\"360\" y2=\"' + y + '\" stroke=\"#dcdcdc\" stroke-width=\"1\"/>' + lbl; }).join('') + '<line x1=\"60\" y1=\"340\" x2=\"365\" y2=\"340\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"60\" y1=\"340\" x2=\"60\" y2=\"35\" stroke=\"#222\" stroke-width=\"2\"/><text x=\"52\" y=\"356\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#333\">0</text><text x=\"210\" y=\"382\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#222\">Bottles of Water (x)</text><text x=\"18\" y=\"190\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#222\" transform=\"rotate(-90 18 190)\">Sports Drinks (y)</text>'" },
+    "blank_graph_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 400\" role=\"img\" aria-label=\"First-quadrant coordinate plane for graphing drink combinations\" style=\"width:100%;max-width:400px;height:auto\"><rect x=\"60\" y=\"40\" width=\"300\" height=\"300\" fill=\"white\" stroke=\"#999\"/>' + grid_base + '</svg>'" },
+    "answer_graph_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 400\" role=\"img\" aria-label=\"Graphed inequality showing shaded feasible region and labeled intercepts\" style=\"width:100%;max-width:400px;height:auto\"><rect x=\"60\" y=\"40\" width=\"300\" height=\"300\" fill=\"white\" stroke=\"#999\"/>' + grid_base + '<polygon points=\"60,340 ' + px_x + ',340 60,' + py_y + '\" fill=\"rgba(37, 99, 235, 0.22)\"/><line x1=\"60\" y1=\"' + py_y + '\" x2=\"' + px_x + '\" y2=\"340\" stroke=\"#2563eb\" stroke-width=\"2.5\"/><circle cx=\"60\" cy=\"' + py_y + '\" r=\"4.5\" fill=\"#d9534f\"/><circle cx=\"' + px_x + '\" cy=\"340\" r=\"4.5\" fill=\"#d9534f\"/><text x=\"68\" y=\"' + (py_y - 6) + '\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#d9534f\">(0, ' + y_int + ')</text><text x=\"' + px_x + '\" y=\"328\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#d9534f\">(' + x_int + ', 0)</text></svg>'" }
+  },
+  "question": "Dominique can spend up to \\( \\${budget} \\) to provide the dance squad with drinks after their practice. A bottle of water costs \\( \\${w_str} \\), and a sports drink costs \\( \\${s_str} \\). How many bottles of water and sports drinks can Dominique buy for the dance squad? Plot the solution on the coordinate plane provided and mark and label the intercepts.<br><br>{blank_graph_svg}",
+  "answer": "<b>Step 1: Define variables and write the inequality</b><br>Let \\( x \\) = number of bottles of water and \\( y \\) = number of sports drinks.<br>Since Dominique can spend <i>up to</i> \\( \\${budget} \\):<br><b>\\( {w_str}x + {s_str}y \\le {budget} \\)</b> (with \\( x \\ge 0 \\) and \\( y \\ge 0 \\))<br><br><b>Step 2: Find and label the intercepts</b><br>• <b>x-intercept</b> (set \\( y = 0 \\)): \\( {w_str}x = {budget} \\implies x = \\frac{{budget}}{{w_str}} = {x_int} \\) &rarr; <b>\\( ({x_int}, 0) \\)</b> (up to {x_int} bottles of water and 0 sports drinks)<br>• <b>y-intercept</b> (set \\( x = 0 \\)): \\( {s_str}y = {budget} \\implies y = \\frac{{budget}}{{s_str}} = {y_int} \\) &rarr; <b>\\( (0, {y_int}) \\)</b> (0 bottles of water and up to {y_int} sports drinks)<br><br><b>Step 3: Graph the solution region</b><br>Draw a solid boundary line connecting \\( (0, {y_int}) \\) and \\( ({x_int}, 0) \\), and shade the triangular region below the line in the first quadrant. Any whole-number coordinate pair \\( (x, y) \\) inside or on the boundary of the shaded region represents a valid combination of drinks Dominique can buy:<br><br>{answer_graph_svg}"
 },
 {
   "id": "Key 8-1 B Scientific Notation Addition and Subtraction",
