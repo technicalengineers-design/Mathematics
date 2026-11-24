@@ -6358,8 +6358,404 @@
 }
     ],
     "Summative 1": [
- 
-    ],
+      {
+      "id": "Sum 1.2 B Evaluate Expression",
+      "type": "template",
+      "objective": "Evaluate a quadratic expression",
+      "difficulty": "basic",
+      "variables": {
+        "x": {
+          "min": -7,
+          "max": -1
+        },
+        "a": {
+          "min": 2,
+          "max": 10
+        },
+        "b": {
+          "min": 2,
+          "max": 10
+        },
+        "c": {
+          "min": 2,
+          "max": 10
+        },
+        "result": {
+          "formula": "a * x**2 + b * x + c"
+        }
+      },
+      "question": "Evaluate: \\( {a|coef}x^2 {b|signedCoef}x {c|sign} \\) when \\( x = {x} \\).",
+      "answer": "\\({result}\\)"
+    },
+      {
+        "id": "Sum 1.2 I Evaluate Expressions",
+        "type": "template",
+        "objective": "Evaluate algebraic expressions",
+        "difficulty": "intermediate",
+        "variables": {
+          "x1": { "min": 1, "max": 5 },
+          "y1": { "min": -3, "max": 3, "exclude": [0] },
+          "a1": { "min": 2, "max": 10 },
+          "b1": { "min": 2, "max": 10 },
+          "c1": { "min": 2, "max": 10, "exclude": ["a1", "b1"] },
+          "result1": { "formula": "a1 * (x1 - b1)**2 + c1 * y1" },
+          "x2": { "min": -10, "max": 10, "exclude": [0, 1] },
+          "y2": { "min": 2, "max": 5 },
+          "a2": { "min": 2, "max": 10, "exclude": ["x2"] },
+          "b2": { "min": 2, "max": 10 },
+          "c2": { "min": 2, "max": 10, "exclude": ["a2", "b2"] },
+          "result2": { "formula": "(x2 - a2) / (b2 + c2 * y2)", "format": "auto" }
+        },
+        "question": "Evaluate each expression:<div style=\"display:flex;flex-wrap:nowrap;gap:24px;align-items:flex-start;width:100%;\"><div style=\"flex:1;min-width:0;\"><b>A)</b> \\( {a1|coef}(x - {b1})^2 {c1|signedCoef}y \\) when \\( x = {x1}, y = {y1} \\).</div><div style=\"flex:1;min-width:0;\"><b>B)</b> \\( \\frac{x - {a2}}{{b2}{c2|signedCoef}y} \\) when \\( x = {x2}, y = {y2} \\).</div></div>",
+        "answer": "<div style=\"display:flex;flex-wrap:nowrap;gap:24px;align-items:flex-start;width:100%;\"><div style=\"flex:1;min-width:0;\"><b>A)</b> \\({result1}\\)</div><div style=\"flex:1;min-width:0;\"><b>B)</b> \\({result2}\\)</div></div>"
+      },
+      {
+        "id": "Sum 1.5 A Absolute Value",
+        "type": "template",
+        "objective": "Evaluate absolute value expressions with squared terms",
+        "difficulty": "advanced",
+        "variables": {
+          "a_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+          "x_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+          "c_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+          "y_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+          "z_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+          "f_num": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+          "a": { "formula": "'' + a_num" },
+          "x": { "formula": "'' + x_num" },
+          "c": { "formula": "'' + c_num" },
+          "y": { "formula": "'' + y_num" },
+          "z": { "formula": "'' + z_num" },
+          "f": { "formula": "'' + f_num" },
+          "square_order": { "formula": "Math.random() < 0.5" },
+          "square_terms": { "formula": "square_order ? 'x^2 - z^2' : 'z^2 - x^2'" },
+          "square_result": { "formula": "square_order ? x_num**2 - z_num**2 : z_num**2 - x_num**2" },
+          "diff": { "formula": "'' + Number((a_num - x_num).toFixed(2))" },
+          "abs_diff": { "formula": "'' + Math.abs(a_num - x_num)" },
+          "frac1_val": { "formula": "'' + Number((c_num / y_num).toFixed(4))" },
+          "frac2_val": { "formula": "'' + Number((z_num / f_num).toFixed(4))" },
+          "frac_sum": { "formula": "'' + Number(((c_num / y_num) + (z_num / f_num)).toFixed(4))" },
+          "abs_frac_sum": { "formula": "'' + Number(Math.abs((c_num / y_num) + (z_num / f_num)).toFixed(2))" },
+          "result": { "formula": "'' + Number((Math.abs(a_num - x_num) + Math.abs((c_num / y_num) + (z_num / f_num)) + (square_order ? x_num**2 - z_num**2 : z_num**2 - x_num**2)).toFixed(2))" }
+        },
+        "question": "Evaluate the expression: \\( |a - x| + \\left|\\dfrac{c\\,}{y\\,} + \\dfrac{z\\,}{f\\,}\\right| + {square_terms} \\)<br><br>Given values: a = {a}, x = {x}, c = {c}, y = {y}, z = {z}, f = {f}<br><br>*(Round your final answer to two decimal places if necessary)*",
+        "answer": "Step 1: Substitute the given values:<br>\\( |{a} - ({x})| + \\left|\\dfrac{{{c}}}{{{y}}} + \\dfrac{{{z}}}{{{f}}}\\right| + {square_terms} \\)<br><br>Step 2: Evaluate the squared terms:<br>\\( {square_terms} = {square_result} \\)<br><br>Step 3: Evaluate and combine the parts:<br>\\( {abs_diff} + {abs_frac_sum} + {square_result} = {result} \\)"
+      },
+      {
+        "id": "Sum 2.4 B Solve for a Variable",
+        "type": "template",
+        "objective": "Solving Equations with the Variable on Each Side",
+        "difficulty": "basic",
+        "variables": {
+          "case_selector": {
+            "formula": "Math.floor(Math.random() * 10)"
+          },
+          "a": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0,
+              1,
+              -1
+            ]
+          },
+          "b": {
+            "formula": "case_selector < 2 ? 2 : [-10,-9,-8,-7,-6,-5,-4,-3,-2,2,3,4,5,6,7,8,9,10][Math.floor(Math.random() * 18)]"
+          },
+          "c": {
+            "formula": "case_selector < 2 ? a : (function(values) { var choices = values.filter(function(value) { return value !== a; }); return choices[Math.floor(Math.random() * choices.length)]; })([-10,-9,-8,-7,-6,-5,-4,-3,-2,2,3,4,5,6,7,8,9,10])"
+          },
+          "d": {
+            "formula": "case_selector === 0 ? -b : case_selector === 1 ? b : [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10][Math.floor(Math.random() * 20)]"
+          },
+          "x": {
+            "formula": "(b + d) / (c - a).toFixed(2)"
+          },
+          "xnum": {
+            "formula": "b + d"
+          },
+          "xden": {
+            "formula": "c - a"
+          },
+          "gcd": {
+            "formula": "(function gcd(x, y) { return y === 0 ? Math.abs(x) : gcd(y, x % y); })(xnum, xden)"
+          },
+          "final_num": {
+            "formula": "(xnum / gcd) * (xden < 0 ? -1 : 1)"
+          },
+          "final_den": {
+            "formula": "Math.abs(xden / gcd)"
+          },
+          "fraction": {
+            "formula": "final_den === 1 ? '' + final_num : '\\\\frac{' + final_num + '}{' + final_den + '}'"
+          },
+          "repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(final_num, final_den)"
+          },
+          "answer_text": {
+            "formula": "c === a ? (b + d === 0 ? 'All real numbers' : 'No solution') : (final_den === 1 ? '\\\\( x = ' + fraction + ' \\\\)' : '\\\\( x = ' + fraction + ' \\\\) or \\\\( x = ' + repeating_decimal + ' \\\\)')"
+          }
+        },
+        "question": "Solve for x: <br> \\( {a}x + {b} = {c}x - {d} \\).",
+        "answer": "{answer_text}"
+      },
+      {
+        "id": "Sum 2.4 I Solve for a Variable",
+        "type": "template",
+        "objective": "Solving Equations with the Variable on Each Side",
+        "difficulty": "intermediate",
+        "variables": {
+          "case_selector": {
+            "formula": "Math.floor(Math.random() * 10)"
+          },
+          "a": {
+            "formula": "case_selector < 2 ? 4 : [-10,-9,-8,-7,-6,-5,-4,-3,-2,2,3,4,5,6,7,8,9,10][Math.floor(Math.random() * 18)]"
+          },
+          "b": {
+            "formula": "case_selector < 2 ? 2 : 2 + Math.floor(Math.random() * 9)"
+          },
+          "c": {
+            "formula": "case_selector < 2 ? 2 : 2 + Math.floor(Math.random() * 9)"
+          },
+          "d": {
+            "formula": "case_selector === 0 ? 12 : case_selector === 1 ? 9 : 2 + Math.floor(Math.random() * 9)"
+          },
+          "e": {
+            "formula": "case_selector < 2 ? 2 : (function(values) { var choices = values.filter(function(value) { return value !== a - c; }); return choices[Math.floor(Math.random() * choices.length)]; })([2,3,4,5,6,7,8,9,10])"
+          },
+          "f": {
+            "formula": "case_selector < 2 ? 2 : 2 + Math.floor(Math.random() * 9)"
+          },
+          "x": {
+            "formula": "(d - a * b - e * f) / (a - c - e).toFixed(2)"
+          },
+          "xnum": {
+            "formula": "d - a * b - e * f"
+          },
+          "xden": {
+            "formula": "a - c - e"
+          },
+          "gcd": {
+            "formula": "(function gcd(x, y) { return y === 0 ? Math.abs(x) : gcd(y, x % y); })(xnum, xden)"
+          },
+          "final_num": {
+            "formula": "(xnum / gcd) * (xden < 0 ? -1 : 1)"
+          },
+          "final_den": {
+            "formula": "Math.abs(xden / gcd)"
+          },
+          "fraction": {
+            "formula": "final_den === 1 ? '' + final_num : '\\\\frac{' + final_num + '}{' + final_den + '}'"
+          },
+          "repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(final_num, final_den)"
+          },
+          "answer_text": {
+            "formula": "xden === 0 ? (xnum === 0 ? 'All real numbers' : 'No solution') : (final_den === 1 ? '\\\\( x = ' + fraction + ' \\\\)' : '\\\\( x = ' + fraction + ' \\\\) or \\\\( x = ' + repeating_decimal + ' \\\\)')"
+          }
+        },
+        "question": "Solve for x: <br> \\( {a}(x + {b}) - {c}x = {d} + {e}(x - {f}) \\).",
+        "answer": "{answer_text}"
+      },
+      {
+        "id": "Sum 2.5 B Absolute Value Solve for a Variable",
+        "type": "template",
+        "objective": "Solving Equations Involving Absolute Value",
+        "difficulty": "basic",
+        "variables": {
+          "a": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0,
+              1,
+              -1
+            ]
+          },
+          "b": {
+            "min": 2,
+            "max": 10,
+            "exclude": [
+              0,
+              1,
+              -1
+            ]
+          },
+          "c": {
+            "min": 2,
+            "max": 15,
+            "exclude": [
+              -1,
+              0,
+              1
+            ]
+          },
+          "x1": {
+            "formula": "((c - b) / a)"
+          },
+          "x2": {
+            "formula": "((-c - b) / a)"
+          },
+          "root1_raw_num": {
+            "formula": "c-b"
+          },
+          "root1_raw_den": {
+            "formula": "a"
+          },
+          "root1_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root1_raw_num),Math.abs(root1_raw_den))"
+          },
+          "root1_final_num": {
+            "formula": "(root1_raw_num/root1_gcd)*(root1_raw_den<0?-1:1)"
+          },
+          "root1_final_den": {
+            "formula": "Math.abs(root1_raw_den/root1_gcd)"
+          },
+          "root1_fraction": {
+            "formula": "root1_final_den===1?''+root1_final_num:'\\\\frac{'+root1_final_num+'}{'+root1_final_den+'}'"
+          },
+          "root1_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root1_final_num, root1_final_den)"
+          },
+          "root1_answer": {
+            "formula": "root1_final_den===1?'\\\\( x = '+root1_fraction+' \\\\)':'\\\\( x = '+root1_fraction+' \\\\) or \\\\( x = '+root1_repeating_decimal+' \\\\)'"
+          },
+          "root2_raw_num": {
+            "formula": "-c-b"
+          },
+          "root2_raw_den": {
+            "formula": "a"
+          },
+          "root2_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root2_raw_num),Math.abs(root2_raw_den))"
+          },
+          "root2_final_num": {
+            "formula": "(root2_raw_num/root2_gcd)*(root2_raw_den<0?-1:1)"
+          },
+          "root2_final_den": {
+            "formula": "Math.abs(root2_raw_den/root2_gcd)"
+          },
+          "root2_fraction": {
+            "formula": "root2_final_den===1?''+root2_final_num:'\\\\frac{'+root2_final_num+'}{'+root2_final_den+'}'"
+          },
+          "root2_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root2_final_num, root2_final_den)"
+          },
+          "root2_answer": {
+            "formula": "root2_final_den===1?'\\\\( x = '+root2_fraction+' \\\\)':'\\\\( x = '+root2_fraction+' \\\\) or \\\\( x = '+root2_repeating_decimal+' \\\\)'"
+          },
+          "answer_text": {
+            "formula": "'Solutions: '+root1_answer+'; '+root2_answer"
+          }
+        },
+        "question": "Solve for x: <br> \\( |{a}x + {b}| = {c} \\).",
+        "answer": "{answer_text}"
+      },
+      {
+        "id": "Sum 2.5 I Absolute Value, Solve for a Variable",
+        "type": "template",
+        "objective": "Solving Equations Involving Absolute Value",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0,
+              1,
+              -1
+            ]
+          },
+          "b": {
+            "min": 2,
+            "max": 10,
+            "exclude": [
+              0,
+              1,
+              -1
+            ]
+          },
+          "c": {
+            "min": 2,
+            "max": 15,
+            "exclude": [
+              "a",
+              -1,
+              0,
+              1,
+              "-a"
+            ]
+          },
+          "d": {
+            "min": -10,
+            "max": 10,
+            "exclude": [
+              0,
+              1,
+              -1
+            ]
+          },
+          "x1": {
+            "formula": "((b - d) / (c - a)).toFixed(2)"
+          },
+          "x2": {
+            "formula": "((-b - d) / (c + a)).toFixed(2)"
+          },
+          "root1_raw_num": {
+            "formula": "b-d"
+          },
+          "root1_raw_den": {
+            "formula": "c-a"
+          },
+          "root1_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root1_raw_num),Math.abs(root1_raw_den))"
+          },
+          "root1_final_num": {
+            "formula": "(root1_raw_num/root1_gcd)*(root1_raw_den<0?-1:1)"
+          },
+          "root1_final_den": {
+            "formula": "Math.abs(root1_raw_den/root1_gcd)"
+          },
+          "root1_fraction": {
+            "formula": "root1_final_den===1?''+root1_final_num:'\\\\frac{'+root1_final_num+'}{'+root1_final_den+'}'"
+          },
+          "root1_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root1_final_num, root1_final_den)"
+          },
+          "root1_answer": {
+            "formula": "root1_final_den===1?'\\\\( x = '+root1_fraction+' \\\\)':'\\\\( x = '+root1_fraction+' \\\\) or \\\\( x = '+root1_repeating_decimal+' \\\\)'"
+          },
+          "root2_raw_num": {
+            "formula": "-b-d"
+          },
+          "root2_raw_den": {
+            "formula": "c+a"
+          },
+          "root2_gcd": {
+            "formula": "(function gcd(x,y){return y===0?Math.abs(x):gcd(y,x%y)})(Math.abs(root2_raw_num),Math.abs(root2_raw_den))"
+          },
+          "root2_final_num": {
+            "formula": "(root2_raw_num/root2_gcd)*(root2_raw_den<0?-1:1)"
+          },
+          "root2_final_den": {
+            "formula": "Math.abs(root2_raw_den/root2_gcd)"
+          },
+          "root2_fraction": {
+            "formula": "root2_final_den===1?''+root2_final_num:'\\\\frac{'+root2_final_num+'}{'+root2_final_den+'}'"
+          },
+          "root2_repeating_decimal": {
+            "formula": "(function(num, den) { var sign = num < 0 ? '-' : ''; num = Math.abs(num); var integerPart = Math.floor(num / den); var remainder = num % den; var seen = {}; var digits = ''; while (remainder !== 0 && seen[remainder] === undefined) { seen[remainder] = digits.length; remainder *= 10; digits += Math.floor(remainder / den); remainder %= den; } if (remainder === 0) return sign + integerPart + (digits.length ? '.' + digits : ''); var repeatStart = seen[remainder]; return sign + integerPart + '.' + digits.slice(0, repeatStart) + '\\\\overline{' + digits.slice(repeatStart) + '}'; })(root2_final_num, root2_final_den)"
+          },
+          "root2_answer": {
+            "formula": "root2_final_den===1?'\\\\( x = '+root2_fraction+' \\\\)':'\\\\( x = '+root2_fraction+' \\\\) or \\\\( x = '+root2_repeating_decimal+' \\\\)'"
+          },
+          "answer_text": {
+            "formula": "'Solutions: '+root1_answer+'; '+root2_answer"
+          }
+        },
+        "question": "Solve for x: <br> \\( |{a}x + {b}| = {c}x {d|sign} \\).",
+        "answer": "{answer_text}"
+      }    ],
     "Key 1": [
 {
   "id": "Key 1.1 Pies",
