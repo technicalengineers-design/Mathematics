@@ -6587,7 +6587,7 @@
   "answer": "{solution_steps}"
 },
 {
-  "id": "Key 2.1 B Counting",
+  "id": "Key 2.1a B Counting",
   "type": "template",
   "objective": "Tracking signed integers, multi-step adjustments, and count corrections to reconcile a total headcount",
   "difficulty": "basic",
@@ -6604,7 +6604,158 @@
   },
   "question": "{story_html}",
   "answer": "{solution_html}"
-}
+},
+{
+        "id": "Key 3.4 I Calculator - sketch and find intercepts",
+        "type": "template",
+        "objective": "Intercepts",
+        "difficulty": "intermediate",
+        "variables": {
+          "p": {
+            "min": -8,
+            "max": 8,
+            "exclude": [
+              0
+            ]
+          },
+          "q": {
+            "min": -8,
+            "max": 8,
+            "exclude": [
+              0
+            ]
+          },
+          "b": {
+            "formula": "-1*(p + q)"
+          },
+          "c": {
+            "formula": "p*q"
+          }
+        },
+        "question": "Use a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
+        "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
+      },
+      {
+        "id": "Key 3.5 I Calculator - sketch and find values of given points",
+        "type": "template",
+        "objective": "Shapes of Graphs",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": {
+            "values": [
+              2
+            ]
+          },
+          "r1": {
+            "min": -2,
+            "max": 2,
+            "exclude": [
+              0
+            ]
+          },
+          "r2": {
+            "min": -2,
+            "max": 2,
+            "exclude": [
+              0
+            ]
+          },
+          "b": {
+            "formula": "-3*(r1 + r2)"
+          },
+          "c": {
+            "formula": "6*r1*r2"
+          },
+          "d": {
+            "min": -2,
+            "max": 2,
+            "exclude": [
+              0
+            ]
+          },
+          "x1": {
+            "min": -3,
+            "max": 3
+          },
+          "x2": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              "x1"
+            ]
+          },
+          "x3": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              "x1",
+              "x2"
+            ]
+          },
+          "x4": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              "x1",
+              "x2",
+              "x3"
+            ]
+          },
+          "y1": {
+            "formula": "a * x1**3 + b * x1**2 + c * x1 + d"
+          },
+          "y2": {
+            "formula": "a * x2**3 + b * x2**2 + c * x2 + d"
+          },
+          "y3": {
+            "formula": "a * x3**3 + b * x3**2 + c * x3 + d"
+          },
+          "y4": {
+            "formula": "a * x4**3 + b * x4**2 + c * x4 + d"
+          }
+        },
+        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign}\\), then find the missing values: <br> a) \\( f({x1}) = ? \\) <br> b) \\( f({x2}) = ? \\) <br> c) \\( f(?) = {y3} \\) <br> d) \\( f(?) = {y4} \\)",
+        "answer": "a) \\( f({x1}) = {y1} \\) <br> b) \\( f({x2}) = {y2} \\) <br> c) \\( f({x3}) = {y3} \\) <br> d) \\( f({x4}) = {y4} \\)"
+      },
+      {
+        "id": "Key 3.5 A Calculator - sketch and specify where the function is increasing and positive",
+        "type": "template",
+        "objective": "Shapes of Graphs",
+        "difficulty": "advanced",
+        "variables": {
+          "a": {
+            "min": -1,
+            "max": 1,
+            "exclude": [
+              0
+            ]
+          },
+          "h": {
+            "min": -3,
+            "max": 3,
+            "exclude": [
+              0
+            ]
+          },
+          "k": {
+            "formula": "-a*4"
+          },
+          "b": {
+            "formula": "-2*a*h"
+          },
+          "c": {
+            "formula": "a * h**2 + k"
+          },
+          "z1": {
+            "formula": "h - 2"
+          },
+          "z2": {
+            "formula": "h + 2"
+          }
+        },
+        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.",
+        "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
+      }
     ],
     "Summative 1": [
       {
@@ -14389,159 +14540,6 @@
         },
         "question": "A rectangular garden has dimentions \\( ( x {r1|sign}) ft \\) by \\( ( x {r2|sign}) ft \\). Find the value of \\( x \\)  and the dimentions of the garden such that the area is equal to the perimeter. Round your answer to the nearest tenth. (Hint: area of a rectangle is given by \\( A = length \\cdot width \\) and the perimeter is given by \\( P = 2(length + width) \\).",
         "answer": "\\( x = {x1} \\) with dimentions \\( {width_1}\\) by \\( {length_1}\\)  or <br> \\( x = {x2} \\) with dimentions \\( {width_2}\\) by \\( {length_2}\\)"
-      }
-    ],
-    "Graphing Calculator": [
-      {
-        "id": "ALG1-3.4-I1 (optional)",
-        "type": "template",
-        "objective": "Intercepts",
-        "difficulty": "intermediate",
-        "variables": {
-          "p": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0
-            ]
-          },
-          "q": {
-            "min": -8,
-            "max": 8,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "formula": "-1*(p + q)"
-          },
-          "c": {
-            "formula": "p*q"
-          }
-        },
-        "question": "Use a table of values or a graphing calculator to see the graph of \\(f(x)\\), then state the x-intercepts and y-intercepts: <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
-        "answer": "x-intercepts: \\( ({p}, 0), ({q}, 0) \\) <br> y-intercept: \\( (0, {c}) \\)"
-      },
-      {
-        "id": "ALG1-3.5-B1 (optional)",
-        "type": "template",
-        "objective": "Shapes of Graphs",
-        "difficulty": "basic",
-        "variables": {
-          "a": {
-            "values": [
-              2
-            ]
-          },
-          "r1": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "r2": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "b": {
-            "formula": "-3*(r1 + r2)"
-          },
-          "c": {
-            "formula": "6*r1*r2"
-          },
-          "d": {
-            "min": -2,
-            "max": 2,
-            "exclude": [
-              0
-            ]
-          },
-          "x1": {
-            "min": -3,
-            "max": 3
-          },
-          "x2": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1"
-            ]
-          },
-          "x3": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1",
-              "x2"
-            ]
-          },
-          "x4": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              "x1",
-              "x2",
-              "x3"
-            ]
-          },
-          "y1": {
-            "formula": "a * x1**3 + b * x1**2 + c * x1 + d"
-          },
-          "y2": {
-            "formula": "a * x2**3 + b * x2**2 + c * x2 + d"
-          },
-          "y3": {
-            "formula": "a * x3**3 + b * x3**2 + c * x3 + d"
-          },
-          "y4": {
-            "formula": "a * x4**3 + b * x4**2 + c * x4 + d"
-          }
-        },
-        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign}\\), then find the missing values: <br> a) \\( f({x1}) = ? \\) <br> b) \\( f({x2}) = ? \\) <br> c) \\( f(?) = {y3} \\) <br> d) \\( f(?) = {y4} \\)",
-        "answer": "a) \\( f({x1}) = {y1} \\) <br> b) \\( f({x2}) = {y2} \\) <br> c) \\( f({x3}) = {y3} \\) <br> d) \\( f({x4}) = {y4} \\)"
-      },
-      {
-        "id": "ALG1-3.5-I1 (optional)",
-        "type": "template",
-        "objective": "Shapes of Graphs",
-        "difficulty": "intermediate",
-        "variables": {
-          "a": {
-            "min": -1,
-            "max": 1,
-            "exclude": [
-              0
-            ]
-          },
-          "h": {
-            "min": -3,
-            "max": 3,
-            "exclude": [
-              0
-            ]
-          },
-          "k": {
-            "formula": "-a*4"
-          },
-          "b": {
-            "formula": "-2*a*h"
-          },
-          "c": {
-            "formula": "a * h**2 + k"
-          },
-          "z1": {
-            "formula": "h - 2"
-          },
-          "z2": {
-            "formula": "h + 2"
-          }
-        },
-        "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.",
-        "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
       }
     ],
     "Module Mathematics Review": [
