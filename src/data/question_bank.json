@@ -6359,54 +6359,7 @@
     ],
     "Key 1": [
 {
-  "id": "Key 1.1 Pies",
-  "type": "template",
-  "objective": "Adding fractions with unlike denominators to compare two sets of quantities",
-  "difficulty": "basic",
-  "variables": {
-    "scenario": {
-      "formula": "(function(){var sets=[{setA:[{n:1,d:3},{n:1,d:4}],setB:[{n:2,d:5},{n:1,d:6}]},{setA:[{n:3,d:8},{n:1,d:3}],setB:[{n:2,d:5},{n:3,d:10}]},{setA:[{n:3,d:5},{n:1,d:6}],setB:[{n:1,d:2},{n:1,d:4}]},{setA:[{n:2,d:3},{n:1,d:8}],setB:[{n:3,d:4},{n:1,d:12}]},{setA:[{n:3,d:10},{n:2,d:5}],setB:[{n:1,d:2},{n:1,d:6}]},{setA:[{n:5,d:12},{n:1,d:3}],setB:[{n:1,d:2},{n:2,d:9}]},{setA:[{n:3,d:4},{n:1,d:10}],setB:[{n:2,d:5},{n:5,d:12}]},{setA:[{n:2,d:9},{n:1,d:2}],setB:[{n:3,d:8},{n:1,d:3}]}];var s=sets[Math.floor(Math.random()*sets.length)];if(Math.random()<0.5){var tmp=s.setA;s.setA=s.setB;s.setB=tmp;}return s;})()"
-    },
-    "pie_types": {
-      "formula": "(function(){var types=[{name:'Apple Pie',fill:'#d98a3c',crust:'#b5651d',accent:'#9c4a1a'},{name:'Cherry Pie',fill:'#b81d24',crust:'#c67d3b',accent:'#7a0c11'},{name:'Blueberry Pie',fill:'#354670',crust:'#c88141',accent:'#1f2a47'},{name:'Pumpkin Pie',fill:'#d36b27',crust:'#c98542',accent:'#a64d14'},{name:'Key Lime Pie',fill:'#9ab847',crust:'#d29b58',accent:'#75912b'},{name:'Chocolate Silk Pie',fill:'#4e3124',crust:'#b8773d',accent:'#331e15'},{name:'Lemon Meringue Pie',fill:'#f2cb46',crust:'#c77e3a',accent:'#d9a81e'},{name:'Peach Pie',fill:'#e8984c',crust:'#be7232',accent:'#c47227'}];for(var i=types.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=types[i];types[i]=types[j];types[j]=t;}return types.slice(0,4);})()"
-    },
-    "pies_html": {
-      "formula": "(function(){function drawPie(frac,pie){var r=54,cx=70,cy=70,ang=(frac.n/frac.d)*360,rad=(ang-90)*Math.PI/180,x=cx+r*Math.cos(rad),y=cy+r*Math.sin(rad),large=ang>180?1:0;var wedge=ang>=359.9?'<circle cx=\"'+cx+'\" cy=\"'+cy+'\" r=\"'+r+'\" fill=\"'+pie.fill+'\" stroke=\"'+pie.crust+'\" stroke-width=\"6\"/>':'<path d=\"M '+cx+' '+cy+' L '+cx+' '+(cy-r)+' A '+r+' '+r+' 0 '+large+' 1 '+x.toFixed(2)+' '+y.toFixed(2)+' Z\" fill=\"'+pie.fill+'\" stroke=\"'+pie.crust+'\" stroke-width=\"5\" stroke-linejoin=\"round\"/>';var lines='';for(var k=0;k<frac.d;k++){var a=(k*(360/frac.d)-90)*Math.PI/180;lines+='<line x1=\"'+cx+'\" y1=\"'+cy+'\" x2=\"'+(cx+r*Math.cos(a)).toFixed(2)+'\" y2=\"'+(cy+r*Math.sin(a)).toFixed(2)+'\" stroke=\"#ffffff\" stroke-width=\"1.2\" stroke-opacity=\"0.65\"/>';}var lx=cx+(r*0.52)*Math.cos(((ang/2)-90)*Math.PI/180),ly=cy+(r*0.52)*Math.sin(((ang/2)-90)*Math.PI/180);if(ang<55){lx=cx;ly=cy+32;}return '<div style=\"text-align:center;width:148px\"><svg width=\"140\" height=\"140\" viewBox=\"0 0 140 140\"><circle cx=\"'+cx+'\" cy=\"'+cy+'\" r=\"'+(r+4)+'\" fill=\"#f4f6f8\" stroke=\"#cbd5e1\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/>'+wedge+lines+'<rect x=\"'+(lx-21).toFixed(1)+'\" y=\"'+(ly-12).toFixed(1)+'\" width=\"42\" height=\"24\" rx=\"6\" fill=\"#ffffff\" fill-opacity=\"0.92\" stroke=\"#202b36\" stroke-width=\"1.5\"/><text x=\"'+lx.toFixed(1)+'\" y=\"'+(ly+5).toFixed(1)+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#202b36\">'+frac.n+'/'+frac.d+'</text></svg><div style=\"font-size:12px;font-weight:bold;color:#202b36;margin-top:2px\">'+pie.name+'</div></div>';}function renderSet(title,items,pList){return '<div style=\"flex:1;min-width:310px;border:2px solid #59636e;border-radius:8px;background:#ffffff;padding:12px\"><div style=\"text-align:center;font-weight:bold;font-size:15px;background:#e8eef3;padding:6px;border-radius:4px;margin-bottom:10px;color:#202b36\">'+title+'</div><div style=\"display:flex;justify-content:space-around;align-items:center;gap:8px\">'+drawPie(items[0],pList[0])+drawPie(items[1],pList[1])+'</div></div>';}return '<div style=\"display:flex;flex-wrap:wrap;gap:16px;width:100%;font-family:Arial,sans-serif;margin-top:10px\">'+renderSet('Set A',scenario.setA,[pie_types[0],pie_types[1]])+renderSet('Set B',scenario.setB,[pie_types[2],pie_types[3]])+'</div>';})()"
-    },
-    "solution_steps": {
-      "formula": "(function(){function gcd(a,b){return b===0?a:gcd(b,a%b);}function lcm(a,b){return (a*b)/gcd(a,b);}function solveSet(label,f1,f2,p1,p2){var cd=lcm(f1.d,f2.d),m1=cd/f1.d,m2=cd/f2.d,n1=f1.n*m1,n2=f2.n*m2,sumN=n1+n2,g=gcd(sumN,cd),simpN=sumN/g,simpD=cd/g;var step1='<b>'+label+' ('+p1.name+' + '+p2.name+'):</b> '+f1.n+'/'+f1.d+' + '+f2.n+'/'+f2.d;var step2='Find a common denominator of <b>'+cd+'</b>: ('+f1.n+' &times; '+m1+')/('+f1.d+' &times; '+m1+') + ('+f2.n+' &times; '+m2+')/('+f2.d+' &times; '+m2+') = <b>'+n1+'/'+cd+' + '+n2+'/'+cd+'</b>';var step3='Add the numerators: ('+n1+' + '+n2+')/'+cd+' = <b>'+sumN+'/'+cd+'</b>'+(g>1?' = <b>'+simpN+'/'+simpD+'</b>':'');return {sumN:sumN,cd:cd,simpN:simpN,simpD:simpD,html:'<div style=\"margin-bottom:12px;padding:10px;border:1px solid #cbd5e1;border-radius:6px;background:#f8fafc\">'+step1+'<br>&bull; '+step2+'<br>&bull; '+step3+'</div>'};}var resA=solveSet('Set A',scenario.setA[0],scenario.setA[1],pie_types[0],pie_types[1]);var resB=solveSet('Set B',scenario.setB[0],scenario.setB[1],pie_types[2],pie_types[3]);var compD=lcm(resA.simpD,resB.simpD),compA=resA.simpN*(compD/resA.simpD),compB=resB.simpN*(compD/resB.simpD);var moreSet=compA>compB?'Set A':'Set B';var lessSet=compA>compB?'Set B':'Set A';var moreFrac=compA>compB?(resA.simpN+'/'+resA.simpD):(resB.simpN+'/'+resB.simpD);var lessFrac=compA>compB?(resB.simpN+'/'+resB.simpD):(resA.simpN+'/'+resA.simpD);return '<div style=\"font-family:Arial,sans-serif;font-size:13px;color:#202b36\">'+resA.html+resB.html+'<div style=\"padding:10px;border:1px solid #59636e;border-radius:6px;background:#e8eef3\"><b>Compare the two totals:</b><br>&bull; Set A = '+resA.simpN+'/'+resA.simpD+' ('+compA+'/'+compD+')<br>&bull; Set B = '+resB.simpN+'/'+resB.simpD+' ('+compB+'/'+compD+')<br><br>Since <b>'+moreFrac+' &gt; '+lessFrac+'</b>, <b>'+moreSet+'</b> has slightly more pie.<br>To be generous and offer your friend slightly more, you choose <b>'+lessSet+'</b> for yourself (and give your friend <b>'+moreSet+'</b>).</div></div>';})()"
-    }
-  },
-  "question": "You and your friend would like to divide four pies evenly. You want to be generous and offer your friend slightly more. Which set of pies do you choose?<br>{pies_html}",
-  "answer": "{solution_steps}"
-},
-{
-  "id": "Key 1.2 Pies and 2 Friends",
-  "type": "template",
-  "objective": "Adding fractions with unlike denominators and comparing three sums to find the smallest total",
-  "difficulty": "basic",
-  "variables": {
-    "scenario": {
-      "formula": "(function(){var pools=[{a:[{n:1,d:3},{n:3,d:8}],b:[{n:1,d:4},{n:1,d:2}],c:[{n:2,d:5},{n:1,d:3}],lcd:120},{a:[{n:1,d:2},{n:1,d:5}],b:[{n:1,d:3},{n:2,d:5}],c:[{n:1,d:4},{n:1,d:2}],lcd:60},{a:[{n:3,d:8},{n:1,d:3}],b:[{n:1,d:2},{n:1,d:4}],c:[{n:1,d:3},{n:2,d:5}],lcd:120},{a:[{n:1,d:2},{n:1,d:6}],b:[{n:1,d:3},{n:3,d:8}],c:[{n:1,d:4},{n:1,d:2}],lcd:24},{a:[{n:2,d:5},{n:1,d:4}],b:[{n:1,d:3},{n:1,d:3}],c:[{n:3,d:8},{n:1,d:3}],lcd:120},{a:[{n:1,d:2},{n:1,d:8}],b:[{n:1,d:3},{n:1,d:3}],c:[{n:2,d:5},{n:1,d:4}],lcd:120},{a:[{n:3,d:8},{n:1,d:4}],b:[{n:1,d:3},{n:1,d:3}],c:[{n:2,d:5},{n:1,d:4}],lcd:120},{a:[{n:1,d:2},{n:1,d:6}],b:[{n:2,d:5},{n:3,d:10}],c:[{n:1,d:3},{n:3,d:8}],lcd:120}];var picked=pools[Math.floor(Math.random()*pools.length)];var sets=[{key:'A',pies:picked.a},{key:'B',pies:picked.b},{key:'C',pies:picked.c}];for(var i=sets.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=sets[i];sets[i]=sets[j];sets[j]=t;}var names=['Set A','Set B','Set C'];var result=sets.map(function(s,idx){var p1=s.pies[0],p2=s.pies[1];var f1=picked.lcd/p1.d,f2=picked.lcd/p2.d;var num1=p1.n*f1,num2=p2.n*f2,sumNum=num1+num2;function gcd(x,y){return y===0?x:gcd(y,x%y);}var g=gcd(sumNum,picked.lcd);var redN=sumNum/g,redD=picked.lcd/g;return {name:names[idx],p1:p1,p2:p2,f1:f1,f2:f2,num1:num1,num2:num2,sumNum:sumNum,lcd:picked.lcd,redN:redN,redD:redD,val:sumNum/picked.lcd};});return result;})()"
-    },
-    "pie_types": {
-      "formula": "(function(){var flavors=[{name:'Cherry Pie',fill:'#c0392b',crust:'#d4a359',rim:'#b8863b',text:'#ffffff'},{name:'Blueberry Pie',fill:'#2c3e80',crust:'#d9aa63',rim:'#bc8a3e',text:'#ffffff'},{name:'Pumpkin Pie',fill:'#d35400',crust:'#e0b46c',rim:'#c29348',text:'#ffffff'},{name:'Key Lime Pie',fill:'#7cb342',crust:'#dfc28d',rim:'#bfa06a',text:'#1f2d16'},{name:'Lemon Meringue',fill:'#f1c40f',crust:'#d6a75c',rim:'#b5853a',text:'#2c2200'},{name:'Pecan Pie',fill:'#6e3b1e',crust:'#d8a85e',rim:'#b8863c',text:'#ffffff'},{name:'Strawberry Rhubarb',fill:'#d81b60',crust:'#dfb168',rim:'#bf8e44',text:'#ffffff'},{name:'Chocolate Silk',fill:'#4e342e',crust:'#d4a359',rim:'#b07d34',text:'#ffffff'},{name:'Peach Cobbler Pie',fill:'#e67e22',crust:'#dcb06a',rim:'#bd8d46',text:'#ffffff'}];for(var i=flavors.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=flavors[i];flavors[i]=flavors[j];flavors[j]=t;}return flavors.slice(0,6);})()"
-    },
-    "least_set": {
-      "formula": "(function(){var minSet=scenario[0];for(var i=1;i<scenario.length;i++){if(scenario[i].val<minSet.val){minSet=scenario[i];}}return minSet;})()"
-    },
-    "pie_display": {
-      "formula": "(function(){function drawPie(frac,flavor){var angle=(frac.n/frac.d)*360;var rad=(angle-90)*Math.PI/180;var cx=65,cy=65,r=48;var x=cx+r*Math.cos(rad),y=cy+r*Math.sin(rad);var largeArc=angle>180?1:0;var path='M '+cx+' '+cy+' L '+cx+' '+(cy-r)+' A '+r+' '+r+' 0 '+largeArc+' 1 '+x.toFixed(2)+' '+y.toFixed(2)+' Z';var midRad=((angle/2)-90)*Math.PI/180;var lr=r*0.56;var lx=cx+lr*Math.cos(midRad),ly=cy+lr*Math.sin(midRad);return '<div style=\"text-align:center;width:132px\"><svg width=\"130\" height=\"130\" viewBox=\"0 0 130 130\"><circle cx=\"65\" cy=\"65\" r=\"56\" fill=\"#f4efe6\" stroke=\"#cbd5e1\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><circle cx=\"65\" cy=\"65\" r=\"54\" fill=\"none\" stroke=\"'+flavor.crust+'\" stroke-width=\"6\"/><path d=\"'+path+'\" fill=\"'+flavor.fill+'\" stroke=\"'+flavor.rim+'\" stroke-width=\"1.5\"/><text x=\"'+lx.toFixed(1)+'\" y=\"'+(ly+4).toFixed(1)+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"'+flavor.text+'\">'+frac.n+'/'+frac.d+'</text></svg><div style=\"font-size:11px;font-weight:bold;color:#334155;margin-top:2px\">'+flavor.name+'</div></div>';}var cards=scenario.map(function(s,idx){var f1=pie_types[idx*2],f2=pie_types[idx*2+1];return '<div style=\"border:2px solid #94a3b8;border-radius:10px;background:#ffffff;padding:10px 12px;flex:1;min-width:270px;box-sizing:border-box\"><div style=\"text-align:center;font-weight:bold;font-size:14px;color:#1e293b;background:#e8eef3;padding:5px;border-radius:6px;margin-bottom:8px\">'+s.name+'</div><div style=\"display:flex;justify-content:space-around;align-items:center;gap:6px\">'+drawPie(s.p1,f1)+drawPie(s.p2,f2)+'</div></div>';}).join('');return '<div style=\"display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:Arial,sans-serif;margin-top:10px\">'+cards+'</div>';})()"
-    },
-    "solution_steps": {
-      "formula": "(function(){var lcd=scenario[0].lcd;var steps=scenario.map(function(s){var step1='<b>'+s.name+':</b> '+s.p1.n+'/'+s.p1.d+' + '+s.p2.n+'/'+s.p2.d;var step2=' = ('+s.p1.n+' &times; '+s.f1+')/('+s.p1.d+' &times; '+s.f1+') + ('+s.p2.n+' &times; '+s.f2+')/('+s.p2.d+' &times; '+s.f2+')';var step3=' = '+s.num1+'/'+lcd+' + '+s.num2+'/'+lcd+' = <b>'+s.sumNum+'/'+lcd+'</b>';var simplified=(s.redD!==lcd)?' (which simplifies to <b>'+s.redN+'/'+s.redD+'</b>)':'';return '<li style=\"margin-bottom:8px\">'+step1+step2+step3+simplified+'</li>';}).join('');var sorted=scenario.slice().sort(function(a,b){return a.sumNum-b.sumNum;});var compareStr=sorted.map(function(s){return '<b>'+s.name+'</b> ('+s.sumNum+'/'+lcd+')';}).join(' &lt; ');return '<div style=\"font-family:Arial,sans-serif;font-size:14px;color:#202b36;line-height:1.5\"><p><b>Step 1: Find a common denominator</b><br>The least common denominator for all six pie fractions is <b>'+lcd+'</b>.</p><p><b>Step 2: Convert and add the fractions in each set</b></p><ul>'+steps+'</ul><p><b>Step 3: Compare the totals from least to greatest</b><br>'+compareStr+'</p><p style=\"background:#e8eef3;border-left:4px solid #202b36;padding:8px 12px\"><b>Conclusion:</b> Since <b>'+least_set.name+'</b> has the smallest total amount of pie (<b>'+least_set.redN+'/'+least_set.redD+'</b>), you should choose <b>'+least_set.name+'</b> for yourself so your two friends receive the two larger sets.</p></div>';})()"
-    }
-  },
-  "question": "You and two friends would like to divide six pies evenly. You want to be generous and offer your friends the two slightly larger sets while keeping the smallest set for yourself. Which set of pies do you choose?<br>{pie_display}",
-  "answer": "{solution_steps}"
-},
-{
-  "id": "Key 1.3 More Pies",
+  "id": "Key 1.3 B Pie Fractions",
   "type": "template",
   "objective": "Adding mixed numbers with unlike denominators and comparing sums",
   "difficulty": "basic",
@@ -6425,7 +6378,7 @@
   "answer": "{solution_steps}"
 },
 {
-  "id": "Key 1.4 Pie Sharing",
+  "id": "Key 1.3 I More Pie Fractions",
   "type": "template",
   "objective": "Adding mixed numbers and dividing by group size to compare unit rates (serving per person)",
   "difficulty": "intermediate",
@@ -6444,7 +6397,7 @@
   "answer": "{solution_steps}"
 },
 {
-  "id": "Key 2.1 Counting",
+  "id": "Key 2.1 B Counting",
   "type": "template",
   "objective": "Tracking signed integers, multi-step adjustments, and count corrections to reconcile a total headcount",
   "difficulty": "basic",
@@ -6463,7 +6416,7 @@
   "answer": "{solution_html}"
 },
 {
-  "id": "Key 2.2 Simplifying with a Calculator",
+  "id": "Key 1.1a B Simplifying with a Calculator",
   "type": "template",
   "objective": "Simplifying integer expressions involving signed numbers, addition, subtraction, and multiplication of grouped terms",
   "difficulty": "basic",
@@ -6482,7 +6435,7 @@
   "answer": "{solution_html}"
 },
 {
-  "id": "Key 2.3 B Simplify with a Calculator and Nested Parenthesis",
+  "id": "Key 1.1a I Simplify with a Calculator and Nested Parenthesis",
   "type": "template",
   "objective": "Simplifying multi-step numerical expressions with nested parentheses",
   "difficulty": "intermediate",
@@ -6501,7 +6454,7 @@
   "answer": "{solution_grid}"
 },
 {
-  "id": "Key 2.4 A Simplify with Exponents",
+  "id": "Key 1.1a A Simplify with Exponents",
   "type": "template",
   "objective": "Simplifying multi-step numerical expressions",
   "difficulty": "advanced",
@@ -6520,7 +6473,7 @@
   "answer": "{solution_grid}"
 },
 {
-  "id": "Key 2.4 A Simplify",
+  "id": "Key 1.1b A Simplify",
   "type": "template",
   "objective": "Simplifying numerical expressions with three levels of grouping symbols, exponents on negative bases vs. negative signs outside exponents",
   "difficulty": "advanced",
@@ -6539,7 +6492,7 @@
   "answer": "{solution_grid}"
 },
 {
-  "id": "Key 2.5 Simplify",
+  "id": "Key 1.1b Simplify",
   "type": "template",
   "objective": "Simplifying numerical expressions with one level of brackets, exponents of 2, and negative signs inside and outside exponents",
   "difficulty": "basic",
@@ -6558,7 +6511,7 @@
   "answer": "{solution_grid}"
 },
 {
-  "id": "Key 2.5 I Simplify",
+  "id": "Key 1.1b I Simplify",
   "type": "template",
   "objective": "Simplifying multi-step numerical expressions with twice-nested positive exponents and signed integers",
   "difficulty": "intermediate",
@@ -6577,7 +6530,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Key 2.5 A Simplify",
+  "id": "Key 1.1c A Simplify",
   "type": "template",
   "objective": "Simplify multi-tier exponential expressions using GEMDAS order of operations",
   "difficulty": "advanced",
@@ -6596,7 +6549,7 @@
   "answer": "{a_html}"
 },
 {
-  "id": "Key 2.5 Mathian",
+  "id": "Key 1.2 B Mathian",
   "type": "template",
   "objective": "Translating two-operation English sentences with signed numbers into algebraic equations",
   "difficulty": "basic",
@@ -6615,7 +6568,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Key 2.5 I Mathian",
+  "id": "Key 1.2 I Mathian",
   "type": "template",
   "objective": "Translating verbal English descriptions with three operations into algebraic equations",
   "difficulty": "intermediate",
@@ -6634,7 +6587,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Key 2.5 A Mathian",
+  "id": "Key 1.2 A Mathian",
   "type": "template",
   "objective": "Translating and solving multi-step real-world word problems with four to five operations into algebraic equations",
   "difficulty": "advanced",
@@ -6653,7 +6606,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Key 3.1 A Absolute Value",
+  "id": "REMOVE - Key 3.1 A Absolute Value",
   "type": "template",
   "objective": "Writing, Solving, and Graphing Real-World Absolute Value Inequalities",
   "difficulty": "advanced",
@@ -23895,7 +23848,53 @@
         },
         "question": "Identify what congruence postulate would be used to prove each pair congruent: SSS, SAS, ASA, or AAS.<br><br>{diagram}",
         "answer": "{solution}"
-      }
-    ]
+      },
+{
+  "id": "Key 1.1 Pies",
+  "type": "template",
+  "objective": "Adding fractions with unlike denominators to compare two sets of quantities",
+  "difficulty": "basic",
+  "variables": {
+    "scenario": {
+      "formula": "(function(){var sets=[{setA:[{n:1,d:3},{n:1,d:4}],setB:[{n:2,d:5},{n:1,d:6}]},{setA:[{n:3,d:8},{n:1,d:3}],setB:[{n:2,d:5},{n:3,d:10}]},{setA:[{n:3,d:5},{n:1,d:6}],setB:[{n:1,d:2},{n:1,d:4}]},{setA:[{n:2,d:3},{n:1,d:8}],setB:[{n:3,d:4},{n:1,d:12}]},{setA:[{n:3,d:10},{n:2,d:5}],setB:[{n:1,d:2},{n:1,d:6}]},{setA:[{n:5,d:12},{n:1,d:3}],setB:[{n:1,d:2},{n:2,d:9}]},{setA:[{n:3,d:4},{n:1,d:10}],setB:[{n:2,d:5},{n:5,d:12}]},{setA:[{n:2,d:9},{n:1,d:2}],setB:[{n:3,d:8},{n:1,d:3}]}];var s=sets[Math.floor(Math.random()*sets.length)];if(Math.random()<0.5){var tmp=s.setA;s.setA=s.setB;s.setB=tmp;}return s;})()"
+    },
+    "pie_types": {
+      "formula": "(function(){var types=[{name:'Apple Pie',fill:'#d98a3c',crust:'#b5651d',accent:'#9c4a1a'},{name:'Cherry Pie',fill:'#b81d24',crust:'#c67d3b',accent:'#7a0c11'},{name:'Blueberry Pie',fill:'#354670',crust:'#c88141',accent:'#1f2a47'},{name:'Pumpkin Pie',fill:'#d36b27',crust:'#c98542',accent:'#a64d14'},{name:'Key Lime Pie',fill:'#9ab847',crust:'#d29b58',accent:'#75912b'},{name:'Chocolate Silk Pie',fill:'#4e3124',crust:'#b8773d',accent:'#331e15'},{name:'Lemon Meringue Pie',fill:'#f2cb46',crust:'#c77e3a',accent:'#d9a81e'},{name:'Peach Pie',fill:'#e8984c',crust:'#be7232',accent:'#c47227'}];for(var i=types.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=types[i];types[i]=types[j];types[j]=t;}return types.slice(0,4);})()"
+    },
+    "pies_html": {
+      "formula": "(function(){function drawPie(frac,pie){var r=54,cx=70,cy=70,ang=(frac.n/frac.d)*360,rad=(ang-90)*Math.PI/180,x=cx+r*Math.cos(rad),y=cy+r*Math.sin(rad),large=ang>180?1:0;var wedge=ang>=359.9?'<circle cx=\"'+cx+'\" cy=\"'+cy+'\" r=\"'+r+'\" fill=\"'+pie.fill+'\" stroke=\"'+pie.crust+'\" stroke-width=\"6\"/>':'<path d=\"M '+cx+' '+cy+' L '+cx+' '+(cy-r)+' A '+r+' '+r+' 0 '+large+' 1 '+x.toFixed(2)+' '+y.toFixed(2)+' Z\" fill=\"'+pie.fill+'\" stroke=\"'+pie.crust+'\" stroke-width=\"5\" stroke-linejoin=\"round\"/>';var lines='';for(var k=0;k<frac.d;k++){var a=(k*(360/frac.d)-90)*Math.PI/180;lines+='<line x1=\"'+cx+'\" y1=\"'+cy+'\" x2=\"'+(cx+r*Math.cos(a)).toFixed(2)+'\" y2=\"'+(cy+r*Math.sin(a)).toFixed(2)+'\" stroke=\"#ffffff\" stroke-width=\"1.2\" stroke-opacity=\"0.65\"/>';}var lx=cx+(r*0.52)*Math.cos(((ang/2)-90)*Math.PI/180),ly=cy+(r*0.52)*Math.sin(((ang/2)-90)*Math.PI/180);if(ang<55){lx=cx;ly=cy+32;}return '<div style=\"text-align:center;width:148px\"><svg width=\"140\" height=\"140\" viewBox=\"0 0 140 140\"><circle cx=\"'+cx+'\" cy=\"'+cy+'\" r=\"'+(r+4)+'\" fill=\"#f4f6f8\" stroke=\"#cbd5e1\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/>'+wedge+lines+'<rect x=\"'+(lx-21).toFixed(1)+'\" y=\"'+(ly-12).toFixed(1)+'\" width=\"42\" height=\"24\" rx=\"6\" fill=\"#ffffff\" fill-opacity=\"0.92\" stroke=\"#202b36\" stroke-width=\"1.5\"/><text x=\"'+lx.toFixed(1)+'\" y=\"'+(ly+5).toFixed(1)+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#202b36\">'+frac.n+'/'+frac.d+'</text></svg><div style=\"font-size:12px;font-weight:bold;color:#202b36;margin-top:2px\">'+pie.name+'</div></div>';}function renderSet(title,items,pList){return '<div style=\"flex:1;min-width:310px;border:2px solid #59636e;border-radius:8px;background:#ffffff;padding:12px\"><div style=\"text-align:center;font-weight:bold;font-size:15px;background:#e8eef3;padding:6px;border-radius:4px;margin-bottom:10px;color:#202b36\">'+title+'</div><div style=\"display:flex;justify-content:space-around;align-items:center;gap:8px\">'+drawPie(items[0],pList[0])+drawPie(items[1],pList[1])+'</div></div>';}return '<div style=\"display:flex;flex-wrap:wrap;gap:16px;width:100%;font-family:Arial,sans-serif;margin-top:10px\">'+renderSet('Set A',scenario.setA,[pie_types[0],pie_types[1]])+renderSet('Set B',scenario.setB,[pie_types[2],pie_types[3]])+'</div>';})()"
+    },
+    "solution_steps": {
+      "formula": "(function(){function gcd(a,b){return b===0?a:gcd(b,a%b);}function lcm(a,b){return (a*b)/gcd(a,b);}function solveSet(label,f1,f2,p1,p2){var cd=lcm(f1.d,f2.d),m1=cd/f1.d,m2=cd/f2.d,n1=f1.n*m1,n2=f2.n*m2,sumN=n1+n2,g=gcd(sumN,cd),simpN=sumN/g,simpD=cd/g;var step1='<b>'+label+' ('+p1.name+' + '+p2.name+'):</b> '+f1.n+'/'+f1.d+' + '+f2.n+'/'+f2.d;var step2='Find a common denominator of <b>'+cd+'</b>: ('+f1.n+' &times; '+m1+')/('+f1.d+' &times; '+m1+') + ('+f2.n+' &times; '+m2+')/('+f2.d+' &times; '+m2+') = <b>'+n1+'/'+cd+' + '+n2+'/'+cd+'</b>';var step3='Add the numerators: ('+n1+' + '+n2+')/'+cd+' = <b>'+sumN+'/'+cd+'</b>'+(g>1?' = <b>'+simpN+'/'+simpD+'</b>':'');return {sumN:sumN,cd:cd,simpN:simpN,simpD:simpD,html:'<div style=\"margin-bottom:12px;padding:10px;border:1px solid #cbd5e1;border-radius:6px;background:#f8fafc\">'+step1+'<br>&bull; '+step2+'<br>&bull; '+step3+'</div>'};}var resA=solveSet('Set A',scenario.setA[0],scenario.setA[1],pie_types[0],pie_types[1]);var resB=solveSet('Set B',scenario.setB[0],scenario.setB[1],pie_types[2],pie_types[3]);var compD=lcm(resA.simpD,resB.simpD),compA=resA.simpN*(compD/resA.simpD),compB=resB.simpN*(compD/resB.simpD);var moreSet=compA>compB?'Set A':'Set B';var lessSet=compA>compB?'Set B':'Set A';var moreFrac=compA>compB?(resA.simpN+'/'+resA.simpD):(resB.simpN+'/'+resB.simpD);var lessFrac=compA>compB?(resB.simpN+'/'+resB.simpD):(resA.simpN+'/'+resA.simpD);return '<div style=\"font-family:Arial,sans-serif;font-size:13px;color:#202b36\">'+resA.html+resB.html+'<div style=\"padding:10px;border:1px solid #59636e;border-radius:6px;background:#e8eef3\"><b>Compare the two totals:</b><br>&bull; Set A = '+resA.simpN+'/'+resA.simpD+' ('+compA+'/'+compD+')<br>&bull; Set B = '+resB.simpN+'/'+resB.simpD+' ('+compB+'/'+compD+')<br><br>Since <b>'+moreFrac+' &gt; '+lessFrac+'</b>, <b>'+moreSet+'</b> has slightly more pie.<br>To be generous and offer your friend slightly more, you choose <b>'+lessSet+'</b> for yourself (and give your friend <b>'+moreSet+'</b>).</div></div>';})()"
+    }
+  },
+  "question": "You and your friend would like to divide four pies evenly. You want to be generous and offer your friend slightly more. Which set of pies do you choose?<br>{pies_html}",
+  "answer": "{solution_steps}"
+},
+{
+  "id": "Key 1.2 Pies and 2 Friends",
+  "type": "template",
+  "objective": "Adding fractions with unlike denominators and comparing three sums to find the smallest total",
+  "difficulty": "basic",
+  "variables": {
+    "scenario": {
+      "formula": "(function(){var pools=[{a:[{n:1,d:3},{n:3,d:8}],b:[{n:1,d:4},{n:1,d:2}],c:[{n:2,d:5},{n:1,d:3}],lcd:120},{a:[{n:1,d:2},{n:1,d:5}],b:[{n:1,d:3},{n:2,d:5}],c:[{n:1,d:4},{n:1,d:2}],lcd:60},{a:[{n:3,d:8},{n:1,d:3}],b:[{n:1,d:2},{n:1,d:4}],c:[{n:1,d:3},{n:2,d:5}],lcd:120},{a:[{n:1,d:2},{n:1,d:6}],b:[{n:1,d:3},{n:3,d:8}],c:[{n:1,d:4},{n:1,d:2}],lcd:24},{a:[{n:2,d:5},{n:1,d:4}],b:[{n:1,d:3},{n:1,d:3}],c:[{n:3,d:8},{n:1,d:3}],lcd:120},{a:[{n:1,d:2},{n:1,d:8}],b:[{n:1,d:3},{n:1,d:3}],c:[{n:2,d:5},{n:1,d:4}],lcd:120},{a:[{n:3,d:8},{n:1,d:4}],b:[{n:1,d:3},{n:1,d:3}],c:[{n:2,d:5},{n:1,d:4}],lcd:120},{a:[{n:1,d:2},{n:1,d:6}],b:[{n:2,d:5},{n:3,d:10}],c:[{n:1,d:3},{n:3,d:8}],lcd:120}];var picked=pools[Math.floor(Math.random()*pools.length)];var sets=[{key:'A',pies:picked.a},{key:'B',pies:picked.b},{key:'C',pies:picked.c}];for(var i=sets.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=sets[i];sets[i]=sets[j];sets[j]=t;}var names=['Set A','Set B','Set C'];var result=sets.map(function(s,idx){var p1=s.pies[0],p2=s.pies[1];var f1=picked.lcd/p1.d,f2=picked.lcd/p2.d;var num1=p1.n*f1,num2=p2.n*f2,sumNum=num1+num2;function gcd(x,y){return y===0?x:gcd(y,x%y);}var g=gcd(sumNum,picked.lcd);var redN=sumNum/g,redD=picked.lcd/g;return {name:names[idx],p1:p1,p2:p2,f1:f1,f2:f2,num1:num1,num2:num2,sumNum:sumNum,lcd:picked.lcd,redN:redN,redD:redD,val:sumNum/picked.lcd};});return result;})()"
+    },
+    "pie_types": {
+      "formula": "(function(){var flavors=[{name:'Cherry Pie',fill:'#c0392b',crust:'#d4a359',rim:'#b8863b',text:'#ffffff'},{name:'Blueberry Pie',fill:'#2c3e80',crust:'#d9aa63',rim:'#bc8a3e',text:'#ffffff'},{name:'Pumpkin Pie',fill:'#d35400',crust:'#e0b46c',rim:'#c29348',text:'#ffffff'},{name:'Key Lime Pie',fill:'#7cb342',crust:'#dfc28d',rim:'#bfa06a',text:'#1f2d16'},{name:'Lemon Meringue',fill:'#f1c40f',crust:'#d6a75c',rim:'#b5853a',text:'#2c2200'},{name:'Pecan Pie',fill:'#6e3b1e',crust:'#d8a85e',rim:'#b8863c',text:'#ffffff'},{name:'Strawberry Rhubarb',fill:'#d81b60',crust:'#dfb168',rim:'#bf8e44',text:'#ffffff'},{name:'Chocolate Silk',fill:'#4e342e',crust:'#d4a359',rim:'#b07d34',text:'#ffffff'},{name:'Peach Cobbler Pie',fill:'#e67e22',crust:'#dcb06a',rim:'#bd8d46',text:'#ffffff'}];for(var i=flavors.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=flavors[i];flavors[i]=flavors[j];flavors[j]=t;}return flavors.slice(0,6);})()"
+    },
+    "least_set": {
+      "formula": "(function(){var minSet=scenario[0];for(var i=1;i<scenario.length;i++){if(scenario[i].val<minSet.val){minSet=scenario[i];}}return minSet;})()"
+    },
+    "pie_display": {
+      "formula": "(function(){function drawPie(frac,flavor){var angle=(frac.n/frac.d)*360;var rad=(angle-90)*Math.PI/180;var cx=65,cy=65,r=48;var x=cx+r*Math.cos(rad),y=cy+r*Math.sin(rad);var largeArc=angle>180?1:0;var path='M '+cx+' '+cy+' L '+cx+' '+(cy-r)+' A '+r+' '+r+' 0 '+largeArc+' 1 '+x.toFixed(2)+' '+y.toFixed(2)+' Z';var midRad=((angle/2)-90)*Math.PI/180;var lr=r*0.56;var lx=cx+lr*Math.cos(midRad),ly=cy+lr*Math.sin(midRad);return '<div style=\"text-align:center;width:132px\"><svg width=\"130\" height=\"130\" viewBox=\"0 0 130 130\"><circle cx=\"65\" cy=\"65\" r=\"56\" fill=\"#f4efe6\" stroke=\"#cbd5e1\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><circle cx=\"65\" cy=\"65\" r=\"54\" fill=\"none\" stroke=\"'+flavor.crust+'\" stroke-width=\"6\"/><path d=\"'+path+'\" fill=\"'+flavor.fill+'\" stroke=\"'+flavor.rim+'\" stroke-width=\"1.5\"/><text x=\"'+lx.toFixed(1)+'\" y=\"'+(ly+4).toFixed(1)+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"'+flavor.text+'\">'+frac.n+'/'+frac.d+'</text></svg><div style=\"font-size:11px;font-weight:bold;color:#334155;margin-top:2px\">'+flavor.name+'</div></div>';}var cards=scenario.map(function(s,idx){var f1=pie_types[idx*2],f2=pie_types[idx*2+1];return '<div style=\"border:2px solid #94a3b8;border-radius:10px;background:#ffffff;padding:10px 12px;flex:1;min-width:270px;box-sizing:border-box\"><div style=\"text-align:center;font-weight:bold;font-size:14px;color:#1e293b;background:#e8eef3;padding:5px;border-radius:6px;margin-bottom:8px\">'+s.name+'</div><div style=\"display:flex;justify-content:space-around;align-items:center;gap:6px\">'+drawPie(s.p1,f1)+drawPie(s.p2,f2)+'</div></div>';}).join('');return '<div style=\"display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:Arial,sans-serif;margin-top:10px\">'+cards+'</div>';})()"
+    },
+    "solution_steps": {
+      "formula": "(function(){var lcd=scenario[0].lcd;var steps=scenario.map(function(s){var step1='<b>'+s.name+':</b> '+s.p1.n+'/'+s.p1.d+' + '+s.p2.n+'/'+s.p2.d;var step2=' = ('+s.p1.n+' &times; '+s.f1+')/('+s.p1.d+' &times; '+s.f1+') + ('+s.p2.n+' &times; '+s.f2+')/('+s.p2.d+' &times; '+s.f2+')';var step3=' = '+s.num1+'/'+lcd+' + '+s.num2+'/'+lcd+' = <b>'+s.sumNum+'/'+lcd+'</b>';var simplified=(s.redD!==lcd)?' (which simplifies to <b>'+s.redN+'/'+s.redD+'</b>)':'';return '<li style=\"margin-bottom:8px\">'+step1+step2+step3+simplified+'</li>';}).join('');var sorted=scenario.slice().sort(function(a,b){return a.sumNum-b.sumNum;});var compareStr=sorted.map(function(s){return '<b>'+s.name+'</b> ('+s.sumNum+'/'+lcd+')';}).join(' &lt; ');return '<div style=\"font-family:Arial,sans-serif;font-size:14px;color:#202b36;line-height:1.5\"><p><b>Step 1: Find a common denominator</b><br>The least common denominator for all six pie fractions is <b>'+lcd+'</b>.</p><p><b>Step 2: Convert and add the fractions in each set</b></p><ul>'+steps+'</ul><p><b>Step 3: Compare the totals from least to greatest</b><br>'+compareStr+'</p><p style=\"background:#e8eef3;border-left:4px solid #202b36;padding:8px 12px\"><b>Conclusion:</b> Since <b>'+least_set.name+'</b> has the smallest total amount of pie (<b>'+least_set.redN+'/'+least_set.redD+'</b>), you should choose <b>'+least_set.name+'</b> for yourself so your two friends receive the two larger sets.</p></div>';})()"
+    }
+  },
+  "question": "You and two friends would like to divide six pies evenly. You want to be generous and offer your friends the two slightly larger sets while keeping the smallest set for yourself. Which set of pies do you choose?<br>{pie_display}",
+  "answer": "{solution_steps}"
+}]
   }
 }
