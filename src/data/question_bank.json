@@ -6530,7 +6530,9 @@
   "answer": "{a_html}"
 },
 {
-  "name": "Key 1-1d A Area and Perimeter of a Rectangle",
+  "id": "Key 1-1d A Area and Perimeter of a Rectangle",
+  "type": "template",
+  "objective": "Calculate the area and perimeter of a rectangle given its dimensions.",
   "difficulty": "advanced",
   "variables": {
     "data": {
@@ -6681,6 +6683,42 @@
   },
   "question": "Your friends will be taking home pie to their siblings, one to one sibling, so receives Set B, and the other to two siblings, so receives Set A. Which family received the most pie per person? (show all work){pie_display}",
   "answer": "{solution_steps}"
+},
+{
+  "id": "Key 1-6 I At the Pump",
+  "title": "Key 1-6 I At the Pump",
+  "difficulty": "intermediate",
+  "variables": {
+    "data": {
+      "formula": "(function() { var pick = function(arr) { return arr[Math.floor(Math.random() * arr.length)]; }; var names = ['Maya', 'Jordan', 'Elena', 'Caleb', 'Tessa', 'Noah', 'Priya', 'Devon', 'Chloe', 'Mateo', 'Nadia', 'Lucas']; var vehicles = ['sedan', 'SUV', 'pickup truck', 'minivan', 'compact car', 'delivery van']; var name = pick(names); var vehicle = pick(vehicles); var dollars = 2 + Math.floor(Math.random() * 4); var cents = 10 + Math.floor(Math.random() * 80); var centsStr = (cents < 10 ? '0' : '') + cents; var basePrice = dollars + cents / 100; var exactPrice = Math.round((basePrice + 0.009) * 1000) / 1000; var priceDisplay = '$' + dollars + '.' + centsStr + ' <sup>9</sup>&frasl;<sub>10</sub>'; var exactPriceStr = '$' + exactPrice.toFixed(3); var budget = 20 + Math.floor(Math.random() * 61); var budgetStr = '$' + budget.toFixed(2); var rawGallons = budget / exactPrice; var gallons2 = rawGallons.toFixed(2); var gallons3 = rawGallons.toFixed(3); var q = '<div style=\"font-size:15px;line-height:1.5;color:#111;\">' + name + ' stops at a gas station to fill up a ' + vehicle + '. Regular unleaded gasoline is priced at <b>' + priceDisplay + '</b> per gallon, and ' + name + ' has <b>' + budgetStr + '</b> to spend. How many gallons of gas can ' + name + ' purchase? (Round to the nearest hundredth of a gallon.)' + '<div style=\"height:120px;\"></div>' + '</div>'; var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">' + '<div><b>Step 1 &mdash; Convert the price per gallon to a decimal:</b></div>' + '<div style=\"margin-left:14px;\"><sup>9</sup>&frasl;<sub>10</sub> of a cent = $0.009, so ' + priceDisplay + ' = <b>' + exactPriceStr + ' per gallon</b></div>' + '<div style=\"margin-top:6px;\"><b>Step 2 &mdash; Divide the available money by the price per gallon:</b></div>' + '<div style=\"margin-left:14px;\">Gallons = ' + budgetStr + ' &divide; ' + exactPriceStr + ' &approx; ' + gallons3 + ' gallons</div>' + '<div style=\"margin-top:6px;\"><b>Final Answer:</b> <b>' + gallons2 + ' gallons</b></div>' + '</div>'; return { q_html: q, a_html: a }; })()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
+},
+{
+  "id": "Key 1-6 A Word Problem",
+  "title": "Key 1-6 I Word Problem",
+  "difficulty": "advanced",
+  "variables": {
+    "data": {
+      "formula": "(function() { var pick = function(arr) { return arr[Math.floor(Math.random() * arr.length)]; }; var scenarios = [ { name: 'Emily', item: 'flowers', plot: 'rectangular flower bed', verb: 'plant' }, { name: 'Marcus', item: 'tomato seedlings', plot: 'rectangular raised garden bed', verb: 'plant' }, { name: 'Sofia', item: 'marigold plants', plot: 'rectangular border garden', verb: 'plant' }, { name: 'Liam', item: 'strawberry plants', plot: 'rectangular berry patch', verb: 'plant' }, { name: 'Hannah', item: 'tulip bulbs', plot: 'rectangular planter box', verb: 'plant' }, { name: 'David', item: 'pepper plants', plot: 'rectangular vegetable plot', verb: 'plant' } ]; var sc = pick(scenarios); var spacings = [6, 8, 9, 12, 18, 24]; var sp = pick(spacings); var validDim = function(s) { var opts = []; for (var f = 3; f <= 16; f++) { if ((f * 12) % s === 0) opts.push(f); } return pick(opts); }; var lenFt = validDim(sp); var widFt = validDim(sp); if (widFt > lenFt) { var tmp = lenFt; lenFt = widFt; widFt = tmp; } if (lenFt === widFt) { lenFt = lenFt + (sp === 9 ? 3 : 2); } var lenIn = lenFt * 12; var widIn = widFt * 12; var cols = (lenIn / sp) + 1; var rows = (widIn / sp) + 1; var total = cols * rows; var svg = '<svg width=\"340\" height=\"205\" viewBox=\"0 0 340 205\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block;margin-top:10px;font-family:Arial,sans-serif;\">' + '<rect x=\"45\" y=\"25\" width=\"210\" height=\"125\" fill=\"#f2f9f2\" stroke=\"#2e7d32\" stroke-width=\"2\" />' + '<line x1=\"45\" y1=\"164\" x2=\"255\" y2=\"164\" stroke=\"#333\" stroke-width=\"1.2\" />' + '<line x1=\"45\" y1=\"159\" x2=\"45\" y2=\"169\" stroke=\"#333\" stroke-width=\"1.2\" />' + '<line x1=\"255\" y1=\"159\" x2=\"255\" y2=\"169\" stroke=\"#333\" stroke-width=\"1.2\" />' + '<text x=\"150\" y=\"182\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"#111\">' + lenFt + ' ft</text>' + '<line x1=\"270\" y1=\"25\" x2=\"270\" y2=\"150\" stroke=\"#333\" stroke-width=\"1.2\" />' + '<line x1=\"265\" y1=\"25\" x2=\"275\" y2=\"25\" stroke=\"#333\" stroke-width=\"1.2\" />' + '<line x1=\"265\" y1=\"150\" x2=\"275\" y2=\"150\" stroke=\"#333\" stroke-width=\"1.2\" />' + '<text x=\"282\" y=\"92\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"start\" fill=\"#111\">' + widFt + ' ft</text>' + '<circle cx=\"55\" cy=\"35\" r=\"4\" fill=\"#d32f2f\" />' + '<circle cx=\"95\" cy=\"35\" r=\"4\" fill=\"#d32f2f\" />' + '<circle cx=\"135\" cy=\"35\" r=\"4\" fill=\"#d32f2f\" />' + '<circle cx=\"245\" cy=\"35\" r=\"4\" fill=\"#d32f2f\" />' + '<circle cx=\"55\" cy=\"70\" r=\"4\" fill=\"#d32f2f\" />' + '<circle cx=\"95\" cy=\"70\" r=\"4\" fill=\"#d32f2f\" />' + '<circle cx=\"55\" cy=\"140\" r=\"4\" fill=\"#d32f2f\" />' + '<circle cx=\"245\" cy=\"140\" r=\"4\" fill=\"#d32f2f\" />' + '<line x1=\"55\" y1=\"14\" x2=\"95\" y2=\"14\" stroke=\"#b71c1c\" stroke-width=\"1.5\" />' + '<line x1=\"55\" y1=\"10\" x2=\"55\" y2=\"18\" stroke=\"#b71c1c\" stroke-width=\"1.5\" />' + '<line x1=\"95\" y1=\"10\" x2=\"95\" y2=\"18\" stroke=\"#b71c1c\" stroke-width=\"1.5\" />' + '<text x=\"75\" y=\"10\" font-size=\"11\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"#b71c1c\">' + sp + ' in.</text>' + '</svg>'; var q = '<div style=\"font-size:15px;line-height:1.5;color:#111;\">' + sc.name + ' wants to ' + sc.verb + ' ' + sc.item + ' in a ' + sc.plot + ' that is <b>' + lenFt + ' ft</b> by <b>' + widFt + ' ft</b>. ' + 'The ' + sc.item + ' are to be planted <b>' + sp + ' inches</b> apart (including along the outer edges). ' + 'How many ' + sc.item + ' should ' + sc.name + ' buy to fill the rectangular plot?' + '<div style=\"height:120px;\"></div>' + '</div>'; var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">' + '<div><b>Step 1 — Convert feet to inches:</b></div>' + '<div style=\"margin-left:14px;\">Length: ' + lenFt + ' ft &times; 12 in./ft = <b>' + lenIn + ' in.</b></div>' + '<div style=\"margin-left:14px;\">Width: ' + widFt + ' ft &times; 12 in./ft = <b>' + widIn + ' in.</b></div>' + '<div style=\"margin-top:6px;\"><b>Step 2 — Find plants per row and column (including both ends):</b></div>' + '<div style=\"margin-left:14px;\">Along length: (' + lenIn + ' &divide; ' + sp + ') + 1 = ' + (lenIn / sp) + ' + 1 = <b>' + cols + ' plants</b></div>' + '<div style=\"margin-left:14px;\">Along width: (' + widIn + ' &divide; ' + sp + ') + 1 = ' + (widIn / sp) + ' + 1 = <b>' + rows + ' plants</b></div>' + '<div style=\"margin-top:6px;\"><b>Step 3 — Multiply rows by columns:</b></div>' + '<div style=\"margin-left:14px;\">Total = ' + cols + ' &times; ' + rows + ' = <b>' + total + ' ' + sc.item + '</b></div>' + svg + '</div>'; return { q_html: q, a_html: a }; })()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
 },
 {
   "id": "Key 2.1a B Counting",
