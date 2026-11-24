@@ -6703,7 +6703,7 @@
   "answer": "{a_html}"
 },
 {
-  "id": "Key 1-6 A Word Problem",
+  "id": "Key 1-6 A Garden",
   "title": "Key 1-6 I Word Problem",
   "difficulty": "advanced",
   "variables": {
@@ -6916,6 +6916,42 @@
   },
   "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.<br>{blank_graph_svg}",
   "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\).<br>{solution_graph_svg}"
+},
+{
+  "id": "Key 6-2a I Rental",
+  "title": "Key 6-2a I Rental",
+  "difficulty": "intermediate",
+  "variables": {
+    "data": {
+      "formula": "(function() { var pick = function(arr) { return arr[Math.floor(Math.random() * arr.length)]; }; var scenarios = [ { name: 'Jordan', item: 'an earth tamper', purpose: 'compacting gravel for a backyard patio' }, { name: 'Elena', item: 'a concrete mixer', purpose: 'pouring fence post footings' }, { name: 'Marcus', item: 'a trencher', purpose: 'installing backyard irrigation lines' }, { name: 'Tanya', item: 'a pressure washer', purpose: 'cleaning a driveway and deck' }, { name: 'Devon', item: 'a floor sander', purpose: 'refinishing hardwood floors' }, { name: 'Priya', item: 'a stump grinder', purpose: 'clearing tree stumps from a yard' }, { name: 'Caleb', item: 'a sod cutter', purpose: 'remodeling a front lawn' }, { name: 'Maya', item: 'a tile saw', purpose: 'tiling a kitchen backsplash' } ]; var sc = pick(scenarios); var baseFees = [20, 25, 30, 35, 40, 45, 50, 55, 60]; var hourlyRates = [8, 10, 12, 14, 16, 18, 20, 24]; var quarterHours = [1.25, 1.5, 1.75, 2.25, 2.5, 2.75, 3.25, 3.5, 3.75, 4.25, 4.5, 4.75, 5.25, 5.5, 5.75, 6.25, 6.5, 6.75]; var baseFee = pick(baseFees); var rate = pick(hourlyRates); var hours = pick(quarterHours); var budget = baseFee + rate * hours; var fmtMoney = function(v) { return Number.isInteger(v) ? '$' + v : '$' + v.toFixed(2); }; var fmtHours = function(h) { var whole = Math.floor(h); var frac = h - whole; var fracText = frac === 0.25 ? '1/4' : (frac === 0.5 ? '1/2' : '3/4'); var mins = Math.round(frac * 60); return h + ' hours (' + whole + ' ' + fracText + ' hours, or ' + whole + ' hours ' + mins + ' minutes)'; }; var rem = budget - baseFee; var q = '<div style=\"font-size:15px;line-height:1.55;color:#111;\">' + sc.name + ' wants to rent ' + sc.item + ' for ' + sc.purpose + '. ' + 'The rental company charges a flat fee of <b>' + fmtMoney(baseFee) + '</b> per day plus <b>' + fmtMoney(rate) + '</b> per hour (billed to the quarter hour). ' + 'If ' + sc.name + ' has a budget of <b>' + fmtMoney(budget) + '</b> for a single-day rental, how many hours can ' + sc.name + ' rent the equipment? (to the quarter hour)' + '<div style=\"height:120px;\"></div>' + '</div>'; var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">' + '<div><b>Step 1 &mdash; Set up the linear equation:</b></div>' + '<div style=\"margin-left:14px;\">Let <i>h</i> = number of rental hours.</div>' + '<div style=\"margin-left:14px;\">' + baseFee + ' + ' + rate + '<i>h</i> = ' + (Number.isInteger(budget) ? budget : budget.toFixed(2)) + '</div>' + '<div style=\"margin-top:6px;\"><b>Step 2 &mdash; Subtract the flat daily fee from the budget:</b></div>' + '<div style=\"margin-left:14px;\">' + rate + '<i>h</i> = ' + fmtMoney(budget) + ' &minus; ' + fmtMoney(baseFee) + ' = <b>' + fmtMoney(rem) + '</b></div>' + '<div style=\"margin-top:6px;\"><b>Step 3 &mdash; Divide by the hourly rate:</b></div>' + '<div style=\"margin-left:14px;\"><i>h</i> = ' + (Number.isInteger(rem) ? rem : rem.toFixed(2)) + ' &divide; ' + rate + ' = <b>' + fmtHours(hours) + '</b></div>' + '</div>'; return { q_html: q, a_html: a };})()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
+},
+{
+  "id": "Key 6-2b A Weather",
+  "title": "Key 6-2b A Weather",
+  "difficulty": "advanced",
+  "variables": {
+    "data": {
+      "formula": "(function() { var pick = function(arr) { return arr[Math.floor(Math.random() * arr.length)]; }; var times = ['6:00 AM', '7:30 AM', '9:00 AM', 'noon', '2:00 PM', '3:30 PM', '5:00 PM', '8:00 PM', '10:30 PM', 'midnight']; var days = ['tomorrow', 'Saturday', 'Sunday', 'Monday morning', 'Thursday afternoon', 'Friday evening']; var center = Math.floor(Math.random() * 91) + 5; var margin = Math.floor(Math.random() * 11) + 2; var minT = center - margin; var maxT = center + margin; var timeStr = pick(times); var dayStr = pick(days); var pad = Math.max(4, Math.ceil(margin * 0.6)); var axisMin = minT - pad; var axisMax = maxT + pad; var span = axisMax - axisMin; var xStart = 35; var xEnd = 365; var toX = function(val) { return Math.round((xStart + ((val - axisMin) / span) * (xEnd - xStart)) * 10) / 10; }; var xMin = toX(minT); var xMax = toX(maxT); var xCenter = toX(center); var step = span <= 14 ? 1 : (span <= 28 ? 2 : 5); var firstTick = Math.ceil(axisMin / step) * step; var ticksHtml = ''; for (var v = firstTick; v <= axisMax; v += step) {   var tx = toX(v);   ticksHtml += '<line x1=\"' + tx + '\" y1=\"42\" x2=\"' + tx + '\" y2=\"52\" stroke=\"#555\" stroke-width=\"1.2\" />';   if (v !== minT && v !== maxT && v !== center) {     ticksHtml += '<text x=\"' + tx + '\" y=\"66\" font-size=\"10\" text-anchor=\"middle\" fill=\"#555\">' + v + '</text>';   } } var svg = '<svg width=\"400\" height=\"82\" viewBox=\"0 0 400 82\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block;margin-top:8px;font-family:Arial,sans-serif;\">' +   '<line x1=\"20\" y1=\"47\" x2=\"380\" y2=\"47\" stroke=\"#444\" stroke-width=\"1.5\" />' +   '<polygon points=\"14,47 22,43 22,51\" fill=\"#444\" />' +   '<polygon points=\"386,47 378,43 378,51\" fill=\"#444\" />' +   ticksHtml +   '<line x1=\"' + xCenter + '\" y1=\"40\" x2=\"' + xCenter + '\" y2=\"54\" stroke=\"#888\" stroke-width=\"1.5\" stroke-dasharray=\"2,2\" />' +   '<text x=\"' + xCenter + '\" y=\"66\" font-size=\"10\" text-anchor=\"middle\" fill=\"#666\">' + center + '</text>' +   '<line x1=\"' + xMin + '\" y1=\"47\" x2=\"' + xMax + '\" y2=\"47\" stroke=\"#1565c0\" stroke-width=\"4.5\" />' +   '<circle cx=\"' + xMin + '\" cy=\"47\" r=\"5.5\" fill=\"#1565c0\" stroke=\"#0d47a1\" stroke-width=\"1.5\" />' +   '<circle cx=\"' + xMax + '\" cy=\"47\" r=\"5.5\" fill=\"#1565c0\" stroke=\"#0d47a1\" stroke-width=\"1.5\" />' +   '<text x=\"' + xMin + '\" y=\"29\" font-size=\"12\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"#0d47a1\">' + minT + '&deg;F</text>' +   '<text x=\"' + xMax + '\" y=\"29\" font-size=\"12\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"#0d47a1\">' + maxT + '&deg;F</text>' + '</svg>'; var q = '<div style=\"font-size:15px;line-height:1.5;color:#111;\">' +   'The weather forecast predicts the temperature at <b>' + timeStr + ' ' + dayStr + '</b> will be <b>' + center + '&deg;F</b> within <b>' + margin + '&deg;F</b>. ' +   'Write an inequality for this situation where <i>T</i> is the estimated temperature. ' +   'Then determine the potential maximum and minimum temperatures and graph the solution on a number line.' +   '<div style=\"height:130px;\"></div>' + '</div>'; var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">' +   '<div><b>Step 1 &mdash; Write the absolute value inequality:</b></div>' +   '<div style=\"margin-left:14px;\">|<i>T</i> &minus; ' + center + '| &le; ' + margin + '</div>' +   '<div style=\"margin-top:6px;\"><b>Step 2 &mdash; Rewrite as a compound inequality:</b></div>' +   '<div style=\"margin-left:14px;\">&minus;' + margin + ' &le; <i>T</i> &minus; ' + center + ' &le; ' + margin + '</div>' +   '<div style=\"margin-top:6px;\"><b>Step 3 &mdash; Add ' + center + ' to all three parts:</b></div>' +   '<div style=\"margin-left:14px;\">&minus;' + margin + ' + ' + center + ' &le; <i>T</i> &le; ' + margin + ' + ' + center + '</div>' +   '<div style=\"margin-left:14px;\"><b>' + minT + ' &le; <i>T</i> &le; ' + maxT + '</b></div>' +   '<div style=\"margin-top:6px;\"><b>Potential Temperatures &amp; Graph:</b></div>' +   '<div style=\"margin-left:14px;\">Minimum temperature: <b>' + minT + '&deg;F</b> &nbsp;|&nbsp; Maximum temperature: <b>' + maxT + '&deg;F</b></div>' +   svg + '</div>'; return { q_html: q, a_html: a };})()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
 }
     ],
     "Summative 1": [
