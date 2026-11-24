@@ -8119,7 +8119,7 @@
         "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\)"
       },
       {
-        "id": "Sum 5.2 A Given two points, graph and write in all three forms.",
+        "id": "Sum 5.2a A Given two points, graph and write in all three forms.",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "advanced",
@@ -8199,7 +8199,7 @@
         "answer": "Point-Slope Form: \\( y {negy1|sign} = {m|coef}(x {negx1|sign}) \\)\u003cbr\u003eSlope-Intercept Form: \\( y = {m|coef}x {b|sign} \\)\u003cbr\u003eStandard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)\u003cbr\u003e\u003cb\u003eGraph:\u003c/b\u003e\u003cbr\u003e{solution_graph_svg}"
       },
       {
-        "id": "Sum 5.2 A Graph a line perpendicular to a line in standard form and passing through a point",
+        "id": "Sum 5.2b A Graph a line perpendicular to a line in standard form and passing through a point",
         "type": "template",
         "objective": "Writing Equations in Standard and Point-Slope Forms",
         "difficulty": "advanced",
