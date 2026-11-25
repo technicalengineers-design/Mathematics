@@ -5091,10 +5091,16 @@
           },
           "answer_graph_svg": {
             "formula": "blank_graph_svg.replace('</svg>',(function(){var dx=x2-x1,dy=y2-y1,pts=[];function add(x,y){if(x>=-10-1e-8&&x<=10+1e-8&&y>=-10-1e-8&&y<=10+1e-8&&!pts.some(function(p){return Math.abs(p.x-x)<1e-8&&Math.abs(p.y-y)<1e-8}))pts.push({x:x,y:y})}[-10,10].forEach(function(x){add(x,y1+(x-x1)*dy/dx)});[-10,10].forEach(function(y){if(dy!==0)add(x1+(y-y1)*dx/dy,y)});var p=pts[0],q=pts[1];return '<defs><clipPath id=\"two-points-slope-clip\"><rect x=\"30\" y=\"30\" width=\"360\" height=\"360\"/></clipPath></defs><g clip-path=\"url(#two-points-slope-clip)\"><line x1=\"'+(210+p.x*18)+'\" y1=\"'+(210-p.y*18)+'\" x2=\"'+(210+q.x*18)+'\" y2=\"'+(210-q.y*18)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/></g><circle cx=\"'+(210+x1*18)+'\" cy=\"'+(210-y1*18)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(217+x1*18)+'\" y=\"'+(205-y1*18)+'\" font-size=\"12\" font-weight=\"bold\" fill=\"#2471a3\">P1</text><circle cx=\"'+(210+x2*18)+'\" cy=\"'+(210-y2*18)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(217+x2*18)+'\" y=\"'+(205-y2*18)+'\" font-size=\"12\" font-weight=\"bold\" fill=\"#2471a3\">P2</text>'})()+'</svg>')"
+          },
+          "negative_y1": {
+            "formula": "-y1"
+          },
+          "negative_x1": {
+            "formula": "-x1"
           }
         },
-        "question": "Find the slope of the line passing through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) and graph and label the points and line.<br>{blank_graph_svg}",
-        "answer": "\\( m = \\frac{{y2} - {y1}}{{x2} - {x1}} = {m} \\)<br>{answer_graph_svg}"
+        "question": "Find the slope of the line passing through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) and graph and label the points and line. Write the equation of the line.<br>{blank_graph_svg}",
+        "answer": "\\( m = \\frac{{y2} - {y1}}{{x2} - {x1}} = {m} \\)<br>Point-Slope Form: \\( y {negative_y1|sign} = {m}(x {negative_x1|sign}) \\)<br>{answer_graph_svg}"
       },
       {
         "id": "ALG 4.2 Ib Missing Coordinate",
