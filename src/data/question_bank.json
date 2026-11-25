@@ -19830,6 +19830,58 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Convert the travel time to hours: {hours_whole_a} + {minutes_a}/60 = {hours_a} hours.<br>Average speed = distance &divide; time = {miles_a} &divide; {hours_a} = <b>{speed_a} mph</b>.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Convert the travel time to hours: {hours_whole_b} + {minutes_b}/60 = {hours_b} hours.<br>Average speed = distance &divide; time = {miles_b} &divide; {hours_b} = <b>{speed_b} mph</b>.</div></div>"
       },
       {
+  "id": "Sum 1 A 1.1 Rate Calculations",
+  "type": "template",
+  "objective": "Write and evaluate an algebraic expression to find maximum distance given a budget, per-passenger fee, and mileage rate",
+  "difficulty": "advanced",
+  "variables": {
+    "names": { "choice": ["Max", "Elena", "Marcus", "Priya", "Devon", "Chloe"] },
+    "companies": { "choice": ["Plaid Taxi Cab Company", "Metro City Cabs", "Yellow Star Taxi", "Apex Transit Co.", "Summit Cab Service"] },
+    "passengers": { "min": 1, "max": 3 },
+    "passenger_word": { "formula": "passengers === 1 ? '1 passenger' : passengers + ' passengers'" },
+    "rate_p_pool": { "formula": "[1.50, 1.75, 2.00, 2.25, 2.50]" },
+    "rate_p": { "formula": "rate_p_pool[Math.floor(Math.random() * rate_p_pool.length)]" },
+    "rate_p_str": { "formula": "rate_p.toFixed(2)" },
+    "rate_m_pool": { "formula": "[2.75, 3.15, 3.25, 3.45, 3.60, 3.85]" },
+    "rate_m": { "formula": "rate_m_pool[Math.floor(Math.random() * rate_m_pool.length)]" },
+    "rate_m_str": { "formula": "rate_m.toFixed(2)" },
+    "budget_pool": { "formula": "[20, 25, 30, 35]" },
+    "budget": { "formula": "budget_pool[Math.floor(Math.random() * budget_pool.length)]" },
+    "total_p_cost": { "formula": "Number((passengers * rate_p).toFixed(2))" },
+    "total_p_str": { "formula": "total_p_cost.toFixed(2)" },
+    "remaining_budget": { "formula": "Number((budget - total_p_cost).toFixed(2))" },
+    "remaining_str": { "formula": "remaining_budget.toFixed(2)" },
+    "exact_miles": { "formula": "remaining_budget / rate_m" },
+    "miles_rounded": { "formula": "exact_miles.toFixed(2)" },
+    "whole_miles": { "formula": "Math.floor(exact_miles)" },
+    "max_miles_limit": { "formula": "Math.ceil(budget / rate_m) + 2" }
+  },
+  "question": "The {companies} charges \\( \\${rate_p_str} \\) per passenger plus \\( \\${rate_m_str} \\) per mile for trips less than \\( {max_miles_limit} \\) miles. Write and evaluate an expression to find out how far {names} can travel with {passenger_word} if they have \\( \\${budget} \\).",
+  "answer": "<b>Step 1: Define variables and write the expression</b><br>Let \\( B \\) = total budget (\\( \\${budget} \\)), \\( p \\) = number of passengers (\\( {passengers} \\)), \\( r_p \\) = charge per passenger (\\( \\${rate_p_str} \\)), and \\( r_m \\) = charge per mile (\\( \\${rate_m_str} \\)).<br><br>To find the maximum distance \\( d \\), subtract the total passenger fee from the budget and divide the remaining money by the per-mile rate:<br><b>\\( d = \\frac{B - (r_p \\cdot p)}{r_m} \\)</b><br><br>Substituting the given values yields the expression:<br><b>\\( \\frac{{budget} - ({rate_p_str} \\times {passengers})}{{rate_m_str}} \\)</b><br><br><b>Step 2: Evaluate the expression</b><br>• Calculate the total passenger fee: \\( \\${rate_p_str} \\times {passengers} = \\${total_p_str} \\)<br>• Subtract the passenger fee from the total budget: \\( \\${budget} - \\${total_p_str} = \\${remaining_str} \\)<br>• Divide by the cost per mile: \\( \\frac{{remaining_str}}{{rate_m_str}} \\approx {miles_rounded}\\text{ miles} \\)<br><br><b>Final Answer:</b><br>{names} can travel up to <b>\\( {miles_rounded}\\text{ miles} \\)</b> (or <b>\\( {whole_miles}\\text{ full miles} \\)</b> if the company only bills per completed mile), which is well within the \\( {max_miles_limit}\\text{-mile} \\) trip limit."
+},
+{
+  "id": "Sum 1 A 1.1 Knots",
+  "type": "template",
+  "objective": "Convert nautical speed (knots) to distance in feet and speed in miles per hour using dimensional analysis and equations",
+  "difficulty": "advanced",
+  "variables": {
+    "vessels": { "choice": ["boat", "sailboat", "cargo ship", "fishing trawler", "ferry", "research vessel"] },
+    "knots": { "min": 12, "max": 35 },
+    "hours_pool": { "formula": "[1, 1.5, 2, 2.5, 3, 3.5, 4]" },
+    "hours": { "formula": "hours_pool[Math.floor(Math.random() * hours_pool.length)]" },
+    "hour_label": { "formula": "hours === 1 ? '1 hour' : hours + ' hours'" },
+    "ft_per_nmi": { "formula": "6080" },
+    "ft_per_mi": { "formula": "5280" },
+    "nmi_traveled": { "formula": "knots * hours" },
+    "total_feet": { "formula": "nmi_traveled * ft_per_nmi" },
+    "total_feet_formatted": { "formula": "total_feet.toLocaleString('en-US')" },
+    "mph_exact": { "formula": "(knots * ft_per_nmi) / ft_per_mi" },
+    "mph_rounded": { "formula": "mph_exact.toFixed(2)" }
+  },
+  "question": "Use the following nautical conversions to solve the problem:<br>• \\( 1\\text{ nautical mile} = 6,080\\text{ feet} \\)<br>• \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} \\)<br><br>If a {vessels} travels at \\( {knots}\\text{ knots} \\) for {hour_label}, how far will it have traveled in feet? Write and solve the equation that represents this situation. Then, determine how fast the {vessels} was traveling in miles per hour (\\( 1\\text{ mile} = 5,280\\text{ feet} \\)). Round your answers to the nearest hundredth.",
+  "answer": "<b>Part 1: Distance traveled in feet</b><br>Let \\( d \\) represent the total distance traveled in feet, \\( k \\) represent the speed in knots (\\( {knots} \\)), and \\( t \\) represent the time in hours (\\( {hours} \\)).<br><br>Since \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} = 6,080\\text{ feet per hour} \\), set up the distance equation:<br><b>\\( d = 6,080 \\cdot k \\cdot t \\)</b><br><br>Substitute \\( k = {knots} \\) and \\( t = {hours} \\) into the equation and solve:<br>\\( d = 6,080 \\times {knots} \\times {hours} \\)<br>\\( d = {nmi_traveled} \\times 6,080 \\)<br><b>\\( d = {total_feet_formatted}\\text{ feet} \\)</b><br><br><b>Part 2: Speed in miles per hour (mph)</b><br>Convert the speed from feet per hour to statute miles per hour using \\( 1\\text{ mile} = 5,280\\text{ feet} \\):<br>\\( \\text{Speed in feet per hour} = {knots}\\text{ knots} \\times 6,080\\text{ ft/nmi} = {(knots * 6080).toLocaleString('en-US')}\\text{ ft/hr} \\)<br><br>Divide by \\( 5,280\\text{ feet per mile} \\):<br>\\( \\text{Speed in mph} = \\frac{{knots} \\times 6,080}{5,280} = \\frac{{knots * 6080}}{5280} \\approx {mph_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>• <b>Distance traveled:</b> \\( {total_feet_formatted}\\text{ feet} \\)<br>• <b>Speed:</b> \\( {mph_rounded}\\text{ miles per hour} \\)"
+},
+      {
         "id": "Sum 1 C 1-2 Calculating Percentage",
         "title": "Sum 1 C 1-2 Calculating Percentage",
         "type": "template",
@@ -19846,6 +19898,21 @@
         "question": "Find each percentage. Round to the nearest percent.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> What percent is {a_a} of {b_a}?<div style=\"height:90px\"></div></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> What percent is {a_b} of {b_b}?<div style=\"height:90px\"></div></div></div>",
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> {a_a} &divide; {b_a} &times; 100% &asymp; <b>{result_a}%</b></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> {a_b} &divide; {b_b} &times; 100% &asymp; <b>{result_b}%</b></div></div>"
       },
+      {
+  "id": "Sum 1 A 1.5 Equations",
+  "type": "template",
+  "objective": "Write and solve a multi-step linear equation to find three consecutive odd integers",
+  "difficulty": "advanced",
+  "variables": {
+    "k": { "min": 7, "max": 45 },
+    "n1": { "formula": "2 * k + 1" },
+    "n2": { "formula": "n1 + 2" },
+    "n3": { "formula": "n1 + 4" },
+    "total_sum": { "formula": "n1 + n2 + n3" }
+  },
+  "question": "Write and solve an equation to find three consecutive odd integers whose sum is \\( {total_sum} \\).",
+  "answer": "<b>Step 1: Define the variables</b><br>Because consecutive odd integers differ by \\( 2 \\), let:<br>• First odd integer = \\( n \\)<br>• Second consecutive odd integer = \\( n + 2 \\)<br>• Third consecutive odd integer = \\( n + 4 \\)<br><br><b>Step 2: Write and solve the equation</b><br>Set the sum of the three expressions equal to \\( {total_sum} \\):<br><b>\\( n + (n + 2) + (n + 4) = {total_sum} \\)</b><br><br>Combine like terms:<br>\\( 3n + 6 = {total_sum} \\)<br><br>Subtract \\( 6 \\) from both sides:<br>\\( 3n = {total_sum - 6} \\)<br><br>Divide both sides by \\( 3 \\):<br>\\( n = \\frac{{total_sum - 6}}{3} = {n1} \\)<br><br><b>Step 3: Find all three consecutive odd integers</b><br>• First integer: \\( n = {n1} \\)<br>• Second integer: \\( {n1} + 2 = {n2} \\)<br>• Third integer: \\( {n1} + 4 = {n3} \\)<br><br><b>Final Answer:</b><br>The three consecutive odd integers are <b>\\( {n1}, {n2}, \\text{ and } {n3} \\)</b>."
+},
       {
         "id": "Sum 1 B 1-6 Solving Literal Equations",
         "title": "Sum 1 B 1-6 Solving Literal Equations",
