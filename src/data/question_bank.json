@@ -24415,6 +24415,100 @@
         },
         "question": "A triangular-prism door stop has a triangular face {l} cm across, is {h} cm high, and is {w} cm deep. Determine its volume. Sketch the prism and label all three dimensions. Round your answer to <b>four significant digits</b> and include units.",
         "answer": "<b>Sketch with dimensions:</b><br><div style='text-align:center'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 270\" role=\"img\" aria-label=\"Triangular prism with base, height, and depth labeled\" style=\"display:block;width:100%;max-width:430px;height:auto;margin:auto;font-family:Arial,sans-serif\"><polygon points=\"65,210 65,105 165,210\" fill=\"#dbeafe\" stroke=\"#1f2937\" stroke-width=\"2\"/><polygon points=\"205,160 205,55 305,160\" fill=\"#bfdbfe\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"210\" x2=\"205\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"105\" x2=\"205\" y2=\"55\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"165\" y1=\"210\" x2=\"305\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><text x=\"112\" y=\"230\" text-anchor=\"middle\" font-size=\"14\">Base l = {l} cm</text><text x=\"49\" y=\"160\" text-anchor=\"end\" font-size=\"14\">h = {h} cm</text><text x=\"238\" y=\"190\" text-anchor=\"middle\" font-size=\"14\">Depth w = {w} cm</text></svg></div><br><b>Step 1: Find the area of the triangular base.</b><br>\\( A_{triangle}=\\frac{1}{2}bh=\\frac{1}{2}({l})({h})={triangle_area_4sf} \\) cm&sup2;.<br><br><b>Step 2: Multiply by the prism depth.</b><br>\\( V=A_{triangle}w=({triangle_area_4sf})({w}) \\).<br><b>Volume = {volume_4sf} cm&sup3;</b> (four significant digits)."
+      },
+      {
+        "id": "Sum 1 2.6a I Area Unit Conversion",
+        "type": "template",
+        "objective": "Convert area units in two real-world scenarios",
+        "difficulty": "basic",
+        "variables": {
+          "scenarios": {
+            "formula": "[{from:'square yards',to:'square feet',factor:9,context:'A garden needs bark'}, {from:'square feet',to:'square inches',factor:144,context:'A floor is being covered with tile'}, {from:'square meters',to:'square centimeters',factor:10000,context:'A poster is being measured'}, {from:'hectares',to:'square meters',factor:10000,context:'A field is being surveyed'}, {from:'acres',to:'square feet',factor:43560,context:'A park is being mapped'}, {from:'square centimeters',to:'square millimeters',factor:100,context:'A photograph is being enlarged'}, {from:'square kilometers',to:'square meters',factor:1000000,context:'A nature reserve is being measured'}, {from:'square inches',to:'square centimeters',factor:6.4516,context:'A craft project is being sized'}, {from:'square meters',to:'square yards',factor:1.195990046,context:'A carpet order is being placed'}, {from:'square miles',to:'acres',factor:640,context:'A large ranch is being measured'}]"
+          },
+          "index_a": { "formula": "Math.floor(Math.random()*scenarios.length)" },
+          "index_b": { "formula": "(index_a+1+Math.floor(Math.random()*(scenarios.length-1)))%scenarios.length" },
+          "scenario_a": { "formula": "scenarios[index_a]" },
+          "scenario_b": { "formula": "scenarios[index_b]" },
+          "value_a": { "formula": "Math.floor(Math.random()*12)+3" },
+          "value_b": { "formula": "Math.floor(Math.random()*12)+3" },
+          "answer_a": { "formula": "value_a*scenario_a.factor" },
+          "answer_b": { "formula": "value_b*scenario_b.factor" }
+        },
+        "question": "Convert each area measurement.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> {scenario_a.context}: convert <b>{value_a} {scenario_a.from}</b> to {scenario_a.to}.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> {scenario_b.context}: convert <b>{value_b} {scenario_b.from}</b> to {scenario_b.to}.<div style=\"height:100px\"></div></div></div>",
+        "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> 1 {scenario_a.from} = {scenario_a.factor} {scenario_a.to}.<br>{value_a} &times; {scenario_a.factor} = <b>{answer_a} {scenario_a.to}</b>.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> 1 {scenario_b.from} = {scenario_b.factor} {scenario_b.to}.<br>{value_b} &times; {scenario_b.factor} = <b>{answer_b} {scenario_b.to}</b>.</div></div>"
+      },
+      {
+        "id": "Sum 1 2.6b I Volume Unit Conversion",
+        "type": "template",
+        "objective": "Convert volume units in two real-world scenarios",
+        "difficulty": "basic",
+        "variables": {
+          "scenarios": {
+            "formula": "[{from:'cubic feet',to:'cubic yards',factor:1/27,context:'A truckload of bark is measured'}, {from:'cubic yards',to:'cubic feet',factor:27,context:'A garden bed needs soil'}, {from:'cubic inches',to:'cubic feet',factor:1/1728,context:'A storage box is measured'}, {from:'cubic feet',to:'cubic inches',factor:1728,context:'A small aquarium is measured'}, {from:'cubic centimeters',to:'milliliters',factor:1,context:'A laboratory sample is measured'}, {from:'liters',to:'cubic centimeters',factor:1000,context:'A water container is measured'}, {from:'cubic meters',to:'liters',factor:1000,context:'A rainwater tank is measured'}, {from:'milliliters',to:'cubic centimeters',factor:1,context:'A medicine dose is measured'}, {from:'US gallons',to:'cubic inches',factor:231,context:'A fuel container is measured'}, {from:'cubic feet',to:'liters',factor:28.316846592,context:'A refrigerator compartment is measured'}, {from:'US gallons',to:'liters',factor:3.785411784,context:'A beverage container is measured'}]"
+          },
+          "index_a": { "formula": "Math.floor(Math.random()*scenarios.length)" },
+          "index_b": { "formula": "(index_a+1+Math.floor(Math.random()*(scenarios.length-1)))%scenarios.length" },
+          "scenario_a": { "formula": "scenarios[index_a]" },
+          "scenario_b": { "formula": "scenarios[index_b]" },
+          "value_a": { "formula": "Math.floor(Math.random()*12)+3" },
+          "value_b": { "formula": "Math.floor(Math.random()*12)+3" },
+          "answer_a": { "formula": "value_a*scenario_a.factor" },
+          "answer_b": { "formula": "value_b*scenario_b.factor" },
+          "answer_a_display": { "formula": "answer_a.toPrecision(5)" },
+          "answer_b_display": { "formula": "answer_b.toPrecision(5)" }
+        },
+        "question": "Convert each volume measurement.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> {scenario_a.context}: convert <b>{value_a} {scenario_a.from}</b> to {scenario_a.to}.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> {scenario_b.context}: convert <b>{value_b} {scenario_b.from}</b> to {scenario_b.to}.<div style=\"height:100px\"></div></div></div>",
+        "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> 1 {scenario_a.from} = {scenario_a.factor} {scenario_a.to}.<br>{value_a} &times; {scenario_a.factor} = <b>{answer_a_display} {scenario_a.to}</b>.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> 1 {scenario_b.from} = {scenario_b.factor} {scenario_b.to}.<br>{value_b} &times; {scenario_b.factor} = <b>{answer_b_display} {scenario_b.to}</b>.</div></div>"
+      },
+      {
+  "id": "Sem 1 3-2 Compound Logic Statements",
+  "title": "Sem 1 3-2 Compound Logic Statements",
+  "type": "template",
+  "objective": "Write conjunctions, disjunctions, conditionals, and biconditionals in symbols and words",
+  "difficulty": "basic",
+  "variables": [
+    {
+      "name": "data",
+      "type": "formula",
+      "formula": "(function() {\n  var pairs = [\n    { p: \"It is raining.\", q: \"The grass is wet.\", p_low: \"it is raining\", q_low: \"the grass is wet\" },\n    { p: \"A figure is a square.\", q: \"It has four right angles.\", p_low: \"a figure is a square\", q_low: \"it has four right angles\" },\n    { p: \"Today is Saturday.\", q: \"There is no school.\", p_low: \"today is Saturday\", q_low: \"there is no school\" },\n    { p: \"A number is even.\", q: \"It is divisible by 2.\", p_low: \"a number is even\", q_low: \"it is divisible by 2\" },\n    { p: \"Two angles are vertical.\", q: \"They are congruent.\", p_low: \"two angles are vertical\", q_low: \"they are congruent\" },\n    { p: \"The temperature is below 32 degrees.\", q: \"Water freezes.\", p_low: \"the temperature is below 32 degrees\", q_low: \"water freezes\" },\n    { p: \"A polygon is a triangle.\", q: \"It has three sides.\", p_low: \"a polygon is a triangle\", q_low: \"it has three sides\" },\n    { p: \"You study for the test.\", q: \"You earn a high grade.\", p_low: \"you study for the test\", q_low: \"you earn a high grade\" },\n    { p: \"An angle measures 90 degrees.\", q: \"It is a right angle.\", p_low: \"an angle measures 90 degrees\", q_low: \"it is a right angle\" },\n    { p: \"The traffic light is red.\", q: \"Drivers must stop.\", p_low: \"the traffic light is red\", q_low: \"drivers must stop\" },\n    { p: \"Two lines are parallel.\", q: \"They never intersect.\", p_low: \"two lines are parallel\", q_low: \"they never intersect\" },\n    { p: \"A mammal is a whale.\", q: \"It lives in the ocean.\", p_low: \"a mammal is a whale\", q_low: \"it lives in the ocean\" }\n  ];\n\n  var pair = pairs[Math.floor(Math.random() * pairs.length)];\n  var pCap = pair.p.replace(/\\.$/, \"\");\n  var qCap = pair.q.replace(/\\.$/, \"\");\n\n  var items = [\n    {\n      name: \"Conjunction\",\n      sym: \"p &and; q\",\n      words: pCap + \", and \" + pair.q_low + \".\"\n    },\n    {\n      name: \"Disjunction\",\n      sym: \"p &or; q\",\n      words: pCap + \", or \" + pair.q_low + \".\"\n    },\n    {\n      name: \"Conditional\",\n      sym: \"p &rarr; q\",\n      words: \"If \" + pair.p_low + \", then \" + pair.q_low + \".\"\n    },\n    {\n      name: \"Biconditional\",\n      sym: \"p &harr; q\",\n      words: pCap + \" if and only if \" + pair.q_low + \".\"\n    }\n  ];\n\n  for (var i = items.length - 1; i > 0; i--) {\n    var j = Math.floor(Math.random() * (i + 1));\n    var tmp = items[i];\n    items[i] = items[j];\n    items[j] = tmp;\n  }\n\n  var letters = [\"A)\", \"B)\", \"C)\", \"D)\"];\n\n  var q = '<div style=\"font-size:15px;line-height:1.5;color:#111;\">' +\n    '<div>Given the two statements below, write each requested compound statement <b>both in symbols and in words</b>.</div>' +\n    '<div style=\"margin:8px 0 12px 14px;\">' +\n      '<div><b>p:</b> ' + pair.p + '</div>' +\n      '<div><b>q:</b> ' + pair.q + '</div>' +\n    '</div>';\n\n  for (var k = 0; k < 4; k++) {\n    q += '<div style=\"margin-top:6px;\"><b>' + letters[k] + '</b> ' + items[k].name + '</div>' +\n         '<div style=\"height:44px;\"></div>';\n  }\n  q += '</div>';\n\n  var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">';\n  for (var m = 0; m < 4; m++) {\n    a += '<div style=\"margin-bottom:8px;\">' +\n      '<div><b>' + letters[m] + ' ' + items[m].name + ':</b></div>' +\n      '<div style=\"margin-left:16px;\"><b>Symbols:</b> ' + items[m].sym + '</div>' +\n      '<div style=\"margin-left:16px;\"><b>Words:</b> ' + items[m].words + '</div>' +\n    '</div>';\n  }\n  a += '</div>';\n\n  return { q_html: q, a_html: a };\n})()"
+    },
+    {
+      "name": "q_html",
+      "type": "formula",
+      "formula": "data.q_html"
+    },
+    {
+      "name": "a_html",
+      "type": "formula",
+      "formula": "data.a_html"
+    }
+  ],
+  "question": "{q_html}",
+  "answer": "{a_html}"
+},
+      {
+        "id": "Sem 1 3-3a Inductive and Deductive Reasoning",
+        "title": "Sem 1 3-3a Inductive and Deductive Reasoning",
+        "type": "template",
+        "objective": "Identify inductive and deductive reasoning",
+        "difficulty": "basic",
+        "variables": {
+          "scenarios": {
+            "formula": "[{text:'Every cat that Maya has ever met purrs when scratched behind the ears. Maya concludes that all cats purr when scratched behind the ears.',type:'Inductive Reasoning',explanation:'A generalization is formed from specific personal observations.'},{text:'To graduate, a student must complete 120 credit hours. David has completed 124 credit hours, so his counselor concludes he met the requirement.',type:'Deductive Reasoning',explanation:'A pre-established requirement is applied to a specific case.'},{text:'The city bus arrives at 7:15 AM every morning for two weeks. Leo concludes that it will arrive at 7:15 AM tomorrow.',type:'Inductive Reasoning',explanation:'A prediction is made from a repeating pattern.'},{text:'All regular hexagons have six lines of symmetry. An instructor draws one and states that it has six lines of symmetry.',type:'Deductive Reasoning',explanation:'A general geometric property is applied to a specific figure.'},{text:'Marcus sees the sequence 3, 6, 12, 24 and concludes that the next number must be 48.',type:'Inductive Reasoning',explanation:'A pattern in specific terms is used to predict a later term.'},{text:'A store policy charges a restocking fee for items returned after 30 days. Chloe returns a camera after 45 days and is charged the fee.',type:'Deductive Reasoning',explanation:'A general store policy is applied to an individual return.'},{text:'A scientist finds trace copper in 50 river samples and concludes that the entire river contains trace copper.',type:'Inductive Reasoning',explanation:'Evidence from a sample is generalized to the larger population.'},{text:'State law requires drivers to pull over when an emergency vehicle approaches with sirens on. An ambulance approaches, so Principal Vance pulls over.',type:'Deductive Reasoning',explanation:'A general law is applied to a specific situation.'},{text:'Every time Coach Evans wears his lucky red cap, the team wins. He concludes that the cap causes the wins.',type:'Inductive Reasoning',explanation:'A causal link is inferred from an observed association.'},{text:'All vertical angles are congruent. Angles 1 and 2 are vertical, so a student concludes their measures are equal.',type:'Deductive Reasoning',explanation:'The conclusion follows from an established mathematical theorem.'}]"
+          },
+          "shuffled_scenarios": { "formula": "scenarios.map(function(s){return {s:s,r:Math.random()}}).sort(function(a,b){return a.r-b.r}).slice(0,3).map(function(x){return x.s})" },
+          "s1_text": { "formula": "shuffled_scenarios[0].text" },
+          "s1_type": { "formula": "shuffled_scenarios[0].type" },
+          "s1_explanation": { "formula": "shuffled_scenarios[0].explanation" },
+          "s2_text": { "formula": "shuffled_scenarios[1].text" },
+          "s2_type": { "formula": "shuffled_scenarios[1].type" },
+          "s2_explanation": { "formula": "shuffled_scenarios[1].explanation" },
+          "s3_text": { "formula": "shuffled_scenarios[2].text" },
+          "s3_type": { "formula": "shuffled_scenarios[2].type" },
+          "s3_explanation": { "formula": "shuffled_scenarios[2].explanation" }
+        },
+        "question": "Read each statement and classify the conclusion as inductive or deductive reasoning.<br><br><ol><li><b>Scenario A:</b> {s1_text}<br>Reasoning type: ____________________</li><br><li><b>Scenario B:</b> {s2_text}<br>Reasoning type: ____________________</li><br><li><b>Scenario C:</b> {s3_text}<br>Reasoning type: ____________________</li></ol>",
+        "answer": "<b>Inductive reasoning</b> draws general conclusions from observations or patterns. <b>Deductive reasoning</b> applies a general rule to a specific case.<br><ol><li><b>Scenario A: {s1_type}.</b> {s1_explanation}</li><br><li><b>Scenario B: {s2_type}.</b> {s2_explanation}</li><br><li><b>Scenario C: {s3_type}.</b> {s3_explanation}</li></ol>"
       }
     ],
       "B-level Problems": [
