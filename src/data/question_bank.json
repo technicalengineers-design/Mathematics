@@ -24239,6 +24239,29 @@
         },
         "question": "Find the distance between \\( A({x_a}, {y_a}) \\) and \\( B({x_b}, {y_b}) \\). On the blank coordinate grid, sketch and label the x- and y-axes, graph the segment \\( \\overline{AB} \\), and label points A and B. Give your distance to four significant digits.<br>{blank_grid}",
         "answer": "Using the distance formula,<br>\\( d = \\sqrt{({x_b} - {x_a})^2 + ({y_b} - {y_a})^2} \\)<br>\\( d \\approx {distance_4sf} \\) (four significant digits).<br>{answer_graph}"
+      },
+      {
+        "id": "Sum 1 C 1-7 Midpoint in a Coordinate Plane",
+        "type": "template",
+        "objective": "Find the Midpoint in the Coordinate Plane",
+        "difficulty": "basic",
+        "variables": {
+          "coordinate_pairs": {
+            "formula": "Array.from({length:17},(_,xIndex)=>Array.from({length:17},(_,yIndex)=>({a_x:xIndex-8,a_y:yIndex-8}))).flat().flatMap(point=>Array.from({length:17},(_,xIndex)=>Array.from({length:17},(_,yIndex)=>({c_x:xIndex-8,c_y:yIndex-8}))).flat().filter(other=>other.a_x!==point.a_x||other.a_y!==point.a_y).map(other=>({a_x:point.a_x,a_y:point.a_y,c_x:other.c_x,c_y:other.c_y})))"
+          },
+          "pair_index": { "formula": "Math.floor(Math.random()*coordinate_pairs.length)" },
+          "a_x": { "formula": "coordinate_pairs[pair_index].a_x" },
+          "a_y": { "formula": "coordinate_pairs[pair_index].a_y" },
+          "c_x": { "formula": "coordinate_pairs[pair_index].c_x" },
+          "c_y": { "formula": "coordinate_pairs[pair_index].c_y" },
+          "b_x": { "formula": "(a_x+c_x)/2", "format": "fraction" },
+          "b_y": { "formula": "(a_y+c_y)/2", "format": "fraction" },
+          "blank_coordinate_plane_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Blank coordinate plane for sketching points A, B, and C\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length:21},(_,index)=>{var p=30+index*25,color=index===10?'#222':'#d8d8d8',width=index===10?2:1;return '<line x1=\"'+p+'\" y1=\"20\" x2=\"'+p+'\" y2=\"530\" stroke=\"'+color+'\" stroke-width=\"'+width+'\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"'+color+'\" stroke-width=\"'+width+'\"/>';}).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"285\" y1=\"20\" x2=\"285\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length:11},(_,index)=>{var n=index-5,x=285+n*50,y=280-n*50;return '<text x=\"'+x+'\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">'+n+'</text><text x=\"273\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"10\">'+n+'</text>';}).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"289\" y=\"16\" font-size=\"12\">y</text></svg>'"
+          }
+        },
+        "question": "Find the coordinates of the midpoint B on segment \\( \\overline{AC} \\), given A = \\( ({a_x}, {a_y}) \\) and C = \\( ({c_x}, {c_y}) \\). Sketch the points A, B, and C on the blank coordinate plane.<br>{blank_coordinate_plane_svg}<br><br><i>(Illustrations not to scale)</i>",
+        "answer": "Use the midpoint formula: \\( B = (\\frac{{a_x}+{c_x}}{2}, \\frac{{a_y}+{c_y}}{2}) = ({b_x}, {b_y}) \\)."
       }
     ],
       "B-level Problems": [
