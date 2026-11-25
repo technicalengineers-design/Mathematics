@@ -24306,7 +24306,48 @@
   },
   "question": "{q_html}",
   "answer": "{a_html}"
-}
+},
+      {
+        "id": "Sum 1 A 2-4 Rotation",
+        "type": "template",
+        "objective": "Rotate a triangle about the origin by two randomized angles and graph both images",
+        "difficulty": "advanced",
+        "variables": {
+          "a_x": { "min": -5, "max": 5 },
+          "a_y": { "min": -5, "max": 5 },
+          "b_x": { "min": -5, "max": 5 },
+          "b_y": { "min": -5, "max": 5 },
+          "raw_c_x": { "min": -5, "max": 5 },
+          "raw_c_y": { "min": -5, "max": 5 },
+          "is_collinear": { "formula": "(b_x-a_x)*(raw_c_y-a_y)===(b_y-a_y)*(raw_c_x-a_x)" },
+          "c_x": { "formula": "is_collinear?(raw_c_x<5?raw_c_x+1:raw_c_x-1):raw_c_x" },
+          "c_y": { "formula": "is_collinear&&(b_x===a_x)?(raw_c_y<5?raw_c_y+1:raw_c_y-1):raw_c_y" },
+          "rotation_angles": { "formula": "[90,180,270]" },
+          "angle_a": { "formula": "rotation_angles[Math.floor(Math.random()*3)]" },
+          "angle_b": { "formula": "rotation_angles[(angle_a/90-1+(Math.random()<0.5?1:2))%3]" },
+          "a1_x": { "formula": "angle_a===90?-a_y:(angle_a===180?-a_x:a_y)" },
+          "a1_y": { "formula": "angle_a===90?a_x:(angle_a===180?-a_y:-a_x)" },
+          "b1_x": { "formula": "angle_a===90?-b_y:(angle_a===180?-b_x:b_y)" },
+          "b1_y": { "formula": "angle_a===90?b_x:(angle_a===180?-b_y:-b_x)" },
+          "c1_x": { "formula": "angle_a===90?-c_y:(angle_a===180?-c_x:c_y)" },
+          "c1_y": { "formula": "angle_a===90?c_x:(angle_a===180?-c_y:-c_x)" },
+          "a2_x": { "formula": "angle_b===90?-a_y:(angle_b===180?-a_x:a_y)" },
+          "a2_y": { "formula": "angle_b===90?a_x:(angle_b===180?-a_y:-a_x)" },
+          "b2_x": { "formula": "angle_b===90?-b_y:(angle_b===180?-b_x:b_y)" },
+          "b2_y": { "formula": "angle_b===90?b_x:(angle_b===180?-b_y:-b_x)" },
+          "c2_x": { "formula": "angle_b===90?-c_y:(angle_b===180?-c_x:c_y)" },
+          "c2_y": { "formula": "angle_b===90?c_x:(angle_b===180?-c_y:-c_x)" },
+          "grid_base": {
+            "formula": "'<rect x=\"50\" y=\"50\" width=\"300\" height=\"300\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length:13},(_,i)=>{var n=i-6,p=200+n*25,col=n===0?'#222':'#dcdcdc',w=n===0?2:1,lab=n!==0?'<text x=\"'+p+'\" y=\"214\" text-anchor=\"middle\" font-size=\"10\">'+n+'</text><text x=\"193\" y=\"'+(p+3)+'\" text-anchor=\"end\" font-size=\"10\">'+(-n)+'</text>':'';return '<line x1=\"'+p+'\" y1=\"50\" x2=\"'+p+'\" y2=\"350\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/><line x1=\"50\" y1=\"'+p+'\" x2=\"350\" y2=\"'+p+'\" stroke=\"'+col+'\" stroke-width=\"'+w+'\"/>'+lab;}).join('')+'<text x=\"356\" y=\"204\" font-size=\"12\">x</text><text x=\"205\" y=\"44\" font-size=\"12\">y</text>'"
+          },
+          "blank_grid_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 380\" style=\"width:100%;max-width:380px;height:auto\">'+grid_base+'</svg>'" },
+          "answer_grid_svg": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 380\" role=\"img\" aria-label=\"Pre-image and two rotated triangles with labeled vertices\" style=\"width:100%;max-width:380px;height:auto\">'+grid_base+'<polygon points=\"'+(200+25*a_x)+','+(200-25*a_y)+' '+(200+25*b_x)+','+(200-25*b_y)+' '+(200+25*c_x)+','+(200-25*c_y)+'\" fill=\"rgba(37,99,235,.14)\" stroke=\"#2563eb\" stroke-width=\"2\"/><polygon points=\"'+(200+25*a1_x)+','+(200-25*a1_y)+' '+(200+25*b1_x)+','+(200-25*b1_y)+' '+(200+25*c1_x)+','+(200-25*c1_y)+'\" fill=\"rgba(217,83,79,.14)\" stroke=\"#d9534f\" stroke-width=\"2\" stroke-dasharray=\"5,3\"/><polygon points=\"'+(200+25*a2_x)+','+(200-25*a2_y)+' '+(200+25*b2_x)+','+(200-25*b2_y)+' '+(200+25*c2_x)+','+(200-25*c2_y)+'\" fill=\"rgba(46,139,87,.14)\" stroke=\"#2e8b57\" stroke-width=\"2\" stroke-dasharray=\"2,2\"/>'+[[a_x,a_y,'A','#1d4ed8',-6],[b_x,b_y,'B','#1d4ed8',-6],[c_x,c_y,'C','#1d4ed8',-6],[a1_x,a1_y,'A&#39;','#b91c1c',14],[b1_x,b1_y,'B&#39;','#b91c1c',14],[c1_x,c1_y,'C&#39;','#b91c1c',14],[a2_x,a2_y,'A&#39;&#39;','#166534',-6],[b2_x,b2_y,'B&#39;&#39;','#166534',-6],[c2_x,c2_y,'C&#39;&#39;','#166534',-6]].map(function(q){var x=200+25*q[0],y=200-25*q[1];return '<circle cx=\"'+x+'\" cy=\"'+y+'\" r=\"3.5\" fill=\"'+q[3]+'\"/><text x=\"'+(x+5)+'\" y=\"'+(y+q[4])+'\" font-size=\"11\" font-weight=\"bold\" fill=\"'+q[3]+'\">'+q[2]+'</text>';}).join('')+'</svg>'"
+          }
+        },
+        "question": "Triangle ABC has vertices A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}). On the coordinate plane, graph the pre-image and both counterclockwise rotations about the origin: <b>A)</b> rotate the original ABC by {angle_a}&deg; to form A&#39;B&#39;C&#39;; <b>B)</b> rotate the original ABC by {angle_b}&deg; to form A&#39;&#39;B&#39;&#39;C&#39;&#39;. Label all vertices with the correct prime marks.<br>{blank_grid_svg}",
+        "answer": "Counterclockwise rotation rules: 90&deg;: (x,y)&rarr;(-y,x); 180&deg;: (x,y)&rarr;(-x,-y); 270&deg;: (x,y)&rarr;(y,-x).<br><b>A) {angle_a}&deg;:</b> A&#39;({a1_x},{a1_y}), B&#39;({b1_x},{b1_y}), C&#39;({c1_x},{c1_y}).<br><b>B) {angle_b}&deg;:</b> A&#39;&#39;({a2_x},{a2_y}), B&#39;&#39;({b2_x},{b2_y}), C&#39;&#39;({c2_x},{c2_y}).<br>{answer_grid_svg}"
+      }
     ],
       "B-level Problems": [
       {
