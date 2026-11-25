@@ -24263,8 +24263,30 @@
             "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 590\" role=\"img\" aria-label=\"Coordinate plane showing segment AC and labeled points A, B, and C\" style=\"width:100%;max-width:560px;height:auto\"><rect x=\"30\" y=\"20\" width=\"510\" height=\"510\" fill=\"white\" stroke=\"#777\"/>' + Array.from({length:21},(_,index)=>{var p=30+index*25;return '<line x1=\"'+p+'\" y1=\"20\" x2=\"'+p+'\" y2=\"530\" stroke=\"#d8d8d8\" stroke-width=\"1\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"540\" y2=\"'+p+'\" stroke=\"#d8d8d8\" stroke-width=\"1\"/>';}).join('') + '<line x1=\"30\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"280\" y1=\"20\" x2=\"280\" y2=\"530\" stroke=\"#222\" stroke-width=\"2\"/>' + Array.from({length:11},(_,index)=>{var n=index-5,x=280+n*50,y=280-n*50;return '<text x=\"'+x+'\" y=\"298\" text-anchor=\"middle\" font-size=\"10\">'+n+'</text><text x=\"268\" y=\"'+(y+4)+'\" text-anchor=\"end\" font-size=\"10\">'+n+'</text>';}).join('') + '<text x=\"545\" y=\"276\" font-size=\"12\">x</text><text x=\"284\" y=\"16\" font-size=\"12\">y</text><line x1=\"'+(280+25*a_x)+'\" y1=\"'+(280-25*a_y)+'\" x2=\"'+(280+25*c_x)+'\" y2=\"'+(280-25*c_y)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/><circle cx=\"'+(280+25*a_x)+'\" cy=\"'+(280-25*a_y)+'\" r=\"5\" fill=\"#2471a3\"/><circle cx=\"'+(280+25*b_x)+'\" cy=\"'+(280-25*b_y)+'\" r=\"5\" fill=\"#2e8b57\"/><circle cx=\"'+(280+25*c_x)+'\" cy=\"'+(280-25*c_y)+'\" r=\"5\" fill=\"#2471a3\"/><text x=\"'+(287+25*a_x)+'\" y=\"'+(276-25*a_y)+'\" font-size=\"12\" font-weight=\"bold\">A ('+a_x+', '+a_y+')</text><text x=\"'+(287+25*b_x)+'\" y=\"'+(276-25*b_y)+'\" font-size=\"12\" font-weight=\"bold\">B ('+b_x+', '+b_y+')</text><text x=\"'+(287+25*c_x)+'\" y=\"'+(276-25*c_y)+'\" font-size=\"12\" font-weight=\"bold\">C ('+c_x+', '+c_y+')</text></svg>'"
           }
         },
-        "question": "Find the coordinates of the midpoint B on segment \\( \\overline{AC} \\), given A = \\( ({a_x}, {a_y}) \\) and C = \\( ({c_x}, {c_y}) \\). Sketch the points A, B, and C on the blank coordinate plane.<br>{blank_coordinate_plane_svg}<br><br><i>(Illustrations not to scale)</i>",
+        "question": "Find the coordinates of the midpoint B on segment \\( \\overline{AC} \\), given A = \\( ({a_x}, {a_y}) \\) and C = \\( ({c_x}, {c_y}) \\). Sketch the points A, B, and C on the blank coordinate plane.<br>{blank_coordinate_plane_svg}",
         "answer": "Use the midpoint formula: \\( B = (\\frac{{a_x}+{c_x}}{2}, \\frac{{a_y}+{c_y}}{2}) = ({b_x}, {b_y}) \\).<br>{answer_coordinate_plane_svg}"
+      },
+      {
+        "id": "Sum 1 I Complimentary and Supplementary",
+        "type": "template",
+        "objective": "Find measures of complementary and supplementary angles",
+        "difficulty": "intermediate",
+        "variables": {
+          "multipliers": { "formula": "[1,2,3,4,5,8,9,11,14,19,29,35,44,59,89,179]" },
+          "first_type": { "formula": "Math.random()<0.5?'complementary':'supplementary'" },
+          "total_a": { "formula": "first_type==='complementary'?90:180" },
+          "total_b": { "formula": "first_type==='complementary'?180:90" },
+          "n_a": { "formula": "multipliers[Math.floor(Math.random()*multipliers.length)]" },
+          "n_b": { "formula": "multipliers[Math.floor(Math.random()*multipliers.length)]" },
+          "smaller_a": { "formula": "total_a/(n_a+1)" },
+          "larger_a": { "formula": "total_a-smaller_a" },
+          "smaller_b": { "formula": "total_b/(n_b+1)" },
+          "larger_b": { "formula": "total_b-smaller_b" },
+          "type_a": { "formula": "first_type" },
+          "type_b": { "formula": "first_type==='complementary'?'supplementary':'complementary'" }
+        },
+        "question": "Solve both problems. The larger angle in each pair is the stated multiple of the smaller angle.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Two angles are {type_a}. The larger angle is {n_a} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Two angles are {type_b}. The larger angle is {n_b} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div></div>",
+        "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> {type_a} angles sum to {total_a}°. Let the smaller angle be x. Then x + {n_a}x = {total_a}, so ({n_a}+1)x = {total_a} and x = <b>{smaller_a}°</b>. The larger angle is {larger_a}°.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> {type_b} angles sum to {total_b}°. Let the smaller angle be x. Then x + {n_b}x = {total_b}, so ({n_b}+1)x = {total_b} and x = <b>{smaller_b}°</b>. The larger angle is {larger_b}°.</div></div>"
       }
     ],
       "B-level Problems": [
