@@ -24347,6 +24347,74 @@
         },
         "question": "Triangle ABC has vertices A({a_x}, {a_y}), B({b_x}, {b_y}), and C({c_x}, {c_y}). On the coordinate plane, graph the pre-image and both counterclockwise rotations about the origin: <b>A)</b> rotate the original ABC by {angle_a}&deg; to form A&#39;B&#39;C&#39;; <b>B)</b> rotate the original ABC by {angle_b}&deg; to form A&#39;&#39;B&#39;&#39;C&#39;&#39;. Label all vertices with the correct prime marks.<br>{blank_grid_svg}",
         "answer": "Counterclockwise rotation rules: 90&deg;: (x,y)&rarr;(-y,x); 180&deg;: (x,y)&rarr;(-x,-y); 270&deg;: (x,y)&rarr;(y,-x).<br><b>A) {angle_a}&deg;:</b> A&#39;({a1_x},{a1_y}), B&#39;({b1_x},{b1_y}), C&#39;({c1_x},{c1_y}).<br><b>B) {angle_b}&deg;:</b> A&#39;&#39;({a2_x},{a2_y}), B&#39;&#39;({b2_x},{b2_y}), C&#39;&#39;({c2_x},{c2_y}).<br>{answer_grid_svg}"
+      },
+      {
+        "id": "Sum 1 I 2-5a Ball",
+        "type": "template",
+        "objective": "Surface Area and Volume of Spheres with Sketching",
+        "difficulty": "intermediate",
+        "variables": {
+          "r": { "min": 1.5, "max": 27.5, "format": "decimal" },
+          "area_coeff": { "formula": "(4*r*r).toFixed(1)" },
+          "vol_coeff": { "formula": "((4/3)*r*r*r).toFixed(1)" },
+          "dec_area": { "formula": "(Math.PI*4*r*r).toFixed(1)" },
+          "dec_vol": { "formula": "(Math.PI*(4/3)*r*r*r).toFixed(1)" }
+        },
+        "question": "<b>Task 1:</b> On a piece of paper, sketch a diagram of the children's play ball described below. Label its radius with the correct dimension.<br><br><b>Task 2:</b> A spherical children's play ball has a radius of <b>\\( {r} \\) cm</b>.<br><br>1. Calculate the total external surface area of the ball.<br>2. Calculate the total internal volume of the ball.",
+        "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D sphere (a circle with an elliptical contour line passing through the center to give a three-dimensional perspective). A radius line drawn from the center point to the outer edge must be clearly labeled as {r} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 260\" role=\"img\" aria-label=\"Sphere with radius labeled\" style=\"display:block;width:100%;max-width:360px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"sphere-radius-arrow-sum1\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#1f5f8b\"/></marker></defs><circle cx=\"160\" cy=\"125\" r=\"82\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M78 125 A82 25 0 0 1 242 125\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><path d=\"M78 125 A82 25 0 0 0 242 125\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\"/><circle cx=\"160\" cy=\"125\" r=\"3.5\" fill=\"#1f5f8b\"/><line x1=\"160\" y1=\"125\" x2=\"241\" y2=\"125\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-end=\"url(#sphere-radius-arrow-sum1)\"/><text x=\"194\" y=\"113\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} cm</text></svg><br><i>Sphere diagram with radius labeled</i></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: A = 4 &times; &pi; &times; r&sup2;<br>&bull; Surface Area Calculation: 4 &times; &pi; &times; {r}&sup2; = {area_coeff}&pi;<br>&bull; Total Surface Area (Exact): <b>{area_coeff}&pi; cm&sup2;</b><br>&bull; Total Surface Area (Decimal): <b>{dec_area} cm&sup2;</b><br><br><b>2. Total Internal Volume:</b><br>&bull; Formula: V = \\(\\frac{4}{3}\\) &times; &pi; &times; r&sup3;<br>&bull; Volume Calculation: \\(\\frac{4}{3}\\) &times; &pi; &times; {r}&sup3; = {vol_coeff}&pi;<br>&bull; Total Volume (Exact): <b>{vol_coeff}&pi; cm&sup3;</b><br>&bull; Total Volume (Decimal): <b>{dec_vol} cm&sup3;</b>"
+      },
+      {
+        "id": "Sum 1 A 2.5a Toy Chest",
+        "type": "template",
+        "objective": "Calculate surface area and volume of a rectangular prism with sketching",
+        "difficulty": "advanced",
+        "variables": {
+          "l": { "formula": "(6000+Math.floor(Math.random()*4000))/100", "format": "0.00" },
+          "w": { "formula": "(3500+Math.floor(Math.random()*2000))/100", "format": "0.00" },
+          "h": { "formula": "(4000+Math.floor(Math.random()*2000))/100", "format": "0.00" },
+          "base_area": { "formula": "l*w" },
+          "front_back_area": { "formula": "2*l*h" },
+          "side_area": { "formula": "2*w*h" },
+          "total_area": { "formula": "2*(l*w+l*h+w*h)" },
+          "total_vol": { "formula": "l*w*h" },
+          "total_area_4sf": { "formula": "total_area.toPrecision(4)" },
+          "total_vol_4sf": { "formula": "total_vol.toPrecision(4)" }
+        },
+        "question": "<b>Task 1:</b> Sketch a 3D diagram of the toy chest and label its length, width, and height.<br><br><b>Task 2:</b> A wooden children's toy chest is a rectangular prism. It measures <b>{l} cm</b> in length, <b>{w} cm</b> in width, and <b>{h} cm</b> in height.<br><br>1. Calculate the total external surface area of the closed chest.<br>2. Calculate its internal volumetric storage capacity.<br><br>Give both answers to <b>four significant digits</b> and include units.",
+        "answer": "<b>Expected Student Sketch:</b> Draw a rectangular prism and label the length {l} cm, width {w} cm, and height {h} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 270\" role=\"img\" aria-label=\"Rectangular toy chest with length, width, and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"chest-arrow-sum1\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><polygon points=\"95,92 290,92 355,48 160,48\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"290,92 355,48 355,178 290,222\" fill=\"#ead4aa\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"95,92 290,92 290,222 95,222\" fill=\"#f2dfbb\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"100\" y1=\"245\" x2=\"285\" y2=\"245\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"192\" y=\"263\" text-anchor=\"middle\" font-size=\"14\">Length: {l} cm</text><line x1=\"75\" y1=\"95\" x2=\"75\" y2=\"218\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"65\" y=\"160\" text-anchor=\"end\" font-size=\"14\">Height: {h} cm</text><line x1=\"300\" y1=\"78\" x2=\"348\" y2=\"46\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"365\" y=\"58\" font-size=\"14\">Width: {w} cm</text></svg></div><br><b>Surface area:</b> \\(A=2(lw+lh+wh)\\) = <b>{total_area_4sf} cm&sup2;</b> (4 significant digits).<br><b>Volume:</b> \\(V=lwh\\) = <b>{total_vol_4sf} cm&sup3;</b> (4 significant digits)."
+      },
+      {
+        "id": "Sum 1 A 2.5b Tank",
+        "type": "template",
+        "objective": "Surface area and volume of cylinders with sketching",
+        "difficulty": "advanced",
+        "variables": {
+          "r": { "formula": "(2000+Math.floor(Math.random()*6001))/1000", "format": "0.000" },
+          "h": { "formula": "(1000+Math.floor(Math.random()*500))/100", "format": "0.00" },
+          "total_area_coeff": { "formula": "2*r*r+2*r*h" },
+          "vol_coeff": { "formula": "r*r*h" },
+          "dec_area_4sf": { "formula": "(Math.PI*total_area_coeff).toPrecision(4)" },
+          "dec_vol_4sf": { "formula": "(Math.PI*vol_coeff).toPrecision(4)" }
+        },
+        "question": "<b>Task 1:</b> Sketch a diagram of the cylindrical water tank and label its radius and height.<br><br><b>Task 2:</b> An industrial water tank is a cylinder with base radius <b>{r} m</b> and height <b>{h} m</b>.<br><br>1. Calculate its total external surface area, including both flat circular bases.<br>2. Calculate its internal volumetric capacity.<br><br>Give both answers to <b>four significant digits</b> and include units.",
+        "answer": "<b>Expected Student Sketch:</b> Draw a vertical cylinder with flat circular top and bottom, label its radius {r} m and height {h} m.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 290\" role=\"img\" aria-label=\"Cylinder-shaped tank with radius and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"tank-arrow-sum1\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><path d=\"M115 70 A105 28 0 0 0 325 70 L325 210 A105 28 0 0 1 115 210 Z\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M115 70 A105 28 0 1 1 325 70 A105 28 0 1 1 115 70\" fill=\"#f7fbfd\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M115 210 A105 28 0 0 0 325 210\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"220\" y1=\"70\" x2=\"315\" y2=\"70\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-end=\"url(#tank-arrow-sum1)\"/><text x=\"264\" y=\"60\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} m</text><line x1=\"355\" y1=\"75\" x2=\"355\" y2=\"205\" stroke=\"#333\" marker-start=\"url(#tank-arrow-sum1)\" marker-end=\"url(#tank-arrow-sum1)\"/><text x=\"365\" y=\"145\" font-size=\"14\">Height: {h} m</text></svg></div><br><b>Surface area:</b> \\(A=2\\pi r^2+2\\pi rh\\) &asymp; <b>{dec_area_4sf} m&sup2;</b> (4 significant digits).<br><b>Volume:</b> \\(V=\\pi r^2h\\) &asymp; <b>{dec_vol_4sf} m&sup3;</b> (4 significant digits)."
+      },
+      {
+        "id": "Sum 1 A 2.5c Triangular Prism",
+        "type": "template",
+        "objective": "Calculate the volume of a triangular prism with a labeled sketch",
+        "difficulty": "advanced",
+        "variables": {
+          "l": { "formula": "(2000+Math.floor(Math.random()*8000))/1000", "format": "0.000" },
+          "w": { "formula": "(2000+Math.floor(Math.random()*8000))/1000", "format": "0.000" },
+          "h": { "formula": "(2000+Math.floor(Math.random()*8000))/1000", "format": "0.000" },
+          "triangle_area": { "formula": "0.5*l*h" },
+          "volume": { "formula": "triangle_area*w" },
+          "triangle_area_4sf": { "formula": "triangle_area.toPrecision(4)" },
+          "volume_4sf": { "formula": "volume.toPrecision(4)" }
+        },
+        "question": "A triangular-prism door stop has a triangular face {l} cm across, is {h} cm high, and is {w} cm deep. Determine its volume. Sketch the prism and label all three dimensions. Round your answer to <b>four significant digits</b> and include units.",
+        "answer": "<b>Sketch with dimensions:</b><br><div style='text-align:center'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 270\" role=\"img\" aria-label=\"Triangular prism with base, height, and depth labeled\" style=\"display:block;width:100%;max-width:430px;height:auto;margin:auto;font-family:Arial,sans-serif\"><polygon points=\"65,210 65,105 165,210\" fill=\"#dbeafe\" stroke=\"#1f2937\" stroke-width=\"2\"/><polygon points=\"205,160 205,55 305,160\" fill=\"#bfdbfe\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"210\" x2=\"205\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"105\" x2=\"205\" y2=\"55\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"165\" y1=\"210\" x2=\"305\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><text x=\"112\" y=\"230\" text-anchor=\"middle\" font-size=\"14\">Base l = {l} cm</text><text x=\"49\" y=\"160\" text-anchor=\"end\" font-size=\"14\">h = {h} cm</text><text x=\"238\" y=\"190\" text-anchor=\"middle\" font-size=\"14\">Depth w = {w} cm</text></svg></div><br><b>Step 1: Find the area of the triangular base.</b><br>\\( A_{triangle}=\\frac{1}{2}bh=\\frac{1}{2}({l})({h})={triangle_area_4sf} \\) cm&sup2;.<br><br><b>Step 2: Multiply by the prism depth.</b><br>\\( V=A_{triangle}w=({triangle_area_4sf})({w}) \\).<br><b>Volume = {volume_4sf} cm&sup3;</b> (four significant digits)."
       }
     ],
       "B-level Problems": [
