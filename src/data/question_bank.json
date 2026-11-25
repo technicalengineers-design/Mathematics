@@ -24267,7 +24267,7 @@
         "answer": "Use the midpoint formula: \\( B = (\\frac{{a_x}+{c_x}}{2}, \\frac{{a_y}+{c_y}}{2}) = ({b_x}, {b_y}) \\).<br>{answer_coordinate_plane_svg}"
       },
       {
-        "id": "Sum 1 I Complimentary and Supplementary",
+        "id": "Sum 1 B 2-2 Complimentary and Supplementary",
         "type": "template",
         "objective": "Find measures of complementary and supplementary angles",
         "difficulty": "intermediate",
@@ -24289,7 +24289,7 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> {type_a} angles sum to {total_a}°. Let the smaller angle be x. Then x + {n_a}x = {total_a}, so ({n_a}+1)x = {total_a} and x = <b>{smaller_a}°</b>. The larger angle is {larger_a}°.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> {type_b} angles sum to {total_b}°. Let the smaller angle be x. Then x + {n_b}x = {total_b}, so ({n_b}+1)x = {total_b} and x = <b>{smaller_b}°</b>. The larger angle is {larger_b}°.</div></div>"
       },
       {
-  "id": "Sum 1 A Complement and Supplement",
+  "id": "Sum 1 A 2-2 Complement and Supplement",
   "type": "template",
   "objective": "Find the measure of an angle from a relationship between its supplement and complement",
   "difficulty": "advanced",
@@ -24306,7 +24306,7 @@
   },
   "question": "{q_html}",
   "answer": "{a_html}"
-},
+      },
       {
         "id": "Sum 1 A 2-4 Rotation",
         "type": "template",
@@ -24349,7 +24349,7 @@
         "answer": "Counterclockwise rotation rules: 90&deg;: (x,y)&rarr;(-y,x); 180&deg;: (x,y)&rarr;(-x,-y); 270&deg;: (x,y)&rarr;(y,-x).<br><b>A) {angle_a}&deg;:</b> A&#39;({a1_x},{a1_y}), B&#39;({b1_x},{b1_y}), C&#39;({c1_x},{c1_y}).<br><b>B) {angle_b}&deg;:</b> A&#39;&#39;({a2_x},{a2_y}), B&#39;&#39;({b2_x},{b2_y}), C&#39;&#39;({c2_x},{c2_y}).<br>{answer_grid_svg}"
       },
       {
-        "id": "Sum 1 I 2-5a Ball",
+        "id": "Sum 1 B 2-5a Ball",
         "type": "template",
         "objective": "Surface Area and Volume of Spheres with Sketching",
         "difficulty": "intermediate",
@@ -24417,10 +24417,10 @@
         "answer": "<b>Sketch with dimensions:</b><br><div style='text-align:center'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 270\" role=\"img\" aria-label=\"Triangular prism with base, height, and depth labeled\" style=\"display:block;width:100%;max-width:430px;height:auto;margin:auto;font-family:Arial,sans-serif\"><polygon points=\"65,210 65,105 165,210\" fill=\"#dbeafe\" stroke=\"#1f2937\" stroke-width=\"2\"/><polygon points=\"205,160 205,55 305,160\" fill=\"#bfdbfe\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"210\" x2=\"205\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"105\" x2=\"205\" y2=\"55\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"165\" y1=\"210\" x2=\"305\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><text x=\"112\" y=\"230\" text-anchor=\"middle\" font-size=\"14\">Base l = {l} cm</text><text x=\"49\" y=\"160\" text-anchor=\"end\" font-size=\"14\">h = {h} cm</text><text x=\"238\" y=\"190\" text-anchor=\"middle\" font-size=\"14\">Depth w = {w} cm</text></svg></div><br><b>Step 1: Find the area of the triangular base.</b><br>\\( A_{triangle}=\\frac{1}{2}bh=\\frac{1}{2}({l})({h})={triangle_area_4sf} \\) cm&sup2;.<br><br><b>Step 2: Multiply by the prism depth.</b><br>\\( V=A_{triangle}w=({triangle_area_4sf})({w}) \\).<br><b>Volume = {volume_4sf} cm&sup3;</b> (four significant digits)."
       },
       {
-        "id": "Sum 1 2.6a I Area Unit Conversion",
+        "id": "Sum 1 B 2.6a I Area Unit Conversion",
         "type": "template",
         "objective": "Convert area units in two real-world scenarios",
-        "difficulty": "basic",
+        "difficulty": "intermediate",
         "variables": {
           "scenarios": {
             "formula": "[{from:'square yards',to:'square feet',factor:9,context:'A garden needs bark'}, {from:'square feet',to:'square inches',factor:144,context:'A floor is being covered with tile'}, {from:'square meters',to:'square centimeters',factor:10000,context:'A poster is being measured'}, {from:'hectares',to:'square meters',factor:10000,context:'A field is being surveyed'}, {from:'acres',to:'square feet',factor:43560,context:'A park is being mapped'}, {from:'square centimeters',to:'square millimeters',factor:100,context:'A photograph is being enlarged'}, {from:'square kilometers',to:'square meters',factor:1000000,context:'A nature reserve is being measured'}, {from:'square inches',to:'square centimeters',factor:6.4516,context:'A craft project is being sized'}, {from:'square meters',to:'square yards',factor:1.195990046,context:'A carpet order is being placed'}, {from:'square miles',to:'acres',factor:640,context:'A large ranch is being measured'}]"
@@ -24438,10 +24438,10 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> 1 {scenario_a.from} = {scenario_a.factor} {scenario_a.to}.<br>{value_a} &times; {scenario_a.factor} = <b>{answer_a} {scenario_a.to}</b>.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> 1 {scenario_b.from} = {scenario_b.factor} {scenario_b.to}.<br>{value_b} &times; {scenario_b.factor} = <b>{answer_b} {scenario_b.to}</b>.</div></div>"
       },
       {
-        "id": "Sum 1 2.6b I Volume Unit Conversion",
+        "id": "Sum 1 B 2.6b I Volume Unit Conversion",
         "type": "template",
         "objective": "Convert volume units in two real-world scenarios",
-        "difficulty": "basic",
+        "difficulty": "intermediate",
         "variables": {
           "scenarios": {
             "formula": "[{from:'cubic feet',to:'cubic yards',factor:1/27,context:'A truckload of bark is measured'}, {from:'cubic yards',to:'cubic feet',factor:27,context:'A garden bed needs soil'}, {from:'cubic inches',to:'cubic feet',factor:1/1728,context:'A storage box is measured'}, {from:'cubic feet',to:'cubic inches',factor:1728,context:'A small aquarium is measured'}, {from:'cubic centimeters',to:'milliliters',factor:1,context:'A laboratory sample is measured'}, {from:'liters',to:'cubic centimeters',factor:1000,context:'A water container is measured'}, {from:'cubic meters',to:'liters',factor:1000,context:'A rainwater tank is measured'}, {from:'milliliters',to:'cubic centimeters',factor:1,context:'A medicine dose is measured'}, {from:'US gallons',to:'cubic inches',factor:231,context:'A fuel container is measured'}, {from:'cubic feet',to:'liters',factor:28.316846592,context:'A refrigerator compartment is measured'}, {from:'US gallons',to:'liters',factor:3.785411784,context:'A beverage container is measured'}]"
@@ -24461,11 +24461,11 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> 1 {scenario_a.from} = {scenario_a.factor} {scenario_a.to}.<br>{value_a} &times; {scenario_a.factor} = <b>{answer_a_display} {scenario_a.to}</b>.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> 1 {scenario_b.from} = {scenario_b.factor} {scenario_b.to}.<br>{value_b} &times; {scenario_b.factor} = <b>{answer_b_display} {scenario_b.to}</b>.</div></div>"
       },
       {
-  "id": "Sem 1 3-2 Compound Logic Statements",
+  "id": "Sem 1 B 3-2 Compound Logic Statements",
   "title": "Sem 1 3-2 Compound Logic Statements",
   "type": "template",
   "objective": "Write conjunctions, disjunctions, conditionals, and biconditionals in symbols and words",
-  "difficulty": "basic",
+  "difficulty": "intermediate",
   "variables": [
     {
       "name": "data",
@@ -24487,14 +24487,14 @@
   "answer": "{a_html}"
 },
       {
-        "id": "Sem 1 3-3a Inductive and Deductive Reasoning",
+        "id": "Sem 1 C 3-3a Inductive and Deductive Reasoning",
         "title": "Sem 1 3-3a Inductive and Deductive Reasoning",
         "type": "template",
         "objective": "Identify inductive and deductive reasoning",
         "difficulty": "basic",
         "variables": {
           "scenarios": {
-            "formula": "[{text:'Every cat that Maya has ever met purrs when scratched behind the ears. Maya concludes that all cats purr when scratched behind the ears.',type:'Inductive Reasoning',explanation:'A generalization is formed from specific personal observations.'},{text:'To graduate, a student must complete 120 credit hours. David has completed 124 credit hours, so his counselor concludes he met the requirement.',type:'Deductive Reasoning',explanation:'A pre-established requirement is applied to a specific case.'},{text:'The city bus arrives at 7:15 AM every morning for two weeks. Leo concludes that it will arrive at 7:15 AM tomorrow.',type:'Inductive Reasoning',explanation:'A prediction is made from a repeating pattern.'},{text:'All regular hexagons have six lines of symmetry. An instructor draws one and states that it has six lines of symmetry.',type:'Deductive Reasoning',explanation:'A general geometric property is applied to a specific figure.'},{text:'Marcus sees the sequence 3, 6, 12, 24 and concludes that the next number must be 48.',type:'Inductive Reasoning',explanation:'A pattern in specific terms is used to predict a later term.'},{text:'A store policy charges a restocking fee for items returned after 30 days. Chloe returns a camera after 45 days and is charged the fee.',type:'Deductive Reasoning',explanation:'A general store policy is applied to an individual return.'},{text:'A scientist finds trace copper in 50 river samples and concludes that the entire river contains trace copper.',type:'Inductive Reasoning',explanation:'Evidence from a sample is generalized to the larger population.'},{text:'State law requires drivers to pull over when an emergency vehicle approaches with sirens on. An ambulance approaches, so Principal Vance pulls over.',type:'Deductive Reasoning',explanation:'A general law is applied to a specific situation.'},{text:'Every time Coach Evans wears his lucky red cap, the team wins. He concludes that the cap causes the wins.',type:'Inductive Reasoning',explanation:'A causal link is inferred from an observed association.'},{text:'All vertical angles are congruent. Angles 1 and 2 are vertical, so a student concludes their measures are equal.',type:'Deductive Reasoning',explanation:'The conclusion follows from an established mathematical theorem.'}]"
+            "formula": "[{text:'For the past six Saturdays, the farmers market has been busiest before noon. Elena predicts that it will be busiest before noon this Saturday.',type:'Inductive Reasoning',explanation:'A prediction about a future Saturday is drawn from several observed Saturdays.'},{text:'Every multiple of 6 is divisible by 3. Since 54 is a multiple of 6, Omar concludes that 54 is divisible by 3.',type:'Deductive Reasoning',explanation:'A general divisibility rule is applied to the specific number 54.'},{text:'A gardener plants five sunflower seeds from the same packet, and all five sprout. She concludes that the seeds in the packet will sprout.',type:'Inductive Reasoning',explanation:'A conclusion about a larger group is generalized from a small sample.'},{text:'Every triangle has an angle sum of 180 degrees. Shape P is a triangle, so its angles sum to 180 degrees.',type:'Deductive Reasoning',explanation:'A known theorem about all triangles is applied to one specific triangle.'},{text:'The first four figures in a pattern contain 1, 4, 9, and 16 dots. Kai predicts that the next figure will contain 25 dots.',type:'Inductive Reasoning',explanation:'A rule is inferred from observed terms and used to predict the next term.'},{text:'A classroom rule says that anyone who forgets a lab safety form cannot begin the experiment. Luis forgot his form, so the teacher tells him he cannot begin.',type:'Deductive Reasoning',explanation:'A classroom rule is applied to Luis’s specific situation.'},{text:'A hiker sees three groups of geese flying south in October and predicts that geese will migrate south each October.',type:'Inductive Reasoning',explanation:'A broad seasonal pattern is inferred from repeated observations.'},{text:'Two angles are complementary if their measures add to 90 degrees. Angles measuring 28 degrees and 62 degrees add to 90 degrees, so they are complementary.',type:'Deductive Reasoning',explanation:'The definition of complementary angles is applied to the given measures.'},{text:'A bookstore has sold out of a new novel on each of the last four Fridays. The manager predicts it will sell out again this Friday.',type:'Inductive Reasoning',explanation:'A likely future outcome is predicted from a repeated past pattern.'},{text:'All squares are rectangles. Figure Q is a square, so Figure Q is a rectangle.',type:'Deductive Reasoning',explanation:'A classification rule about all squares is applied to Figure Q.'}]"
           },
           "shuffled_scenarios": { "formula": "scenarios.map(function(s){return {s:s,r:Math.random()}}).sort(function(a,b){return a.r-b.r}).slice(0,3).map(function(x){return x.s})" },
           "s1_text": { "formula": "shuffled_scenarios[0].text" },
@@ -24509,6 +24509,93 @@
         },
         "question": "Read each statement and classify the conclusion as inductive or deductive reasoning.<br><br><ol><li><b>Scenario A:</b> {s1_text}<br>Reasoning type: ____________________</li><br><li><b>Scenario B:</b> {s2_text}<br>Reasoning type: ____________________</li><br><li><b>Scenario C:</b> {s3_text}<br>Reasoning type: ____________________</li></ol>",
         "answer": "<b>Inductive reasoning</b> draws general conclusions from observations or patterns. <b>Deductive reasoning</b> applies a general rule to a specific case.<br><ol><li><b>Scenario A: {s1_type}.</b> {s1_explanation}</li><br><li><b>Scenario B: {s2_type}.</b> {s2_explanation}</li><br><li><b>Scenario C: {s3_type}.</b> {s3_explanation}</li></ol>"
+      },
+      {
+        "id": "Sem 1 3-3b Syllogism",
+        "title": "Sem 1 3-3b Syllogism",
+        "type": "template",
+        "objective": "Apply the Law of Syllogism to conditional statements",
+        "difficulty": "basic",
+        "variables": {
+          "chain_pool": {
+            "formula": "[{first:'a plant is a cactus',middle:'a plant is a succulent',last:'a plant stores water in its tissues'},{first:'a vehicle is an electric car',middle:'a vehicle is powered by an electric motor',last:'a vehicle needs electricity to recharge'},{first:'an integer is divisible by 15',middle:'an integer is divisible by 3',last:'the integer has a digit sum divisible by 3'},{first:'a polygon is a regular hexagon',middle:'the polygon has six sides',last:'the polygon is a hexagon'},{first:'an animal is a penguin',middle:'the animal is a bird',last:'the animal has feathers'},{first:'an integer is a multiple of 20',middle:'the integer is a multiple of 5',last:'the integer ends in 0 or 5'},{first:'a solid is a cube',middle:'the solid has six square faces',last:'the solid is a polyhedron'},{first:'a number is a multiple of 100',middle:'the number ends in 00',last:'the number is divisible by 4'},{first:'an angle is acute',middle:'the angle measures less than 90 degrees',last:'the angle is not a right angle'},{first:'a year is a leap year',middle:'the year has 366 days',last:'the year has an extra day in February'}]"
+          },
+          "selected_chains": { "formula": "chain_pool.map(function(x){return {x:x,r:Math.random()}}).sort(function(a,b){return a.r-b.r}).slice(0,4).map(function(y){return y.x})" },
+          "raw_statements": { "formula": "selected_chains.flatMap(function(c){return ['If '+c.first+', then '+c.middle+'.','If '+c.middle+', then '+c.last+'.']})" },
+          "shuffled_statements": { "formula": "raw_statements.map(function(x){return {x:x,r:Math.random()}}).sort(function(a,b){return a.r-b.r}).map(function(y){return y.x})" },
+          "statement_1": { "formula": "shuffled_statements[0]" },
+          "statement_2": { "formula": "shuffled_statements[1]" },
+          "statement_3": { "formula": "shuffled_statements[2]" },
+          "statement_4": { "formula": "shuffled_statements[3]" },
+          "statement_5": { "formula": "shuffled_statements[4]" },
+          "statement_6": { "formula": "shuffled_statements[5]" },
+          "statement_7": { "formula": "shuffled_statements[6]" },
+          "statement_8": { "formula": "shuffled_statements[7]" },
+          "chain_1a": { "formula": "selected_chains[0].first" },
+          "chain_1b": { "formula": "selected_chains[0].middle" },
+          "chain_1c": { "formula": "selected_chains[0].last" },
+          "chain_2a": { "formula": "selected_chains[1].first" },
+          "chain_2b": { "formula": "selected_chains[1].middle" },
+          "chain_2c": { "formula": "selected_chains[1].last" },
+          "chain_3a": { "formula": "selected_chains[2].first" },
+          "chain_3b": { "formula": "selected_chains[2].middle" },
+          "chain_3c": { "formula": "selected_chains[2].last" },
+          "chain_4a": { "formula": "selected_chains[3].first" },
+          "chain_4b": { "formula": "selected_chains[3].middle" },
+          "chain_4c": { "formula": "selected_chains[3].last" }
+        },
+        "question": "The following eight conditional statements are true, but have been shuffled:<br><br>1. {statement_1}<br>2. {statement_2}<br>3. {statement_3}<br>4. {statement_4}<br>5. {statement_5}<br>6. {statement_6}<br>7. {statement_7}<br>8. {statement_8}<br><br>Match them into four valid conclusions using the Law of Syllogism.",
+        "answer": "Combine each pair of statements so the first statement's conclusion matches the second statement's hypothesis:<br><br><b>Pair 1:</b> If {chain_1a}, then {chain_1b}; and if {chain_1b}, then {chain_1c}.<br><b>Conclusion 1:</b> If {chain_1a}, then {chain_1c}.<br><br><b>Pair 2:</b> If {chain_2a}, then {chain_2b}; and if {chain_2b}, then {chain_2c}.<br><b>Conclusion 2:</b> If {chain_2a}, then {chain_2c}.<br><br><b>Pair 3:</b> If {chain_3a}, then {chain_3b}; and if {chain_3b}, then {chain_3c}.<br><b>Conclusion 3:</b> If {chain_3a}, then {chain_3c}.<br><br><b>Pair 4:</b> If {chain_4a}, then {chain_4b}; and if {chain_4b}, then {chain_4c}.<br><b>Conclusion 4:</b> If {chain_4a}, then {chain_4c}."
+      },
+      {
+        "id": "Sem 1 C 3-4 Points, Lines, and Planes",
+        "title": "Sem 1 C 3-4 Points, Lines, and Planes",
+        "type": "template",
+        "objective": "Complete fundamental geometric postulates about points, lines, and planes",
+        "difficulty": "basic",
+        "variables": {
+          "postulate_pool": {
+            "formula": "[{text:'Two distinct points determine exactly one ______.',ans:'line',explanation:'The Two-Point Postulate states that exactly one line passes through any two distinct points.'},{text:'Three noncollinear points determine exactly one ______.',ans:'plane',explanation:'Three noncollinear points lie in exactly one plane.'},{text:'When two distinct lines intersect, they share exactly one ______.',ans:'point',explanation:'Intersecting lines meet at one point.'},{text:'When two distinct planes intersect, their intersection is a ______.',ans:'line',explanation:'The intersection of two distinct planes is a line.'},{text:'If two points lie in a plane, the ______ containing them lies in that plane.',ans:'line',explanation:'A plane containing two points also contains the line through those points.'},{text:'Through a line and a point not on it, exactly one ______ can be formed.',ans:'plane',explanation:'A line and an external point determine exactly one plane.'},{text:'Every plane contains at least three ______ points.',ans:'noncollinear',explanation:'A plane is determined by at least three noncollinear points.'},{text:'Two parallel lines in the same plane have no points in ______.',ans:'common',explanation:'Coplanar parallel lines never intersect, so they share no points.'},{text:'If a point lies on a line, it also lies in every plane containing that ______.',ans:'line',explanation:'A plane that contains a line contains all points on the line.'},{text:'If a line and a plane have exactly one point in common, the line ______ the plane.',ans:'intersects',explanation:'A line with exactly one point in common with a plane intersects that plane.'}]"
+          },
+          "shuffled_pool": { "formula": "postulate_pool.map(function(x){return {x:x,r:Math.random()}}).sort(function(a,b){return a.r-b.r}).slice(0,4).map(function(y){return y.x})" },
+          "p1_text": { "formula": "shuffled_pool[0].text" },
+          "p1_ans": { "formula": "shuffled_pool[0].ans" },
+          "p1_exp": { "formula": "shuffled_pool[0].explanation" },
+          "p2_text": { "formula": "shuffled_pool[1].text" },
+          "p2_ans": { "formula": "shuffled_pool[1].ans" },
+          "p2_exp": { "formula": "shuffled_pool[1].explanation" },
+          "p3_text": { "formula": "shuffled_pool[2].text" },
+          "p3_ans": { "formula": "shuffled_pool[2].ans" },
+          "p3_exp": { "formula": "shuffled_pool[2].explanation" },
+          "p4_text": { "formula": "shuffled_pool[3].text" },
+          "p4_ans": { "formula": "shuffled_pool[3].ans" },
+          "p4_exp": { "formula": "shuffled_pool[3].explanation" }
+        },
+        "question": "Complete each geometric postulate by filling in the blank:<br><div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px\"><div><b>A)</b> {p1_text}</div><div><b>B)</b> {p2_text}</div><div><b>C)</b> {p3_text}</div><div><b>D)</b> {p4_text}</div></div>",
+        "answer": "Completed postulates:<br><div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px\"><div><b>A)</b> {p1_ans}<br><i>Explanation:</i> {p1_exp}</div><div><b>B)</b> {p2_ans}<br><i>Explanation:</i> {p2_exp}</div><div><b>C)</b> {p3_ans}<br><i>Explanation:</i> {p3_exp}</div><div><b>D)</b> {p4_ans}<br><i>Explanation:</i> {p4_exp}</div></div>"
+      },
+      {
+        "id": "Sem 1 C 3-7a Skew",
+        "title": "Sem 1 C 3-7 Skew",
+        "type": "template",
+        "objective": "Identify skew and perpendicular lines in a cube",
+        "difficulty": "basic",
+        "variables": {
+          "cube_vertex_letters": { "formula": "'ABCDEFGHJKLMNPQRTUVWXYZ'.split('').sort(function(){return Math.random()-0.5}).slice(0,8)" },
+          "cube_vertices": { "formula": "[[90,95],[250,95],[250,255],[90,255],[150,45],[310,45],[310,205],[150,205]]" },
+          "cube_coordinates": { "formula": "[[0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[1,0,1],[1,1,1],[0,1,1]]" },
+          "cube_edges": { "formula": "[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]" },
+          "target_edge_index": { "formula": "Math.floor(Math.random()*cube_edges.length)" },
+          "target_edge": { "formula": "cube_edges[target_edge_index]" },
+          "target_line": { "formula": "cube_vertex_letters[target_edge[0]]+cube_vertex_letters[target_edge[1]]" },
+          "skew_edge_names": { "formula": "cube_edges.filter(function(edge){return !edge.some(function(vertex){return target_edge.includes(vertex)})&&((cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])-(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])!==0||(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])-(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])!==0||(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])-(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])!==0)}).map(function(edge){return cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]]})" },
+          "perpendicular_edge_names": { "formula": "cube_edges.filter(function(edge){return edge.filter(function(vertex){return target_edge.includes(vertex)}).length===1&&(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])+(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])+(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])===0)}).map(function(edge){return cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]]})" },
+          "skew_edge_answer": { "formula": "skew_edge_names.map(function(name){return '\\\\( \\\\overleftrightarrow{'+name+'} \\\\)' }).join(', ')" },
+          "perpendicular_edge_answer": { "formula": "perpendicular_edge_names.map(function(name){return '\\\\( \\\\overleftrightarrow{'+name+'} \\\\)' }).join(', ')" },
+          "cube_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 310\" role=\"img\" aria-label=\"Cube with randomized vertex labels and dashed hidden edges\" style=\"display:block;width:100%;max-width:400px;height:auto;background:white\"><title>Cube with randomized vertex labels</title>'+cube_edges.map(function(edge,index){var a=cube_vertices[edge[0]],b=cube_vertices[edge[1]],hidden=[6,7,11].includes(index);return '<line x1=\"'+a[0]+'\" y1=\"'+a[1]+'\" x2=\"'+b[0]+'\" y2=\"'+b[1]+'\" stroke=\"#222\" stroke-width=\"2.5\"'+(hidden?' stroke-dasharray=\"6 5\"':'')+'/>';}).join('')+cube_vertices.map(function(point,index){var offsets=[[-16,-10],[13,-10],[14,20],[-17,20],[-17,-10],[13,-10],[14,20],[-17,20]];return '<text x=\"'+(point[0]+offsets[index][0])+'\" y=\"'+(point[1]+offsets[index][1])+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"18\" font-weight=\"bold\" fill=\"#111\" style=\"paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round\">'+cube_vertex_letters[index]+'</text>';}).join('')+'</svg>'" }
+        },
+        "question": "The cube shows eight vertices labeled with capital letters.<br><div style=\"display:grid;grid-template-columns:minmax(0,400px) minmax(180px,1fr);align-items:start;gap:20px\"><div>{cube_svg}</div><div>For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) List all lines that are skew to it.<br><br>B) List all lines that are perpendicular to it.</div></div>",
+        "answer": "For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) Skew: {skew_edge_answer}.<br>B) Perpendicular: {perpendicular_edge_answer}."
       }
     ],
       "B-level Problems": [
