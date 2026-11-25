@@ -19791,6 +19791,8 @@
   "question": "{q_html}",
   "answer": "{a_html}"
 }
+    ],
+      "Summative 1": [
     ]
   },
   "Geometry": {
@@ -24210,7 +24212,36 @@
   "answer": "{a_html}"
 }
     ],
-    "B-level Problems": [
+      "Summative 1": [
+        {
+        "id": "Sum 1 A 1-4 Distance Between Two Points",
+        "type": "template",
+        "objective": "Find Distance Between Two Points",
+        "difficulty": "advanced",
+        "variables": {
+          "x_a": { "formula": "(Math.random()<0.5?-1:1)*(1000+Math.floor(Math.random()*7001))/1000", "format": "0.000" },
+          "y_a": { "formula": "(Math.random()<0.5?-1:1)*(1000+Math.floor(Math.random()*7001))/1000", "format": "0.000" },
+          "x_b": { "formula": "(Math.random()<0.5?-1:1)*(1000+Math.floor(Math.random()*7001))/1000", "format": "0.000" },
+          "y_b": { "formula": "(Math.random()<0.5?-1:1)*(1000+Math.floor(Math.random()*7001))/1000", "format": "0.000" },
+          "distance": {
+            "formula": "Math.sqrt((x_b - x_a) ** 2 + (y_b - y_a) ** 2)",
+            "format": "auto"
+          },
+          "distance_4sf": {
+            "formula": "distance.toPrecision(4)"
+          },
+          "blank_grid": {
+            "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 420\" role=\"img\" aria-label=\"Blank coordinate grid with no axes\" style=\"display:block;width:100%;max-width:420px;height:auto;border:1px solid #777;background:white\">' + Array.from({length:21},function(_,i){var p=30+i*18;return '<line x1=\"'+p+'\" y1=\"30\" x2=\"'+p+'\" y2=\"390\" stroke=\"#ddd\" stroke-width=\"0.7\"/><line x1=\"30\" y1=\"'+p+'\" x2=\"390\" y2=\"'+p+'\" stroke=\"#ddd\" stroke-width=\"0.7\"/>';}).join('') + '</svg>'"
+          },
+          "answer_graph": {
+            "formula": "blank_grid.replace('</svg>', '<line x1=\"30\" y1=\"210\" x2=\"390\" y2=\"210\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"210\" y1=\"30\" x2=\"210\" y2=\"390\" stroke=\"#222\" stroke-width=\"2\"/><text x=\"395\" y=\"205\" font-size=\"12\" font-style=\"italic\">x</text><text x=\"215\" y=\"25\" font-size=\"12\" font-style=\"italic\">y</text><line x1=\"'+(210+x_a*18)+'\" y1=\"'+(210-y_a*18)+'\" x2=\"'+(210+x_b*18)+'\" y2=\"'+(210-y_b*18)+'\" stroke=\"#c0392b\" stroke-width=\"3\"/><circle cx=\"'+(210+x_a*18)+'\" cy=\"'+(210-y_a*18)+'\" r=\"4\" fill=\"#2471a3\"/><circle cx=\"'+(210+x_b*18)+'\" cy=\"'+(210-y_b*18)+'\" r=\"4\" fill=\"#2471a3\"/><text x=\"'+(216+x_a*18)+'\" y=\"'+(205-y_a*18)+'\" font-size=\"12\" font-weight=\"bold\">A ('+x_a.toFixed(3)+', '+y_a.toFixed(3)+')</text><text x=\"'+(216+x_b*18)+'\" y=\"'+(205-y_b*18)+'\" font-size=\"12\" font-weight=\"bold\">B ('+x_b.toFixed(3)+', '+y_b.toFixed(3)+')</text></svg>')"
+          }
+        },
+        "question": "Find the distance between \\( A({x_a}, {y_a}) \\) and \\( B({x_b}, {y_b}) \\). On the blank coordinate grid, sketch and label the x- and y-axes, graph the segment \\( \\overline{AB} \\), and label points A and B. Give your distance to four significant digits.<br>{blank_grid}",
+        "answer": "Using the distance formula,<br>\\( d = \\sqrt{({x_b} - {x_a})^2 + ({y_b} - {y_a})^2} \\)<br>\\( d \\approx {distance_4sf} \\) (four significant digits).<br>{answer_graph}"
+      }
+    ],
+      "B-level Problems": [
       {
   "id": "GEO B0901 Pentagon Area",
   "type": "template",
@@ -24291,7 +24322,7 @@
   "answer": "{answer_html}"
 }
     ],
-    "Scratch Pad Practice Problems": [
+     "Scratch Pad Practice Problems": [
       {
         "meta": {
           "title": "Discrete to Continuous Data Scale Transition Animation",
