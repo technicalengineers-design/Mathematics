@@ -24287,7 +24287,26 @@
         },
         "question": "Solve both problems. The larger angle in each pair is the stated multiple of the smaller angle.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Two angles are {type_a}. The larger angle is {n_a} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Two angles are {type_b}. The larger angle is {n_b} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div></div>",
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> {type_a} angles sum to {total_a}°. Let the smaller angle be x. Then x + {n_a}x = {total_a}, so ({n_a}+1)x = {total_a} and x = <b>{smaller_a}°</b>. The larger angle is {larger_a}°.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> {type_b} angles sum to {total_b}°. Let the smaller angle be x. Then x + {n_b}x = {total_b}, so ({n_b}+1)x = {total_b} and x = <b>{smaller_b}°</b>. The larger angle is {larger_b}°.</div></div>"
-      }
+      },
+      {
+  "id": "Sum 1 A Complement and Supplement",
+  "type": "template",
+  "objective": "Find the measure of an angle from a relationship between its supplement and complement",
+  "difficulty": "advanced",
+  "variables": {
+    "data": {
+      "formula": "(function() { var pairs = []; for (var k = 2; k <= 5; k++) {   for (var x = 10; x <= 80; x++) {     var d = 180 - 90 * k + (k - 1) * x;     if (d !== 0 && Math.abs(d) <= 65 && Math.abs(d) % 5 === 0) {       pairs.push({ k: k, x: x, d: d });     }   } } var p = pairs[Math.floor(Math.random() * pairs.length)]; var kWords = { 2: 'twice', 3: '3 times', 4: '4 times', 5: '5 times' }; var kPhrase = kWords[p.k]; var absD = Math.abs(p.d); var compWord = p.d > 0 ? 'more than' : 'less than'; var signOp = p.d > 0 ? '+' : '&minus;'; var q = '<div style=\"font-size:15px;line-height:1.5;color:#111;\">'   + 'Find the measure of an angle whose supplement is <b>' + absD + '&deg;</b> ' + compWord + ' ' + kPhrase + ' its complement.'   + '<div style=\"height:120px;\"></div>'   + '</div>'; var rhsConst = 90 * p.k + p.d; var rhsAfterSub = rhsConst - 180; var coeff = p.k - 1; var compVal = 90 - p.x; var suppVal = 180 - p.x; var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">'   + '<div><b>Step 1 &mdash; Define the expressions:</b></div>'   + '<div style=\"margin-left:14px;\">Let <i>x</i> = the measure of the angle.</div>'   + '<div style=\"margin-left:14px;\">Complement = 90 &minus; <i>x</i> &nbsp;|&nbsp; Supplement = 180 &minus; <i>x</i></div>'   + '<div style=\"margin-top:6px;\"><b>Step 2 &mdash; Write the equation:</b></div>'   + '<div style=\"margin-left:14px;\">180 &minus; <i>x</i> = ' + p.k + '(90 &minus; <i>x</i>) ' + signOp + ' ' + absD + '</div>'   + '<div style=\"margin-top:6px;\"><b>Step 3 &mdash; Distribute and solve for <i>x</i>:</b></div>'   + '<div style=\"margin-left:14px;\">180 &minus; <i>x</i> = ' + (90 * p.k) + ' &minus; ' + p.k + '<i>x</i> ' + signOp + ' ' + absD + '</div>'   + '<div style=\"margin-left:14px;\">180 &minus; <i>x</i> = ' + rhsConst + ' &minus; ' + p.k + '<i>x</i></div>'   + '<div style=\"margin-left:14px;\">' + coeff + '<i>x</i> = ' + rhsAfterSub + '</div>'   + '<div style=\"margin-left:14px;\"><i>x</i> = <b>' + p.x + '&deg;</b></div>'   + '<div style=\"margin-top:6px;\"><b>Check:</b> Supplement = ' + suppVal + '&deg;, Complement = ' + compVal + '&deg; (' + p.k + ' &times; ' + compVal + '&deg; ' + signOp + ' ' + absD + '&deg; = ' + suppVal + '&deg;).</div>'   + '</div>'; return { q_html: q, a_html: a };})()"
+    },
+    "q_html": {
+      "formula": "data.q_html"
+    },
+    "a_html": {
+      "formula": "data.a_html"
+    }
+  },
+  "question": "{q_html}",
+  "answer": "{a_html}"
+}
     ],
       "B-level Problems": [
       {
