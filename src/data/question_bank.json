@@ -19794,7 +19794,7 @@
     ],
     "Summative 1": [
       {
-        "id": "Sum 1 C 1-1 Solving Proportions",
+        "id": "Sum 1 C 1-1a Solving Proportions",
         "title": "Sum 1 C 1-1 Solving Proportions",
         "type": "template",
         "objective": "Solving Proportions",
@@ -19809,7 +19809,7 @@
         "answer": "\\( {allshovel} \\) houses will require about \\({result}\\) hours"
       },
       {
-        "id": "Sum 1 B 1-1 Calculations per Unit",
+        "id": "Sum 1 B 1-1a Calculations per Unit",
         "title": "Sum 1 B 1-1 Calculations per Unit",
         "type": "template",
         "objective": "Calculate unit rate from travel data",
@@ -19830,7 +19830,7 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Convert the travel time to hours: {hours_whole_a} + {minutes_a}/60 = {hours_a} hours.<br>Average speed = distance &divide; time = {miles_a} &divide; {hours_a} = <b>{speed_a} mph</b>.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Convert the travel time to hours: {hours_whole_b} + {minutes_b}/60 = {hours_b} hours.<br>Average speed = distance &divide; time = {miles_b} &divide; {hours_b} = <b>{speed_b} mph</b>.</div></div>"
       },
       {
-  "id": "Sum 1 A 1.1 Rate Calculations",
+  "id": "Sum 1 A 1.1a Rate Calculations",
   "type": "template",
   "objective": "Write and evaluate an algebraic expression to find maximum distance given a budget, per-passenger fee, and mileage rate",
   "difficulty": "advanced",
@@ -19860,7 +19860,65 @@
   "answer": "<b>Step 1: Define variables and write the expression</b><br>Let \\( B \\) = total budget (\\( \\${budget} \\)), \\( p \\) = number of passengers (\\( {passengers} \\)), \\( r_p \\) = charge per passenger (\\( \\${rate_p_str} \\)), and \\( r_m \\) = charge per mile (\\( \\${rate_m_str} \\)).<br><br>To find the maximum distance \\( d \\), subtract the total passenger fee from the budget and divide the remaining money by the per-mile rate:<br><b>\\( d = \\frac{B - (r_p \\cdot p)}{r_m} \\)</b><br><br>Substituting the given values yields the expression:<br><b>\\( \\frac{{budget} - ({rate_p_str} \\times {passengers})}{{rate_m_str}} \\)</b><br><br><b>Step 2: Evaluate the expression</b><br>• Calculate the total passenger fee: \\( \\${rate_p_str} \\times {passengers} = \\${total_p_str} \\)<br>• Subtract the passenger fee from the total budget: \\( \\${budget} - \\${total_p_str} = \\${remaining_str} \\)<br>• Divide by the cost per mile: \\( \\frac{{remaining_str}}{{rate_m_str}} \\approx {miles_rounded}\\text{ miles} \\)<br><br><b>Final Answer:</b><br>{names} can travel up to <b>\\( {miles_rounded}\\text{ miles} \\)</b> (or <b>\\( {whole_miles}\\text{ full miles} \\)</b> if the company only bills per completed mile), which is well within the \\( {max_miles_limit}\\text{-mile} \\) trip limit."
 },
 {
-  "id": "Sum 1 A 1.1 Knots",
+  "id": "Sum 1 A 1.1b Maple Syrup",
+  "type": "template",
+  "objective": "Model a real-world linear relationship with a constant processing loss, graph the equation, and identify intercepts",
+  "difficulty": "basic",
+  "variables": {
+    "scenarios": {
+      "formula": "[{ sap_ratio: 40, loss_oz: 8 }, { sap_ratio: 40, loss_oz: 16 }, { sap_ratio: 40, loss_oz: 32 }, { sap_ratio: 32, loss_oz: 8 }, { sap_ratio: 32, loss_oz: 16 }, { sap_ratio: 50, loss_oz: 16 }, { sap_ratio: 50, loss_oz: 32 }]"
+    },
+    "idx": {
+      "formula": "Math.floor(Math.random() * scenarios.length)"
+    },
+    "sap_ratio": {
+      "formula": "scenarios[idx].sap_ratio"
+    },
+    "loss_oz": {
+      "formula": "scenarios[idx].loss_oz"
+    },
+    "loss_gal": {
+      "formula": "loss_oz / 128"
+    },
+    "loss_gal_str": {
+      "formula": "Number(loss_gal.toFixed(4)).toString()"
+    },
+    "x_int": {
+      "formula": "Number((sap_ratio * loss_gal).toFixed(2))"
+    },
+    "y_int_neg": {
+      "formula": "Number((-loss_gal).toFixed(4))"
+    },
+    "max_x": {
+      "formula": "sap_ratio * 5"
+    },
+    "step_x": {
+      "formula": "sap_ratio"
+    },
+    "y_at_max": {
+      "formula": "Number((5 - loss_gal).toFixed(3))"
+    },
+    "px_xint": {
+      "formula": "60 + (x_int / max_x) * 300"
+    },
+    "px_end_y": {
+      "formula": "340 - (y_at_max / 6) * 300"
+    },
+    "grid_base": {
+      "formula": "Array.from({length: 7}, (_, i) => { const y = 340 - i * 50; const lbl = i > 0 ? '<text x=\"52\" y=\"' + (y + 4) + '\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#333\">' + i + '</text>' : ''; return '<line x1=\"60\" y1=\"' + y + '\" x2=\"360\" y2=\"' + y + '\" stroke=\"#dcdcdc\" stroke-width=\"1\"/>' + lbl; }).join('') + Array.from({length: 6}, (_, i) => { const x = 60 + i * 60; const val = i * step_x; const lbl = i > 0 ? '<text x=\"' + x + '\" y=\"356\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#333\">' + val + '</text>' : ''; return '<line x1=\"' + x + '\" y1=\"40\" x2=\"' + x + '\" y2=\"340\" stroke=\"#dcdcdc\" stroke-width=\"1\"/>' + lbl; }).join('') + '<line x1=\"60\" y1=\"340\" x2=\"365\" y2=\"340\" stroke=\"#222\" stroke-width=\"2\"/><line x1=\"60\" y1=\"340\" x2=\"60\" y2=\"35\" stroke=\"#222\" stroke-width=\"2\"/><text x=\"52\" y=\"356\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#333\">0</text><text x=\"210\" y=\"382\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#222\">Gallons of Sap (x)</text><text x=\"18\" y=\"190\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"bold\" fill=\"#222\" transform=\"rotate(-90 18 190)\">Gallons of Syrup (y)</text>'"
+    },
+    "blank_graph_svg": {
+      "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 400\" role=\"img\" aria-label=\"First-quadrant coordinate plane for graphing maple syrup production\" style=\"width:100%;max-width:400px;height:auto\"><rect x=\"60\" y=\"40\" width=\"300\" height=\"300\" fill=\"white\" stroke=\"#999\"/>' + grid_base + '</svg>'"
+    },
+    "answer_graph_svg": {
+      "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 400\" role=\"img\" aria-label=\"Graphed linear relationship showing gallons of sap versus gallons of syrup with x-intercept labeled\" style=\"width:100%;max-width:400px;height:auto\"><rect x=\"60\" y=\"40\" width=\"300\" height=\"300\" fill=\"white\" stroke=\"#999\"/>' + grid_base + '<line x1=\"' + px_xint + '\" y1=\"340\" x2=\"360\" y2=\"' + px_end_y + '\" stroke=\"#2563eb\" stroke-width=\"2.5\"/><circle cx=\"' + px_xint + '\" cy=\"340\" r=\"4.5\" fill=\"#d9534f\"/><text x=\"' + (px_xint + 6) + '\" y=\"326\" text-anchor=\"start\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"bold\" fill=\"#d9534f\">x-int: (' + x_int + ', 0)</text><circle cx=\"360\" cy=\"' + px_end_y + '\" r=\"4\" fill=\"#2563eb\"/><text x=\"352\" y=\"' + (px_end_y - 8) + '\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"bold\" fill=\"#1d4ed8\">(' + max_x + ', ' + y_at_max + ')</text></svg>'"
+    }
+  },
+  "question": "It takes about \\( {sap_ratio} \\) gallons of sap from maple trees to make \\( 1 \\) gallon of syrup. In processing, about \\( {loss_oz}\\text{ oz} \\) of syrup is lost in every batch (\\( 1\\text{ gallon} = 128\\text{ oz} \\)). <br><br>Draw a reasonable graph on the coordinate plane provided showing the number of gallons of syrup produced from the number of gallons of sap. Label your axes and identify the intercepts.<br><br>{blank_graph_svg}",
+  "answer": "<b>Step 1: Write the linear equation</b><br>Let \\( x \\) = gallons of sap and \\( y \\) = gallons of syrup.<br>• The production rate is \\( \\frac{1}{{sap_ratio}} \\) gallon of syrup per gallon of sap.<br>• Convert the processing loss from ounces to gallons: \\( \\frac{{loss_oz}\\text{ oz}}{128\\text{ oz/gal}} = {loss_gal_str}\\text{ gallons} \\).<br><br>Subtracting the processing loss gives the linear equation:<br><b>\\( y = \\frac{1}{{sap_ratio}}x - {loss_gal_str} \\)</b><br><br><b>Step 2: Identify the intercepts</b><br>• <b>x-intercept</b> (set \\( y = 0 \\)):<br>\\( 0 = \\frac{1}{{sap_ratio}}x - {loss_gal_str} \\implies \\frac{1}{{sap_ratio}}x = {loss_gal_str} \\implies x = {x_int} \\)<br><b>\\( ({x_int}, 0) \\)</b> &mdash; At least \\( {x_int}\\text{ gallons} \\) of sap are required just to cover the \\( {loss_oz}\\text{ oz} \\) processing loss before any usable syrup is produced.<br>• <b>y-intercept</b> (set \\( x = 0 \\)):<br>\\( y = -{loss_gal_str} \\)<br><b>\\( (0, {y_int_neg}) \\)</b> &mdash; Theoretical starting deficit of \\( {loss_oz}\\text{ oz} \\) (not physically plotted in Quadrant I since negative syrup cannot be produced).<br><br><b>Step 3: Graph the relationship</b><br>• <b>Horizontal Axis (x-axis):</b> Gallons of Sap (\\( x \\))<br>• <b>Vertical Axis (y-axis):</b> Gallons of Syrup (\\( y \\))<br><br>Plot the x-intercept at \\( ({x_int}, 0) \\) and another point such as \\( ({max_x}, {y_at_max}) \\), then draw a ray extending into Quadrant I for \\( x \\ge {x_int} \\):<br><br>{answer_graph_svg}"
+},
+{
+  "id": "Sum 1 A 1.1b Knots",
   "type": "template",
   "objective": "Convert nautical speed (knots) to distance in feet and speed in miles per hour using dimensional analysis and equations",
   "difficulty": "advanced",
