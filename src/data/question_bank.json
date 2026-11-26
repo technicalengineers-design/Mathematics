@@ -20634,7 +20634,7 @@
         "question": "{gram} grams is equivalent to ______ milligrams and _________ centigrams ________ decigrams __________ dekagrams ____________ hectograms ____________ kilograms.",
         "answer": "\\({gram}\\) gram is equivalent to \\({mg}\\) milligrams, \\({cg}\\) centigrams, \\({dg}\\) decigrams, \\({dag}\\) dekagrams, \\({hg}\\) hectograms, and \\({kg}\\) kilograms."
       },
-      {
+     {
   "id": "Sum 1 2-4 A Map Reading",
   "type": "template",
   "objective": "Use a map scale and the distance formula to determine straight-line distance between two towns and calculate the total square miles represented on a rectangular map",
@@ -20650,7 +20650,8 @@
       "formula": "['Oakridge', 'Pinehurst', 'Brookside', 'Mapleton']"
     },
     "tp_idx": {
-      "formula": "Math.floor(Math.random() * 4)"
+      "min": 0,
+      "max": 3
     },
     "town1": {
       "formula": "town1_pool[tp_idx]"
@@ -20661,11 +20662,8 @@
     "town3": {
       "formula": "town3_pool[tp_idx]"
     },
-    "scale_miles_pool": {
-      "formula": ""
-    },
     "scale_miles": {
-      "formula": "scale_miles_pool[Math.floor(Math.random() * 5)]"
+      "values": [5, 10, 15, 20, 25]
     },
     "scale_miles_2": {
       "formula": "scale_miles * 2"
