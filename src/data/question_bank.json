@@ -26696,41 +26696,60 @@
     "cube_vertex_letters": {
       "formula": "'ABCDEFGHJKLMNPQRTUVWXYZ'.split('').sort(function(){return Math.random()-0.5}).slice(0,8)"
     },
-    "cube_vertices": {
-      "formula": "[[90,95],[250,95],[250,255],[90,255],[150,45],[310,45],[310,205],[150,205]]"
+    "vx": {
+      "formula": "[90, 250, 250, 90, 150, 310, 310, 150]"
     },
-    "cube_coordinates": {
-      "formula": "[[0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[1,0,1],[1,1,1],[0,1,1]]"
+    "vy": {
+      "formula": "[95, 95, 255, 255, 45, 45, 205, 205]"
     },
-    "cube_edges": {
-      "formula": "[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]"
+    "cx": {
+      "formula": "[0, 1, 1, 0, 0, 1, 1, 0]"
+    },
+    "cy": {
+      "formula": "[0, 0, 1, 1, 0, 0, 1, 1]"
+    },
+    "cz": {
+      "formula": "[0, 0, 0, 0, 1, 1, 1, 1]"
+    },
+    "e1": {
+      "formula": "[0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3]"
+    },
+    "e2": {
+      "formula": "[1, 2, 3, 0, 5, 6, 7, 4, 4, 5, 6, 7]"
+    },
+    "off_x": {
+      "formula": "[-16, 13, 14, -17, -17, 13, 14, -17]"
+    },
+    "off_y": {
+      "formula": "[-10, -10, 20, 20, -10, -10, 20, 20]"
     },
     "target_edge_index": {
-      "formula": "Math.floor(Math.random()*cube_edges.length)"
+      "min": 0,
+      "max": 11
     },
-    "target_edge": {
-      "formula": "cube_edges[target_edge_index]"
+    "t_u": {
+      "formula": "e1[target_edge_index]"
+    },
+    "t_v": {
+      "formula": "e2[target_edge_index]"
     },
     "target_line": {
-      "formula": "cube_vertex_letters[target_edge[0]]+cube_vertex_letters[target_edge[1]]"
+      "formula": "cube_vertex_letters[t_u] + cube_vertex_letters[t_v]"
     },
-    "skew_edge_pairs": {
-      "formula": "cube_edges.filter(function(edge){return !edge.some(function(vertex){return target_edge.includes(vertex)})&&((cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])-(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])!==0||(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])-(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])!==0||(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])-(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])!==0)}).map(function(edge){return [cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]], cube_vertex_letters[edge[1]]+cube_vertex_letters[edge[0]]]})"
+    "target_line_rev": {
+      "formula": "cube_vertex_letters[t_v] + cube_vertex_letters[t_u]"
     },
-    "perpendicular_edge_pairs": {
-      "formula": "cube_edges.filter(function(edge){return edge.filter(function(vertex){return target_edge.includes(vertex)}).length===1&&(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])+(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])+(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])===0)}).map(function(edge){return [cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]], cube_vertex_letters[edge[1]]+cube_vertex_letters[edge[0]]]})"
-    },
-    "parallel_edge_pairs": {
-      "formula": "cube_edges.filter(function(edge,idx){return idx!==target_edge_index&&(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])-(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])===0&&(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])-(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])===0&&(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])-(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])===0}).map(function(edge){return [cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]], cube_vertex_letters[edge[1]]+cube_vertex_letters[edge[0]]]})"
+    "edge_indices": {
+      "formula": "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
     },
     "skew_edge_answer": {
-      "formula": "skew_edge_pairs.map(function(pair){return '\\\\( \\\\overleftrightarrow{'+pair[0]+'} / \\\\overleftrightarrow{'+pair[1]+'} \\\\)' }).join(', ')"
+      "formula": "edge_indices.filter(function(i){var u=e1[i],v=e2[i];var share=(u===t_u||u===t_v||v===t_u||v===t_v);var dx1=cx[v]-cx[u],dy1=cy[v]-cy[u],dz1=cz[v]-cz[u];var dx2=cx[t_v]-cx[t_u],dy2=cy[t_v]-cy[t_u],dz2=cz[t_v]-cz[t_u];var par=(dy1*dz2-dz1*dy2===0)&&(dz1*dx2-dx1*dz2===0)&&(dx1*dy2-dy1*dx2===0);return !share&&!par;}).map(function(i){var f=cube_vertex_letters[e1[i]]+cube_vertex_letters[e2[i]];var r=cube_vertex_letters[e2[i]]+cube_vertex_letters[e1[i]];return '\\\\( \\\\overleftrightarrow{'+f+'} / \\\\overleftrightarrow{'+r+'} \\\\)';}).join(', ')"
     },
     "perpendicular_edge_answer": {
-      "formula": "perpendicular_edge_pairs.map(function(pair){return '\\\\( \\\\overleftrightarrow{'+pair[0]+'} / \\\\overleftrightarrow{'+pair[1]+'} \\\\)' }).join(', ')"
+      "formula": "edge_indices.filter(function(i){var u=e1[i],v=e2[i];var share=(u===t_u||u===t_v||v===t_u||v===t_v);var dx1=cx[v]-cx[u],dy1=cy[v]-cy[u],dz1=cz[v]-cz[u];var dx2=cx[t_v]-cx[t_u],dy2=cy[t_v]-cy[t_u],dz2=cz[t_v]-cz[t_u];var dot=(dx1*dx2+dy1*dy2+dz1*dz2===0);return i!==target_edge_index&&share&&dot;}).map(function(i){var f=cube_vertex_letters[e1[i]]+cube_vertex_letters[e2[i]];var r=cube_vertex_letters[e2[i]]+cube_vertex_letters[e1[i]];return '\\\\( \\\\overleftrightarrow{'+f+'} / \\\\overleftrightarrow{'+r+'} \\\\)';}).join(', ')"
     },
     "parallel_edge_answer": {
-      "formula": "parallel_edge_pairs.map(function(pair){return '\\\\( \\\\overleftrightarrow{'+pair[0]+'} / \\\\overleftrightarrow{'+pair[1]+'} \\\\)' }).join(', ')"
+      "formula": "edge_indices.filter(function(i){var u=e1[i],v=e2[i];var dx1=cx[v]-cx[u],dy1=cy[v]-cy[u],dz1=cz[v]-cz[u];var dx2=cx[t_v]-cx[t_u],dy2=cy[t_v]-cy[t_u],dz2=cz[t_v]-cz[t_u];var par=(dy1*dz2-dz1*dy2===0)&&(dz1*dx2-dx1*dz2===0)&&(dx1*dy2-dy1*dx2===0);return i!==target_edge_index&&par;}).map(function(i){var f=cube_vertex_letters[e1[i]]+cube_vertex_letters[e2[i]];var r=cube_vertex_letters[e2[i]]+cube_vertex_letters[e1[i]];return '\\\\( \\\\overleftrightarrow{'+f+'} / \\\\overleftrightarrow{'+r+'} \\\\)';}).join(', ')"
     },
     "prompts_pool": {
       "formula": "['List all lines that are skew to it.', 'List all lines that are perpendicular to it.', 'List all lines that are parallel to it.']"
@@ -26763,11 +26782,11 @@
     "ans_b": { "formula": "answers_pool[idx_b]" },
     "ans_c": { "formula": "answers_pool[idx_c]" },
     "cube_svg": {
-      "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 310\" role=\"img\" aria-label=\"Cube with randomized vertex labels and dashed hidden edges\" style=\"display:block;width:100%;max-width:400px;height:auto;background:white\"><title>Cube with randomized vertex labels</title>'+cube_edges.map(function(edge,index){var a=cube_vertices[edge[0]],b=cube_vertices[edge[1]],hidden=[6,7,11].includes(index);return '<line x1=\"'+a[0]+'\" y1=\"'+a[1]+'\" x2=\"'+b[0]+'\" y2=\"'+b[1]+'\" stroke=\"#222\" stroke-width=\"2.5\"'+(hidden?' stroke-dasharray=\"6 5\"':'')+'/>';}).join('')+cube_vertices.map(function(point,index){var offsets=[[-16,-10],[13,-10],[14,20],[-17,20],[-17,-10],[13,-10],[14,20],[-17,20]];return '<text x=\"'+(point[0]+offsets[index][0])+'\" y=\"'+(point[1]+offsets[index][1])+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"18\" font-weight=\"bold\" fill=\"#111\" style=\"paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round\">'+cube_vertex_letters[index]+'</text>';}).join('')+'</svg>'"
+      "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 400 310\" role=\"img\" aria-label=\"Cube with randomized vertex labels and dashed hidden edges\" style=\"display:block;width:100%;max-width:400px;height:auto;background:white\"><title>Cube with randomized vertex labels</title>' + edge_indices.map(function(i){var u=e1[i],v=e2[i],hidden=(i===6||i===7||i===11);return '<line x1=\"'+vx[u]+'\" y1=\"'+vy[u]+'\" x2=\"'+vx[v]+'\" y2=\"'+vy[v]+'\" stroke=\"#222\" stroke-width=\"2.5\"'+(hidden?' stroke-dasharray=\"6 5\"':'')+'/>';}).join('') + [0,1,2,3,4,5,6,7].map(function(idx){return '<text x=\"'+(vx[idx]+off_x[idx])+'\" y=\"'+(vy[idx]+off_y[idx])+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"18\" font-weight=\"bold\" fill=\"#111\" style=\"paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round\">'+cube_vertex_letters[idx]+'</text>';}).join('') + '</svg>'"
     }
   },
-  "question": "The cube shows eight vertices labeled with capital letters.<br><div style=\"display:grid;grid-template-columns:minmax(0,400px) minmax(180px,1fr);align-items:start;gap:20px\"><div>{cube_svg}</div><div>For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) {prompt_a}<br><br>B) {prompt_b}<br><br>C) {prompt_c}</div></div>",
-  "answer": "For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) {label_a}: {ans_a}.<br>B) {label_b}: {ans_b}.<br>C) {label_c}: {ans_c}."
+  "question": "The cube shows eight vertices labeled with capital letters.<br><div style=\"display:grid;grid-template-columns:minmax(0,400px) minmax(180px,1fr);align-items:start;gap:20px\"><div>{cube_svg}</div><div>For \\( \\overleftrightarrow{{{target_line}}} / \\overleftrightarrow{{{target_line_rev}}} \\):<br>A) {prompt_a}<br><br>B) {prompt_b}<br><br>C) {prompt_c}</div></div>",
+  "answer": "For \\( \\overleftrightarrow{{{target_line}}} / \\overleftrightarrow{{{target_line_rev}}} \\):<br>A) {label_a}: {ans_a}.<br>B) {label_b}: {ans_b}.<br>C) {label_c}: {ans_c}."
 },
       {
         "id": "Sum 1 C 3-7b Angle Pairs",
