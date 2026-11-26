@@ -20895,29 +20895,31 @@
     "container": {
       "formula": "container_pool[s_idx]"
     },
-    "w": {
+    "width_val": {
       "min": 6,
       "max": 10
     },
-    "h": {
+    "height_val": {
       "min": 10,
       "max": 15
     },
-    "l": {
-      "values": [1.5, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 4]
+    "length_quarters": {
+      "min": 6,
+      "max": 16
     },
-    "wh": {
-      "formula": "w * h"
+    "length_val": {
+      "formula": "length_quarters / 4"
+    },
+    "wh_prod": {
+      "formula": "width_val * height_val"
     },
     "vol": {
-      "formula": "Math.round(wh * l * 100) / 100"
+      "formula": "Math.round(wh_prod * length_val * 100) / 100"
     }
   },
-  "question": "The volume of a rectangular prism is given by the formula \\( V = wlh \\). Suppose a {company} wants to package \\( {vol} \\) cubic inches of {product} in a full {container}. The width of the {container} must be \\( {w} \\) inches and the height of the {container} must be \\( {h} \\) inches to fit on store shelves.<br><br>1. Solve the literal equation \\( V = wlh \\) for \\( l \\).<br>2. Use your rearranged equation to find the required length of the {container}.",
-  "answer": "<b>Part 1: Solve the literal equation for \\( l \\)</b><br>Start with the volume formula:<br>\\( V = wlh \\)<br><br>Divide both sides by \\( wh \\) to isolate \\( l \\):<br><b>\\( l = \\frac{V}{wh} \\)</b><br><br><b>Part 2: Find the length of the {container}</b><br>Substitute \\( V = {vol} \\), \\( w = {w} \\), and \\( h = {h} \\) into the rearranged formula:<br>\\( l = \\frac{{vol}}{{w} \\times {h}} \\)<br>\\( l = \\frac{{vol}}{{wh}} \\)<br><b>\\( l = {l}\\text{ inches} \\)</b><br><br><b>Final Answer:</b><br>• <b>Rearranged Formula:</b> \\( l = \\frac{V}{wh} \\)<br>• <b>Length of the {container}:</b> <b>\\( {l}\\text{ inches} \\)</b>"
-}
-
-,
+  "question": "The volume of a rectangular prism is given by the formula \\( V = wlh \\). Suppose a {company} wants to package \\( {vol} \\) cubic inches of {product} in a full {container}. The width of the {container} must be \\( {width_val} \\) inches and the height of the {container} must be \\( {height_val} \\) inches to fit on store shelves.<br><br>1. Solve the literal equation \\( V = wlh \\) for \\( l \\).<br>2. Use your rearranged equation to find the required length of the {container}.",
+  "answer": "<b>Part 1: Solve the literal equation for \\( l \\)</b><br>Start with the volume formula:<br>\\( V = wlh \\)<br><br>Divide both sides by \\( wh \\) to isolate \\( l \\):<br><b>\\( l = \\frac{V}{wh} \\)</b><br><br><b>Part 2: Find the length of the {container}</b><br>Substitute \\( V = {vol} \\), \\( w = {width_val} \\), and \\( h = {height_val} \\) into the rearranged formula:<br>\\( l = \\frac{{vol}}{{width_val} \\times {height_val}} \\)<br>\\( l = \\frac{{vol}}{{wh_prod}} \\)<br><b>\\( l = {length_val}\\text{ inches} \\)</b><br><br><b>Final Answer:</b><br>• <b>Rearranged Formula:</b> \\( l = \\frac{V}{wh} \\)<br>• <b>Length of the {container}:</b> <b>\\( {length_val}\\text{ inches} \\)</b>"
+},
       {
         "id": "Sum 1 C 3.1 Timekeeping",
         "title": "Sum 1 C 3.1 Timekeeping",
