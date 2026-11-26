@@ -25857,25 +25857,29 @@
         "answer": "<b>Expected Student Sketch:</b> The sketch should depict a 3D sphere (a circle with an elliptical contour line passing through the center to give a three-dimensional perspective). A radius line drawn from the center point to the outer edge must be clearly labeled as {r} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 260\" role=\"img\" aria-label=\"Sphere with radius labeled\" style=\"display:block;width:100%;max-width:360px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"sphere-radius-arrow-sum1\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#1f5f8b\"/></marker></defs><circle cx=\"160\" cy=\"125\" r=\"82\" fill=\"#eaf2f8\" stroke=\"#333\" stroke-width=\"2\"/><path d=\"M78 125 A82 25 0 0 1 242 125\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\"/><path d=\"M78 125 A82 25 0 0 0 242 125\" fill=\"none\" stroke=\"#666\" stroke-width=\"1.5\"/><circle cx=\"160\" cy=\"125\" r=\"3.5\" fill=\"#1f5f8b\"/><line x1=\"160\" y1=\"125\" x2=\"241\" y2=\"125\" stroke=\"#1f5f8b\" stroke-width=\"2\" marker-end=\"url(#sphere-radius-arrow-sum1)\"/><text x=\"194\" y=\"113\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1f5f8b\">Radius: {r} cm</text></svg><br><i>Sphere diagram with radius labeled</i></div><br><br><b>Mathematical Steps & Calculations:</b><br><br><b>1. Total External Surface Area:</b><br>&bull; Formula: A = 4 &times; &pi; &times; r&sup2;<br>&bull; Surface Area Calculation: 4 &times; &pi; &times; {r}&sup2; = {area_coeff}&pi;<br>&bull; Total Surface Area (Exact): <b>{area_coeff}&pi; cm&sup2;</b><br>&bull; Total Surface Area (Decimal): <b>{dec_area} cm&sup2;</b><br><br><b>2. Total Internal Volume:</b><br>&bull; Formula: V = \\(\\frac{4}{3}\\) &times; &pi; &times; r&sup3;<br>&bull; Volume Calculation: \\(\\frac{4}{3}\\) &times; &pi; &times; {r}&sup3; = {vol_coeff}&pi;<br>&bull; Total Volume (Exact): <b>{vol_coeff}&pi; cm&sup3;</b><br>&bull; Total Volume (Decimal): <b>{dec_vol} cm&sup3;</b>"
       },
       {
-        "id": "Sum 1 A 2.5a Toy Chest",
-        "type": "template",
-        "objective": "Calculate surface area and volume of a rectangular prism with sketching",
-        "difficulty": "advanced",
-        "variables": {
-          "l": { "formula": "(6000+Math.floor(Math.random()*4000))/100", "format": "0.00" },
-          "w": { "formula": "(3500+Math.floor(Math.random()*2000))/100", "format": "0.00" },
-          "h": { "formula": "(4000+Math.floor(Math.random()*2000))/100", "format": "0.00" },
-          "base_area": { "formula": "l*w" },
-          "front_back_area": { "formula": "2*l*h" },
-          "side_area": { "formula": "2*w*h" },
-          "total_area": { "formula": "2*(l*w+l*h+w*h)" },
-          "total_vol": { "formula": "l*w*h" },
-          "total_area_4sf": { "formula": "total_area.toPrecision(4)" },
-          "total_vol_4sf": { "formula": "total_vol.toPrecision(4)" }
-        },
-        "question": "<b>Task 1:</b> Sketch a 3D diagram of the toy chest and label its length, width, and height.<br><br><b>Task 2:</b> A wooden children's toy chest is a rectangular prism. It measures <b>{l} cm</b> in length, <b>{w} cm</b> in width, and <b>{h} cm</b> in height.<br><br>1. Calculate the total external surface area of the closed chest.<br>2. Calculate its internal volumetric storage capacity.<br><br>Give both answers to <b>four significant digits</b> and include units.",
-        "answer": "<b>Expected Student Sketch:</b> Draw a rectangular prism and label the length {l} cm, width {w} cm, and height {h} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 270\" role=\"img\" aria-label=\"Rectangular toy chest with length, width, and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"chest-arrow-sum1\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><polygon points=\"95,92 290,92 355,48 160,48\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"290,92 355,48 355,178 290,222\" fill=\"#ead4aa\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"95,92 290,92 290,222 95,222\" fill=\"#f2dfbb\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"100\" y1=\"245\" x2=\"285\" y2=\"245\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"192\" y=\"263\" text-anchor=\"middle\" font-size=\"14\">Length: {l} cm</text><line x1=\"75\" y1=\"95\" x2=\"75\" y2=\"218\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"65\" y=\"160\" text-anchor=\"end\" font-size=\"14\">Height: {h} cm</text><line x1=\"300\" y1=\"78\" x2=\"348\" y2=\"46\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"365\" y=\"58\" font-size=\"14\">Width: {w} cm</text></svg></div><br><b>Surface area:</b> \\(A=2(lw+lh+wh)\\) = <b>{total_area_4sf} cm&sup2;</b> (4 significant digits).<br><b>Volume:</b> \\(V=lwh\\) = <b>{total_vol_4sf} cm&sup3;</b> (4 significant digits)."
-      },
+  "id": "Sum 1 A 2.5a Toy Chest",
+  "type": "template",
+  "objective": "Calculate surface area and volume of a rectangular prism with sketching",
+  "difficulty": "advanced",
+  "variables": {
+    "l_raw": { "min": 6000, "max": 9999 },
+    "w_raw": { "min": 3500, "max": 5499 },
+    "h_raw": { "min": 4000, "max": 5999 },
+    "length_num": { "formula": "l_raw / 100" },
+    "width_num": { "formula": "w_raw / 100" },
+    "height_num": { "formula": "h_raw / 100" },
+    "length_cm": { "formula": "length_num.toFixed(2)" },
+    "width_cm": { "formula": "width_num.toFixed(2)" },
+    "height_cm": { "formula": "height_num.toFixed(2)" },
+    "total_area": { "formula": "2 * (length_num * width_num + length_num * height_num + width_num * height_num)" },
+    "total_vol": { "formula": "length_num * width_num * height_num" },
+    "total_area_4sf": { "formula": "Number(total_area.toPrecision(4)).toString()" },
+    "total_vol_4sf": { "formula": "Number(total_vol.toPrecision(4)).toString()" }
+  },
+  "question": "<b>Task 1:</b> Sketch a 3D diagram of the toy chest and label its length, width, and height.<br><br><b>Task 2:</b> A wooden children's toy chest is a rectangular prism. It measures <b>{length_cm} cm</b> in length, <b>{width_cm} cm</b> in width, and <b>{height_cm} cm</b> in height.<br><br>1. Calculate the total external surface area of the closed chest.<br>2. Calculate its internal volumetric storage capacity.<br><br>Give both answers to <b>four significant digits</b> and include units.",
+  "answer": "<b>Expected Student Sketch:</b> Draw a rectangular prism and label the length {length_cm} cm, width {width_cm} cm, and height {height_cm} cm.<br><br><div style='text-align:center;margin:12px 0;'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 270\" role=\"img\" aria-label=\"Rectangular toy chest with length, width, and height labeled\" style=\"display:block;width:100%;max-width:440px;height:auto;margin:auto;font-family:Arial,sans-serif\"><defs><marker id=\"chest-arrow-sum1\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto-start-reverse\"><path d=\"M0,0 L7,3.5 L0,7 z\" fill=\"#333\"/></marker></defs><polygon points=\"95,92 290,92 355,48 160,48\" fill=\"#f7e8c8\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"290,92 355,48 355,178 290,222\" fill=\"#ead4aa\" stroke=\"#333\" stroke-width=\"2\"/><polygon points=\"95,92 290,92 290,222 95,222\" fill=\"#f2dfbb\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"100\" y1=\"245\" x2=\"285\" y2=\"245\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"192\" y=\"263\" text-anchor=\"middle\" font-size=\"14\">Length: {length_cm} cm</text><line x1=\"75\" y1=\"95\" x2=\"75\" y2=\"218\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"65\" y=\"160\" text-anchor=\"end\" font-size=\"14\">Height: {height_cm} cm</text><line x1=\"300\" y1=\"78\" x2=\"348\" y2=\"46\" stroke=\"#333\" marker-start=\"url(#chest-arrow-sum1)\" marker-end=\"url(#chest-arrow-sum1)\"/><text x=\"365\" y=\"58\" font-size=\"14\">Width: {width_cm} cm</text></svg></div><br><b>Surface area:</b> \\( A = 2(lw + lh + wh) = 2(({length_cm})({width_cm}) + ({length_cm})({height_cm}) + ({width_cm})({height_cm})) = \\) <b>{total_area_4sf} cm&sup2;</b> (4 significant digits).<br><b>Volume:</b> \\( V = lwh = ({length_cm})({width_cm})({height_cm}) = \\) <b>{total_vol_4sf} cm&sup3;</b> (4 significant digits)."
+}
+,
       {
         "id": "Sum 1 A 2.5b Tank",
         "type": "template",
