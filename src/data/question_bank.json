@@ -19860,10 +19860,10 @@
   "answer": "<b>Step 1: Define variables and write the expression</b><br>Let \\( B \\) = total budget (\\( \\${budget} \\)), \\( p \\) = number of passengers (\\( {passengers} \\)), \\( r_p \\) = charge per passenger (\\( \\${rate_p_str} \\)), and \\( r_m \\) = charge per mile (\\( \\${rate_m_str} \\)).<br><br>To find the maximum distance \\( d \\), subtract the total passenger fee from the budget and divide the remaining money by the per-mile rate:<br><b>\\( d = \\frac{B - (r_p \\cdot p)}{r_m} \\)</b><br><br>Substituting the given values yields the expression:<br><b>\\( \\frac{{budget} - ({rate_p_str} \\times {passengers})}{{rate_m_str}} \\)</b><br><br><b>Step 2: Evaluate the expression</b><br>• Calculate the total passenger fee: \\( \\${rate_p_str} \\times {passengers} = \\${total_p_str} \\)<br>• Subtract the passenger fee from the total budget: \\( \\${budget} - \\${total_p_str} = \\${remaining_str} \\)<br>• Divide by the cost per mile: \\( \\frac{{remaining_str}}{{rate_m_str}} \\approx {miles_rounded}\\text{ miles} \\)<br><br><b>Final Answer:</b><br>{names} can travel up to <b>\\( {miles_rounded}\\text{ miles} \\)</b> (or <b>\\( {whole_miles}\\text{ full miles} \\)</b> if the company only bills per completed mile), which is well within the \\( {max_miles_limit}\\text{-mile} \\) trip limit."
 },
 {
-  "id": "Sum 1 A 1.1b Maple Syrup",
+  "id": "Sum 1 B 1.1b Maple Syrup",
   "type": "template",
   "objective": "Model a real-world linear relationship with a constant processing loss, graph the equation, and identify intercepts",
-  "difficulty": "basic",
+  "difficulty": "intermediate",
   "variables": {
     "scenarios": {
       "formula": "[{ sap_ratio: 40, loss_oz: 8 }, { sap_ratio: 40, loss_oz: 16 }, { sap_ratio: 40, loss_oz: 32 }, { sap_ratio: 32, loss_oz: 8 }, { sap_ratio: 32, loss_oz: 16 }, { sap_ratio: 50, loss_oz: 16 }, { sap_ratio: 50, loss_oz: 32 }]"
@@ -19939,6 +19939,74 @@
   "question": "Use the following nautical conversions to solve the problem:<br>• \\( 1\\text{ nautical mile} = 6,080\\text{ feet} \\)<br>• \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} \\)<br><br>If a {vessels} travels at \\( {knots}\\text{ knots} \\) for {hour_label}, how far will it have traveled in feet? Write and solve the equation that represents this situation. Then, determine how fast the {vessels} was traveling in miles per hour (\\( 1\\text{ mile} = 5,280\\text{ feet} \\)). Round your answers to the nearest hundredth.",
   "answer": "<b>Part 1: Distance traveled in feet</b><br>Let \\( d \\) represent the total distance traveled in feet, \\( k \\) represent the speed in knots (\\( {knots} \\)), and \\( t \\) represent the time in hours (\\( {hours} \\)).<br><br>Since \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} = 6,080\\text{ feet per hour} \\), set up the distance equation:<br><b>\\( d = 6,080 \\cdot k \\cdot t \\)</b><br><br>Substitute \\( k = {knots} \\) and \\( t = {hours} \\) into the equation and solve:<br>\\( d = 6,080 \\times {knots} \\times {hours} \\)<br>\\( d = {nmi_traveled} \\times 6,080 \\)<br><b>\\( d = {total_feet_formatted}\\text{ feet} \\)</b><br><br><b>Part 2: Speed in miles per hour (mph)</b><br>Convert the speed from feet per hour to statute miles per hour using \\( 1\\text{ mile} = 5,280\\text{ feet} \\):<br>\\( \\text{Speed in feet per hour} = {knots}\\text{ knots} \\times 6,080\\text{ ft/nmi} = {(knots * 6080).toLocaleString('en-US')}\\text{ ft/hr} \\)<br><br>Divide by \\( 5,280\\text{ feet per mile} \\):<br>\\( \\text{Speed in mph} = \\frac{{knots} \\times 6,080}{5,280} = \\frac{{knots * 6080}}{5280} \\approx {mph_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>• <b>Distance traveled:</b> \\( {total_feet_formatted}\\text{ feet} \\)<br>• <b>Speed:</b> \\( {mph_rounded}\\text{ miles per hour} \\)"
 },
+{
+  "id": "Sum 1 A 1.1c Average Speed",
+  "type": "template",
+  "objective": "Calculate the average speed of a round trip using total distance divided by total time",
+  "difficulty": "advanced",
+  "variables": {
+    "drivers": {
+      "choice": [
+        { "name": "Samir", "pronoun": "him", "poss": "his" },
+        { "name": "Elena", "pronoun": "her", "poss": "her" },
+        { "name": "Marcus", "pronoun": "him", "poss": "his" },
+        { "name": "Chloe", "pronoun": "her", "poss": "her" },
+        { "name": "Devon", "pronoun": "him", "poss": "his" },
+        { "name": "Nadia", "pronoun": "her", "poss": "her" }
+      ]
+    },
+    "d_idx": {
+      "formula": "Math.floor(Math.random() * drivers.length)"
+    },
+    "name": {
+      "formula": "drivers[d_idx].name"
+    },
+    "pronoun": {
+      "formula": "drivers[d_idx].pronoun"
+    },
+    "poss": {
+      "formula": "drivers[d_idx].poss"
+    },
+    "routes": {
+      "formula": "[{ origin: 'New York City', dest: 'Boston', dist: 240, t1: 5, t2: 6.5, delay: 'severe weather' }, { origin: 'Portland', dest: 'Seattle', dist: 175, t1: 3, t2: 4.25, delay: 'heavy highway construction' }, { origin: 'Chicago', dest: 'Indianapolis', dist: 185, t1: 3.25, t2: 4.5, delay: 'dense fog' }, { origin: 'Denver', dest: 'Aspen', dist: 200, t1: 3.5, t2: 5.25, delay: 'a mountain snowstorm' }, { origin: 'Austin', dest: 'Dallas', dist: 195, t1: 3, t2: 4.75, delay: 'holiday traffic' }, { origin: 'Atlanta', dest: 'Charlotte', dist: 245, t1: 4, t2: 5.5, delay: 'heavy rain' }]"
+    },
+    "r_idx": {
+      "formula": "Math.floor(Math.random() * routes.length)"
+    },
+    "origin": {
+      "formula": "routes[r_idx].origin"
+    },
+    "dest": {
+      "formula": "routes[r_idx].dest"
+    },
+    "one_way_dist": {
+      "formula": "routes[r_idx].dist"
+    },
+    "time1": {
+      "formula": "routes[r_idx].t1"
+    },
+    "time2": {
+      "formula": "routes[r_idx].t2"
+    },
+    "delay_reason": {
+      "formula": "routes[r_idx].delay"
+    },
+    "total_dist": {
+      "formula": "one_way_dist * 2"
+    },
+    "total_time": {
+      "formula": "Number((time1 + time2).toFixed(2))"
+    },
+    "avg_speed_exact": {
+      "formula": "total_dist / total_time"
+    },
+    "avg_speed_rounded": {
+      "formula": "avg_speed_exact.toFixed(2)"
+    }
+  },
+  "question": "The drive from {origin} to {dest} is about \\( {one_way_dist} \\) miles. It took {name} \\( {time1} \\) hours to drive one way, but due to {delay_reason} it took {pronoun} \\( {time2} \\) hours for the return trip. What was {poss} average speed for the round trip? Round your answer to the nearest hundredth.",
+  "answer": "<b>Step 1: Recall the average speed formula</b><br>Average speed is calculated by dividing the <b>total distance</b> traveled by the <b>total time</b> elapsed (rather than averaging the two individual speeds):<br><b>\\( \\text{Average Speed} = \\frac{\\text{Total Distance}}{\\text{Total Time}} \\)</b><br><br><b>Step 2: Calculate the total round-trip distance</b><br>Because the trip was made both ways, double the one-way distance:<br>\\( \\text{Total Distance} = {one_way_dist}\\text{ miles} + {one_way_dist}\\text{ miles} = {total_dist}\\text{ miles} \\)<br><br><b>Step 3: Calculate the total travel time</b><br>Add the time for the outbound trip and the return trip:<br>\\( \\text{Total Time} = {time1}\\text{ hours} + {time2}\\text{ hours} = {total_time}\\text{ hours} \\)<br><br><b>Step 4: Divide total distance by total time</b><br>\\( \\text{Average Speed} = \\frac{{total_dist}\\text{ miles}}{{total_time}\\text{ hours}} \\approx {avg_speed_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>{name}'s average speed for the round trip was <b>\\( {avg_speed_rounded}\\text{ miles per hour} \\)</b>."
+},
       {
         "id": "Sum 1 C 1-2 Calculating Percentage",
         "title": "Sum 1 C 1-2 Calculating Percentage",
@@ -19956,6 +20024,264 @@
         "question": "Find each percentage. Round to the nearest percent.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> What percent is {a_a} of {b_a}?<div style=\"height:90px\"></div></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> What percent is {a_b} of {b_b}?<div style=\"height:90px\"></div></div></div>",
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> {a_a} &divide; {b_a} &times; 100% &asymp; <b>{result_a}%</b></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> {a_b} &divide; {b_b} &times; 100% &asymp; <b>{result_b}%</b></div></div>"
       },
+      {
+  "id": "Sum 1 B 1.2 Average Speed",
+  "type": "template",
+  "objective": "Calculate the final price of an item after applying a percentage discount followed by sales tax",
+  "difficulty": "intermediate",
+  "variables": {
+    "buyers": {
+      "choice": [
+        { "name": "Mr. Thompson", "sub": "He", "poss": "his" },
+        { "name": "Ms. Ramirez", "sub": "She", "poss": "her" },
+        { "name": "Dr. Patel", "sub": "He", "poss": "his" },
+        { "name": "Mrs. Jenkins", "sub": "She", "poss": "her" },
+        { "name": "Mr. Kim", "sub": "He", "poss": "his" },
+        { "name": "Ms. O'Connor", "sub": "She", "poss": "her" }
+      ]
+    },
+    "b_idx": {
+      "formula": "Math.floor(Math.random() * buyers.length)"
+    },
+    "name": {
+      "formula": "buyers[b_idx].name"
+    },
+    "sub": {
+      "formula": "buyers[b_idx].sub"
+    },
+    "items": {
+      "choice": [
+        { "item": "used car", "discount_type": "good-customer discount" },
+        { "item": "certified pre-owned sedan", "discount_type": "loyalty discount" },
+        { "item": "compact SUV", "discount_type": "seasonal clearance discount" },
+        { "item": "hybrid hatchback", "discount_type": "returning-buyer discount" }
+      ]
+    },
+    "i_idx": {
+      "formula": "Math.floor(Math.random() * items.length)"
+    },
+    "item": {
+      "formula": "items[i_idx].item"
+    },
+    "discount_type": {
+      "formula": "items[i_idx].discount_type"
+    },
+    "base_price_pool": {
+      "formula": "[7600, 8400, 9200, 10500, 11800, 12400, 14500]"
+    },
+    "base_price": {
+      "formula": "base_price_pool[Math.floor(Math.random() * base_price_pool.length)]"
+    },
+    "base_price_formatted": {
+      "formula": "base_price.toLocaleString('en-US')"
+    },
+    "discount_pool": {
+      "formula": "[10, 12, 15, 18, 20]"
+    },
+    "discount_pct": {
+      "formula": "discount_pool[Math.floor(Math.random() * discount_pool.length)]"
+    },
+    "discount_dec": {
+      "formula": "Number((discount_pct / 100).toFixed(2))"
+    },
+    "tax_pool": {
+      "formula": "[4.5, 5.5, 6.0, 6.25, 6.5, 7.25, 8.0]"
+    },
+    "tax_pct": {
+      "formula": "tax_pool[Math.floor(Math.random() * tax_pool.length)]"
+    },
+    "tax_dec": {
+      "formula": "Number((tax_pct / 100).toFixed(4))"
+    },
+    "discount_amt": {
+      "formula": "Number((base_price * discount_dec).toFixed(2))"
+    },
+    "discount_amt_str": {
+      "formula": "discount_amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+    },
+    "sale_price": {
+      "formula": "Number((base_price - discount_amt).toFixed(2))"
+    },
+    "sale_price_str": {
+      "formula": "sale_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+    },
+    "tax_amt": {
+      "formula": "Number((sale_price * tax_dec).toFixed(2))"
+    },
+    "tax_amt_str": {
+      "formula": "tax_amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+    },
+    "final_price": {
+      "formula": "Number((sale_price + tax_amt).toFixed(2))"
+    },
+    "final_price_str": {
+      "formula": "final_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+    }
+  },
+  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_formatted} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub.toLowerCase()} will pay for the {item}?",
+  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_formatted} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_formatted} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
+},
+      {
+  "id": "Sum 1 A 1.3 Buying Packs",
+  "type": "template",
+  "objective": "Calculate the Least Common Multiple (LCM) of three numbers to solve a real-world packaging problem with zero leftovers",
+  "difficulty": "intermediate",
+  "variables": {
+    "shoppers": {
+      "choice": ["Maya", "Toby", "Sofia", "Hannah", "Owen", "Zara"]
+    },
+    "scenarios": {
+      "formula": "[{ event: 'a neighborhood cookout', item1: 'hot dogs', item2: 'hot dog buns', item3: 'juice boxes' }, { event: 'a school bake sale', item1: 'cupcakes', item2: 'frosting tubs', item3: 'take-home boxes' }, { event: 'a camping trip', item1: 'graham cracker sleeves', item2: 'chocolate bars', item3: 'marshmallows' }, { event: 'an art workshop', item1: 'canvases', item2: 'paintbrushes', item3: 'paint palettes' }, { event: 'a soccer tournament', item1: 'granola bars', item2: 'sports drinks', item3: 'ice packs' }]"
+    },
+    "s_idx": {
+      "formula": "Math.floor(Math.random() * scenarios.length)"
+    },
+    "event": {
+      "formula": "scenarios[s_idx].event"
+    },
+    "item1": {
+      "formula": "scenarios[s_idx].item1"
+    },
+    "item2": {
+      "formula": "scenarios[s_idx].item2"
+    },
+    "item3": {
+      "formula": "scenarios[s_idx].item3"
+    },
+    "pack_triples": {
+      "formula": "[[6, 8, 12], [8, 10, 20], [6, 9, 18], [4, 6, 10], [8, 12, 16], [9, 12, 18], [6, 10, 15], [10, 12, 15]]"
+    },
+    "p_idx": {
+      "formula": "Math.floor(Math.random() * pack_triples.length)"
+    },
+    "pack1": {
+      "formula": "pack_triples[p_idx][0]"
+    },
+    "pack2": {
+      "formula": "pack_triples[p_idx][1]"
+    },
+    "pack3": {
+      "formula": "pack_triples[p_idx][2]"
+    },
+    "lcm_val": {
+      "formula": "(() => { const gcd = (a, b) => b === 0 ? a : gcd(b, a % b); const lcm = (a, b) => (a * b) / gcd(a, b); return lcm(lcm(pack1, pack2), pack3); })()"
+    },
+    "num_packs1": {
+      "formula": "lcm_val / pack1"
+    },
+    "num_packs2": {
+      "formula": "lcm_val / pack2"
+    },
+    "num_packs3": {
+      "formula": "lcm_val / pack3"
+    }
+  },
+  "question": "{shoppers} is shopping for {event} and needs to buy an equal number of {item1}, {item2}, and {item3} with none left over. At the store, {item1} are sold in packs of \\( {pack1} \\), {item2} are sold in packs of \\( {pack2} \\), and {item3} are sold in packs of \\( {pack3} \\).<br><br>1. What is the least number of each item {shoppers} can buy so that there is an equal amount of all three?<br>2. How many packs of each item will {shoppers} need to purchase?",
+  "answer": "<b>Step 1: Find the Least Common Multiple (LCM)</b><br>To have an equal number of each item with none left over, find the smallest number that is a multiple of \\( {pack1} \\), \\( {pack2} \\), and \\( {pack3} \\):<br>• Multiples of \\( {pack1} \\): \\( {pack1}, {pack1 * 2}, {pack1 * 3}, {pack1 * 4}, \\dots \\)<br>• Multiples of \\( {pack2} \\): \\( {pack2}, {pack2 * 2}, {pack2 * 3}, {pack2 * 4}, \\dots \\)<br>• Multiples of \\( {pack3} \\): \\( {pack3}, {pack3 * 2}, {pack3 * 3}, {pack3 * 4}, \\dots \\)<br><br>The smallest common multiple of \\( {pack1} \\), \\( {pack2} \\), and \\( {pack3} \\) is <b>\\( {lcm_val} \\)</b>.<br><br><b>Step 2: Calculate the number of packs needed for each item</b><br>Divide the total needed (\\( {lcm_val} \\)) by the quantity in each pack:<br>• <b>{item1}:</b> \\( {lcm_val} \\div {pack1} = {num_packs1} \\) packs<br>• <b>{item2}:</b> \\( {lcm_val} \\div {pack2} = {num_packs2} \\) packs<br>• <b>{item3}:</b> \\( {lcm_val} \\div {pack3} = {num_packs3} \\) packs<br><br><b>Final Answer:</b><br>• {shoppers} must buy a minimum of <b>\\( {lcm_val} \\) of each item</b>.<br>• {shoppers} needs <b>\\( {num_packs1} \\) packs of {item1}</b>, <b>\\( {num_packs2} \\) packs of {item2}</b>, and <b>\\( {num_packs3} \\) packs of {item3}</b>."
+},
+      {
+  "id": "Sum 1 A 1.3 Door Prizes",
+  "type": "template",
+  "objective": "Use prime factorization (GCF/LCM concepts) to determine the maximum number of identical gift bags and the quantity of each item per bag",
+  "difficulty": "basic",
+  "variables": {
+    "hosts": {
+      "choice": ["Marcus", "Devon", "Liam", "Carlos", "Julian", "Noah"]
+    },
+    "item_sets": {
+      "formula": "[['stickers', 'keychains', 'pens'], ['bookmarks', 'pencils', 'erasers'], ['coupons', 'magnets', 'notebooks'], ['pins', 'wristbands', 'glow sticks']]"
+    },
+    "set_idx": {
+      "formula": "Math.floor(Math.random() * item_sets.length)"
+    },
+    "item1": {
+      "formula": "item_sets[set_idx]"
+    },
+    "item2": {
+      "formula": "item_sets[set_idx]"
+    },
+    "item3": {
+      "formula": "item_sets[set_idx]"
+    },
+    "num_bags_pool": {
+      "formula": "[6, 8, 9, 12, 14, 15, 16, 18, 20, 24]"
+    },
+    "num_bags": {
+      "formula": "num_bags_pool[Math.floor(Math.random() * num_bags_pool.length)]"
+    },
+    "mult_triples": {
+      "formula": "[[2, 3, 5], [2, 3, 7], [2, 5, 7], [3, 4, 5], [3, 4, 7], [3, 5, 7], [4, 5, 7], [2, 5, 9]]"
+    },
+    "m_idx": {
+      "formula": "Math.floor(Math.random() * mult_triples.length)"
+    },
+    "per_bag1": {
+      "formula": "mult_triples[m_idx]"
+    },
+    "per_bag2": {
+      "formula": "mult_triples[m_idx]"
+    },
+    "per_bag3": {
+      "formula": "mult_triples[m_idx]"
+    },
+    "total1": {
+      "formula": "num_bags * per_bag1"
+    },
+    "total2": {
+      "formula": "num_bags * per_bag2"
+    },
+    "total3": {
+      "formula": "num_bags * per_bag3"
+    },
+    "guests": {
+      "formula": "num_bags + Math.floor(Math.random() * 15) + 8"
+    }
+  },
+  "question": "{hosts} is hosting an event for \\( {guests} \\) guests and is putting together door prize bags. He has \\( {total1} \\) {item1}, \\( {total2} \\) {item2}, and \\( {total3} \\) {item3}. He wants to make identical bags using all of the items for as many guests as possible (though it will not be enough for all \\( {guests} \\) guests).<br><br>1. What is the greatest number of identical door prize bags {hosts} can make?<br>2. How many of each item will be in each bag?",
+  "answer": "<b>Step 1: Find the Greatest Common Factor (GCF) using prime factorization</b><br>To divide all three items evenly into the maximum number of identical bags with nothing left over, find the GCF of \\( {total1} \\), \\( {total2} \\), and \\( {total3} \\):<br>• Factors of \\( {total1} \\): \\( {num_bags} \\times {per_bag1} \\)<br>• Factors of \\( {total2} \\): \\( {num_bags} \\times {per_bag2} \\)<br>• Factors of \\( {total3} \\): \\( {num_bags} \\times {per_bag3} \\)<br><br>Since \\( {per_bag1} \\), \\( {per_bag2} \\), and \\( {per_bag3} \\) share no common factors other than \\( 1 \\), the greatest common factor is <b>\\( {num_bags} \\)</b>.<br><br><b>Step 2: Determine the quantity of each item per bag</b><br>Divide the total amount of each item by the \\( {num_bags} \\) bags:<br>• <b>{item1}:</b> \\( {total1} \\div {num_bags} = {per_bag1} \\)<br>• <b>{item2}:</b> \\( {total2} \\div {num_bags} = {per_bag2} \\)<br>• <b>{item3}:</b> \\( {total3} \\div {num_bags} = {per_bag3} \\)<br><br><b>Final Answer:</b><br>• {hosts} can make <b>\\( {num_bags} \\) identical door prize bags</b> (leaving \\( {guests - num_bags} \\) guests without a bag).<br>• Each bag will contain <b>\\( {per_bag1} \\) {item1}</b>, <b>\\( {per_bag2} \\) {item2}</b>, and <b>\\( {per_bag3} \\) {item3}</b>."
+},
+{
+  "id": "Sum 1 A 1.4 Remaining Supplies",
+  "type": "template",
+  "objective": "Write and solve a multi-step linear inequality involving unit conversions, fractional rates, and waste percentages to determine the maximum number of remaining items that can be produced",
+  "difficulty": "advanced",
+  "variables": {
+    "scenarios": {
+      "formula": "[{ person: 'Cheryl', pronoun: 'she', verb: 'crochet', item: 'small scarves', supply_unit: 'yards', bulk_qty: 250, bulk_unit: 'yards', conv_factor: 1, waste_pct: 12, used_qty: 34.5, reserve_qty: 15, per_item_whole: 28, per_item_num: 3, per_item_den: 4, context: 'crochet a small scarf', loss_reason: 'tangled knots and trimming waste' }, { person: 'Mateo', pronoun: 'he', verb: 'build', item: 'wooden planters', supply_unit: 'inches', bulk_qty: 48, bulk_unit: 'feet', conv_factor: 12, waste_pct: 10, used_qty: 86.4, reserve_qty: 24, per_item_whole: 42, per_item_num: 1, per_item_den: 2, context: 'build a wooden planter', loss_reason: 'saw kerf and wood defects' }, { person: 'Priya', pronoun: 'she', verb: 'pour', item: 'soy candles', supply_unit: 'ounces', bulk_qty: 18, bulk_unit: 'pounds', conv_factor: 16, waste_pct: 8, used_qty: 41.2, reserve_qty: 12, per_item_whole: 14, per_item_num: 2, per_item_den: 5, context: 'pour a soy candle', loss_reason: 'residue left in the melting pitcher' }, { person: 'Devon', pronoun: 'he', verb: 'bottle', item: 'batches of cold brew concentrate', supply_unit: 'fluid ounces', bulk_qty: 6, bulk_unit: 'gallons', conv_factor: 128, waste_pct: 15, used_qty: 112.8, reserve_qty: 32, per_item_whole: 36, per_item_num: 3, per_item_den: 8, context: 'bottle a batch of cold brew concentrate', loss_reason: 'absorption by the coffee grounds' }]"
+    },
+    "idx": {
+      "formula": "Math.floor(Math.random() * scenarios.length)"
+    },
+    "person": { "formula": "scenarios[idx].person" },
+    "pronoun": { "formula": "scenarios[idx].pronoun" },
+    "verb": { "formula": "scenarios[idx].verb" },
+    "item": { "formula": "scenarios[idx].item" },
+    "supply_unit": { "formula": "scenarios[idx].supply_unit" },
+    "bulk_qty": { "formula": "scenarios[idx].bulk_qty" },
+    "bulk_unit": { "formula": "scenarios[idx].bulk_unit" },
+    "conv_factor": { "formula": "scenarios[idx].conv_factor" },
+    "waste_pct": { "formula": "scenarios[idx].waste_pct" },
+    "used_qty": { "formula": "scenarios[idx].used_qty" },
+    "reserve_qty": { "formula": "scenarios[idx].reserve_qty" },
+    "per_item_whole": { "formula": "scenarios[idx].per_item_whole" },
+    "per_item_num": { "formula": "scenarios[idx].per_item_num" },
+    "per_item_den": { "formula": "scenarios[idx].per_item_den" },
+    "context": { "formula": "scenarios[idx].context" },
+    "loss_reason": { "formula": "scenarios[idx].loss_reason" },
+    "total_converted": { "formula": "bulk_qty * conv_factor" },
+    "usable_factor": { "formula": "Number(((100 - waste_pct) / 100).toFixed(2))" },
+    "usable_supply": { "formula": "Number((total_converted * usable_factor).toFixed(2))" },
+    "per_item_dec": { "formula": "Number((per_item_whole + per_item_num / per_item_den).toFixed(3))" },
+    "fixed_deductions": { "formula": "Number((used_qty + reserve_qty).toFixed(2))" },
+    "net_available": { "formula": "Number((usable_supply - fixed_deductions).toFixed(2))" },
+    "exact_x": { "formula": "net_available / per_item_dec" },
+    "exact_x_rounded": { "formula": "exact_x.toFixed(2)" },
+    "max_items": { "formula": "Math.floor(exact_x)" },
+    "conv_note": { "formula": "conv_factor === 1 ? '' : ' (Note: \\( 1\\text{ ' + bulk_unit.slice(0, -1) + '} = ' + conv_factor + '\\text{ ' + supply_unit + '} \\))'" }
+  },
+  "question": "You need at least \\( {per_item_whole}\\frac{{per_item_num}}{{per_item_den}} \\) {supply_unit} of material to {context}. {person} purchased a bulk supply of \\( {bulk_qty} \\) {bulk_unit}{conv_note}, but \\( {waste_pct}\\% \\) of the total bulk supply is unusable due to {loss_reason}. Additionally, {person} has already used \\( {used_qty} \\) {supply_unit} of the usable material and must keep at least \\( {reserve_qty} \\) {supply_unit} in reserve for future repairs.<br><br>Write and solve an inequality to determine the maximum number of complete {item} {person} can {verb} with the remaining material.",
+  "answer": "<b>Step 1: Convert units and calculate total usable supply</b><br>• Convert the bulk supply to {supply_unit}: \\( {bulk_qty} \\times {conv_factor} = {total_converted}\\text{ {supply_unit}} \\)<br>• Account for the \\( {waste_pct}\\% \\) waste loss (\\( 100\\% - {waste_pct}\\% = {100 - waste_pct}\\% \\) usable):<br>\\( {total_converted} \\times {usable_factor} = {usable_supply}\\text{ {supply_unit}} \\)<br><br><b>Step 2: Write the inequality</b><br>Let \\( x \\) represent the number of {item} {person} can {verb}. Convert the mixed number \\( {per_item_whole}\\frac{{per_item_num}}{{per_item_den}} \\) to decimal form: \\( {per_item_dec} \\).<br><br>The material used for \\( x \\) {item}, plus the \\( {used_qty} \\) {supply_unit} already used, plus the \\( {reserve_qty} \\) {supply_unit} held in reserve cannot exceed the \\( {usable_supply} \\) {supply_unit} of usable supply:<br><b>\\( {per_item_dec}x + {used_qty} + {reserve_qty} \\le {usable_supply} \\)</b><br><br><b>Step 3: Solve the inequality</b><br>Combine the constant terms on the left side:<br>\\( {per_item_dec}x + {fixed_deductions} \\le {usable_supply} \\)<br><br>Subtract \\( {fixed_deductions} \\) from both sides:<br>\\( {per_item_dec}x \\le {net_available} \\)<br><br>Divide both sides by \\( {per_item_dec} \\):<br>\\( x \\le \\frac{{net_available}}{{per_item_dec}} \\)<br><b>\\( x \\le {exact_x_rounded} \\)</b><br><br><b>Final Answer:</b><br>Because {person} can only {verb} whole, complete {item}, round down to the nearest whole integer. {person} can {verb} at most <b>\\( {max_items} \\) {item}</b>."
+},
       {
   "id": "Sum 1 A 1.5 Equations",
   "type": "template",
@@ -20003,9 +20329,87 @@
   "question": "A rectangular swimming pool is surrounded by a concrete sidewalk that is \\( {sidewalk_width} \\) feet wide. The dimensions of the rectangle created by the outside edge of the sidewalk are \\( {outer_w} \\) feet by \\( {outer_l} \\) feet. <br><br>1. **Draw** an illustration of the pool and sidewalk with all known dimensions labeled.<br>2. **Determine** the perimeter and area of the pool.",
   "answer": "<b>Step 1: Draw and label the illustration</b><br>Because the \\( {sidewalk_width}\\text{-foot} \\) sidewalk surrounds all four sides of the pool, subtract twice the sidewalk width (\\( 2 \\times {sidewalk_width} = {2 * sidewalk_width}\\text{ ft} \\)) from both the outer length and outer width to find the dimensions of the pool:<br><br>{pool_svg}<br><br><b>Step 2: Find the dimensions of the pool</b><br>• <b>Pool Width:</b> \\( {outer_w} - 2({sidewalk_width}) = {outer_w} - {2 * sidewalk_width} = {inner_w}\\text{ ft} \\)<br>• <b>Pool Length:</b> \\( {outer_l} - 2({sidewalk_width}) = {outer_l} - {2 * sidewalk_width} = {inner_l}\\text{ ft} \\)<br><br><b>Step 3: Calculate the perimeter of the pool</b><br>\\( P = 2l + 2w \\)<br>\\( P = 2({inner_l}) + 2({inner_w}) = {2 * inner_l} + {2 * inner_w} = {perimeter}\\text{ ft} \\)<br><br><b>Step 4: Calculate the area of the pool</b><br>\\( A = l \\times w \\)<br>\\( A = {inner_l} \\times {inner_w} = {area}\\text{ ft}^2 \\)<br><br><b>Final Answer:</b><br>• <b>Perimeter:</b> \\( {perimeter}\\text{ feet} \\)<br>• <b>Area:</b> \\( {area}\\text{ square feet} \\)"
 },
+{
+  "id": "Sum 1 B 1.7a Population Growth",
+  "type": "template",
+  "objective": "Write and evaluate an exponential growth expression with a fractional exponent representing a multi-day growth period",
+  "difficulty": "intermediate",
+  "variables": {
+    "researchers": {
+      "choice": [
+        { "name": "Lavania", "pronoun": "her", "sub": "She" },
+        { "name": "Mateo", "pronoun": "his", "sub": "He" },
+        { "name": "Dr. Chen", "pronoun": "her", "sub": "She" },
+        { "name": "Aiden", "pronoun": "his", "sub": "He" },
+        { "name": "Nadia", "pronoun": "her", "sub": "She" }
+      ]
+    },
+    "r_idx": {
+      "formula": "Math.floor(Math.random() * researchers.length)"
+    },
+    "name": {
+      "formula": "researchers[r_idx].name"
+    },
+    "pronoun": {
+      "formula": "researchers[r_idx].pronoun"
+    },
+    "sub": {
+      "formula": "researchers[r_idx].sub"
+    },
+    "organisms": {
+      "choice": ["fruit flies", "yeast cells", "duckweed plants", "protozoa", "algae cells"]
+    },
+    "start_dates": {
+      "choice": ["October 1", "March 1", "May 1", "September 1", "November 1"]
+    },
+    "growth_factors": {
+      "formula": "[{ factor: 2, word: 'twice' }, { factor: 3, word: 'three times' }, { factor: 4, word: 'four times' }, { factor: 5, word: 'five times' }]"
+    },
+    "g_idx": {
+      "formula": "Math.floor(Math.random() * growth_factors.length)"
+    },
+    "factor": {
+      "formula": "growth_factors[g_idx].factor"
+    },
+    "factor_word": {
+      "formula": "growth_factors[g_idx].word"
+    },
+    "period_days": {
+      "min": 4,
+      "max": 8
+    },
+    "initial_pop_pool": {
+      "formula": "[12, 15, 20, 24, 25, 30, 40, 50]"
+    },
+    "initial_pop": {
+      "formula": "initial_pop_pool[Math.floor(Math.random() * initial_pop_pool.length)]"
+    },
+    "target_day": {
+      "min": 10,
+      "max": 22
+    },
+    "exponent_dec": {
+      "formula": "target_day / period_days"
+    },
+    "exact_pop": {
+      "formula": "initial_pop * Math.pow(factor, exponent_dec)"
+    },
+    "rounded_pop": {
+      "formula": "Math.round(exact_pop)"
+    },
+    "rounded_pop_formatted": {
+      "formula": "rounded_pop.toLocaleString('en-US')"
+    },
+    "exact_pop_dec": {
+      "formula": "exact_pop.toFixed(2)"
+    }
+  },
+  "question": "{name} is studying the growth of a population of {organisms} in {pronoun} laboratory. {sub} notices that the number of {organisms} in {pronoun} experiment is {factor_word} as large after any \\( {period_days}\\text{-day} \\) period. {sub} observes \\( {initial_pop} \\) {organisms} on {start_dates}.<br><br>1. Write an expression to predict the population of {organisms} {name} will observe \\( d \\) days later.<br>2. Evaluate the expression to calculate the population on day \\( {target_day} \\) (round to the nearest whole number).",
+  "answer": "<b>Step 1: Write the exponential growth expression</b><br>Use the exponential growth model \\( P = a \\cdot b^{t} \\), where:<br>• \\( a = {initial_pop} \\) (initial population observed on {start_dates})<br>• \\( b = {factor} \\) (growth factor, since the population becomes {factor_word} as large)<br>• \\( t = \\frac{d}{{period_days}} \\) (number of \\( {period_days}\\text{-day} \\) periods that have passed after \\( d \\) days)<br><br>This gives the expression for the population after \\( d \\) days:<br><b>\\( {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)</b> (or equation <b>\\( P(d) = {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)</b>)<br><br><b>Step 2: Evaluate the expression for day \\( {target_day} \\)</b><br>Substitute \\( d = {target_day} \\) into the expression:<br>\\( P({target_day}) = {initial_pop} \\cdot {factor}^{\\frac{{target_day}}{{period_days}}} \\)<br>\\( P({target_day}) = {initial_pop} \\cdot {factor}^{{{exponent_dec}}} \\)<br>\\( P({target_day}) \\approx {exact_pop_dec} \\)<br><br><b>Final Answer:</b><br>• <b>Expression:</b> \\( {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)<br>• <b>Population on Day \\( {target_day} \\):</b> Approximately <b>\\( {rounded_pop_formatted} \\) {organisms}</b>"
+},
       {
-        "id": "Sum 1 B 1-7a Multiplication Properties of Exponents",
-        "title": "Sum 1 B 1-7a Multiplication Properties of Exponents",
+        "id": "Sum 1 B 1-7b Multiplication Properties of Exponents",
+        "title": "Sum 1 B 1-7b Multiplication Properties of Exponents",
         "type": "template",
         "objective": "Multiplication Properties of Exponents",
         "difficulty": "intermediate",
@@ -20033,7 +20437,7 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 300px;min-width:260px\"><b>A)</b> Multiply coefficients and add exponents of like bases: \\( {m_a}({n_a})x^{a_a+b_a+c_a+d_a}y^{p_a+q_a+r_a} = <b>{coef_a}x^{expo_x_a}y^{expo_y_a}</b> \\.</div><div style=\"flex:1 1 300px;min-width:260px\"><b>B)</b> Multiply coefficients and add exponents of like bases: \\( {m_b}({n_b})x^{a_b+b_b+c_b+d_b}y^{p_b+q_b+r_b} = <b>{coef_b}x^{expo_x_b}y^{expo_y_b}</b> \\.</div></div>"
       },
       {
-        "id": "Sum 1 B 1-7b Division Properties of Exponents",
+        "id": "Sum 1 B 1-7c Division Properties of Exponents",
         "title": "Sum 1 B 1-7b Division Properties of Exponents",
         "type": "template",
         "objective": "Division Properties of Exponents",
@@ -20060,8 +20464,8 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 300px;min-width:260px\"><b>A)</b> Raise the coefficient quotient to the power and subtract exponents in like bases: \\(\\left(\\frac{{m_a}}{{n_a}}\right)^{g_a}x^{(a_a-d_a)g_a}y^{(b_a-e_a)g_a}z^{(c_a-f_a)g_a} = <b>{coef_all_a}x^{exp_x_a}y^{exp_y_a}z^{exp_z_a}</b>\\.</div><div style=\"flex:1 1 300px;min-width:260px\"><b>B)</b> Raise the coefficient quotient to the power and subtract exponents in like bases: \\(\\left(\\frac{{m_b}}{{n_b}}\right)^{g_b}x^{(a_b-d_b)g_b}y^{(b_b-e_b)g_b}z^{(c_b-f_b)g_b} = <b>{coef_all_b}x^{exp_x_b}y^{exp_y_b}z^{exp_z_b}</b>\\.</div></div>"
       },
       {
-        "id": "Sum 1 A 1-7b Multiplication and Divisiton of Exponents",
-        "title": "Sum 1 A 1-7b Multiplication and Divisiton of Exponents",
+        "id": "Sum 1 A 1-7c Multiplication and Divisiton of Exponents",
+        "title": "Sum 1 A 1-7c Multiplication and Divisiton of Exponents",
         "type": "template",
         "objective": "Combine Multiplication and Division Properties of Exponents",
         "difficulty": "advanced",
@@ -20115,6 +20519,125 @@
         "question": "{gram} grams is equivalent to ______ milligrams and _________ centigrams ________ decigrams __________ dekagrams ____________ hectograms ____________ kilograms.",
         "answer": "\\({gram}\\) gram is equivalent to \\({mg}\\) milligrams, \\({cg}\\) centigrams, \\({dg}\\) decigrams, \\({dag}\\) dekagrams, \\({hg}\\) hectograms, and \\({kg}\\) kilograms."
       },
+      {
+  "id": "Sum 1 2-4 A Map Reading",
+  "type": "template",
+  "objective": "Use a map scale and the distance formula to determine straight-line distance between two towns and calculate the total square miles represented on a rectangular map",
+  "difficulty": "intermediate",
+  "variables": {
+    "town_pairs": {
+      "choice": [
+        { "t1": "Robinson", "t2": "Neale", "t3": "Oakridge" },
+        { "t1": "Ashford", "t2": "Millbrook", "t3": "Pinehurst" },
+        { "t1": "Fairview", "t2": "Silverton", "t3": "Brookside" },
+        { "t1": "Clearwater", "t2": "Stonewall", "t3": "Mapleton" }
+      ]
+    },
+    "tp_idx": {
+      "formula": "Math.floor(Math.random() * town_pairs.length)"
+    },
+    "town1": {
+      "formula": "town_pairs[tp_idx].t1"
+    },
+    "town2": {
+      "formula": "town_pairs[tp_idx].t2"
+    },
+    "town3": {
+      "formula": "town_pairs[tp_idx].t3"
+    },
+    "scale_miles_pool": {
+      "formula": "[5, 10, 15, 20, 25]"
+    },
+    "scale_miles": {
+      "formula": "scale_miles_pool[Math.floor(Math.random() * scale_miles_pool.length)]"
+    },
+    "x1": {
+      "min": 1,
+      "max": 3
+    },
+    "y1": {
+      "min": 1,
+      "max": 4
+    },
+    "x2": {
+      "min": 5,
+      "max": 7
+    },
+    "y2": {
+      "min": 1,
+      "max": 4
+    },
+    "x3": {
+      "min": 2,
+      "max": 6
+    },
+    "y3": {
+      "formula": "y1 <= 2 ? 4 : 1"
+    },
+    "px1": {
+      "formula": "40 + x1 * 40"
+    },
+    "py1": {
+      "formula": "240 - y1 * 40"
+    },
+    "px2": {
+      "formula": "40 + x2 * 40"
+    },
+    "py2": {
+      "formula": "240 - y2 * 40"
+    },
+    "px3": {
+      "formula": "40 + x3 * 40"
+    },
+    "py3": {
+      "formula": "240 - y3 * 40"
+    },
+    "dx_units": {
+      "formula": "Math.abs(x2 - x1)"
+    },
+    "dy_units": {
+      "formula": "Math.abs(y2 - y1)"
+    },
+    "dist_units": {
+      "formula": "Math.sqrt(dx_units * dx_units + dy_units * dy_units)"
+    },
+    "dist_miles": {
+      "formula": "dist_units * scale_miles"
+    },
+    "dist_miles_rounded": {
+      "formula": "Number(dist_miles.toFixed(1))"
+    },
+    "map_width_units": {
+      "formula": "8"
+    },
+    "map_height_units": {
+      "formula": "5"
+    },
+    "map_width_miles": {
+      "formula": "map_width_units * scale_miles"
+    },
+    "map_height_miles": {
+      "formula": "map_height_units * scale_miles"
+    },
+    "total_sq_miles": {
+      "formula": "map_width_miles * map_height_miles"
+    },
+    "total_sq_miles_4sig": {
+      "formula": "Number(total_sq_miles.toPrecision(4)).toLocaleString('en-US')"
+    },
+    "map_base": {
+      "formula": "'<rect x=\"40\" y=\"40\" width=\"320\" height=\"200\" fill=\"#f4f7f2\" stroke=\"#374151\" stroke-width=\"2\"/>' + Array.from({length: 7}, (_, i) => '<line x1=\"' + (80 + i * 40) + '\" y1=\"40\" x2=\"' + (80 + i * 40) + '\" y2=\"240\" stroke=\"#cbd5e1\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>').join('') + Array.from({length: 4}, (_, i) => '<line x1=\"40\" y1=\"' + (80 + i * 40) + '\" x2=\"360\" y2=\"' + (80 + i * 40) + '\" stroke=\"#cbd5e1\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>').join('') + '<path d=\"M 40 190 Q 150 150 230 195 T 360 165\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"5\" opacity=\"0.7\"/><path d=\"M ' + px1 + ' ' + py1 + ' L ' + px3 + ' ' + py3 + ' L ' + px2 + ' ' + py2 + '\" fill=\"none\" stroke=\"#9ca3af\" stroke-width=\"2\"/><circle cx=\"' + px1 + '\" cy=\"' + py1 + '\" r=\"4.5\" fill=\"#1e293b\"/><text x=\"' + px1 + '\" y=\"' + (py1 - 8) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#0f172a\">' + town1 + '</text><circle cx=\"' + px2 + '\" cy=\"' + py2 + '\" r=\"4.5\" fill=\"#1e293b\"/><text x=\"' + px2 + '\" y=\"' + (py2 - 8) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#0f172a\">' + town2 + '</text><circle cx=\"' + px3 + '\" cy=\"' + py3 + '\" r=\"4\" fill=\"#475569\"/><text x=\"' + px3 + '\" y=\"' + (py3 + 15) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">' + town3 + '</text><g transform=\"translate(335, 65)\"><circle cx=\"0\" cy=\"0\" r=\"12\" fill=\"white\" stroke=\"#64748b\" stroke-width=\"1\"/><polygon points=\"0,-9 -3,2 0,0 3,2\" fill=\"#dc2626\"/><text x=\"0\" y=\"-14\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" font-weight=\"bold\" fill=\"#334155\">N</text></g><g transform=\"translate(40, 260)\"><line x1=\"0\" y1=\"8\" x2=\"80\" y2=\"8\" stroke=\"#0f172a\" stroke-width=\"2.5\"/><line x1=\"0\" y1=\"3\" x2=\"0\" y2=\"13\" stroke=\"#0f172a\" stroke-width=\"2\"/><line x1=\"40\" y1=\"5\" x2=\"40\" y2=\"11\" stroke=\"#0f172a\" stroke-width=\"1.5\"/><line x1=\"80\" y1=\"3\" x2=\"80\" y2=\"13\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"0\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">0</text><text x=\"40\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">' + scale_miles + '</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">' + (scale_miles * 2) + ' mi</text><text x=\"100\" y=\"12\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#475569\">(1 grid square = ' + scale_miles + ' mi &times; ' + scale_miles + ' mi)</text></g>'"
+    },
+    "question_map_svg": {
+      "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 420 295\" role=\"img\" aria-label=\"Regional map with grid and scale bar showing towns\" style=\"width:100%;max-width:420px;height:auto\">' + map_base + '</svg>'"
+    },
+    "answer_map_svg": {
+      "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 420 295\" role=\"img\" aria-label=\"Regional map showing straight-line air distance between the two towns\" style=\"width:100%;max-width:420px;height:auto\">' + map_base + '<line x1=\"' + px1 + '\" y1=\"' + py1 + '\" x2=\"' + px2 + '\" y2=\"' + py2 + '\" stroke=\"#dc2626\" stroke-width=\"2.5\" stroke-dasharray=\"5,3\"/><line x1=\"' + px1 + '\" y1=\"' + py1 + '\" x2=\"' + px2 + '\" y2=\"' + py1 + '\" stroke=\"#2563eb\" stroke-width=\"1.5\" stroke-dasharray=\"2,2\"/><line x1=\"' + px2 + '\" y1=\"' + py1 + '\" x2=\"' + px2 + '\" y2=\"' + py2 + '\" stroke=\"#2563eb\" stroke-width=\"1.5\" stroke-dasharray=\"2,2\"/></svg>'"
+    }
+  },
+  "question": "Use the regional map and scale bar below to answer the following questions.<br><br>{question_map_svg}<br><br>1. Using the scale of the map, find the approximate distance by air (straight-line distance, not along the gray roads) between <b>{town1}</b> and <b>{town2}</b>. Round your answer to the nearest tenth of a mile.<br>2. Write down how many total square miles are shown inside the rectangular border of the map to four significant digits.",
+  "answer": "<b>Part 1: Straight-line distance between {town1} and {town2}</b><br>Each grid square on the map represents \\( {scale_miles}\\text{ miles} \\times {scale_miles}\\text{ miles} \\).<br>• Horizontal grid distance between {town1} and {town2}: \\( {dx_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dx_units * scale_miles}\\text{ miles} \\)<br>• Vertical grid distance between {town1} and {town2}: \\( {dy_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dy_units * scale_miles}\\text{ miles} \\)<br><br>Apply the Pythagorean Theorem (\\( d = \\sqrt{a^2 + b^2} \\)) along the straight red dashed line shown below:<br>{answer_map_svg}<br><br>\\( d = \\sqrt{({dx_units * scale_miles})^2 + ({dy_units * scale_miles})^2} \\)<br>\\( d = \\sqrt{{(dx_units * scale_miles) * (dx_units * scale_miles)} + {(dy_units * scale_miles) * (dy_units * scale_miles)}} = \\sqrt{{(dx_units * scale_miles) * (dx_units * scale_miles) + (dy_units * scale_miles) * (dy_units * scale_miles)}} \\approx {dist_miles_rounded}\\text{ miles} \\)<br><br><b>Part 2: Total area shown on the map</b><br>• Map width: \\( {map_width_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_width_miles}\\text{ miles} \\)<br>• Map height: \\( {map_height_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_height_miles}\\text{ miles} \\)<br><br>Multiply width by height to find the total area:<br>\\( \\text{Area} = {map_width_miles}\\text{ miles} \\times {map_height_miles}\\text{ miles} = {total_sq_miles}\\text{ square miles} \\)<br><br><b>Final Answer:</b><br>• <b>Air distance between {town1} and {town2}:</b> Approximately <b>\\( {dist_miles_rounded}\\text{ miles} \\)</b><br>• <b>Total area shown on the map (to 4 significant digits):</b> <b>\\( {total_sq_miles_4sig}\\text{ square miles} \\)</b>"
+},
       {
         "id": "Sum 1 B 2.6a Area Measurement Conversion",
         "title": "Sum 1 B 2.6a Area Measurement Conversion",
