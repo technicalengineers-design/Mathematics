@@ -26597,11 +26597,7 @@
   },
   "question": "<div style=\"font-size:15px;line-height:1.5;color:#111;\"><div>Given the two statements below, write each requested compound statement <b>both in symbols and in words</b>.</div><div style=\"margin:8px 0 12px 14px;\"><div><b>p:</b> {stmt_p}</div><div><b>q:</b> {stmt_q}</div></div><div style=\"margin-top:6px;\"><b>A)</b> {name_a}</div><div style=\"height:44px;\"></div><div style=\"margin-top:6px;\"><b>B)</b> {name_b}</div><div style=\"height:44px;\"></div><div style=\"margin-top:6px;\"><b>C)</b> {name_c}</div><div style=\"height:44px;\"></div><div style=\"margin-top:6px;\"><b>D)</b> {name_d}</div><div style=\"height:44px;\"></div></div>",
   "answer": "<div style=\"font-size:15px;line-height:1.6;color:#111;\"><div style=\"margin-bottom:8px;\"><div><b>A) {name_a}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_a}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_a}</div></div><div style=\"margin-bottom:8px;\"><div><b>B) {name_b}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_b}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_b}</div></div><div style=\"margin-bottom:8px;\"><div><b>C) {name_c}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_c}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_c}</div></div><div style=\"margin-bottom:8px;\"><div><b>D) {name_d}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_d}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_d}</div></div></div>"
-}
-,
-
-
-
+},
       {
         "id": "Sum 1 C 3-3a Inductive and Deductive Reasoning",
         "title": "Sum 1 3-3a Inductive and Deductive Reasoning",
@@ -26691,28 +26687,88 @@
         "answer": "Completed postulates:<br><div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px\"><div><b>A)</b> {p1_ans}<br><i>Explanation:</i> {p1_exp}</div><div><b>B)</b> {p2_ans}<br><i>Explanation:</i> {p2_exp}</div><div><b>C)</b> {p3_ans}<br><i>Explanation:</i> {p3_exp}</div><div><b>D)</b> {p4_ans}<br><i>Explanation:</i> {p4_exp}</div></div>"
       },
       {
-        "id": "Sum 1 C 3-7a Skew",
-        "title": "Sum 1 C 3-7 Skew",
-        "type": "template",
-        "objective": "Identify skew and perpendicular lines in a cube",
-        "difficulty": "basic",
-        "variables": {
-          "cube_vertex_letters": { "formula": "'ABCDEFGHJKLMNPQRTUVWXYZ'.split('').sort(function(){return Math.random()-0.5}).slice(0,8)" },
-          "cube_vertices": { "formula": "[[90,95],[250,95],[250,255],[90,255],[150,45],[310,45],[310,205],[150,205]]" },
-          "cube_coordinates": { "formula": "[[0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[1,0,1],[1,1,1],[0,1,1]]" },
-          "cube_edges": { "formula": "[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]" },
-          "target_edge_index": { "formula": "Math.floor(Math.random()*cube_edges.length)" },
-          "target_edge": { "formula": "cube_edges[target_edge_index]" },
-          "target_line": { "formula": "cube_vertex_letters[target_edge[0]]+cube_vertex_letters[target_edge[1]]" },
-          "skew_edge_names": { "formula": "cube_edges.filter(function(edge){return !edge.some(function(vertex){return target_edge.includes(vertex)})&&((cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])-(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])!==0||(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])-(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])!==0||(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])-(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])!==0)}).map(function(edge){return cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]]})" },
-          "perpendicular_edge_names": { "formula": "cube_edges.filter(function(edge){return edge.filter(function(vertex){return target_edge.includes(vertex)}).length===1&&(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])+(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])+(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])===0)}).map(function(edge){return cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]]})" },
-          "skew_edge_answer": { "formula": "skew_edge_names.map(function(name){return '\\\\( \\\\overleftrightarrow{'+name+'} \\\\)' }).join(', ')" },
-          "perpendicular_edge_answer": { "formula": "perpendicular_edge_names.map(function(name){return '\\\\( \\\\overleftrightarrow{'+name+'} \\\\)' }).join(', ')" },
-          "cube_svg": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 310\" role=\"img\" aria-label=\"Cube with randomized vertex labels and dashed hidden edges\" style=\"display:block;width:100%;max-width:400px;height:auto;background:white\"><title>Cube with randomized vertex labels</title>'+cube_edges.map(function(edge,index){var a=cube_vertices[edge[0]],b=cube_vertices[edge[1]],hidden=[6,7,11].includes(index);return '<line x1=\"'+a[0]+'\" y1=\"'+a[1]+'\" x2=\"'+b[0]+'\" y2=\"'+b[1]+'\" stroke=\"#222\" stroke-width=\"2.5\"'+(hidden?' stroke-dasharray=\"6 5\"':'')+'/>';}).join('')+cube_vertices.map(function(point,index){var offsets=[[-16,-10],[13,-10],[14,20],[-17,20],[-17,-10],[13,-10],[14,20],[-17,20]];return '<text x=\"'+(point[0]+offsets[index][0])+'\" y=\"'+(point[1]+offsets[index][1])+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"18\" font-weight=\"bold\" fill=\"#111\" style=\"paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round\">'+cube_vertex_letters[index]+'</text>';}).join('')+'</svg>'" }
-        },
-        "question": "The cube shows eight vertices labeled with capital letters.<br><div style=\"display:grid;grid-template-columns:minmax(0,400px) minmax(180px,1fr);align-items:start;gap:20px\"><div>{cube_svg}</div><div>For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) List all lines that are skew to it.<br><br>B) List all lines that are perpendicular to it.</div></div>",
-        "answer": "For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) Skew: {skew_edge_answer}.<br>B) Perpendicular: {perpendicular_edge_answer}."
-      },
+  "id": "Sum 1 C 3-7a Skew",
+  "title": "Sum 1 C 3-7 Skew",
+  "type": "template",
+  "objective": "Identify skew, perpendicular, and parallel lines in a cube",
+  "difficulty": "basic",
+  "variables": {
+    "cube_vertex_letters": {
+      "formula": "'ABCDEFGHJKLMNPQRTUVWXYZ'.split('').sort(function(){return Math.random()-0.5}).slice(0,8)"
+    },
+    "cube_vertices": {
+      "formula": "[[90,95],[250,95],[250,255],[90,255],[150,45],[310,45],[310,205],[150,205]]"
+    },
+    "cube_coordinates": {
+      "formula": "[[0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[1,0,1],[1,1,1],[0,1,1]]"
+    },
+    "cube_edges": {
+      "formula": "[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]"
+    },
+    "target_edge_index": {
+      "formula": "Math.floor(Math.random()*cube_edges.length)"
+    },
+    "target_edge": {
+      "formula": "cube_edges[target_edge_index]"
+    },
+    "target_line": {
+      "formula": "cube_vertex_letters[target_edge[0]]+cube_vertex_letters[target_edge[1]]"
+    },
+    "skew_edge_names": {
+      "formula": "cube_edges.filter(function(edge){return !edge.some(function(vertex){return target_edge.includes(vertex)})&&((cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])-(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])!==0||(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])-(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])!==0||(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])-(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])!==0)}).map(function(edge){return cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]]})"
+    },
+    "perpendicular_edge_names": {
+      "formula": "cube_edges.filter(function(edge){return edge.filter(function(vertex){return target_edge.includes(vertex)}).length===1&&(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])+(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])+(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])===0)}).map(function(edge){return cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]]})"
+    },
+    "parallel_edge_names": {
+      "formula": "cube_edges.filter(function(edge,idx){return idx!==target_edge_index&&(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])-(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])===0&&(cube_coordinates[edge[1]][2]-cube_coordinates[edge[0]][2])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])-(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][2]-cube_coordinates[target_edge[0]][2])===0&&(cube_coordinates[edge[1]][0]-cube_coordinates[edge[0]][0])*(cube_coordinates[target_edge[1]][1]-cube_coordinates[target_edge[0]][1])-(cube_coordinates[edge[1]][1]-cube_coordinates[edge[0]][1])*(cube_coordinates[target_edge[1]][0]-cube_coordinates[target_edge[0]][0])===0}).map(function(edge){return cube_vertex_letters[edge[0]]+cube_vertex_letters[edge[1]]})"
+    },
+    "skew_edge_answer": {
+      "formula": "skew_edge_names.map(function(name){return '\\\\( \\\\overleftrightarrow{'+name+'} \\\\)' }).join(', ')"
+    },
+    "perpendicular_edge_answer": {
+      "formula": "perpendicular_edge_names.map(function(name){return '\\\\( \\\\overleftrightarrow{'+name+'} \\\\)' }).join(', ')"
+    },
+    "parallel_edge_answer": {
+      "formula": "parallel_edge_names.map(function(name){return '\\\\( \\\\overleftrightarrow{'+name+'} \\\\)' }).join(', ')"
+    },
+    "prompts_pool": {
+      "formula": "['List all lines that are skew to it.', 'List all lines that are perpendicular to it.', 'List all lines that are parallel to it.']"
+    },
+    "labels_pool": {
+      "formula": "['Skew', 'Perpendicular', 'Parallel']"
+    },
+    "answers_pool": {
+      "formula": "[skew_edge_answer, perpendicular_edge_answer, parallel_edge_answer]"
+    },
+    "idx_a": {
+      "min": 0,
+      "max": 2
+    },
+    "idx_b": {
+      "min": 0,
+      "max": 2,
+      "exclude": ["idx_a"]
+    },
+    "idx_c": {
+      "formula": "3 - (idx_a + idx_b)"
+    },
+    "prompt_a": { "formula": "prompts_pool[idx_a]" },
+    "prompt_b": { "formula": "prompts_pool[idx_b]" },
+    "prompt_c": { "formula": "prompts_pool[idx_c]" },
+    "label_a": { "formula": "labels_pool[idx_a]" },
+    "label_b": { "formula": "labels_pool[idx_b]" },
+    "label_c": { "formula": "labels_pool[idx_c]" },
+    "ans_a": { "formula": "answers_pool[idx_a]" },
+    "ans_b": { "formula": "answers_pool[idx_b]" },
+    "ans_c": { "formula": "answers_pool[idx_c]" },
+    "cube_svg": {
+      "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 310\" role=\"img\" aria-label=\"Cube with randomized vertex labels and dashed hidden edges\" style=\"display:block;width:100%;max-width:400px;height:auto;background:white\"><title>Cube with randomized vertex labels</title>'+cube_edges.map(function(edge,index){var a=cube_vertices[edge[0]],b=cube_vertices[edge[1]],hidden=[6,7,11].includes(index);return '<line x1=\"'+a[0]+'\" y1=\"'+a[1]+'\" x2=\"'+b[0]+'\" y2=\"'+b[1]+'\" stroke=\"#222\" stroke-width=\"2.5\"'+(hidden?' stroke-dasharray=\"6 5\"':'')+'/>';}).join('')+cube_vertices.map(function(point,index){var offsets=[[-16,-10],[13,-10],[14,20],[-17,20],[-17,-10],[13,-10],[14,20],[-17,20]];return '<text x=\"'+(point[0]+offsets[index][0])+'\" y=\"'+(point[1]+offsets[index][1])+'\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"18\" font-weight=\"bold\" fill=\"#111\" style=\"paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round\">'+cube_vertex_letters[index]+'</text>';}).join('')+'</svg>'"
+    }
+  },
+  "question": "The cube shows eight vertices labeled with capital letters.<br><div style=\"display:grid;grid-template-columns:minmax(0,400px) minmax(180px,1fr);align-items:start;gap:20px\"><div>{cube_svg}</div><div>For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) {prompt_a}<br><br>B) {prompt_b}<br><br>C) {prompt_c}</div></div>",
+  "answer": "For \\( \\overleftrightarrow{{{target_line}}} \\):<br>A) {label_a}: {ans_a}.<br>B) {label_b}: {ans_b}.<br>C) {label_c}: {ans_c}."
+},
       {
         "id": "Sum 1 C 3-7b Angle Pairs",
         "title": "Sum 1 C 3-7b Angle Pairs",
