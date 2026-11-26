@@ -20036,7 +20036,7 @@
   "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> {a_a} &divide; {b_a} &times; 100% &asymp; <b>{result_a}%</b></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> {a_b} &divide; {b_b} &times; 100% &asymp; <b>{result_b}%</b></div></div>"
 },
       {
-  "id": "Sum 1 B 1.2 Average Speed",
+  "id": "Sum 1 B 1.2 Car Purchase",
   "type": "template",
   "objective": "Calculate the final price",
   "difficulty": "intermediate",
@@ -20131,10 +20131,9 @@
   },
   "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_str} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub_lower} will pay for the {item}?",
   "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_str} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_str} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
-}
-,
+},
      {
-  "id": "Sum 1 A 1.3a Buying Packs",
+  "id": "Sum 1 B 1.3a Buying Packs",
   "type": "template",
   "objective": "Calculate the Least Common Multiple (LCM) of three numbers to solve a real-world packaging problem with zero leftovers",
   "difficulty": "intermediate",
@@ -25700,7 +25699,104 @@
     ],
       "Summative 1": [
         {
-  "id": "Sum 1 A 1.1b Knots",
+  "id": "Sum 1 B 1.2 Car Purchase",
+  "type": "template",
+  "objective": "Calculate the final price",
+  "difficulty": "intermediate",
+  "variables": {
+    "names": {
+      "formula": "['Mr. Thompson', 'Ms. Ramirez', 'Dr. Patel', 'Mrs. Jenkins', 'Mr. Kim', 'Ms. O’Connor']"
+    },
+    "subs": {
+      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
+    },
+    "subs_lower": {
+      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
+    },
+    "b_idx": {
+      "formula": "Math.floor(Math.random() * 6)"
+    },
+    "name": {
+      "formula": "names[b_idx]"
+    },
+    "sub": {
+      "formula": "subs[b_idx]"
+    },
+    "sub_lower": {
+      "formula": "subs_lower[b_idx]"
+    },
+    "item_list": {
+      "formula": "['used car', 'certified pre-owned sedan', 'compact SUV', 'hybrid hatchback']"
+    },
+    "discount_types": {
+      "formula": "['good-customer discount', 'loyalty discount', 'seasonal clearance discount', 'returning-buyer discount']"
+    },
+    "i_idx": {
+      "formula": "Math.floor(Math.random() * 4)"
+    },
+    "item": {
+      "formula": "item_list[i_idx]"
+    },
+    "discount_type": {
+      "formula": "discount_types[i_idx]"
+    },
+    "base_price_pool": {
+      "formula": "[7600, 8400, 9200, 10500, 11800, 12400, 14500]"
+    },
+    "base_price": {
+      "formula": "base_price_pool[Math.floor(Math.random() * 7)]"
+    },
+    "base_price_str": {
+      "formula": "base_price.toFixed(2)"
+    },
+    "discount_pool": {
+      "formula": "[10, 12, 15, 18, 20]"
+    },
+    "discount_pct": {
+      "formula": "discount_pool[Math.floor(Math.random() * 5)]"
+    },
+    "discount_dec": {
+      "formula": "Math.round(discount_pct) / 100"
+    },
+    "tax_pool": {
+      "formula": "[4.5, 5.5, 6.0, 6.25, 6.5, 7.25, 8.0]"
+    },
+    "tax_pct": {
+      "formula": "tax_pool[Math.floor(Math.random() * 7)]"
+    },
+    "tax_dec": {
+      "formula": "Math.round(tax_pct * 100) / 10000"
+    },
+    "discount_amt": {
+      "formula": "Math.round(base_price * discount_dec * 100) / 100"
+    },
+    "discount_amt_str": {
+      "formula": "discount_amt.toFixed(2)"
+    },
+    "sale_price": {
+      "formula": "Math.round((base_price - discount_amt) * 100) / 100"
+    },
+    "sale_price_str": {
+      "formula": "sale_price.toFixed(2)"
+    },
+    "tax_amt": {
+      "formula": "Math.round(sale_price * tax_dec * 100) / 100"
+    },
+    "tax_amt_str": {
+      "formula": "tax_amt.toFixed(2)"
+    },
+    "final_price": {
+      "formula": "Math.round((sale_price + tax_amt) * 100) / 100"
+    },
+    "final_price_str": {
+      "formula": "final_price.toFixed(2)"
+    }
+  },
+  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_str} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub_lower} will pay for the {item}?",
+  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_str} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_str} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
+},
+ {
+  "id": "Sum 1 A 1.1a Knots",
   "type": "template",
   "objective": "Convert nautical speed (knots) to distance in feet and speed in miles per hour",
   "difficulty": "advanced",
@@ -25721,6 +25817,76 @@
   "question": "Use the following nautical conversions to solve the problem:<br>• \\( 1\\text{ nautical mile} = 6,080\\text{ feet} \\)<br>• \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} \\)<br><br>If a {vessels} travels at \\( {knots}\\text{ knots} \\) for {hour_label}, how far will it have traveled in feet? Write and solve the equation that represents this situation. Then, determine how fast the {vessels} was traveling in miles per hour (\\( 1\\text{ mile} = 5,280\\text{ feet} \\)). Round your answers to the nearest hundredth.",
   "answer": "<b>Part 1: Distance traveled in feet</b><br>Let \\( d \\) represent the total distance traveled in feet, \\( k \\) represent the speed in knots (\\( {knots} \\)), and \\( t \\) represent the time in hours (\\( {hours} \\)).<br><br>Since \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} = 6,080\\text{ feet per hour} \\), set up the distance equation:<br><b>\\( d = 6,080 \\cdot k \\cdot t \\)</b><br><br>Substitute \\( k = {knots} \\) and \\( t = {hours} \\) into the equation and solve:<br>\\( d = 6,080 \\times {knots} \\times {hours} \\)<br>\\( d = {nmi_traveled} \\times 6,080 \\)<br><b>\\( d = {total_feet_formatted}\\text{ feet} \\)</b><br><br><b>Part 2: Speed in miles per hour (mph)</b><br>Convert the speed from feet per hour to statute miles per hour using \\( 1\\text{ mile} = 5,280\\text{ feet} \\):<br>\\( \\text{Speed in feet per hour} = {knots}\\text{ knots} \\times 6,080\\text{ ft/nmi} = {(knots * 6080).toLocaleString('en-US')}\\text{ ft/hr} \\)<br><br>Divide by \\( 5,280\\text{ feet per mile} \\):<br>\\( \\text{Speed in mph} = \\frac{{knots} \\times 6,080}{5,280} = \\frac{{knots * 6080}}{5280} \\approx {mph_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>• <b>Distance traveled:</b> \\( {total_feet_formatted}\\text{ feet} \\)<br>• <b>Speed:</b> \\( {mph_rounded}\\text{ miles per hour} \\)"
 },
+ {
+  "id": "Sum 1 B 1.3a Buying Packs",
+  "type": "template",
+  "objective": "Calculate the Least Common Multiple (LCM) of three numbers to solve a real-world packaging problem with zero leftovers",
+  "difficulty": "intermediate",
+  "variables": {
+    "shoppers": {
+      "textValue": ["Maya", "Toby", "Sofia", "Hannah", "Owen", "Zara"]
+    },
+    "scenarios": {
+      "formula": "[{ event: 'a neighborhood cookout', item1: 'hot dogs', item2: 'hot dog buns', item3: 'juice boxes' }, { event: 'a school bake sale', item1: 'cupcakes', item2: 'frosting tubs', item3: 'take-home boxes' }, { event: 'a camping trip', item1: 'graham cracker sleeves', item2: 'chocolate bars', item3: 'marshmallows' }, { event: 'an art workshop', item1: 'canvases', item2: 'paintbrushes', item3: 'paint palettes' }, { event: 'a soccer tournament', item1: 'granola bars', item2: 'sports drinks', item3: 'ice packs' }]"
+    },
+    "s_idx": {
+      "formula": "Math.floor(Math.random() * scenarios.length)"
+    },
+    "event": {
+      "formula": "scenarios[s_idx].event"
+    },
+    "item1": {
+      "formula": "scenarios[s_idx].item1"
+    },
+    "item2": {
+      "formula": "scenarios[s_idx].item2"
+    },
+    "item3": {
+      "formula": "scenarios[s_idx].item3"
+    },
+    "pack_triples": {
+      "formula": "[[6, 8, 12], [8, 10, 20], [6, 9, 18], [4, 6, 10], [8, 12, 16], [9, 12, 18], [6, 10, 15], [10, 12, 15]]"
+    },
+    "p_idx": {
+      "formula": "Math.floor(Math.random() * pack_triples.length)"
+    },
+    "pack1": {
+      "formula": "pack_triples[p_idx][0]"
+    },
+    "pack2": {
+      "formula": "pack_triples[p_idx][1]"
+    },
+    "pack3": {
+      "formula": "pack_triples[p_idx][2]"
+    },
+    "p1_m2": { "formula": "pack1 * 2" },
+    "p1_m3": { "formula": "pack1 * 3" },
+    "p1_m4": { "formula": "pack1 * 4" },
+    "p2_m2": { "formula": "pack2 * 2" },
+    "p2_m3": { "formula": "pack2 * 3" },
+    "p2_m4": { "formula": "pack2 * 4" },
+    "p3_m2": { "formula": "pack3 * 2" },
+    "p3_m3": { "formula": "pack3 * 3" },
+    "p3_m4": { "formula": "pack3 * 4" },
+    "lcm_val": {
+      "formula": "Array.from({length: pack1 * pack2 * pack3}, (_, i) => i + 1).find(n => n % pack1 === 0 && n % pack2 === 0 && n % pack3 === 0)"
+    },
+    "num_packs1": {
+      "formula": "lcm_val / pack1"
+    },
+    "num_packs2": {
+      "formula": "lcm_val / pack2"
+    },
+    "num_packs3": {
+      "formula": "lcm_val / pack3"
+    }
+  },
+  "question": "{shoppers} is shopping for {event} and needs to buy an equal number of {item1}, {item2}, and {item3} with none left over. At the store, {item1} are sold in packs of \\( {pack1} \\), {item2} are sold in packs of \\( {pack2} \\), and {item3} are sold in packs of \\( {pack3} \\).<br><br>1. What is the least number of each item {shoppers} can buy so that there is an equal amount of all three?<br>2. How many packs of each item will {shoppers} need to purchase?",
+  "answer": "<b>Step 1: Find the Least Common Multiple (LCM)</b><br>To have an equal number of each item with none left over, find the smallest number that is a multiple of \\( {pack1} \\), \\( {pack2} \\), and \\( {pack3} \\):<br>• Multiples of \\( {pack1} \\): \\( {pack1}, {p1_m2}, {p1_m3}, {p1_m4}, \\dots \\)<br>• Multiples of \\( {pack2} \\): \\( {pack2}, {p2_m2}, {p2_m3}, {p2_m4}, \\dots \\)<br>• Multiples of \\( {pack3} \\): \\( {pack3}, {p3_m2}, {p3_m3}, {p3_m4}, \\dots \\)<br><br>The smallest common multiple of \\( {pack1} \\), \\( {pack2} \\), and \\( {pack3} \\) is <b>\\( {lcm_val} \\)</b>.<br><br><b>Step 2: Calculate the number of packs needed for each item</b><br>Divide the total needed (\\( {lcm_val} \\)) by the quantity in each pack:<br>• <b>{item1}:</b> \\( {lcm_val} \\div {pack1} = {num_packs1} \\) packs<br>• <b>{item2}:</b> \\( {lcm_val} \\div {pack2} = {num_packs2} \\) packs<br>• <b>{item3}:</b> \\( {lcm_val} \\div {pack3} = {num_packs3} \\) packs<br><br><b>Final Answer:</b><br>• {shoppers} must buy a minimum of <b>\\( {lcm_val} \\) of each item</b>.<br>• {shoppers} needs <b>\\( {num_packs1} \\) packs of {item1}</b>, <b>\\( {num_packs2} \\) packs of {item2}</b>, and <b>\\( {num_packs3} \\) packs of {item3}</b>."
+},
+
+
+
 {
         "id": "Sum 1 A 1-4 Distance Between Two Points",
         "type": "template",
