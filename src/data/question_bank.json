@@ -20571,6 +20571,11 @@
     "exp_x_a": { "formula": "a_a + d_a - g_a" },
     "exp_y_a": { "formula": "b_a + e_a - h_a" },
     "exp_z_a": { "formula": "c_a + f_a - i_a" },
+    "term_x_a": { "formula": "exp_x_a === 0 ? '' : (exp_x_a === 1 ? 'x' : 'x^{' + exp_x_a + '}')" },
+    "term_y_a": { "formula": "exp_y_a === 0 ? '' : (exp_y_a === 1 ? 'y' : 'y^{' + exp_y_a + '}')" },
+    "term_z_a": { "formula": "exp_z_a === 0 ? '' : (exp_z_a === 1 ? 'z' : 'z^{' + exp_z_a + '}')" },
+    "vars_a": { "formula": "term_x_a + term_y_a + term_z_a" },
+    "final_a": { "formula": "vars_a === '' ? '' + coef_a : (coef_a === 1 || coef_a === '1' ? vars_a : (coef_a === -1 || coef_a === '-1' ? '-' + vars_a : coef_a + vars_a))" },
     "m_b": { "values": [-6, -4, -3, -2, 2, 3, 4, 6] },
     "n_b": { "values": [-6, -4, -3, -2, 2, 3, 4, 6] },
     "p_b": { "values": [-6, -4, -3, -2, 2, 3, 4, 6] },
@@ -20586,10 +20591,15 @@
     "coef_b": { "formula": "(m_b * n_b) / p_b", "format": "fraction" },
     "exp_x_b": { "formula": "a_b + d_b - g_b" },
     "exp_y_b": { "formula": "b_b + e_b - h_b" },
-    "exp_z_b": { "formula": "c_b + f_b - i_b" }
+    "exp_z_b": { "formula": "c_b + f_b - i_b" },
+    "term_x_b": { "formula": "exp_x_b === 0 ? '' : (exp_x_b === 1 ? 'x' : 'x^{' + exp_x_b + '}')" },
+    "term_y_b": { "formula": "exp_y_b === 0 ? '' : (exp_y_b === 1 ? 'y' : 'y^{' + exp_y_b + '}')" },
+    "term_z_b": { "formula": "exp_z_b === 0 ? '' : (exp_z_b === 1 ? 'z' : 'z^{' + exp_z_b + '}')" },
+    "vars_b": { "formula": "term_x_b + term_y_b + term_z_b" },
+    "final_b": { "formula": "vars_b === '' ? '' + coef_b : (coef_b === 1 || coef_b === '1' ? vars_b : (coef_b === -1 || coef_b === '-1' ? '-' + vars_b : coef_b + vars_b))" }
   },
   "question": "Simplify each expression. Use the multiplication and division properties of exponents.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 320px;min-width:280px;padding:8px;border:1px solid #bbb;border-radius:6px\"><b>A)</b><br>\\( \\dfrac{({m_a}x^{ {a_a} }y^{ {b_a} }z^{ {c_a} })({n_a}x^{ {d_a} }y^{ {e_a} }z^{ {f_a} })}{{p_a}x^{ {g_a} }y^{ {h_a} }z^{ {i_a} }} \\)<div style=\"height:110px\"></div></div><div style=\"flex:1 1 320px;min-width:280px;padding:8px;border:1px solid #bbb;border-radius:6px\"><b>B)</b><br>\\( \\dfrac{({m_b}x^{ {a_b} }y^{ {b_b} }z^{ {c_b} })({n_b}x^{ {d_b} }y^{ {e_b} }z^{ {f_b} })}{{p_b}x^{ {g_b} }y^{ {h_b} }z^{ {i_b} }} \\)<div style=\"height:110px\"></div></div></div>",
-  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 320px;min-width:280px;padding:8px;border:1px solid #bbb;border-radius:6px\"><b>A)</b><br>Multiply the numerator coefficients and add their exponents; then divide by the denominator term and subtract its exponents:<br>\\( \\dfrac{{m_a}({n_a})}{{p_a}} x^{ {a_a}+{d_a}-{g_a} } y^{ {b_a}+{e_a}-{h_a} } z^{ {c_a}+{f_a}-{i_a} } = \\) <b>\\( {coef_a}x^{ {exp_x_a} }y^{ {exp_y_a} }z^{ {exp_z_a} } \\)</b></div><div style=\"flex:1 1 320px;min-width:280px;padding:8px;border:1px solid #bbb;border-radius:6px\"><b>B)</b><br>Multiply the numerator coefficients and add their exponents; then divide by the denominator term and subtract its exponents:<br>\\( \\dfrac{{m_b}({n_b})}{{p_b}} x^{ {a_b}+{d_b}-{g_b} } y^{ {b_b}+{e_b}-{h_b} } z^{ {c_b}+{f_b}-{i_b} } = \\) <b>\\( {coef_b}x^{ {exp_x_b} }y^{ {exp_y_b} }z^{ {exp_z_b} } \\)</b></div></div>"
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 320px;min-width:280px;padding:8px;border:1px solid #bbb;border-radius:6px\"><b>A)</b><br>Multiply the numerator coefficients and add their exponents; then divide by the denominator term and subtract its exponents (any variable raised to the zero power equals 1):<br>\\( \\dfrac{{m_a}({n_a})}{{p_a}} x^{ {a_a}+{d_a}-{g_a} } y^{ {b_a}+{e_a}-{h_a} } z^{ {c_a}+{f_a}-{i_a} } = {coef_a}x^{ {exp_x_a} }y^{ {exp_y_a} }z^{ {exp_z_a} } = \\) <b>\\( {final_a} \\)</b></div><div style=\"flex:1 1 320px;min-width:280px;padding:8px;border:1px solid #bbb;border-radius:6px\"><b>B)</b><br>Multiply the numerator coefficients and add their exponents; then divide by the denominator term and subtract its exponents (any variable raised to the zero power equals 1):<br>\\( \\dfrac{{m_b}({n_b})}{{p_b}} x^{ {a_b}+{d_b}-{g_b} } y^{ {b_b}+{e_b}-{h_b} } z^{ {c_b}+{f_b}-{i_b} } = {coef_b}x^{ {exp_x_b} }y^{ {exp_y_b} }z^{ {exp_z_b} } = \\) <b>\\( {final_b} \\)</b></div></div>"
 },
       {
         "id": "Sum 1 C 2.1 Customary Measurement",
@@ -20630,31 +20640,35 @@
   "objective": "Use a map scale and the distance formula to determine straight-line distance between two towns and calculate the total square miles represented on a rectangular map",
   "difficulty": "intermediate",
   "variables": {
-    "town_pairs": {
-      "choice": [
-        { "t1": "Robinson", "t2": "Neale", "t3": "Oakridge" },
-        { "t1": "Ashford", "t2": "Millbrook", "t3": "Pinehurst" },
-        { "t1": "Fairview", "t2": "Silverton", "t3": "Brookside" },
-        { "t1": "Clearwater", "t2": "Stonewall", "t3": "Mapleton" }
-      ]
+    "town1_pool": {
+      "formula": "['Robinson', 'Ashford', 'Fairview', 'Clearwater']"
+    },
+    "town2_pool": {
+      "formula": "['Neale', 'Millbrook', 'Silverton', 'Stonewall']"
+    },
+    "town3_pool": {
+      "formula": "['Oakridge', 'Pinehurst', 'Brookside', 'Mapleton']"
     },
     "tp_idx": {
-      "formula": "Math.floor(Math.random() * town_pairs.length)"
+      "formula": "Math.floor(Math.random() * 4)"
     },
     "town1": {
-      "formula": "town_pairs[tp_idx].t1"
+      "formula": "town1_pool[tp_idx]"
     },
     "town2": {
-      "formula": "town_pairs[tp_idx].t2"
+      "formula": "town2_pool[tp_idx]"
     },
     "town3": {
-      "formula": "town_pairs[tp_idx].t3"
+      "formula": "town3_pool[tp_idx]"
     },
     "scale_miles_pool": {
-      "formula": "[5, 10, 15, 20, 25]"
+      "formula": ""
     },
     "scale_miles": {
-      "formula": "scale_miles_pool[Math.floor(Math.random() * scale_miles_pool.length)]"
+      "formula": "scale_miles_pool[Math.floor(Math.random() * 5)]"
+    },
+    "scale_miles_2": {
+      "formula": "scale_miles * 2"
     },
     "x1": {
       "min": 1,
@@ -20703,14 +20717,23 @@
     "dy_units": {
       "formula": "Math.abs(y2 - y1)"
     },
-    "dist_units": {
-      "formula": "Math.sqrt(dx_units * dx_units + dy_units * dy_units)"
+    "dx_miles": {
+      "formula": "dx_units * scale_miles"
     },
-    "dist_miles": {
-      "formula": "dist_units * scale_miles"
+    "dy_miles": {
+      "formula": "dy_units * scale_miles"
+    },
+    "dx_sq": {
+      "formula": "dx_miles * dx_miles"
+    },
+    "dy_sq": {
+      "formula": "dy_miles * dy_miles"
+    },
+    "sum_sq": {
+      "formula": "dx_sq + dy_sq"
     },
     "dist_miles_rounded": {
-      "formula": "Number(dist_miles.toFixed(1))"
+      "formula": "Math.round(Math.sqrt(sum_sq) * 10) / 10"
     },
     "map_width_units": {
       "formula": "8"
@@ -20727,11 +20750,8 @@
     "total_sq_miles": {
       "formula": "map_width_miles * map_height_miles"
     },
-    "total_sq_miles_4sig": {
-      "formula": "Number(total_sq_miles.toPrecision(4)).toLocaleString('en-US')"
-    },
     "map_base": {
-      "formula": "'<rect x=\"40\" y=\"40\" width=\"320\" height=\"200\" fill=\"#f4f7f2\" stroke=\"#374151\" stroke-width=\"2\"/>' + Array.from({length: 7}, (_, i) => '<line x1=\"' + (80 + i * 40) + '\" y1=\"40\" x2=\"' + (80 + i * 40) + '\" y2=\"240\" stroke=\"#cbd5e1\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>').join('') + Array.from({length: 4}, (_, i) => '<line x1=\"40\" y1=\"' + (80 + i * 40) + '\" x2=\"360\" y2=\"' + (80 + i * 40) + '\" stroke=\"#cbd5e1\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>').join('') + '<path d=\"M 40 190 Q 150 150 230 195 T 360 165\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"5\" opacity=\"0.7\"/><path d=\"M ' + px1 + ' ' + py1 + ' L ' + px3 + ' ' + py3 + ' L ' + px2 + ' ' + py2 + '\" fill=\"none\" stroke=\"#9ca3af\" stroke-width=\"2\"/><circle cx=\"' + px1 + '\" cy=\"' + py1 + '\" r=\"4.5\" fill=\"#1e293b\"/><text x=\"' + px1 + '\" y=\"' + (py1 - 8) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#0f172a\">' + town1 + '</text><circle cx=\"' + px2 + '\" cy=\"' + py2 + '\" r=\"4.5\" fill=\"#1e293b\"/><text x=\"' + px2 + '\" y=\"' + (py2 - 8) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#0f172a\">' + town2 + '</text><circle cx=\"' + px3 + '\" cy=\"' + py3 + '\" r=\"4\" fill=\"#475569\"/><text x=\"' + px3 + '\" y=\"' + (py3 + 15) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">' + town3 + '</text><g transform=\"translate(335, 65)\"><circle cx=\"0\" cy=\"0\" r=\"12\" fill=\"white\" stroke=\"#64748b\" stroke-width=\"1\"/><polygon points=\"0,-9 -3,2 0,0 3,2\" fill=\"#dc2626\"/><text x=\"0\" y=\"-14\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" font-weight=\"bold\" fill=\"#334155\">N</text></g><g transform=\"translate(40, 260)\"><line x1=\"0\" y1=\"8\" x2=\"80\" y2=\"8\" stroke=\"#0f172a\" stroke-width=\"2.5\"/><line x1=\"0\" y1=\"3\" x2=\"0\" y2=\"13\" stroke=\"#0f172a\" stroke-width=\"2\"/><line x1=\"40\" y1=\"5\" x2=\"40\" y2=\"11\" stroke=\"#0f172a\" stroke-width=\"1.5\"/><line x1=\"80\" y1=\"3\" x2=\"80\" y2=\"13\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"0\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">0</text><text x=\"40\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">' + scale_miles + '</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">' + (scale_miles * 2) + ' mi</text><text x=\"100\" y=\"12\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#475569\">(1 grid square = ' + scale_miles + ' mi &times; ' + scale_miles + ' mi)</text></g>'"
+      "formula": "'<rect x=\"40\" y=\"40\" width=\"320\" height=\"200\" fill=\"#f4f7f2\" stroke=\"#374151\" stroke-width=\"2\"/>' + Array.from({length: 7}, (_, i) => '<line x1=\"' + (80 + i * 40) + '\" y1=\"40\" x2=\"' + (80 + i * 40) + '\" y2=\"240\" stroke=\"#cbd5e1\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>').join('') + Array.from({length: 4}, (_, i) => '<line x1=\"40\" y1=\"' + (80 + i * 40) + '\" x2=\"360\" y2=\"' + (80 + i * 40) + '\" stroke=\"#cbd5e1\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>').join('') + '<path d=\"M 40 190 Q 150 150 230 195 T 360 165\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"5\" opacity=\"0.7\"/><path d=\"M ' + px1 + ' ' + py1 + ' L ' + px3 + ' ' + py3 + ' L ' + px2 + ' ' + py2 + '\" fill=\"none\" stroke=\"#9ca3af\" stroke-width=\"2\"/><circle cx=\"' + px1 + '\" cy=\"' + py1 + '\" r=\"4.5\" fill=\"#1e293b\"/><text x=\"' + px1 + '\" y=\"' + (py1 - 8) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#0f172a\">' + town1 + '</text><circle cx=\"' + px2 + '\" cy=\"' + py2 + '\" r=\"4.5\" fill=\"#1e293b\"/><text x=\"' + px2 + '\" y=\"' + (py2 - 8) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\" fill=\"#0f172a\">' + town2 + '</text><circle cx=\"' + px3 + '\" cy=\"' + py3 + '\" r=\"4\" fill=\"#475569\"/><text x=\"' + px3 + '\" y=\"' + (py3 + 15) + '\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">' + town3 + '</text><g transform=\"translate(335, 65)\"><circle cx=\"0\" cy=\"0\" r=\"12\" fill=\"white\" stroke=\"#64748b\" stroke-width=\"1\"/><polygon points=\"0,-9 -3,2 0,0 3,2\" fill=\"#dc2626\"/><text x=\"0\" y=\"-14\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" font-weight=\"bold\" fill=\"#334155\">N</text></g><g transform=\"translate(40, 260)\"><line x1=\"0\" y1=\"8\" x2=\"80\" y2=\"8\" stroke=\"#0f172a\" stroke-width=\"2.5\"/><line x1=\"0\" y1=\"3\" x2=\"0\" y2=\"13\" stroke=\"#0f172a\" stroke-width=\"2\"/><line x1=\"40\" y1=\"5\" x2=\"40\" y2=\"11\" stroke=\"#0f172a\" stroke-width=\"1.5\"/><line x1=\"80\" y1=\"3\" x2=\"80\" y2=\"13\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"0\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">0</text><text x=\"40\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">' + scale_miles + '</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f172a\">' + scale_miles_2 + ' mi</text><text x=\"100\" y=\"12\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#475569\">(1 grid square = ' + scale_miles + ' mi &times; ' + scale_miles + ' mi)</text></g>'"
     },
     "question_map_svg": {
       "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 420 295\" role=\"img\" aria-label=\"Regional map with grid and scale bar showing towns\" style=\"width:100%;max-width:420px;height:auto\">' + map_base + '</svg>'"
@@ -20741,8 +20761,9 @@
     }
   },
   "question": "Use the regional map and scale bar below to answer the following questions.<br><br>{question_map_svg}<br><br>1. Using the scale of the map, find the approximate distance by air (straight-line distance, not along the gray roads) between <b>{town1}</b> and <b>{town2}</b>. Round your answer to the nearest tenth of a mile.<br>2. Write down how many total square miles are shown inside the rectangular border of the map to four significant digits.",
-  "answer": "<b>Part 1: Straight-line distance between {town1} and {town2}</b><br>Each grid square on the map represents \\( {scale_miles}\\text{ miles} \\times {scale_miles}\\text{ miles} \\).<br>• Horizontal grid distance between {town1} and {town2}: \\( {dx_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dx_units * scale_miles}\\text{ miles} \\)<br>• Vertical grid distance between {town1} and {town2}: \\( {dy_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dy_units * scale_miles}\\text{ miles} \\)<br><br>Apply the Pythagorean Theorem (\\( d = \\sqrt{a^2 + b^2} \\)) along the straight red dashed line shown below:<br>{answer_map_svg}<br><br>\\( d = \\sqrt{({dx_units * scale_miles})^2 + ({dy_units * scale_miles})^2} \\)<br>\\( d = \\sqrt{{(dx_units * scale_miles) * (dx_units * scale_miles)} + {(dy_units * scale_miles) * (dy_units * scale_miles)}} = \\sqrt{{(dx_units * scale_miles) * (dx_units * scale_miles) + (dy_units * scale_miles) * (dy_units * scale_miles)}} \\approx {dist_miles_rounded}\\text{ miles} \\)<br><br><b>Part 2: Total area shown on the map</b><br>• Map width: \\( {map_width_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_width_miles}\\text{ miles} \\)<br>• Map height: \\( {map_height_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_height_miles}\\text{ miles} \\)<br><br>Multiply width by height to find the total area:<br>\\( \\text{Area} = {map_width_miles}\\text{ miles} \\times {map_height_miles}\\text{ miles} = {total_sq_miles}\\text{ square miles} \\)<br><br><b>Final Answer:</b><br>• <b>Air distance between {town1} and {town2}:</b> Approximately <b>\\( {dist_miles_rounded}\\text{ miles} \\)</b><br>• <b>Total area shown on the map (to 4 significant digits):</b> <b>\\( {total_sq_miles_4sig}\\text{ square miles} \\)</b>"
-},
+  "answer": "<b>Part 1: Straight-line distance between {town1} and {town2}</b><br>Each grid square on the map represents \\( {scale_miles}\\text{ miles} \\times {scale_miles}\\text{ miles} \\).<br>• Horizontal grid distance between {town1} and {town2}: \\( {dx_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dx_miles}\\text{ miles} \\)<br>• Vertical grid distance between {town1} and {town2}: \\( {dy_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dy_miles}\\text{ miles} \\)<br><br>Apply the Pythagorean Theorem (\\( d = \\sqrt{a^2 + b^2} \\)) along the straight red dashed line shown below:<br>{answer_map_svg}<br><br>\\( d = \\sqrt{({dx_miles})^2 + ({dy_miles})^2} \\)<br>\\( d = \\sqrt{{dx_sq} + {dy_sq}} = \\sqrt{{sum_sq}} \\approx {dist_miles_rounded}\\text{ miles} \\)<br><br><b>Part 2: Total area shown on the map</b><br>• Map width: \\( {map_width_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_width_miles}\\text{ miles} \\)<br>• Map height: \\( {map_height_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_height_miles}\\text{ miles} \\)<br><br>Multiply width by height to find the total area:<br>\\( \\text{Area} = {map_width_miles}\\text{ miles} \\times {map_height_miles}\\text{ miles} = {total_sq_miles}\\text{ square miles} \\)<br><br><b>Final Answer:</b><br>• <b>Air distance between {town1} and {town2}:</b> Approximately <b>\\( {dist_miles_rounded}\\text{ miles} \\)</b><br>• <b>Total area shown on the map (to 4 significant digits):</b> <b>\\( {total_sq_miles}\\text{ square miles} \\)</b>"
+}
+,
       {
         "id": "Sum 1 B 2.6a Area Measurement Conversion",
         "title": "Sum 1 B 2.6a Area Measurement Conversion",
