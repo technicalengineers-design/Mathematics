@@ -20041,97 +20041,98 @@
   "objective": "Calculate the final price of an item after applying a percentage discount followed by sales tax",
   "difficulty": "intermediate",
   "variables": {
-    "buyers": {
-      "choice": [
-        { "name": "Mr. Thompson", "sub": "He", "poss": "his" },
-        { "name": "Ms. Ramirez", "sub": "She", "poss": "her" },
-        { "name": "Dr. Patel", "sub": "He", "poss": "his" },
-        { "name": "Mrs. Jenkins", "sub": "She", "poss": "her" },
-        { "name": "Mr. Kim", "sub": "He", "poss": "his" },
-        { "name": "Ms. O'Connor", "sub": "She", "poss": "her" }
-      ]
+    "names": {
+      "formula": "['Mr. Thompson', 'Ms. Ramirez', 'Dr. Patel', 'Mrs. Jenkins', 'Mr. Kim', 'Ms. O’Connor']"
+    },
+    "subs": {
+      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
+    },
+    "subs_lower": {
+      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
     },
     "b_idx": {
-      "formula": "Math.floor(Math.random() * buyers.length)"
+      "formula": "Math.floor(Math.random() * 6)"
     },
     "name": {
-      "formula": "buyers[b_idx].name"
+      "formula": "names[b_idx]"
     },
     "sub": {
-      "formula": "buyers[b_idx].sub"
+      "formula": "subs[b_idx]"
     },
-    "items": {
-      "choice": [
-        { "item": "used car", "discount_type": "good-customer discount" },
-        { "item": "certified pre-owned sedan", "discount_type": "loyalty discount" },
-        { "item": "compact SUV", "discount_type": "seasonal clearance discount" },
-        { "item": "hybrid hatchback", "discount_type": "returning-buyer discount" }
-      ]
+    "sub_lower": {
+      "formula": "subs_lower[b_idx]"
+    },
+    "item_list": {
+      "formula": "['used car', 'certified pre-owned sedan', 'compact SUV', 'hybrid hatchback']"
+    },
+    "discount_types": {
+      "formula": "['good-customer discount', 'loyalty discount', 'seasonal clearance discount', 'returning-buyer discount']"
     },
     "i_idx": {
-      "formula": "Math.floor(Math.random() * items.length)"
+      "formula": "Math.floor(Math.random() * 4)"
     },
     "item": {
-      "formula": "items[i_idx].item"
+      "formula": "item_list[i_idx]"
     },
     "discount_type": {
-      "formula": "items[i_idx].discount_type"
+      "formula": "discount_types[i_idx]"
     },
     "base_price_pool": {
       "formula": "[7600, 8400, 9200, 10500, 11800, 12400, 14500]"
     },
     "base_price": {
-      "formula": "base_price_pool[Math.floor(Math.random() * base_price_pool.length)]"
+      "formula": "base_price_pool[Math.floor(Math.random() * 7)]"
     },
-    "base_price_formatted": {
-      "formula": "base_price.toLocaleString('en-US')"
+    "base_price_str": {
+      "formula": "base_price.toFixed(2)"
     },
     "discount_pool": {
       "formula": "[10, 12, 15, 18, 20]"
     },
     "discount_pct": {
-      "formula": "discount_pool[Math.floor(Math.random() * discount_pool.length)]"
+      "formula": "discount_pool[Math.floor(Math.random() * 5)]"
     },
     "discount_dec": {
-      "formula": "Number((discount_pct / 100).toFixed(2))"
+      "formula": "Math.round(discount_pct) / 100"
     },
     "tax_pool": {
       "formula": "[4.5, 5.5, 6.0, 6.25, 6.5, 7.25, 8.0]"
     },
     "tax_pct": {
-      "formula": "tax_pool[Math.floor(Math.random() * tax_pool.length)]"
+      "formula": "tax_pool[Math.floor(Math.random() * 7)]"
     },
     "tax_dec": {
-      "formula": "Number((tax_pct / 100).toFixed(4))"
+      "formula": "Math.round(tax_pct * 100) / 10000"
     },
     "discount_amt": {
-      "formula": "Number((base_price * discount_dec).toFixed(2))"
+      "formula": "Math.round(base_price * discount_dec * 100) / 100"
     },
     "discount_amt_str": {
-      "formula": "discount_amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+      "formula": "discount_amt.toFixed(2)"
     },
     "sale_price": {
-      "formula": "Number((base_price - discount_amt).toFixed(2))"
+      "formula": "Math.round((base_price - discount_amt) * 100) / 100"
     },
     "sale_price_str": {
-      "formula": "sale_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+      "formula": "sale_price.toFixed(2)"
     },
     "tax_amt": {
-      "formula": "Number((sale_price * tax_dec).toFixed(2))"
+      "formula": "Math.round(sale_price * tax_dec * 100) / 100"
     },
     "tax_amt_str": {
-      "formula": "tax_amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+      "formula": "tax_amt.toFixed(2)"
     },
     "final_price": {
-      "formula": "Number((sale_price + tax_amt).toFixed(2))"
+      "formula": "Math.round((sale_price + tax_amt) * 100) / 100"
     },
     "final_price_str": {
-      "formula": "final_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+      "formula": "final_price.toFixed(2)"
     }
   },
-  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_formatted} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub.toLowerCase()} will pay for the {item}?",
-  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_formatted} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_formatted} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
-},
+  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_str} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub_lower} will pay for the {item}?",
+  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_str} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_str} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
+}
+,
      {
   "id": "Sum 1 A 1.3a Buying Packs",
   "type": "template",
