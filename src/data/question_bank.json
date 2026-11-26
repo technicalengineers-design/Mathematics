@@ -20846,8 +20846,7 @@
   },
   "question": "Convert each area measurement.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Convert {amount_a} {source_a} into {target_a}.<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Convert {amount_b} {source_b} into {target_b}.<div style=\"height:90px\"></div></div></div>",
   "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Since \\( 1\\text{ {src_abbr_a}} = {lin_a}\\text{ {tgt_abbr_a}} \\), square both sides:<br>\\( (1\\text{ {src_abbr_a}})^2 = ({lin_a}\\text{ {tgt_abbr_a}})^2 \\implies 1\\text{ {src_abbr_a}}^2 = {factor_a}\\text{ {tgt_abbr_a}}^2 \\)<br>\\( {amount_a}\\text{ {src_abbr_a}}^2 \\times \\frac{{factor_a}\\text{ {tgt_abbr_a}}^2}{1\\text{ {src_abbr_a}}^2} = \\) <b>\\( {result_a}\\text{ {tgt_abbr_a}}^2 \\)</b> ({result_a} {target_a})</div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Since \\( 1\\text{ {src_abbr_b}} = {lin_b}\\text{ {tgt_abbr_b}} \\), square both sides:<br>\\( (1\\text{ {src_abbr_b}})^2 = ({lin_b}\\text{ {tgt_abbr_b}})^2 \\implies 1\\text{ {src_abbr_b}}^2 = {factor_b}\\text{ {tgt_abbr_b}}^2 \\)<br>\\( {amount_b}\\text{ {src_abbr_b}}^2 \\times \\frac{{factor_b}\\text{ {tgt_abbr_b}}^2}{1\\text{ {src_abbr_b}}^2} = \\) <b>\\( {result_b}\\text{ {tgt_abbr_b}}^2 \\)</b> ({result_b} {target_b})</div></div>"
-}
-,
+},
       {
         "id": "Sum 1 B 2.6b Volume Measurement Conversion",
         "title": "Sum 1 B 2.6b Volume Measurement Conversion",
