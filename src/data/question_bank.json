@@ -20867,7 +20867,7 @@
         "question": "Convert each volume measurement.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Convert {amount_a} {source_a} into {target_a}.<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Convert {amount_b} {source_b} into {target_b}.<div style=\"height:90px\"></div></div></div>",
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Multiply by the conversion factor {factor_text_a}: {amount_a} &times; {factor_text_a} = <b>{result_a} {target_a}</b>.</div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Multiply by the conversion factor {factor_text_b}: {amount_b} &times; {factor_text_b} = <b>{result_b} {target_b}</b>.</div></div>"
       },
-      {
+   {
   "id": "Sum 1 A 2-6b Literal Equation - Volume",
   "type": "template",
   "objective": "Rearrange a literal volume formula to solve for a specific variable and evaluate it using given dimensions",
@@ -20896,10 +20896,12 @@
       "formula": "container_pool[s_idx]"
     },
     "w": {
-      "values":
+      "min": 6,
+      "max": 10
     },
     "h": {
-      "values":
+      "min": 10,
+      "max": 15
     },
     "l": {
       "values": [1.5, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 4]
