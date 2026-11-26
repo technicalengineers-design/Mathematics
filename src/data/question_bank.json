@@ -20394,44 +20394,53 @@
   "objective": "Write and evaluate an exponential growth expression with a fractional exponent representing a multi-day growth period",
   "difficulty": "intermediate",
   "variables": {
-    "researchers": {
-      "choice": [
-        { "name": "Lavania", "pronoun": "her", "sub": "She" },
-        { "name": "Mateo", "pronoun": "his", "sub": "He" },
-        { "name": "Dr. Chen", "pronoun": "her", "sub": "She" },
-        { "name": "Aiden", "pronoun": "his", "sub": "He" },
-        { "name": "Nadia", "pronoun": "her", "sub": "She" }
-      ]
+    "names": {
+      "formula": "['Lavania', 'Mateo', 'Dr. Chen', 'Aiden', 'Nadia']"
+    },
+    "pronouns": {
+      "formula": "['her', 'his', 'her', 'his', 'her']"
+    },
+    "subs": {
+      "formula": "['She', 'He', 'She', 'He', 'She']"
     },
     "r_idx": {
-      "formula": "Math.floor(Math.random() * researchers.length)"
+      "formula": "Math.floor(Math.random() * 5)"
     },
     "name": {
-      "formula": "researchers[r_idx].name"
+      "formula": "names[r_idx]"
     },
     "pronoun": {
-      "formula": "researchers[r_idx].pronoun"
+      "formula": "pronouns[r_idx]"
     },
     "sub": {
-      "formula": "researchers[r_idx].sub"
+      "formula": "subs[r_idx]"
+    },
+    "organisms_pool": {
+      "formula": "['fruit flies', 'yeast cells', 'duckweed plants', 'protozoa', 'algae cells']"
     },
     "organisms": {
-      "choice": ["fruit flies", "yeast cells", "duckweed plants", "protozoa", "algae cells"]
+      "formula": "organisms_pool[Math.floor(Math.random() * 5)]"
+    },
+    "dates_pool": {
+      "formula": "['October 1', 'March 1', 'May 1', 'September 1', 'November 1']"
     },
     "start_dates": {
-      "choice": ["October 1", "March 1", "May 1", "September 1", "November 1"]
+      "formula": "dates_pool[Math.floor(Math.random() * 5)]"
     },
-    "growth_factors": {
-      "formula": "[{ factor: 2, word: 'twice' }, { factor: 3, word: 'three times' }, { factor: 4, word: 'four times' }, { factor: 5, word: 'five times' }]"
+    "factors_pool": {
+      "formula": "[2, 3, 4, 5]"
+    },
+    "factor_words_pool": {
+      "formula": "['twice', 'three times', 'four times', 'five times']"
     },
     "g_idx": {
-      "formula": "Math.floor(Math.random() * growth_factors.length)"
+      "formula": "Math.floor(Math.random() * 4)"
     },
     "factor": {
-      "formula": "growth_factors[g_idx].factor"
+      "formula": "factors_pool[g_idx]"
     },
     "factor_word": {
-      "formula": "growth_factors[g_idx].word"
+      "formula": "factor_words_pool[g_idx]"
     },
     "period_days": {
       "min": 4,
@@ -20441,60 +20450,64 @@
       "formula": "[12, 15, 20, 24, 25, 30, 40, 50]"
     },
     "initial_pop": {
-      "formula": "initial_pop_pool[Math.floor(Math.random() * initial_pop_pool.length)]"
+      "formula": "initial_pop_pool[Math.floor(Math.random() * 8)]"
     },
     "target_day": {
       "min": 10,
       "max": 22
     },
     "exponent_dec": {
-      "formula": "target_day / period_days"
+      "formula": "Math.round((target_day / period_days) * 1000) / 1000"
     },
     "exact_pop": {
-      "formula": "initial_pop * Math.pow(factor, exponent_dec)"
+      "formula": "initial_pop * Math.pow(factor, target_day / period_days)"
     },
     "rounded_pop": {
       "formula": "Math.round(exact_pop)"
     },
-    "rounded_pop_formatted": {
-      "formula": "rounded_pop.toLocaleString('en-US')"
-    },
     "exact_pop_dec": {
-      "formula": "exact_pop.toFixed(2)"
+      "formula": "(Math.round(exact_pop * 100) / 100).toFixed(2)"
     }
   },
   "question": "{name} is studying the growth of a population of {organisms} in {pronoun} laboratory. {sub} notices that the number of {organisms} in {pronoun} experiment is {factor_word} as large after any \\( {period_days}\\text{-day} \\) period. {sub} observes \\( {initial_pop} \\) {organisms} on {start_dates}.<br><br>1. Write an expression to predict the population of {organisms} {name} will observe \\( d \\) days later.<br>2. Evaluate the expression to calculate the population on day \\( {target_day} \\) (round to the nearest whole number).",
-  "answer": "<b>Step 1: Write the exponential growth expression</b><br>Use the exponential growth model \\( P = a \\cdot b^{t} \\), where:<br>• \\( a = {initial_pop} \\) (initial population observed on {start_dates})<br>• \\( b = {factor} \\) (growth factor, since the population becomes {factor_word} as large)<br>• \\( t = \\frac{d}{{period_days}} \\) (number of \\( {period_days}\\text{-day} \\) periods that have passed after \\( d \\) days)<br><br>This gives the expression for the population after \\( d \\) days:<br><b>\\( {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)</b> (or equation <b>\\( P(d) = {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)</b>)<br><br><b>Step 2: Evaluate the expression for day \\( {target_day} \\)</b><br>Substitute \\( d = {target_day} \\) into the expression:<br>\\( P({target_day}) = {initial_pop} \\cdot {factor}^{\\frac{{target_day}}{{period_days}}} \\)<br>\\( P({target_day}) = {initial_pop} \\cdot {factor}^{{{exponent_dec}}} \\)<br>\\( P({target_day}) \\approx {exact_pop_dec} \\)<br><br><b>Final Answer:</b><br>• <b>Expression:</b> \\( {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)<br>• <b>Population on Day \\( {target_day} \\):</b> Approximately <b>\\( {rounded_pop_formatted} \\) {organisms}</b>"
+  "answer": "<b>Step 1: Write the exponential growth expression</b><br>Use the exponential growth model \\( P = a \\cdot b^{t} \\), where:<br>• \\( a = {initial_pop} \\) (initial population observed on {start_dates})<br>• \\( b = {factor} \\) (growth factor, since the population becomes {factor_word} as large)<br>• \\( t = \\frac{d}{{period_days}} \\) (number of \\( {period_days}\\text{-day} \\) periods that have passed after \\( d \\) days)<br><br>This gives the expression for the population after \\( d \\) days:<br><b>\\( {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)</b> (or equation <b>\\( P(d) = {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)</b>)<br><br><b>Step 2: Evaluate the expression for day \\( {target_day} \\)</b><br>Substitute \\( d = {target_day} \\) into the expression:<br>\\( P({target_day}) = {initial_pop} \\cdot {factor}^{\\frac{{target_day}}{{period_days}}} \\)<br>\\( P({target_day}) = {initial_pop} \\cdot {factor}^{{ {exponent_dec} }} \\)<br>\\( P({target_day}) \\approx {exact_pop_dec} \\)<br><br><b>Final Answer:</b><br>• <b>Expression:</b> \\( {initial_pop} \\cdot {factor}^{\\frac{d}{{period_days}}} \\)<br>• <b>Population on Day \\( {target_day} \\):</b> Approximately <b>\\( {rounded_pop} \\) {organisms}</b>"
 },
-      {
-        "id": "Sum 1 B 1-7b Multiplication Properties of Exponents",
-        "title": "Sum 1 B 1-7b Multiplication Properties of Exponents",
-        "type": "template",
-        "objective": "Multiplication Properties of Exponents",
-        "difficulty": "intermediate",
-        "variables": {
-          "m_a": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-          "n_a": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-          "a_a": { "min": 2, "max": 5 }, "b_a": { "min": 2, "max": 5 },
-          "c_a": { "min": 2, "max": 5 }, "d_a": { "min": 2, "max": 5 },
-          "p_a": { "min": 2, "max": 5 }, "q_a": { "min": 2, "max": 5 },
-          "r_a": { "min": 2, "max": 5 },
-          "coef_a": { "formula": "m_a*n_a" },
-          "expo_x_a": { "formula": "a_a+b_a+c_a+d_a" },
-          "expo_y_a": { "formula": "p_a+q_a+r_a" },
-          "m_b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-          "n_b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-          "a_b": { "min": 2, "max": 5 }, "b_b": { "min": 2, "max": 5 },
-          "c_b": { "min": 2, "max": 5 }, "d_b": { "min": 2, "max": 5 },
-          "p_b": { "min": 2, "max": 5 }, "q_b": { "min": 2, "max": 5 },
-          "r_b": { "min": 2, "max": 5 },
-          "coef_b": { "formula": "m_b*n_b" },
-          "expo_x_b": { "formula": "a_b+b_b+c_b+d_b" },
-          "expo_y_b": { "formula": "p_b+q_b+r_b" }
-        },
-        "question": "Simplify each expression using the product properties of exponents.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 300px;min-width:260px\"><b>A)</b> \\( ({m_a}x^{ {a_a} }y^{ {p_a} })({n_a}x^{ {b_a} }y^{ {q_a} })(x^{ {c_a} }y^{ {r_a} })x^{ {d_a} } \\)<div style=\"height:100px\"></div></div><div style=\"flex:1 1 300px;min-width:260px\"><b>B)</b> \\( ({m_b}x^{ {a_b} }y^{ {p_b} })({n_b}x^{ {b_b} }y^{ {q_b} })(x^{ {c_b} }y^{ {r_b} })x^{ {d_b} } \\)<div style=\"height:100px\"></div></div></div>",
-        "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 300px;min-width:260px\"><b>A)</b> Multiply coefficients and add exponents of like bases: \\( {m_a}({n_a})x^{a_a+b_a+c_a+d_a}y^{p_a+q_a+r_a} = <b>{coef_a}x^{expo_x_a}y^{expo_y_a}</b> \\.</div><div style=\"flex:1 1 300px;min-width:260px\"><b>B)</b> Multiply coefficients and add exponents of like bases: \\( {m_b}({n_b})x^{a_b+b_b+c_b+d_b}y^{p_b+q_b+r_b} = <b>{coef_b}x^{expo_x_b}y^{expo_y_b}</b> \\.</div></div>"
-      },
+     {
+  "id": "Sum 1 B 1-7b Multiplication Properties of Exponents",
+  "title": "Sum 1 B 1-7b Multiplication Properties of Exponents",
+  "type": "template",
+  "objective": "Multiplication Properties of Exponents",
+  "difficulty": "intermediate",
+  "variables": {
+    "m_a": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+    "n_a": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+    "a_a": { "min": 2, "max": 5 },
+    "b_a": { "min": 2, "max": 5 },
+    "c_a": { "min": 2, "max": 5 },
+    "d_a": { "min": 2, "max": 5 },
+    "p_a": { "min": 2, "max": 5 },
+    "q_a": { "min": 2, "max": 5 },
+    "r_a": { "min": 2, "max": 5 },
+    "coef_a": { "formula": "m_a * n_a" },
+    "expo_x_a": { "formula": "a_a + b_a + c_a + d_a" },
+    "expo_y_a": { "formula": "p_a + q_a + r_a" },
+    "m_b": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+    "n_b": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+    "a_b": { "min": 2, "max": 5 },
+    "b_b": { "min": 2, "max": 5 },
+    "c_b": { "min": 2, "max": 5 },
+    "d_b": { "min": 2, "max": 5 },
+    "p_b": { "min": 2, "max": 5 },
+    "q_b": { "min": 2, "max": 5 },
+    "r_b": { "min": 2, "max": 5 },
+    "coef_b": { "formula": "m_b * n_b" },
+    "expo_x_b": { "formula": "a_b + b_b + c_b + d_b" },
+    "expo_y_b": { "formula": "p_b + q_b + r_b" }
+  },
+  "question": "Simplify each expression using the product properties of exponents.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 300px;min-width:260px\"><b>A)</b> \\( ({m_a}x^{ {a_a} }y^{ {p_a} })({n_a}x^{ {b_a} }y^{ {q_a} })(x^{ {c_a} }y^{ {r_a} })x^{ {d_a} } \\)<div style=\"height:100px\"></div></div><div style=\"flex:1 1 300px;min-width:260px\"><b>B)</b> \\( ({m_b}x^{ {a_b} }y^{ {p_b} })({n_b}x^{ {b_b} }y^{ {q_b} })(x^{ {c_b} }y^{ {r_b} })x^{ {d_b} } \\)<div style=\"height:100px\"></div></div></div>",
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 300px;min-width:260px\"><b>A)</b> Multiply coefficients and add exponents of like bases:<br>\\( {m_a}({n_a})x^{ {a_a}+{b_a}+{c_a}+{d_a} }y^{ {p_a}+{q_a}+{r_a} } = \\) <b>\\( {coef_a}x^{ {expo_x_a} }y^{ {expo_y_a} } \\)</b></div><div style=\"flex:1 1 300px;min-width:260px\"><b>B)</b> Multiply coefficients and add exponents of like bases:<br>\\( {m_b}({n_b})x^{ {a_b}+{b_b}+{c_b}+{d_b} }y^{ {p_b}+{q_b}+{r_b} } = \\) <b>\\( {coef_b}x^{ {expo_x_b} }y^{ {expo_y_b} } \\)</b></div></div>"
+}
+,
       {
         "id": "Sum 1 B 1-7c Division Properties of Exponents",
         "title": "Sum 1 B 1-7b Division Properties of Exponents",
