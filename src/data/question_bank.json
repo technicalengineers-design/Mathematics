@@ -26521,26 +26521,87 @@
   "type": "template",
   "objective": "Write conjunctions, disjunctions, conditionals, and biconditionals in symbols and words",
   "difficulty": "intermediate",
-  "variables": [
-    {
-      "name": "data",
-      "type": "formula",
-      "formula": "(function() {\n  var pairs = [\n    { p: \"It is raining.\", q: \"The grass is wet.\", p_low: \"it is raining\", q_low: \"the grass is wet\" },\n    { p: \"A figure is a square.\", q: \"It has four right angles.\", p_low: \"a figure is a square\", q_low: \"it has four right angles\" },\n    { p: \"Today is Saturday.\", q: \"There is no school.\", p_low: \"today is Saturday\", q_low: \"there is no school\" },\n    { p: \"A number is even.\", q: \"It is divisible by 2.\", p_low: \"a number is even\", q_low: \"it is divisible by 2\" },\n    { p: \"Two angles are vertical.\", q: \"They are congruent.\", p_low: \"two angles are vertical\", q_low: \"they are congruent\" },\n    { p: \"The temperature is below 32 degrees.\", q: \"Water freezes.\", p_low: \"the temperature is below 32 degrees\", q_low: \"water freezes\" },\n    { p: \"A polygon is a triangle.\", q: \"It has three sides.\", p_low: \"a polygon is a triangle\", q_low: \"it has three sides\" },\n    { p: \"You study for the test.\", q: \"You earn a high grade.\", p_low: \"you study for the test\", q_low: \"you earn a high grade\" },\n    { p: \"An angle measures 90 degrees.\", q: \"It is a right angle.\", p_low: \"an angle measures 90 degrees\", q_low: \"it is a right angle\" },\n    { p: \"The traffic light is red.\", q: \"Drivers must stop.\", p_low: \"the traffic light is red\", q_low: \"drivers must stop\" },\n    { p: \"Two lines are parallel.\", q: \"They never intersect.\", p_low: \"two lines are parallel\", q_low: \"they never intersect\" },\n    { p: \"A mammal is a whale.\", q: \"It lives in the ocean.\", p_low: \"a mammal is a whale\", q_low: \"it lives in the ocean\" }\n  ];\n\n  var pair = pairs[Math.floor(Math.random() * pairs.length)];\n  var pCap = pair.p.replace(/\\.$/, \"\");\n  var qCap = pair.q.replace(/\\.$/, \"\");\n\n  var items = [\n    {\n      name: \"Conjunction\",\n      sym: \"p &and; q\",\n      words: pCap + \", and \" + pair.q_low + \".\"\n    },\n    {\n      name: \"Disjunction\",\n      sym: \"p &or; q\",\n      words: pCap + \", or \" + pair.q_low + \".\"\n    },\n    {\n      name: \"Conditional\",\n      sym: \"p &rarr; q\",\n      words: \"If \" + pair.p_low + \", then \" + pair.q_low + \".\"\n    },\n    {\n      name: \"Biconditional\",\n      sym: \"p &harr; q\",\n      words: pCap + \" if and only if \" + pair.q_low + \".\"\n    }\n  ];\n\n  for (var i = items.length - 1; i > 0; i--) {\n    var j = Math.floor(Math.random() * (i + 1));\n    var tmp = items[i];\n    items[i] = items[j];\n    items[j] = tmp;\n  }\n\n  var letters = [\"A)\", \"B)\", \"C)\", \"D)\"];\n\n  var q = '<div style=\"font-size:15px;line-height:1.5;color:#111;\">' +\n    '<div>Given the two statements below, write each requested compound statement <b>both in symbols and in words</b>.</div>' +\n    '<div style=\"margin:8px 0 12px 14px;\">' +\n      '<div><b>p:</b> ' + pair.p + '</div>' +\n      '<div><b>q:</b> ' + pair.q + '</div>' +\n    '</div>';\n\n  for (var k = 0; k < 4; k++) {\n    q += '<div style=\"margin-top:6px;\"><b>' + letters[k] + '</b> ' + items[k].name + '</div>' +\n         '<div style=\"height:44px;\"></div>';\n  }\n  q += '</div>';\n\n  var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">';\n  for (var m = 0; m < 4; m++) {\n    a += '<div style=\"margin-bottom:8px;\">' +\n      '<div><b>' + letters[m] + ' ' + items[m].name + ':</b></div>' +\n      '<div style=\"margin-left:16px;\"><b>Symbols:</b> ' + items[m].sym + '</div>' +\n      '<div style=\"margin-left:16px;\"><b>Words:</b> ' + items[m].words + '</div>' +\n    '</div>';\n  }\n  a += '</div>';\n\n  return { q_html: q, a_html: a };\n})()"
+  "variables": {
+    "p_pool": {
+      "formula": "['It is raining.', 'A figure is a square.', 'Today is Saturday.', 'A number is even.', 'Two angles are vertical.', 'The temperature is below 32 degrees.', 'A polygon is a triangle.', 'You study for the test.', 'An angle measures 90 degrees.', 'The traffic light is red.', 'Two lines are parallel.', 'A mammal is a whale.']"
     },
-    {
-      "name": "q_html",
-      "type": "formula",
-      "formula": "data.q_html"
+    "q_pool": {
+      "formula": "['The grass is wet.', 'It has four right angles.', 'There is no school.', 'It is divisible by 2.', 'They are congruent.', 'Water freezes.', 'It has three sides.', 'You earn a high grade.', 'It is a right angle.', 'Drivers must stop.', 'They never intersect.', 'It lives in the ocean.']"
     },
-    {
-      "name": "a_html",
-      "type": "formula",
-      "formula": "data.a_html"
-    }
-  ],
-  "question": "{q_html}",
-  "answer": "{a_html}"
-},
+    "p_cap_pool": {
+      "formula": "['It is raining', 'A figure is a square', 'Today is Saturday', 'A number is even', 'Two angles are vertical', 'The temperature is below 32 degrees', 'A polygon is a triangle', 'You study for the test', 'An angle measures 90 degrees', 'The traffic light is red', 'Two lines are parallel', 'A mammal is a whale']"
+    },
+    "p_low_pool": {
+      "formula": "['it is raining', 'a figure is a square', 'today is Saturday', 'a number is even', 'two angles are vertical', 'the temperature is below 32 degrees', 'a polygon is a triangle', 'you study for the test', 'an angle measures 90 degrees', 'the traffic light is red', 'two lines are parallel', 'a mammal is a whale']"
+    },
+    "q_low_pool": {
+      "formula": "['the grass is wet', 'it has four right angles', 'there is no school', 'it is divisible by 2', 'they are congruent', 'water freezes', 'it has three sides', 'you earn a high grade', 'it is a right angle', 'drivers must stop', 'they never intersect', 'it lives in the ocean']"
+    },
+    "pair_idx": {
+      "min": 0,
+      "max": 11
+    },
+    "stmt_p": {
+      "formula": "p_pool[pair_idx]"
+    },
+    "stmt_q": {
+      "formula": "q_pool[pair_idx]"
+    },
+    "p_cap": {
+      "formula": "p_cap_pool[pair_idx]"
+    },
+    "p_low": {
+      "formula": "p_low_pool[pair_idx]"
+    },
+    "q_low": {
+      "formula": "q_low_pool[pair_idx]"
+    },
+    "names_list": {
+      "formula": "['Conjunction', 'Disjunction', 'Conditional', 'Biconditional']"
+    },
+    "syms_list": {
+      "formula": "['p &and; q', 'p &or; q', 'p &rarr; q', 'p &harr; q']"
+    },
+    "words_list": {
+      "formula": "[p_cap + ', and ' + q_low + '.', p_cap + ', or ' + q_low + '.', 'If ' + p_low + ', then ' + q_low + '.', p_cap + ' if and only if ' + q_low + '.']"
+    },
+    "idx_a": {
+      "min": 0,
+      "max": 3
+    },
+    "idx_b": {
+      "min": 0,
+      "max": 3,
+      "exclude": ["idx_a"]
+    },
+    "idx_c": {
+      "min": 0,
+      "max": 3,
+      "exclude": ["idx_a", "idx_b"]
+    },
+    "idx_d": {
+      "formula": "6 - (idx_a + idx_b + idx_c)"
+    },
+    "name_a": { "formula": "names_list[idx_a]" },
+    "sym_a": { "formula": "syms_list[idx_a]" },
+    "word_a": { "formula": "words_list[idx_a]" },
+    "name_b": { "formula": "names_list[idx_b]" },
+    "sym_b": { "formula": "syms_list[idx_b]" },
+    "word_b": { "formula": "words_list[idx_b]" },
+    "name_c": { "formula": "names_list[idx_c]" },
+    "sym_c": { "formula": "syms_list[idx_c]" },
+    "word_c": { "formula": "words_list[idx_c]" },
+    "name_d": { "formula": "names_list[idx_d]" },
+    "sym_d": { "formula": "syms_list[idx_d]" },
+    "word_d": { "formula": "words_list[idx_d]" }
+  },
+  "question": "<div style=\"font-size:15px;line-height:1.5;color:#111;\"><div>Given the two statements below, write each requested compound statement <b>both in symbols and in words</b>.</div><div style=\"margin:8px 0 12px 14px;\"><div><b>p:</b> {stmt_p}</div><div><b>q:</b> {stmt_q}</div></div><div style=\"margin-top:6px;\"><b>A)</b> {name_a}</div><div style=\"height:44px;\"></div><div style=\"margin-top:6px;\"><b>B)</b> {name_b}</div><div style=\"height:44px;\"></div><div style=\"margin-top:6px;\"><b>C)</b> {name_c}</div><div style=\"height:44px;\"></div><div style=\"margin-top:6px;\"><b>D)</b> {name_d}</div><div style=\"height:44px;\"></div></div>",
+  "answer": "<div style=\"font-size:15px;line-height:1.6;color:#111;\"><div style=\"margin-bottom:8px;\"><div><b>A) {name_a}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_a}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_a}</div></div><div style=\"margin-bottom:8px;\"><div><b>B) {name_b}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_b}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_b}</div></div><div style=\"margin-bottom:8px;\"><div><b>C) {name_c}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_c}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_c}</div></div><div style=\"margin-bottom:8px;\"><div><b>D) {name_d}:</b></div><div style=\"margin-left:16px;\"><b>Symbols:</b> {sym_d}</div><div style=\"margin-left:16px;\"><b>Words:</b> {word_d}</div></div></div>"
+}
+,
+
+
+
       {
         "id": "Sum 1 C 3-3a Inductive and Deductive Reasoning",
         "title": "Sum 1 3-3a Inductive and Deductive Reasoning",
