@@ -20663,7 +20663,7 @@
       "formula": "town3_pool[tp_idx]"
     },
     "scale_miles": {
-      "values":
+      "values": [5, 10, 15, 20, 25]
     },
     "scale_miles_2": {
       "formula": "scale_miles * 2"
@@ -20682,7 +20682,8 @@
     },
     "y2": {
       "min": 1,
-      "max": 4
+      "max": 4,
+      "exclude": ["y1"]
     },
     "x3": {
       "min": 2,
@@ -20760,9 +20761,7 @@
   },
   "question": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:20px;align-items:flex-start\"><div style=\"flex:0 1 420px;min-width:280px\">{question_map_svg}</div><div style=\"flex:1 1 260px;min-width:240px\">Use the regional map and scale bar to answer the following questions. 1. Using the scale of the map, find the approximate distance by air (straight-line distance, not along the gray roads) between <b>{town1}</b> and <b>{town2}</b>. Round your answer to the nearest tenth of a mile.<br>2. Write down how many total square miles are shown inside the rectangular border of the map to four significant digits.</div></div>",
   "answer": "<b>Part 1: Straight-line distance between {town1} and {town2}</b><br>Each grid square on the map represents \\( {scale_miles}\\text{ miles} \\times {scale_miles}\\text{ miles} \\).<br>• Horizontal grid distance between {town1} and {town2}: \\( {dx_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dx_miles}\\text{ miles} \\)<br>• Vertical grid distance between {town1} and {town2}: \\( {dy_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dy_miles}\\text{ miles} \\)<br><br>Apply the Pythagorean Theorem (\\( d = \\sqrt{a^2 + b^2} \\)) along the straight red dashed line shown below:<br>{answer_map_svg}<br><br>\\( d = \\sqrt{({dx_miles})^2 + ({dy_miles})^2} \\)<br>\\( d = \\sqrt{{dx_sq} + {dy_sq}} = \\sqrt{{sum_sq}} \\approx {dist_miles_rounded}\\text{ miles} \\)<br><br><b>Part 2: Total area shown on the map</b><br>• Map width: \\( {map_width_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_width_miles}\\text{ miles} \\)<br>• Map height: \\( {map_height_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_height_miles}\\text{ miles} \\)<br><br>Multiply width by height to find the total area:<br>\\( \\text{Area} = {map_width_miles}\\text{ miles} \\times {map_height_miles}\\text{ miles} = {total_sq_miles}\\text{ square miles} \\)<br><br><b>Final Answer:</b><br>• <b>Air distance between {town1} and {town2}:</b> Approximately <b>\\( {dist_miles_rounded}\\text{ miles} \\)</b><br>• <b>Total area shown on the map (to 4 significant digits):</b> <b>\\( {total_sq_miles}\\text{ square miles} \\)</b>"
-}
-
-,
+},
       {
         "id": "Sum 1 B 2.6a Area Measurement Conversion",
         "title": "Sum 1 B 2.6a Area Measurement Conversion",
