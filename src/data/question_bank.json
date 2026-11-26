@@ -20763,23 +20763,91 @@
   "answer": "<b>Part 1: Straight-line distance between {town1} and {town2}</b><br>Each grid square on the map represents \\( {scale_miles}\\text{ miles} \\times {scale_miles}\\text{ miles} \\).<br>• Horizontal grid distance between {town1} and {town2}: \\( {dx_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dx_miles}\\text{ miles} \\)<br>• Vertical grid distance between {town1} and {town2}: \\( {dy_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {dy_miles}\\text{ miles} \\)<br><br>Apply the Pythagorean Theorem (\\( d = \\sqrt{a^2 + b^2} \\)) along the straight red dashed line shown below:<br>{answer_map_svg}<br><br>\\( d = \\sqrt{({dx_miles})^2 + ({dy_miles})^2} \\)<br>\\( d = \\sqrt{{dx_sq} + {dy_sq}} = \\sqrt{{sum_sq}} \\approx {dist_miles_rounded}\\text{ miles} \\)<br><br><b>Part 2: Total area shown on the map</b><br>• Map width: \\( {map_width_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_width_miles}\\text{ miles} \\)<br>• Map height: \\( {map_height_units}\\text{ grid units} \\times {scale_miles}\\text{ mi/unit} = {map_height_miles}\\text{ miles} \\)<br><br>Multiply width by height to find the total area:<br>\\( \\text{Area} = {map_width_miles}\\text{ miles} \\times {map_height_miles}\\text{ miles} = {total_sq_miles}\\text{ square miles} \\)<br><br><b>Final Answer:</b><br>• <b>Air distance between {town1} and {town2}:</b> Approximately <b>\\( {dist_miles_rounded}\\text{ miles} \\)</b><br>• <b>Total area shown on the map (to 4 significant digits):</b> <b>\\( {total_sq_miles}\\text{ square miles} \\)</b>"
 },
       {
-        "id": "Sum 1 B 2.6a Area Measurement Conversion",
-        "title": "Sum 1 B 2.6a Area Measurement Conversion",
-        "type": "template",
-        "objective": "Convert Area Units",
-        "difficulty": "intermediate",
-        "variables": {
-          "scenarios": { "formula": "[{source:'square yards',target:'square feet',factor:9},{source:'square feet',target:'square inches',factor:144},{source:'acres',target:'square feet',factor:43560},{source:'acres',target:'square yards',factor:4840},{source:'square miles',target:'acres',factor:640}]" },
-          "order": { "formula": "Array.from({length:scenarios.length},(_,i)=>({i,k:Math.random()})).sort((a,b)=>a.k-b.k).map(x=>x.i).slice(0,2)" },
-          "index_a": { "formula": "order[0]" }, "index_b": { "formula": "order[1]" },
-          "source_a": { "formula": "scenarios[index_a].source" }, "target_a": { "formula": "scenarios[index_a].target" }, "factor_a": { "formula": "scenarios[index_a].factor" },
-          "source_b": { "formula": "scenarios[index_b].source" }, "target_b": { "formula": "scenarios[index_b].target" }, "factor_b": { "formula": "scenarios[index_b].factor" },
-          "amount_a": { "min": 3, "max": 14 }, "amount_b": { "min": 3, "max": 14 },
-          "result_a": { "formula": "amount_a*factor_a" }, "result_b": { "formula": "amount_b*factor_b" }
-        },
-        "question": "Convert each area measurement.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Convert {amount_a} {source_a} into {target_a}.<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Convert {amount_b} {source_b} into {target_b}.<div style=\"height:90px\"></div></div></div>",
-        "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> 1 {source_a} = {factor_a} {target_a}; {amount_a} &times; {factor_a} = <b>{result_a} {target_a}</b>.</div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> 1 {source_b} = {factor_b} {target_b}; {amount_b} &times; {factor_b} = <b>{result_b} {target_b}</b>.</div></div>"
-      },
+  "id": "Sum 1 B 2.6a Area Measurement Conversion",
+  "title": "Sum 1 B 2.6a Area Measurement Conversion",
+  "type": "template",
+  "objective": "Convert Area Units",
+  "difficulty": "intermediate",
+  "variables": {
+    "sources": {
+      "formula": "['square yards', 'square feet', 'square meters', 'square centimeters', 'square kilometers']"
+    },
+    "targets": {
+      "formula": "['square feet', 'square inches', 'square centimeters', 'square millimeters', 'square meters']"
+    },
+    "src_abbrs": {
+      "formula": "['yd', 'ft', 'm', 'cm', 'km']"
+    },
+    "tgt_abbrs": {
+      "formula": "['ft', 'in', 'cm', 'mm', 'm']"
+    },
+    "lin_factors": {
+      "formula": "[3, 12, 100, 10, 1000]"
+    },
+    "index_a": {
+      "min": 0,
+      "max": 4
+    },
+    "index_b": {
+      "min": 0,
+      "max": 4,
+      "exclude": ["index_a"]
+    },
+    "source_a": {
+      "formula": "sources[index_a]"
+    },
+    "target_a": {
+      "formula": "targets[index_a]"
+    },
+    "src_abbr_a": {
+      "formula": "src_abbrs[index_a]"
+    },
+    "tgt_abbr_a": {
+      "formula": "tgt_abbrs[index_a]"
+    },
+    "lin_a": {
+      "formula": "lin_factors[index_a]"
+    },
+    "factor_a": {
+      "formula": "lin_a * lin_a"
+    },
+    "source_b": {
+      "formula": "sources[index_b]"
+    },
+    "target_b": {
+      "formula": "targets[index_b]"
+    },
+    "src_abbr_b": {
+      "formula": "src_abbrs[index_b]"
+    },
+    "tgt_abbr_b": {
+      "formula": "tgt_abbrs[index_b]"
+    },
+    "lin_b": {
+      "formula": "lin_factors[index_b]"
+    },
+    "factor_b": {
+      "formula": "lin_b * lin_b"
+    },
+    "amount_a": {
+      "min": 3,
+      "max": 14
+    },
+    "amount_b": {
+      "min": 3,
+      "max": 14
+    },
+    "result_a": {
+      "formula": "amount_a * factor_a"
+    },
+    "result_b": {
+      "formula": "amount_b * factor_b"
+    }
+  },
+  "question": "Convert each area measurement.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Convert {amount_a} {source_a} into {target_a}.<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Convert {amount_b} {source_b} into {target_b}.<div style=\"height:90px\"></div></div></div>",
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Since \\( 1\\text{ {src_abbr_a}} = {lin_a}\\text{ {tgt_abbr_a}} \\), square both sides:<br>\\( (1\\text{ {src_abbr_a}})^2 = ({lin_a}\\text{ {tgt_abbr_a}})^2 \\implies 1\\text{ {src_abbr_a}}^2 = {factor_a}\\text{ {tgt_abbr_a}}^2 \\)<br>\\( {amount_a}\\text{ {src_abbr_a}}^2 \\times \\frac{{factor_a}\\text{ {tgt_abbr_a}}^2}{1\\text{ {src_abbr_a}}^2} = \\) <b>\\( {result_a}\\text{ {tgt_abbr_a}}^2 \\)</b> ({result_a} {target_a})</div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Since \\( 1\\text{ {src_abbr_b}} = {lin_b}\\text{ {tgt_abbr_b}} \\), square both sides:<br>\\( (1\\text{ {src_abbr_b}})^2 = ({lin_b}\\text{ {tgt_abbr_b}})^2 \\implies 1\\text{ {src_abbr_b}}^2 = {factor_b}\\text{ {tgt_abbr_b}}^2 \\)<br>\\( {amount_b}\\text{ {src_abbr_b}}^2 \\times \\frac{{factor_b}\\text{ {tgt_abbr_b}}^2}{1\\text{ {src_abbr_b}}^2} = \\) <b>\\( {result_b}\\text{ {tgt_abbr_b}}^2 \\)</b> ({result_b} {target_b})</div></div>"
+}
+,
       {
         "id": "Sum 1 B 2.6b Volume Measurement Conversion",
         "title": "Sum 1 B 2.6b Volume Measurement Conversion",
