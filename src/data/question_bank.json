@@ -20677,6 +20677,61 @@
         "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:240px\"><b>A)</b> Multiply by the conversion factor {factor_text_a}: {amount_a} &times; {factor_text_a} = <b>{result_a} {target_a}</b>.</div><div style=\"flex:1 1 280px;min-width:240px\"><b>B)</b> Multiply by the conversion factor {factor_text_b}: {amount_b} &times; {factor_text_b} = <b>{result_b} {target_b}</b>.</div></div>"
       },
       {
+  "id": "Sum 1 2-6b A Literal Equation - Volume",
+  "type": "template",
+  "objective": "Rearrange a literal volume formula to solve for a specific variable and evaluate it using given dimensions",
+  "difficulty": "basic",
+  "variables": {
+    "scenarios": {
+      "choice": [
+        { "company": "cereal company", "product": "cereal", "container": "box" },
+        { "company": "granola company", "product": "oats", "container": "box" },
+        { "company": "cracker manufacturer", "product": "crackers", "container": "carton" },
+        { "company": "tea company", "product": "tea bags", "container": "box" },
+        { "company": "pasta maker", "product": "dry pasta", "container": "box" }
+      ]
+    },
+    "s_idx": {
+      "formula": "Math.floor(Math.random() * scenarios.length)"
+    },
+    "company": {
+      "formula": "scenarios[s_idx].company"
+    },
+    "product": {
+      "formula": "scenarios[s_idx].product"
+    },
+    "container": {
+      "formula": "scenarios[s_idx].container"
+    },
+    "width_pool": {
+      "formula": "[6, 7, 8, 9, 10]"
+    },
+    "w": {
+      "formula": "width_pool[Math.floor(Math.random() * width_pool.length)]"
+    },
+    "height_pool": {
+      "formula": "[10, 11, 12, 14, 15]"
+    },
+    "h": {
+      "formula": "height_pool[Math.floor(Math.random() * height_pool.length)]"
+    },
+    "length_pool": {
+      "formula": "[1.5, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 4]"
+    },
+    "l": {
+      "formula": "length_pool[Math.floor(Math.random() * length_pool.length)]"
+    },
+    "wh": {
+      "formula": "w * h"
+    },
+    "vol": {
+      "formula": "Number((wh * l).toFixed(2))"
+    }
+  },
+  "question": "The volume of a rectangular prism is given by the formula \\( V = wlh \\). Suppose a {company} wants to package \\( {vol} \\) cubic inches of {product} in a full {container}. The width of the {container} must be \\( {w} \\) inches and the height of the {container} must be \\( {h} \\) inches to fit on store shelves.<br><br>1. Solve the literal equation \\( V = wlh \\) for \\( l \\).<br>2. Use your rearranged equation to find the required length of the {container}.",
+  "answer": "<b>Part 1: Solve the literal equation for \\( l \\)</b><br>Start with the volume formula:<br>\\( V = wlh \\)<br><br>Divide both sides by \\( wh \\) to isolate \\( l \\):<br><b>\\( l = \\frac{V}{wh} \\)</b><br><br><b>Part 2: Find the length of the {container}</b><br>Substitute \\( V = {vol} \\), \\( w = {w} \\), and \\( h = {h} \\) into the rearranged formula:<br>\\( l = \\frac{{vol}}{{w} \\times {h}} \\)<br>\\( l = \\frac{{vol}}{{wh}} \\)<br><b>\\( l = {l}\\text{ inches} \\)</b><br><br><b>Final Answer:</b><br>• <b>Rearranged Formula:</b> \\( l = \\frac{V}{wh} \\)<br>• <b>Length of the {container}:</b> <b>\\( {l}\\text{ inches} \\)</b>"
+},
+      {
         "id": "Sum 1 C 3.1 Timekeeping",
         "title": "Sum 1 C 3.1 Timekeeping",
         "type": "template",
