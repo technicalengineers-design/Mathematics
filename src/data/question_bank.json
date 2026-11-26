@@ -25697,104 +25697,7 @@
   "answer": "{a_html}"
 }
     ],
-      "Summative 1": [
-        {
-  "id": "Sum 1 B 1.2 Car Purchase",
-  "type": "template",
-  "objective": "Calculate the final price",
-  "difficulty": "intermediate",
-  "variables": {
-    "names": {
-      "formula": "['Mr. Thompson', 'Ms. Ramirez', 'Dr. Patel', 'Mrs. Jenkins', 'Mr. Kim', 'Ms. O’Connor']"
-    },
-    "subs": {
-      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
-    },
-    "subs_lower": {
-      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
-    },
-    "b_idx": {
-      "formula": "Math.floor(Math.random() * 6)"
-    },
-    "name": {
-      "formula": "names[b_idx]"
-    },
-    "sub": {
-      "formula": "subs[b_idx]"
-    },
-    "sub_lower": {
-      "formula": "subs_lower[b_idx]"
-    },
-    "item_list": {
-      "formula": "['used car', 'certified pre-owned sedan', 'compact SUV', 'hybrid hatchback']"
-    },
-    "discount_types": {
-      "formula": "['good-customer discount', 'loyalty discount', 'seasonal clearance discount', 'returning-buyer discount']"
-    },
-    "i_idx": {
-      "formula": "Math.floor(Math.random() * 4)"
-    },
-    "item": {
-      "formula": "item_list[i_idx]"
-    },
-    "discount_type": {
-      "formula": "discount_types[i_idx]"
-    },
-    "base_price_pool": {
-      "formula": "[7600, 8400, 9200, 10500, 11800, 12400, 14500]"
-    },
-    "base_price": {
-      "formula": "base_price_pool[Math.floor(Math.random() * 7)]"
-    },
-    "base_price_str": {
-      "formula": "base_price.toFixed(2)"
-    },
-    "discount_pool": {
-      "formula": "[10, 12, 15, 18, 20]"
-    },
-    "discount_pct": {
-      "formula": "discount_pool[Math.floor(Math.random() * 5)]"
-    },
-    "discount_dec": {
-      "formula": "Math.round(discount_pct) / 100"
-    },
-    "tax_pool": {
-      "formula": "[4.5, 5.5, 6.0, 6.25, 6.5, 7.25, 8.0]"
-    },
-    "tax_pct": {
-      "formula": "tax_pool[Math.floor(Math.random() * 7)]"
-    },
-    "tax_dec": {
-      "formula": "Math.round(tax_pct * 100) / 10000"
-    },
-    "discount_amt": {
-      "formula": "Math.round(base_price * discount_dec * 100) / 100"
-    },
-    "discount_amt_str": {
-      "formula": "discount_amt.toFixed(2)"
-    },
-    "sale_price": {
-      "formula": "Math.round((base_price - discount_amt) * 100) / 100"
-    },
-    "sale_price_str": {
-      "formula": "sale_price.toFixed(2)"
-    },
-    "tax_amt": {
-      "formula": "Math.round(sale_price * tax_dec * 100) / 100"
-    },
-    "tax_amt_str": {
-      "formula": "tax_amt.toFixed(2)"
-    },
-    "final_price": {
-      "formula": "Math.round((sale_price + tax_amt) * 100) / 100"
-    },
-    "final_price_str": {
-      "formula": "final_price.toFixed(2)"
-    }
-  },
-  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_str} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub_lower} will pay for the {item}?",
-  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_str} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_str} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
-},
+      "Summative 1": [  
  {
   "id": "Sum 1 A 1.1a Knots",
   "type": "template",
@@ -25962,6 +25865,103 @@
   },
   "question": "The drive from {origin} to {dest} is about \\( {one_way_dist} \\) miles. It took {name} \\( {time1} \\) hours to drive one way, but due to {delay_reason} it took {pronoun} \\( {time2} \\) hours for the return trip. What was {poss} average speed for the round trip? Round your answer to the nearest hundredth.",
   "answer": "<b>Step 1: Recall the average speed formula</b><br>Average speed is calculated by dividing the <b>total distance</b> traveled by the <b>total time</b> elapsed (rather than averaging the two individual speeds):<br><b>\\( \\text{Average Speed} = \\frac{\\text{Total Distance}}{\\text{Total Time}} \\)</b><br><br><b>Step 2: Calculate the total round-trip distance</b><br>Because the trip was made both ways, double the one-way distance:<br>\\( \\text{Total Distance} = {one_way_dist}\\text{ miles} + {one_way_dist}\\text{ miles} = {total_dist}\\text{ miles} \\)<br><br><b>Step 3: Calculate the total travel time</b><br>Add the time for the outbound trip and the return trip:<br>\\( \\text{Total Time} = {time1}\\text{ hours} + {time2}\\text{ hours} = {total_time}\\text{ hours} \\)<br><br><b>Step 4: Divide total distance by total time</b><br>\\( \\text{Average Speed} = \\frac{{total_dist}\\text{ miles}}{{total_time}\\text{ hours}} \\approx {avg_speed_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>{name}'s average speed for the round trip was <b>\\( {avg_speed_rounded}\\text{ miles per hour} \\)</b>."
+},
+{
+  "id": "Sum 1 B 1.2 Car Purchase",
+  "type": "template",
+  "objective": "Calculate the final price",
+  "difficulty": "intermediate",
+  "variables": {
+    "names": {
+      "formula": "['Mr. Thompson', 'Ms. Ramirez', 'Dr. Patel', 'Mrs. Jenkins', 'Mr. Kim', 'Ms. O’Connor']"
+    },
+    "subs": {
+      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
+    },
+    "subs_lower": {
+      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
+    },
+    "b_idx": {
+      "formula": "Math.floor(Math.random() * 6)"
+    },
+    "name": {
+      "formula": "names[b_idx]"
+    },
+    "sub": {
+      "formula": "subs[b_idx]"
+    },
+    "sub_lower": {
+      "formula": "subs_lower[b_idx]"
+    },
+    "item_list": {
+      "formula": "['used car', 'certified pre-owned sedan', 'compact SUV', 'hybrid hatchback']"
+    },
+    "discount_types": {
+      "formula": "['good-customer discount', 'loyalty discount', 'seasonal clearance discount', 'returning-buyer discount']"
+    },
+    "i_idx": {
+      "formula": "Math.floor(Math.random() * 4)"
+    },
+    "item": {
+      "formula": "item_list[i_idx]"
+    },
+    "discount_type": {
+      "formula": "discount_types[i_idx]"
+    },
+    "base_price_pool": {
+      "formula": "[7600, 8400, 9200, 10500, 11800, 12400, 14500]"
+    },
+    "base_price": {
+      "formula": "base_price_pool[Math.floor(Math.random() * 7)]"
+    },
+    "base_price_str": {
+      "formula": "base_price.toFixed(2)"
+    },
+    "discount_pool": {
+      "formula": "[10, 12, 15, 18, 20]"
+    },
+    "discount_pct": {
+      "formula": "discount_pool[Math.floor(Math.random() * 5)]"
+    },
+    "discount_dec": {
+      "formula": "Math.round(discount_pct) / 100"
+    },
+    "tax_pool": {
+      "formula": "[4.5, 5.5, 6.0, 6.25, 6.5, 7.25, 8.0]"
+    },
+    "tax_pct": {
+      "formula": "tax_pool[Math.floor(Math.random() * 7)]"
+    },
+    "tax_dec": {
+      "formula": "Math.round(tax_pct * 100) / 10000"
+    },
+    "discount_amt": {
+      "formula": "Math.round(base_price * discount_dec * 100) / 100"
+    },
+    "discount_amt_str": {
+      "formula": "discount_amt.toFixed(2)"
+    },
+    "sale_price": {
+      "formula": "Math.round((base_price - discount_amt) * 100) / 100"
+    },
+    "sale_price_str": {
+      "formula": "sale_price.toFixed(2)"
+    },
+    "tax_amt": {
+      "formula": "Math.round(sale_price * tax_dec * 100) / 100"
+    },
+    "tax_amt_str": {
+      "formula": "tax_amt.toFixed(2)"
+    },
+    "final_price": {
+      "formula": "Math.round((sale_price + tax_amt) * 100) / 100"
+    },
+    "final_price_str": {
+      "formula": "final_price.toFixed(2)"
+    }
+  },
+  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_str} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub_lower} will pay for the {item}?",
+  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_str} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_str} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
 },
  {
   "id": "Sum 1 B 1.3c Door Prizes",
@@ -26910,7 +26910,7 @@
         "answer": "<b>Perpendicular slope:</b> \\(m_\\perp=-\\frac{1}{{original_slope_text}}={perpendicular_slope_text}\\).<br>Using point-slope form through \\(P({point_x},{point_y})\\): \\(y-({point_y})={perpendicular_slope_text}(x-({point_x}))\\).<br><b>Perpendicular line equation:</b> \\({perpendicular_equation}\\).<br><b>Graph:</b> Red is the given line \\({original_equation}\\); blue is the perpendicular line through P.<br>{solution_graph_svg}"
       },
       {
-        "id": "Sum 1 C 3-9c Parallel Lines",
+        "id": "Sum 1 C 3-9a Parallel Lines",
         "title": "Sum 1 C 3-9c Parallel Lines",
         "type": "template",
         "objective": "Find the value of x that makes two lines parallel using angle relationships",
@@ -26936,31 +26936,61 @@
         "answer": "{selected_angle_type} angles {selected_angle_pair} must be congruent for m and n to be parallel.<br>Set \\({angle_expression_one}={angle_expression_two}\\), giving \\(({coefficient_one}-{coefficient_two})x={constant_two}-{constant_one}\\). Thus \\(x={solution_x}\\), and both angles measure {angle_measure} degrees."
       },
       {
-        "id": "Sum 1 C 3-9b Parallel Lines",
-        "title": "Sum 1 C 3-9b Parallel Lines",
-        "type": "template",
-        "objective": "Determine whether congruent angle relationships prove that lines are parallel",
-        "difficulty": "basic",
-        "variables": {
-          "angle_relationship_groups": { "formula": "[{theorem:'corresponding angles converse',lines:'m and n',pairs:['1 and 9','2 and 10','3 and 11','4 and 12']},{theorem:'alternate interior angles converse',lines:'m and n',pairs:['3 and 10','4 and 9']},{theorem:'alternate exterior angles converse',lines:'m and n',pairs:['1 and 12','2 and 11']},{theorem:'corresponding angles converse',lines:'p and q',pairs:['1 and 5','2 and 6','3 and 7','4 and 8']},{theorem:'alternate interior angles converse',lines:'p and q',pairs:['2 and 7','4 and 5']},{theorem:'alternate exterior angles converse',lines:'p and q',pairs:['1 and 8','3 and 6']},{theorem:'corresponding angles converse',lines:'p and q',pairs:['9 and 13','10 and 14','11 and 15','12 and 16']},{theorem:'alternate interior angles converse',lines:'p and q',pairs:['10 and 15','12 and 13']},{theorem:'alternate exterior angles converse',lines:'p and q',pairs:['9 and 16','11 and 14']},{theorem:'corresponding angles converse',lines:'m and n',pairs:['5 and 13','6 and 14','7 and 15','8 and 16']},{theorem:'alternate interior angles converse',lines:'m and n',pairs:['7 and 14','8 and 13']},{theorem:'alternate exterior angles converse',lines:'m and n',pairs:['5 and 16','6 and 15']},{theorem:'none',lines:'',pairs:['1 and 4','2 and 3','5 and 8','6 and 7','9 and 12','10 and 11','13 and 16','14 and 15']}]" },
-          "all_angle_relationships": { "formula": "angle_relationship_groups.reduce(function(all,g){g.pairs.forEach(function(pair){all.push({theorem:g.theorem,lines:g.lines,pair:pair})});return all},[])" },
-          "selected_angle_relationship": { "formula": "all_angle_relationships[Math.floor(Math.random()*all_angle_relationships.length)]" },
-          "second_angle_relationship": { "formula": "(function(a){return a[Math.floor(Math.random()*a.length)]})(all_angle_relationships.filter(function(x){return x.pair!==selected_angle_relationship.pair}))" },
-          "third_angle_relationship": { "formula": "(function(a){return a[Math.floor(Math.random()*a.length)]})(all_angle_relationships.filter(function(x){return x.pair!==selected_angle_relationship.pair&&x.pair!==second_angle_relationship.pair}))" },
-          "angle_one_number": { "formula": "Number(selected_angle_relationship.pair.split(' and ')[0])" },
-          "angle_two_number": { "formula": "Number(selected_angle_relationship.pair.split(' and ')[1])" },
-          "second_angle_one_number": { "formula": "Number(second_angle_relationship.pair.split(' and ')[0])" },
-          "second_angle_two_number": { "formula": "Number(second_angle_relationship.pair.split(' and ')[1])" },
-          "third_angle_one_number": { "formula": "Number(third_angle_relationship.pair.split(' and ')[0])" },
-          "third_angle_two_number": { "formula": "Number(third_angle_relationship.pair.split(' and ')[1])" },
-          "answer_text": { "formula": "selected_angle_relationship.theorem==='none'?'No. These are vertical angles, which are always congruent; this alone does not prove any lines are parallel.':'Yes. Lines '+selected_angle_relationship.lines.replace(' and ',' parallel ')+' are parallel by the converse of the '+selected_angle_relationship.theorem.replace(' converse','')+' theorem.'" },
-          "second_answer_text": { "formula": "second_angle_relationship.theorem==='none'?'No. These are vertical angles, which are always congruent; this alone does not prove any lines are parallel.':'Yes. Lines '+second_angle_relationship.lines.replace(' and ',' parallel ')+' are parallel by the converse of the '+second_angle_relationship.theorem.replace(' converse','')+' theorem.'" },
-          "third_answer_text": { "formula": "third_angle_relationship.theorem==='none'?'No. These are vertical angles, which are always congruent; this alone does not prove any lines are parallel.':'Yes. Lines '+third_angle_relationship.lines.replace(' and ',' parallel ')+' are parallel by the converse of the '+third_angle_relationship.theorem.replace(' converse','')+' theorem.'" },
-          "four_line_diagram": { "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 330\" role=\"img\" aria-label=\"Four lines in two pairs with angles numbered one through sixteen\" style=\"display:block;width:100%;max-width:430px;height:auto;background:white\"><line x1=\"30\" y1=\"70\" x2=\"400\" y2=\"74\" stroke=\"#222\" stroke-width=\"3\"/><line x1=\"30\" y1=\"230\" x2=\"400\" y2=\"226\" stroke=\"#222\" stroke-width=\"3\"/><line x1=\"65\" y1=\"310\" x2=\"205\" y2=\"30\" stroke=\"#222\" stroke-width=\"3\"/><line x1=\"225\" y1=\"310\" x2=\"367\" y2=\"30\" stroke=\"#222\" stroke-width=\"3\"/><text x=\"160\" y=\"53\">1</text><text x=\"210\" y=\"53\">2</text><text x=\"160\" y=\"99\">3</text><text x=\"210\" y=\"99\">4</text><text x=\"320\" y=\"53\">5</text><text x=\"370\" y=\"53\">6</text><text x=\"320\" y=\"99\">7</text><text x=\"370\" y=\"99\">8</text><text x=\"78\" y=\"213\">9</text><text x=\"128\" y=\"213\">10</text><text x=\"78\" y=\"258\">11</text><text x=\"128\" y=\"258\">12</text><text x=\"240\" y=\"213\">13</text><text x=\"290\" y=\"213\">14</text><text x=\"240\" y=\"258\">15</text><text x=\"290\" y=\"258\">16</text><text x=\"401\" y=\"67\">m</text><text x=\"401\" y=\"219\">n</text><text x=\"45\" y=\"322\">p</text><text x=\"225\" y=\"322\">q</text></svg>'" }
-        },
-        "question": "{four_line_diagram}<br>For each pair, decide whether the congruent angles prove that lines are parallel. If so, name the lines and theorem.<br><br><b>A)</b> \\(\\angle {angle_one_number}\\cong\\angle {angle_two_number}\\)<br><br><b>B)</b> \\(\\angle {second_angle_one_number}\\cong\\angle {second_angle_two_number}\\)<br><br><b>C)</b> \\(\\angle {third_angle_one_number}\\cong\\angle {third_angle_two_number}\\)",
-        "answer": "<b>A)</b> {answer_text}<br><br><b>B)</b> {second_answer_text}<br><br><b>C)</b> {third_answer_text}"
-      }
+  "id": "Sum 1 C 3-9b Parallel Lines",
+  "title": "Sum 1 C 3-9b Parallel Lines",
+  "type": "template",
+  "objective": "Determine whether congruent angle relationships prove that lines are parallel",
+  "difficulty": "basic",
+  "variables": {
+    "angle_relationship_groups": {
+      "formula": "[{theorem:'corresponding angles converse',lines:'m and n',pairs:['1 and 9','2 and 10','3 and 11','4 and 12']},{theorem:'alternate interior angles converse',lines:'m and n',pairs:['3 and 10','4 and 9']},{theorem:'alternate exterior angles converse',lines:'m and n',pairs:['1 and 12','2 and 11']},{theorem:'corresponding angles converse',lines:'p and q',pairs:['1 and 5','2 and 6','3 and 7','4 and 8']},{theorem:'alternate interior angles converse',lines:'p and q',pairs:['2 and 7','4 and 5']},{theorem:'alternate exterior angles converse',lines:'p and q',pairs:['1 and 8','3 and 6']},{theorem:'corresponding angles converse',lines:'p and q',pairs:['9 and 13','10 and 14','11 and 15','12 and 16']},{theorem:'alternate interior angles converse',lines:'p and q',pairs:['10 and 15','12 and 13']},{theorem:'alternate exterior angles converse',lines:'p and q',pairs:['9 and 16','11 and 14']},{theorem:'corresponding angles converse',lines:'m and n',pairs:['5 and 13','6 and 14','7 and 15','8 and 16']},{theorem:'alternate interior angles converse',lines:'m and n',pairs:['7 and 14','8 and 13']},{theorem:'alternate exterior angles converse',lines:'m and n',pairs:['5 and 16','6 and 15']},{theorem:'none',lines:'',pairs:['1 and 4','2 and 3','5 and 8','6 and 7','9 and 12','10 and 11','13 and 16','14 and 15']}]"
+    },
+    "all_angle_relationships": {
+      "formula": "angle_relationship_groups.reduce(function(all,g){g.pairs.forEach(function(pair){all.push({theorem:g.theorem,lines:g.lines,pair:pair})});return all},[])"
+    },
+    "selected_angle_relationship": {
+      "formula": "all_angle_relationships[Math.floor(Math.random()*all_angle_relationships.length)]"
+    },
+    "second_angle_relationship": {
+      "formula": "(function(a){return a[Math.floor(Math.random()*a.length)]})(all_angle_relationships.filter(function(x){return x.pair!==selected_angle_relationship.pair}))"
+    },
+    "third_angle_relationship": {
+      "formula": "(function(a){return a[Math.floor(Math.random()*a.length)]})(all_angle_relationships.filter(function(x){return x.pair!==selected_angle_relationship.pair&&x.pair!==second_angle_relationship.pair}))"
+    },
+    "angle_one_number": {
+      "formula": "Number(selected_angle_relationship.pair.split(' and ')[0])"
+    },
+    "angle_two_number": {
+      "formula": "Number(selected_angle_relationship.pair.split(' and ')[1])"
+    },
+    "second_angle_one_number": {
+      "formula": "Number(second_angle_relationship.pair.split(' and ')[0])"
+    },
+    "second_angle_two_number": {
+      "formula": "Number(second_angle_relationship.pair.split(' and ')[1])"
+    },
+    "third_angle_one_number": {
+      "formula": "Number(third_angle_relationship.pair.split(' and ')[0])"
+    },
+    "third_angle_two_number": {
+      "formula": "Number(third_angle_relationship.pair.split(' and ')[1])"
+    },
+    "answer_text": {
+      "formula": "selected_angle_relationship.theorem==='none'?'No. These are vertical angles, which are always congruent; this alone does not prove any lines are parallel.':'Yes. Lines '+selected_angle_relationship.lines.replace(' and ',' parallel ')+' are parallel by the converse of the '+selected_angle_relationship.theorem.replace(' converse','')+' theorem.'"
+    },
+    "second_answer_text": {
+      "formula": "second_angle_relationship.theorem==='none'?'No. These are vertical angles, which are always congruent; this alone does not prove any lines are parallel.':'Yes. Lines '+second_angle_relationship.lines.replace(' and ',' parallel ')+' are parallel by the converse of the '+second_angle_relationship.theorem.replace(' converse','')+' theorem.'"
+    },
+    "third_answer_text": {
+      "formula": "third_angle_relationship.theorem==='none'?'No. These are vertical angles, which are always congruent; this alone does not prove any lines are parallel.':'Yes. Lines '+third_angle_relationship.lines.replace(' and ',' parallel ')+' are parallel by the converse of the '+third_angle_relationship.theorem.replace(' converse','')+' theorem.'"
+    },
+    "four_line_diagram": {
+      "formula": "'<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 330\" role=\"img\" aria-label=\"Four lines in two pairs with angles numbered one through sixteen\" style=\"display:block;width:100%;max-width:430px;height:auto;background:white\"><line x1=\"30\" y1=\"70\" x2=\"400\" y2=\"74\" stroke=\"#222\" stroke-width=\"3\"/><line x1=\"30\" y1=\"230\" x2=\"400\" y2=\"226\" stroke=\"#222\" stroke-width=\"3\"/><line x1=\"65\" y1=\"310\" x2=\"205\" y2=\"30\" stroke=\"#222\" stroke-width=\"3\"/><line x1=\"225\" y1=\"310\" x2=\"367\" y2=\"30\" stroke=\"#222\" stroke-width=\"3\"/><text x=\"160\" y=\"53\">1</text><text x=\"210\" y=\"53\">2</text><text x=\"160\" y=\"99\">3</text><text x=\"210\" y=\"99\">4</text><text x=\"320\" y=\"53\">5</text><text x=\"370\" y=\"53\">6</text><text x=\"320\" y=\"99\">7</text><text x=\"370\" y=\"99\">8</text><text x=\"78\" y=\"213\">9</text><text x=\"128\" y=\"213\">10</text><text x=\"78\" y=\"258\">11</text><text x=\"128\" y=\"258\">12</text><text x=\"240\" y=\"213\">13</text><text x=\"290\" y=\"213\">14</text><text x=\"240\" y=\"258\">15</text><text x=\"290\" y=\"258\">16</text><text x=\"401\" y=\"67\">m</text><text x=\"401\" y=\"219\">n</text><text x=\"45\" y=\"322\">p</text><text x=\"225\" y=\"322\">q</text></svg>'"
+    }
+  },
+  "question": "<div style=\"display:grid;grid-template-columns:minmax(0,430px) minmax(220px,1fr);align-items:start;gap:20px\"><div>{four_line_diagram}</div><div>For each pair, decide whether the congruent angles prove that lines are parallel. If so, name the lines and theorem.<br><br><b>A)</b> \\(\\angle {angle_one_number}\\cong\\angle {angle_two_number}\\)<br><br><b>B)</b> \\(\\angle {second_angle_one_number}\\cong\\angle {second_angle_two_number}\\)<br><br><b>C)</b> \\(\\angle {third_angle_one_number}\\cong\\angle {third_angle_two_number}\\)</div></div>",
+  "answer": "<b>A)</b> {answer_text}<br><br><b>B)</b> {second_answer_text}<br><br><b>C)</b> {third_answer_text}"
+}
     ],
       "B-level Problems": [
       {
