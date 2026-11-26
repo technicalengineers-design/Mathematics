@@ -19942,7 +19942,7 @@
 {
   "id": "Sum 1 A 1.1c Average Speed",
   "type": "template",
-  "objective": "Calculate the average speed of a round trip using total distance divided by total time",
+  "objective": "Calculate the average speed of a round trip",
   "difficulty": "advanced",
   "variables": {
     "names": {
@@ -20019,22 +20019,22 @@
   "answer": "<b>Step 1: Recall the average speed formula</b><br>Average speed is calculated by dividing the <b>total distance</b> traveled by the <b>total time</b> elapsed (rather than averaging the two individual speeds):<br><b>\\( \\text{Average Speed} = \\frac{\\text{Total Distance}}{\\text{Total Time}} \\)</b><br><br><b>Step 2: Calculate the total round-trip distance</b><br>Because the trip was made both ways, double the one-way distance:<br>\\( \\text{Total Distance} = {one_way_dist}\\text{ miles} + {one_way_dist}\\text{ miles} = {total_dist}\\text{ miles} \\)<br><br><b>Step 3: Calculate the total travel time</b><br>Add the time for the outbound trip and the return trip:<br>\\( \\text{Total Time} = {time1}\\text{ hours} + {time2}\\text{ hours} = {total_time}\\text{ hours} \\)<br><br><b>Step 4: Divide total distance by total time</b><br>\\( \\text{Average Speed} = \\frac{{total_dist}\\text{ miles}}{{total_time}\\text{ hours}} \\approx {avg_speed_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>{name}'s average speed for the round trip was <b>\\( {avg_speed_rounded}\\text{ miles per hour} \\)</b>."
 },
       {
-        "id": "Sum 1 C 1-2 Calculating Percentage",
-        "title": "Sum 1 C 1-2 Calculating Percentage",
-        "type": "template",
-        "objective": "Calculating Percentage",
-        "difficulty": "basic",
-        "variables": {
-          "a_a": { "min": 13, "max": 45 },
-          "b_a": { "min": 46, "max": 79 },
-          "result_a": { "formula": "Math.round(a_a/b_a*100)", "format": "percent" },
-          "a_b": { "min": 13, "max": 45 },
-          "b_b": { "min": 46, "max": 79 },
-          "result_b": { "formula": "Math.round(a_b/b_b*100)", "format": "percent" }
-        },
-        "question": "Find each percentage. Round to the nearest percent.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> What percent is {a_a} of {b_a}?<div style=\"height:90px\"></div></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> What percent is {a_b} of {b_b}?<div style=\"height:90px\"></div></div></div>",
-        "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> {a_a} &divide; {b_a} &times; 100% &asymp; <b>{result_a}%</b></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> {a_b} &divide; {b_b} &times; 100% &asymp; <b>{result_b}%</b></div></div>"
-      },
+  "id": "Sum 1 C 1-2 Calculating Percentage",
+  "title": "Sum 1 C 1-2 Calculating Percentage",
+  "type": "template",
+  "objective": "Calculating Percentage",
+  "difficulty": "basic",
+  "variables": {
+    "a_a": { "min": 13, "max": 45 },
+    "b_a": { "min": 46, "max": 79 },
+    "a_b": { "min": 13, "max": 45 },
+    "b_b": { "min": 46, "max": 79 },
+    "result_a": { "formula": "Math.round((a_a / b_a) * 100)" },
+    "result_b": { "formula": "Math.round((a_b / b_b) * 100)" }
+  },
+  "question": "Find each percentage. Round to the nearest percent.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> What percent is {a_a} of {b_a}?<div style=\"height:90px\"></div></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> What percent is {a_b} of {b_b}?<div style=\"height:90px\"></div></div></div>",
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 240px;min-width:220px\"><b>A)</b> {a_a} &divide; {b_a} &times; 100% &asymp; <b>{result_a}%</b></div><div style=\"flex:1 1 240px;min-width:220px\"><b>B)</b> {a_b} &divide; {b_b} &times; 100% &asymp; <b>{result_b}%</b></div></div>"
+},
       {
   "id": "Sum 1 B 1.2 Average Speed",
   "type": "template",
