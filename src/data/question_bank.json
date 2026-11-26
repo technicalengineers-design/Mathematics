@@ -25756,27 +25756,31 @@
 }
 ,
       {
-        "id": "Sum 1 B 2-2 Complimentary and Supplementary",
-        "type": "template",
-        "objective": "Find measures of complementary and supplementary angles",
-        "difficulty": "intermediate",
-        "variables": {
-          "multipliers": { "formula": "[1,2,3,4,5,8,9,11,14,19,29,35,44,59,89,179]" },
-          "first_type": { "formula": "Math.random()<0.5?'complementary':'supplementary'" },
-          "total_a": { "formula": "first_type==='complementary'?90:180" },
-          "total_b": { "formula": "first_type==='complementary'?180:90" },
-          "n_a": { "formula": "multipliers[Math.floor(Math.random()*multipliers.length)]" },
-          "n_b": { "formula": "multipliers[Math.floor(Math.random()*multipliers.length)]" },
-          "smaller_a": { "formula": "total_a/(n_a+1)" },
-          "larger_a": { "formula": "total_a-smaller_a" },
-          "smaller_b": { "formula": "total_b/(n_b+1)" },
-          "larger_b": { "formula": "total_b-smaller_b" },
-          "type_a": { "formula": "first_type" },
-          "type_b": { "formula": "first_type==='complementary'?'supplementary':'complementary'" }
-        },
-        "question": "Solve both problems. The larger angle in each pair is the stated multiple of the smaller angle.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Two angles are {type_a}. The larger angle is {n_a} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Two angles are {type_b}. The larger angle is {n_b} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div></div>",
-        "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> {type_a} angles sum to {total_a}°. Let the smaller angle be x. Then x + {n_a}x = {total_a}, so ({n_a}+1)x = {total_a} and x = <b>{smaller_a}°</b>. The larger angle is {larger_a}°.</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> {type_b} angles sum to {total_b}°. Let the smaller angle be x. Then x + {n_b}x = {total_b}, so ({n_b}+1)x = {total_b} and x = <b>{smaller_b}°</b>. The larger angle is {larger_b}°.</div></div>"
-      },
+  "id": "Sum 1 B 2-2 Complimentary and Supplementary",
+  "type": "template",
+  "objective": "Find measures of complementary and supplementary angles",
+  "difficulty": "intermediate",
+  "variables": {
+    "comp_mults": { "formula": "[1, 2, 4, 5, 8, 9, 14, 17, 29, 44, 89]" },
+    "supp_mults": { "formula": "[1, 2, 3, 4, 5, 8, 9, 11, 14, 17, 19, 29, 35, 44, 59, 89, 179]" },
+    "is_comp_first": { "min": 0, "max": 1 },
+    "type_a": { "formula": "is_comp_first === 1 ? 'complementary' : 'supplementary'" },
+    "type_b": { "formula": "is_comp_first === 1 ? 'supplementary' : 'complementary'" },
+    "total_a": { "formula": "is_comp_first === 1 ? 90 : 180" },
+    "total_b": { "formula": "is_comp_first === 1 ? 180 : 90" },
+    "n_a": { "formula": "is_comp_first === 1 ? comp_mults[Math.floor(Math.random() * comp_mults.length)] : supp_mults[Math.floor(Math.random() * supp_mults.length)]" },
+    "n_b": { "formula": "is_comp_first === 1 ? supp_mults[Math.floor(Math.random() * supp_mults.length)] : comp_mults[Math.floor(Math.random() * comp_mults.length)]" },
+    "denom_a": { "formula": "n_a + 1" },
+    "denom_b": { "formula": "n_b + 1" },
+    "smaller_a": { "formula": "Math.round(total_a / denom_a)" },
+    "larger_a": { "formula": "total_a - smaller_a" },
+    "smaller_b": { "formula": "Math.round(total_b / denom_b)" },
+    "larger_b": { "formula": "total_b - smaller_b" }
+  },
+  "question": "Solve both problems. The larger angle in each pair is the stated multiple of the smaller angle.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Two angles are {type_a}. The larger angle is {n_a} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Two angles are {type_b}. The larger angle is {n_b} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div></div>",
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Since the angles are {type_a}, they sum to \\( {total_a}^\\circ \\). Let the smaller angle be \\( x \\).<br>\\( x + {n_a}x = {total_a} \\)<br>\\( {denom_a}x = {total_a} \\)<br>\\( x = \\) <b>\\( {smaller_a}^\\circ \\)</b> (and the larger angle is \\( {larger_a}^\\circ \\)).</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Since the angles are {type_b}, they sum to \\( {total_b}^\\circ \\). Let the smaller angle be \\( x \\).<br>\\( x + {n_b}x = {total_b} \\)<br>\\( {denom_b}x = {total_b} \\)<br>\\( x = \\) <b>\\( {smaller_b}^\\circ \\)</b> (and the larger angle is \\( {larger_b}^\\circ \\)).</div></div>"
+}
+,
       {
   "id": "Sum 1 A 2-2 Complement and Supplement",
   "type": "template",
