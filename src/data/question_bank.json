@@ -8977,7 +8977,7 @@
         "answer": "Point-Slope: \\( y {negy1|sign} = {m2|coef}(x {negx1|sign}) \\)\u003cbr\u003eSlope-Intercept: \\( y = {m2|coef}x {b2|sign} \\)\u003cbr\u003eStandard Form: \\( {b|coef}x {a|signedCoef}y = {c2} \\)\u003cbr\u003e\u003cb\u003eGraph:\u003c/b\u003e\u003cbr\u003e{solution_graph_svg}"
       },
 {
-  "id": "Sum 6.1 I Solve and graph multi-step inequalities",
+  "id": "Sum 1 6.1 I Solve and graph multi-step inequalities",
   "type": "template",
   "objective": "Solving multi-step linear inequalities with variables on the left side and graphing solutions on a number line",
   "difficulty": "intermediate",
@@ -8996,7 +8996,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Sum 6.2 A Absolute value inequalities",
+  "id": "Sum 1 6.2 A Absolute value inequalities",
   "type": "template",
   "objective": "Writing, Solving, and Graphing Real-World Absolute Value Inequalities",
   "difficulty": "advanced",
@@ -9043,7 +9043,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Sum 6.4 I Absolute value inequalities",
+  "id": "Sum 1 6.4 I Absolute value inequalities",
   "type": "template",
   "objective": "Solving multi-step absolute value inequalities",
   "difficulty": "intermediate",
@@ -9062,7 +9062,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Sum 6.5 B Graphing an inequality on a coordinate plane",
+  "id": "Sum 1 6.5 B Graphing an inequality on a coordinate plane",
   "type": "template",
   "objective": "Graphing linear inequalities in two variables from slope-intercept form",
   "difficulty": "basic",
@@ -9081,7 +9081,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Sum 6.5 I Graphing an absolute value inequality",
+  "id": "Sum 1 6.5 I Graphing an absolute value inequality",
   "type": "template",
   "objective": "Solving and graphing two-variable linear inequalities from standard form",
   "difficulty": "intermediate",
@@ -9100,7 +9100,7 @@
   "answer": "{answer_html}"
 },
 {
-  "id": "Sum 6.5 A Graphing an absolute value inequality",
+  "id": "Sum 1 6.5 A Graphing an absolute value inequality",
   "type": "template",
   "objective": "Solving and graphing standard-form linear inequalities",
   "difficulty": "advanced",
@@ -25753,8 +25753,7 @@
   },
   "question": "Find the coordinates of the midpoint B on segment \\( \\overline{AC} \\), given A = \\( ({a_x}, {a_y}) \\) and C = \\( ({c_x}, {c_y}) \\). Sketch the points A, B, and C on the coordinate plane.<br>{blank_coordinate_plane_svg}",
   "answer": "Use the midpoint formula: \\( B = (\\frac{{a_x}+{c_x}}{2}, \\frac{{a_y}+{c_y}}{2}) = ({b_x}, {b_y}) \\).<br>{answer_coordinate_plane_svg}"
-}
-,
+},
       {
   "id": "Sum 1 B 2-2 Complimentary and Supplementary",
   "type": "template",
@@ -25779,8 +25778,7 @@
   },
   "question": "Solve both problems. The larger angle in each pair is the stated multiple of the smaller angle.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Two angles are {type_a}. The larger angle is {n_a} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Two angles are {type_b}. The larger angle is {n_b} times the smaller angle. Find the measure of the smaller angle.<div style=\"height:100px\"></div></div></div>",
   "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 260px;min-width:240px\"><b>A)</b> Since the angles are {type_a}, they sum to \\( {total_a}^\\circ \\). Let the smaller angle be \\( x \\).<br>\\( x + {n_a}x = {total_a} \\)<br>\\( {denom_a}x = {total_a} \\)<br>\\( x = \\) <b>\\( {smaller_a}^\\circ \\)</b> (and the larger angle is \\( {larger_a}^\\circ \\)).</div><div style=\"flex:1 1 260px;min-width:240px\"><b>B)</b> Since the angles are {type_b}, they sum to \\( {total_b}^\\circ \\). Let the smaller angle be \\( x \\).<br>\\( x + {n_b}x = {total_b} \\)<br>\\( {denom_b}x = {total_b} \\)<br>\\( x = \\) <b>\\( {smaller_b}^\\circ \\)</b> (and the larger angle is \\( {larger_b}^\\circ \\)).</div></div>"
-}
-,
+},
       {
   "id": "Sum 1 A 2-2 Complement and Supplement",
   "type": "template",
@@ -25800,6 +25798,26 @@
   "question": "{q_html}",
   "answer": "{a_html}"
       },
+ {
+  "id": "Sum 1 A 2-3 Pool Edge",
+  "type": "template",
+  "objective": "Find the area and perimeter of an inner rectangle surrounded by a uniform border",
+  "difficulty": "advanced",
+  "variables": {
+    "sidewalk_width": { "min": 2, "max": 5 },
+    "inner_w": { "min": 12, "max": 22 },
+    "inner_l": { "min": 24, "max": 38 },
+    "outer_w": { "formula": "inner_w + 2 * sidewalk_width" },
+    "outer_l": { "formula": "inner_l + 2 * sidewalk_width" },
+    "perimeter": { "formula": "2 * (inner_l + inner_w)" },
+    "area": { "formula": "inner_l * inner_w" },
+    "pool_svg": { "formula": "'<svg xmlns=\"http://w3.org\" viewBox=\"0 0 460 300\" role=\"img\" aria-label=\"Rectangular swimming pool surrounded by a uniform sidewalk\" style=\"width:100%;max-width:460px;height:auto\"><style>.txt{font-family:sans-serif;font-size:13px;fill:#222;}.dim{font-family:sans-serif;font-size:13px;font-weight:bold;fill:#1d4ed8;}.sub{font-family:sans-serif;font-size:12px;font-weight:bold;fill:#b91c1c;}</style><rect x=\"70\" y=\"45\" width=\"280\" height=\"190\" fill=\"#e5e7eb\" stroke=\"#374151\" stroke-width=\"2\"/><rect x=\"105\" y=\"80\" width=\"210\" height=\"120\" fill=\"#bae6fd\" stroke=\"#0284c7\" stroke-width=\"2\"/><text x=\"210\" y=\"144\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#0369a1\">Swimming Pool</text><text x=\"210\" y=\"33\" text-anchor=\"middle\" class=\"txt\">Outer Length = ' + outer_l + ' ft</text><text x=\"362\" y=\"144\" text-anchor=\"start\" class=\"txt\">Outer Width</text><text x=\"362\" y=\"160\" text-anchor=\"start\" class=\"txt\">= ' + outer_w + ' ft</text><text x=\"210\" y=\"98\" text-anchor=\"middle\" class=\"dim\">Pool Length = ' + inner_l + ' ft</text><text x=\"113\" y=\"144\" text-anchor=\"start\" class=\"dim\">' + inner_w + ' ft</text><line x1=\"70\" y1=\"115\" x2=\"105\" y2=\"115\" stroke=\"#b91c1c\" stroke-width=\"2\"/><polygon points=\"70,115 76,112 76,118\" fill=\"#b91c1c\"/><polygon points=\"105,115 99,112 99,118\" fill=\"#b91c1c\"/><text x=\"87.5\" y=\"108\" text-anchor=\"middle\" class=\"sub\">' + sidewalk_width + ' ft</text><line x1=\"315\" y1=\"115\" x2=\"350\" y2=\"115\" stroke=\"#b91c1c\" stroke-width=\"2\"/><polygon points=\"315,115 321,112 321,118\" fill=\"#b91c1c\"/><polygon points=\"350,115 344,112 344,118\" fill=\"#b91c1c\"/><text x=\"332.5\" y=\"108\" text-anchor=\"middle\" class=\"sub\">' + sidewalk_width + ' ft</text><line x1=\"210\" y1=\"45\" x2=\"210\" y2=\"80\" stroke=\"#b91c1c\" stroke-width=\"2\"/><polygon points=\"210,45 207,51 213,51\" fill=\"#b91c1c\"/><polygon points=\"210,80 207,74 213,74\" fill=\"#b91c1c\"/><text x=\"218\" y=\"67\" text-anchor=\"start\" class=\"sub\">' + sidewalk_width + ' ft</text><line x1=\"210\" y1=\"200\" x2=\"210\" y2=\"235\" stroke=\"#b91c1c\" stroke-width=\"2\"/><polygon points=\"210,200 207,206 213,206\" fill=\"#b91c1c\"/><polygon points=\"210,235 207,229 213,229\" fill=\"#b91c1c\"/><text x=\"218\" y=\"222\" text-anchor=\"start\" class=\"sub\">' + sidewalk_width + ' ft</text></svg>'" }
+  },
+  "question": "A rectangular swimming pool is surrounded by a concrete sidewalk that is \\( {sidewalk_width} \\) feet wide. The dimensions of the rectangle created by the outside edge of the sidewalk are \\( {outer_w} \\) feet by \\( {outer_l} \\) feet. <br><br>1. **Draw** an illustration of the pool and sidewalk with all known dimensions labeled.<br>2. **Determine** the perimeter and area of the pool.",
+  "answer": "<b>Step 1: Draw and label the illustration</b><br>Because the \\( {sidewalk_width}\\text{-foot} \\) sidewalk surrounds all four sides of the pool, subtract twice the sidewalk width (\\( 2 \\times {sidewalk_width} = {2 * sidewalk_width}\\text{ ft} \\)) from both the outer length and outer width to find the dimensions of the pool:<br><br>{pool_svg}<br><br><b>Step 2: Find the dimensions of the pool</b><br>• <b>Pool Width:</b> \\( {outer_w} - 2({sidewalk_width}) = {outer_w} - {2 * sidewalk_width} = {inner_w}\\text{ ft} \\)<br>• <b>Pool Length:</b> \\( {outer_l} - 2({sidewalk_width}) = {outer_l} - {2 * sidewalk_width} = {inner_l}\\text{ ft} \\)<br><br><b>Step 3: Calculate the perimeter of the pool</b><br>\\( P = 2l + 2w \\)<br>\\( P = 2({inner_l}) + 2({inner_w}) = {2 * inner_l} + {2 * inner_w} = {perimeter}\\text{ ft} \\)<br><br><b>Step 4: Calculate the area of the pool</b><br>\\( A = l \\times w \\)<br>\\( A = {inner_l} \\times {inner_w} = {area}\\text{ ft}^2 \\)<br><br><b>Final Answer:</b><br>• <b>Perimeter:</b> \\( {perimeter}\\text{ feet} \\)<br>• <b>Area:</b> \\( {area}\\text{ square feet} \\)"
+},
+
+
       {
         "id": "Sum 1 A 2-4 Rotation",
         "type": "template",
@@ -25921,9 +25939,7 @@
   },
   "question": "A triangular-prism door stop has a triangular face {base_cm} cm across, is {height_cm} cm high, and is {depth_cm} cm deep. Determine its volume. Sketch the prism and label all three dimensions. Round your answer to <b>four significant digits</b> and include units.",
   "answer": "<b>Sketch with dimensions:</b><br><div style='text-align:center'><svg xmlns=\"http://w3.org\" viewBox=\"0 0 430 270\" role=\"img\" aria-label=\"Triangular prism with base, height, and depth labeled\" style=\"display:block;width:100%;max-width:430px;height:auto;margin:auto;font-family:Arial,sans-serif\"><polygon points=\"65,210 65,105 165,210\" fill=\"#dbeafe\" stroke=\"#1f2937\" stroke-width=\"2\"/><polygon points=\"205,160 205,55 305,160\" fill=\"#bfdbfe\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"210\" x2=\"205\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"65\" y1=\"105\" x2=\"205\" y2=\"55\" stroke=\"#1f2937\" stroke-width=\"2\"/><line x1=\"165\" y1=\"210\" x2=\"305\" y2=\"160\" stroke=\"#1f2937\" stroke-width=\"2\"/><text x=\"115\" y=\"230\" text-anchor=\"middle\" font-size=\"14\">Base l = {base_cm} cm</text><text x=\"198\" y=\"112\" text-anchor=\"end\" font-size=\"14\">h = {height_cm} cm</text><text x=\"252\" y=\"198\" text-anchor=\"start\" font-size=\"14\">Depth w = {depth_cm} cm</text></svg></div><br><b>Step 1: Find the area of the triangular base.</b><br>\\( A_{triangle} = \\frac{1}{2}bh = \\frac{1}{2}({base_cm})({height_cm}) = {triangle_area_4sf} \\) cm&sup2;.<br><br><b>Step 2: Multiply by the prism depth.</b><br>\\( V = A_{triangle}w = ({triangle_area_4sf})({depth_cm}) \\).<br><b>Volume = {volume_4sf} cm&sup3;</b> (four significant digits)."
-}
-
-,
+},
       {
         "id": "Sum 1 B 2.6a I Area Unit Conversion",
         "type": "template",
