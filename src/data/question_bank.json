@@ -25700,6 +25700,28 @@
     ],
       "Summative 1": [
         {
+  "id": "Sum 1 A 1.1b Knots",
+  "type": "template",
+  "objective": "Convert nautical speed (knots) to distance in feet and speed in miles per hour",
+  "difficulty": "advanced",
+  "variables": {
+    "vessels": { "textValue": ["boat", "sailboat", "cargo ship", "fishing trawler", "ferry", "research vessel"] },
+    "knots": { "min": 12, "max": 35 },
+    "hours_pool": { "formula": "[1, 1.5, 2, 2.5, 3, 3.5, 4]" },
+    "hours": { "formula": "hours_pool[Math.floor(Math.random() * hours_pool.length)]" },
+    "hour_label": { "formula": "hours === 1 ? '1 hour' : hours + ' hours'" },
+    "ft_per_nmi": { "formula": "6080" },
+    "ft_per_mi": { "formula": "5280" },
+    "nmi_traveled": { "formula": "knots * hours" },
+    "total_feet": { "formula": "nmi_traveled * ft_per_nmi" },
+    "total_feet_formatted": { "formula": "total_feet.toLocaleString('en-US')" },
+    "mph_exact": { "formula": "(knots * ft_per_nmi) / ft_per_mi" },
+    "mph_rounded": { "formula": "mph_exact.toFixed(2)" }
+  },
+  "question": "Use the following nautical conversions to solve the problem:<br>• \\( 1\\text{ nautical mile} = 6,080\\text{ feet} \\)<br>• \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} \\)<br><br>If a {vessels} travels at \\( {knots}\\text{ knots} \\) for {hour_label}, how far will it have traveled in feet? Write and solve the equation that represents this situation. Then, determine how fast the {vessels} was traveling in miles per hour (\\( 1\\text{ mile} = 5,280\\text{ feet} \\)). Round your answers to the nearest hundredth.",
+  "answer": "<b>Part 1: Distance traveled in feet</b><br>Let \\( d \\) represent the total distance traveled in feet, \\( k \\) represent the speed in knots (\\( {knots} \\)), and \\( t \\) represent the time in hours (\\( {hours} \\)).<br><br>Since \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} = 6,080\\text{ feet per hour} \\), set up the distance equation:<br><b>\\( d = 6,080 \\cdot k \\cdot t \\)</b><br><br>Substitute \\( k = {knots} \\) and \\( t = {hours} \\) into the equation and solve:<br>\\( d = 6,080 \\times {knots} \\times {hours} \\)<br>\\( d = {nmi_traveled} \\times 6,080 \\)<br><b>\\( d = {total_feet_formatted}\\text{ feet} \\)</b><br><br><b>Part 2: Speed in miles per hour (mph)</b><br>Convert the speed from feet per hour to statute miles per hour using \\( 1\\text{ mile} = 5,280\\text{ feet} \\):<br>\\( \\text{Speed in feet per hour} = {knots}\\text{ knots} \\times 6,080\\text{ ft/nmi} = {(knots * 6080).toLocaleString('en-US')}\\text{ ft/hr} \\)<br><br>Divide by \\( 5,280\\text{ feet per mile} \\):<br>\\( \\text{Speed in mph} = \\frac{{knots} \\times 6,080}{5,280} = \\frac{{knots * 6080}}{5280} \\approx {mph_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>• <b>Distance traveled:</b> \\( {total_feet_formatted}\\text{ feet} \\)<br>• <b>Speed:</b> \\( {mph_rounded}\\text{ miles per hour} \\)"
+},
+{
         "id": "Sum 1 A 1-4 Distance Between Two Points",
         "type": "template",
         "objective": "Find Distance Between Two Points",
