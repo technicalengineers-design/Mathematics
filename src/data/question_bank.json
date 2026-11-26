@@ -19835,8 +19835,8 @@
   "objective": "Write and evaluate an algebraic expression to find maximum distance given a budget, per-passenger fee, and mileage rate",
   "difficulty": "advanced",
   "variables": {
-    "names": { "choice": ["Max", "Elena", "Marcus", "Priya", "Devon", "Chloe"] },
-    "companies": { "choice": ["Plaid Taxi Cab Company", "Metro City Cabs", "Yellow Star Taxi", "Apex Transit Co.", "Summit Cab Service"] },
+    "names": { "textValue": ["Max", "Elena", "Marcus", "Priya", "Devon", "Chloe"] },
+    "companies": { "textValue": ["Plaid Taxi Cab Company", "Metro City Cabs", "Yellow Star Taxi", "Apex Transit Co.", "Summit Cab Service"] },
     "passengers": { "min": 1, "max": 3 },
     "passenger_word": { "formula": "passengers === 1 ? '1 passenger' : passengers + ' passengers'" },
     "rate_p_pool": { "formula": "[1.50, 1.75, 2.00, 2.25, 2.50]" },
@@ -19923,7 +19923,7 @@
   "objective": "Convert nautical speed (knots) to distance in feet and speed in miles per hour using dimensional analysis and equations",
   "difficulty": "advanced",
   "variables": {
-    "vessels": { "choice": ["boat", "sailboat", "cargo ship", "fishing trawler", "ferry", "research vessel"] },
+    "vessels": { "textValue": ["boat", "sailboat", "cargo ship", "fishing trawler", "ferry", "research vessel"] },
     "knots": { "min": 12, "max": 35 },
     "hours_pool": { "formula": "[1, 1.5, 2, 2.5, 3, 3.5, 4]" },
     "hours": { "formula": "hours_pool[Math.floor(Math.random() * hours_pool.length)]" },
@@ -20128,7 +20128,7 @@
   "difficulty": "intermediate",
   "variables": {
     "shoppers": {
-      "choice": ["Maya", "Toby", "Sofia", "Hannah", "Owen", "Zara"]
+      "textValue": ["Maya", "Toby", "Sofia", "Hannah", "Owen", "Zara"]
     },
     "scenarios": {
       "formula": "[{ event: 'a neighborhood cookout', item1: 'hot dogs', item2: 'hot dog buns', item3: 'juice boxes' }, { event: 'a school bake sale', item1: 'cupcakes', item2: 'frosting tubs', item3: 'take-home boxes' }, { event: 'a camping trip', item1: 'graham cracker sleeves', item2: 'chocolate bars', item3: 'marshmallows' }, { event: 'an art workshop', item1: 'canvases', item2: 'paintbrushes', item3: 'paint palettes' }, { event: 'a soccer tournament', item1: 'granola bars', item2: 'sports drinks', item3: 'ice packs' }]"
@@ -20186,7 +20186,7 @@
   "difficulty": "basic",
   "variables": {
     "hosts": {
-      "choice": ["Marcus", "Devon", "Liam", "Carlos", "Julian", "Noah"]
+      "textValue": ["Marcus", "Devon", "Liam", "Carlos", "Julian", "Noah"]
     },
     "item_sets": {
       "formula": "[['stickers', 'keychains', 'pens'], ['bookmarks', 'pencils', 'erasers'], ['coupons', 'magnets', 'notebooks'], ['pins', 'wristbands', 'glow sticks']]"
