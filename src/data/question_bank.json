@@ -25699,6 +25699,103 @@
     ],
       "Summative 1": [  
  {
+  "id": "Sum 1 B 1.1a Car Purchase",
+  "type": "template",
+  "objective": "Calculate the final price",
+  "difficulty": "intermediate",
+  "variables": {
+    "names": {
+      "formula": "['Mr. Thompson', 'Ms. Ramirez', 'Dr. Patel', 'Mrs. Jenkins', 'Mr. Kim', 'Ms. O’Connor']"
+    },
+    "subs": {
+      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
+    },
+    "subs_lower": {
+      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
+    },
+    "b_idx": {
+      "formula": "Math.floor(Math.random() * 6)"
+    },
+    "name": {
+      "formula": "names[b_idx]"
+    },
+    "sub": {
+      "formula": "subs[b_idx]"
+    },
+    "sub_lower": {
+      "formula": "subs_lower[b_idx]"
+    },
+    "item_list": {
+      "formula": "['used car', 'certified pre-owned sedan', 'compact SUV', 'hybrid hatchback']"
+    },
+    "discount_types": {
+      "formula": "['good-customer discount', 'loyalty discount', 'seasonal clearance discount', 'returning-buyer discount']"
+    },
+    "i_idx": {
+      "formula": "Math.floor(Math.random() * 4)"
+    },
+    "item": {
+      "formula": "item_list[i_idx]"
+    },
+    "discount_type": {
+      "formula": "discount_types[i_idx]"
+    },
+    "base_price_pool": {
+      "formula": "[7600, 8400, 9200, 10500, 11800, 12400, 14500]"
+    },
+    "base_price": {
+      "formula": "base_price_pool[Math.floor(Math.random() * 7)]"
+    },
+    "base_price_str": {
+      "formula": "base_price.toFixed(2)"
+    },
+    "discount_pool": {
+      "formula": "[10, 12, 15, 18, 20]"
+    },
+    "discount_pct": {
+      "formula": "discount_pool[Math.floor(Math.random() * 5)]"
+    },
+    "discount_dec": {
+      "formula": "Math.round(discount_pct) / 100"
+    },
+    "tax_pool": {
+      "formula": "[4.5, 5.5, 6.0, 6.25, 6.5, 7.25, 8.0]"
+    },
+    "tax_pct": {
+      "formula": "tax_pool[Math.floor(Math.random() * 7)]"
+    },
+    "tax_dec": {
+      "formula": "Math.round(tax_pct * 100) / 10000"
+    },
+    "discount_amt": {
+      "formula": "Math.round(base_price * discount_dec * 100) / 100"
+    },
+    "discount_amt_str": {
+      "formula": "discount_amt.toFixed(2)"
+    },
+    "sale_price": {
+      "formula": "Math.round((base_price - discount_amt) * 100) / 100"
+    },
+    "sale_price_str": {
+      "formula": "sale_price.toFixed(2)"
+    },
+    "tax_amt": {
+      "formula": "Math.round(sale_price * tax_dec * 100) / 100"
+    },
+    "tax_amt_str": {
+      "formula": "tax_amt.toFixed(2)"
+    },
+    "final_price": {
+      "formula": "Math.round((sale_price + tax_amt) * 100) / 100"
+    },
+    "final_price_str": {
+      "formula": "final_price.toFixed(2)"
+    }
+  },
+  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_str} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub_lower} will pay for the {item}?",
+  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_str} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_str} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
+},
+{
   "id": "Sum 1 A 1.1a Knots",
   "type": "template",
   "objective": "Convert nautical speed (knots) to distance in feet and speed in miles per hour",
@@ -25721,7 +25818,7 @@
   "answer": "<b>Part 1: Distance traveled in feet</b><br>Let \\( d \\) represent the total distance traveled in feet, \\( k \\) represent the speed in knots (\\( {knots} \\)), and \\( t \\) represent the time in hours (\\( {hours} \\)).<br><br>Since \\( 1\\text{ knot} = 1\\text{ nautical mile per hour} = 6,080\\text{ feet per hour} \\), set up the distance equation:<br><b>\\( d = 6,080 \\cdot k \\cdot t \\)</b><br><br>Substitute \\( k = {knots} \\) and \\( t = {hours} \\) into the equation and solve:<br>\\( d = 6,080 \\times {knots} \\times {hours} \\)<br>\\( d = {nmi_traveled} \\times 6,080 \\)<br><b>\\( d = {total_feet_formatted}\\text{ feet} \\)</b><br><br><b>Part 2: Speed in miles per hour (mph)</b><br>Convert the speed from feet per hour to statute miles per hour using \\( 1\\text{ mile} = 5,280\\text{ feet} \\):<br>\\( \\text{Speed in feet per hour} = {knots}\\text{ knots} \\times 6,080\\text{ ft/nmi} = {(knots * 6080).toLocaleString('en-US')}\\text{ ft/hr} \\)<br><br>Divide by \\( 5,280\\text{ feet per mile} \\):<br>\\( \\text{Speed in mph} = \\frac{{knots} \\times 6,080}{5,280} = \\frac{{knots * 6080}}{5280} \\approx {mph_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>• <b>Distance traveled:</b> \\( {total_feet_formatted}\\text{ feet} \\)<br>• <b>Speed:</b> \\( {mph_rounded}\\text{ miles per hour} \\)"
 },
  {
-  "id": "Sum 1 B 1.1a Buying Packs",
+  "id": "Sum 1 B 1.1b Buying Packs",
   "type": "template",
   "objective": "Calculate the Least Common Multiple (LCM) of three numbers to solve a real-world packaging problem with zero leftovers",
   "difficulty": "intermediate",
@@ -25866,105 +25963,8 @@
   "question": "The drive from {origin} to {dest} is about \\( {one_way_dist} \\) miles. It took {name} \\( {time1} \\) hours to drive one way, but due to {delay_reason} it took {pronoun} \\( {time2} \\) hours for the return trip. What was {poss} average speed for the round trip? Round your answer to the nearest hundredth.",
   "answer": "<b>Step 1: Recall the average speed formula</b><br>Average speed is calculated by dividing the <b>total distance</b> traveled by the <b>total time</b> elapsed (rather than averaging the two individual speeds):<br><b>\\( \\text{Average Speed} = \\frac{\\text{Total Distance}}{\\text{Total Time}} \\)</b><br><br><b>Step 2: Calculate the total round-trip distance</b><br>Because the trip was made both ways, double the one-way distance:<br>\\( \\text{Total Distance} = {one_way_dist}\\text{ miles} + {one_way_dist}\\text{ miles} = {total_dist}\\text{ miles} \\)<br><br><b>Step 3: Calculate the total travel time</b><br>Add the time for the outbound trip and the return trip:<br>\\( \\text{Total Time} = {time1}\\text{ hours} + {time2}\\text{ hours} = {total_time}\\text{ hours} \\)<br><br><b>Step 4: Divide total distance by total time</b><br>\\( \\text{Average Speed} = \\frac{{total_dist}\\text{ miles}}{{total_time}\\text{ hours}} \\approx {avg_speed_rounded}\\text{ mph} \\)<br><br><b>Final Answer:</b><br>{name}'s average speed for the round trip was <b>\\( {avg_speed_rounded}\\text{ miles per hour} \\)</b>."
 },
-{
-  "id": "Sum 1 B 1.2 Car Purchase",
-  "type": "template",
-  "objective": "Calculate the final price",
-  "difficulty": "intermediate",
-  "variables": {
-    "names": {
-      "formula": "['Mr. Thompson', 'Ms. Ramirez', 'Dr. Patel', 'Mrs. Jenkins', 'Mr. Kim', 'Ms. O’Connor']"
-    },
-    "subs": {
-      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
-    },
-    "subs_lower": {
-      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
-    },
-    "b_idx": {
-      "formula": "Math.floor(Math.random() * 6)"
-    },
-    "name": {
-      "formula": "names[b_idx]"
-    },
-    "sub": {
-      "formula": "subs[b_idx]"
-    },
-    "sub_lower": {
-      "formula": "subs_lower[b_idx]"
-    },
-    "item_list": {
-      "formula": "['used car', 'certified pre-owned sedan', 'compact SUV', 'hybrid hatchback']"
-    },
-    "discount_types": {
-      "formula": "['good-customer discount', 'loyalty discount', 'seasonal clearance discount', 'returning-buyer discount']"
-    },
-    "i_idx": {
-      "formula": "Math.floor(Math.random() * 4)"
-    },
-    "item": {
-      "formula": "item_list[i_idx]"
-    },
-    "discount_type": {
-      "formula": "discount_types[i_idx]"
-    },
-    "base_price_pool": {
-      "formula": "[7600, 8400, 9200, 10500, 11800, 12400, 14500]"
-    },
-    "base_price": {
-      "formula": "base_price_pool[Math.floor(Math.random() * 7)]"
-    },
-    "base_price_str": {
-      "formula": "base_price.toFixed(2)"
-    },
-    "discount_pool": {
-      "formula": "[10, 12, 15, 18, 20]"
-    },
-    "discount_pct": {
-      "formula": "discount_pool[Math.floor(Math.random() * 5)]"
-    },
-    "discount_dec": {
-      "formula": "Math.round(discount_pct) / 100"
-    },
-    "tax_pool": {
-      "formula": "[4.5, 5.5, 6.0, 6.25, 6.5, 7.25, 8.0]"
-    },
-    "tax_pct": {
-      "formula": "tax_pool[Math.floor(Math.random() * 7)]"
-    },
-    "tax_dec": {
-      "formula": "Math.round(tax_pct * 100) / 10000"
-    },
-    "discount_amt": {
-      "formula": "Math.round(base_price * discount_dec * 100) / 100"
-    },
-    "discount_amt_str": {
-      "formula": "discount_amt.toFixed(2)"
-    },
-    "sale_price": {
-      "formula": "Math.round((base_price - discount_amt) * 100) / 100"
-    },
-    "sale_price_str": {
-      "formula": "sale_price.toFixed(2)"
-    },
-    "tax_amt": {
-      "formula": "Math.round(sale_price * tax_dec * 100) / 100"
-    },
-    "tax_amt_str": {
-      "formula": "tax_amt.toFixed(2)"
-    },
-    "final_price": {
-      "formula": "Math.round((sale_price + tax_amt) * 100) / 100"
-    },
-    "final_price_str": {
-      "formula": "final_price.toFixed(2)"
-    }
-  },
-  "question": "{name} plans to purchase a {item} priced at \\( \\${base_price_str} \\). {sub} will receive a \\( {discount_pct}\\% \\) {discount_type} and then will have to pay a \\( {tax_pct}\\% \\) sales tax on the discounted price. What will be the final price {sub_lower} will pay for the {item}?",
-  "answer": "<b>Step 1: Calculate the discount amount</b><br>Convert \\( {discount_pct}\\% \\) to a decimal (\\( {discount_dec} \\)) and multiply by the original price:<br>\\( \\text{Discount} = \\${base_price_str} \\times {discount_dec} = \\${discount_amt_str} \\)<br><br><b>Step 2: Find the discounted sale price</b><br>Subtract the discount from the original price:<br>\\( \\text{Sale Price} = \\${base_price_str} - \\${discount_amt_str} = \\${sale_price_str} \\)<br><br><b>Step 3: Calculate the sales tax on the discounted price</b><br>Convert \\( {tax_pct}\\% \\) to a decimal (\\( {tax_dec} \\)) and multiply by the discounted sale price:<br>\\( \\text{Sales Tax} = \\${sale_price_str} \\times {tax_dec} = \\${tax_amt_str} \\)<br><br><b>Step 4: Find the final price</b><br>Add the sales tax to the discounted sale price:<br>\\( \\text{Final Price} = \\${sale_price_str} + \\${tax_amt_str} = \\${final_price_str} \\)<br><br><b>Final Answer:</b><br>{name} will pay <b>\\( \\${final_price_str} \\)</b> for the {item}."
-},
  {
-  "id": "Sum 1 B 1.3c Door Prizes",
+  "id": "Sum 1 B 1.1c Door Prizes",
   "type": "template",
   "objective": "Use prime factorization (GCF/LCM concepts) to determine the maximum number of identical gift bags and the quantity of each item per bag",
   "difficulty": "intermediate",
@@ -26049,10 +26049,10 @@
   "answer": "<b>Step 1: Find the Greatest Common Factor (GCF) using prime factorization</b><br>To divide all three items evenly into the maximum number of identical bags with nothing left over, find the GCF of \\( {total1} \\), \\( {total2} \\), and \\( {total3} \\):<br>• Factors of \\( {total1} \\): \\( {num_bags} \\times {per_bag1} \\)<br>• Factors of \\( {total2} \\): \\( {num_bags} \\times {per_bag2} \\)<br>• Factors of \\( {total3} \\): \\( {num_bags} \\times {per_bag3} \\)<br><br>Since \\( {per_bag1} \\), \\( {per_bag2} \\), and \\( {per_bag3} \\) share no common factors other than \\( 1 \\), the greatest common factor is <b>\\( {num_bags} \\)</b>.<br><br><b>Step 2: Determine the quantity of each item per bag</b><br>Divide the total amount of each item by the \\( {num_bags} \\) bags:<br>• <b>{item1}:</b> \\( {total1} \\div {num_bags} = {per_bag1} \\)<br>• <b>{item2}:</b> \\( {total2} \\div {num_bags} = {per_bag2} \\)<br>• <b>{item3}:</b> \\( {total3} \\div {num_bags} = {per_bag3} \\)<br><br><b>Final Answer:</b><br>• {hosts} can make <b>\\( {num_bags} \\) identical door prize bags</b> (leaving \\( {left_out_guests} \\) guests without a bag).<br>• Each bag will contain <b>\\( {per_bag1} \\) {item1}</b>, <b>\\( {per_bag2} \\) {item2}</b>, and <b>\\( {per_bag3} \\) {item3}</b>."
 },
 {
-  "id": "Sum 1 A 1.4 Remaining Supplies",
+  "id": "Sum 1 B 1.1d Remaining Supplies",
   "type": "template",
   "objective": "Write and solve a multi-step linear inequality involving unit conversions, fractional rates, and waste percentages to determine the maximum number of remaining items that can be produced",
-  "difficulty": "advanced",
+  "difficulty": "intermediate",
   "variables": {
     "persons": { "formula": "['Cheryl', 'Mateo', 'Priya', 'Devon']" },
     "pronouns": { "formula": "['she', 'he', 'she', 'he']" },
