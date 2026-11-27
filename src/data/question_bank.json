@@ -20647,7 +20647,86 @@
   },
   "question": "{buyer_name} considers purchasing a {car_ages}-year-old {vehicle_type} with \\( {mileage_str} \\) miles and a price tag of \\( \\${price_str} \\). A mechanic spent {hour_word} checking it and estimated that it would cost \\( \\${repair_cost_str} \\), including both parts and labor, to repair it. If the mechanic charged \\( \\${hourly_rate_str} \\) per hour for the inspection and the sales tax is \\( {tax_pct_str}\\% \\), find the actual cost of the automobile.",
   "answer": "<b>Step 1: Calculate the sales tax on the vehicle's price</b><br>Multiply the sticker price by the \\( {tax_pct_str}\\% \\) sales tax rate (\\( {tax_dec_str} \\)):<br>\\( \\${price_str} \\times {tax_dec_str} = \\${sales_tax_str} \\)<br><br><b>Step 2: Calculate the mechanic's inspection fee</b><br>Multiply the inspection time by the hourly rate:<br>\\( {insp_hours} \\times \\${hourly_rate_str} = \\${insp_cost_str} \\)<br><br><b>Step 3: Add all expenses to find the actual total cost</b><br>Combine the purchase price, sales tax, inspection fee, and estimated repair cost:<br>\\( \\${price_str} + \\${sales_tax_str} + \\${insp_cost_str} + \\${repair_cost_str} = \\) <b>\\( \\${actual_cost_str} \\)</b><br><br><b>Final Answer:</b><br>The actual cost of the automobile is <b>\\( \\${actual_cost_str} \\)</b>."
+},
+{
+  "id": "CM 7.4b Expected Price After Depreciation",
+  "title": "CM 7.4b Expected Price After Depreciation",
+  "type": "template",
+  "objective": "Determine whether a used vehicle's asking price is a good deal by calculating its expected value after accumulated depreciation from a table",
+  "difficulty": "basic",
+  "variables": {
+    "orig_hundreds": {
+      "min": 280,
+      "max": 480
+    },
+    "orig_price_num": {
+      "formula": "orig_hundreds * 100"
+    },
+    "orig_price_str": {
+      "formula": "orig_price_num.toString()"
+    },
+    "car_age": {
+      "min": 2,
+      "max": 5
+    },
+    "y1_pct": { "min": 18, "max": 22 },
+    "y2_pct": { "min": 13, "max": 16 },
+    "y3_pct": { "min": 10, "max": 13 },
+    "y4_pct": { "min": 8, "max": 11 },
+    "y5_pct": { "min": 6, "max": 9 },
+    "pct_list": {
+      "formula": "[y1_pct, y2_pct, y3_pct, y4_pct, y5_pct]"
+    },
+    "used_pcts": {
+      "formula": "pct_list.slice(0, car_age)"
+    },
+    "accum_dep_pct": {
+      "formula": "used_pcts.reduce(function(sum, p) { return sum + p; }, 0)"
+    },
+    "pct_sum_expr": {
+      "formula": "used_pcts.map(function(p) { return p + '%'; }).join(' + ')"
+    },
+    "accum_dep_dec": {
+      "formula": "accum_dep_pct / 100"
+    },
+    "accum_dep_num": {
+      "formula": "Math.round(orig_price_num * accum_dep_dec)"
+    },
+    "expected_val_num": {
+      "formula": "orig_price_num - accum_dep_num"
+    },
+    "is_good_deal": {
+      "min": 0,
+      "max": 1
+    },
+    "price_offset_hundreds": {
+      "min": 6,
+      "max": 18
+    },
+    "price_offset_num": {
+      "formula": "price_offset_hundreds * 100"
+    },
+    "offered_price_num": {
+      "formula": "is_good_deal === 1 ? expected_val_num - price_offset_num : expected_val_num + price_offset_num"
+    },
+    "diff_num": {
+      "formula": "Math.abs(expected_val_num - offered_price_num)"
+    },
+    "accum_dep_str": { "formula": "accum_dep_num.toString()" },
+    "expected_val_str": { "formula": "expected_val_num.toString()" },
+    "offered_price_str": { "formula": "offered_price_num.toString()" },
+    "diff_str": { "formula": "diff_num.toString()" },
+    "verdict_text": {
+      "formula": "is_good_deal === 1 ? '<b>Yes</b>, this is a good price. The offered price of <b>$' + offered_price_str + '</b> is <b>$' + diff_str + ' less</b> than the expected depreciated value of <b>$' + expected_val_str + '</b>.' : '<b>No</b>, this is not a good price. The offered price of <b>$' + offered_price_str + '</b> is <b>$' + diff_str + ' more</b> than the expected depreciated value of <b>$' + expected_val_str + '</b>.'"
+    },
+    "dep_table_html": {
+      "formula": "'<table style=\"border-collapse:collapse;width:100%;max-width:320px;font-family:sans-serif;font-size:14px;text-align:center;background:#fff\"><thead><tr style=\"background:#f1f5f9\"><th colspan=\"2\" style=\"border:1px solid #cbd5e1;padding:6px 10px\">Table 7.4: Annual Depreciation</th></tr><tr style=\"background:#f8fafc\"><th style=\"border:1px solid #cbd5e1;padding:6px 10px\">Age (Years)</th><th style=\"border:1px solid #cbd5e1;padding:6px 10px\">Depreciation (%)</th></tr></thead><tbody>' + pct_list.map(function(p, idx) { return '<tr><td style=\"border:1px solid #cbd5e1;padding:6px 10px\">Year ' + (idx + 1) + '</td><td style=\"border:1px solid #cbd5e1;padding:6px 10px\">' + p + '%</td></tr>'; }).join('') + '</tbody></table>'"
+    }
+  },
+  "question": "<div style=\"display:grid;grid-template-columns:minmax(0,320px) minmax(220px,1fr);align-items:start;gap:20px\"><div>{dep_table_html}</div><div>A \\( {car_age}\\text{-yr-old} \\) \\( \\${orig_price_str} \\) car depreciating according to <b>Table 7.4</b> is offered for <b>\\( \\${offered_price_str} \\)</b>.<br><br>Is this a good price based on the accumulated depreciation? Show your calculations to justify your answer.</div></div>",
+  "answer": "<b>Step 1: Find the accumulated depreciation percentage</b><br>Sum the annual depreciation rates for the first \\( {car_age} \\) years from Table 7.4:<br>\\( {pct_sum_expr} = {accum_dep_pct}\\% \\)<br><br><b>Step 2: Calculate the dollar depreciation and expected value</b><br>• Total accumulated depreciation:<br>\\( \\${orig_price_str} \\times {accum_dep_pct}\\% = \\${accum_dep_str} \\)<br>• Expected value after \\( {car_age} \\) years:<br>\\( \\${orig_price_str} - \\${accum_dep_str} = \\) <b>\\( \\${expected_val_str} \\)</b><br><br><b>Step 3: Compare the offered price to the expected value</b><br>{verdict_text}"
 }
+
 
 
 
