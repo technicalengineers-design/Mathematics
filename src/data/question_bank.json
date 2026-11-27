@@ -21927,6 +21927,223 @@
   },
   "question": "List three healthy practices.<div style=\"height:120px\"></div>",
   "answer": "<b>Three Healthy Practices:</b><ol style=\"margin:6px 0 8px 18px;line-height:1.6\"><li>{item_1}</li><li>{item_2}</li><li>{item_3}</li></ol>"
+},
+{
+  "id": "CM 8.5 Balancing Activity and Food",
+  "title": "CM 8.5 Balancing Activity and Food",
+  "type": "template",
+  "objective": "Calculate total daily calories burned from an activity chart and determine the daily calorie intake target needed to achieve a weekly weight-loss goal",
+  "difficulty": "basic",
+  "variables": {
+    "people_pool": {
+      "formula": "['Mr. Morehouse', 'Ms. Delgado', 'Mr. Okafor', 'Mrs. Whitaker', 'Dr. Takahashi', 'Ms. Callahan']"
+    },
+    "subs_pool": {
+      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
+    },
+    "subs_low_pool": {
+      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
+    },
+    "posses_pool": {
+      "formula": "['his', 'her', 'his', 'her', 'his', 'her']"
+    },
+    "p_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "person_name": {
+      "formula": "people_pool[p_idx]"
+    },
+    "person_sub": {
+      "formula": "subs_pool[p_idx]"
+    },
+    "person_sub_low": {
+      "formula": "subs_low_pool[p_idx]"
+    },
+    "person_poss": {
+      "formula": "posses_pool[p_idx]"
+    },
+    "weights_pool": {
+      "formula": "[130, 160, 190, 220]"
+    },
+    "w_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "weight_lb": {
+      "formula": "weights_pool[w_idx]"
+    },
+    "loss_goal_pool": {
+      "formula": "[1, 1.5, 2]"
+    },
+    "g_idx": {
+      "min": 0,
+      "max": 2
+    },
+    "loss_lb_wk": {
+      "formula": "loss_goal_pool[g_idx]"
+    },
+    "loss_lb_str": {
+      "formula": "loss_lb_wk.toString()"
+    },
+    "sleep_rates": {
+      "formula": "[46, 56, 67, 77]"
+    },
+    "sit_rates": {
+      "formula": "[75, 92, 110, 127]"
+    },
+    "tv_rates": {
+      "formula": "[59, 73, 86, 100]"
+    },
+    "read_rates": {
+      "formula": "[65, 80, 95, 110]"
+    },
+    "walk_rates": {
+      "formula": "[180, 222, 263, 305]"
+    },
+    "jog_rates": {
+      "formula": "[472, 581, 690, 799]"
+    },
+    "r_sleep": {
+      "formula": "sleep_rates[w_idx]"
+    },
+    "r_sit": {
+      "formula": "sit_rates[w_idx]"
+    },
+    "r_tv": {
+      "formula": "tv_rates[w_idx]"
+    },
+    "r_read": {
+      "formula": "read_rates[w_idx]"
+    },
+    "r_walk": {
+      "formula": "walk_rates[w_idx]"
+    },
+    "r_jog": {
+      "formula": "jog_rates[w_idx]"
+    },
+    "hrs_sleep_halves": {
+      "min": 14,
+      "max": 16
+    },
+    "hrs_sleep": {
+      "formula": "hrs_sleep_halves / 2"
+    },
+    "hrs_sit_halves": {
+      "min": 15,
+      "max": 18
+    },
+    "hrs_sit": {
+      "formula": "hrs_sit_halves / 2"
+    },
+    "hrs_tv_halves": {
+      "min": 2,
+      "max": 4
+    },
+    "hrs_tv": {
+      "formula": "hrs_tv_halves / 2"
+    },
+    "hrs_read_halves": {
+      "min": 2,
+      "max": 4
+    },
+    "hrs_read": {
+      "formula": "hrs_read_halves / 2"
+    },
+    "hrs_jog_halves": {
+      "min": 1,
+      "max": 3
+    },
+    "hrs_jog": {
+      "formula": "hrs_jog_halves / 2"
+    },
+    "hrs_walk": {
+      "formula": "24 - (hrs_sleep + hrs_sit + hrs_tv + hrs_read + hrs_jog)"
+    },
+    "cal_sleep": {
+      "formula": "Math.round(hrs_sleep * r_sleep)"
+    },
+    "cal_sit": {
+      "formula": "Math.round(hrs_sit * r_sit)"
+    },
+    "cal_tv": {
+      "formula": "Math.round(hrs_tv * r_tv)"
+    },
+    "cal_read": {
+      "formula": "Math.round(hrs_read * r_read)"
+    },
+    "cal_walk": {
+      "formula": "Math.round(hrs_walk * r_walk)"
+    },
+    "cal_jog": {
+      "formula": "Math.round(hrs_jog * r_jog)"
+    },
+    "total_burned": {
+      "formula": "cal_sleep + cal_sit + cal_tv + cal_read + cal_walk + cal_jog"
+    },
+    "weekly_deficit": {
+      "formula": "Math.round(loss_lb_wk * 3500)"
+    },
+    "daily_deficit": {
+      "formula": "Math.round(weekly_deficit / 7)"
+    },
+    "daily_intake": {
+      "formula": "total_burned - daily_deficit"
+    },
+    "hrs_sleep_str": {
+      "formula": "hrs_sleep.toString()"
+    },
+    "hrs_sit_str": {
+      "formula": "hrs_sit.toString()"
+    },
+    "hrs_tv_str": {
+      "formula": "hrs_tv.toString()"
+    },
+    "hrs_read_str": {
+      "formula": "hrs_read.toString()"
+    },
+    "hrs_walk_str": {
+      "formula": "hrs_walk.toString()"
+    },
+    "hrs_jog_str": {
+      "formula": "hrs_jog.toString()"
+    },
+    "cal_sleep_str": {
+      "formula": "cal_sleep.toString()"
+    },
+    "cal_sit_str": {
+      "formula": "cal_sit.toString()"
+    },
+    "cal_tv_str": {
+      "formula": "cal_tv.toString()"
+    },
+    "cal_read_str": {
+      "formula": "cal_read.toString()"
+    },
+    "cal_walk_str": {
+      "formula": "cal_walk.toString()"
+    },
+    "cal_jog_str": {
+      "formula": "cal_jog.toString()"
+    },
+    "total_burned_str": {
+      "formula": "total_burned.toString()"
+    },
+    "weekly_deficit_str": {
+      "formula": "weekly_deficit.toString()"
+    },
+    "daily_deficit_str": {
+      "formula": "daily_deficit.toString()"
+    },
+    "daily_intake_str": {
+      "formula": "daily_intake.toString()"
+    },
+    "chart_html": {
+      "formula": "'<div style=\"display:flex;flex-direction:column;gap:12px;max-width:440px;font-family:sans-serif;font-size:13px\"><table style=\"border-collapse:collapse;width:100%;text-align:center;background:#fff\"><thead><tr style=\"background:#f1f5f9\"><th colspan=\"5\" style=\"border:1px solid #cbd5e1;padding:6px 8px\">Calories Burned per Hour by Activity &amp; Body Weight</th></tr><tr style=\"background:#f8fafc\"><th style=\"border:1px solid #cbd5e1;padding:5px 6px;text-align:left\">Activity</th><th style=\"border:1px solid #cbd5e1;padding:5px 6px\">130 lb</th><th style=\"border:1px solid #cbd5e1;padding:5px 6px\">160 lb</th><th style=\"border:1px solid #cbd5e1;padding:5px 6px\">190 lb</th><th style=\"border:1px solid #cbd5e1;padding:5px 6px\">220 lb</th></tr></thead><tbody><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Sleeping</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">46</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">56</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">67</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">77</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Watching TV</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">59</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">73</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">86</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">100</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Reading</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">65</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">80</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">95</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">110</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Sitting at a desk</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">75</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">92</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">110</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">127</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Walking (3 mph)</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">180</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">222</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">263</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">305</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Jogging (5 mph)</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">472</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">581</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">690</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">799</td></tr></tbody></table><table style=\"border-collapse:collapse;width:100%;text-align:center;background:#fff\"><thead><tr style=\"background:#f1f5f9\"><th colspan=\"4\" style=\"border:1px solid #cbd5e1;padding:5px 8px\">Reference: Estimated Daily Calorie Needs by Age &amp; Gender</th></tr><tr style=\"background:#f8fafc\"><th style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Gender</th><th style=\"border:1px solid #cbd5e1;padding:4px 6px\">Age 19&ndash;30</th><th style=\"border:1px solid #cbd5e1;padding:4px 6px\">Age 31&ndash;50</th><th style=\"border:1px solid #cbd5e1;padding:4px 6px\">Age 51+</th></tr></thead><tbody><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Female (Moderately Active)</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2,000&ndash;2,200</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2,000</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">1,800</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px;text-align:left\">Male (Moderately Active)</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2,600&ndash;2,800</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2,400&ndash;2,600</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2,200&ndash;2,400</td></tr></tbody></table></div>'"
+    }
+  },
+  "question": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:20px;align-items:flex-start\"><div style=\"flex:1 1 320px;min-width:280px\">{person_name} weighs <b>{weight_lb} lb</b> and wants to lose <b>{loss_lb_str} lb per week</b> (1 lb of body weight &approx; 3,500 calories). On a typical 24-hour day, {person_sub_low} spends <b>{hrs_sleep_str} hours</b> sleeping, <b>{hrs_sit_str} hours</b> sitting at a desk, <b>{hrs_tv_str} hours</b> watching TV, <b>{hrs_read_str} hours</b> reading, <b>{hrs_jog_str} hours</b> jogging (5 mph), and the remaining <b>{hrs_walk_str} hours</b> walking (3 mph).<br><br><b>A)</b> Calculate the total calories {person_name} burns in a 24-hour day.<br><b>B)</b> Determine the daily calorie intake target needed to lose {loss_lb_str} lb per week.<div style=\"height:120px\"></div></div><div style=\"flex:0 0 auto\">{chart_html}</div></div>",
+  "answer": "<div style=\"line-height:1.6\"><b>A) Total Daily Calories Burned (at {weight_lb} lb):</b><ul style=\"margin:6px 0 10px 20px;padding:0\"><li>Sleeping: {hrs_sleep_str} hr &times; {r_sleep} cal/hr = <b>{cal_sleep_str} cal</b></li><li>Sitting at a desk: {hrs_sit_str} hr &times; {r_sit} cal/hr = <b>{cal_sit_str} cal</b></li><li>Watching TV: {hrs_tv_str} hr &times; {r_tv} cal/hr = <b>{cal_tv_str} cal</b></li><li>Reading: {hrs_read_str} hr &times; {r_read} cal/hr = <b>{cal_read_str} cal</b></li><li>Walking (3 mph): {hrs_walk_str} hr &times; {r_walk} cal/hr = <b>{cal_walk_str} cal</b></li><li>Jogging (5 mph): {hrs_jog_str} hr &times; {r_jog} cal/hr = <b>{cal_jog_str} cal</b></li></ul>Total Daily Calories Burned = {cal_sleep_str} + {cal_sit_str} + {cal_tv_str} + {cal_read_str} + {cal_walk_str} + {cal_jog_str} = <b>{total_burned_str} calories</b><br><br><b>B) Daily Calorie Intake Target:</b><br>Weekly calorie deficit = {loss_lb_str} lb &times; 3,500 cal/lb = <b>{weekly_deficit_str} calories/week</b><br>Daily calorie deficit = {weekly_deficit_str} &divide; 7 days = <b>{daily_deficit_str} calories/day</b><br>Daily Calorie Intake Target = {total_burned_str} &minus; {daily_deficit_str} = <b>{daily_intake_str} calories/day</b></div>"
 }
 
 
