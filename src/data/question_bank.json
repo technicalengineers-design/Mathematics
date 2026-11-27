@@ -21817,7 +21817,83 @@
   },
   "question": "A family bought a {appliance_name} for \\( \\${init_price_str} \\). The energy used is expected to cost \\( \\${avg_energy_cost_str} \\) per year at \\( {avg_rate_cents}\\text{&cent;/kWh} \\). One repair during its \\( {lifespan_yrs}\\text{-year} \\) life at about \\( {repair_pct_str}\\% \\) of the initial price is expected. Electricity in the owner’s area averages \\( {local_rate_str}\\text{&cent;/kWh} \\).<br><br>Find the annual cost to own and operate this unit. (Round to the nearest cent.)",
   "answer": "<b>Step 1: Find the expected repair cost</b><br>• Multiply the initial price by \\( {repair_pct_str}\\% \\):<br>\\( \\${init_price_str} \\times {repair_dec_str} = \\${repair_total_str} \\)<br><br><b>Step 2: Calculate the annual electricity cost at the local rate</b><br>• Find annual kilowatt-hours used: \\( \\frac{\\${avg_energy_cost_str}}{\\${avg_rate_dol_str}/\\text{kWh}} = {annual_kwh_str}\\text{ kWh/yr} \\)<br>• Multiply by the local rate of \\( {local_rate_str}\\text{&cent;/kWh} \\) (\\( \\${local_rate_dol_str}/\\text{kWh} \\)):<br>\\( {annual_kwh_str}\\text{ kWh/yr} \\times \\${local_rate_dol_str}/\\text{kWh} = \\${local_energy_cost_str}\\text{ per year} \\)<br><br><b>Step 3: Find the total cost over the \\( {lifespan_yrs}\\text{-year} \\) lifespan</b><br>• Total electricity over \\( {lifespan_yrs} \\) years: \\( \\${local_energy_cost_str} \\times {lifespan_yrs} = \\${total_energy_life_str} \\)<br>• Add initial purchase price, repair cost, and total electricity:<br>\\( \\${init_price_str} + \\${repair_total_str} + \\${total_energy_life_str} = \\${total_life_cost_str} \\)<br><br><b>Step 4: Divide by the \\( {lifespan_yrs}\\text{-year} \\) lifespan to find the annual cost</b><br>• \\( \\frac{\\${total_life_cost_str}}{{lifespan_yrs}\\text{ years}} = \\) <b>\\( \\${annual_total_cost_str}\\text{ per year} \\)</b><br><br><b>Final Answer:</b><br>The annual cost to own and operate the {appliance_name} is <b>\\( \\${annual_total_cost_str} \\)</b>."
+},
+{
+  "id": "CM 8.4 CPI-U Calculations",
+  "title": "CM 8.4 CPI-U Calculations",
+  "type": "template",
+  "objective": "Use a historical Consumer Price Index (CPI-U) table to adjust a weekly grocery budget for inflation between two years",
+  "difficulty": "basic",
+  "variables": {
+    "shoppers_pool": {
+      "formula": "['Mrs. Magnuson', 'Mr. Henderson', 'Ms. Delgado', 'Mr. Kowalski', 'Mrs. Takahashi', 'Dr. Alvarez']"
+    },
+    "s_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "shopper_name": {
+      "formula": "shoppers_pool[s_idx]"
+    },
+    "years_pool": {
+      "formula": "['1970', '1975', '1980', '1985', '1990', '1995', '2000', '2005', '2010', '2015', '2017', '2020', '2023']"
+    },
+    "cpi_pool": {
+      "formula": "[38.8, 53.8, 82.4, 107.6, 130.7, 152.4, 172.2, 195.3, 218.056, 237.017, 245.120, 258.811, 304.702]"
+    },
+    "cpi_str_pool": {
+      "formula": "['38.8', '53.8', '82.4', '107.6', '130.7', '152.4', '172.2', '195.3', '218.056', '237.017', '245.120', '258.811', '304.702']"
+    },
+    "start_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "end_idx": {
+      "min": 7,
+      "max": 12
+    },
+    "start_year": {
+      "formula": "years_pool[start_idx]"
+    },
+    "end_year": {
+      "formula": "years_pool[end_idx]"
+    },
+    "start_cpi": {
+      "formula": "cpi_pool[start_idx]"
+    },
+    "end_cpi": {
+      "formula": "cpi_pool[end_idx]"
+    },
+    "start_cpi_str": {
+      "formula": "cpi_str_pool[start_idx]"
+    },
+    "end_cpi_str": {
+      "formula": "cpi_str_pool[end_idx]"
+    },
+    "budget_fives": {
+      "min": 5,
+      "max": 14
+    },
+    "orig_budget_num": {
+      "formula": "budget_fives * 5"
+    },
+    "orig_budget_str": {
+      "formula": "orig_budget_num.toFixed(2)"
+    },
+    "adj_budget_num": {
+      "formula": "Math.round((orig_budget_num * (end_cpi / start_cpi)) * 100) / 100"
+    },
+    "adj_budget_str": {
+      "formula": "adj_budget_num.toFixed(2)"
+    },
+    "cpi_table_html": {
+      "formula": "'<table style=\"border-collapse:collapse;width:100%;max-width:340px;font-family:sans-serif;font-size:13px;text-align:center;background:#fff\"><thead><tr style=\"background:#f1f5f9\"><th colspan=\"4\" style=\"border:1px solid #cbd5e1;padding:6px 8px\">Historical CPI-U Annual Averages (1982&ndash;84 = 100)</th></tr><tr style=\"background:#f8fafc\"><th style=\"border:1px solid #cbd5e1;padding:4px 6px\">Year</th><th style=\"border:1px solid #cbd5e1;padding:4px 6px\">CPI-U</th><th style=\"border:1px solid #cbd5e1;padding:4px 6px\">Year</th><th style=\"border:1px solid #cbd5e1;padding:4px 6px\">CPI-U</th></tr></thead><tbody><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">1970</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">38.8</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2005</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">195.3</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">1975</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">53.8</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2010</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">218.056</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">1980</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">82.4</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2015</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">237.017</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">1985</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">107.6</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2017</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">245.120</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">1990</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">130.7</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2020</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">258.811</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">1995</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">152.4</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2023</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">304.702</td></tr><tr><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">2000</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">172.2</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">&mdash;</td><td style=\"border:1px solid #cbd5e1;padding:4px 6px\">&mdash;</td></tr></tbody></table>'"
+    }
+  },
+  "question": "<div style=\"display:grid;grid-template-columns:minmax(0,340px) minmax(220px,1fr);align-items:start;gap:20px\"><div>{cpi_table_html}</div><div>In <b>{start_year}</b>, {shopper_name}’s grocery budget was <b>\\( \\${orig_budget_str} \\) per week</b>.<br><br>Using the historical CPI-U table, what would the weekly grocery budget have been in <b>{end_year}</b> to buy the same amount of groceries? (Round to the nearest cent.)</div></div>",
+  "answer": "<b>Step 1: Look up the CPI-U values for both years in the table</b><br>• CPI-U for <b>{start_year}</b>: \\( {start_cpi_str} \\)<br>• CPI-U for <b>{end_year}</b>: \\( {end_cpi_str} \\)<br><br><b>Step 2: Set up the CPI-U inflation adjustment formula</b><br>\\( \\text{Cost in {end_year}} = \\text{Cost in {start_year}} \\times \\frac{\\text{CPI-U}_{{{end_year}}}}{\\text{CPI-U}_{{{start_year}}}} \\)<br><br>Substitute the values into the formula:<br>\\( \\text{Cost in {end_year}} = \\${orig_budget_str} \\times \\frac{{end_cpi_str}}{{start_cpi_str}} \\approx \\) <b>\\( \\${adj_budget_str} \\)</b><br><br><b>Final Answer:</b><br>In {end_year}, {shopper_name}’s grocery budget would have been <b>\\( \\${adj_budget_str} \\) per week</b> to buy the same amount of groceries."
 }
+
 
 
 
