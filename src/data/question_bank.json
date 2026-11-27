@@ -21509,7 +21509,99 @@
   },
   "question": "Calculate the savings realized by purchasing a \\( {bulk_wt_str}\\text{ lb} \\) {bulk_container} of {food_item} for \\( \\${bulk_price_str} \\), if {food_item} sell for \\( \\${small_price_str} \\) per \\( {small_wt_str}\\text{ lb} \\) bag in the store.",
   "answer": "<b>Step 1: Find how many smaller bags equal the weight of the bulk {bulk_container}</b><br>• Divide the bulk weight by the weight of one smaller bag:<br>\\( {bulk_wt_str}\\text{ lb} \\div {small_wt_str}\\text{ lb} = {bag_mult_str}\\text{ bags} \\)<br><br><b>Step 2: Calculate the total cost of buying \\( {bag_mult_str} \\) smaller bags in the store</b><br>• Multiply the number of bags by the price per bag:<br>\\( {bag_mult_str} \\times \\${small_price_str} = \\${retail_total_str} \\)<br><br><b>Step 3: Subtract the bulk {bulk_container} price to find the savings</b><br>• Subtract the bulk price from the total store bag cost:<br>\\( \\${retail_total_str} - \\${bulk_price_str} = \\) <b>\\( \\${savings_str} \\)</b><br><br><b>Final Answer:</b><br>Purchasing the \\( {bulk_wt_str}\\text{ lb} \\) {bulk_container} saves <b>\\( \\${savings_str} \\)</b>."
+},
+{
+  "id": "CM 8.3b Freezer Purchase",
+  "title": "CM 8.3b Freezer Purchase",
+  "type": "template",
+  "objective": "Calculate annual grocery savings, net annual savings after operating costs, and the payback period for an appliance purchase",
+  "difficulty": "basic",
+  "variables": {
+    "couples_pool": {
+      "formula": "['Lisa and Rob', 'Maya and Devon', 'Elena and Carlos', 'Hannah and Noah', 'Priya and Sam', 'Chloe and Liam']"
+    },
+    "couple_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "couple_name": {
+      "formula": "couples_pool[couple_idx]"
+    },
+    "freezer_hundreds": {
+      "min": 5,
+      "max": 9
+    },
+    "freezer_cost_num": {
+      "formula": "freezer_hundreds * 100 - 1"
+    },
+    "op_cost_num": {
+      "min": 45,
+      "max": 75
+    },
+    "budget_tens": {
+      "min": 10,
+      "max": 18
+    },
+    "weekly_budget_num": {
+      "formula": "budget_tens * 10"
+    },
+    "save_pct_num": {
+      "min": 10,
+      "max": 20
+    },
+    "save_dec": {
+      "formula": "save_pct_num / 100"
+    },
+    "weekly_save_num": {
+      "formula": "Math.round(weekly_budget_num * save_dec * 100) / 100"
+    },
+    "gross_annual_save_num": {
+      "formula": "Math.round(weekly_save_num * 52 * 100) / 100"
+    },
+    "net_annual_save_num": {
+      "formula": "Math.round((gross_annual_save_num - op_cost_num) * 100) / 100"
+    },
+    "payback_years_num": {
+      "formula": "Math.round((freezer_cost_num / net_annual_save_num) * 10) / 10"
+    },
+    "payback_months_num": {
+      "formula": "Math.round((freezer_cost_num / net_annual_save_num) * 12)"
+    },
+    "freezer_cost_str": {
+      "formula": "freezer_cost_num.toFixed(2)"
+    },
+    "op_cost_str": {
+      "formula": "op_cost_num.toFixed(2)"
+    },
+    "weekly_budget_str": {
+      "formula": "weekly_budget_num.toFixed(2)"
+    },
+    "save_pct_str": {
+      "formula": "save_pct_num.toString()"
+    },
+    "save_dec_str": {
+      "formula": "save_dec.toFixed(2)"
+    },
+    "weekly_save_str": {
+      "formula": "weekly_save_num.toFixed(2)"
+    },
+    "gross_annual_save_str": {
+      "formula": "gross_annual_save_num.toFixed(2)"
+    },
+    "net_annual_save_str": {
+      "formula": "net_annual_save_num.toFixed(2)"
+    },
+    "payback_years_str": {
+      "formula": "payback_years_num.toFixed(1)"
+    },
+    "payback_months_str": {
+      "formula": "payback_months_num.toString()"
+    }
+  },
+  "question": "{couple_name} purchased a freezer for \\( \\${freezer_cost_str} \\) that costs \\( \\${op_cost_str} \\) per year to operate. If they can save \\( {save_pct_str}\\% \\) on their \\( \\${weekly_budget_str} \\) weekly grocery budget, what is the payback period for their new freezer? (Round to the nearest tenth of a year, or nearest month.)",
+  "answer": "<b>Step 1: Calculate the gross annual grocery savings</b><br>• Weekly savings: \\( \\${weekly_budget_str} \\times {save_dec_str} = \\${weekly_save_str}\\text{ per week} \\)<br>• Multiply by \\( 52 \\) weeks in a year:<br>\\( \\${weekly_save_str} \\times 52 = \\${gross_annual_save_str}\\text{ per year} \\)<br><br><b>Step 2: Subtract the annual operating cost to find net annual savings</b><br>• \\( \\${gross_annual_save_str} - \\${op_cost_str} = \\${net_annual_save_str}\\text{ net savings per year} \\)<br><br><b>Step 3: Divide the purchase price by the net annual savings</b><br>• \\( \\text{Payback Period} = \\frac{\\${freezer_cost_str}}{\\${net_annual_save_str}} \\approx \\) <b>\\( {payback_years_str}\\text{ years} \\)</b> (or about <b>\\( {payback_months_str}\\text{ months} \\)</b>)<br><br><b>Final Answer:</b><br>The payback period for the new freezer is approximately <b>\\( {payback_years_str}\\text{ years} \\)</b> (<b>\\( {payback_months_str}\\text{ months} \\)</b>)."
 }
+
 
 
 
