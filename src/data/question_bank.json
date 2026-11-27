@@ -20399,7 +20399,7 @@
       "values": [36, 48]
     },
     "rate2_a_pct": {
-      "formula": "Math.round((rate1_a_pct + 0.3) * 10) / 10"
+      "formula": "Math.round((rate1_a_pct + 0.6) * 10) / 10"
     },
     "rate2_a_dec": {
       "formula": "rate2_a_pct / 100"
@@ -20523,6 +20523,7 @@
   "question": "Compare the monthly payment, total amount repaid, and total interest paid for each pair of loans below.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:10px\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> Compare a loan of \\( \\${loan_a_str} \\) at \\( {rate1_a_str}\\%(12) \\) for \\( {term1_a} \\) months with one for \\( {rate2_a_str}\\%(12) \\) for \\( {term2_a} \\) months.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> Compare a loan of \\( \\${loan_b_str} \\) at \\( {rate1_b_str}\\%(12) \\) for \\( {term1_b} \\) months with one for \\( {rate2_b_str}\\%(12) \\) for \\( {term2_b} \\) months.<div style=\"height:100px\"></div></div></div>",
   "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A) Loan of \\( \\${loan_a_str} \\):</b><br>• <b>Loan 1 (\\( {rate1_a_str}\\%(12) \\), \\( {term1_a} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt1_a_str} \\)</b><br>Total Repaid: \\( \\${tot1_a_str} \\) (Interest: <b>\\( \\${int1_a_str} \\)</b>)<br>• <b>Loan 2 (\\( {rate2_a_str}\\%(12) \\), \\( {term2_a} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt2_a_str} \\)</b><br>Total Repaid: \\( \\${tot2_a_str} \\) (Interest: <b>\\( \\${int2_a_str} \\)</b>)<br>• <b>Comparison:</b> Loan 2 lowers the monthly payment by <b>\\( \\${pmt_diff_a_str} \\)</b>, but costs <b>\\( \\${int_diff_a_str} \\)</b> more in total interest.</div><div style=\"flex:1 1 280px;min-width:250px\"><b>B) Loan of \\( \\${loan_b_str} \\):</b><br>• <b>Loan 1 (\\( {rate1_b_str}\\%(12) \\), \\( {term1_b} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt1_b_str} \\)</b><br>Total Repaid: \\( \\${tot1_b_str} \\) (Interest: <b>\\( \\${int1_b_str} \\)</b>)<br>• <b>Loan 2 (\\( {rate2_b_str}\\%(12) \\), \\( {term2_b} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt2_b_str} \\)</b><br>Total Repaid: \\( \\${tot2_b_str} \\) (Interest: <b>\\( \\${int2_b_str} \\)</b>)<br>• <b>Comparison:</b> Loan 2 lowers the monthly payment by <b>\\( \\${pmt_diff_b_str} \\)</b>, but costs <b>\\( \\${int_diff_b_str} \\)</b> more in total interest.</div></div>"
 }
+
 
 
 
