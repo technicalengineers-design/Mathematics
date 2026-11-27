@@ -21075,6 +21075,33 @@
 }
 ],
      "8 Food": [ 
+{
+  "id": "CM 8.1 Name Helpful Tips for Grocery Shopping",
+  "title": "CM 8.1 Name Helpful Tips for Grocery Shopping",
+  "type": "template",
+  "objective": "Identify practical money-saving strategies and smart habits for grocery shopping",
+  "difficulty": "basic",
+  "variables": {
+    "tips_pool": {
+      "formula": "['Check news and online ads for specials.', 'Use coupons and sales, easy by phone number.', 'Calculate cost per weight or number.', 'Buy groceries when you are not hungry.', 'Stay within your food budget.', 'Stick to your grocery list. Avoid buying on impulse.']"
+    },
+    "skip_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "selected_tips": {
+      "formula": "tips_pool.filter(function(_, idx) { return idx !== skip_idx; })"
+    },
+    "omitted_tip": {
+      "formula": "tips_pool[skip_idx]"
+    },
+    "tips_list_html": {
+      "formula": "selected_tips.map(function(tip) { return '<li>' + tip + '</li>'; }).join('')"
+    }
+  },
+  "question": "Name five helpful tips for grocery shopping.<div style=\"height:120px\"></div>",
+  "answer": "<b>Sample Answer (any five of the following tips):</b><ul style=\"margin:6px 0 8px 18px;line-height:1.6\">{tips_list_html}</ul><div style=\"font-size:13px;color:#475569\"><i>(Other acceptable tip: {omitted_tip})</i></div>"
+}
 
      ], 
     "Summative 2": [
