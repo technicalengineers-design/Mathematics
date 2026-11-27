@@ -21103,8 +21103,60 @@
   "answer": "<b>Sample Answer (any five of the following tips):</b><ul style=\"margin:6px 0 8px 18px;line-height:1.6\">{tips_list_html}</ul><div style=\"font-size:13px;color:#475569\"><i>(Other acceptable tip: {omitted_tip})</i></div>"
 },
 {
-  "id": "CM 8.1b Grocery Costs",
-  "title": "CM 8.1b Grocery Costs",
+  "id": "CM 8.1b Yearly Savings",
+  "title": "CM 8.1b Yearly Savings",
+  "type": "template",
+  "objective": "Calculate weekly and annual grocery savings from a weekly food budget and coupon savings percentage",
+  "difficulty": "basic",
+  "variables": {
+    "budget_tens": {
+      "min": 9,
+      "max": 25
+    },
+    "weekly_budget_num": {
+      "formula": "budget_tens * 10"
+    },
+    "save_pct_pool": {
+      "formula": "[3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.5]"
+    },
+    "p_idx": {
+      "min": 0,
+      "max": 7
+    },
+    "save_pct": {
+      "formula": "save_pct_pool[p_idx]"
+    },
+    "save_dec": {
+      "formula": "save_pct / 100"
+    },
+    "weekly_save_num": {
+      "formula": "Math.round(weekly_budget_num * save_dec * 100) / 100"
+    },
+    "yearly_save_num": {
+      "formula": "Math.round(weekly_save_num * 52 * 100) / 100"
+    },
+    "weekly_budget_str": {
+      "formula": "weekly_budget_num.toString()"
+    },
+    "save_pct_str": {
+      "formula": "save_pct.toString()"
+    },
+    "save_dec_str": {
+      "formula": "save_dec.toString()"
+    },
+    "weekly_save_str": {
+      "formula": "weekly_save_num.toFixed(2)"
+    },
+    "yearly_save_str": {
+      "formula": "yearly_save_num.toFixed(2)"
+    }
+  },
+  "question": "If a household has a \\( \\${weekly_budget_str} \\) weekly food budget and saves about \\( {save_pct_str}\\% \\) of the budgeted amount per week using coupons, how much will they save for the year?",
+  "answer": "<b>Step 1: Calculate the weekly savings</b><br>• Convert \\( {save_pct_str}\\% \\) to a decimal (\\( {save_dec_str} \\)) and multiply by the weekly food budget:<br>\\( \\${weekly_budget_str} \\times {save_dec_str} = \\${weekly_save_str}\\text{ per week} \\)<br><br><b>Step 2: Calculate the total savings for the year</b><br>• Multiply the weekly savings by \\( 52 \\) weeks in a year:<br>\\( \\${weekly_save_str} \\times 52 = \\) <b>\\( \\${yearly_save_str} \\)</b><br><br><b>Final Answer:</b><br>The household will save <b>\\( \\${yearly_save_str} \\)</b> for the year."
+},
+{
+  "id": "CM 8.1c Grocery Costs",
+  "title": "CM 8.1c Grocery Costs",
   "type": "template",
   "objective": "Calculate the percentage saved using coupons and the final cost of groceries after deducting coupons and adding sales tax",
   "difficulty": "basic",
