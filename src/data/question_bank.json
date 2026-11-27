@@ -20237,7 +20237,139 @@
   },
   "question": "Find the monthly amount that you must put into a savings account offering \\( {apr_pct_str}\\%(12) \\) for \\( {save_years} \\) years to save \\( \\${goal_str} \\) (\\( \\${sticker_str} \\) sticker price plus \\( \\${tax_amt_str} \\) sales tax) for a new car.",
   "answer": "<b>Step 1: Identify the sinking fund variables</b><br>• Future value goal (\\( S \\)): \\( \\${sticker_str} + \\${tax_amt_str} = \\${goal_str} \\)<br>• Interest rate per monthly period (\\( i \\)): \\( \\frac{{apr_dec_str}}{12} = {monthly_rate_str} \\)<br>• Total number of monthly deposits (\\( n \\)): \\( {save_years}\\text{ years} \\times 12 = {num_months} \\)<br><br><b>Step 2: Apply the sinking fund payment formula</b><br>\\( R = \\frac{S \\cdot i}{(1 + i)^n - 1} \\)<br><br>Substitute the values into the formula:<br>\\( R = \\frac{{goal_str}({monthly_rate_str})}{(1 + {monthly_rate_str})^{{{num_months}}} - 1} \\)<br>\\( R \\approx \\) <b>\\( \\${monthly_deposit_str} \\)</b><br><br><b>Final Answer:</b><br>You must deposit <b>\\( \\${monthly_deposit_str} \\)</b> each month into the savings account."
+},
+{
+  "id": "CM 7.2c Cost Comparison",
+  "title": "CM 7.2c Cost Comparison",
+  "type": "template",
+  "objective": "Compare the total out-of-pocket cost of saving in advance versus financing a vehicle purchase",
+  "difficulty": "basic",
+  "variables": {
+    "buyers_pool": {
+      "formula": "['Jordan', 'Taylor', 'Elena', 'Marcus', 'Brianna', 'Caleb']"
+    },
+    "b_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "buyer_name": {
+      "formula": "buyers_pool[b_idx]"
+    },
+    "price_hundreds": {
+      "min": 180,
+      "max": 320
+    },
+    "car_price_num": {
+      "formula": "price_hundreds * 100"
+    },
+    "save_years": {
+      "min": 3,
+      "max": 5
+    },
+    "save_months": {
+      "formula": "save_years * 12"
+    },
+    "save_apr_pool": {
+      "formula": "[3, 4.5, 6]"
+    },
+    "sa_idx": {
+      "min": 0,
+      "max": 2
+    },
+    "save_apr_pct": {
+      "formula": "save_apr_pool[sa_idx]"
+    },
+    "save_apr_dec": {
+      "formula": "save_apr_pct / 100"
+    },
+    "save_i": {
+      "formula": "save_apr_dec / 12"
+    },
+    "save_pmt_num": {
+      "formula": "Math.round((car_price_num * save_i / (Math.pow(1 + save_i, save_months) - 1)) * 100) / 100"
+    },
+    "save_total_paid_num": {
+      "formula": "Math.round(save_pmt_num * save_months * 100) / 100"
+    },
+    "interest_earned_num": {
+      "formula": "Math.round((car_price_num - save_total_paid_num) * 100) / 100"
+    },
+    "loan_years": {
+      "min": 4,
+      "max": 6
+    },
+    "loan_months": {
+      "formula": "loan_years * 12"
+    },
+    "loan_apr_pool": {
+      "formula": "[6, 7.5, 9]"
+    },
+    "la_idx": {
+      "min": 0,
+      "max": 2
+    },
+    "loan_apr_pct": {
+      "formula": "loan_apr_pool[la_idx]"
+    },
+    "loan_apr_dec": {
+      "formula": "loan_apr_pct / 100"
+    },
+    "loan_i": {
+      "formula": "loan_apr_dec / 12"
+    },
+    "loan_pmt_num": {
+      "formula": "Math.round((car_price_num * loan_i / (1 - Math.pow(1 + loan_i, -loan_months))) * 100) / 100"
+    },
+    "loan_total_paid_num": {
+      "formula": "Math.round(loan_pmt_num * loan_months * 100) / 100"
+    },
+    "interest_paid_num": {
+      "formula": "Math.round((loan_total_paid_num - car_price_num) * 100) / 100"
+    },
+    "total_diff_num": {
+      "formula": "Math.round((loan_total_paid_num - save_total_paid_num) * 100) / 100"
+    },
+    "car_price_str": {
+      "formula": "car_price_num.toString()"
+    },
+    "save_apr_str": {
+      "formula": "save_apr_pct.toString()"
+    },
+    "save_i_str": {
+      "formula": "save_i.toString()"
+    },
+    "save_pmt_str": {
+      "formula": "save_pmt_num.toFixed(2)"
+    },
+    "save_total_paid_str": {
+      "formula": "save_total_paid_num.toFixed(2)"
+    },
+    "interest_earned_str": {
+      "formula": "interest_earned_num.toFixed(2)"
+    },
+    "loan_apr_str": {
+      "formula": "loan_apr_pct.toString()"
+    },
+    "loan_i_str": {
+      "formula": "loan_i.toString()"
+    },
+    "loan_pmt_str": {
+      "formula": "loan_pmt_num.toFixed(2)"
+    },
+    "loan_total_paid_str": {
+      "formula": "loan_total_paid_num.toFixed(2)"
+    },
+    "interest_paid_str": {
+      "formula": "interest_paid_num.toFixed(2)"
+    },
+    "total_diff_str": {
+      "formula": "total_diff_num.toFixed(2)"
+    }
+  },
+  "question": "{buyer_name} wants to buy a car with a total out-the-door price of \\( \\${car_price_str} \\) and is comparing two ways to pay for it:<br><div style=\"margin:10px 0 12px 16px;line-height:1.6\">• <b>Option A (Save First):</b> Deposit a fixed amount each month for \\( {save_years} \\) years into a savings account earning \\( {save_apr_str}\\%(12) \\) until reaching \\( \\${car_price_str} \\), then pay cash.<br>• <b>Option B (Finance Now):</b> Buy the car immediately with \\( \\$0 \\) down and finance the entire \\( \\${car_price_str} \\) at \\( {loan_apr_str}\\%(12) \\) for \\( {loan_years} \\) years.</div><b>(a)</b> Find the required monthly deposit and the total out-of-pocket cash deposited under <b>Option A</b>.<br><b>(b)</b> Find the monthly loan payment and the total amount repaid under <b>Option B</b>.<br><b>(c)</b> How much total money does {buyer_name} save by choosing Option A instead of Option B?",
+  "answer": "<b>(a) Option A (Save First — Sinking Fund):</b><br>• Monthly rate: \\( i = \\frac{{save_apr_pct}}{1200} = {save_i_str} \\), Months: \\( n = {save_years} \\times 12 = {save_months} \\)<br>• Monthly deposit: \\( R = \\frac{{car_price_str}({save_i_str})}{(1 + {save_i_str})^{{{save_months}}} - 1} \\approx \\) <b>\\( \\${save_pmt_str} \\)</b><br>• Total cash deposited out of pocket: \\( \\${save_pmt_str} \\times {save_months} = \\) <b>\\( \\${save_total_paid_str} \\)</b> (earning \\( \\${interest_earned_str} \\) in interest)<br><br><b>(b) Option B (Finance Now — Auto Loan):</b><br>• Monthly rate: \\( i = \\frac{{loan_apr_pct}}{1200} = {loan_i_str} \\), Months: \\( n = {loan_years} \\times 12 = {loan_months} \\)<br>• Monthly loan payment: \\( R = \\frac{{car_price_str}({loan_i_str})}{1 - (1 + {loan_i_str})^{-{loan_months}}} \\approx \\) <b>\\( \\${loan_pmt_str} \\)</b><br>• Total amount repaid: \\( \\${loan_pmt_str} \\times {loan_months} = \\) <b>\\( \\${loan_total_paid_str} \\)</b> (paying \\( \\${interest_paid_str} \\) in loan interest)<br><br><b>(c) Total Savings with Option A:</b><br>• Subtract the total out-of-pocket cost of Option A from Option B:<br>\\( \\${loan_total_paid_str} - \\${save_total_paid_str} = \\) <b>\\( \\${total_diff_str} \\)</b> saved."
 }
+
 
 
 ],
