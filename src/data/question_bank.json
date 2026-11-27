@@ -21076,7 +21076,7 @@
 ],
      "8 Food": [ 
 {
-  "id": "CM 8.1 Name Helpful Tips for Grocery Shopping",
+  "id": "CM 8.1a Name Helpful Tips for Grocery Shopping",
   "title": "CM 8.1 Name Helpful Tips for Grocery Shopping",
   "type": "template",
   "objective": "Identify practical money-saving strategies and smart habits for grocery shopping",
@@ -21101,7 +21101,82 @@
   },
   "question": "Name five helpful tips for grocery shopping.<div style=\"height:120px\"></div>",
   "answer": "<b>Sample Answer (any five of the following tips):</b><ul style=\"margin:6px 0 8px 18px;line-height:1.6\">{tips_list_html}</ul><div style=\"font-size:13px;color:#475569\"><i>(Other acceptable tip: {omitted_tip})</i></div>"
+},
+{
+  "id": "CM 8.1b Grocery Costs",
+  "title": "CM 8.1b Grocery Costs",
+  "type": "template",
+  "objective": "Calculate the percentage saved using coupons and the final cost of groceries after deducting coupons and adding sales tax",
+  "difficulty": "basic",
+  "variables": {
+    "sub_nickels": {
+      "min": 850,
+      "max": 1850
+    },
+    "subtotal_num": {
+      "formula": "Math.round(sub_nickels * 5) / 100"
+    },
+    "coup_quarters": {
+      "min": 12,
+      "max": 38
+    },
+    "coupon_num": {
+      "formula": "Math.round(coup_quarters * 25) / 100"
+    },
+    "tax_pool": {
+      "formula": "[4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0]"
+    },
+    "tx_idx": {
+      "min": 0,
+      "max": 6
+    },
+    "tax_pct": {
+      "formula": "tax_pool[tx_idx]"
+    },
+    "tax_dec": {
+      "formula": "tax_pct / 100"
+    },
+    "pct_saved_num": {
+      "formula": "Math.round((coupon_num / subtotal_num) * 1000) / 10"
+    },
+    "after_coupon_num": {
+      "formula": "Math.round((subtotal_num - coupon_num) * 100) / 100"
+    },
+    "sales_tax_num": {
+      "formula": "Math.round(after_coupon_num * tax_dec * 100) / 100"
+    },
+    "final_cost_num": {
+      "formula": "Math.round((after_coupon_num + sales_tax_num) * 100) / 100"
+    },
+    "subtotal_str": {
+      "formula": "subtotal_num.toFixed(2)"
+    },
+    "coupon_str": {
+      "formula": "coupon_num.toFixed(2)"
+    },
+    "tax_pct_str": {
+      "formula": "tax_pct.toString()"
+    },
+    "tax_dec_str": {
+      "formula": "tax_dec.toString()"
+    },
+    "pct_saved_str": {
+      "formula": "pct_saved_num.toFixed(1)"
+    },
+    "after_coupon_str": {
+      "formula": "after_coupon_num.toFixed(2)"
+    },
+    "sales_tax_str": {
+      "formula": "sales_tax_num.toFixed(2)"
+    },
+    "final_cost_str": {
+      "formula": "final_cost_num.toFixed(2)"
+    }
+  },
+  "question": "If the cashier rings up \\( \\${subtotal_str} \\) for groceries and then deducts \\( \\${coupon_str} \\) in coupons:<br><br><b>(a)</b> What is the percentage saved by coupons? (Round to the nearest tenth of a percent.)<br><b>(b)</b> Find the final cost of the groceries with \\( {tax_pct_str}\\% \\) sales tax on the discounted total.",
+  "answer": "<b>(a) Find the percentage saved by coupons:</b><br>• Divide the coupon savings by the original grocery total and multiply by \\( 100\\% \\):<br>\\( \\frac{\\${coupon_str}}{\\${subtotal_str}} \\times 100\\% \\approx \\) <b>\\( {pct_saved_str}\\% \\)</b><br><br><b>(b) Find the final cost with \\( {tax_pct_str}\\% \\) sales tax:</b><br>• Subtract the coupon deduction from the initial total:<br>\\( \\${subtotal_str} - \\${coupon_str} = \\${after_coupon_str} \\)<br>• Calculate the \\( {tax_pct_str}\\% \\) sales tax on the discounted amount:<br>\\( \\${after_coupon_str} \\times {tax_dec_str} = \\${sales_tax_str} \\)<br>• Add the sales tax to find the final cost:<br>\\( \\${after_coupon_str} + \\${sales_tax_str} = \\) <b>\\( \\${final_cost_str} \\)</b>"
 }
+
 
      ], 
     "Summative 2": [
