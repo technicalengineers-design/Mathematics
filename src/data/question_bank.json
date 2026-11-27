@@ -20147,6 +20147,96 @@
   },
   "question": "{buyer_name} has agreed to purchase a car for \\( \\${car_price_str} \\) with a \\( {down_pct}\\% \\) down payment. {buyer_sub} will finance the balance at \\( {apr_pct}\\%(12) \\) for \\( {loan_years} \\) years. There is a title fee of \\( \\${title_fee_str} \\), a registration fee of \\( \\${reg_fee_str} \\), and a processing fee of \\( \\${proc_fee_str} \\).<br><br><b>(a)</b> Find the total due for the vehicle including fees and \\( {tax_pct}\\% \\) sales tax.<br><b>(b)</b> Find the down payment.<br><b>(c)</b> Find the amount to be financed.<br><b>(d)</b> Find the monthly payment based on a \\( {loan_years}\\text{-year} \\) loan.",
   "answer": "<b>(a) Find the total due for the vehicle:</b><br>• Calculate the \\( {tax_pct}\\% \\) sales tax on the purchase price:<br>\\( \\${car_price_str} \\times {tax_dec} = \\${sales_tax_str} \\)<br>• Add the title, registration, and processing fees:<br>\\( \\${title_fee_str} + \\${reg_fee_str} + \\${proc_fee_str} = \\${total_fees_str} \\)<br>• Add the purchase price, sales tax, and fees:<br>\\( \\${car_price_str} + \\${sales_tax_str} + \\${total_fees_str} = \\) <b>\\( \\${total_due_str} \\)</b><br><br><b>(b) Find the down payment:</b><br>• Multiply the purchase price by \\( {down_pct}\\% \\):<br>\\( \\${car_price_str} \\times {down_dec} = \\) <b>\\( \\${down_pmt_str} \\)</b><br><br><b>(c) Find the amount to be financed:</b><br>• Subtract the down payment from the total due:<br>\\( \\${total_due_str} - \\${down_pmt_str} = \\) <b>\\( \\${financed_str} \\)</b><br><br><b>(d) Find the monthly payment (\\( {apr_pct}\\%(12) \\) for \\( \\${financed_str} \\)):</b><br>• Use the loan payment formula \\( R = \\frac{A \\cdot i}{1 - (1 + i)^{-n}} \\), where \\( A = {financed_str} \\), \\( i = \\frac{{apr_dec}}{12} \\), and \\( n = {loan_years} \\times 12 = {num_months} \\) months:<br>\\( R = \\frac{{financed_str} \\left(\\frac{{apr_dec}}{12}\\right)}{1 - \\left(1 + \\frac{{apr_dec}}{12}\\right)^{-{num_months}}} \\approx \\) <b>\\( \\${monthly_pmt_str} \\)</b>"
+},
+{
+  "id": "CM 7.2b Saving for a Car",
+  "title": "CM 7.2b Saving for a Car",
+  "type": "template",
+  "objective": "Calculate the required monthly sinking fund deposit to reach a future savings goal for a vehicle purchase",
+  "difficulty": "basic",
+  "variables": {
+    "sticker_hundreds": {
+      "min": 180,
+      "max": 350
+    },
+    "sticker_num": {
+      "formula": "sticker_hundreds * 100"
+    },
+    "tax_pct_pool": {
+      "formula": "[4, 5, 6, 7]"
+    },
+    "tx_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "tax_pct": {
+      "formula": "tax_pct_pool[tx_idx]"
+    },
+    "tax_dec": {
+      "formula": "tax_pct / 100"
+    },
+    "tax_amt_num": {
+      "formula": "Math.round(sticker_num * tax_dec)"
+    },
+    "goal_num": {
+      "formula": "sticker_num + tax_amt_num"
+    },
+    "apr_pool": {
+      "formula": "[3, 4.5, 6, 7.5, 9]"
+    },
+    "a_idx": {
+      "min": 0,
+      "max": 4
+    },
+    "apr_pct": {
+      "formula": "apr_pool[a_idx]"
+    },
+    "apr_dec": {
+      "formula": "apr_pct / 100"
+    },
+    "monthly_rate": {
+      "formula": "apr_dec / 12"
+    },
+    "years_pool": {
+      "formula": "[3, 4, 5, 6]"
+    },
+    "y_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "save_years": {
+      "formula": "years_pool[y_idx]"
+    },
+    "num_months": {
+      "formula": "save_years * 12"
+    },
+    "monthly_deposit_num": {
+      "formula": "Math.round((goal_num * monthly_rate / (Math.pow(1 + monthly_rate, num_months) - 1)) * 100) / 100"
+    },
+    "sticker_str": {
+      "formula": "sticker_num.toString()"
+    },
+    "tax_amt_str": {
+      "formula": "tax_amt_num.toString()"
+    },
+    "goal_str": {
+      "formula": "goal_num.toString()"
+    },
+    "apr_pct_str": {
+      "formula": "apr_pct.toString()"
+    },
+    "apr_dec_str": {
+      "formula": "apr_dec.toString()"
+    },
+    "monthly_rate_str": {
+      "formula": "monthly_rate.toString()"
+    },
+    "monthly_deposit_str": {
+      "formula": "monthly_deposit_num.toFixed(2)"
+    }
+  },
+  "question": "Find the monthly amount that you must put into a savings account offering \\( {apr_pct_str}\\%(12) \\) for \\( {save_years} \\) years to save \\( \\${goal_str} \\) (\\( \\${sticker_str} \\) sticker price plus \\( \\${tax_amt_str} \\) sales tax) for a new car.",
+  "answer": "<b>Step 1: Identify the sinking fund variables</b><br>• Future value goal (\\( S \\)): \\( \\${sticker_str} + \\${tax_amt_str} = \\${goal_str} \\)<br>• Interest rate per monthly period (\\( i \\)): \\( \\frac{{apr_dec_str}}{12} = {monthly_rate_str} \\)<br>• Total number of monthly deposits (\\( n \\)): \\( {save_years}\\text{ years} \\times 12 = {num_months} \\)<br><br><b>Step 2: Apply the sinking fund payment formula</b><br>\\( R = \\frac{S \\cdot i}{(1 + i)^n - 1} \\)<br><br>Substitute the values into the formula:<br>\\( R = \\frac{{goal_str}({monthly_rate_str})}{(1 + {monthly_rate_str})^{{{num_months}}} - 1} \\)<br>\\( R \\approx \\) <b>\\( \\${monthly_deposit_str} \\)</b><br><br><b>Final Answer:</b><br>You must deposit <b>\\( \\${monthly_deposit_str} \\)</b> each month into the savings account."
 }
 
 
