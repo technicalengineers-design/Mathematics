@@ -21600,7 +21600,93 @@
   },
   "question": "{couple_name} purchased a freezer for \\( \\${freezer_cost_str} \\) that costs \\( \\${op_cost_str} \\) per year to operate. If they can save \\( {save_pct_str}\\% \\) on their \\( \\${weekly_budget_str} \\) weekly grocery budget, what is the payback period for their new freezer? (Round to the nearest tenth of a year, or nearest month.)",
   "answer": "<b>Step 1: Calculate the gross annual grocery savings</b><br>• Weekly savings: \\( \\${weekly_budget_str} \\times {save_dec_str} = \\${weekly_save_str}\\text{ per week} \\)<br>• Multiply by \\( 52 \\) weeks in a year:<br>\\( \\${weekly_save_str} \\times 52 = \\${gross_annual_save_str}\\text{ per year} \\)<br><br><b>Step 2: Subtract the annual operating cost to find net annual savings</b><br>• \\( \\${gross_annual_save_str} - \\${op_cost_str} = \\${net_annual_save_str}\\text{ net savings per year} \\)<br><br><b>Step 3: Divide the purchase price by the net annual savings</b><br>• \\( \\text{Payback Period} = \\frac{\\${freezer_cost_str}}{\\${net_annual_save_str}} \\approx \\) <b>\\( {payback_years_str}\\text{ years} \\)</b> (or about <b>\\( {payback_months_str}\\text{ months} \\)</b>)<br><br><b>Final Answer:</b><br>The payback period for the new freezer is approximately <b>\\( {payback_years_str}\\text{ years} \\)</b> (<b>\\( {payback_months_str}\\text{ months} \\)</b>)."
+},
+{
+  "id": "CM 8.3c Freezer Operating Cost",
+  "title": "CM 8.3c Freezer Operating Cost",
+  "type": "template",
+  "objective": "Calculate expected annual appliance operating cost by finding annual kilowatt-hour usage and multiplying by the local electricity rate",
+  "difficulty": "basic",
+  "variables": {
+    "shoppers_pool": {
+      "formula": "['Mr. Jordan', 'Ms. Alvarez', 'Mr. Okafor', 'Mrs. Kowalski', 'Dr. Patel', 'Ms. Callahan']"
+    },
+    "subs_pool": {
+      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
+    },
+    "posses_pool": {
+      "formula": "['his', 'her', 'his', 'her', 'his', 'her']"
+    },
+    "s_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "shopper_name": {
+      "formula": "shoppers_pool[s_idx]"
+    },
+    "shopper_sub": {
+      "formula": "subs_pool[s_idx]"
+    },
+    "shopper_poss": {
+      "formula": "posses_pool[s_idx]"
+    },
+    "appliances_pool": {
+      "formula": "['refrigerator-freezer', 'chest freezer', 'upright freezer', 'Energy Star refrigerator', 'garage freezer', 'side-by-side refrigerator']"
+    },
+    "a_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "appliance_name": {
+      "formula": "appliances_pool[a_idx]"
+    },
+    "avg_rate_cents": {
+      "min": 10,
+      "max": 14
+    },
+    "kwh_tens": {
+      "min": 45,
+      "max": 85
+    },
+    "annual_kwh": {
+      "formula": "kwh_tens * 10"
+    },
+    "avg_cost_num": {
+      "formula": "Math.round((annual_kwh * avg_rate_cents / 100) * 100) / 100"
+    },
+    "local_tenths": {
+      "min": 135,
+      "max": 225
+    },
+    "local_rate_cents": {
+      "formula": "local_tenths / 10"
+    },
+    "local_cost_num": {
+      "formula": "Math.round((annual_kwh * local_rate_cents / 100) * 100) / 100"
+    },
+    "avg_rate_dol_str": {
+      "formula": "(avg_rate_cents / 100).toFixed(2)"
+    },
+    "local_rate_dol_str": {
+      "formula": "(local_rate_cents / 100).toFixed(3)"
+    },
+    "avg_cost_str": {
+      "formula": "avg_cost_num.toFixed(2)"
+    },
+    "local_cost_str": {
+      "formula": "local_cost_num.toFixed(2)"
+    },
+    "local_rate_str": {
+      "formula": "local_rate_cents.toFixed(1)"
+    },
+    "annual_kwh_str": {
+      "formula": "annual_kwh.toString()"
+    }
+  },
+  "question": "When {shopper_name} was shopping for a {appliance_name}, {shopper_sub} observed that the unit {shopper_sub} liked was expected to cost \\( \\${avg_cost_str} \\) per year to operate based on the average US cost of \\( {avg_rate_cents}\\text{&cent;/kWh} \\). How much should {shopper_sub} expect to pay per year if electricity in {shopper_poss} area costs \\( {local_rate_str}\\text{&cent;/kWh} \\)? (Round to the nearest cent.)",
+  "answer": "<b>Step 1: Find the appliance's annual electricity usage in kilowatt-hours (kWh)</b><br>• Convert \\( {avg_rate_cents}\\text{&cent;/kWh} \\) to dollars (\\( \\${avg_rate_dol_str}/\\text{kWh} \\)) and divide the expected annual cost by the average rate:<br>\\( \\text{Annual Usage} = \\frac{\\${avg_cost_str}}{\\${avg_rate_dol_str}/\\text{kWh}} = {annual_kwh_str}\\text{ kWh per year} \\)<br><br><b>Step 2: Multiply the annual kWh usage by the local electricity rate</b><br>• Convert \\( {local_rate_str}\\text{&cent;/kWh} \\) to dollars (\\( \\${local_rate_dol_str}/\\text{kWh} \\)):<br>\\( \\text{Expected Cost} = {annual_kwh_str}\\text{ kWh} \\times \\${local_rate_dol_str}/\\text{kWh} = \\) <b>\\( \\${local_cost_str} \\)</b><br><br><b>Final Answer:</b><br>{shopper_name} should expect to pay <b>\\( \\${local_cost_str} \\)</b> per year to operate the {appliance_name}."
 }
+
 
 
 
