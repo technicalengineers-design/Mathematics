@@ -20906,7 +20906,7 @@
       "formula": "'Find the mileage (in miles per gallon) for a car that went \\\\( ' + dist1_str + ' \\\\) miles on \\\\( ' + gal1_str + ' \\\\) gallons of gas.'"
     },
     "q_range": {
-      "formula": "'How far can a hybrid car be driven on one \\\\( ' + tank_gal_str + '\\text{-gallon} \\\\) tank of gasoline if it gets \\\\( ' + mpg2_str + ' \\\\) miles per gallon?'"
+      "formula": "'How far can a hybrid car be driven on one \\\\( ' + tank_gal_str + '\\\\text{-gallon} \\\\) tank of gasoline if it gets \\\\( ' + mpg2_str + ' \\\\) miles per gallon?'"
     },
     "a_mpg": {
       "formula": "'<b>Find the fuel mileage (mpg):</b><br>• Divide total miles driven by gallons of fuel used:<br>\\\\( \\\\text{Mileage} = \\\\frac{' + dist1_str + '\\\\text{ miles}}{' + gal1_str + '\\\\text{ gallons}} = \\\\) <b>\\\\( ' + mpg1_str + '\\\\text{ miles per gallon (mpg)} \\\\)</b>'"
@@ -20931,6 +20931,7 @@
   "question": "Solve both fuel usage problems below.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:10px\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {prompt_a}<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {prompt_b}<div style=\"height:90px\"></div></div></div>",
   "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {ans_a}</div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {ans_b}</div></div>"
 }
+
 
 
 
