@@ -21073,22 +21073,10 @@
   "question": "<div style=\"display:grid;grid-template-columns:minmax(0,440px) minmax(220px,1fr);align-items:start;gap:20px\"><div>{table_html}</div><div>{owner_name}’s {vehicle_type} has <b>\\( {target_mileage} \\) miles</b> on it, and {owner_sub} wants to get all the scheduled maintenance recommended for \\( {target_mileage} \\) miles in <b>Table 7.13</b> except the <b>{excl_name}</b>.<br><br>Find the total cost of the maintenance if labor is <b>\\( \\${labor_rate_str} \\) per hour</b> and sales tax is <b>\\( {tax_pct_str}\\% \\)</b> on the appropriate items (parts only).</div></div>",
   "answer": "<b>Step 1: Identify the included \\( {target_mileage}\\text{-mile} \\) services</b><br>Include all \\( {target_mileage}\\text{-mile} \\) items from Table 7.13 <i>except</i> the {excl_name} (and exclude the 90,000-mile transmission fluid flush).<br><br><b>Step 2: Calculate the total cost of parts and sales tax</b><br>• Sum the parts prices for the included services:<br>\\( \\text{Parts Subtotal} = \\${inc_p1} + \\${inc_p2} + \\${inc_p3} + \\${inc_p4} + \\${inc_p5} = \\${parts_sub_str} \\)<br>• Calculate the \\( {tax_pct_str}\\% \\) sales tax on parts only:<br>\\( \\text{Sales Tax} = \\${parts_sub_str} \\times {tax_dec_str} = \\${sales_tax_str} \\)<br><br><b>Step 3: Calculate the total labor cost</b><br>• Sum the labor hours for the included services:<br>\\( \\text{Total Hours} = {inc_h1} + {inc_h2} + {inc_h3} + {inc_h4} + {inc_h5} = {hours_sub_str}\\text{ hours} \\)<br>• Multiply total hours by the \\( \\${labor_rate_str}/\\text{hr} \\) labor rate:<br>\\( \\text{Labor Cost} = {hours_sub_str} \\times \\${labor_rate_str} = \\${labor_cost_str} \\)<br><br><b>Step 4: Find the grand total</b><br>Add the parts subtotal, sales tax on parts, and labor cost:<br>\\( \\${parts_sub_str} + \\${sales_tax_str} + \\${labor_cost_str} = \\) <b>\\( \\${total_cost_str} \\)</b><br><br><b>Final Answer:</b><br>The total cost of the scheduled maintenance is <b>\\( \\${total_cost_str} \\)</b>."
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ],
+     "8 Food": [ 
+
+     ], 
     "Summative 2": [
       {
         "id": "Sum 1 C 1-1a Solving Proportions",
