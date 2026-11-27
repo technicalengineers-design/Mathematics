@@ -21430,7 +21430,87 @@
   },
   "question": "<div style=\"font-size:15px;line-height:1.55;color:#111;\">{person_name} is buying {food_item} for the {event_name}. {person_name} wants to give each person a <b>{serving_oz} oz</b> serving. {prep_verb} will shrink the quantity by <b>{shrink_pct}%</b>. How much {food_item} should {person_name} buy for <b>{people_num} people</b>? (Give your answer in both ounces and pounds, rounded to the nearest hundredth.)<div style=\"height:130px;\"></div></div>",
   "answer": "<div style=\"font-size:15px;line-height:1.6;color:#111;\"><div><b>Step 1 &mdash; Find the total cooked/served weight needed:</b></div><div style=\"margin-left:14px;\">{people_num} people &times; {serving_oz} oz/person = <b>{total_served_oz} oz</b> (or {total_served_oz} &divide; 16 = <b>{total_served_lb_str} lb</b>)</div><div style=\"margin-top:6px;\"><b>Step 2 &mdash; Find the usable yield percentage after shrinkage:</b></div><div style=\"margin-left:14px;\">100% &minus; {shrink_pct}% = <b>{yield_pct}%</b> (or {yield_dec})</div><div style=\"margin-top:6px;\"><b>Step 3 &mdash; Divide the needed cooked amount by the yield percentage:</b></div><div style=\"margin-left:14px;\">Raw ounces to buy = {total_served_oz} oz &divide; {yield_dec} = <b>{raw_oz_str} oz</b></div><div style=\"margin-left:14px;\">Raw pounds to buy = {raw_oz_str} oz &divide; 16 oz/lb = <b>{raw_lb_str} lb</b></div></div>"
+},
+{
+  "id": "CM 8.3a Sacks",
+  "title": "CM 8.3a Sacks",
+  "type": "template",
+  "objective": "Calculate total dollar savings realized by purchasing a bulk sack instead of smaller retail bags of equal total weight",
+  "difficulty": "basic",
+  "variables": {
+    "items_pool": {
+      "formula": "['potatoes', 'white rice', 'all-purpose flour', 'pinto beans', 'rolled oats', 'sugar']"
+    },
+    "bulk_containers_pool": {
+      "formula": "['sack', 'bag', 'sack', 'bag', 'sack', 'bag']"
+    },
+    "item_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "food_item": {
+      "formula": "items_pool[item_idx]"
+    },
+    "bulk_container": {
+      "formula": "bulk_containers_pool[item_idx]"
+    },
+    "small_wt_num": {
+      "min": 4,
+      "max": 10
+    },
+    "bag_mult": {
+      "min": 5,
+      "max": 10
+    },
+    "bulk_wt_num": {
+      "formula": "small_wt_num * bag_mult"
+    },
+    "small_cents_per_lb": {
+      "min": 42,
+      "max": 68
+    },
+    "small_price_num": {
+      "formula": "Math.round((small_wt_num * small_cents_per_lb) / 5) * 5 / 100 - 0.01"
+    },
+    "retail_total_num": {
+      "formula": "Math.round(small_price_num * bag_mult * 100) / 100"
+    },
+    "bulk_discount_dol": {
+      "min": 5,
+      "max": 12
+    },
+    "bulk_price_num": {
+      "formula": "Math.max(8, Math.floor(retail_total_num) - bulk_discount_dol)"
+    },
+    "savings_num": {
+      "formula": "Math.round((retail_total_num - bulk_price_num) * 100) / 100"
+    },
+    "small_wt_str": {
+      "formula": "small_wt_num.toString()"
+    },
+    "bulk_wt_str": {
+      "formula": "bulk_wt_num.toString()"
+    },
+    "bag_mult_str": {
+      "formula": "bag_mult.toString()"
+    },
+    "small_price_str": {
+      "formula": "small_price_num.toFixed(2)"
+    },
+    "retail_total_str": {
+      "formula": "retail_total_num.toFixed(2)"
+    },
+    "bulk_price_str": {
+      "formula": "bulk_price_num.toFixed(2)"
+    },
+    "savings_str": {
+      "formula": "savings_num.toFixed(2)"
+    }
+  },
+  "question": "Calculate the savings realized by purchasing a \\( {bulk_wt_str}\\text{ lb} \\) {bulk_container} of {food_item} for \\( \\${bulk_price_str} \\), if {food_item} sell for \\( \\${small_price_str} \\) per \\( {small_wt_str}\\text{ lb} \\) bag in the store.",
+  "answer": "<b>Step 1: Find how many smaller bags equal the weight of the bulk {bulk_container}</b><br>• Divide the bulk weight by the weight of one smaller bag:<br>\\( {bulk_wt_str}\\text{ lb} \\div {small_wt_str}\\text{ lb} = {bag_mult_str}\\text{ bags} \\)<br><br><b>Step 2: Calculate the total cost of buying \\( {bag_mult_str} \\) smaller bags in the store</b><br>• Multiply the number of bags by the price per bag:<br>\\( {bag_mult_str} \\times \\${small_price_str} = \\${retail_total_str} \\)<br><br><b>Step 3: Subtract the bulk {bulk_container} price to find the savings</b><br>• Subtract the bulk price from the total store bag cost:<br>\\( \\${retail_total_str} - \\${bulk_price_str} = \\) <b>\\( \\${savings_str} \\)</b><br><br><b>Final Answer:</b><br>Purchasing the \\( {bulk_wt_str}\\text{ lb} \\) {bulk_container} saves <b>\\( \\${savings_str} \\)</b>."
 }
+
 
 
 
