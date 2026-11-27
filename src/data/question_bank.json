@@ -20368,7 +20368,162 @@
   },
   "question": "{buyer_name} wants to buy a car with a total out-the-door price of \\( \\${car_price_str} \\) and is comparing two ways to pay for it:<br><div style=\"margin:10px 0 12px 16px;line-height:1.6\">• <b>Option A (Save First):</b> Deposit a fixed amount each month for \\( {save_years} \\) years into a savings account earning \\( {save_apr_str}\\%(12) \\) until reaching \\( \\${car_price_str} \\), then pay cash.<br>• <b>Option B (Finance Now):</b> Buy the car immediately with \\( \\$0 \\) down and finance the entire \\( \\${car_price_str} \\) at \\( {loan_apr_str}\\%(12) \\) for \\( {loan_years} \\) years.</div><b>(a)</b> Find the required monthly deposit and the total out-of-pocket cash deposited under <b>Option A</b>.<br><b>(b)</b> Find the monthly loan payment and the total amount repaid under <b>Option B</b>.<br><b>(c)</b> How much total money does {buyer_name} save by choosing Option A instead of Option B?",
   "answer": "<b>(a) Option A (Save First — Sinking Fund):</b><br>• Monthly rate: \\( i = \\frac{{save_apr_pct}}{1200} = {save_i_str} \\), Months: \\( n = {save_years} \\times 12 = {save_months} \\)<br>• Monthly deposit: \\( R = \\frac{{car_price_str}({save_i_str})}{(1 + {save_i_str})^{{{save_months}}} - 1} \\approx \\) <b>\\( \\${save_pmt_str} \\)</b><br>• Total cash deposited out of pocket: \\( \\${save_pmt_str} \\times {save_months} = \\) <b>\\( \\${save_total_paid_str} \\)</b> (earning \\( \\${interest_earned_str} \\) in interest)<br><br><b>(b) Option B (Finance Now — Auto Loan):</b><br>• Monthly rate: \\( i = \\frac{{loan_apr_pct}}{1200} = {loan_i_str} \\), Months: \\( n = {loan_years} \\times 12 = {loan_months} \\)<br>• Monthly loan payment: \\( R = \\frac{{car_price_str}({loan_i_str})}{1 - (1 + {loan_i_str})^{-{loan_months}}} \\approx \\) <b>\\( \\${loan_pmt_str} \\)</b><br>• Total amount repaid: \\( \\${loan_pmt_str} \\times {loan_months} = \\) <b>\\( \\${loan_total_paid_str} \\)</b> (paying \\( \\${interest_paid_str} \\) in loan interest)<br><br><b>(c) Total Savings with Option A:</b><br>• Subtract the total out-of-pocket cost of Option A from Option B:<br>\\( \\${loan_total_paid_str} - \\${save_total_paid_str} = \\) <b>\\( \\${total_diff_str} \\)</b> saved."
+},
+{
+  "id": "CM 7.2d Loan Comparison",
+  "title": "CM 7.2d Loan Comparison",
+  "type": "template",
+  "objective": "Compare monthly payments, total amount repaid, and total interest between two auto loans with different terms and interest rates",
+  "difficulty": "basic",
+  "variables": {
+    "loan_a_hundreds": {
+      "min": 180,
+      "max": 320
+    },
+    "loan_a_num": {
+      "formula": "loan_a_hundreds * 10"
+    },
+    "rate1_a_tenths": {
+      "values": [48, 54, 60, 66, 72]
+    },
+    "rate1_a_pct": {
+      "formula": "rate1_a_tenths / 10"
+    },
+    "rate1_a_dec": {
+      "formula": "rate1_a_pct / 100"
+    },
+    "rate1_a_i": {
+      "formula": "rate1_a_dec / 12"
+    },
+    "term1_a": {
+      "values": [36, 48]
+    },
+    "rate2_a_pct": {
+      "formula": "Math.round((rate1_a_pct + 0.3) * 10) / 10"
+    },
+    "rate2_a_dec": {
+      "formula": "rate2_a_pct / 100"
+    },
+    "rate2_a_i": {
+      "formula": "rate2_a_dec / 12"
+    },
+    "term2_a": {
+      "values": [60, 72]
+    },
+    "pmt1_a_num": {
+      "formula": "Math.round((loan_a_num * rate1_a_i / (1 - Math.pow(1 + rate1_a_i, -term1_a))) * 100) / 100"
+    },
+    "tot1_a_num": {
+      "formula": "Math.round(pmt1_a_num * term1_a * 100) / 100"
+    },
+    "int1_a_num": {
+      "formula": "Math.round((tot1_a_num - loan_a_num) * 100) / 100"
+    },
+    "pmt2_a_num": {
+      "formula": "Math.round((loan_a_num * rate2_a_i / (1 - Math.pow(1 + rate2_a_i, -term2_a))) * 100) / 100"
+    },
+    "tot2_a_num": {
+      "formula": "Math.round(pmt2_a_num * term2_a * 100) / 100"
+    },
+    "int2_a_num": {
+      "formula": "Math.round((tot2_a_num - loan_a_num) * 100) / 100"
+    },
+    "pmt_diff_a_num": {
+      "formula": "Math.round((pmt1_a_num - pmt2_a_num) * 100) / 100"
+    },
+    "int_diff_a_num": {
+      "formula": "Math.round((int2_a_num - int1_a_num) * 100) / 100"
+    },
+
+    "loan_b_hundreds": {
+      "min": 180,
+      "max": 320,
+      "exclude": ["loan_a_hundreds"]
+    },
+    "loan_b_num": {
+      "formula": "loan_b_hundreds * 10"
+    },
+    "rate1_b_tenths": {
+      "values":,
+      "exclude": ["rate1_a_tenths"]
+    },
+    "rate1_b_pct": {
+      "formula": "rate1_b_tenths / 10"
+    },
+    "rate1_b_dec": {
+      "formula": "rate1_b_pct / 100"
+    },
+    "rate1_b_i": {
+      "formula": "rate1_b_dec / 12"
+    },
+    "term1_b": {
+      "values": [36, 48]
+    },
+    "rate2_b_pct": {
+      "formula": "Math.round((rate1_b_pct + 0.6) * 10) / 10"
+    },
+    "rate2_b_dec": {
+      "formula": "rate2_b_pct / 100"
+    },
+    "rate2_b_i": {
+      "formula": "rate2_b_dec / 12"
+    },
+    "term2_b": {
+      "values": [60, 72]
+    },
+    "pmt1_b_num": {
+      "formula": "Math.round((loan_b_num * rate1_b_i / (1 - Math.pow(1 + rate1_b_i, -term1_b))) * 100) / 100"
+    },
+    "tot1_b_num": {
+      "formula": "Math.round(pmt1_b_num * term1_b * 100) / 100"
+    },
+    "int1_b_num": {
+      "formula": "Math.round((tot1_b_num - loan_b_num) * 100) / 100"
+    },
+    "pmt2_b_num": {
+      "formula": "Math.round((loan_b_num * rate2_b_i / (1 - Math.pow(1 + rate2_b_i, -term2_b))) * 100) / 100"
+    },
+    "tot2_b_num": {
+      "formula": "Math.round(pmt2_b_num * term2_b * 100) / 100"
+    },
+    "int2_b_num": {
+      "formula": "Math.round((tot2_b_num - loan_b_num) * 100) / 100"
+    },
+    "pmt_diff_b_num": {
+      "formula": "Math.round((pmt1_b_num - pmt2_b_num) * 100) / 100"
+    },
+    "int_diff_b_num": {
+      "formula": "Math.round((int2_b_num - int1_b_num) * 100) / 100"
+    },
+
+    "loan_a_str": { "formula": "loan_a_num.toString()" },
+    "rate1_a_str": { "formula": "rate1_a_pct.toString()" },
+    "rate2_a_str": { "formula": "rate2_a_pct.toString()" },
+    "pmt1_a_str": { "formula": "pmt1_a_num.toFixed(2)" },
+    "tot1_a_str": { "formula": "tot1_a_num.toFixed(2)" },
+    "int1_a_str": { "formula": "int1_a_num.toFixed(2)" },
+    "pmt2_a_str": { "formula": "pmt2_a_num.toFixed(2)" },
+    "tot2_a_str": { "formula": "tot2_a_num.toFixed(2)" },
+    "int2_a_str": { "formula": "int2_a_num.toFixed(2)" },
+    "pmt_diff_a_str": { "formula": "pmt_diff_a_num.toFixed(2)" },
+    "int_diff_a_str": { "formula": "int_diff_a_num.toFixed(2)" },
+
+    "loan_b_str": { "formula": "loan_b_num.toString()" },
+    "rate1_b_str": { "formula": "rate1_b_pct.toString()" },
+    "rate2_b_str": { "formula": "rate2_b_pct.toString()" },
+    "pmt1_b_str": { "formula": "pmt1_b_num.toFixed(2)" },
+    "tot1_b_str": { "formula": "tot1_b_num.toFixed(2)" },
+    "int1_b_str": { "formula": "int1_b_num.toFixed(2)" },
+    "pmt2_b_str": { "formula": "pmt2_b_num.toFixed(2)" },
+    "tot2_b_str": { "formula": "tot2_b_num.toFixed(2)" },
+    "int2_b_str": { "formula": "int2_b_num.toFixed(2)" },
+    "pmt_diff_b_str": { "formula": "pmt_diff_b_num.toFixed(2)" },
+    "int_diff_b_str": { "formula": "int_diff_b_num.toFixed(2)" }
+  },
+  "question": "Compare the monthly payment, total amount repaid, and total interest paid for each pair of loans below.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:10px\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> Compare a loan of \\( \\${loan_a_str} \\) at \\( {rate1_a_str}\\%(12) \\) for \\( {term1_a} \\) months with one for \\( {rate2_a_str}\\%(12) \\) for \\( {term2_a} \\) months.<div style=\"height:100px\"></div></div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> Compare a loan of \\( \\${loan_b_str} \\) at \\( {rate1_b_str}\\%(12) \\) for \\( {term1_b} \\) months with one for \\( {rate2_b_str}\\%(12) \\) for \\( {term2_b} \\) months.<div style=\"height:100px\"></div></div></div>",
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A) Loan of \\( \\${loan_a_str} \\):</b><br>• <b>Loan 1 (\\( {rate1_a_str}\\%(12) \\), \\( {term1_a} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt1_a_str} \\)</b><br>Total Repaid: \\( \\${tot1_a_str} \\) (Interest: <b>\\( \\${int1_a_str} \\)</b>)<br>• <b>Loan 2 (\\( {rate2_a_str}\\%(12) \\), \\( {term2_a} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt2_a_str} \\)</b><br>Total Repaid: \\( \\${tot2_a_str} \\) (Interest: <b>\\( \\${int2_a_str} \\)</b>)<br>• <b>Comparison:</b> Loan 2 lowers the monthly payment by <b>\\( \\${pmt_diff_a_str} \\)</b>, but costs <b>\\( \\${int_diff_a_str} \\)</b> more in total interest.</div><div style=\"flex:1 1 280px;min-width:250px\"><b>B) Loan of \\( \\${loan_b_str} \\):</b><br>• <b>Loan 1 (\\( {rate1_b_str}\\%(12) \\), \\( {term1_b} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt1_b_str} \\)</b><br>Total Repaid: \\( \\${tot1_b_str} \\) (Interest: <b>\\( \\${int1_b_str} \\)</b>)<br>• <b>Loan 2 (\\( {rate2_b_str}\\%(12) \\), \\( {term2_b} \\) mos):</b><br>Monthly Payment: <b>\\( \\${pmt2_b_str} \\)</b><br>Total Repaid: \\( \\${tot2_b_str} \\) (Interest: <b>\\( \\${int2_b_str} \\)</b>)<br>• <b>Comparison:</b> Loan 2 lowers the monthly payment by <b>\\( \\${pmt_diff_b_str} \\)</b>, but costs <b>\\( \\${int_diff_b_str} \\)</b> more in total interest.</div></div>"
 }
+
 
 
 
