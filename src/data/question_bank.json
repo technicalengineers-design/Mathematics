@@ -21340,6 +21340,32 @@
   },
   "question": "Determine which {item_name} is the better value: a \\( {opt1_size}\\text{ {unit_label}} \\) {item_name} for \\( \\${opt1_price_str} \\) or a \\( {opt2_size}\\text{ {unit_label}} \\) {item_name} for \\( \\${opt2_price_str} \\).",
   "answer": "<b>Step 1: Find the unit price for the \\( {lg_size}\\text{ {unit_label}} \\) {item_name}</b><br>• Divide the price by the weight:<br>\\( \\frac{\\$ {lg_price_str}}{{lg_size}\\text{ {unit_label}}} \\approx \\${lg_unit_dol_str}\\text{ per {unit_label}} \\) (or <b>\\( {lg_unit_cents_str}\\text{&cent; per {unit_label}} \\)</b>)<br><br><b>Step 2: Find the unit price for the \\( {sm_size}\\text{ {unit_label}} \\) {item_name}</b><br>• Divide the price by the weight:<br>\\( \\frac{\\$ {sm_price_str}}{{sm_size}\\text{ {unit_label}}} \\approx \\${sm_unit_dol_str}\\text{ per {unit_label}} \\) (or <b>\\( {sm_unit_cents_str}\\text{&cent; per {unit_label}} \\)</b>)<br><br><b>Final Answer:</b><br>The <b>\\( {better_size}\\text{ {unit_label}} \\) {item_name} for \\( \\${better_price_str} \\)</b> is the better value because its unit price (\\( {better_cents_str}\\text{&cent;/{unit_label}} \\)) is lower than the other option (\\( {worse_cents_str}\\text{&cent;/{unit_label}} \\))."
+},
+{
+  "id": "CM 8.2b Serving Size and Shrinkage",
+  "title": "CM 8.2b Serving Size and Shrinkage",
+  "type": "template",
+  "objective": "Calculate raw food purchase quantity accounting for serving size and cooking shrinkage",
+  "difficulty": "basic",
+  "variables": [
+    {
+      "name": "data",
+      "type": "formula",
+      "formula": "(function() {\n  var pick = function(arr) { return arr[Math.floor(Math.random() * arr.length)]; };\n  var scenarios = [\n    { name: 'Angela', item: 'meat', event: 'Food Science class dinner', verb: 'Cutting off waste and cooking' },\n    { name: 'Marcus', item: 'chicken breast', event: 'culinary club banquet', verb: 'Trimming and grilling' },\n    { name: 'Sofia', item: 'roast beef', event: 'community fundraiser dinner', verb: 'Trimming fat and roasting' },\n    { name: 'Liam', item: 'pork loin', event: 'family reunion cookout', verb: 'Preparing and cooking' },\n    { name: 'Hannah', item: 'salmon fillets', event: 'hospitality class luncheon', verb: 'Skinning and baking' },\n    { name: 'David', item: 'turkey breast', event: 'faculty appreciation dinner', verb: 'Carving and roasting' }\n  ];\n  var sc = pick(scenarios);\n  var people = pick([16, 18, 20, 24, 25, 30, 32, 36, 40]);\n  var servingOz = pick([4, 5, 6, 7, 8]);\n  var shrinkPct = pick([5, 8, 10, 12, 15, 20]);\n  var yieldPct = 100 - shrinkPct;\n  var yieldDec = yieldPct / 100;\n\n  var totalServedOz = people * servingOz;\n  var totalServedLb = Math.round((totalServedOz / 16) * 1000) / 1000;\n  var rawOz = totalServedOz / yieldDec;\n  var rawLb = rawOz / 16;\n\n  var rawOzRound = Math.round(rawOz * 100) / 100;\n  var rawLbRound = Math.round(rawLb * 100) / 100;\n\n  var q = '<div style=\"font-size:15px;line-height:1.55;color:#111;\">' +\n    sc.name + ' is buying ' + sc.item + ' for the ' + sc.event + '. ' +\n    sc.name + ' wants to give each person a <b>' + servingOz + ' oz</b> serving. ' +\n    sc.verb + ' will shrink the quantity by <b>' + shrinkPct + '%</b>. ' +\n    'How much ' + sc.item + ' should ' + sc.name + ' buy for <b>' + people + ' people</b>? ' +\n    '(Give your answer in both ounces and pounds, rounded to the nearest hundredth.)' +\n    '<div style=\"height:130px;\"></div>' +\n  '</div>';\n\n  var a = '<div style=\"font-size:15px;line-height:1.6;color:#111;\">' +\n    '<div><b>Step 1 &mdash; Find the total cooked/served weight needed:</b></div>' +\n    '<div style=\"margin-left:14px;\">' + people + ' people &times; ' + servingOz + ' oz/person = <b>' + totalServedOz + ' oz</b>' +\n    ' (or ' + totalServedOz + ' &divide; 16 = <b>' + totalServedLb + ' lb</b>)</div>' +\n    '<div style=\"margin-top:6px;\"><b>Step 2 &mdash; Find the usable yield percentage after shrinkage:</b></div>' +\n    '<div style=\"margin-left:14px;\">100% &minus; ' + shrinkPct + '% = <b>' + yieldPct + '%</b> (or ' + yieldDec + ')</div>' +\n    '<div style=\"margin-top:6px;\"><b>Step 3 &mdash; Divide the needed cooked amount by the yield percentage:</b></div>' +\n    '<div style=\"margin-left:14px;\">Raw ounces to buy = ' + totalServedOz + ' oz &divide; ' + yieldDec + ' = <b>' + rawOzRound + ' oz</b></div>' +\n    '<div style=\"margin-left:14px;\">Raw pounds to buy = ' + rawOzRound + ' oz &divide; 16 oz/lb = <b>' + rawLbRound + ' lb</b></div>' +\n  '</div>';\n\n  return { q_html: q, a_html: a };\n})()"
+    },
+    {
+      "name": "q_html",
+      "type": "formula",
+      "formula": "data.q_html"
+    },
+    {
+      "name": "a_html",
+      "type": "formula",
+      "formula": "data.a_html"
+    }
+  ],
+  "question": "{q_html}",
+  "answer": "{a_html}"
 }
 
 
