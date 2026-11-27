@@ -21685,7 +21685,140 @@
   },
   "question": "When {shopper_name} was shopping for a {appliance_name}, {shopper_sub} observed that the unit {shopper_sub} liked was expected to cost \\( \\${avg_cost_str} \\) per year to operate based on the average US cost of \\( {avg_rate_cents}\\text{&cent;/kWh} \\). How much should {shopper_sub} expect to pay per year if electricity in {shopper_poss} area costs \\( {local_rate_str}\\text{&cent;/kWh} \\)? (Round to the nearest cent.)",
   "answer": "<b>Step 1: Find the appliance's annual electricity usage in kilowatt-hours (kWh)</b><br>• Convert \\( {avg_rate_cents}\\text{&cent;/kWh} \\) to dollars (\\( \\${avg_rate_dol_str}/\\text{kWh} \\)) and divide the expected annual cost by the average rate:<br>\\( \\text{Annual Usage} = \\frac{\\${avg_cost_str}}{\\${avg_rate_dol_str}/\\text{kWh}} = {annual_kwh_str}\\text{ kWh per year} \\)<br><br><b>Step 2: Multiply the annual kWh usage by the local electricity rate</b><br>• Convert \\( {local_rate_str}\\text{&cent;/kWh} \\) to dollars (\\( \\${local_rate_dol_str}/\\text{kWh} \\)):<br>\\( \\text{Expected Cost} = {annual_kwh_str}\\text{ kWh} \\times \\${local_rate_dol_str}/\\text{kWh} = \\) <b>\\( \\${local_cost_str} \\)</b><br><br><b>Final Answer:</b><br>{shopper_name} should expect to pay <b>\\( \\${local_cost_str} \\)</b> per year to operate the {appliance_name}."
+},
+{
+  "id": "CM 8.3c Freezer Cost to Own",
+  "title": "CM 8.3c Freezer Cost to Own",
+  "type": "template",
+  "objective": "Calculate the total annual cost to own and operate an appliance over its lifespan, including depreciation, expected repair costs, and local electricity costs",
+  "difficulty": "basic",
+  "variables": {
+    "appliances_pool": {
+      "formula": "['freezer', 'upright freezer', 'chest freezer', 'refrigerator-freezer', 'deep freezer', 'garage freezer']"
+    },
+    "a_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "appliance_name": {
+      "formula": "appliances_pool[a_idx]"
+    },
+    "price_fifties": {
+      "min": 13,
+      "max": 22
+    },
+    "init_price_num": {
+      "formula": "price_fifties * 50 - 1"
+    },
+    "avg_rate_cents": {
+      "min": 10,
+      "max": 14
+    },
+    "kwh_tens": {
+      "min": 30,
+      "max": 55
+    },
+    "annual_kwh": {
+      "formula": "kwh_tens * 10"
+    },
+    "avg_energy_cost_num": {
+      "formula": "Math.round((annual_kwh * avg_rate_cents / 100) * 100) / 100"
+    },
+    "lifespan_pool": {
+      "formula": "[12, 15, 16, 18, 20]"
+    },
+    "l_idx": {
+      "min": 0,
+      "max": 4
+    },
+    "lifespan_yrs": {
+      "formula": "lifespan_pool[l_idx]"
+    },
+    "repair_pct_pool": {
+      "formula": "[15, 20, 25]"
+    },
+    "rp_idx": {
+      "min": 0,
+      "max": 2
+    },
+    "repair_pct": {
+      "formula": "repair_pct_pool[rp_idx]"
+    },
+    "repair_dec": {
+      "formula": "repair_pct / 100"
+    },
+    "local_tenths": {
+      "min": 135,
+      "max": 215
+    },
+    "local_rate_cents": {
+      "formula": "local_tenths / 10"
+    },
+    "repair_total_num": {
+      "formula": "Math.round(init_price_num * repair_dec * 100) / 100"
+    },
+    "local_energy_cost_num": {
+      "formula": "Math.round((annual_kwh * local_rate_cents / 100) * 100) / 100"
+    },
+    "total_energy_life_num": {
+      "formula": "Math.round(local_energy_cost_num * lifespan_yrs * 100) / 100"
+    },
+    "total_life_cost_num": {
+      "formula": "Math.round((init_price_num + repair_total_num + total_energy_life_num) * 100) / 100"
+    },
+    "annual_total_cost_num": {
+      "formula": "Math.round((total_life_cost_num / lifespan_yrs) * 100) / 100"
+    },
+    "annual_purchase_num": {
+      "formula": "Math.round((init_price_num / lifespan_yrs) * 100) / 100"
+    },
+    "annual_repair_num": {
+      "formula": "Math.round((repair_total_num / lifespan_yrs) * 100) / 100"
+    },
+    "init_price_str": {
+      "formula": "init_price_num.toFixed(2)"
+    },
+    "avg_energy_cost_str": {
+      "formula": "avg_energy_cost_num.toFixed(2)"
+    },
+    "avg_rate_dol_str": {
+      "formula": "(avg_rate_cents / 100).toFixed(2)"
+    },
+    "local_rate_str": {
+      "formula": "local_rate_cents.toFixed(1)"
+    },
+    "local_rate_dol_str": {
+      "formula": "(local_rate_cents / 100).toFixed(3)"
+    },
+    "annual_kwh_str": {
+      "formula": "annual_kwh.toString()"
+    },
+    "repair_pct_str": {
+      "formula": "repair_pct.toString()"
+    },
+    "repair_dec_str": {
+      "formula": "repair_dec.toFixed(2)"
+    },
+    "repair_total_str": {
+      "formula": "repair_total_num.toFixed(2)"
+    },
+    "local_energy_cost_str": {
+      "formula": "local_energy_cost_num.toFixed(2)"
+    },
+    "total_energy_life_str": {
+      "formula": "total_energy_life_num.toFixed(2)"
+    },
+    "total_life_cost_str": {
+      "formula": "total_life_cost_num.toFixed(2)"
+    },
+    "annual_total_cost_str": {
+      "formula": "annual_total_cost_num.toFixed(2)"
+    }
+  },
+  "question": "A family bought a {appliance_name} for \\( \\${init_price_str} \\). The energy used is expected to cost \\( \\${avg_energy_cost_str} \\) per year at \\( {avg_rate_cents}\\text{&cent;/kWh} \\). One repair during its \\( {lifespan_yrs}\\text{-year} \\) life at about \\( {repair_pct_str}\\% \\) of the initial price is expected. Electricity in the owner’s area averages \\( {local_rate_str}\\text{&cent;/kWh} \\).<br><br>Find the annual cost to own and operate this unit. (Round to the nearest cent.)",
+  "answer": "<b>Step 1: Find the expected repair cost</b><br>• Multiply the initial price by \\( {repair_pct_str}\\% \\):<br>\\( \\${init_price_str} \\times {repair_dec_str} = \\${repair_total_str} \\)<br><br><b>Step 2: Calculate the annual electricity cost at the local rate</b><br>• Find annual kilowatt-hours used: \\( \\frac{\\${avg_energy_cost_str}}{\\${avg_rate_dol_str}/\\text{kWh}} = {annual_kwh_str}\\text{ kWh/yr} \\)<br>• Multiply by the local rate of \\( {local_rate_str}\\text{&cent;/kWh} \\) (\\( \\${local_rate_dol_str}/\\text{kWh} \\)):<br>\\( {annual_kwh_str}\\text{ kWh/yr} \\times \\${local_rate_dol_str}/\\text{kWh} = \\${local_energy_cost_str}\\text{ per year} \\)<br><br><b>Step 3: Find the total cost over the \\( {lifespan_yrs}\\text{-year} \\) lifespan</b><br>• Total electricity over \\( {lifespan_yrs} \\) years: \\( \\${local_energy_cost_str} \\times {lifespan_yrs} = \\${total_energy_life_str} \\)<br>• Add initial purchase price, repair cost, and total electricity:<br>\\( \\${init_price_str} + \\${repair_total_str} + \\${total_energy_life_str} = \\${total_life_cost_str} \\)<br><br><b>Step 4: Divide by the \\( {lifespan_yrs}\\text{-year} \\) lifespan to find the annual cost</b><br>• \\( \\frac{\\${total_life_cost_str}}{{lifespan_yrs}\\text{ years}} = \\) <b>\\( \\${annual_total_cost_str}\\text{ per year} \\)</b><br><br><b>Final Answer:</b><br>The annual cost to own and operate the {appliance_name} is <b>\\( \\${annual_total_cost_str} \\)</b>."
 }
+
 
 
 
