@@ -20724,7 +20724,215 @@
   },
   "question": "<div style=\"display:grid;grid-template-columns:minmax(0,320px) minmax(220px,1fr);align-items:start;gap:20px\"><div>{dep_table_html}</div><div>A \\( {car_age}\\text{-yr-old} \\) \\( \\${orig_price_str} \\) car depreciating according to <b>Table 7.4</b> is offered for <b>\\( \\${offered_price_str} \\)</b>.<br><br>Is this a good price based on the accumulated depreciation? Show your calculations to justify your answer.</div></div>",
   "answer": "<b>Step 1: Find the accumulated dollar depreciation</b><br>Sum the annual depreciation amounts for the first \\( {car_age} \\) years from Table 7.4:<br>\\( {dol_sum_expr} = \\) <b>\\( \\${accum_dep_str} \\)</b><br><br><b>Step 2: Calculate the expected value after \\( {car_age} \\) years</b><br>• Subtract the accumulated depreciation from the original price:<br>\\( \\${orig_price_str} - \\${accum_dep_str} = \\) <b>\\( \\${expected_val_str} \\)</b><br><br><b>Step 3: Compare the offered price to the expected value</b><br>{verdict_text}"
+},
+{
+  "id": "CM 7.5 Miles per Year",
+  "title": "CM 7.5 Miles per Year",
+  "type": "template",
+  "objective": "Calculate average annual mileage from weekly commuting and alternating vacation trips to select an appropriate vehicle lease mileage allowance",
+  "difficulty": "basic",
+  "variables": {
+    "drivers_pool": {
+      "formula": "['Mr. Kesselring', 'Ms. Alvarez', 'Mr. Takahashi', 'Mrs. Whitaker', 'Dr. Mensah', 'Ms. Callahan']"
+    },
+    "subs_pool": {
+      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
+    },
+    "posses_pool": {
+      "formula": "['his', 'her', 'his', 'her', 'his', 'her']"
+    },
+    "d_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "driver_name": {
+      "formula": "drivers_pool[d_idx]"
+    },
+    "driver_sub": {
+      "formula": "subs_pool[d_idx]"
+    },
+    "driver_sub_low": {
+      "formula": "driver_sub.toLowerCase()"
+    },
+    "driver_poss": {
+      "formula": "posses_pool[d_idx]"
+    },
+    "weekly_tens": {
+      "min": 18,
+      "max": 32
+    },
+    "weekly_miles": {
+      "formula": "weekly_tens * 10"
+    },
+    "vac_weeks": {
+      "min": 2,
+      "max": 4
+    },
+    "work_weeks": {
+      "formula": "52 - vac_weeks"
+    },
+    "commute_annual": {
+      "formula": "weekly_miles * work_weeks"
+    },
+    "long_trip_thousands": {
+      "min": 4,
+      "max": 7
+    },
+    "long_trip_miles": {
+      "formula": "long_trip_thousands * 1000"
+    },
+    "short_trip_hundreds": {
+      "min": 8,
+      "max": 20
+    },
+    "short_trip_miles": {
+      "formula": "short_trip_hundreds * 100"
+    },
+    "lease_mult": {
+      "min": 1,
+      "max": 2
+    },
+    "lease_years": {
+      "formula": "lease_mult * 2"
+    },
+    "half_years": {
+      "formula": "lease_years / 2"
+    },
+    "total_commute": {
+      "formula": "commute_annual * lease_years"
+    },
+    "total_vac": {
+      "formula": "half_years * (long_trip_miles + short_trip_miles)"
+    },
+    "total_lease_miles": {
+      "formula": "total_commute + total_vac"
+    },
+    "avg_annual_miles": {
+      "formula": "Math.round(total_lease_miles / lease_years)"
+    },
+    "low_limit_num": {
+      "formula": "Math.floor((avg_annual_miles - 800) / 1000) * 1000"
+    },
+    "high_limit_num": {
+      "formula": "Math.ceil((avg_annual_miles + 1200) / 1000) * 1000"
+    },
+    "is_high_first": {
+      "min": 0,
+      "max": 1
+    },
+    "opt1_num": {
+      "formula": "is_high_first === 1 ? high_limit_num : low_limit_num"
+    },
+    "opt2_num": {
+      "formula": "is_high_first === 1 ? low_limit_num : high_limit_num"
+    },
+    "overage_annual": {
+      "formula": "avg_annual_miles - low_limit_num"
+    },
+    "weekly_str": { "formula": "weekly_miles.toString()" },
+    "commute_annual_str": { "formula": "commute_annual.toString()" },
+    "long_trip_str": { "formula": "long_trip_miles.toString()" },
+    "short_trip_str": { "formula": "short_trip_miles.toString()" },
+    "total_commute_str": { "formula": "total_commute.toString()" },
+    "total_vac_str": { "formula": "total_vac.toString()" },
+    "total_lease_str": { "formula": "total_lease_miles.toString()" },
+    "avg_annual_str": { "formula": "avg_annual_miles.toString()" },
+    "low_limit_str": { "formula": "low_limit_num.toString()" },
+    "high_limit_str": { "formula": "high_limit_num.toString()" },
+    "opt1_str": { "formula": "opt1_num.toString()" },
+    "opt2_str": { "formula": "opt2_num.toString()" },
+    "overage_str": { "formula": "overage_annual.toString()" }
+  },
+  "question": "{driver_name} puts \\( {weekly_str} \\) miles on {driver_poss} car each week driving to and from work, except during {driver_poss} annual \\( {vac_weeks}\\text{-week} \\) vacation. {driver_sub} takes a \\( {long_trip_str}\\text{-mile} \\) vacation trip every other year and a \\( {short_trip_str}\\text{-mile} \\) trip in alternate years. Should {driver_sub_low} ask for a limit of \\( {opt1_str} \\) or \\( {opt2_str} \\) miles per year if {driver_sub_low} takes out a \\( {lease_years}\\text{-year} \\) lease?",
+  "answer": "<b>Step 1: Calculate annual commuting miles</b><br>• Subtract the \\( {vac_weeks} \\) vacation weeks from \\( 52 \\) weeks in a year:<br>\\( 52 - {vac_weeks} = {work_weeks}\\text{ commuting weeks per year} \\)<br>• Multiply by \\( {weekly_str} \\) miles per week:<br>\\( {work_weeks} \\times {weekly_str} = {commute_annual_str}\\text{ miles per year} \\)<br>• Over a \\( {lease_years}\\text{-year} \\) lease: \\( {commute_annual_str} \\times {lease_years} = {total_commute_str}\\text{ commuting miles} \\)<br><br><b>Step 2: Calculate total vacation miles over \\( {lease_years} \\) years</b><br>• Over \\( {lease_years} \\) years, {driver_sub_low} takes \\( {half_years} \\) long trip(s) of \\( {long_trip_str} \\) miles and \\( {half_years} \\) shorter trip(s) of \\( {short_trip_str} \\) miles:<br>\\( {half_years}({long_trip_str}) + {half_years}({short_trip_str}) = {total_vac_str}\\text{ vacation miles} \\)<br><br><b>Step 3: Find total lease mileage and average miles per year</b><br>• Total miles over \\( {lease_years} \\) years: \\( {total_commute_str} + {total_vac_str} = {total_lease_str}\\text{ miles} \\)<br>• Average miles per year: \\( \\frac{{total_lease_str}}{{lease_years}} = \\) <b>\\( {avg_annual_str}\\text{ miles per year} \\)</b><br><br><b>Final Answer:</b><br>{driver_name} should ask for the <b>\\( {high_limit_str} \\) miles per year</b> limit, because {driver_poss} average of \\( {avg_annual_str} \\) miles per year exceeds the \\( {low_limit_str}\\text{-mile} \\) limit by \\( {overage_str} \\) miles per year (which would result in costly excess-mileage penalties)."
+},
+{
+  "id": "CM 7.7 Fuel Usage",
+  "title": "CM 7.7 Fuel Usage",
+  "type": "template",
+  "objective": "Calculate fuel efficiency in miles per gallon and total driving distance given tank capacity and fuel economy",
+  "difficulty": "basic",
+  "variables": {
+    "is_mpg_first": {
+      "min": 0,
+      "max": 1
+    },
+    "mpg1_num": {
+      "min": 24,
+      "max": 38
+    },
+    "gal1_tenths": {
+      "min": 115,
+      "max": 175
+    },
+    "gal1_num": {
+      "formula": "gal1_tenths / 10"
+    },
+    "dist1_num": {
+      "formula": "Math.round(mpg1_num * gal1_num * 10) / 10"
+    },
+    "mpg1_str": {
+      "formula": "mpg1_num.toString()"
+    },
+    "gal1_str": {
+      "formula": "gal1_num.toFixed(1)"
+    },
+    "dist1_str": {
+      "formula": "dist1_num.toString()"
+    },
+
+    "tank_gal_num": {
+      "min": 10,
+      "max": 15
+    },
+    "mpg2_num": {
+      "min": 42,
+      "max": 56
+    },
+    "dist2_num": {
+      "formula": "tank_gal_num * mpg2_num"
+    },
+    "tank_gal_str": {
+      "formula": "tank_gal_num.toString()"
+    },
+    "mpg2_str": {
+      "formula": "mpg2_num.toString()"
+    },
+    "dist2_str": {
+      "formula": "dist2_num.toString()"
+    },
+
+    "q_mpg": {
+      "formula": "'Find the mileage (in miles per gallon) for a car that went \\\\( ' + dist1_str + ' \\\\) miles on \\\\( ' + gal1_str + ' \\\\) gallons of gas.'"
+    },
+    "q_range": {
+      "formula": "'How far can a hybrid car be driven on one \\\\( ' + tank_gal_str + '\\text{-gallon} \\\\) tank of gasoline if it gets \\\\( ' + mpg2_str + ' \\\\) miles per gallon?'"
+    },
+    "a_mpg": {
+      "formula": "'<b>Find the fuel mileage (mpg):</b><br>• Divide total miles driven by gallons of fuel used:<br>\\\\( \\\\text{Mileage} = \\\\frac{' + dist1_str + '\\\\text{ miles}}{' + gal1_str + '\\\\text{ gallons}} = \\\\) <b>\\\\( ' + mpg1_str + '\\\\text{ miles per gallon (mpg)} \\\\)</b>'"
+    },
+    "a_range": {
+      "formula": "'<b>Find the total driving range:</b><br>• Multiply tank capacity by fuel economy (mpg):<br>\\\\( \\\\text{Distance} = ' + tank_gal_str + '\\\\text{ gallons} \\\\times ' + mpg2_str + '\\\\text{ mpg} = \\\\) <b>\\\\( ' + dist2_str + '\\\\text{ miles} \\\\)</b>'"
+    },
+
+    "prompt_a": {
+      "formula": "is_mpg_first === 1 ? q_mpg : q_range"
+    },
+    "prompt_b": {
+      "formula": "is_mpg_first === 1 ? q_range : q_mpg"
+    },
+    "ans_a": {
+      "formula": "is_mpg_first === 1 ? a_mpg : a_range"
+    },
+    "ans_b": {
+      "formula": "is_mpg_first === 1 ? a_range : a_mpg"
+    }
+  },
+  "question": "Solve both fuel usage problems below.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:10px\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {prompt_a}<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {prompt_b}<div style=\"height:90px\"></div></div></div>",
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {ans_a}</div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {ans_b}</div></div>"
 }
+
+
 
 
 
