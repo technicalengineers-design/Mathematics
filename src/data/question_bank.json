@@ -20930,7 +20930,150 @@
   },
   "question": "Solve both fuel usage problems below.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:10px\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {prompt_a}<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {prompt_b}<div style=\"height:90px\"></div></div></div>",
   "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {ans_a}</div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {ans_b}</div></div>"
+},
+{
+  "id": "CM 7.8 Repair Costs",
+  "title": "CM 7.8 Repair Costs",
+  "type": "template",
+  "objective": "Calculate total scheduled vehicle maintenance costs from a service table including parts, hourly labor, and sales tax on parts",
+  "difficulty": "basic",
+  "variables": {
+    "owners_pool": {
+      "formula": "['Mr. Hammond', 'Ms. Sterling', 'Mr. Orozco', 'Mrs. Vance', 'Dr. Haddad', 'Ms. Lindholm']"
+    },
+    "subs_pool": {
+      "formula": "['he', 'she', 'he', 'she', 'he', 'she']"
+    },
+    "o_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "owner_name": {
+      "formula": "owners_pool[o_idx]"
+    },
+    "owner_sub": {
+      "formula": "subs_pool[o_idx]"
+    },
+    "vehicles_pool": {
+      "formula": "['midsize car', 'compact SUV', 'sedan', 'crossover', 'hatchback', 'pickup truck']"
+    },
+    "v_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "vehicle_type": {
+      "formula": "vehicles_pool[v_idx]"
+    },
+    "mileage_pool": {
+      "formula": "['15,000', '30,000', '45,000', '60,000']"
+    },
+    "m_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "target_mileage": {
+      "formula": "mileage_pool[m_idx]"
+    },
+    "labor_rate_fives": {
+      "min": 16,
+      "max": 24
+    },
+    "labor_rate_num": {
+      "formula": "labor_rate_fives * 5"
+    },
+    "tax_pct_pool": {
+      "formula": "[4.0, 4.5, 5.0, 5.5, 6.0]"
+    },
+    "tx_idx": {
+      "min": 0,
+      "max": 4
+    },
+    "tax_pct": {
+      "formula": "tax_pct_pool[tx_idx]"
+    },
+    "tax_dec": {
+      "formula": "tax_pct / 100"
+    },
+
+    "p1_num": { "min": 32, "max": 48 },
+    "h1_tenths": { "values": [2, 3, 4, 5] },
+    "h1_num": { "formula": "h1_tenths / 10" },
+
+    "p2_num": { "min": 18, "max": 32 },
+    "h2_tenths": { "values": [2, 3, 4] },
+    "h2_num": { "formula": "h2_tenths / 10" },
+
+    "p3_num": { "min": 22, "max": 38 },
+    "h3_tenths": { "values": [2, 3, 4, 5] },
+    "h3_num": { "formula": "h3_tenths / 10" },
+
+    "p4_num": { "min": 0, "max": 0 },
+    "h4_tenths": { "values": [4, 5, 6] },
+    "h4_num": { "formula": "h4_tenths / 10" },
+
+    "p5_num": { "min": 15, "max": 28 },
+    "h5_tenths": { "values": [8, 10, 12] },
+    "h5_num": { "formula": "h5_tenths / 10" },
+
+    "p6_num": { "min": 55, "max": 85 },
+    "h6_tenths": { "values": [12, 15, 18] },
+    "h6_num": { "formula": "h6_tenths / 10" },
+
+    "excl_idx": {
+      "min": 0,
+      "max": 4
+    },
+    "excl_names": {
+      "formula": "['oil and filter change', 'engine air filter replacement', 'cabin air filter replacement', 'tire rotation and balance', 'wheel alignment']"
+    },
+    "excl_name": {
+      "formula": "excl_names[excl_idx]"
+    },
+
+    "inc_p1": { "formula": "excl_idx === 0 ? 0 : p1_num" },
+    "inc_h1": { "formula": "excl_idx === 0 ? 0 : h1_num" },
+    "inc_p2": { "formula": "excl_idx === 1 ? 0 : p2_num" },
+    "inc_h2": { "formula": "excl_idx === 1 ? 0 : h2_num" },
+    "inc_p3": { "formula": "excl_idx === 2 ? 0 : p3_num" },
+    "inc_h3": { "formula": "excl_idx === 2 ? 0 : h3_num" },
+    "inc_p4": { "formula": "excl_idx === 3 ? 0 : p4_num" },
+    "inc_h4": { "formula": "excl_idx === 3 ? 0 : h4_num" },
+    "inc_p5": { "formula": "excl_idx === 4 ? 0 : p5_num" },
+    "inc_h5": { "formula": "excl_idx === 4 ? 0 : h5_num" },
+
+    "parts_sub_num": {
+      "formula": "inc_p1 + inc_p2 + inc_p3 + inc_p4 + inc_p5"
+    },
+    "hours_sub_num": {
+      "formula": "Math.round((inc_h1 + inc_h2 + inc_h3 + inc_h4 + inc_h5) * 10) / 10"
+    },
+    "labor_cost_num": {
+      "formula": "Math.round(hours_sub_num * labor_rate_num * 100) / 100"
+    },
+    "sales_tax_num": {
+      "formula": "Math.round(parts_sub_num * tax_dec * 100) / 100"
+    },
+    "total_cost_num": {
+      "formula": "Math.round((parts_sub_num + sales_tax_num + labor_cost_num) * 100) / 100"
+    },
+
+    "labor_rate_str": { "formula": "labor_rate_num.toFixed(2)" },
+    "tax_pct_str": { "formula": "tax_pct.toString()" },
+    "tax_dec_str": { "formula": "tax_dec.toString()" },
+    "parts_sub_str": { "formula": "parts_sub_num.toFixed(2)" },
+    "hours_sub_str": { "formula": "hours_sub_num.toFixed(1)" },
+    "labor_cost_str": { "formula": "labor_cost_num.toFixed(2)" },
+    "sales_tax_str": { "formula": "sales_tax_num.toFixed(2)" },
+    "total_cost_str": { "formula": "total_cost_num.toFixed(2)" },
+
+    "table_html": {
+      "formula": "'<table style=\"border-collapse:collapse;width:100%;max-width:440px;font-family:sans-serif;font-size:13px;text-align:center;background:#fff\"><thead><tr style=\"background:#f1f5f9\"><th colspan=\"4\" style=\"border:1px solid #cbd5e1;padding:6px 8px\">Table 7.13: Scheduled Maintenance (Labor Rate: $' + labor_rate_str + '/hr)</th></tr><tr style=\"background:#f8fafc\"><th style=\"border:1px solid #cbd5e1;padding:5px 8px;text-align:left\">Service Item</th><th style=\"border:1px solid #cbd5e1;padding:5px 8px\">Interval</th><th style=\"border:1px solid #cbd5e1;padding:5px 8px\">Parts</th><th style=\"border:1px solid #cbd5e1;padding:5px 8px\">Labor (hrs)</th></tr></thead><tbody>' + '<tr><td style=\"border:1px solid #cbd5e1;padding:5px 8px;text-align:left\">Oil and filter change</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + target_mileage + ' mi</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">$' + p1_num.toFixed(2) + '</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + h1_num.toFixed(1) + '</td></tr>' + '<tr><td style=\"border:1px solid #cbd5e1;padding:5px 8px;text-align:left\">Engine air filter replacement</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + target_mileage + ' mi</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">$' + p2_num.toFixed(2) + '</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + h2_num.toFixed(1) + '</td></tr>' + '<tr><td style=\"border:1px solid #cbd5e1;padding:5px 8px;text-align:left\">Cabin air filter replacement</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + target_mileage + ' mi</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">$' + p3_num.toFixed(2) + '</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + h3_num.toFixed(1) + '</td></tr>' + '<tr><td style=\"border:1px solid #cbd5e1;padding:5px 8px;text-align:left\">Tire rotation and balance</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + target_mileage + ' mi</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">$' + p4_num.toFixed(2) + '</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + h4_num.toFixed(1) + '</td></tr>' + '<tr><td style=\"border:1px solid #cbd5e1;padding:5px 8px;text-align:left\">Wheel alignment</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + target_mileage + ' mi</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">$' + p5_num.toFixed(2) + '</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + h5_num.toFixed(1) + '</td></tr>' + '<tr><td style=\"border:1px solid #cbd5e1;padding:5px 8px;text-align:left\">Transmission fluid flush</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">90,000 mi</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">$' + p6_num.toFixed(2) + '</td><td style=\"border:1px solid #cbd5e1;padding:5px 8px\">' + h6_num.toFixed(1) + '</td></tr>' + '</tbody></table>'"
+    }
+  },
+  "question": "<div style=\"display:grid;grid-template-columns:minmax(0,440px) minmax(220px,1fr);align-items:start;gap:20px\"><div>{table_html}</div><div>{owner_name}’s {vehicle_type} has <b>\\( {target_mileage} \\) miles</b> on it, and {owner_sub} wants to get all the scheduled maintenance recommended for \\( {target_mileage} \\) miles in <b>Table 7.13</b> except the <b>{excl_name}</b>.<br><br>Find the total cost of the maintenance if labor is <b>\\( \\${labor_rate_str} \\) per hour</b> and sales tax is <b>\\( {tax_pct_str}\\% \\)</b> on the appropriate items (parts only).</div></div>",
+  "answer": "<b>Step 1: Identify the included \\( {target_mileage}\\text{-mile} \\) services</b><br>Include all \\( {target_mileage}\\text{-mile} \\) items from Table 7.13 <i>except</i> the {excl_name} (and exclude the 90,000-mile transmission fluid flush).<br><br><b>Step 2: Calculate the total cost of parts and sales tax</b><br>• Sum the parts prices for the included services:<br>\\( \\text{Parts Subtotal} = \\${inc_p1} + \\${inc_p2} + \\${inc_p3} + \\${inc_p4} + \\${inc_p5} = \\${parts_sub_str} \\)<br>• Calculate the \\( {tax_pct_str}\\% \\) sales tax on parts only:<br>\\( \\text{Sales Tax} = \\${parts_sub_str} \\times {tax_dec_str} = \\${sales_tax_str} \\)<br><br><b>Step 3: Calculate the total labor cost</b><br>• Sum the labor hours for the included services:<br>\\( \\text{Total Hours} = {inc_h1} + {inc_h2} + {inc_h3} + {inc_h4} + {inc_h5} = {hours_sub_str}\\text{ hours} \\)<br>• Multiply total hours by the \\( \\${labor_rate_str}/\\text{hr} \\) labor rate:<br>\\( \\text{Labor Cost} = {hours_sub_str} \\times \\${labor_rate_str} = \\${labor_cost_str} \\)<br><br><b>Step 4: Find the grand total</b><br>Add the parts subtotal, sales tax on parts, and labor cost:<br>\\( \\${parts_sub_str} + \\${sales_tax_str} + \\${labor_cost_str} = \\) <b>\\( \\${total_cost_str} \\)</b><br><br><b>Final Answer:</b><br>The total cost of the scheduled maintenance is <b>\\( \\${total_cost_str} \\)</b>."
 }
+
 
 
 
