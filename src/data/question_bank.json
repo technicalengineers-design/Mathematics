@@ -19112,6 +19112,96 @@
   "answer": "{a_html}"
 }
     ],
+    "7 Transportation": [
+      {
+  "id": "CM 7.1 Car Purchase Price",
+  "title": "CM 7.1 Car Purchase Price",
+  "type": "template",
+  "objective": "Calculate the drive-away price of a vehicle with a trade-in allowance and sales tax, and determine the percent discount off the sticker price",
+  "difficulty": "intermediate",
+  "variables": {
+    "buyers_pool": {
+      "formula": "['Rick London', 'Sarah Jenkins', 'Marcus Vance', 'Elena Morales', 'David Chen', 'Hannah Brooks']"
+    },
+    "b_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "buyer_name": {
+      "formula": "buyers_pool[b_idx]"
+    },
+    "sticker_raw": {
+      "min": 28500,
+      "max": 42500
+    },
+    "discount_raw": {
+      "min": 1450,
+      "max": 3250
+    },
+    "offer_num": {
+      "formula": "sticker_raw - discount_raw"
+    },
+    "trade_in_hundreds": {
+      "min": 25,
+      "max": 75
+    },
+    "trade_in_num": {
+      "formula": "trade_in_hundreds * 100"
+    },
+    "tax_rates_pool": {
+      "formula": "[3.5, 4, 4.5, 5, 5.5, 6, 6.5]"
+    },
+    "t_idx": {
+      "min": 0,
+      "max": 6
+    },
+    "tax_pct": {
+      "formula": "tax_rates_pool[t_idx]"
+    },
+    "tax_dec": {
+      "formula": "tax_pct / 100"
+    },
+    "net_offer_num": {
+      "formula": "offer_num - trade_in_num"
+    },
+    "sales_tax_num": {
+      "formula": "Math.round(offer_num * tax_dec * 100) / 100"
+    },
+    "drive_away_num": {
+      "formula": "Math.round((net_offer_num + sales_tax_num) * 100) / 100"
+    },
+    "pct_discount_num": {
+      "formula": "Math.round((discount_raw / sticker_raw) * 1000) / 10"
+    },
+    "sticker_str": {
+      "formula": "sticker_raw.toString()"
+    },
+    "offer_str": {
+      "formula": "offer_num.toString()"
+    },
+    "trade_in_str": {
+      "formula": "trade_in_num.toString()"
+    },
+    "net_offer_str": {
+      "formula": "net_offer_num.toString()"
+    },
+    "discount_str": {
+      "formula": "discount_raw.toString()"
+    },
+    "sales_tax_str": {
+      "formula": "sales_tax_num.toFixed(2)"
+    },
+    "drive_away_str": {
+      "formula": "drive_away_num.toFixed(2)"
+    },
+    "pct_discount_str": {
+      "formula": "pct_discount_num.toFixed(1)"
+    }
+  },
+  "question": "{buyer_name} has the following offer from an automobile dealer:<br><div style=\"margin:10px 0 12px 16px;line-height:1.6\">• <b>Sticker price:</b> \\( \\${sticker_str} \\)<br>• <b>Discounted offer:</b> \\( \\${offer_str} \\)<br>• <b>Trade-in allowance:</b> \\( \\${trade_in_str} \\)<br>• <b>Sales tax:</b> \\( {tax_pct}\\% \\) (calculated on the discounted offer)</div>1. Find the drive-away price of the car.<br>2. What is the percent discount offered on the sticker price? (Round to the nearest tenth of a percent.)",
+  "answer": "<b>Part 1: Find the drive-away price</b><br>• Subtract the trade-in allowance from the discounted offer:<br>\\( \\${offer_str} - \\${trade_in_str} = \\${net_offer_str} \\)<br>• Calculate the \\( {tax_pct}\\% \\) sales tax on the discounted offer:<br>\\( \\${offer_str} \\times {tax_dec} = \\${sales_tax_str} \\)<br>• Add the net offer and sales tax to get the drive-away price:<br>\\( \\${net_offer_str} + \\${sales_tax_str} = \\) <b>\\( \\${drive_away_str} \\)</b><br><br><b>Part 2: Find the percent discount on the sticker price</b><br>• Calculate the dollar amount of the discount:<br>\\( \\${sticker_str} - \\${offer_str} = \\${discount_str} \\)<br>• Divide the discount by the original sticker price and convert to a percent:<br>\\( \\frac{{discount_str}}{{sticker_str}} \\times 100\\% \\approx \\) <b>\\( {pct_discount_str}\\% \\)</b>"
+}
+],
       "Key 1": [
 {
   "id": "Key 1.1a B Simplifying with a Calculator",
