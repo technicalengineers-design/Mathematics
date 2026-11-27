@@ -21892,7 +21892,43 @@
   },
   "question": "<div style=\"display:grid;grid-template-columns:minmax(0,340px) minmax(220px,1fr);align-items:start;gap:20px\"><div>{cpi_table_html}</div><div>In <b>{start_year}</b>, {shopper_name}’s grocery budget was <b>\\( \\${orig_budget_str} \\) per week</b>.<br><br>Using the historical CPI-U table, what would the weekly grocery budget have been in <b>{end_year}</b> to buy the same amount of groceries? (Round to the nearest cent.)</div></div>",
   "answer": "<b>Step 1: Look up the CPI-U values for both years in the table</b><br>• CPI-U for <b>{start_year}</b>: \\( {start_cpi_str} \\)<br>• CPI-U for <b>{end_year}</b>: \\( {end_cpi_str} \\)<br><br><b>Step 2: Set up the CPI-U inflation adjustment formula</b><br>\\( \\text{Cost in {end_year}} = \\text{Cost in {start_year}} \\times \\frac{\\text{CPI-U}_{{{end_year}}}}{\\text{CPI-U}_{{{start_year}}}} \\)<br><br>Substitute the values into the formula:<br>\\( \\text{Cost in {end_year}} = \\${orig_budget_str} \\times \\frac{{end_cpi_str}}{{start_cpi_str}} \\approx \\) <b>\\( \\${adj_budget_str} \\)</b><br><br><b>Final Answer:</b><br>In {end_year}, {shopper_name}’s grocery budget would have been <b>\\( \\${adj_budget_str} \\) per week</b> to buy the same amount of groceries."
+},
+{
+  "id": "CM 8.5 Healthy Lifestyle",
+  "title": "CM 8.5 Healthy Lifestyle",
+  "type": "template",
+  "objective": "Identify core healthy lifestyle and nutrition practices for personal well-being and smart consumer living",
+  "difficulty": "basic",
+  "variables": {
+    "practices_pool": {
+      "formula": "['Be physically active.', 'Include a variety of unprocessed* foods, whole foods, in your diet. (*cook meat and vegetables)', 'Keep your diet low in sodium, sugar, and fake sugars. (Avoid fast foods - which have bad fat and cholesterol.)']"
+    },
+    "idx_1": {
+      "min": 0,
+      "max": 2
+    },
+    "idx_2": {
+      "min": 0,
+      "max": 2,
+      "exclude": ["idx_1"]
+    },
+    "idx_3": {
+      "formula": "3 - (idx_1 + idx_2)"
+    },
+    "item_1": {
+      "formula": "practices_pool[idx_1]"
+    },
+    "item_2": {
+      "formula": "practices_pool[idx_2]"
+    },
+    "item_3": {
+      "formula": "practices_pool[idx_3]"
+    }
+  },
+  "question": "List three healthy practices.<div style=\"height:120px\"></div>",
+  "answer": "<b>Three Healthy Practices:</b><ol style=\"margin:6px 0 8px 18px;line-height:1.6\"><li>{item_1}</li><li>{item_2}</li><li>{item_3}</li></ol>"
 }
+
 
 
 
