@@ -19980,7 +19980,175 @@
   },
   "question": "Solve both vehicle pricing problems below.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:10px\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {prompt_a}<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {prompt_b}<div style=\"height:90px\"></div></div></div>",
   "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {ans_a}</div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {ans_b}</div></div>"
+},
+{
+  "id": "CM 7.1 Car Purchase Financing",
+  "title": "CM 7.1 Car Purchase Financing",
+  "type": "template",
+  "objective": "Calculate total vehicle cost with fees and sales tax, down payment, financed balance, and monthly loan payment",
+  "difficulty": "basic",
+  "variables": {
+    "buyers_pool": {
+      "formula": "['Mr. Gonzales', 'Ms. Rivera', 'Mr. Patel', 'Mrs. Brooks', 'Dr. Chen', 'Ms. Alvarez']"
+    },
+    "subs_pool": {
+      "formula": "['He', 'She', 'He', 'She', 'He', 'She']"
+    },
+    "b_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "buyer_name": {
+      "formula": "buyers_pool[b_idx]"
+    },
+    "buyer_sub": {
+      "formula": "subs_pool[b_idx]"
+    },
+    "price_hundreds": {
+      "min": 220,
+      "max": 380
+    },
+    "car_price_num": {
+      "formula": "price_hundreds * 100"
+    },
+    "down_pct_pool": {
+      "formula": "[10, 15, 20, 25]"
+    },
+    "d_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "down_pct": {
+      "formula": "down_pct_pool[d_idx]"
+    },
+    "down_dec": {
+      "formula": "down_pct / 100"
+    },
+    "tax_pct_pool": {
+      "formula": "[4, 5, 6, 7]"
+    },
+    "tx_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "tax_pct": {
+      "formula": "tax_pct_pool[tx_idx]"
+    },
+    "tax_dec": {
+      "formula": "tax_pct / 100"
+    },
+    "apr_pool": {
+      "formula": "[5, 6, 7, 8, 9]"
+    },
+    "a_idx": {
+      "min": 0,
+      "max": 4
+    },
+    "apr_pct": {
+      "formula": "apr_pool[a_idx]"
+    },
+    "apr_dec": {
+      "formula": "apr_pct / 100"
+    },
+    "years_pool": {
+      "formula": "[4, 5, 6]"
+    },
+    "y_idx": {
+      "min": 0,
+      "max": 2
+    },
+    "loan_years": {
+      "formula": "years_pool[y_idx]"
+    },
+    "num_months": {
+      "formula": "loan_years * 12"
+    },
+    "title_fee_pool": {
+      "formula": "[25, 30, 35, 40]"
+    },
+    "reg_fee_pool": {
+      "formula": "[20, 25, 30, 35, 45]"
+    },
+    "proc_fee_pool": {
+      "formula": "[40, 50, 60, 75]"
+    },
+    "f1_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "f2_idx": {
+      "min": 0,
+      "max": 4
+    },
+    "f3_idx": {
+      "min": 0,
+      "max": 3
+    },
+    "title_fee": {
+      "formula": "title_fee_pool[f1_idx]"
+    },
+    "reg_fee": {
+      "formula": "reg_fee_pool[f2_idx]"
+    },
+    "proc_fee": {
+      "formula": "proc_fee_pool[f3_idx]"
+    },
+    "total_fees_num": {
+      "formula": "title_fee + reg_fee + proc_fee"
+    },
+    "sales_tax_num": {
+      "formula": "Math.round(car_price_num * tax_dec)"
+    },
+    "total_due_num": {
+      "formula": "car_price_num + sales_tax_num + total_fees_num"
+    },
+    "down_pmt_num": {
+      "formula": "Math.round(car_price_num * down_dec)"
+    },
+    "financed_num": {
+      "formula": "total_due_num - down_pmt_num"
+    },
+    "monthly_rate": {
+      "formula": "apr_dec / 12"
+    },
+    "monthly_pmt_num": {
+      "formula": "Math.round((financed_num * monthly_rate / (1 - Math.pow(1 + monthly_rate, -num_months))) * 100) / 100"
+    },
+    "car_price_str": {
+      "formula": "car_price_num.toString()"
+    },
+    "title_fee_str": {
+      "formula": "title_fee.toString()"
+    },
+    "reg_fee_str": {
+      "formula": "reg_fee.toString()"
+    },
+    "proc_fee_str": {
+      "formula": "proc_fee.toString()"
+    },
+    "total_fees_str": {
+      "formula": "total_fees_num.toString()"
+    },
+    "sales_tax_str": {
+      "formula": "sales_tax_num.toString()"
+    },
+    "total_due_str": {
+      "formula": "total_due_num.toString()"
+    },
+    "down_pmt_str": {
+      "formula": "down_pmt_num.toString()"
+    },
+    "financed_str": {
+      "formula": "financed_num.toString()"
+    },
+    "monthly_pmt_str": {
+      "formula": "monthly_pmt_num.toFixed(2)"
+    }
+  },
+  "question": "{buyer_name} has agreed to purchase a car for \\( \\${car_price_str} \\) with a \\( {down_pct}\\% \\) down payment. {buyer_sub} will finance the balance at \\( {apr_pct}\\%(12) \\) for \\( {loan_years} \\) years. There is a title fee of \\( \\${title_fee_str} \\), a registration fee of \\( \\${reg_fee_str} \\), and a processing fee of \\( \\${proc_fee_str} \\).<br><br><b>(a)</b> Find the total due for the vehicle including fees and \\( {tax_pct}\\% \\) sales tax.<br><b>(b)</b> Find the down payment.<br><b>(c)</b> Find the amount to be financed.<br><b>(d)</b> Find the monthly payment based on a \\( {loan_years}\\text{-year} \\) loan.",
+  "answer": "<b>(a) Find the total due for the vehicle:</b><br>• Calculate the \\( {tax_pct}\\% \\) sales tax on the purchase price:<br>\\( \\${car_price_str} \\times {tax_dec} = \\${sales_tax_str} \\)<br>• Add the title, registration, and processing fees:<br>\\( \\${title_fee_str} + \\${reg_fee_str} + \\${proc_fee_str} = \\${total_fees_str} \\)<br>• Add the purchase price, sales tax, and fees:<br>\\( \\${car_price_str} + \\${sales_tax_str} + \\${total_fees_str} = \\) <b>\\( \\${total_due_str} \\)</b><br><br><b>(b) Find the down payment:</b><br>• Multiply the purchase price by \\( {down_pct}\\% \\):<br>\\( \\${car_price_str} \\times {down_dec} = \\) <b>\\( \\${down_pmt_str} \\)</b><br><br><b>(c) Find the amount to be financed:</b><br>• Subtract the down payment from the total due:<br>\\( \\${total_due_str} - \\${down_pmt_str} = \\) <b>\\( \\${financed_str} \\)</b><br><br><b>(d) Find the monthly payment (\\( {apr_pct}\\%(12) \\) for \\( \\${financed_str} \\)):</b><br>• Use the loan payment formula \\( R = \\frac{A \\cdot i}{1 - (1 + i)^{-n}} \\), where \\( A = {financed_str} \\), \\( i = \\frac{{apr_dec}}{12} \\), and \\( n = {loan_years} \\times 12 = {num_months} \\) months:<br>\\( R = \\frac{{financed_str} \\left(\\frac{{apr_dec}}{12}\\right)}{1 - \\left(1 + \\frac{{apr_dec}}{12}\\right)^{-{num_months}}} \\approx \\) <b>\\( \\${monthly_pmt_str} \\)</b>"
 }
+
 
 ],
     "Summative 2": [
