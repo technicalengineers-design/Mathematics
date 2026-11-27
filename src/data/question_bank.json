@@ -20528,7 +20528,127 @@
   },
   "question": "A new {vehicle_type} is purchased for <b>\\( \\${orig_cost_str} \\)</b>. Use the annual depreciation schedule below to evaluate the vehicle's value after <b>\\( {target_years} \\) years</b>.<br><div style=\"display:grid;grid-template-columns:minmax(0,340px) minmax(220px,1fr);align-items:start;gap:20px;margin-top:10px\"><div>{dep_table_html}</div><div><b>(a)</b> Find the total depreciation (in dollars) after \\( {target_years} \\) years.<br><br><b>(b)</b> Find the average annual depreciation over the \\( {target_years} \\) years (round to the nearest dollar).<br><br><b>(c)</b> Determine the estimated resale value after \\( {target_years} \\) years (\\( \\text{Resale Value} = \\text{Original Cost} - \\text{Total Depreciation} \\)).</div></div>",
   "answer": "<b>(a) Find the total depreciation after \\( {target_years} \\) years:</b><br>• Add the annual depreciation percentages for the first \\( {target_years} \\) years from the table:<br>\\( {pct_sum_expr} = {total_dep_pct}\\% \\)<br>• Multiply the original cost by the total depreciation rate:<br>\\( \\${orig_cost_str} \\times {total_dep_pct}\\% = \\) <b>\\( \\${total_dep_str} \\)</b><br><br><b>(b) Find the average annual depreciation:</b><br>• Divide the total depreciation by \\( {target_years} \\) years:<br>\\( \\frac{\\$ {total_dep_str}}{{target_years}} \\approx \\) <b>\\( \\${avg_annual_dep_str} \\) per year</b><br><br><b>(c) Determine the estimated resale value:</b><br>• Subtract the total depreciation from the original purchase price:<br>\\( \\${orig_cost_str} - \\${total_dep_str} = \\) <b>\\( \\${resale_val_str} \\)</b>"
+},
+{
+  "id": "CM 7.4a Repair Costs Consideration before Buying",
+  "title": "CM 7.4a Repair Costs Consideration before Buying",
+  "type": "template",
+  "objective": "Calculate the true total cost of purchasing a used automobile by combining the purchase price, sales tax, pre-purchase inspection fees, and estimated repair costs",
+  "difficulty": "basic",
+  "variables": {
+    "buyers_pool": {
+      "formula": "['Mr. Atta', 'Ms. Delgado', 'Mr. Okafor', 'Mrs. Lindqvist', 'Dr. Choi', 'Ms. Gallagher']"
+    },
+    "b_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "buyer_name": {
+      "formula": "buyers_pool[b_idx]"
+    },
+    "car_ages": {
+      "min": 2,
+      "max": 5
+    },
+    "vehicle_types": {
+      "formula": "['midsize car', 'compact SUV', 'sedan', 'hatchback', 'crossover', 'pickup truck']"
+    },
+    "v_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "vehicle_type": {
+      "formula": "vehicle_types[v_idx]"
+    },
+    "miles_hundreds": {
+      "min": 240,
+      "max": 580
+    },
+    "mileage_num": {
+      "formula": "miles_hundreds * 100"
+    },
+    "price_hundreds": {
+      "min": 125,
+      "max": 225
+    },
+    "price_num": {
+      "formula": "price_hundreds * 100 - 1"
+    },
+    "insp_hours": {
+      "min": 1,
+      "max": 3
+    },
+    "hour_word": {
+      "formula": "insp_hours === 1 ? '1 hour' : insp_hours + ' hours'"
+    },
+    "hourly_rate_fives": {
+      "min": 16,
+      "max": 24
+    },
+    "hourly_rate_num": {
+      "formula": "hourly_rate_fives * 5"
+    },
+    "repair_fives": {
+      "min": 85,
+      "max": 195
+    },
+    "repair_cost_num": {
+      "formula": "repair_fives * 5"
+    },
+    "tax_pct_pool": {
+      "formula": "[4.0, 4.5, 5.0, 5.5, 6.0, 6.5]"
+    },
+    "t_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "tax_pct": {
+      "formula": "tax_pct_pool[t_idx]"
+    },
+    "tax_dec": {
+      "formula": "tax_pct / 100"
+    },
+    "insp_cost_num": {
+      "formula": "insp_hours * hourly_rate_num"
+    },
+    "sales_tax_num": {
+      "formula": "Math.round(price_num * tax_dec * 100) / 100"
+    },
+    "actual_cost_num": {
+      "formula": "Math.round((price_num + sales_tax_num + insp_cost_num + repair_cost_num) * 100) / 100"
+    },
+    "mileage_str": {
+      "formula": "mileage_num.toString()"
+    },
+    "price_str": {
+      "formula": "price_num.toString()"
+    },
+    "hourly_rate_str": {
+      "formula": "hourly_rate_num.toString()"
+    },
+    "insp_cost_str": {
+      "formula": "insp_cost_num.toString()"
+    },
+    "repair_cost_str": {
+      "formula": "repair_cost_num.toString()"
+    },
+    "tax_pct_str": {
+      "formula": "tax_pct.toString()"
+    },
+    "tax_dec_str": {
+      "formula": "tax_dec.toString()"
+    },
+    "sales_tax_str": {
+      "formula": "sales_tax_num.toFixed(2)"
+    },
+    "actual_cost_str": {
+      "formula": "actual_cost_num.toFixed(2)"
+    }
+  },
+  "question": "{buyer_name} considers purchasing a {car_ages}-year-old {vehicle_type} with \\( {mileage_str} \\) miles and a price tag of \\( \\${price_str} \\). A mechanic spent {hour_word} checking it and estimated that it would cost \\( \\${repair_cost_str} \\), including both parts and labor, to repair it. If the mechanic charged \\( \\${hourly_rate_str} \\) per hour for the inspection and the sales tax is \\( {tax_pct_str}\\% \\), find the actual cost of the automobile.",
+  "answer": "<b>Step 1: Calculate the sales tax on the vehicle's price</b><br>Multiply the sticker price by the \\( {tax_pct_str}\\% \\) sales tax rate (\\( {tax_dec_str} \\)):<br>\\( \\${price_str} \\times {tax_dec_str} = \\${sales_tax_str} \\)<br><br><b>Step 2: Calculate the mechanic's inspection fee</b><br>Multiply the inspection time by the hourly rate:<br>\\( {insp_hours} \\times \\${hourly_rate_str} = \\${insp_cost_str} \\)<br><br><b>Step 3: Add all expenses to find the actual total cost</b><br>Combine the purchase price, sales tax, inspection fee, and estimated repair cost:<br>\\( \\${price_str} + \\${sales_tax_str} + \\${insp_cost_str} + \\${repair_cost_str} = \\) <b>\\( \\${actual_cost_str} \\)</b><br><br><b>Final Answer:</b><br>The actual cost of the automobile is <b>\\( \\${actual_cost_str} \\)</b>."
 }
+
 
 
 
