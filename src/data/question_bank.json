@@ -21158,7 +21158,7 @@
   "id": "CM 8.1c Grocery Costs",
   "title": "CM 8.1c Grocery Costs",
   "type": "template",
-  "objective": "Calculate the percentage saved using coupons and the final cost of groceries after deducting coupons and adding sales tax",
+  "objective": "Calculate the percentage saved using coupons and the final cost of groceries after deducting coupons then adding sales tax",
   "difficulty": "basic",
   "variables": {
     "sub_nickels": {
@@ -21227,7 +21227,121 @@
   },
   "question": "If the cashier rings up \\( \\${subtotal_str} \\) for groceries and then deducts \\( \\${coupon_str} \\) in coupons:<br><br><b>(a)</b> What is the percentage saved by coupons? (Round to the nearest tenth of a percent.)<br><b>(b)</b> Find the final cost of the groceries with \\( {tax_pct_str}\\% \\) sales tax on the discounted total.",
   "answer": "<b>(a) Find the percentage saved by coupons:</b><br>• Divide the coupon savings by the original grocery total and multiply by \\( 100\\% \\):<br>\\( \\frac{\\${coupon_str}}{\\${subtotal_str}} \\times 100\\% \\approx \\) <b>\\( {pct_saved_str}\\% \\)</b><br><br><b>(b) Find the final cost with \\( {tax_pct_str}\\% \\) sales tax:</b><br>• Subtract the coupon deduction from the initial total:<br>\\( \\${subtotal_str} - \\${coupon_str} = \\${after_coupon_str} \\)<br>• Calculate the \\( {tax_pct_str}\\% \\) sales tax on the discounted amount:<br>\\( \\${after_coupon_str} \\times {tax_dec_str} = \\${sales_tax_str} \\)<br>• Add the sales tax to find the final cost:<br>\\( \\${after_coupon_str} + \\${sales_tax_str} = \\) <b>\\( \\${final_cost_str} \\)</b>"
+},
+{
+  "id": "CM 8.2a Price Per Weight",
+  "title": "CM 8.2a Price Per Weight",
+  "type": "template",
+  "objective": "Calculate unit price per ounce to compare two package sizes and determine the better value",
+  "difficulty": "basic",
+  "variables": {
+    "items_pool": {
+      "formula": "['jar of peanut butter', 'bottle of olive oil', 'box of cereal', 'bag of coffee beans', 'bottle of laundry detergent', 'jar of honey']"
+    },
+    "units_pool": {
+      "formula": "['oz', 'fl oz', 'oz', 'oz', 'fl oz', 'oz']"
+    },
+    "i_idx": {
+      "min": 0,
+      "max": 5
+    },
+    "item_name": {
+      "formula": "items_pool[i_idx]"
+    },
+    "unit_label": {
+      "formula": "units_pool[i_idx]"
+    },
+    "sm_size": {
+      "min": 12,
+      "max": 20
+    },
+    "lg_mult": {
+      "min": 2,
+      "max": 3
+    },
+    "lg_size": {
+      "formula": "sm_size * lg_mult"
+    },
+    "sm_unit_cents": {
+      "min": 16,
+      "max": 28
+    },
+    "sm_price_num": {
+      "formula": "Math.round((sm_size * sm_unit_cents) / 5) * 5 / 100 - 0.01"
+    },
+    "is_lg_better": {
+      "min": 0,
+      "max": 1
+    },
+    "lg_unit_cents": {
+      "formula": "is_lg_better === 1 ? sm_unit_cents - 3 : sm_unit_cents + 2"
+    },
+    "lg_price_num": {
+      "formula": "Math.round((lg_size * lg_unit_cents) / 5) * 5 / 100 - 0.01"
+    },
+    "sm_unit_exact": {
+      "formula": "sm_price_num / sm_size"
+    },
+    "lg_unit_exact": {
+      "formula": "lg_price_num / lg_size"
+    },
+    "sm_unit_cents_round": {
+      "formula": "Math.round(sm_unit_exact * 1000) / 10"
+    },
+    "lg_unit_cents_round": {
+      "formula": "Math.round(lg_unit_exact * 1000) / 10"
+    },
+    "is_lg_first": {
+      "min": 0,
+      "max": 1
+    },
+    "opt1_size": {
+      "formula": "is_lg_first === 1 ? lg_size : sm_size"
+    },
+    "opt1_price_str": {
+      "formula": "is_lg_first === 1 ? lg_price_num.toFixed(2) : sm_price_num.toFixed(2)"
+    },
+    "opt2_size": {
+      "formula": "is_lg_first === 1 ? sm_size : lg_size"
+    },
+    "opt2_price_str": {
+      "formula": "is_lg_first === 1 ? sm_price_num.toFixed(2) : lg_price_num.toFixed(2)"
+    },
+    "sm_price_str": {
+      "formula": "sm_price_num.toFixed(2)"
+    },
+    "lg_price_str": {
+      "formula": "lg_price_num.toFixed(2)"
+    },
+    "sm_unit_dol_str": {
+      "formula": "sm_unit_exact.toFixed(3)"
+    },
+    "lg_unit_dol_str": {
+      "formula": "lg_unit_exact.toFixed(3)"
+    },
+    "sm_unit_cents_str": {
+      "formula": "sm_unit_cents_round.toFixed(1)"
+    },
+    "lg_unit_cents_str": {
+      "formula": "lg_unit_cents_round.toFixed(1)"
+    },
+    "better_size": {
+      "formula": "is_lg_better === 1 ? lg_size : sm_size"
+    },
+    "better_price_str": {
+      "formula": "is_lg_better === 1 ? lg_price_str : sm_price_str"
+    },
+    "better_cents_str": {
+      "formula": "is_lg_better === 1 ? lg_unit_cents_str : sm_unit_cents_str"
+    },
+    "worse_cents_str": {
+      "formula": "is_lg_better === 1 ? sm_unit_cents_str : lg_unit_cents_str"
+    }
+  },
+  "question": "Determine which {item_name} is the better value: a \\( {opt1_size}\\text{ {unit_label}} \\) {item_name} for \\( \\${opt1_price_str} \\) or a \\( {opt2_size}\\text{ {unit_label}} \\) {item_name} for \\( \\${opt2_price_str} \\).",
+  "answer": "<b>Step 1: Find the unit price for the \\( {lg_size}\\text{ {unit_label}} \\) {item_name}</b><br>• Divide the price by the weight:<br>\\( \\frac{\\$ {lg_price_str}}{{lg_size}\\text{ {unit_label}}} \\approx \\${lg_unit_dol_str}\\text{ per {unit_label}} \\) (or <b>\\( {lg_unit_cents_str}\\text{&cent; per {unit_label}} \\)</b>)<br><br><b>Step 2: Find the unit price for the \\( {sm_size}\\text{ {unit_label}} \\) {item_name}</b><br>• Divide the price by the weight:<br>\\( \\frac{\\$ {sm_price_str}}{{sm_size}\\text{ {unit_label}}} \\approx \\${sm_unit_dol_str}\\text{ per {unit_label}} \\) (or <b>\\( {sm_unit_cents_str}\\text{&cent; per {unit_label}} \\)</b>)<br><br><b>Final Answer:</b><br>The <b>\\( {better_size}\\text{ {unit_label}} \\) {item_name} for \\( \\${better_price_str} \\)</b> is the better value because its unit price (\\( {better_cents_str}\\text{&cent;/{unit_label}} \\)) is lower than the other option (\\( {worse_cents_str}\\text{&cent;/{unit_label}} \\))."
 }
+
 
 
      ], 
