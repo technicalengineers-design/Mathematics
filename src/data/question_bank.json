@@ -19798,7 +19798,7 @@
   "title": "CM 7.1 Car Purchase Price",
   "type": "template",
   "objective": "Calculate the drive-away price of a vehicle with a trade-in allowance and sales tax, and determine the percent discount off the sticker price",
-  "difficulty": "intermediate",
+  "difficulty": "basic",
   "variables": {
     "buyers_pool": {
       "formula": "['Rick London', 'Sarah Jenkins', 'Marcus Vance', 'Elena Morales', 'David Chen', 'Hannah Brooks']"
@@ -19880,7 +19880,108 @@
   },
   "question": "{buyer_name} has the following offer from an automobile dealer:<br><div style=\"margin:10px 0 12px 16px;line-height:1.6\">• <b>Sticker price:</b> \\( \\${sticker_str} \\)<br>• <b>Discounted offer:</b> \\( \\${offer_str} \\)<br>• <b>Trade-in allowance:</b> \\( \\${trade_in_str} \\)<br>• <b>Sales tax:</b> \\( {tax_pct}\\% \\) (calculated on the discounted offer)</div>1. Find the drive-away price of the car.<br>2. What is the percent discount offered on the sticker price? (Round to the nearest tenth of a percent.)",
   "answer": "<b>Part 1: Find the drive-away price</b><br>• Subtract the trade-in allowance from the discounted offer:<br>\\( \\${offer_str} - \\${trade_in_str} = \\${net_offer_str} \\)<br>• Calculate the \\( {tax_pct}\\% \\) sales tax on the discounted offer:<br>\\( \\${offer_str} \\times {tax_dec} = \\${sales_tax_str} \\)<br>• Add the net offer and sales tax to get the drive-away price:<br>\\( \\${net_offer_str} + \\${sales_tax_str} = \\) <b>\\( \\${drive_away_str} \\)</b><br><br><b>Part 2: Find the percent discount on the sticker price</b><br>• Calculate the dollar amount of the discount:<br>\\( \\${sticker_str} - \\${offer_str} = \\${discount_str} \\)<br>• Divide the discount by the original sticker price and convert to a percent:<br>\\( \\frac{{discount_str}}{{sticker_str}} \\times 100\\% \\approx \\) <b>\\( {pct_discount_str}\\% \\)</b>"
+},
+{
+  "id": "CM 7.1b Car Sales Mark Up",
+  "title": "CM 7.1b Car Sales Mark Up",
+  "type": "template",
+  "objective": "Calculate the percent markup from invoice to sticker price, and find the dealer's invoice cost given the sticker price and markup percentage",
+  "difficulty": "intermediate",
+  "variables": {
+    "is_markup_first": {
+      "min": 0,
+      "max": 1
+    },
+    "inv1_hundreds": {
+      "min": 210,
+      "max": 340
+    },
+    "inv1_num": {
+      "formula": "inv1_hundreds * 100"
+    },
+    "markup1_pct": {
+      "min": 12,
+      "max": 24
+    },
+    "markup1_dec": {
+      "formula": "markup1_pct / 100"
+    },
+    "markup1_amt_num": {
+      "formula": "Math.round(inv1_num * markup1_dec)"
+    },
+    "sticker1_num": {
+      "formula": "inv1_num + markup1_amt_num"
+    },
+    "inv1_str": {
+      "formula": "inv1_num.toString()"
+    },
+    "sticker1_str": {
+      "formula": "sticker1_num.toString()"
+    },
+    "markup1_amt_str": {
+      "formula": "markup1_amt_num.toString()"
+    },
+    "markup1_pct_str": {
+      "formula": "markup1_pct.toString()"
+    },
+    "inv2_raw": {
+      "min": 24000,
+      "max": 38000
+    },
+    "markup2_pct": {
+      "min": 11,
+      "max": 22
+    },
+    "markup2_mult": {
+      "formula": "1 + markup2_pct / 100"
+    },
+    "sticker2_num": {
+      "formula": "Math.round(inv2_raw * markup2_mult)"
+    },
+    "inv2_calc_num": {
+      "formula": "Math.round(sticker2_num / markup2_mult)"
+    },
+    "sticker2_str": {
+      "formula": "sticker2_num.toString()"
+    },
+    "inv2_str": {
+      "formula": "inv2_calc_num.toString()"
+    },
+    "markup2_pct_str": {
+      "formula": "markup2_pct.toString()"
+    },
+    "markup2_mult_str": {
+      "formula": "markup2_mult.toFixed(2)"
+    },
+    "q_markup": {
+      "formula": "'Suppose the dealer&#39;s invoice price is \\\\( \\\\$' + inv1_str + ' \\\\) and the sticker price is \\\\( \\\\$' + sticker1_str + ' \\\\). What is the percent increase (markup)?'"
+    },
+    "q_invoice": {
+      "formula": "'If the markup is \\\\( ' + markup2_pct_str + '\\\\% \\\\) on the invoice cost of a particular vehicle and the sticker price is \\\\( \\\\$' + sticker2_str + ' \\\\), what is the dealer&#39;s invoice cost to the nearest dollar?'"
+    },
+    "a_markup": {
+      "formula": "'<b>Find the percent markup:</b><br>• Subtract the invoice price from the sticker price to find the dollar markup:<br>\\\\( \\\\$' + sticker1_str + ' - \\\\$' + inv1_str + ' = \\\\$' + markup1_amt_str + ' \\\\)<br>• Divide the dollar markup by the original invoice price and convert to a percent:<br>\\\\( \\\\frac{' + markup1_amt_str + '}{' + inv1_str + '} \\\\times 100\\\\% = \\\\) <b>\\\\( ' + markup1_pct_str + '\\\\% \\\\)</b>'"
+    },
+    "a_invoice": {
+      "formula": "'<b>Find the dealer&#39;s invoice cost:</b><br>• Let \\\\( c \\\\) represent the dealer&#39;s invoice cost. A \\\\( ' + markup2_pct_str + '\\\\% \\\\) markup means the sticker price is \\\\( 100\\\\% + ' + markup2_pct_str + '\\\\% = ' + (100 + markup2_pct) + '\\\\% \\\\) (or \\\\( ' + markup2_mult_str + ' \\\\)) of the invoice cost:<br>\\\\( ' + markup2_mult_str + 'c = ' + sticker2_str + ' \\\\)<br>• Divide both sides by \\\\( ' + markup2_mult_str + ' \\\\):<br>\\\\( c = \\\\frac{' + sticker2_str + '}{' + markup2_mult_str + '} \\\\approx \\\\) <b>\\\\( \\\\$' + inv2_str + ' \\\\)</b>'"
+    },
+    "prompt_a": {
+      "formula": "is_markup_first === 1 ? q_markup : q_invoice"
+    },
+    "prompt_b": {
+      "formula": "is_markup_first === 1 ? q_invoice : q_markup"
+    },
+    "ans_a": {
+      "formula": "is_markup_first === 1 ? a_markup : a_invoice"
+    },
+    "ans_b": {
+      "formula": "is_markup_first === 1 ? a_invoice : a_markup"
+    }
+  },
+  "question": "Solve both vehicle pricing problems below.<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:10px\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {prompt_a}<div style=\"height:90px\"></div></div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {prompt_b}<div style=\"height:90px\"></div></div></div>",
+  "answer": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:24px;align-items:flex-start\"><div style=\"flex:1 1 280px;min-width:250px\"><b>A)</b> {ans_a}</div><div style=\"flex:1 1 280px;min-width:250px\"><b>B)</b> {ans_b}</div></div>"
 }
+
 ],
     "Summative 2": [
       {
